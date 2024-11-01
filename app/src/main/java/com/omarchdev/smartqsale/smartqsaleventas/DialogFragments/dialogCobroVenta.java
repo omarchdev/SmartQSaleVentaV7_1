@@ -451,10 +451,6 @@ public class dialogCobroVenta extends DialogFragment implements View.OnClickList
                 }
             }
         }
-
-
-
-
         return permitirVenta;
     }
 
