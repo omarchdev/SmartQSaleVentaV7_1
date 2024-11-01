@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/avi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            app:indicatorColor="@color/colorPrimaryDark"
+            app:indicatorName="BallPulseIndicator" />
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/avi"
+            android:id="@+id/txtCargando"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cargando datos"/>
+        <RelativeLayout
+            android:id="@+id/rlContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="5dp"
+
+                >
+
+                <LinearLayout
+
+                    android:elevation="4dp"
+                    android:paddingTop="12dp"
+                   android:padding="8dp"
+
+                    android:layout_margin="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                  >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tipo de cliente"/>
+                    <Spinner
+                        android:id="@+id/spnTipoCliente"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"></Spinner>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilNombreCliente"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_marginLeft="10dp"
+                        android:layout_row="0"
+                        android:orientation="horizontal"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="30"
+
+                        app:errorEnabled="true"
+                        app:hintAnimationEnabled="true">
+
+                        <EditText
+                            android:id="@+id/edtCustomerName"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:ems="12"
+                            android:hint="Nombre del Cliente"
+                            android:inputType="text"
+                            android:maxLength="30"
+                            android:maxLines="1" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilApellidoPaternoCliente"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_marginLeft="10dp"
+                        android:layout_row="0"
+                        android:orientation="horizontal"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="30"
+                        app:errorEnabled="true"
+                        app:errorTextAppearance="@style/Error"
+                        app:hintAnimationEnabled="true">
+
+                        <EditText
+                            android:id="@+id/edtCustomerApellidoPaterno"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:ems="10"
+                            android:hint="Apellido Paterno"
+                            android:inputType="text"
+                            android:maxLength="30"
+                            android:maxLines="1" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilRazonSocial"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_marginLeft="10dp"
+                        android:layout_row="0"
+                        android:orientation="horizontal"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="80"
+                        app:errorEnabled="true"
+                        app:errorTextAppearance="@style/Error"
+                        app:hintAnimationEnabled="true">
+
+                        <EditText
+                            android:id="@+id/edtRazonSocial"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:ems="10"
+                            android:hint="Razon Social"
+                            android:inputType="text"
+                            android:maxLength="80"
+                            android:maxLines="1" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilNumeroRuc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_marginLeft="10dp"
+                        android:layout_row="0"
+                        android:orientation="horizontal"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="15"
+                        app:errorEnabled="true"
+                        app:errorTextAppearance="@style/Error"
+                        app:hintAnimationEnabled="true">
+
+                        <EditText
+                            android:id="@+id/edtNumeroRuc"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:ems="10"
+                            android:hint="Numero de RUC"
+                            android:inputType="number"
+                            android:maxLength="15"
+                            android:maxLines="1" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilApellidoMaternoCLiente"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_marginLeft="10dp"
+                        android:layout_row="0"
+                        android:orientation="horizontal"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="30"
+                        app:errorEnabled="true"
+                        app:errorTextAppearance="@style/Error"
+                        app:hintAnimationEnabled="true">
+
+                        <EditText
+                            android:id="@+id/edtCustomerApellidoMaterno"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:ems="10"
+                            android:hint="Apellido Materno"
+                            android:inputType="text"
+                            android:maxLength="30"
+                            android:maxLines="1" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilNumeroTelefonoCustomer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_marginLeft="10dp"
+                        android:layout_row="0"
+                        android:orientation="horizontal"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="15"
+                        app:errorEnabled="true"
+                        app:errorTextAppearance="@style/Error"
+                        app:hintAnimationEnabled="true">
+
+                        <EditText
+                            android:id="@+id/edtCustomerPhone"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:ems="10"
+                            android:hint="Numero Telefono"
+                            android:inputType="phone"
+                            android:maxLength="15"
+                            android:maxLines="1" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilEmailCliente"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_marginLeft="10dp"
+                        android:layout_row="0"
+                        android:orientation="horizontal"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="30"
+                        app:errorEnabled="true"
+                        app:errorTextAppearance="@style/Error"
+                        app:hintAnimationEnabled="true">
+
+                        <EditText
+                            android:id="@+id/edtCustomerEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:ems="10"
+                            android:hint="Email"
+                            android:inputType="textEmailAddress"
+                            android:maxLength="30"
+                            android:maxLines="1" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        android:layout_marginBottom="80dp"
+                        android:id="@+id/tilDireccionCliente"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_marginLeft="10dp"
+                        android:layout_row="0"
+                        android:orientation="horizontal"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="80"
+
+                        app:errorEnabled="true"
+                        app:errorTextAppearance="@style/Error"
+                        app:hintAnimationEnabled="true">
+
+                        <EditText
+                            android:maxLength="80"
+                            android:id="@+id/edtCustomerDirection"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:ems="10"
+                            android:hint="Direccion"
+                            android:inputType="text"
+                            android:maxLines="1" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+            </ScrollView>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/actionMenu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom|right"
+        android:paddingBottom="16dp"
+        android:paddingRight="16dp"
+        app:menu_colorRipple="@color/colorPrimaryDark"
+        android:backgroundTint="#98232323"
+        app:menu_animationDelayPerItem="50"
+        app:menu_backgroundColor="#ccffffff"
+        app:menu_buttonSpacing="0dp"
+        app:menu_fab_size="normal"
+        app:menu_labels_cornerRadius="2dp"
+        app:menu_labels_ellipsize="none"
+        app:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"
+        app:menu_labels_position="left"
+        app:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
+        app:menu_labels_singleLine="true"
+        app:menu_openDirection="up"
+        app:menu_colorNormal="@color/colorAccent"
+        app:menu_colorPressed="@color/colorAccent"
+
+       >
+
+        <com.github.clans.fab.FloatingActionButton
+            app:fab_colorNormal="@color/colorPrimary"
+            app:fab_colorPressed="@color/colorPrimary"
+            android:id="@+id/menu_item_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/pencil_edit"
+            app:fab_label="Editar vendedor"
+            app:fab_size="mini" />
+
+
+        <com.github.clans.fab.FloatingActionButton
+            app:fab_colorNormal="@color/colorPrimary"
+            app:fab_colorPressed="@color/colorPrimary"
+            android:id="@+id/menu_item_guardar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/pencil_edit"
+            app:fab_label="Guardar vendedor"
+            app:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            app:fab_colorNormal="@color/colorPrimary"
+            app:fab_colorPressed="@color/colorPrimary"
+            android:id="@+id/menu_item_cancelar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/pencil_edit"
+            app:fab_label="Cancelar"
+            app:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            app:fab_colorNormal="@color/colorPrimary"
+            app:fab_colorPressed="@color/colorPrimary"
+            android:id="@+id/menu_item_eliminar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/pencil_edit"
+            app:fab_label="Eliminar"
+            app:fab_size="mini" />
+
+    </com.github.clans.fab.FloatingActionMenu>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

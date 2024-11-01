@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+
+    tools:context="com.omarchdev.smartqsale.smartqsaleventas.Activitys.DetallePedido">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/pbPedido"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentTop="false"
+            android:layout_alignParentEnd="false"
+            android:layout_alignParentRight="false"
+            android:layout_alignParentBottom="false"
+            android:layout_centerInParent="true" />
+
+        <com.sothree.slidinguppanel.SlidingUpPanelLayout
+        android:gravity="bottom"
+        app:umanoPanelHeight="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/panel">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/llContentPedido"
+                    android:paddingBottom="80dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtFechaPedido"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:gravity="center|left"
+                        android:text="FechaPedido"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtNumPedido"
+                        android:layout_width="match_parent"
+                        android:textSize="16sp"
+                        android:layout_height="30dp"
+                        android:layout_margin="4dp"
+                        android:gravity="center|right"
+                        android:text="Vendedor no especificado" />
+                    <TextView
+                        android:id="@+id/txtNombreVendedor"
+                        android:layout_width="match_parent"
+                        android:textSize="16sp"
+                        android:layout_height="30dp"
+                        android:layout_margin="4dp"
+                        android:drawableLeft="@drawable/ic_account_circle_white_24dp"
+                        android:gravity="center|right"
+                        android:text="Vendedor no especificado" />
+
+                    <TextView
+                        android:id="@+id/txtNombreCliente"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_margin="4dp"
+                        android:drawableLeft="@drawable/ic_human_male_female_white_24dp"
+                        android:textSize="16sp"
+                        android:gravity="center|right"
+                        android:text="Cliente no especificado" />
+
+                    <RelativeLayout
+                        android:id="@+id/rlFechaEntrega"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="4dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Fecha Entrega"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:textSize="16sp"
+                            android:id="@+id/txtFechaEntrega"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:text="Fecha Entrega"
+                            android:textAlignment="textEnd"
+                            android:textStyle="bold" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rlEstadoEntrega"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="8dp">
+
+                        <RadioGroup
+
+                            android:id="@+id/rgEntregado"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true">
+
+                            <RadioButton
+                                android:id="@+id/rb1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Entregado"></RadioButton>
+
+                            <RadioButton
+                                android:id="@+id/rb2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Sin entregar"></RadioButton>
+                        </RadioGroup>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:layout_centerVertical="true"
+                            android:text="Estado de Entrega"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/txtZonaServicio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:gravity="right"
+                        android:text="zona de servicio"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtDocPago"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:gravity="right"
+                        android:text="documento de pago"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/txtValorBruto"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:textSize="16sp"
+                            android:layout_margin="4dp"
+                            android:gravity="center|right"
+                            android:text="Valor bruto"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtValorDescuento"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_below="@id/txtValorBruto"
+                            android:layout_marginLeft="4dp"
+                            android:gravity="center|right"
+                            android:text="Descuento"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtValorNeto"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_below="@id/txtValorDescuento"
+                            android:layout_marginLeft="4dp"
+                            android:gravity="center|right"
+                            android:textSize="16sp"
+                            android:text="Valor Neto"
+                            android:textStyle="bold" />
+
+                        <TextView
+
+                            android:id="@+id/txtValorBrutoDato"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:textSize="16sp"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginEnd="4dp"
+                            android:layout_marginBottom="4dp"
+                            android:gravity="center|right"
+                            android:text="S/0.00" />
+
+                        <TextView
+                            android:id="@+id/valorDescuentoDato"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_below="@id/txtValorBrutoDato"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="4dp"
+                            android:gravity="center|right"
+                            android:text="S/0.00"
+                            android:textSize="18sp" />
+
+                        <TextView
+
+                            android:id="@+id/txtValorNetoDato"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:textSize="16sp"
+                            android:layout_below="@id/valorDescuentoDato"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="4dp"
+                            android:gravity="center|right"
+                            android:text="S/0.00"
+
+                            android:textStyle="bold" />
+
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="#61878787">
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+
+                        android:layout_gravity="center"
+                        android:drawableEnd="@drawable/ic_cart_white_24dp"
+                        android:gravity="center"
+                        android:minWidth="250dp"
+                        android:text="Articulos del Pedido"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvDetallePedido"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"></androidx.recyclerview.widget.RecyclerView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0.2dp"
+                        android:background="#61878787"></LinearLayout>
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:gravity="center"
+                        android:text="Metodos de pago"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvMetodosDePago"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                    <LinearLayout
+                        android:id="@+id/content_datos_entrega"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="8dp"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="48dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginRight="48dp"
+                            android:layout_marginBottom="12dp"
+                            android:background="@color/colorPrimary"
+                            android:gravity="center"
+                            android:text="Datos de entrega"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+                        <TableLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="16dp">
+
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="8dp"
+                                >
+
+                                <TextView
+                                    android:id="@+id/txtEtqFechaCreacion"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Fecha de creación"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/txtFechaCreacion"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:textAlignment="viewEnd"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+                            </TableRow>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0.5dp"
+                                android:background="#61878787">
+
+                            </LinearLayout>
+
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="8dp"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:id="@+id/txtEtqEstadoActual"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Estado Actual"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/txtEstadoActual"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:textAlignment="viewEnd"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+                            </TableRow>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0.5dp"
+                                android:background="#61878787">
+
+                            </LinearLayout>
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="16dp">
+
+                                <TextView
+                                    android:id="@+id/txtEtqNroPedido"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Nro Pedido"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/txtNroPedido"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:textAlignment="viewEnd"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+                            </TableRow>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0.5dp"
+                                android:background="#61878787">
+
+                            </LinearLayout>
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="16dp">
+
+                                <TextView
+                                    android:id="@+id/txtEtqClienteEntrega"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Cliente"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/txtClienteEntrega"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:textAlignment="viewEnd"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+                            </TableRow>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0.5dp"
+                                android:background="#61878787">
+
+                            </LinearLayout>
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="16dp">
+
+                                <TextView
+                                    android:id="@+id/txtEtqNroCelular"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Nro de Celular"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/txtNroCelular"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:textAlignment="viewEnd"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+                            </TableRow>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0.5dp"
+                                android:background="#61878787">
+
+                            </LinearLayout>
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="16dp">
+
+                                <TextView
+                                    android:id="@+id/txtEtqMetodoPagoEntrega"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Metodo de pago"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/txtMetodoPagoEntrega"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:textAlignment="viewEnd"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+                            </TableRow>
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="16dp">
+
+                                <TextView
+                                    android:id="@+id/txtEtqEmailEntrega"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Email"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/txtEmailEntrega"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:textAlignment="viewEnd"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+                            </TableRow>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0.5dp"
+                                android:background="#61878787">
+
+                            </LinearLayout>
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="16dp">
+
+                                <TextView
+                                    android:id="@+id/txtEtqTipoEntrega"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Tipo de entrega"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/txtTipoEntrega"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:textAlignment="viewEnd"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+                            </TableRow>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0.5dp"
+                                android:background="#61878787">
+
+                            </LinearLayout>
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="16dp">
+
+                                <TextView
+                                    android:id="@+id/txtEtqDireccionEntrega"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Dirección de entrega"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/txtDireccionEntrega"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:paddingStart="16dp"
+                                    android:textAlignment="viewEnd"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+                            </TableRow>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0.5dp"
+                                android:background="#61878787">
+
+                            </LinearLayout>
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="16dp">
+
+                                <TextView
+                                    android:id="@+id/txtEtqTiempoEntrega"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Hora de entrega"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/txtTiempoEntrega"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:textAlignment="viewEnd"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+                            </TableRow>
+                        </TableLayout>
+
+                        <Button
+                            android:id="@+id/btnEstadoPago"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginEnd="24dp"
+                            android:paddingTop="24dp"
+                            android:paddingBottom="24dp"
+                            android:text="Estado de Pago"
+                            android:textSize="14sp" />
+
+                        <Button
+                            android:id="@+id/btnEstadoEntrega"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginEnd="24dp"
+                            android:paddingTop="24dp"
+                            android:paddingBottom="24dp"
+                            android:text="Estado de Entrega"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:text="Observaciones"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+
+                        android:id="@+id/txtObservaciones"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+
+                </LinearLayout>
+
+            </ScrollView>
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <FrameLayout
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></FrameLayout>
+
+        </RelativeLayout>
+    </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+        <com.getbase.floatingactionbutton.FloatingActionsMenu
+            android:id="@+id/floating_button_pedido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="16dp"
+            app:fab_addButtonColorNormal="@android:color/holo_blue_dark"
+            app:fab_addButtonSize="normal"
+            app:fab_labelStyle="@style/LabelFloatingButton"
+            app:fab_labelsPosition="left"
+
+            >
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabAdelanto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_colorNormal="#28aef1"
+                app:fab_icon="@drawable/ic_receipt_white_24dp"
+                app:fab_size="mini"
+                app:fab_title="Adelantos" />
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabImprimirVenta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_colorNormal="#28aef1"
+                app:fab_icon="@drawable/ic_receipt_white_24dp"
+                app:fab_size="mini"
+                app:fab_title="Imprimir" />
+
+
+
+
+        </com.getbase.floatingactionbutton.FloatingActionsMenu>
+    </RelativeLayout>
+</LinearLayout>

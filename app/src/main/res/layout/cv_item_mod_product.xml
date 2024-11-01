@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp"
+    android:background="@drawable/fondo_mod_prod">
+    <RelativeLayout
+
+        android:layout_width="wrap_content"
+        android:layout_height="50dp">
+        <TextView
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:id="@+id/txtDescModProducto"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:text="Hola"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+    </RelativeLayout>
+    
+</RelativeLayout>

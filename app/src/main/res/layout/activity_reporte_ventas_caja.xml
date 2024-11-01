@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".Activitys.ReporteVentasCaja">
+    <RelativeLayout
+        android:elevation="0.1dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:layout_centerInParent="true"
+            android:id="@+id/pb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:id="@+id/txtMensaje"
+            android:layout_centerInParent="true"
+            android:textSize="18sp"
+            android:text="No existen cajas disponibles"
+            android:layout_margin="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/content"
+
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Seleccion de caja"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <RelativeLayout
+
+                    android:id="@+id/cv_select_cierre"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_weight="4"
+                    android:background="@drawable/fondo_img"
+                    android:focusable="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+
+                            android:tint="#00E5FF"
+                            app:srcCompat="@drawable/history" />
+
+                        <TextView
+                            android:id="@+id/txtEstadoCierre"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/txtPeriodoCaja"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/txtEstadoCierre"
+                            android:textColor="#00E5FF"/>
+
+                    </RelativeLayout>
+
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:visibility="gone"
+                android:id="@+id/btnDetalleReporte"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/fondo_img"
+                android:text="Ver detalle reporte"
+                android:textColor="#757575" />
+            <RelativeLayout
+                android:padding="4dp"
+                 android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.github.mikephil.charting.charts.BarChart
+
+                    android:id="@+id/barChartResumen"
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:background="#ffffff"></com.github.mikephil.charting.charts.BarChart>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_margin="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Ventas por vendedor"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvVentasVendedores"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                ></androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

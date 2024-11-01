@@ -1,0 +1,18 @@
+Index: .idea/modules.xml
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+deleted file mode 100644
+--- a/.idea/modules.xml	(revision e971ad5d265c569d0d35b557369dcc1a971aac2b)
++++ /dev/null	(revision e971ad5d265c569d0d35b557369dcc1a971aac2b)
+@@ -1,10 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="ProjectModuleManager">
+-    <modules>
+-      <module fileurl="file://$PROJECT_DIR$/AutoLabelUI/AutoLabelUI.iml" filepath="$PROJECT_DIR$/AutoLabelUI/AutoLabelUI.iml" />
+-      <module fileurl="file://$PROJECT_DIR$/SmartQSaleVentaV6.iml" filepath="$PROJECT_DIR$/SmartQSaleVentaV6.iml" />
+-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+-    </modules>
+-  </component>
+-</project>
+\ No newline at end of file

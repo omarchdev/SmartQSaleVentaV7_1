@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
+    android:id="@+id/cvProduct"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="1dp"
+    android:animateLayoutChanges="false"
+    android:orientation="vertical"
+    card_view:cardBackgroundColor="@color/cardview_light_background"
+    card_view:cardCornerRadius="10dp"
+    card_view:cardElevation="0dp">
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center"
+        android:gravity="left|center"
+        android:paddingBottom="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="2dp"
+        android:paddingTop="20dp">
+
+
+        <ImageView
+
+            android:id="@+id/ImageProductPhoto"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+           style="@style/FondoImagenes"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/ic_menu_gallery" />
+
+        <TextView
+            android:id="@+id/tvproductName"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/ImageProductPhoto"
+            android:layout_marginStart="10dp"
+
+            android:layout_toEndOf="@+id/ImageProductPhoto"
+            android:text="Nombre Producto"
+
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtTitulo1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/tvproductName"
+            android:layout_below="@+id/tvproductName"
+            android:text="Cantidad" />
+
+        <TextView
+            android:id="@+id/tvCantidad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/txtTitulo1"
+
+            android:layout_below="@+id/txtTitulo1"
+            android:gravity="right"
+            android:text="100" />
+
+        <TextView
+            android:id="@+id/tvPrecio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/txtTitulo2"
+            android:layout_below="@+id/txtTitulo2"
+            android:gravity="right"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/txtTitulo2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/txtTitulo1"
+            android:layout_alignBottom="@+id/txtTitulo1"
+            android:layout_marginLeft="20dp"
+            android:layout_toEndOf="@+id/txtTitulo1"
+            android:text="Precio Venta" />
+
+        <TextView
+
+            android:id="@+id/textViewOptions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:background="?selectableItemBackgroundBorderless"
+            android:backgroundTint="@color/colorPrimary"
+            android:clickable="true"
+            android:padding="10dp"
+            android:layout_marginRight="10dp"
+            android:text="&#8942;"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:layout_width="40dp"
+            style="?android:attr/borderlessButtonStyle"
+            android:id="@+id/imgFavorito"
+            android:backgroundTint="@color/colorAccent"
+            android:background="?selectableItemBackgroundBorderless"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/tvPrecio"
+            android:tint="@color/colorAccent"
+            android:src="@drawable/favorite_outline" />
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="0.2dp"
+        android:background="#a1a1a1"></LinearLayout>
+
+
+</RelativeLayout>

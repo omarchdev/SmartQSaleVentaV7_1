@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+        <integer name="NumColumnVentas">4</integer>
+        <integer name="NumColZonaServicio">3</integer>
+</resources>

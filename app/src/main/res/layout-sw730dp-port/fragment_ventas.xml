@@ -1,0 +1,859 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_ventas"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.omarchdev.smartqsale.smartqsaleventas.Fragment.VentasFragment">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/rVentas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:visibility="invisible">
+
+            <EditText
+                android:id="@+id/edtCodigoBarra"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Hola" />
+
+            <LinearLayout
+                android:id="@+id/linearLayoutButtonSales"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <Button
+                        android:id="@+id/btnElegirVendedor"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.7"
+
+                        android:clickable="true"
+                        android:drawableLeft="@drawable/ic_account_plus_white_36dp"
+                        android:gravity="center"
+                        android:paddingLeft="4dp"
+                        android:text="Vendedor"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/btnElegirCliente"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="0.1dp"
+                        android:layout_weight="0.8"
+                        android:drawableLeft="@drawable/ic_human_male_female_white_36dp"
+                        android:gravity="center"
+                        android:paddingLeft="12sp"
+                        android:text="Cliente"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/btnZonaServicio"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="0.1dp"
+                        android:layout_weight="0.7"
+                        android:textColor="@color/colorBlanco"
+                        android:visibility="gone">
+
+                    </Button>
+
+                    <Button
+                        android:id="@+id/btnModoVenta"
+                        style="@style/ButtonPlano"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="0.1dp"
+                        android:layout_weight="0.7"
+                        android:visibility="gone">
+
+                    </Button>
+
+                    <ImageView
+                        android:id="@+id/imgLock"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.3"
+                        android:padding="10dp"
+                        app:srcCompat="@drawable/ic_lock_open_variant_white_24dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/StyleFondo"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.7"
+                    android:background="@color/colorConstrante"
+                    android:orientation="horizontal">
+
+
+                    <Button
+                        android:id="@+id/btnCobrar"
+                        style="@style/EstiloLetra"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="0.4"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:lines="2"
+                        android:text="Cobrar\nS/0.00"
+                        android:textColor="#ffffff"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+
+                        android:id="@+id/linearLayoutBtnDetalleVenta"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+                        <LinearLayout
+                            android:id="@+id/layoutInfo"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:id="@+id/content_Text"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.8"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/txtNombreUltimoProductoEnCarrito"
+                                    style="@style/EstiloLetra"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    android:gravity="left|center"
+                                    android:paddingLeft="4dp"
+                                    android:text="Detalle de venta"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/txtPrecioUltimoProductoEnCarrito"
+                                    style="@style/EstiloLetra"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    android:gravity="left|center"
+                                    android:text="Presiona aqui"
+                                    android:textColor="#23d929"
+                                    android:textStyle="bold" />
+
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/txtCantidadProducto"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:drawableLeft="@drawable/car_sale"
+                                android:gravity="left|center"
+                                android:paddingLeft="8dp"
+                                android:paddingRight="4dp"
+                                android:text="x0"
+                                android:textSize="14sp" />
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:gravity="center">
+
+                    <ImageButton
+                        android:id="@+id/imgArrowDisplay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#f9f9f9"
+                        app:srcCompat="@drawable/arrowdisplay" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="8">
+
+
+                    <com.sothree.slidinguppanel.SlidingUpPanelLayout
+                        android:id="@+id/sliding_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="top"
+                        app:umanoClipPanel="true"
+                        app:umanoDragView="@+id/linearContenedorVenta"
+                        app:umanoOverlay="true"
+                        app:umanoPanelHeight="1dp"
+                        app:umanoScrollInterpolator="@android:anim/overshoot_interpolator"
+                        app:umanoScrollableView="@id/rvCarritoVenta"
+                        app:umanoShadowHeight="6dp"
+
+
+                        >
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:id="@+id/content_venta1"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:visibility="gone">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="1.3"
+                                        android:orientation="horizontal"
+                                        android:paddingTop="5dp">
+
+                                        <ImageButton
+                                            android:id="@+id/imgBackGrid"
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="0.8"
+                                            android:backgroundTint="@color/colorAccent"
+                                            android:tint="#ffffff"
+                                            app:srcCompat="@drawable/arrow_back_grid" />
+
+                                        <ImageButton
+
+                                            android:id="@+id/imgTipoVistaLista"
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_margin="1dp"
+                                            android:layout_weight="0.8"
+                                            android:backgroundTint="@color/colorAccent"
+                                            app:srcCompat="@drawable/grid">
+
+                                        </ImageButton>
+
+                                        <ImageButton
+
+                                            android:id="@+id/imgBtnScan"
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_gravity="center"
+                                            android:layout_margin="1dp"
+                                            android:layout_weight="0.8"
+                                            android:backgroundTint="@color/colorAccent"
+                                            android:elevation="5dp"
+                                            android:padding="20dp"
+                                            app:srcCompat="@drawable/ic_barcode_scan_white_24dp" />
+
+                                        <androidx.appcompat.widget.SearchView
+
+                                            android:id="@+id/edtSearchProduct"
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_margin="3dp"
+                                            android:layout_weight="4.2"></androidx.appcompat.widget.SearchView>
+
+
+                                    </LinearLayout>
+
+                                    <RelativeLayout
+                                        android:id="@+id/rlContentInferior"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="7"
+                                        android:gravity="center">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+
+
+                                            android:orientation="vertical">
+
+                                            <RelativeLayout
+                                                android:id="@+id/layoutContnedorProductos"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:orientation="vertical">
+
+
+                                                <GridView
+                                                    android:id="@+id/gv_Categorias"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent"
+                                                    android:layout_below="@id/spinnerCategoria"
+                                                    android:gravity="center"
+                                                    android:horizontalSpacing="4dp"
+                                                    android:numColumns="@integer/NumColumnVentas"
+                                                    android:verticalSpacing="4dp"
+                                                    android:visibility="gone" />
+
+                                                <GridView
+                                                    android:id="@+id/gv_articulosVenta"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent"
+                                                    android:layout_below="@id/spinnerCategoria"
+                                                    android:columnWidth="80dp"
+                                                    android:gravity="center"
+                                                    android:numColumns="3"
+                                                    android:verticalSpacing="4dp"
+                                                    android:visibility="gone"></GridView>
+
+
+                                                <ProgressBar
+
+                                                    android:id="@+id/pbPedido"
+                                                    style="?android:attr/progressBarStyle"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+
+                                                    android:layout_centerInParent="true"
+                                                    android:clickable="false"
+                                                    android:visibility="gone"
+                                                    tools:visibility="gone" />
+
+                                                <Spinner
+                                                    android:id="@+id/spinnerCategoria"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_alignParentStart="true"></Spinner>
+
+                                                <TextView
+
+                                                    android:id="@+id/txtTextoCarrito"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent"
+                                                    android:layout_margin="50dp"
+                                                    android:drawableRight="@drawable/inventory"
+                                                    android:gravity="center"
+                                                    android:text="No hay productos en el Inventario"
+                                                    android:textColor="#73000000"
+                                                    android:textSize="30sp"
+                                                    android:textStyle="bold"
+                                                    android:visibility="gone" />
+
+                                                <androidx.recyclerview.widget.RecyclerView
+                                                    android:id="@+id/rvProductsInSale"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent"
+                                                    android:layout_below="@id/spinnerCategoria"
+                                                    android:background="#09000000"
+                                                    android:scrollbars="vertical"
+                                                    android:visibility="visible" />
+
+                                                <androidx.recyclerview.widget.RecyclerView
+                                                    android:id="@+id/rvGridarticulosVenta"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent"
+                                                    android:layout_centerInParent="true"
+                                                    android:background="#09000000"
+                                                    android:foregroundGravity="center"
+                                                    android:visibility="gone"></androidx.recyclerview.widget.RecyclerView>
+
+                                            </RelativeLayout>
+
+                                        </LinearLayout>
+                                    </RelativeLayout>
+
+                                </LinearLayout>
+
+                                <View
+                                    android:id="@+id/background_dimmer"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="#1ed9d9d9"
+                                    android:elevation="1dp"
+                                    android:visibility="visible" />
+
+                                <com.wang.avi.AVLoadingIndicatorView
+                                    android:id="@+id/avi"
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    app:indicatorColor="@color/colorPrimary"
+                                    app:indicatorName="BallScaleMultipleIndicator" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/content_venta2"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center">
+
+                                <ScrollView
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+
+                                    <LinearLayout
+
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="vertical">
+
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_horizontal"
+                                            android:gravity="center_horizontal"
+                                            android:orientation="horizontal">
+
+                                            <LinearLayout
+                                                android:id="@+id/content_aforo"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginStart="8dp"
+                                                android:gravity="center_horizontal"
+                                                >
+
+                                                <androidx.cardview.widget.CardView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:elevation="4dp"
+                                                    app:cardBackgroundColor="#3D5AFE"
+                                                    app:cardUseCompatPadding="true">
+
+                                                    <LinearLayout
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:layout_gravity="center_horizontal"
+                                                        android:gravity="center_horizontal"
+                                                        android:orientation="vertical">
+
+                                                        <TextView
+                                                            android:id="@+id/txtAforoLibre"
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_margin="8dp"
+                                                            android:gravity="end"
+                                                            android:text="0"
+                                                            android:textSize="28sp">
+
+                                                        </TextView>
+
+                                                        <TextView
+                                                            android:layout_width="60dp"
+                                                            android:layout_height="wrap_content"
+                                                            android:text="Espacios libres"
+                                                            android:textAlignment="center" />
+
+                                                    </LinearLayout>
+                                                </androidx.cardview.widget.CardView>
+
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginStart="8dp"
+                                                android:orientation="vertical">
+
+                                                <TextClock
+                                                    android:id="@+id/textClock"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_margin="8dp"
+                                                    android:format12Hour="dd/MM/yyyy hh:mm:ss a"
+                                                    android:gravity="center_horizontal"
+                                                    android:text="dd/MM/yyyy hh:mm:ss a"
+                                                    android:textSize="24sp" />
+
+                                                <TextView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="Hora del dispositivo"
+                                                    android:textAlignment="center" />
+                                            </LinearLayout>
+                                        </LinearLayout>
+
+
+                                        <LinearLayout
+
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center_vertical"
+                                            android:orientation="horizontal">
+
+                                            <LinearLayout
+                                                android:layout_margin="8dp"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="3"
+                                                android:orientation="vertical">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="Placa"/>
+                                                <LinearLayout
+                                                    android:orientation="horizontal"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content">
+
+                                                    <ImageButton
+                                                        android:backgroundTint="@color/colorPrimary"
+                                                        android:id="@+id/btnScanPlaca"
+
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:src="@drawable/ic_barcode_scan_white_36dp" />
+                                                    <EditText
+                                                        android:layout_marginStart="16dp"
+                                                        android:textColor="@color/edit_text_color"
+                                                        android:id="@+id/edtPlaca"
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content" />
+
+
+                                                </LinearLayout>
+
+
+
+
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:gravity="center_horizontal">
+
+                                                <ImageView
+
+                                                    android:id="@+id/imgTipoLista"
+                                                    android:layout_width="100dp"
+                                                    android:layout_height="100dp"
+                                                    android:background="#FFFFFF"
+                                                    app:srcCompat="@drawable/ic_folder_open_outline_grey600_48dp">
+
+                                                </ImageView>
+                                            </LinearLayout>
+                                        </LinearLayout>
+                                        <LinearLayout
+                                            android:orientation="horizontal"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+
+                                            <Button
+                                                android:backgroundTint="@color/colorPrimary"
+                                                android:id="@+id/btnTipoLista"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="8dp"
+                                                android:layout_marginTop="16dp"
+                                                android:layout_marginRight="4dp"
+                                                android:layout_marginBottom="16dp"
+                                                android:layout_weight="2"
+                                                android:text="Tipo lista" />
+
+                                            <Button
+                                                android:id="@+id/btnHabMod"
+                                                style="img"
+                                                android:backgroundTint="@color/colorPrimary"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="4dp"
+                                                android:layout_marginTop="16dp"
+                                                android:layout_marginRight="8dp"
+                                                android:layout_marginBottom="16dp"
+                                                android:layout_weight="2"
+                                                android:text="Tipo lista" />
+
+                                            <ImageButton
+                                                android:id="@+id/btnLimpiar"
+                                                android:backgroundTint="@color/colorPrimary"
+                                                style="@style/imgButtonStyle"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="16dp"
+                                                android:layout_marginEnd="8dp"
+                                                android:layout_marginBottom="16dp"
+                                                android:layout_weight="1"
+                                                android:src="@drawable/ic_broom_white_36dp" />
+                                        </LinearLayout>
+                                        <LinearLayout
+
+                                            android:layout_margin="8dp"
+                                            android:orientation="horizontal"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <TextView
+                                                android:layout_weight="1"
+                                                android:text="Ingreso"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content">
+
+                                            </TextView>
+                                            <EditText
+                                                android:id="@+id/edtHoraIngreso"
+                                                android:layout_weight="3"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content">
+
+                                            </EditText>
+
+                                            <ImageButton
+                                                android:backgroundTint="@color/colorPrimary"
+                                                android:id="@+id/btnHoraInit"
+                                                style="@style/imgButtonStyle"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:src="@drawable/ic_calendar_clock_white_24dp"></ImageButton>
+
+                                        </LinearLayout>
+                                        <LinearLayout
+                                            android:layout_margin="8dp"
+                                            android:orientation="horizontal"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <TextView
+                                                android:layout_weight="1"
+                                                android:text="Salida"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content">
+
+                                            </TextView>
+                                            <EditText
+                                                android:id="@+id/edtHoraSalida"
+                                                android:layout_weight="3"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content">
+
+                                            </EditText>
+                                            <ImageButton
+                                                android:backgroundTint="@color/colorPrimary"
+                                                android:id="@+id/btnHoraFin"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:src="@drawable/ic_calendar_clock_white_24dp"></ImageButton>
+                                        </LinearLayout>
+                                        <LinearLayout
+                                            android:layout_margin="8dp"
+                                            android:orientation="horizontal"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <TextView
+                                                android:layout_weight="1"
+                                                android:text="Tiempo transcurrido"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content">
+
+                                            </TextView>
+                                            <EditText
+                                                android:id="@+id/edtTiempoTranscurrido"
+                                                android:layout_weight="3"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content">
+
+                                            </EditText>
+
+                                        </LinearLayout>
+                                        <LinearLayout
+                                            android:layout_margin="8dp"
+                                            android:orientation="horizontal"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <TextView
+                                                android:paddingBottom="8dp"
+                                                android:layout_weight="1"
+                                                android:text="Etapas contabilizadas"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content">
+
+                                            </TextView>
+                                            <EditText
+                                                android:id="@+id/edtEtapaCont"
+                                                android:layout_weight="3"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content">
+
+                                            </EditText>
+                                        </LinearLayout>
+                                        <LinearLayout
+                                            android:gravity="center_horizontal|center_vertical"
+                                            android:layout_margin="8dp"
+                                            android:orientation="horizontal"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+
+                                            <TextView
+                                                android:id="@+id/txtEstadoPermitir"
+                                                android:text="Entra"
+                                                android:textSize="32sp"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"/>
+
+                                        </LinearLayout>
+                                        <LinearLayout
+                                            android:visibility="gone"
+                                            android:layout_margin="8dp"
+                                            android:orientation="horizontal"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <TextView
+                                                android:layout_weight="1"
+                                                android:text="Espacios libres"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content">
+
+                                            </TextView>
+
+                                            <EditText
+                                                android:visibility="gone"
+                                                android:id="@+id/edtEspaciosLibres"
+                                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="3">
+
+                                            </EditText>
+                                        </LinearLayout>
+                                        <LinearLayout
+                                            android:layout_margin="8dp"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center_vertical"
+                                            android:orientation="horizontal">
+
+                                            <EditText
+                                                android:visibility="gone"
+                                                android:id="@+id/edtObservacion"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:hint="Observación" />
+                                        </LinearLayout>
+                                    </LinearLayout>
+                                </ScrollView>
+
+                            </RelativeLayout>
+
+                            <!--here comes your main layout -->
+
+
+                        </LinearLayout>
+
+
+                        <RelativeLayout
+
+                            android:id="@+id/linearContenedorVenta"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="100dp"
+                            android:background="#ffffff">
+
+
+                            <LinearLayout
+                                android:id="@+id/contentButton"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rvCarritoVenta"
+                                android:layout_alignParentStart="true"
+                                android:background="#f9f9f9"
+                                android:orientation="horizontal"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp">
+
+                                <Button
+                                    android:id="@+id/btnCancelarVenta"
+                                    android:layout_width="0dp"
+                                    android:layout_height="50dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_weight="1"
+                                    android:backgroundTint="@color/colorPrimary"
+                                    android:text="Anular Pedido"
+                                    android:textColor="#ffffff"
+                                    android:textSize="13sp" />
+
+                                <ImageButton
+
+                                    android:id="@+id/btnOpenGuardarPedido"
+                                    android:layout_width="0dp"
+                                    android:layout_height="50dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_weight="0.5"
+                                    android:backgroundTint="@color/colorPrimary"
+                                    app:srcCompat="@drawable/save_white" />
+
+                                <TextView
+
+                                    android:id="@+id/txtDescuentoPrecioVenta"
+                                    android:layout_width="0dp"
+                                    android:layout_height="50dp"
+                                    android:layout_marginLeft="15dp"
+                                    android:layout_weight="1.8"
+                                    android:background="#f9f9f9"
+                                    android:drawableLeft="@drawable/percent1"
+                                    android:gravity="center|left"
+                                    android:text="S/0.00"
+                                    android:textColor="#31e166"
+                                    android:textSize="13sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rvCarritoVenta"
+                                android:layout_width="match_parent"
+                                android:layout_height="250dp"
+                                android:layout_above="@id/rvCarritoVenta"
+                                android:layout_alignParentStart="true"
+                                android:background="#ffffff"
+                                android:visibility="visible" />
+
+                        </RelativeLayout>
+
+
+                    </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+</FrameLayout>

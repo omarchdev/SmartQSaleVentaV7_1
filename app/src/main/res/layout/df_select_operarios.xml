@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_margin="8dp"
+            android:layout_alignParentTop="true"
+            android:id="@+id/txtTitulo"
+            android:text="Selección de operarios"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSelectOperario"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/btnAgregarOperario"
+            android:layout_above="@id/contentButton">
+
+        </androidx.recyclerview.widget.RecyclerView>
+        <LinearLayout
+            android:gravity="right"
+            android:id="@+id/contentButton"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/btnCancelar"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:text="Cancelar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btnGuardar"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:text="Guardar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <Button
+            android:id="@+id/btnAgregarOperario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Agregar nuevo operario"
+            android:layout_margin="8dp"
+            android:layout_below="@id/content_busqueda_operario"
+            >
+
+        </Button>
+        <LinearLayout
+            android:id="@+id/content_busqueda_operario"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/txtTitulo"
+
+            android:layout_margin="8dp"
+            android:orientation="horizontal">
+
+
+            <EditText
+                android:id="@+id/edtNombreOperario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Busqueda de operario"
+                android:inputType="textPersonName" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

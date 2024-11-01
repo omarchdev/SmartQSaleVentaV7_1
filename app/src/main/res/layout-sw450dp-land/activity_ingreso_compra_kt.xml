@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activitys.IngresoCompraKt"
+
+    >
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/pbIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            app:indicatorName="BallPulseIndicator"
+            app:indicatorColor="@color/colorAccent"/>
+
+        <RelativeLayout
+            android:id="@+id/contentPantalla"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            >
+            <com.sothree.slidinguppanel.SlidingUpPanelLayout
+                xmlns:sothree="http:// schemas.android.com/apk/res-auto"
+                android:id="@+id/panel"
+                android:gravity="bottom"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                sothree:umanoPanelHeight="0dp"
+                sothree:umanoShadowHeight="0dp"
+                app:umanoScrollableView="@id/rvSeleccionProductos"
+
+                app:umanoOverlay="true"
+                app:umanoClipPanel="false"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <RelativeLayout
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent">
+                                <LinearLayout
+                                    android:gravity="center"
+                                    android:id="@+id/contentFechaCompra"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:orientation="horizontal"
+                                    android:paddingBottom="0.1dp"
+                                    >
+                                    <LinearLayout
+                                        android:gravity="center"
+                                        android:orientation="horizontal"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+                                        <Button
+                                            android:drawableRight="@drawable/calendar"
+                                            android:id="@+id/btnFechaCompra"
+                                            style="?android:attr/borderlessButtonStyle"
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1"
+                                            android:text="Fecha Compra \n 000000000"
+                                            android:textSize="12sp" />
+                                        <Button
+                                            android:drawableRight="@drawable/calendar"
+                                            android:id="@+id/btnFechaIngreso"
+                                            style="?android:attr/borderlessButtonStyle"
+                                            android:gravity="center"
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_marginLeft="0.1dp"
+                                            android:layout_weight="1"
+
+                                            android:text="Fecha Ingreso\n 0000000"
+                                            android:textSize="12sp" />
+                                    </LinearLayout>
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:id="@+id/contentProveedor"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:layout_below="@id/contentFechaCompra"
+                                    android:orientation="horizontal">
+
+
+                                    <EditText
+                                        android:layout_marginLeft="4dp"
+                                        android:layout_marginRight="4dp"
+                                        android:id="@+id/edtNombreProveedor"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:drawableRight="@drawable/truck"
+                                        android:hint="Proveedor"
+                                        android:inputType="textPersonName"
+                                        android:maxLength="100"
+                                        android:textSize="14sp" />
+
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:paddingBottom="0.1dp"
+                                    android:id="@+id/contentProveedorInfo"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/contentProveedor">
+                                    <LinearLayout
+                                        android:orientation="horizontal"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
+                                        <EditText
+
+                                            android:id="@+id/edtGuiaProveedor"
+                                            android:layout_width="0dp"
+                                            android:layout_height="49dp"
+                                            android:layout_weight="1"
+                                            android:drawableRight="@drawable/ic_receipt_grey600_24dp"
+                                            android:hint="Guía proveedor"
+                                            android:inputType="textAutoComplete"
+                                            android:maxLength="30"
+                                            android:textSize="14sp" />
+
+                                        <Button
+                                            android:drawableRight="@drawable/calendar"
+                                            android:id="@+id/btnFechaGuia"
+                                            style="?android:attr/borderlessButtonStyle"
+                                            android:layout_width="0dp"
+                                            android:layout_height="49dp"
+                                            android:layout_weight="1"
+                                            android:text="Fecha Guia\n 0000000000"
+                                            android:textSize="12sp" />
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:background="#b6b6b6"
+                                    android:layout_below="@id/contentProveedorInfo"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0.1dp"
+
+                                    ></LinearLayout>
+
+
+                                <RelativeLayout
+                                    android:layout_below="@+id/contentProveedorInfo"
+                                    android:id="@+id/contentAlmacen"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingBottom="0.1dp">
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
+                                        <TextView
+                                            android:layout_marginLeft="8dp"
+                                            android:id="@+id/textAlmacen"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Selección almacén" />
+
+                                        <TextView
+                                            android:id="@+id/textAlmacenDestino"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentEnd="true"
+                                            android:layout_alignParentTop="true"
+                                            android:text="Selección almacén" />
+                                        <LinearLayout
+                                            android:layout_below="@id/textAlmacen"
+                                            android:orientation="horizontal"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <Button
+                                                android:id="@+id/btnAlmacen"
+                                                android:layout_marginRight="10dp"
+                                                style="?android:attr/borderlessButtonStyle"
+                                                android:layout_weight="1"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_below="@id/textAlmacen"
+                                                android:gravity="center"
+                                                android:text="Seleccione almacén"></Button>
+
+                                            <Button
+
+                                                android:layout_marginLeft="10dp"
+                                                android:layout_below="@id/textAlmacenDestino"
+                                                android:id="@+id/btnAlmacenDestino"
+                                                style="?android:attr/borderlessButtonStyle"
+                                                android:layout_weight="1"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_alignParentRight="true"
+                                                android:text="Button" />
+
+                                        </LinearLayout>
+
+
+                                    </RelativeLayout>
+
+                                </RelativeLayout>
+                            </RelativeLayout>
+                            <RelativeLayout
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                >
+                                <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:id="@+id/contentSelectProduct"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <Button
+                                        android:id="@+id/btnselectProduct"
+                                        android:layout_marginRight="20dp"
+                                        style="?android:attr/borderlessButtonStyle"
+                                        android:drawableLeft="@drawable/search"
+                                        android:drawableRight="@drawable/plus"
+                                        android:gravity="left"
+                                        android:drawableTint="@color/colorPrimaryDark"
+                                        android:text="Seleccion productos"
+                                        android:layout_weight="5"
+                                        android:layout_width="0dp"
+                                        android:layout_height="40dp" />
+
+                                    <ImageButton
+                                        android:id="@+id/btnScan"
+                                        style="?android:attr/borderlessButtonStyle"
+
+                                        app:srcCompat="@drawable/barcode_scan"
+                                        android:layout_weight="1"
+                                        android:layout_width="0dp"
+                                        android:layout_height="40dp" />
+
+
+                                </LinearLayout>
+
+                                <RelativeLayout
+                                    android:layout_below="@id/contentSelectProduct"
+                                    android:paddingTop="0.1dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+
+                                    <TextView
+                                        android:padding="40dp"
+                                        android:elevation="2dp"
+                                        android:gravity="center"
+                                        android:textSize="20sp"
+                                        android:id="@+id/txtMensaje"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:text="Para agregar productos presione '+'"/>
+
+                                    <androidx.recyclerview.widget.RecyclerView
+                                        android:elevation="1dp"
+                                        android:id="@+id/rvProductoParaCompra"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                    </androidx.recyclerview.widget.RecyclerView>
+                                </RelativeLayout>
+
+
+                            </RelativeLayout>
+                        </LinearLayout>
+
+
+
+
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+
+
+
+
+                <RelativeLayout
+                    android:paddingTop="0.1dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:textStyle="bold"
+                        android:layout_margin="8dp"
+                        android:layout_alignParentStart="true"
+                        android:id="@+id/txtMonto"
+                        android:text="Nombre producto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <ProgressBar
+                        android:elevation="5dp"
+
+                        android:layout_centerInParent="true"
+                        android:id="@+id/pbProductosAlmacen"
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:textStyle="bold"
+                        android:id="@+id/txtInfoProduct"
+                        android:layout_margin="8dp"
+                        android:text="Info articulo"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/txtMensajePAlmacen"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="No tiene productos en el almacén seleccionado"
+                        android:textStyle="bold"
+                        android:textSize="20sp"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_below="@id/txtMonto"
+                        android:id="@+id/rvSeleccionProductos"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        ></androidx.recyclerview.widget.RecyclerView>
+                </RelativeLayout>
+
+
+
+
+
+            </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+
+
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

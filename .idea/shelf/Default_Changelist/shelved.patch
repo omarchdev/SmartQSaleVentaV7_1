@@ -1,0 +1,20 @@
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectModuleManager\">\r\n    <modules>\r\n      <module fileurl=\"file://$PROJECT_DIR$/AutoLabelUI/AutoLabelUI.iml\" filepath=\"$PROJECT_DIR$/AutoLabelUI/AutoLabelUI.iml\" />\r\n      <module fileurl=\"file://$PROJECT_DIR$/SmartQSaleVentaV6.iml\" filepath=\"$PROJECT_DIR$/SmartQSaleVentaV6.iml\" />\r\n      <module fileurl=\"file://$PROJECT_DIR$/app/app.iml\" filepath=\"$PROJECT_DIR$/app/app.iml\" />\r\n    </modules>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+--- a/.idea/modules.xml	(revision e971ad5d265c569d0d35b557369dcc1a971aac2b)
++++ b/.idea/modules.xml	(date 1653245950905)
+@@ -4,6 +4,9 @@
+     <modules>
+       <module fileurl="file://$PROJECT_DIR$/AutoLabelUI/AutoLabelUI.iml" filepath="$PROJECT_DIR$/AutoLabelUI/AutoLabelUI.iml" />
+       <module fileurl="file://$PROJECT_DIR$/SmartQSaleVentaV6.iml" filepath="$PROJECT_DIR$/SmartQSaleVentaV6.iml" />
++      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SmartQSaleVentaV7.iml" filepath="$PROJECT_DIR$/.idea/modules/SmartQSaleVentaV7.iml" />
++      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AutoLabelUI/SmartQSaleVentaV7.AutoLabelUI.iml" filepath="$PROJECT_DIR$/.idea/modules/AutoLabelUI/SmartQSaleVentaV7.AutoLabelUI.iml" />
++      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SmartQSaleVentaV7.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SmartQSaleVentaV7.app.iml" />
+       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+     </modules>
+   </component>

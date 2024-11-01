@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <ScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ProgressBar
+                android:layout_centerInParent="true"
+                android:elevation="8dp"
+                android:id="@+id/pbChart"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                />
+
+            <RelativeLayout
+                android:layout_below="@id/rgSeleccion"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/pieChartResumen"
+                    android:layout_width="match_parent"
+                    android:layout_height="500dp"
+                    android:background="#ffffff"
+                    android:layout_marginBottom="100dp"
+                    ></com.github.mikephil.charting.charts.PieChart>
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_alignParentTop="true"
+                android:background="@drawable/fondo_img"
+                android:id="@+id/contenedorFechas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:padding="1dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnFechaInicio"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/calendar"
+                    android:text="Fecha inicio" />
+
+                <Button
+                    android:id="@+id/btnFechaFinal"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableRight="@drawable/calendar"
+                    android:text="fecha final" />
+            </LinearLayout>
+            <RadioGroup
+                android:layout_below="@id/contenedorFechas"
+                android:id="@+id/rgSeleccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="0dp"
+                android:orientation="horizontal"
+                >
+                <RadioButton
+                    android:id="@+id/rbUnidades"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Por Unidades vendidas" />
+                <RadioButton
+                    android:id="@+id/rbMonto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Por monto recaudado" />
+            </RadioGroup>
+        </RelativeLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

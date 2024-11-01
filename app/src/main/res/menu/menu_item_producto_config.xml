@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/action_edit_variante"
+        android:title="Config. Variantes"
+        ></item>
+    <item android:id="@+id/action_edit_Pack"
+        android:title="Config. Combo/Pack"></item>
+    <item android:id="@+id/action_edit_modificadores"
+        android:title="Modificadores">
+
+    </item>
+    <item android:id="@+id/action_edit_tienda"
+        android:title="Config. por tienda">
+
+    </item>
+</menu>

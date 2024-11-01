@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!--BLUETOOTH PERMISSION-->
+    <!-- Request legacy Bluetooth permissions on older devices. -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <!-- Needed only if your app looks for Bluetooth devices.
+             If your app doesn't use Bluetooth scan results to derive physical
+             location information, you can strongly assert that your app
+             doesn't derive physical location. -->
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+    <!-- Needed only if your app makes the device discoverable to Bluetooth
+      devices. -->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
+    <!-- Needed only if your app communicates with already-paired Bluetooth
+           devices. -->
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <!--bibo01 : hardware option-->
+    <uses-feature android:name="android.hardware.bluetooth" android:required="false"/>
+    <uses-feature android:name="android.hardware.bluetooth_le" android:required="false"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".Activitys.ListadoZonaServicio"
+            android:exported="false" />
+        <activity
+            android:name=".Activitys.ConfigZonaServicioMesa"
+            android:exported="false" />
+        <activity android:name=".Activitys.ActivityOperarioEdit" />
+        <activity android:name=".Activitys.BannerWeb" />
+        <activity android:name=".Activitys.PedidoReservaResumen" />
+        <activity android:name=".Activitys.ListProductosListaPrecios" />
+        <activity android:name=".Activitys.ListaPreciosSelect" />
+        <activity android:name=".Activitys.HorasEntregaActivity" />
+        <activity android:name=".Activitys.config_dias_entrega" />
+        <activity android:name=".Activitys.ConfigNumPhoneWeb" />
+        <activity android:name=".Activitys.ConfigGeneralWeb" />
+        <activity android:name=".Activitys.ConfigProductVisibilidadTienda" />
+        <activity android:name=".Activitys.ConfigWebMenu" />
+        <activity android:name=".Activitys.ConfigWebImage" />
+        <activity android:name=".Activitys.ActEstadoPagoFlujoPedido" />
+        <activity android:name=".Activitys.EstadoPagoEnPedido" />
+        <activity android:name=".Activitys.ActModEstadoEntregaEnPedido" />
+        <activity android:name=".Activitys.DetallePedidoAct" />
+        <activity
+            android:name=".Activitys.EntregaPedidoAct"
+            android:label="@string/title_activity_entrega_pedido"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activitys.ConfigWeb" />
+        <activity android:name=".Activitys.ConfigCategorias" />
+        <activity
+            android:name=".Activitys.AddEditProduct"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Activitys.PantallaPrincipal"
+            android:configChanges="keyboardHidden|screenSize"
+            android:label="@string/title_activity_pantalla_principal"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Activitys.SaleHistoryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize" /> <!-- android:screenOrientation="portrait" -->
+        <activity
+            android:name=".Activitys.AddEditCustomer"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name=".Activitys.PedidosEnReserva"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name=".Activitys.DetallePedido" />
+        <activity android:name=".Activitys.TestActivityPrintHtml" />
+        <activity android:name=".Activitys.HistorialVentas" />
+        <activity android:name=".Activitys.DetalleVenta" />
+        <activity
+            android:name=".Activitys.LoginActivity"
+            android:label="@string/title_activity_pantalla_principal"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".Activitys.CtaClientesActivity" />
+        <activity
+            android:name=".Activitys.Activity_cta_x_cliente"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activitys.ActivityRegistros" />
+        <activity android:name=".Activitys.ActivityInventario" />
+        <activity android:name=".Activitys.ActivityPagoCtaCte" />
+        <activity android:name=".Activitys.FlujoCajaActivity" />
+        <activity
+            android:name=".Activitys.FlujoCajaMainActivity"
+            android:label="@string/title_activity_flujo_caja_main"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activitys.CajaFlujoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/title_activity_caja_flujo"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activitys.ChartActivity" />
+        <activity android:name=".Activitys.HistorialCierresCaja" />
+        <activity
+            android:name=".Fragment.ScrollingActivity"
+            android:label="@string/title_activity_scrolling"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activitys.MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activitys.ActivityRegistroProducto"
+            android:label="@string/title_activity_registro_producto"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activitys.Registro_Producto"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/title_activity_registro__producto"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activitys.ActivityScanner"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/title_activity_scanner"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activitys.CamScannerActivity" />
+        <activity
+            android:name=".Activitys.InventarioProductos"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/title_activity_inventario_productos"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activitys.ListadoProductos" />
+        <activity
+            android:name=".Activitys.Main2Activity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activitys.ActivityConfigProducto"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name=".Activitys.ActivityEdiccionVariantes"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name=".Activitys.ActivityConfigPack"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".Activitys.ConfigModificadorProducto" />
+        <activity android:name=".Activitys.ActivityModificadorConfig" />
+        <activity android:name=".Activitys.CategoriasActivity" />
+        <activity
+            android:name=".Activitys.ActivityRegistroCategoria"
+            android:label="@string/title_activity_registro_categoria"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activitys.ActivityRegistroCategorias" />
+        <activity android:name=".Activitys.ListadoMedioPago" />
+        <activity android:name=".Activitys.RegistroMedioPago" />
+        <activity
+            android:name=".LoginActivityPrincipal"
+            android:label="@string/title_activity_login_principal" />
+        <activity
+            android:name=".Activitys.LoginPrincipal12"
+            android:label="@string/app_name" />
+        <activity android:name=".Activitys.RegistroUsuario" />
+        <activity android:name=".Activitys.PinLoginActivity" />
+        <activity
+            android:name=".Activitys.ListadoClientes"
+            android:label="@string/title_activity_listado_clientes"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activitys.ListadoVendedores"
+            android:label="@string/title_activity_listado_vendedores"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activitys.AgregarVendedor" />
+        <activity android:name=".Activitys.RegistroVendedor" />
+        <activity android:name=".Activitys.RegistroCliente" />
+        <activity
+            android:name=".Activitys.IngresoCompraKt"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".Activitys.ActivityListadoMovAlmacen" />
+        <activity android:name=".Activitys.ConfiguracionUsuario" />
+        <activity android:name=".Activitys.ListadoUsuarios" />
+        <activity android:name=".Activitys.ConfiguracionAlmacen" />
+        <activity android:name=".Activitys.Listado_Almacenes" />
+        <activity android:name=".Activitys.ActivityDemo" />
+        <activity android:name=".Activitys.ListadoRoles" />
+        <activity android:name=".Activitys.ConfiguracionRol" />
+        <activity android:name=".Activitys.ReporteVendedor" />
+        <activity android:name=".Activitys.VentasPorVendedor" />
+        <activity android:name=".Activitys.ReporteVentasCaja" />
+        <activity android:name=".Activitys.ReporteVentasCierre" />
+        <activity
+            android:name=".Activitys.Main3Activity"
+            android:exported="true"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activitys.PrinterAct" />
+        <activity android:name=".Activitys.ReporteAlmacen" />
+        <activity android:name=".Activitys.PedidosDespacho" />
+        <activity android:name=".Activitys.AreasProduccionLista" />
+        <activity android:name=".Activitys.RegistroAreaProduccion" />
+        <activity android:name=".Activitys.SoporteTecnico" />
+        <activity
+            android:name=".Activitys.PinResetApp"
+            android:label="@string/title_activity_pin_reset_app"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activitys.RegistroSubCategoria" />
+        <activity android:name=".Activitys.ConfigClientes" />
+        <activity
+            android:name=".Activitys.ReporteVentasProductos"
+            android:label="@string/title_activity_reporte_ventas_productos"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activitys.ReporteCierreCaja" />
+        <activity android:name=".Activitys.ReporteIngresosRetirosPeriodo" />
+        <activity android:name=".Activitys.SelectTienda" />
+        <activity
+            android:name=".Activitys.ListadoTiendas"
+            android:label="@string/title_activity_listado_tiendas"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activitys.RegistroTienda" />
+        <activity android:name=".Activitys.ReportePeriodo" />
+        <activity android:name=".Activitys.ReportePeriodoTienda" />
+        <activity
+            android:name=".Activitys.ListaImpresorasAreas"
+            android:label="@string/title_activity_lista_impresoras_areas"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activitys.RegistroImpresora" />
+        <activity android:name=".Activitys.ListadoProductosStock" />
+        <activity android:name=".Activitys.PedidosTienda" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+    </application>
+
+</manifest>

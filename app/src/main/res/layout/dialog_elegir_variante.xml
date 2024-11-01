@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:id="@+id/contentImg"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            >
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:elevation="5dp"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:elevation="4dp"
+                android:id="@+id/txtCantidad"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:background="#aeef5350"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100-100=0"/>
+            <ImageView
+                android:id="@+id/imgProduct"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                app:srcCompat="@mipmap/ic_launcher" />
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/txtPrecioVenta"
+                android:padding="4dp"
+                android:background="#9e737373"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                android:text="Precio producto"
+                android:layout_alignParentBottom="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+        <TextView
+            android:visibility="gone"
+            android:gravity="center"
+            android:id="@+id/txtMensajeValores"
+            android:layout_alignStart="@+id/contentImg"
+            android:layout_below="@+id/contentImg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Mensaje alerta"
+            />
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/pbIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_centerInParent="true"
+            app:indicatorName="BallPulseIndicator"
+            app:indicatorColor="@color/colorAccent"
+
+            ></com.wang.avi.AVLoadingIndicatorView>
+        <ScrollView
+            android:layout_above="@id/contentMensaje"
+            android:layout_below="@id/clickNumberPickerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            >
+
+            <LinearLayout
+
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                   android:layout_below="@+id/imgProduct"
+                android:id="@+id/contenedorValores">
+                <TextView
+                    android:layout_margin="5dp"
+                    android:id="@+id/txtTituloOpcion1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hola"/>
+
+                <HorizontalScrollView
+                    android:scrollbarSize="0dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+
+                    android:scrollbarStyle="insideInset">
+
+                    <co.ceryle.radiorealbutton.RadioRealButtonGroup
+
+                        android:id="@+id/rgVar1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:rrbg_animateDrawables_enter="overshoot"
+                        app:rrbg_animateTexts_enter="overshoot"
+                        app:rrbg_animateTexts_scale="1.1"
+                        app:rrbg_animateTexts_textColorTo="#ffffff"
+                        app:rrbg_dividerRadius="5dp"
+                        app:rrbg_radius="10dp"
+                        app:rrbg_selectorBottom="true"
+                        app:rrbg_selectorColor="@color/colorAccent"
+                        app:rrbg_selectorFullSize="true"
+                        app:rrbg_selectorRadius="10dp"
+                        app:rrbg_borderColor="#b6b6b6"
+                        app:rrbg_selectorTop="false">
+
+                    </co.ceryle.radiorealbutton.RadioRealButtonGroup>
+
+                </HorizontalScrollView>
+                <TextView
+                    android:layout_margin="5dp"
+                    android:id="@+id/txtTituloOpcion2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hola"/>
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+
+                    android:scrollbarAlwaysDrawHorizontalTrack="false"
+                    android:scrollbarAlwaysDrawVerticalTrack="false"
+                    android:scrollbarSize="0dp"
+                    android:scrollbarStyle="insideInset">
+
+                    <co.ceryle.radiorealbutton.RadioRealButtonGroup
+
+                        app:rrbg_borderColor="#b6b6b6"
+                        android:id="@+id/rgVar2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:rrbg_animateDrawables_enter="overshoot"
+                        app:rrbg_animateTexts_enter="overshoot"
+                        app:rrbg_animateTexts_scale="1.1"
+                        app:rrbg_animateTexts_textColorTo="#ffffff"
+                        app:rrbg_radius="10dp"
+                        app:rrbg_selectorBottom="true"
+                        app:rrbg_selectorColor="@color/colorAccent"
+                        app:rrbg_selectorFullSize="true"
+                        app:rrbg_selectorRadius="10dp"
+                        app:rrbg_selectorTop="false">
+
+                    </co.ceryle.radiorealbutton.RadioRealButtonGroup>
+
+                </HorizontalScrollView>
+                <TextView
+                    android:layout_margin="5dp"
+                    android:id="@+id/txtTituloOpcion3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hola"/>
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+
+                    android:scrollbarSize="0dp">
+
+                    <co.ceryle.radiorealbutton.RadioRealButtonGroup
+
+                        app:rrbg_borderColor="#b6b6b6"
+                        android:id="@+id/rgVar3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="2dp"
+
+                        app:rrbg_animateDrawables_enter="overshoot"
+                        app:rrbg_animateTexts_enter="overshoot"
+                        app:rrbg_animateTexts_scale="1.1"
+                        app:rrbg_animateTexts_textColorTo="#ffffff"
+                        app:rrbg_radius="10dp"
+                        app:rrbg_selectorBottom="true"
+                        app:rrbg_selectorColor="@color/colorAccent"
+                        app:rrbg_selectorFullSize="true"
+                        app:rrbg_selectorRadius="10dp"
+                        app:rrbg_selectorTop="false">
+
+                    </co.ceryle.radiorealbutton.RadioRealButtonGroup>
+
+                </HorizontalScrollView>
+            </LinearLayout>
+        </ScrollView>
+        <TextView
+            android:textStyle="bold"
+            android:textColor="@color/colorFondo"
+            android:gravity="center"
+            android:layout_above="@id/contentButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cantidad no disponible"
+            android:id="@+id/contentMensaje"
+            />
+        <LinearLayout
+            android:gravity="right"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:id="@+id/contentButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <Button
+                android:id="@+id/btnCancelar"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Cancelar"/>
+            <Button
+                android:id="@+id/btnAceptar"
+                style="@style/Widget.AppCompat.Button.Colored"
+
+                android:text="Aceptar"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+
+        <pl.polak.clicknumberpicker.ClickNumberPickerView
+            android:id="@+id/clickNumberPickerView"
+            android:layout_width="205dp"
+            android:layout_height="58dp"
+            android:layout_below="@+id/contentImg"
+            android:layout_marginStart="10dp"
+
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
+
+            app:decimal_number="0"
+            app:min_value="1"
+            app:picker_corner_radius="10"
+            app:pickers_background_color="@color/colorAccent"
+            app:swipe_enabled="false"
+            app:value_background_color="@color/colorPrimary"
+            app:value_text_color="@android:color/white" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMultiplePrecio"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignTop="@+id/contentImg"
+            android:layout_alignBottom="@+id/contentImg"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="-1dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="1dp"
+            android:layout_toEndOf="@+id/contentImg"></androidx.recyclerview.widget.RecyclerView>
+        <TextView
+            android:id="@+id/txtInformacionProducto"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignTop="@+id/contentImg"
+            android:layout_alignBottom="@+id/contentImg"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="-1dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="1dp"
+            android:layout_toEndOf="@+id/contentImg"
+            android:text="TextView" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

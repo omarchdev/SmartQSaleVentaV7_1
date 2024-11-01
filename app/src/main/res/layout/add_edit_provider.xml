@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="80dp" >
+
+            <EditText  android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:hint="Nombre del proveedor"
+                android:inputType="text"
+                android:maxLines="1"
+                android:id="@+id/edtProviderName"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="80dp" >
+
+            <EditText  android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:hint="Empresa del proveedor"
+                android:inputType="text"
+                android:maxLines="1"
+                android:id="@+id/edtProviderCompany"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="80dp" >
+
+            <EditText  android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:hint="Telefono/Celular"
+                android:inputType="text"
+                android:maxLines="1"
+                android:id="@+id/edtProviderPhone"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="80dp" >
+
+            <EditText  android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:hint="Email"
+                android:inputType="text"
+                android:maxLines="1"
+                android:id="@+id/edtProviderEmail"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+            <Button
+                android:elevation="5dp"
+                android:textColor="#ffffff"
+                android:text="Cancelar"
+                android:drawableLeft="@drawable/cancel"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:backgroundTint="#fc4848"
+                android:layout_weight="1"/>
+
+            <Button
+                android:elevation="5dp"
+                android:textColor="#ffffff"
+                android:text="Guardar"
+                android:drawableLeft="@drawable/ic_content_save_white_36dp"
+                android:layout_width="0dp"
+                android:backgroundTint="#ff830f"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+            
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

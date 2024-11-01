@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:autolabel="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+     >
+       <LinearLayout
+           android:id="@+id/contenedor"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">
+           <EditText
+
+               android:singleLine="true"
+               android:id="@+id/edtValor"
+               android:hint="Inserte un valor"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_weight="2"
+               />
+           <Button
+               android:textStyle="bold"
+               android:textColor="#ffffff"
+               android:backgroundTint="@color/colorPrimary"
+               android:id="@+id/btnAgregarValor"
+               android:text="Agregar"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"/>
+       </LinearLayout>
+        <com.dpizarro.autolabel.library.AutoLabelUI
+            android:layout_marginTop="10dp"
+            android:id="@+id/label_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/contenedor"
+            autolabel:max_labels="6"
+              autolabel:show_cross="true"
+            autolabel:text_color="@android:color/white"
+            autolabel:text_size="25sp"
+
+            autolabel:icon_cross="@drawable/cross"
+            autolabel:label_background_res="@color/colorAccent"
+
+            autolabel:label_clickable="true"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

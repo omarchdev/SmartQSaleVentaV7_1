@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.omarchdev.smartqsale.smartqsaleventas.Activitys.ActivityModificadorConfig">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/pbIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            app:indicatorColor="@color/colorAccent"
+            app:indicatorName="BallPulseIndicator"
+            ></com.wang.avi.AVLoadingIndicatorView>
+
+        <TextView
+            android:id="@+id/txtCargando1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pbIndicator"
+            android:layout_centerHorizontal="true"
+            android:text="Cargando información"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold" />
+
+        <com.sothree.slidinguppanel.SlidingUpPanelLayout
+            android:id="@+id/sliding_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+              app:umanoPanelHeight="0dp"
+            app:umanoShadowHeight="0dp"
+            app:umanoScrollableView="@id/rvValoresEdiccion">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/btnAddModificador"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:drawableRight="@drawable/fab_add"
+                    android:text="Agregar Modificadores" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/btnAddModificador"
+                    android:layout_alignParentStart="true"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.8">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvModificadores"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
+                    </RelativeLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_weight="0.01"
+                        android:background="@color/colorPrimary"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+
+                    <Button
+
+                        android:id="@+id/btnEditarValores"
+                        style="@style/Widget.AppCompat.Button.Colored"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawableRight="@drawable/pencil_edit"
+                        android:text="Editar valores" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                        <com.wang.avi.AVLoadingIndicatorView
+                            android:id="@+id/pbIndicatorValores"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            app:indicatorColor="@color/colorAccent"
+                            app:indicatorName="BallPulseIndicator"
+
+                            ></com.wang.avi.AVLoadingIndicatorView>
+
+                        <TextView
+                            android:id="@+id/txtCargando"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/pbIndicatorValores"
+                            android:layout_centerHorizontal="true"
+                            android:text="Cargando información"
+                            android:textColor="@color/colorAccent"
+                            android:textStyle="bold" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvValoresModificadores"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:visibility="invisible"></androidx.recyclerview.widget.RecyclerView>
+
+                        <TextView
+                            android:id="@+id/txtMensaje"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:padding="20dp"
+                            android:text="Seleccione un modificador para ver sus valores"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/btnAgregarValorMod"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_toStartOf="@+id/btnEditarValorMod"
+                    android:drawableRight="@drawable/fab_add"
+                    android:text="Agregar" />
+
+                <Button
+                    android:id="@+id/btnEditarValorMod"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:drawableRight="@drawable/pencil_edit"
+                    android:text="Editar" />
+
+                <Button
+                    android:id="@+id/btnEliminarValorMod"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/btnEditarValorMod"
+                    android:drawableRight="@drawable/ic_delete_white_24dp"
+                    android:text="Eliminar" />
+
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/btnAgregarValorMod"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="11dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Descripción del valor" />
+
+                <androidx.recyclerview.widget.RecyclerView
+
+                    android:id="@+id/rvValoresEdiccion"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/textView21"
+                    android:layout_alignParentStart="true" />
+
+
+            </RelativeLayout>
+
+
+        </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

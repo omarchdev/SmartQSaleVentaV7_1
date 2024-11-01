@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/group1"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/titleAR"
+            android:title="Acciones Rápidas">
+            <menu>
+                <item
+                    android:id="@+id/nav_Ventas"
+                    android:icon="@drawable/ic_sale_black_36dp"
+                    android:title="Vender" />
+
+
+            </menu>
+
+        </item>
+    </group>
+
+
+    <item
+        android:id="@+id/titleActividades"
+
+        android:title="Actividades">
+        <menu>
+            <item
+                android:id="@+id/nav_Almacen"
+                android:icon="@drawable/ic_truck_fast_white_36dp"
+                android:title="Movimientos Almacén"></item>
+
+            <item
+                android:id="@+id/nav_CuentasCliente"
+                android:icon="@drawable/ic_account_circle_white_36dp"
+                android:title="Cuentas de clientes(A Crédito)">
+
+            </item>
+
+            <item
+                android:id="@+id/nav_ControlCaja"
+                android:icon="@drawable/cash_usd"
+                android:title="Control de caja">
+
+            </item>
+            <item
+                android:id="@+id/nav_Pedidos"
+                android:icon="@drawable/ic_basket_white_36dp"
+                android:title="Gestión de pedidos"
+
+                >
+
+            </item>
+            <item
+                android:id="@+id/nav_pedido_resumen"
+                android:icon="@drawable/ic_basket_white_36dp"
+                android:title="Resumen de pedidos"
+                >
+
+            </item>
+        </menu>
+
+    </item>
+
+    <item
+        android:id="@+id/titleCatalogos"
+        android:title="Catálogos"
+
+        >
+        <menu>
+            <item
+                android:id="@+id/nav_Inventario"
+                android:icon="@drawable/ic_format_list_numbers_black_36dp"
+                android:title="Listado productos/Servicios" />
+            <item
+                android:id="@+id/nav_Config_Product"
+                android:icon="@drawable/tune"
+                android:title="Conf. avanzada Productos"></item>
+            <item
+                android:id="@+id/nav_Stock_Product"
+                android:icon="@drawable/tune"
+                android:title="Stock de Productos"></item>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/titleContactos"
+        android:title="Contactos">
+        <menu>
+
+            <item
+                android:id="@+id/nav_Clientes"
+                android:icon="@drawable/ic_account_plus_black_36dp"
+                android:title="Clientes"
+
+                />
+            <item
+
+
+                android:id="@+id/nav_Vendedores"
+                android:icon="@drawable/ic_account_black_36dp"
+                android:title="Vendedores"
+
+                />
+
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/titleConfiguraciones"
+        android:title="Configuraciones">
+        <menu>
+            <item
+                android:id="@+id/nav_Tiendas"
+                android:icon="@drawable/ic_store_white_36dp"
+                android:title="Tiendas">
+
+
+            </item>
+            <item
+                android:icon="@drawable/money_cash"
+                android:title="Lista de precios"
+                android:id="@+id/nav_lista_precios"/>
+            <item
+                android:id="@+id/nav_areas_atencion"
+                android:icon="@drawable/ic_cursor_pointer_white_36dp"
+                android:title="Areas de Atención">
+
+            </item>
+            <item
+
+                android:id="@+id/nav_lista_mesa"
+                android:icon="@drawable/ic_table_chair_white_24dp"
+                android:title="Zona servicio">
+
+            </item>
+            <item
+                android:id="@+id/nav_config_web"
+                android:title="Configuracion Web"
+                android:icon="@drawable/ic_web_white_36dp"
+                ></item>
+            <item
+                android:id="@+id/nav_Impresoras"
+                android:icon="@drawable/printer"
+                android:title="Impresora de Caja"></item>
+            <item
+
+                android:id="@+id/nav_impresoras_areas_atencion"
+                android:icon="@drawable/ic_printer_wireless_white_36dp"
+                android:title="Impresoras de Areas de Atención">
+
+            </item>
+            <item
+                android:id="@+id/nav_modificadores"
+                android:icon="@drawable/ic_receipt_black_24dp"
+                android:title="Modificadores"></item>
+
+            <item
+                android:id="@+id/nav_terminal"
+                android:icon="@drawable/ic_cellphone_settings_variant_white_24dp"
+                android:title="Terminal"></item>
+            <item
+                android:id="@+id/nav_MediosPago"
+                android:icon="@drawable/ic_receipt_black_24dp"
+                android:title="Medios de pago"></item>
+            <item
+                android:id="@+id/nav_Configuracion_almacen"
+                android:icon="@drawable/ic_settings_box_white_36dp"
+                android:title="Almacen"></item>
+            <item
+                android:id="@+id/nav_Configuracion_Roles"
+                android:icon="@drawable/ic_account_card_details_black_36dp"
+                android:title="Roles"></item>
+
+            <item
+                android:id="@+id/nav_categorias"
+                android:icon="@drawable/ic_receipt_black_24dp"
+                android:title="Categorias"></item>
+
+            <item
+                android:id="@+id/nav_usuarios"
+                android:icon="@drawable/ic_contacts_black_36dp"
+                android:title="Usuarios"></item>
+
+        </menu>
+    </item>
+
+
+    <item
+        android:id="@+id/titleOtros"
+        android:title="Reportes">
+        <menu>
+
+            <item
+                android:id="@+id/nav_ReporVendedor"
+                android:icon="@drawable/ic_file_chart_white_36dp"
+                android:title="Reporte Vendedores"
+
+                ></item>
+            <item
+                android:id="@+id/navReporteIngresoSalidas"
+                android:icon="@drawable/ic_file_chart_white_36dp"
+                android:title="Reporte Ingresos y Salidas">
+
+            </item>
+            <item
+                android:id="@+id/nav_ReporVentasVendedor"
+                android:icon="@drawable/ic_file_chart_white_36dp"
+                android:title="Ventas por vendedores"
+
+                ></item>
+            <item
+                android:id="@+id/nav_ReporVentasXCierre"
+                android:icon="@drawable/ic_file_chart_white_36dp"
+                android:title="Ventas por caja"></item>
+
+            <item
+                android:id="@+id/nav_ReporVentasXCierreDetalle"
+                android:icon="@drawable/ic_file_chart_white_36dp"
+                android:title="Ventas por caja detalle"></item>
+            <item
+                android:id="@+id/nav_ReporAlmacen"
+                android:icon="@drawable/ic_file_chart_white_36dp"
+                android:title="Almacenes    "></item>
+            <item
+                android:id="@+id/nav_ReporProducto"
+                android:icon="@drawable/ic_file_chart_white_36dp"
+                android:title="Ventas productos más vendidos"></item>
+            <item
+
+                android:id="@+id/nav_reporte_periodo"
+                android:icon="@drawable/ic_file_chart_white_36dp"
+                android:title="Reporte por periodo">
+
+            </item>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/nav_soporte_tecnico"
+        android:icon="@drawable/ic_help_box_black_36dp"
+        android:title="Soporte técnico">
+
+    </item>
+
+    <item
+        android:id="@+id/nav_salir"
+        android:icon="@drawable/open_door"
+        android:title="Salir ">
+
+    </item>
+
+
+</menu>

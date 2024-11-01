@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:id="@+id/rlContent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_marginLeft="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#797979"
+        android:layout_marginRight="6dp"></RelativeLayout>
+    <TextView
+        android:id="@+id/txtDescripcionModificador"
+        android:layout_marginLeft="4dp"
+
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Descripcion modificador"
+        />
+</RelativeLayout>

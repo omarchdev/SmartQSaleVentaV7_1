@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center|top"
+    tools:context="com.omarchdev.smartqsale.smartqsaleventas.Activitys.ActivityRegistros">
+
+
+    <Button
+        android:id="@+id/btnRCliente"
+
+        android:layout_width="140dp"
+        android:layout_height="80dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="13dp"
+
+        android:layout_marginTop="45dp"
+        android:layout_toStartOf="@+id/btnRVendedor"
+        android:backgroundTint="#f48824"
+        android:text="Cliente"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnRVendedor"
+        android:layout_width="140dp"
+        android:layout_height="80dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/btnRCliente"
+        android:layout_marginEnd="51dp"
+        android:layout_marginLeft="80dp"
+        android:backgroundTint="#f48824"
+        android:text="Vendedor"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnRInventario"
+        android:layout_width="140dp"
+        android:layout_height="80dp"
+
+        android:layout_alignStart="@+id/btnRCliente"
+        android:layout_below="@+id/btnRCliente"
+        android:layout_marginTop="21dp"
+
+
+        android:backgroundTint="#f48824"
+        android:text="Inventario"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnCategoria"
+        android:layout_width="140dp"
+        android:layout_height="80dp"
+        android:layout_alignTop="@+id/btnRInventario"
+        android:layout_toEndOf="@+id/btnRCliente"
+        android:backgroundTint="#f48824"
+        android:text="Categorias"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+
+</RelativeLayout>

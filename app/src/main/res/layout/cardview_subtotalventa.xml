@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv_totalSale"
+    android:layout_width="match_parent"
+    android:layout_height="330dp"
+
+    card_view:cardCornerRadius="2dp"
+    card_view:cardElevation="0dp">
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="right"
+        android:padding="10dp">
+
+        <RelativeLayout
+
+            android:id="@+id/CajaSubtotal"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+
+            android:background="@color/cardview_light_background"
+            android:elevation="13dp">
+
+            <TextView
+
+                android:id="@+id/txtTotal"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:gravity="center"
+                android:text="Total"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtTextoTotalVenta"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:gravity="center"
+                android:text="S/..."
+                android:textColor="#484848"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+
+        <EditText
+            android:id="@+id/edtAdditionalInformationinSALE"
+            android:layout_width="200dp"
+            android:layout_height="70dp"
+            android:layout_below="@+id/CajaSubtotal"
+             android:layout_marginTop="5dp"
+            android:elevation="20dp"
+            android:hint="Informacion adicional de la venta (Opcional)"
+            android:maxLines="3"
+            android:textColorLink="@color/colorPrimary"
+            android:textSize="15sp" />
+
+        <RadioGroup
+            android:id="@+id/RadioGroupSale"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/edtAdditionalInformationinSALE"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rbSalePagado"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="Pagado"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/rbSalePorCobrar"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="Por Cobrar"
+                android:textSize="16sp" />
+
+
+        </RadioGroup>
+        <RelativeLayout
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/RadioGroupSale"
+            android:gravity="center"
+            >
+
+            <ImageButton
+
+                android:id="@+id/btnSaleCancel"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:backgroundTint="#fe2c2c"
+                android:elevation="5dp"
+
+                card_view:srcCompat="@drawable/ic_close_white_48dp" />
+
+            <ImageButton
+
+                android:id="@+id/btnSaleAccept"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_toRightOf="@id/btnSaleCancel"
+                android:backgroundTint="#38ff38"
+                android:elevation="5dp"
+                android:src="@drawable/ic_check_white_48dp" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</androidx.appcompat.widget.CardView>

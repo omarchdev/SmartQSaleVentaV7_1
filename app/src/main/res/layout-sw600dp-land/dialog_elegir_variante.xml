@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayout10"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/contentButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <RelativeLayout
+                        android:id="@+id/contentImg"
+                        android:layout_width="220dp"
+                        android:layout_height="220dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ProgressBar
+                            android:id="@+id/progressBar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:elevation="5dp" />
+
+                        <TextView
+                            android:id="@+id/txtCantidad"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#aeef5350"
+                            android:elevation="4dp"
+                            android:text="100-100=0"
+                            android:textColor="#ffffff"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/imgProduct"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:srcCompat="@mipmap/ic_launcher" />
+
+                        <TextView
+                            android:id="@+id/txtPrecioVenta"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:background="#9e737373"
+                            android:gravity="center"
+                            android:padding="4dp"
+                            android:text="Precio producto"
+                            android:textColor="#ffffff"
+                            android:textStyle="bold" />
+                    </RelativeLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvMultiplePrecio"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/contentImg"
+                        android:layout_alignBottom="@+id/contentImg"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+
+                        android:layout_toEndOf="@+id/contentImg"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/contentImg"
+                        app:layout_constraintTop_toTopOf="parent"></androidx.recyclerview.widget.RecyclerView>
+
+                    <pl.polak.clicknumberpicker.ClickNumberPickerView
+                        android:id="@+id/clickNumberPickerView"
+                        android:layout_width="205dp"
+                        android:layout_height="58dp"
+                        android:layout_below="@+id/contentImg"
+
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        app:decimal_number="0"
+
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/contentImg"
+                        app:min_value="1"
+                        app:picker_corner_radius="10"
+                        app:pickers_background_color="@color/colorAccent"
+                        app:swipe_enabled="false"
+                        app:value_background_color="@color/colorPrimary"
+                        app:value_text_color="@android:color/white" />
+
+
+                    <TextView
+                        android:id="@+id/txtInformacionProducto"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="8dp"
+
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="TextView"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/clickNumberPickerView" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ScrollView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <LinearLayout
+
+                            android:id="@+id/contenedorValores"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@+id/imgProduct"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/txtTituloOpcion1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="5dp"
+                                android:text="Hola" />
+
+                            <HorizontalScrollView
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:scrollbarSize="0dp"
+
+                                android:scrollbarStyle="insideInset">
+
+                                <co.ceryle.radiorealbutton.RadioRealButtonGroup
+
+                                    android:id="@+id/rgVar1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    app:rrbg_animateDrawables_enter="overshoot"
+                                    app:rrbg_animateTexts_enter="overshoot"
+                                    app:rrbg_animateTexts_scale="1.1"
+                                    app:rrbg_animateTexts_textColorTo="#ffffff"
+                                    app:rrbg_borderColor="#b6b6b6"
+                                    app:rrbg_dividerRadius="5dp"
+                                    app:rrbg_radius="10dp"
+                                    app:rrbg_selectorBottom="true"
+                                    app:rrbg_selectorColor="@color/colorAccent"
+                                    app:rrbg_selectorFullSize="true"
+                                    app:rrbg_selectorRadius="10dp"
+                                    app:rrbg_selectorTop="false">
+
+                                </co.ceryle.radiorealbutton.RadioRealButtonGroup>
+
+                            </HorizontalScrollView>
+
+                            <TextView
+                                android:id="@+id/txtTituloOpcion2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="5dp"
+                                android:text="Hola" />
+
+                            <HorizontalScrollView
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+
+                                android:scrollbarAlwaysDrawHorizontalTrack="false"
+                                android:scrollbarAlwaysDrawVerticalTrack="false"
+                                android:scrollbarSize="0dp"
+                                android:scrollbarStyle="insideInset">
+
+                                <co.ceryle.radiorealbutton.RadioRealButtonGroup
+
+                                    android:id="@+id/rgVar2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    app:rrbg_animateDrawables_enter="overshoot"
+                                    app:rrbg_animateTexts_enter="overshoot"
+                                    app:rrbg_animateTexts_scale="1.1"
+                                    app:rrbg_animateTexts_textColorTo="#ffffff"
+                                    app:rrbg_borderColor="#b6b6b6"
+                                    app:rrbg_radius="10dp"
+                                    app:rrbg_selectorBottom="true"
+                                    app:rrbg_selectorColor="@color/colorAccent"
+                                    app:rrbg_selectorFullSize="true"
+                                    app:rrbg_selectorRadius="10dp"
+                                    app:rrbg_selectorTop="false">
+
+                                </co.ceryle.radiorealbutton.RadioRealButtonGroup>
+
+                            </HorizontalScrollView>
+
+                            <TextView
+                                android:id="@+id/txtTituloOpcion3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="5dp"
+                                android:text="Hola" />
+
+                            <HorizontalScrollView
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+
+                                android:scrollbarSize="0dp">
+
+                                <co.ceryle.radiorealbutton.RadioRealButtonGroup
+
+                                    android:id="@+id/rgVar3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="2dp"
+                                    app:rrbg_animateDrawables_enter="overshoot"
+
+                                    app:rrbg_animateTexts_enter="overshoot"
+                                    app:rrbg_animateTexts_scale="1.1"
+                                    app:rrbg_animateTexts_textColorTo="#ffffff"
+                                    app:rrbg_borderColor="#b6b6b6"
+                                    app:rrbg_radius="10dp"
+                                    app:rrbg_selectorBottom="true"
+                                    app:rrbg_selectorColor="@color/colorAccent"
+                                    app:rrbg_selectorFullSize="true"
+                                    app:rrbg_selectorRadius="10dp"
+                                    app:rrbg_selectorTop="false">
+
+                                </co.ceryle.radiorealbutton.RadioRealButtonGroup>
+
+                            </HorizontalScrollView>
+                        </LinearLayout>
+                    </ScrollView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+        <TextView
+            android:visibility="gone"
+            android:gravity="center"
+            android:id="@+id/txtMensajeValores"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Mensaje alerta"
+            />
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/pbIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_centerInParent="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:indicatorColor="@color/colorAccent"
+            app:indicatorName="BallPulseIndicator"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></com.wang.avi.AVLoadingIndicatorView>
+
+
+        <TextView
+            android:id="@+id/contentMensaje"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/contentButton"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:text="Cantidad no disponible"
+            android:textColor="@color/colorFondo"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/contentButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/contentButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="right"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <Button
+                android:id="@+id/btnCancelar"
+                style="@style/Widget.AppCompat.Button.Colored"
+
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Cancelar" />
+
+            <Button
+                android:id="@+id/btnAceptar"
+                style="@style/Widget.AppCompat.Button.Colored"
+
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Aceptar"/>
+
+        </LinearLayout>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</RelativeLayout>

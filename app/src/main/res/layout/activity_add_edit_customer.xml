@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+
+    tools:context="com.omarchdev.smartqsale.smartqsaleventas.Activitys.AddEditCustomer">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/txtTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:text="Agregar Cliente"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edtCustomerName"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_below="@id/txtTitulo"
+
+            android:hint="Nombre del Cliente" />
+
+        <EditText
+            android:id="@+id/edtCustomerAlias"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_below="@id/edtCustomerName"
+            android:hint="Alias del Cliente" />
+
+        <EditText
+            android:id="@+id/edtCustomerEmail"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_below="@id/edtCustomerAlias"
+            android:hint="Email Cliente"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/edtCustomerPhone"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_below="@id/edtCustomerEmail"
+            android:hint="Celular Cliente"
+            android:inputType="phone" />
+
+
+        <Button
+            android:id="@+id/btnCancelCustomer"
+            android:layout_width="140dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/edtCustomerPhone"
+            android:layout_margin="10dp"
+            android:background="#ff0d00"
+            android:drawableRight="@drawable/ic_close_white_36dp"
+            android:text="Cancelar"
+            android:textColor="#ffffff" />
+
+        <Button
+
+            android:id="@+id/btnSaveCustomer"
+            android:layout_width="140dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/edtCustomerPhone"
+            android:layout_margin="10dp"
+            android:layout_toRightOf="@id/btnCancelCustomer"
+            android:background="#00aeff"
+            android:drawableRight="@drawable/ic_content_save_white_36dp"
+            android:text="Guardar"
+            android:textColor="#ffffff" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>
