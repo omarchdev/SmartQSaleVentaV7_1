@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/actionHistorialPedidos"
+        android:icon="@drawable/archive"
+        android:orderInCategory="3"
+        android:title="Historial Pedido"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/actionHistorialVentas"
+        android:icon="@drawable/history"
+        android:orderInCategory="2"
+        android:title="Historia Ventas"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/actionScan"
+        android:icon="@drawable/ic_barcode_scan_white_24dp"
+        android:orderInCategory="1"
+        android:title="Scannear"
+        app:showAsAction="ifRoom" />
+</menu>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.omarchdev.smartqsale.smartqsaleventas.Activitys.Registro_Producto">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/appbar_padding_top"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_weight="1"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+
+            app:title="@string/app_name">
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <com.google.android.material.tabs.TabLayout
+
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="@color/colorAccent">
+
+            <com.google.android.material.tabs.TabItem
+
+                android:id="@+id/tabItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/TabDatosBasicos" />
+
+            <com.google.android.material.tabs.TabItem
+
+                android:id="@+id/tabItem2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/TabRespresentacionProducto" />
+
+            <com.google.android.material.tabs.TabItem
+
+                android:id="@+id/tabItem3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/TabEstados" />
+
+
+        </com.google.android.material.tabs.TabLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.viewpager.widget.ViewPager
+
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabActionRegistro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="16dp"
+        android:visibility="visible"
+        app:fab_size="normal"
+
+        app:srcCompat="@drawable/ic_content_save_white_36dp" />
+
+        <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/actionMenu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom|right"
+        android:elevation="4dp"
+        app:menu_animationDelayPerItem="50"
+        app:menu_backgroundColor="#ccffffff"
+        app:menu_buttonSpacing="0dp"
+        app:menu_colorRipple="#99FFFFFF"
+        app:menu_fab_size="normal"
+        app:menu_labels_cornerRadius="3dp"
+        app:menu_labels_ellipsize="none"
+        app:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"
+        app:menu_labels_paddingBottom="4dp"
+        app:menu_labels_paddingRight="8dp"
+        app:menu_labels_paddingTop="4dp"
+        app:menu_labels_position="left"
+        app:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
+        app:menu_labels_singleLine="true"
+        app:menu_openDirection="up"
+
+            app:menu_colorNormal="@color/colorAccent"
+            app:menu_colorPressed="@color/colorAccent"
+
+        app:menu_shadowRadius="4dp"
+        app:menu_shadowXOffset="1dp"
+        app:menu_shadowYOffset="3dp"
+        app:menu_showShadow="true">
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/menu_item_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_pencil_white_18dp"
+                app:fab_colorNormal="@color/colorPrimary"
+                app:fab_colorPressed="@color/colorPrimary"
+                app:fab_label="Editar producto"
+                app:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            app:fab_colorNormal="@color/colorPrimary"
+            app:fab_colorPressed="@color/colorPrimary"
+
+            android:id="@+id/menu_item_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_delete_white_24dp"
+            app:fab_label="Eliminar producto"
+            app:fab_size="mini" />
+    </com.github.clans.fab.FloatingActionMenu>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

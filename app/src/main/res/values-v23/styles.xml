@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ButtonStyle">
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:drawableTint">@color/colorPrimaryDark</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:background">@drawable/fondo_buttons</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="ButtonStyleVar">
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:drawableTint">#898989</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:backgroundTint">@drawable/fondo_buttons</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+</resources>

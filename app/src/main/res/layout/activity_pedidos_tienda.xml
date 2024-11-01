@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activitys.PedidosTienda">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_margin="8dp"
+            android:background="@drawable/fondo_img"
+            android:id="@+id/rl1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="5dp"
+                android:gravity="center">
+                <Button
+                    android:id="@+id/btnSelectDate1"
+                    style="@style/Widget.App.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/calendar"
+                    android:padding="10dp"
+                    android:text="10/12/2017"
+                    android:textSize="16dp" />
+                <Button
+                    android:id="@+id/btnSelectDate2"
+                    style="@style/Widget.App.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/calendar"
+                    android:text="15/12/2017"
+                    android:textSize="16dp" />
+            </LinearLayout>
+        </RelativeLayout>
+        <SearchView
+            android:id="@+id/sview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:queryHint="omar chumioque" />
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipePedidos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPedidos"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.omarchdev.smartqsale.smartqsaleventas.Activitys.ConfigModificadorProducto">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/pbIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            app:indicatorName="BallPulseIndicator"
+            app:indicatorColor="@color/colorAccent"
+
+            ></com.wang.avi.AVLoadingIndicatorView>
+        <TextView
+            android:textStyle="bold"
+            android:textColor="@color/colorAccent"
+            android:id="@+id/txtCargando"
+            android:text="Cargando información"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/pbIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+
+        <com.sothree.slidinguppanel.SlidingUpPanelLayout
+            android:id="@+id/sliding_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            app:umanoPanelHeight="0dp"
+            app:umanoScrollableView="@+id/rvModificares"
+         >
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+
+                <Switch
+                    android:layout_margin="8dp"
+                    android:layout_alignParentRight="true"
+                    android:checked="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/switch1" />
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout5"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/relativeLayout6">
+
+                    <RelativeLayout
+                        android:layout_alignParentStart="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/relativeLayout7">
+
+                        <TextView
+                            android:id="@+id/txtNumModProd"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:text="Modificadores del producto" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:background="@color/colorAccent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/relativeLayout7"
+                        android:id="@+id/relativeLayout8">
+
+                        <TextView
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginBottom="4dp"
+                            android:textColor="#ffffff"
+                            android:text="Descripcion"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </RelativeLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvModificadoresProducto"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/relativeLayout8" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/switch1"
+                    android:gravity="center"
+                    android:id="@+id/relativeLayout6">
+
+                    <Button
+
+                        android:id="@+id/btnAgregarModificador"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="Agregar \nmodificador"
+                      android:drawableRight="@drawable/fab_add"
+                        style="@style/Base.Widget.AppCompat.Button.Colored"
+                         />
+
+                    <Button
+                        style="@style/Base.Widget.AppCompat.Button.Colored"
+                           android:drawableRight="@drawable/ic_delete_white_36dp"
+                        android:id="@+id/btnEliminarModProd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_toEndOf="@+id/btnAgregarModificador"
+                        android:text="Eliminar"
+                     />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/content_mod_add"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:foregroundGravity="center_horizontal"
+                    android:gravity="clip_horizontal|center_vertical"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <Button
+                        android:id="@+id/btnAddMod"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="Button" />
+
+                    <TextView
+                        android:id="@+id/txtAdvModProd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textSize="24sp" />
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout9"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/searchView">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textView20"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnAgregar"
+                            style="@style/Base.Widget.AppCompat.Button.Colored"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Agregar" />
+
+                        <Button
+
+                            android:id="@+id/btnCancelar"
+                            style="@style/Base.Widget.AppCompat.Button.Colored"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cancelar" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView20"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Seleccione los modificares a agregar" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/relativeLayout9"
+                    android:layout_alignParentStart="true">
+
+                    <TextView
+                        android:id="@+id/textView19"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorAccent"
+                        android:paddingLeft="6dp"
+                        android:text="Descripcion"
+                        android:textColor="#ffffff"
+                        android:textStyle="bold" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvModificares"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/textView19"
+                        android:layout_alignParentStart="true" />
+
+                    <com.wang.avi.AVLoadingIndicatorView
+                        android:id="@+id/pbIndicator2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        app:indicatorColor="@color/colorAccent"
+                        app:indicatorName="BallPulseIndicator"
+
+                        ></com.wang.avi.AVLoadingIndicatorView>
+                </RelativeLayout>
+
+                <SearchView
+                    android:id="@+id/searchView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="20dp" />
+            </RelativeLayout>
+
+
+        </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

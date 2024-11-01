@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="2dp"
+
+        android:orientation="vertical"
+        >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginBottom="2dp"
+        android:gravity="center|left"
+        android:orientation="horizontal"
+        >
+
+        <ImageButton
+            android:id="@+id/imgArrowBack"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+           android:layout_weight="1"
+            app:srcCompat="@drawable/arrow_back_simple" />
+
+        <EditText
+            android:id="@+id/edtBusquedaVendedor"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+
+            android:layout_weight="5"
+            android:ems="10"
+            android:hint="Nombre del Vendedor"
+            android:inputType="text"
+            android:maxLines="1" />
+
+        <Button
+            android:id="@+id/btnAgregarVendedor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#ffa03b"
+            android:text="Añadir Vendedor"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical"
+        >
+            <Button
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:id="@+id/btnEliminarVendedor"
+                android:drawableRight="@drawable/ic_delete_white_24dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Eliminar vendedor seleccionado"
+                />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvVendedoresParaVenta"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+          >
+            </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

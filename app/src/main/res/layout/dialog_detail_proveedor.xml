@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:layout_margin="5dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:text="Empresa"
+        android:textSize="20dp"
+                />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Empresa"
+        android:textSize="30dp"
+        />
+
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="3dp"
+        android:background="#00aeff"></LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:text="Nombre Proveedor"
+        android:textSize="20dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nombre Proveedor"
+        android:textSize="30dp"
+        />
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="3dp"
+        android:background="#00aeff"
+        ></LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:text="Comentario"
+        android:textSize="20dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Comentario"
+        android:textSize="30dp"
+        />
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="3dp"
+        android:background="#00aeff"
+        ></LinearLayout>
+
+    <Button
+        android:id="@+id/btnCallFirstNumberProveedor"
+        style="?android:attr/imageButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_margin="5dp"
+        android:background="#00aeff"
+        android:drawableLeft="@android:drawable/ic_menu_call"
+        android:padding="5dp"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btnCallSecondNumberProveedor"
+        android:background="#00aeff"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:drawableLeft="@android:drawable/ic_menu_call"
+        android:layout_margin="5dp"/>
+
+    <Button
+        android:id="@+id/btnSendEmailProveedor"
+        android:background="#00aeff"
+        android:visibility="gone"
+        android:padding="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:drawableLeft="@android:drawable/ic_dialog_email" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:textColor="#ffffff"
+            android:id="@+id/btnCloseDialogDetailProveedor"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:padding="5dp"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:background="#ff0804"
+            android:text="Cerrar"
+            android:drawableLeft="@drawable/ic_close_white_36dp" />
+
+        <Button
+            android:id="@+id/btnEditProveedor"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:background="#00aeff"
+            android:drawableLeft="@android:drawable/ic_menu_edit"
+            android:padding="5dp"
+            android:text="Editar"
+            android:textColor="#ffffff" />
+    </LinearLayout>
+
+
+</LinearLayout>

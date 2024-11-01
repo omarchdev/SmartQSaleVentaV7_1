@@ -1,0 +1,23 @@
+<layer-list  xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+
+        android:width="80dp"
+        android:height="80dp"
+        android:drawable="@drawable/octagon"
+        >
+        <color android:color="@color/colorUno">
+
+        </color>
+
+    </item>
+
+    <item
+        android:width="30dp"
+        android:height="30dp"
+        android:gravity="center"
+        android:drawable="@drawable/check_white">
+
+    </item>
+
+</layer-list>

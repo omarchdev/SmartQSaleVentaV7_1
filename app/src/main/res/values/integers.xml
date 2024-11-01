@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer-array name="TipoRepresentacion">
+        <item name="RepresentacionColor">1</item>
+        <item name="RepresentacionImagen">2</item>
+    </integer-array>
+
+    <integer name="NuevoProducto">100</integer>
+    <integer name="ProductoExistente">101</integer>
+    <integer name="CodNuevoUsuario">1000</integer>
+    <integer name="NumColumnVentas">3</integer>
+
+    <integer name="accion_cobrar">3</integer>
+    <integer name="accion_flujo_caja">4</integer>
+
+    <integer name="ValorPersonaNatural">1</integer>
+    <integer name="ValorPersonaJuridica">2</integer>
+    <integer name="PositionPNatural">0</integer>
+    <integer name="PositionPJuridica">1</integer>
+    <integer name="GuardarTransaccionAlmacenProcesar">2000</integer>
+    <integer name="GuardarTransaccionAlmacenSinProcesar">3000</integer>
+    <integer name="EditarMovAlmacen">1409</integer>
+    <integer name="NuevoMovAlmacen">1402</integer>
+    <integer name="IngresoCompraAlmacen">1005</integer>
+    <integer name="IngresoInicialInventario">1000</integer>
+    <integer name="NumColZonaServicio">2</integer>
+    <integer name="NumColumnsClienteSelect">1</integer>
+</resources>

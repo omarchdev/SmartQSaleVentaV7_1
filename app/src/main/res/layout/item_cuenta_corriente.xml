@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv_cuentaCorriente"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="0.1dp"
+
+ >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="6dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="14dp">
+
+        <TextView
+            android:id="@+id/txtFechaCtaCte"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="21/10/2018" />
+
+        <TextView
+            android:id="@+id/txtTipoTransaccion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtFechaCtaCte"
+            android:layout_marginTop="10dp"
+            android:text="TipoTransaccion"
+
+            android:textSize="16sp"
+            android:textStyle="bold"
+
+            />
+
+        <ImageButton
+            android:id="@+id/imgInfoCancel"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+
+            android:tint="#ab2121"
+            app:srcCompat="@drawable/close_outline" />
+
+        <TextView
+            android:id="@+id/txtMetodoPagoTrans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtTipoTransaccion"
+            android:layout_marginTop="10dp"
+            android:text="Metodo de pago"
+
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txtMontoTrans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/txtTipoTransaccion"
+            android:layout_alignBottom="@+id/txtTipoTransaccion"
+            android:layout_marginEnd="18dp"
+            android:layout_toStartOf="@+id/imgInfoCancel"
+            android:text="S/1000.00"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtDescripcion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtMetodoPagoTrans"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+    <LinearLayout
+
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+    android:background="#F0F0F0"
+    android:layout_width="match_parent"
+    android:layout_height="0.5dp"></LinearLayout>
+
+
+</RelativeLayout>

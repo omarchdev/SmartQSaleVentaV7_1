@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:id="@+id/LLDialogAddPrice"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+
+    <RelativeLayout
+        android:layout_width="350dp"
+        android:layout_height="100dp">
+
+
+        <RelativeLayout
+
+            android:id="@+id/RLContentEditTextAddPrice"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="center">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:background="#ff8c00"
+                android:padding="5dp">
+
+                <EditText
+                    android:id="@+id/edtAddPrice"
+                    android:layout_width="200dp"
+                    android:layout_height="60dp"
+                    android:gravity="center"
+                    android:hint="0"
+                    android:inputType="numberDecimal" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

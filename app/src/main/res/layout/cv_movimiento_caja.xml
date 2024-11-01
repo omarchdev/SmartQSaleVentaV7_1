@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="1dp"
+
+    android:layout_marginBottom="0.5dp"
+    android:padding="8dp">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBlanco"
+        android:orientation="horizontal"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/txtMetodoPago"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="metodo pago"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtMonto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/txtMetodoPago"
+        android:layout_alignParentRight="true"
+        android:text="S/0.00"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/txtMotivo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtMetodoPago"
+        android:layout_alignParentStart="true"
+        android:text="Motivo"
+        android:textSize="16sp"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/txtDescripcion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtMotivo"
+        android:layout_alignParentStart="true"
+        android:text="Descripcion"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/txtFechaTransaccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtDescripcion"
+        android:layout_alignParentStart="true"
+        android:text="fecha"
+        android:textSize="14sp"
+        android:textStyle="normal|bold" />
+
+</RelativeLayout>

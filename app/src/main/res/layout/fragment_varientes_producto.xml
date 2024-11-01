@@ -1,0 +1,294 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    tools:context="com.omarchdev.smartqsale.smartqsaleventas.Fragment.VariantesProducto">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+     >
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/pbIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            app:indicatorName="BallPulseIndicator"
+            app:indicatorColor="@color/colorAccent"
+
+            ></com.wang.avi.AVLoadingIndicatorView>
+            <TextView
+                android:textStyle="bold"
+                android:textColor="@color/colorAccent"
+                android:id="@+id/txtCargando"
+                android:text="Cargando información"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/pbIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+        <com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:sothree="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/sliding_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            sothree:umanoScrollableView="@+id/rvVariantesEditable"
+            sothree:umanoPanelHeight="0dp"
+            sothree:umanoShadowHeight="0dp">
+
+
+
+            <RelativeLayout
+                android:id="@+id/contentVariantes"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/contenedorPrimario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    >
+
+                    <RelativeLayout
+                        android:id="@+id/contentButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnAgregarOpcion"
+                            style="?android:attr/borderlessButtonStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:drawableRight="@drawable/plus"
+                            android:drawableTint="@color/colorAccent"
+                            android:text="Agregar opcion"
+                            android:textColor="@color/colorAccent"
+                            android:visibility="gone" />
+
+                        <Switch
+                            android:id="@+id/sActivarVariantes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:textColor="@color/white"
+                            android:layout_centerVertical="true"
+                            android:layout_marginTop="15dp"
+                            android:layout_weight="1"
+                            android:text="Variantes" />
+
+                        <Button
+                            android:id="@+id/btnHabilitaVariante"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_centerVertical="true"
+                            android:backgroundTint="@color/colorAccent"
+                            android:gravity="center"
+                            android:text="Habilitar Edición de variantes"
+                            android:textColor="#ffffff"
+                            android:visibility="gone" />
+
+                    </RelativeLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvOpcionesVariantes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/contentButton"></androidx.recyclerview.widget.RecyclerView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/contenedorSecundario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/contenedorPrimario">
+
+                    <Button
+                        android:textColor="#ffffff"
+                        android:backgroundTint="@color/colorAccent"
+                        android:id="@+id/btnGenerarVariantes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Generar Variantes"></Button>
+
+                    <TextView
+                        android:id="@+id/txtTituloVariante"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/btnGenerarVariantes"
+                        android:text="Descripcion Variante" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/rvVariantes"
+                        android:layout_marginEnd="24dp"
+                        android:layout_toStartOf="@+id/textView7"
+                        android:text="P.Comp" />
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/rvVariantes"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="5dp"
+                        android:text="P.Venta" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout5"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorAccent"
+                        android:orientation="horizontal"></LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+
+                        android:id="@+id/rvVariantes"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/txtTituloVariante">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                    <Button
+                        android:drawableTint="#ffffff"
+                        android:drawableLeft="@drawable/settings"
+                        android:backgroundTint="@color/colorAccent"
+                        android:textColor="#ffffff"
+                        android:id="@+id/btnEdicionVariantes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_below="@+id/linearLayout5"
+                        android:text="Edicion variantes" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    style="?android:attr/borderlessButtonStyle"
+                    android:tint="@color/colorAccent"
+                    android:id="@+id/btnArrow"
+                    android:backgroundTint="@color/colorAccent"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/btnEliminarVariante"
+                    android:layout_toStartOf="@+id/btnEliminarVariante"
+                    app:srcCompat="@drawable/arrowdisplay" />
+
+                <Button
+
+                    android:id="@+id/btnEditarVariante"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/colorAccent"
+                    android:drawableRight="@drawable/settings"
+                    android:drawableTint="#ffffff"
+                    android:textStyle="bold"
+                    android:textColor="#ffffff"
+                    android:text="Editar" />
+
+                <TextView
+
+                    android:id="@+id/txtPVenta"
+                    android:gravity="center"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/btnEditarVariante"
+                    android:layout_below="@+id/btnEditarVariante"
+                    android:layout_marginTop="20dp"
+                    android:text="P.Venta" />
+
+                <TextView
+                    android:gravity="center"
+
+                    android:id="@+id/txtPCompra"
+                    android:layout_width="62dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/txtPVenta"
+                    android:layout_marginEnd="15dp"
+                    android:layout_toStartOf="@+id/txtPVenta"
+                    android:text="P.Compra" />
+
+                <TextView
+                    android:gravity="center"
+
+                    android:id="@+id/edtStock"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/txtPCompra"
+                    android:layout_marginEnd="15dp"
+                    android:layout_toStartOf="@+id/txtPCompra"
+                    android:text="Stock" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/edtStock"
+                    android:layout_alignParentStart="true"
+                    android:text="Descripcion Variante"
+                    />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvVariantesEditable"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/textView11"
+                    android:layout_marginTop="11dp" />
+
+                <Button
+                    android:id="@+id/btnEliminarVariante"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/btnEditarVariante"
+                    android:layout_alignBottom="@+id/btnEditarVariante"
+                    android:layout_alignStart="@+id/edtStock"
+                    android:backgroundTint="#ff4646"
+                    android:drawableRight="@drawable/ic_delete_white_24dp"
+                    android:text="Eliminar"
+                    android:textColor="#ffffff" />
+
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/txtNumVariantes"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/btnEliminarVariante"
+                    android:layout_alignBottom="@+id/btnEliminarVariante"
+                    android:layout_alignParentStart="true"
+                    android:text="TextView"
+                    android:textColor="@color/colorAccent" />
+            </RelativeLayout>
+
+
+        </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+
+
+    </RelativeLayout>
+</FrameLayout>

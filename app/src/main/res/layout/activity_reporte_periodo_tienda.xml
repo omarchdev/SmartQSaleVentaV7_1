@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activitys.ReportePeriodoTienda">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:elevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnFechaInicio"
+                        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableLeft="@drawable/calendar"
+                        android:text="Desde" />
+
+                    <Button
+                        android:id="@+id/btnFechaFinal"
+                        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableRight="@drawable/calendar"
+                        android:text="hasta" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <FrameLayout
+                android:id="@+id/content_tienda"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </FrameLayout>
+            <Button
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:padding="16dp"
+                android:layout_margin="16dp"
+                android:layout_gravity="center"
+                android:text="Generar Reporte"
+                android:id="@+id/btnGenerarReporte"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+
+            </Button>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</LinearLayout>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cvCustomer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="1dp"
+    app:cardBackgroundColor="@color/color_Fondo"
+    android:orientation="horizontal"
+  >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_contacts_black_48dp"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="6dp"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <TextView
+
+
+                android:id="@+id/txtcvNameCustomer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre Cliente"
+
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtcvAliasCustomer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Alias"
+                android:textSize="15sp"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <ImageButton
+            android:id="@+id/btnInformacionCliente"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentRight="true"
+            app:srcCompat="@drawable/information" />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+      >
+
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_close_white_24dp"/>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/btnGuargarCategoria"
+            android:layout_alignBottom="@+id/btnGuargarCategoria"
+            android:layout_marginStart="13dp"
+            android:layout_toEndOf="@+id/imgBack"
+            android:text="Editar"
+
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btnGuargarCategoria"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:backgroundTint="@color/colorPrimary"
+            android:text="Button"
+            android:textColor="@android:color/white"
+            android:textStyle="normal|bold" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/edtNombreCategoria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeLayout3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="62dp"
+        android:ems="10"
+        android:gravity="center_horizontal|center"
+        android:hint="Nombre de la categoria"
+        android:inputType="textPersonName" />
+</RelativeLayout>

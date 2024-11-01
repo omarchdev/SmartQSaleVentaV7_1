@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cvCabeceraVenta"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:clickable="true"
+    android:elevation="4dp"
+    app:cardBackgroundColor="@color/color_Fondo">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/txtDescripcionDoc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="descripcionDoc"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtEstadoCpe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:maxWidth="150dip"
+            android:text="TextView"
+            android:textAlignment="textEnd" />
+        <TextView
+
+            android:id="@+id/txtTituloVenta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtDescripcionDoc"
+            android:text="Venta"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/txtFechaVenta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtDescripcionDoc"
+            android:layout_alignParentRight="true"
+            android:text="31/12/2017 11:57" />
+
+        <TextView
+            android:id="@+id/txtCliente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtTituloVenta"
+            android:layout_marginTop="8dp"
+            android:text="Cliente"
+           />
+
+        <TextView
+            android:id="@+id/txtVendedor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtCliente"
+            android:text="Vendedor"
+           />
+
+        <TextView
+            android:id="@+id/txtValor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtVendedor"
+            android:text="Valor"
+            />
+
+        <TextView
+            android:id="@+id/txtDatoCliente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtFechaVenta"
+            android:layout_alignRight="@id/txtCliente"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="8dp"
+            android:text="Cliente no especificado"
+            android:textAlignment="textEnd" />
+
+        <TextView
+            android:id="@+id/txtDatoVendedor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtDatoCliente"
+            android:layout_alignRight="@id/txtVendedor"
+            android:layout_alignParentRight="true"
+            android:text="Vendedor no especificado" />
+
+        <TextView
+            android:id="@+id/txtDatoValorVenta"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtDatoVendedor"
+            android:layout_alignRight="@id/txtValor"
+            android:layout_alignParentRight="true"
+            android:text="S/1000.00"
+            />
+
+        <TextView
+            android:id="@+id/txtEstadoVenta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtValor"
+            android:text="@string/estado_venta_cancelar"
+            android:textColor="#ff3434"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txtTituloCombo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text="TextView"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/txtMensaje"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/pbIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            app:indicatorName="BallPulseIndicator"
+            app:indicatorColor="@color/colorAccent"
+
+            ></com.wang.avi.AVLoadingIndicatorView>
+        <TextView
+            android:textStyle="bold"
+            android:textColor="@color/colorAccent"
+            android:id="@+id/txtCargando"
+            android:text="Cargando información"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/pbIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ScrollView
+            android:scrollbars="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:id="@+id/txtEligeCantidad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@+id/clickNumberPickerView"
+                        android:text="Elige la cantidad 1   :   "
+                        android:textStyle="bold" />
+
+                    <pl.polak.clicknumberpicker.ClickNumberPickerView
+                        android:id="@+id/clickNumberPickerView"
+                        android:layout_width="140dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginEnd="24dp"
+                        app:decimal_number="0"
+                        app:min_value="1"
+
+                        app:picker_corner_radius="10"
+                        app:pickers_background_color="@color/colorAccent"
+                        app:swipe_enabled="false"
+                        app:value_background_color="@color/colorPrimary"
+                        app:value_text_color="@android:color/white"></pl.polak.clicknumberpicker.ClickNumberPickerView>
+
+                </RelativeLayout>
+
+
+                <LinearLayout
+
+                    android:id="@+id/rlComboPack"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"></LinearLayout>
+            </LinearLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:background="#212121"
+    android:gravity="center"
+    android:layout_height="match_parent"
+    tools:context="com.omarchdev.smartqsale.smartqsaleventas.Activitys.LogActivity">
+
+    <LinearLayout
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="40dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/linearLayout">
+
+        <EditText
+            android:id="@+id/edtUserLog"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:inputType="text"
+            android:hint="Usuario"/>
+
+        <EditText
+            android:id="@+id/edtPasswordLog"
+            android:textStyle="bold"
+            android:layout_marginTop="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:inputType="textPassword"
+            android:hint="Contraseña"/>
+
+        <Button
+            android:layout_marginTop="25dp"
+            android:id="@+id/btnAccessLog"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Ingresar"/>
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBarLogin"
+        style="@android:style/Widget.DeviceDefault.Light.ProgressBar"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:visibility="gone" />
+
+
+</RelativeLayout>
+

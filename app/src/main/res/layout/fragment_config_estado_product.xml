@@ -1,0 +1,103 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.omarchdev.smartqsale.smartqsaleventas.Fragment.ConfigEstadoProductFragment">
+
+   <LinearLayout
+
+       android:gravity="center"
+       android:orientation="vertical"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">}
+
+
+       <Switch
+           android:layout_marginLeft="10dp"
+           android:textSize="15sp"
+           android:id="@+id/switchEstado"
+           android:layout_width="250dp"
+           android:layout_height="wrap_content"
+           android:text="@string/estado_producto_cabecera"
+           android:shadowColor="@color/colorPrimary"/>
+
+       <Switch
+           android:layout_marginLeft="10dp"
+           android:id="@+id/switchEstadoVisible"
+           android:layout_width="250dp"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="10dp"
+           android:shadowColor="@color/colorPrimary"
+           android:text="@string/estado_visible_cabecera"
+           android:textSize="15sp"
+           />
+
+       <Switch
+           android:id="@+id/switchVisibleVentaWeb"
+           android:layout_width="250dp"
+           android:layout_marginTop="10dp"
+           android:layout_marginLeft="10dp"
+           android:layout_height="wrap_content"
+           android:text="Visible en web:" />
+
+       <Switch
+           android:layout_marginTop="10dp"
+           android:layout_marginLeft="10dp"
+           android:textSize="15sp"
+
+           android:id="@+id/switchControlPorPeso"
+           android:layout_width="250dp"
+           android:layout_height="wrap_content"
+           android:text="@string/control_peso_opcion"
+           android:shadowColor="@color/colorPrimary"/>
+
+       <Switch
+           android:layout_marginLeft="10dp"
+           android:id="@+id/switchControlStock"
+           android:layout_width="250dp"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="10dp"
+           android:shadowColor="@color/colorPrimary"
+           android:text="@string/control_stock_opcion"
+           android:textSize="15sp"
+
+ />
+       <Switch
+           android:layout_marginLeft="10dp"
+           android:id="@+id/switchPVLibre"
+           android:layout_width="250dp"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="10dp"
+           android:shadowColor="@color/colorPrimary"
+           android:text="Precio de Venta Variable"
+           android:textSize="15sp"
+
+           />
+       <Switch
+           android:layout_marginLeft="10dp"
+           android:id="@+id/switchTiempo"
+           android:layout_width="250dp"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="10dp"
+           android:shadowColor="@color/colorPrimary"
+           android:text="Control por tiempo"
+           android:textSize="15sp"
+
+           />
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="10dp"
+           android:text="Seleccione el tipo de producto" />
+
+       <Spinner
+
+           android:id="@+id/spTipoProducto"
+           android:layout_width="250dp"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="10dp"></Spinner>
+
+       </LinearLayout>
+
+</FrameLayout>

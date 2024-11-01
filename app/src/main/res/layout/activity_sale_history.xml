@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#10000000"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.omarchdev.smartqsale.smartqsaleventas.Activitys.SaleHistoryActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:padding="15dp">
+        <EditText
+            android:id="@+id/editText"
+            android:gravity="center"
+            android:hint="Seleccione una fecha"
+            android:background="#ffffff"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:ems="15"
+            android:inputType="date"
+            android:layout_weight="5"/>
+        <ImageButton
+            android:background="#21cc27"
+            android:layout_marginLeft="10dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvListHistorySale"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
+</LinearLayout>

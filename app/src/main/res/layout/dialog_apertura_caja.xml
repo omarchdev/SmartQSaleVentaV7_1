@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txtMonto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary"
+        android:elevation="10dp"
+        android:padding="15dp"
+        android:text="APERTURA DE CAJA"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+
+    <EditText
+        android:id="@+id/edtMontoApertura"
+        android:layout_width="205dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="65dp"
+        android:layout_marginTop="95dp"
+
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="number|numberDecimal"
+        android:maxLength="12"
+        android:text="0.00"
+        android:textSize="24sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         android:layout_below="@+id/edtMontoApertura"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn1"
+            android:layout_width="70dp"
+            android:layout_marginEnd="8dp"
+            android:layout_height="wrap_content"
+
+
+            android:text="+S/1" />
+
+        <Button
+            android:id="@+id/btn5"
+            android:layout_marginEnd="8dp"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="+S/5" />
+
+        <Button
+            android:id="@+id/btn10"
+            android:layout_marginEnd="8dp"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="+S/10" />
+
+        <Button
+            android:id="@+id/btn50"
+            android:layout_marginEnd="8dp"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="+S/50" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtMoneda"
+        android:layout_width="wrap_content"
+        android:layout_height="54dp"
+        android:layout_alignTop="@+id/edtMontoApertura"
+        android:layout_toStartOf="@+id/edtMontoApertura"
+        android:gravity="center"
+        android:text="F"
+        android:textSize="24sp" />
+
+</RelativeLayout>

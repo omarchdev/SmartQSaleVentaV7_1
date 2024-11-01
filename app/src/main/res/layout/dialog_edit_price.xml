@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtNombreProducto"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:background="#424242"
+                android:gravity="center"
+                android:text="Nombre Producto"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+         <LinearLayout
+             android:orientation="vertical"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+
+             <com.google.android.material.textfield.TextInputLayout
+
+                 android:id="@+id/edtPrecioUnitario"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:layout_marginRight="8dp"
+                 android:layout_marginEnd="8dp"
+                 android:layout_marginTop="16dp"
+                 android:layout_marginBottom="16dp"
+                 >
+
+                 <com.google.android.material.textfield.TextInputEditText
+                     android:importantForAutofill="noExcludeDescendants"
+                     android:inputType="numberDecimal"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:hint="Precio de Venta Unitario" />
+             </com.google.android.material.textfield.TextInputLayout>
+
+             <CheckBox
+                 android:id="@+id/cbDescuento"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:text="Aplicar descuento" />
+
+             <com.google.android.material.textfield.TextInputLayout
+                 android:id="@+id/edtDescuento"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:layout_margin="8dp">
+
+                 <com.google.android.material.textfield.TextInputEditText
+                     android:inputType="number|numberDecimal"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:hint="Porcentaje a descontar (%)" />
+             </com.google.android.material.textfield.TextInputLayout>
+
+
+             <com.google.android.material.textfield.TextInputLayout
+                 android:id="@+id/edtMontoDescuento"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:layout_margin="8dp">
+
+                 <com.google.android.material.textfield.TextInputEditText
+                     android:importantForAutofill="noExcludeDescendants"
+                     android:inputType="number|numberDecimal"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:hint="Cantidad a descontar" />
+             </com.google.android.material.textfield.TextInputLayout>
+
+             <LinearLayout
+                 android:background="#bdbdbd"
+                 android:layout_marginLeft="8dp"
+                 android:layout_marginRight="8dp"
+                 android:layout_width="match_parent"
+                 android:layout_height="0.5dp"
+                 android:orientation="horizontal"></LinearLayout>
+             <TextView
+                 android:id="@+id/txtInfoTotal"
+                 android:gravity="center"
+                 android:text="0.00 - 0.00= 0.00"
+                 android:textStyle="bold"
+                 android:textSize="16sp"
+                 android:layout_width="match_parent"
+                 android:layout_height="40dp" />
+
+             <LinearLayout
+                 android:background="#bdbdbd"
+                 android:layout_marginLeft="8dp"
+                 android:layout_marginRight="8dp"
+                 android:layout_width="match_parent"
+                 android:layout_height="0.5dp"
+                 android:orientation="horizontal"></LinearLayout>
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="70dp"
+                 android:orientation="horizontal"
+                 >
+                 <TextView
+                     android:layout_width="0dp"
+                     android:layout_height="match_parent"
+                     android:layout_weight="0.7"
+                     android:gravity="center|left"
+                     android:paddingLeft="5dp"
+                     android:text="Cantidad"
+                     android:textSize="16sp" />
+
+                 <LinearLayout
+                     android:layout_width="0dp"
+                     android:layout_height="match_parent"
+                     android:layout_weight="2"
+                     android:gravity="center"
+                     android:orientation="horizontal"
+                     android:padding="10dp">
+
+                     <ImageButton
+                         android:id="@+id/btnMinusb"
+                         android:layout_width="50dp"
+                         android:layout_height="50dp"
+                         android:backgroundTint="#ffffff"
+                         app:srcCompat="@drawable/minus"
+                         />
+
+                     <EditText
+                         android:id="@+id/edtQuantityProduct"
+                         android:layout_width="90dp"
+                         android:layout_height="60dp"
+                         android:gravity="center"
+                         android:inputType="numberDecimal"
+                         android:text="0"
+
+                         android:textStyle="bold" />
+                     <ImageButton
+
+                         android:id="@+id/btnPlus"
+                         android:layout_width="50dp"
+                         android:layout_height="50dp"
+                         android:backgroundTint="#ffffff"
+                         app:srcCompat="@drawable/add"
+                         />
+                 </LinearLayout>
+
+
+             </LinearLayout>
+
+
+
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:orientation="horizontal"
+                 >
+
+
+                 <com.google.android.material.textfield.TextInputLayout
+                     android:id="@+id/txtObservacionProducto"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     app:counterEnabled="true"
+                     app:counterMaxLength="250">
+
+                     <EditText
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:hint="Observacion del producto"
+                         android:maxLength="250" />
+                 </com.google.android.material.textfield.TextInputLayout>
+             </LinearLayout>
+
+         </LinearLayout>
+
+        </ScrollView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal">
+
+            <Button
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:id="@+id/btnSalirDialog"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Volver" />
+
+            <Button
+                style="@style/Widget.AppCompat.Button.Colored"
+
+                android:id="@+id/btnGuardarCantidadProducto"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:drawableRight="@drawable/ic_content_save_white_24dp"
+                android:gravity="center"
+                android:text="Guardar" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

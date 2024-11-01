@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <RadioButton
+                    android:id="@+id/rbNinguno"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ninguno" />
+
+                <RadioButton
+                    android:id="@+id/rbBluetooth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bluetooth" />
+
+                <RadioButton
+
+                    android:id="@+id/rbPdfRed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Impresora en Red"
+                    >
+                </RadioButton>
+                <RadioButton
+                    android:id="@+id/rbUsb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="USB" />
+                <RadioButton
+                    android:id="@+id/rbPdfPrinter"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PDF" />
+
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/txtTextoInformacionBluetooth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Ninguna impresora fue encontrada.Verifique si el bluetooth se encuentre activo o la impresora este este sincronizada" />
+
+            <TextView
+                android:id="@+id/txtSeleccionImpresora"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Seleccione una impresora:" />
+
+            <androidx.recyclerview.widget.RecyclerView
+
+                android:id="@+id/rvDriversBT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <EditText
+                android:id="@+id/edtIP"
+                android:hint="Ip Impresora"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/edtPuerto"
+                android:hint="Puerto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

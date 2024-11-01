@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:id="@+id/content"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:textStyle="bold"
+        android:id="@+id/txtCategoria"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/txtPrecio"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="@+id/content"
+        app:layout_constraintTop_toTopOf="@+id/content"/>
+    <EditText
+        android:id="@+id/edtPrecioCategoria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="8dp"
+        android:ems="8"
+        android:inputType="numberDecimal"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/content"
+        app:layout_constraintEnd_toStartOf="@+id/imgCancelar"
+        app:layout_constraintHorizontal_bias="0.116"
+        app:layout_constraintStart_toStartOf="@+id/content"
+        app:layout_constraintTop_toBottomOf="@+id/txtCategoria"/>
+    <TextView android:textStyle="bold"
+        android:id="@+id/txtPrecio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/content"
+        app:layout_constraintTop_toTopOf="@+id/content"/>
+
+    <ImageButton
+        android:id="@+id/btnEdit"
+        style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/content"
+        app:layout_constraintEnd_toEndOf="@+id/content"
+        app:layout_constraintTop_toBottomOf="@+id/txtPrecio"
+        app:layout_constraintVertical_bias="0.057"
+        app:srcCompat="@drawable/ic_pencil_white_24dp" />
+
+    <ImageButton
+        style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+        android:id="@+id/imgSave"
+
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/content"
+        app:layout_constraintEnd_toEndOf="@+id/content"
+        app:layout_constraintTop_toTopOf="@+id/btnEdit"
+        app:layout_constraintVertical_bias="1"
+        app:srcCompat="@drawable/check" />
+    <ImageButton android:id="@+id/imgCancelar"
+            style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/content"
+        app:layout_constraintEnd_toStartOf="@+id/imgSave"
+        app:srcCompat="@drawable/ic_close_white_24dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

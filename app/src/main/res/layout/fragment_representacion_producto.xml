@@ -1,0 +1,240 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.omarchdev.smartqsale.smartqsaleventas.Fragment.RepresentacionProducto">
+
+
+    <RelativeLayout
+         android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RadioGroup
+            android:id="@+id/rgImagen"
+            android:padding="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+
+            <RadioButton
+                android:id="@+id/rbColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Color" />
+
+            <RadioButton
+
+                android:id="@+id/rbImagen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Imagen" />
+        </RadioGroup>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/rlayoutImagen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/rgImagen"
+            android:visibility="visible">
+
+
+            <ImageView
+                android:id="@+id/imageProduct"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="37dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/fondo_img"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout12"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/image" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imageProduct"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageProduct"
+                app:layout_constraintVertical_bias="0.141">
+
+                <ImageButton
+                    android:backgroundTint="@color/colorPrimary"
+                    android:id="@+id/btnBuscarImagen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:elevation="2dp"
+                    app:srcCompat="@drawable/gallery" />
+
+                <ImageButton
+                    android:backgroundTint="@color/colorPrimary"
+
+                    android:id="@+id/btnCamaraImagen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/imageProduct"
+
+                    android:elevation="2dp"
+                    app:srcCompat="@drawable/camera" />
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlayoutColor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/rgImagen"
+            android:visibility="gone">
+
+            <RadioGroup
+                android:id="@+id/rgShape"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tabColor"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbShape1Rhombus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/selector_shape_1"
+                    android:gravity="center" />
+
+                <RadioButton
+                    android:id="@+id/rbShape1Square"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/selector_shape_2" />
+
+                <RadioButton
+                    android:id="@+id/rbShape1Circle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/selector_shape_3" />
+
+                <RadioButton
+                    android:id="@+id/rbShape1Octagon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:button="@drawable/selector_shape_4" />
+            </RadioGroup>
+
+
+            <TableLayout
+                android:id="@+id/tabColor"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:gravity="center">
+
+                <TableRow android:gravity="center">
+
+                    <com.omarchdev.smartqsale.smartqsaleventas.Controlador.RadioGroupedButton
+                        android:id="@+id/group1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:button="@drawable/selector_color_1"
+
+                        app:group="group1" />
+
+                    <com.omarchdev.smartqsale.smartqsaleventas.Controlador.RadioGroupedButton
+                        android:id="@+id/group2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:button="@drawable/selector_color_2"
+                        app:group="group1" />
+
+                    <com.omarchdev.smartqsale.smartqsaleventas.Controlador.RadioGroupedButton
+                        android:id="@+id/group3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:button="@drawable/selector_color_3"
+
+                        app:group="group1" />
+
+                    <com.omarchdev.smartqsale.smartqsaleventas.Controlador.RadioGroupedButton
+                        android:id="@+id/group4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:button="@drawable/selector_color_4"
+                        app:group="group1" />
+
+                </TableRow>
+
+                <TableRow android:gravity="center">
+
+                    <com.omarchdev.smartqsale.smartqsaleventas.Controlador.RadioGroupedButton
+                        android:id="@+id/group5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:button="@drawable/selector_color_5"
+                        android:gravity="center"
+                        app:group="group1" />
+
+                    <com.omarchdev.smartqsale.smartqsaleventas.Controlador.RadioGroupedButton
+                        android:id="@+id/group6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:button="@drawable/selector_color_6"
+                        app:group="group1" />
+
+                    <com.omarchdev.smartqsale.smartqsaleventas.Controlador.RadioGroupedButton
+                        android:id="@+id/group7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:button="@drawable/selector_color_7"
+
+                        app:group="group1" />
+
+                    <com.omarchdev.smartqsale.smartqsaleventas.Controlador.RadioGroupedButton
+                        android:id="@+id/group8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:button="@drawable/selector_color_8"
+                        app:group="group1" />
+
+
+                </TableRow>
+            </TableLayout>
+
+
+        </RelativeLayout>
+
+
+
+
+    </RelativeLayout>
+
+</FrameLayout>

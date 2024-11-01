@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/avi"
+        app:indicatorColor="@color/colorPrimary"
+        app:indicatorName="BallScaleMultipleIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
+
+    <RelativeLayout
+        android:id="@+id/contentProduct"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:layout_below="@id/contentButton"
+            android:id="@+id/contentButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            >
+
+            <Button
+
+                android:id="@+id/btnGuardar"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:text="Guardar"/>
+
+            <Button
+                android:id="@+id/btnCancelar"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toStartOf="@+id/btnGuardar"
+                android:text="Cancelar" />
+        </RelativeLayout>
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/textView27"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:text="Cantidad \n a ingresar" />
+
+        <TextView
+            android:id="@+id/textView28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/textView27"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="Precio Compra" />
+
+        <TextView
+            android:id="@+id/textView29"
+            android:layout_width="81dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/textView27"
+            android:layout_marginEnd="35dp"
+            android:gravity="center"
+            android:text="Total" />
+
+        <EditText
+            android:gravity="center"
+            android:text="0"
+            android:textSize="14sp"
+            android:id="@+id/edtCantidad"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textView27"
+            android:layout_below="@+id/textView27"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:textSize="14sp"
+            android:gravity="center"
+            android:text="0"
+            android:id="@+id/edtPrecioCompra"
+            android:layout_width="93dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textView28"
+            android:layout_below="@+id/textView27"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+
+
+        <TextView
+            android:id="@+id/textView30"
+            android:layout_width="wrap_content"
+            android:layout_height="27dp"
+            android:layout_below="@+id/edtPrecioCompra"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="5dp"
+            android:text="Stock en Almacén" />
+
+        <TextView
+
+            android:id="@+id/txtTotal"
+            android:layout_width="81dp"
+            android:layout_height="46dp"
+            android:layout_below="@+id/textView27"
+            android:layout_alignStart="@+id/textView29"
+            android:gravity="center"
+            android:text="0"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <ListView
+            android:id="@+id/listAlmacen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/contentButton"
+            android:layout_below="@+id/textView30"
+            android:layout_marginTop="8dp" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

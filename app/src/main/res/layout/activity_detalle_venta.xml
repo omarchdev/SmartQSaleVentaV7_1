@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.omarchdev.smartqsale.smartqsaleventas.Activitys.DetalleVenta">
+
+
+    <ProgressBar
+        android:id="@+id/pbDetalleVenta"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
+
+    <ScrollView
+        android:fadeScrollbars="true"
+        android:id="@+id/svContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="100dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtFechaPedido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center|left"
+                    android:padding="8dp"
+                    android:text="FechaPedido"
+
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/txtEstadoVenta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="EstadoVenta"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/txtNombreCliente"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:drawableLeft="@drawable/ic_human_male_female_white_24dp"
+
+                android:gravity="center|right"
+                android:text="Cliente no especificado"
+               />
+
+
+            <TextView
+                android:id="@+id/txtNombreVendedor"
+
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:drawableLeft="@drawable/ic_account_circle_white_36dp"
+
+                android:gravity="center|right"
+                android:text="Vendedor no especificado"
+                />
+
+            <TextView
+
+                android:id="@+id/txtNumFactura"
+                android:padding="8dp"
+
+                android:gravity="right"
+                android:text="numero de factura"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textAlignment="textEnd"
+                android:id="@+id/txtEstadoDocumentoCpe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+            <TextView
+                android:id="@+id/txtIdentificador"
+               android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+            </TextView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtValorBruto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:gravity="center|right"
+                    android:text="Valor bruto"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/txtValorDescuento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_below="@id/txtValorBruto"
+                    android:gravity="center|right"
+                    android:text="Descuento"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtValorNeto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_below="@id/txtValorDescuento"
+                    android:gravity="center|right"
+                    android:text="Valor Neto"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtValorBrutoDato"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center|right"
+                    android:text="0"
+               />
+
+                <TextView
+                    android:id="@+id/valorDescuentoDato"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/txtValorBrutoDato"
+                    android:gravity="center|right"
+                    android:text="0"
+                    />
+
+                <TextView
+                    android:id="@+id/txtValorNetoDato"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/valorDescuentoDato"
+                    android:gravity="center|right"
+                    android:text="0"
+
+                    android:textStyle="bold" />
+
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp"
+                android:background="#61878787">
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+
+                android:layout_height="40dp"
+                android:drawableRight="@drawable/ic_shopping_white_24dp"
+               android:gravity="center"
+                android:text="Articulos vendidos"
+             />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvDetallePedido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp"
+                android:background="#61878787"></LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center|left"
+                android:text="Metodos de pago"
+           />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvMetodosDePago"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Observacion" />
+
+            <TextView
+                android:id="@+id/txtObservacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
+                android:layout_marginTop="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vuelto"
+
+                    />
+
+                <TextView
+                    android:id="@+id/txtValorCambio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="S/100.00"
+                    android:textColor="#f23434"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+        </LinearLayout>
+
+
+    </ScrollView>
+
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/floating_button_Venta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="16dp"
+        app:fab_addButtonColorNormal="@android:color/holo_blue_dark"
+        app:fab_addButtonSize="normal"
+        app:fab_labelStyle="@style/LabelFloatingButton"
+        app:fab_labelsPosition="left"
+
+        >
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabEnvioCpe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="#28aef1"
+            app:fab_icon="@drawable/ic_whatsapp_white_48dp"
+            app:fab_size="mini"
+            app:fab_title="Enviar comprobante" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabImprimirVenta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="#28aef1"
+            app:fab_icon="@drawable/ic_receipt_white_24dp"
+            app:fab_size="mini"
+            app:fab_title="Imprimir" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabCancelarVenta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="#f12828"
+            app:fab_icon="@drawable/close_circle"
+            app:fab_size="mini"
+            app:fab_title="Anular venta" />
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+</RelativeLayout>

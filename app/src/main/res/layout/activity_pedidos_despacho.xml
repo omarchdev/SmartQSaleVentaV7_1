@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activitys.PedidosDespacho"
+    >
+
+    <LinearLayout
+        android:id="@+id/contenedorFechas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/fondo_img"
+        android:orientation="horizontal"
+        android:padding="1dp">
+
+
+        <Button
+            android:id="@+id/btnFechaInicio"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/calendar"
+            android:text="Fecha inicio" />
+
+        <Button
+            android:id="@+id/btnFechaFinal"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableRight="@drawable/calendar"
+            android:text="fecha final" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_below="@id/contenedorFechas"
+        android:background="@drawable/fondo_img"
+
+        >
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:layout_toLeftOf="@id/btnDeleteCliente"
+                android:id="@+id/txtSeleccionarCliente"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                 android:gravity="center"
+                android:text="Seleccione cliente para la busqueda"
+
+                android:textSize="12sp" />
+
+            <ImageButton
+                style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+                android:id="@+id/btnDeleteCliente"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+
+                app:srcCompat="@drawable/ic_close_white_24dp" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+
+        android:layout_below="@id/rl2"
+        android:id="@+id/rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+  />
+
+</RelativeLayout>

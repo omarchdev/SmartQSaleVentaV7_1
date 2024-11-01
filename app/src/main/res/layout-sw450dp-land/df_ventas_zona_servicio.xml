@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_above="@id/contentButton"
+            android:orientation="vertical"
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+              >
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    >
+                    <TextView
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:layout_margin="4dp"
+                        android:text="Cliente"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/txtNombreCliente"
+                         android:textSize="16sp"
+                        android:layout_margin="4dp"
+                        android:text="Nombre del Cliente"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:text="Zona de Servicio"
+                        android:layout_margin="4dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_margin="4dp"
+                        android:layout_width="match_parent"
+                        android:text="Tipo"
+                        android:layout_height="wrap_content" />
+                    <Spinner
+                        android:id="@+id/spnModelos"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        ></Spinner>
+                    <TextView
+                        android:layout_margin="4dp"
+                        android:text="Marca"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <Spinner
+                        android:id="@+id/spnMarcas"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </Spinner>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edtColor"
+                        android:layout_margin="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Color" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    >
+                    <TextView
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:text="Ultimos servicios"
+                        android:layout_margin="4dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvVentasZonaServicio"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="right"
+            android:orientation="horizontal"
+            android:id="@+id/contentButton"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:id="@+id/btnSalir"
+                android:text="Salir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:id="@+id/btnGuardar"
+                android:text="Guardar"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                >
+
+            </Button>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

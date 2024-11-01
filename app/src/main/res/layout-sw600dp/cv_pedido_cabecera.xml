@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv_cabecera_pedido"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="2dp"
+    >
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/ll_linea_superior"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_marginStart="8dp"
+        android:background="#c2c2c2"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"></LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <LinearLayout
+            android:id="@+id/contentInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/contentButton"
+            android:orientation="vertical"
+            android:paddingLeft="8dp"
+            android:paddingRight="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/txtNombrePedido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_gravity="left"
+                    android:foregroundGravity="left"
+                    android:text="Pedido1"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtFechaPedido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="4dp"
+                    android:foregroundGravity="right"
+                    android:text="15/12/2017"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_gravity="left"
+
+                    android:foregroundGravity="left"
+                    android:text="Cliente" />
+
+                <TextView
+                    android:id="@+id/txtNombreCliente"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_alignParentEnd="true"
+                    android:foregroundGravity="right"
+                    android:text="Cliente no especificado"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_gravity="left"
+                    android:text="Vendedor" />
+
+                <TextView
+                    android:id="@+id/txtNombreVendedor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:foregroundGravity="right"
+                    android:text="Vendedor no especificado"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_gravity="left"
+                    android:foregroundGravity="left"
+
+                    android:text="Valor" />
+
+                <TextView
+                    android:id="@+id/txtValorVenta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:foregroundGravity="right"
+                    android:text="S/10000.000"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/txtNroPedido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="Nro Pedido"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:id="@+id/txtObservacionZonaServicio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp">
+
+            </TextView>
+
+
+            <TextView
+                android:id="@+id/txtObservacioPedido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/contentButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+            <ImageButton
+                android:id="@+id/btnSuspenderPedido"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="5dp"
+                android:backgroundTint="#fa4848"
+                android:elevation="4dp"
+                android:src="@drawable/ic_delete_white_24dp" />
+
+            <ImageButton
+                android:id="@+id/btnPonerPedidoEnVenta"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:backgroundTint="#64dd17"
+                android:elevation="4dp"
+                android:src="@drawable/ic_package_up_white_24dp" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

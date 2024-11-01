@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.omarchdev.smartqsale.smartqsaleventas.Activitys.ActivityConfigPack">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+
+            <com.wang.avi.AVLoadingIndicatorView
+                android:id="@+id/pbIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                app:indicatorColor="@color/colorAccent"
+                app:indicatorName="BallPulseIndicator"
+
+                ></com.wang.avi.AVLoadingIndicatorView>
+
+            <TextView
+                android:id="@+id/txtCargando"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/pbIndicator"
+                android:layout_centerHorizontal="true"
+                android:text="Cargando información"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:id="@+id/contentPack"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvProductPack"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/Cabecera" />
+
+                <RelativeLayout
+                    android:background="@color/colorAccent"
+                    android:layout_below="@id/textView8"
+                    android:id="@+id/Cabecera"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    >
+
+                    <TextView
+                        android:id="@+id/textView14"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:text="Artículo"
+                        android:textColor="#ffffff"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:textStyle="bold"
+                        android:text="Categoria"
+                        android:textColor="#ffffff" />
+
+                    <TextView
+                        android:textColor="#ffffff"
+                        android:textStyle="bold"
+                        android:id="@+id/textView18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="20dp"
+                        android:layout_toEndOf="@+id/textView14"
+                        android:text="Cantidad" />
+
+                </RelativeLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/contentFechaCompra"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:orientation="horizontal">
+
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:id="@+id/lContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <Switch
+                            android:layout_marginRight="12dp"
+                            android:id="@+id/sComboRapido"
+                            android:text="Combo rápido"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <Button
+                            android:id="@+id/btnAgregarProducto"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:backgroundTint="@color/colorAccent"
+                            android:drawableLeft="@drawable/fab_add"
+                            android:text="Agregar Artículo \n al pack/Combo"
+                            android:textColor="#ffffff"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:id="@+id/contentButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center">
+                            <Button android:layout_gravity="right"
+                                android:id="@+id/btnOrdenar"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Ordernar"
+                                style="@style/Base.Widget.AppCompat.Button.Colored"
+                                />
+
+                            <Button
+                                android:textSize="12sp"
+                                android:id="@+id/btnModificar"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBaseline="@+id/btnEliminarProducto"
+                                android:layout_alignBottom="@+id/btnEliminarProducto"
+                                android:layout_toStartOf="@+id/btnEliminarProducto"
+                                style="@style/Base.Widget.AppCompat.Button.Colored"
+                                android:drawableLeft="@drawable/pencil_edit"
+                                android:text="Modificar\nartículo"
+                                android:textColor="#ffffff" />
+
+                            <Button
+                                android:id="@+id/btnEliminarProducto"
+                                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentTop="true"
+                                android:backgroundTint="@color/colorDos"
+                                android:drawableRight="@drawable/ic_delete_grey600_24dp"
+                                android:textSize="12sp"
+                                android:text="Eliminar\nArtículo" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lContent"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="4dp"
+                    android:text="Lista de articulos en el Pack/Combo"
+                    android:textStyle="bold" />
+
+
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            >
+
+            <ImageButton
+                android:visibility="gone"
+                android:id="@+id/imgHidePanel"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                app:srcCompat="@drawable/arrowdisplay" />
+
+            <RelativeLayout
+                android:id="@+id/contentProduct"
+                android:layout_width="match_parent"
+
+                android:layout_height="match_parent"
+                android:layout_below="@id/imgHidePanel">
+
+
+                <TextView
+                    android:id="@+id/txtTituloProducto"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtMen"
+                    android:layout_alignStart="@+id/textView9"
+                    android:layout_marginTop="12dp"
+                    android:text="Producto" />
+
+                <TextView
+                    android:id="@+id/textView16"
+
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+
+                    android:layout_alignTop="@+id/txtTituloProducto"
+                    android:layout_toEndOf="@+id/txtMen"
+                    android:text="Categoría" />
+
+
+
+
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="10dp"
+                    android:text="Filtro" />
+
+                <SearchView
+                    android:visibility="gone"
+                    android:id="@+id/svFiltroProductPack"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@+id/textView10"
+                    android:backgroundTint="@color/colorAccent"
+                    android:queryHint="Filtrado de productos" />
+
+                <TextView
+                    android:id="@+id/txtMen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/txtTituloProducto"
+                    android:layout_below="@+id/rlContentt"
+                    android:text="Seleccione un producto para agregar"
+                    android:textColor="@color/colorAccent"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvSelectProduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/txtTituloProducto"
+                    android:layout_centerVertical="true" />
+
+                <RelativeLayout
+                    android:id="@+id/rlContentt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+
+                    android:gravity="center">
+
+                    <androidx.appcompat.widget.SearchView
+                        android:id="@+id/svProduct"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"></androidx.appcompat.widget.SearchView>
+                    <EditText
+                        android:visibility="gone"
+                        android:hint="Buscar por nombre"
+                        android:id="@+id/edtParametro"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+
+                    <LinearLayout
+                      android:layout_below="@id/svProduct"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:gravity="left"
+                        android:orientation="horizontal">
+                        <Spinner
+                            android:id="@+id/spinnerCategoria"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignStart="@+id/textView9"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginRight="10dp" />
+
+                        <Button
+
+                            android:id="@+id/btnAgregarPack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/colorAccent"
+                            android:text="Agregar"
+                            android:textColor="#ffffff" />
+
+                        <Button
+                            android:id="@+id/btnCancelarInsertar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:backgroundTint="@color/colorDos"
+                            android:text="Cancelar"
+                            android:textColor="#ffffff" />
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

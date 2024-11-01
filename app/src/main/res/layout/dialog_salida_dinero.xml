@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ef0707"
+        android:elevation="10dp"
+        android:padding="16dp"
+        android:text="AGREGAR ENTRADA"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <EditText
+
+        android:id="@+id/edtMontoApertura"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtMonto"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="60dp"
+        android:digits="1234567890"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:maxLength="12"
+        android:text="0.00"
+        android:textSize="24sp" />
+
+    <LinearLayout
+        android:id="@+id/contenedorBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edtMontoApertura"
+        android:gravity="center"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:padding="4dp"
+            android:id="@+id/btn1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="+S/1" />
+
+        <Button
+            android:padding="4dp"
+            android:id="@+id/btn5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="+S/5" />
+
+        <Button
+            android:padding="4dp"
+            android:id="@+id/btn10"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="+S/10" />
+
+        <Button
+            android:padding="4dp"
+            android:id="@+id/btn50"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="+S/50" />
+
+    </LinearLayout>
+
+    <Spinner
+        android:id="@+id/spMedio_Pago"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/edtMontoApertura"
+        android:layout_alignStart="@+id/contenedorBtn"
+        android:layout_below="@+id/contenedorBtn"
+        android:layout_marginTop="28dp" />
+
+    <Spinner
+        android:id="@+id/spMotivo_Ingreso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/edtMontoApertura"
+        android:layout_alignStart="@+id/spMedio_Pago"
+        android:layout_below="@+id/spMedio_Pago"
+        android:layout_marginTop="20dp" />
+
+
+</RelativeLayout>

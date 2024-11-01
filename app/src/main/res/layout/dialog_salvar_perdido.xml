@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="500dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:orientation="vertical"
+                android:paddingBottom="30dp">
+
+                <ImageButton
+                    android:id="@id/btnScanCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/Ingreso_inicial_inventario"
+                    android:src="@drawable/ic_barcode_scan_white_36dp"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/btnGetDate"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/calendar"
+                        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+                    <TextView
+                        android:id="@+id/txtFEntrega"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:textAlignment="center"
+                        android:textColor="#0097A7"
+                        android:textSize="24sp" />
+                </LinearLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/InLIndentificadorPedido"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_margin="8.0dip"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="50">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Identificador del pedido"
+                        android:maxLength="50"
+                        android:maxLines="1"
+                        tools:ignore="TouchTargetSizeCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edtNombreCliente"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_margin="8.0dip"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="50">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Nombre del Cliente"
+                        android:maxLength="50"
+                        android:maxLines="1"
+                        tools:ignore="TouchTargetSizeCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearContentEntregaDatos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView43"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8.0dip"
+                        android:text="Datos del cliente" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edtCelular"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="8.0dip">
+
+                        <com.google.android.material.textfield.TextInputEditText
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Celular"
+                            android:inputType="phone" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edtNombreClienteDel"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="8.0dip">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Nombre del Cliente" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edtCallaDel"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtCalle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dip"
+                            android:hint="Dirección" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edtCiudad"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="8dip">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Ciudad y Localidad" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edtReferencia"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="8dip">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Referencia" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edtEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8.0dip"
+                            android:hint="Email" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:background="#2E2E2E"
+                        android:orientation="horizontal"
+                        android:padding="8dp"
+                        android:paddingTop="16.0dip"
+                        android:paddingBottom="16.0dip">
+
+                        <Spinner
+                            android:id="@+id/spnMediosPagoDel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="48dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/InLObservacionPedido"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/InLIndentificadorPedido"
+                    android:layout_alignStart="@id/InLIndentificadorPedido"
+                    android:layout_margin="8.0dip"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="120">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Observaciones"
+                        android:maxLength="120"
+                        tools:ignore="TouchTargetSizeCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:id="@+id/cbTipoContrato"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Contrato" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnSalirPed"
+                style="@style/Widget.App.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:text="Salir" />
+
+            <Button
+                android:id="@+id/btnAceptarPed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:text="Guardar" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

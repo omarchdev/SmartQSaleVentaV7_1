@@ -1,0 +1,119 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    tools:context="com.omarchdev.smartqsale.smartqsaleventas.Fragment.FragmentInventario">
+
+     <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/ContenedorBotones"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ContenedorBarraBusqueda"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <Button
+
+                android:id="@+id/btnAgregarProducto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:backgroundTint="@android:color/holo_blue_dark"
+                android:gravity="center"
+                android:padding="6dp"
+                android:text="Agregar Producto"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp" />
+
+            <Button
+
+                android:id="@+id/btnReservaProducto"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:backgroundTint="@android:color/holo_blue_dark"
+                android:padding="6dp"
+                android:text="Productos en Reserva"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp" />
+
+        </LinearLayout>
+        <RelativeLayout
+
+            android:id="@+id/ContenedorBarraBusqueda"
+        android:layout_width="match_parent"
+            android:layout_height="80dp"
+        android:padding="10dp"
+        >
+
+        <EditText
+
+            android:id="@+id/sv_Product"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:hint="Buscar Producto" />
+
+        <ImageButton
+            android:id="@+id/btnBuscarProducto"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_toRightOf="@+id/sv_Product"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:elevation="5dp"
+            android:src="@drawable/search" />
+
+            <ImageButton
+                android:id="@+id/btnScanProduct"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/btnBuscarProducto"
+                android:backgroundTint=" #ff830f"
+                android:src="@drawable/barcode_scan" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ContenedorBotones"
+        android:gravity="center">
+
+        <ProgressBar
+
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:foregroundGravity="center" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvInventario"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="#EEEEEE"
+            android:padding="3dp"
+            android:scrollbars="vertical">
+
+
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </RelativeLayout>
+    </RelativeLayout>
+</FrameLayout>

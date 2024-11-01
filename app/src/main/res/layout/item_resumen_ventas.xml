@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/imgColor"
+        android:layout_width="5dp"
+        android:layout_height="30dp"
+        android:background="@color/colorPrimary" />
+
+    <TextView
+        android:id="@+id/txtTipo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="11dp"
+        android:layout_toEndOf="@+id/imgColor"
+        android:text="Tipo de pago"
+        />
+
+    <TextView
+        android:textStyle="bold"
+        android:id="@+id/montoDinero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:text="Monto Dinero"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/txtSubtitulo"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/txtTipo"
+        android:layout_below="@+id/txtTipo"
+        android:text=""
+
+        android:textSize="12sp" />
+</RelativeLayout>

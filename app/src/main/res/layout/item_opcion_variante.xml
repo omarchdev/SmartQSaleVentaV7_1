@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="0.2dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#acacac"
+        android:orientation="vertical"></LinearLayout>
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <ImageButton
+            android:background="?selectableItemBackgroundBorderless"
+            style="?android:attr/borderlessButtonStyle"
+            android:tint="@color/colorAccent"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            app:srcCompat="@drawable/ic_delete_white_24dp"
+            android:id="@+id/btnDeleteElement" />
+
+        <Button
+            android:background="?selectableItemBackgroundBorderless"
+            android:backgroundTint="@color/colorPrimary"
+            android:id="@+id/btnAddValoresOpcionVariante"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/btnDeleteElement"
+            android:drawableTint="@color/colorAccent"
+            android:drawableTop="@drawable/plus"
+            android:text="Valores"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/txtTituloOpcion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="4dp"
+            android:text="Titulo de opcion"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtContenedorValores"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtTituloOpcion"
+
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:text="Debe txtTituloes a la opcion" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ScrollView
+        android:layout_above="@id/content_button"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:id="@+id/edtStock"
+                android:textColorHint="@color/colorAccent"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:inputType="numberDecimal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Stock Ediccion en Mov. Almacén"
+                    android:text="0.00"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginStart="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:id="@+id/edtPrecioCompra"
+
+                android:textColorHint="@color/colorAccent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:inputType="numberDecimal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Precio Compra"
+                    android:text="0.00"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginStart="10dp"
+                android:id="@+id/edtPrecioVenta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="2dp"
+                android:textColorHint="@color/colorAccent"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:inputType="numberDecimal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="0.00"
+                    android:hint="Precio Venta" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <Switch
+                android:id="@+id/switchPrecioMult"
+                android:padding="12dp"
+                android:text="Multiples precios de Venta   "
+                android:gravity="left"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:gravity="center"
+                        android:paddingLeft="8dp"
+                        android:layout_margin="4dp"
+                        android:text="Precios de Venta:"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+
+                    <ImageButton
+                        android:id="@+id/btnAgregarPVenta"
+                        android:padding="4dp"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/fondo_rectangle_border_radius"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        app:srcCompat="@drawable/fab_add"
+                        />
+
+
+                </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvPVentaAdd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="2dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edtCodigoBarra"
+                    android:textColorHint="@color/colorAccent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+
+                    >
+
+
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Código de barras" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageButton
+                    android:id="@+id/btnScanCode"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@color/colorAccent"
+
+                    app:srcCompat="@drawable/barcode_scan" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/content_button"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        >
+        <Button
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:text="Salir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnSalir"
+            >
+
+        </Button>
+        <Button
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:text="Guardar"
+            android:id="@+id/btnGuardar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</RelativeLayout>

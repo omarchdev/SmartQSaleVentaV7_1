@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.omarchdev.smartqsale.smartqsaleventas.Activitys.RegistroMedioPago">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:gravity=""
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <com.wang.avi.AVLoadingIndicatorView
+                android:id="@+id/pbIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                app:indicatorColor="@color/colorAccent"
+                app:indicatorName="BallPulseIndicator"
+                ></com.wang.avi.AVLoadingIndicatorView>
+
+            <TextView
+                android:id="@+id/txtCargando1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/pbIndicator"
+                android:layout_centerHorizontal="true"
+                android:text="Cargando información"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold" />
+            <RelativeLayout
+                android:id="@+id/rlContent"
+                android:visibility="visible"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+
+
+                <Spinner
+
+
+                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:id="@+id/spnTipoPago"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="16dp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    app:errorEnabled="true"
+
+                    app:counterEnabled="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/spnTipoPago"
+                    android:layout_marginTop="16dp"
+                    android:id="@+id/edtNombreMedioPago"
+                    app:counterMaxLength="60">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:maxLength="60"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Nombre del medio de pago" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/edtNombreMedioPago"
+                    android:layout_marginTop="16dp"
+                    android:id="@+id/edtCodigoMedioPago"
+                    app:counterMaxLength="20"
+                    app:counterEnabled="true"
+                    app:errorEnabled="true">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:maxLength="20"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Codigo medio de pago" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edtMontoMinimo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/edtCodigoMedioPago"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="16dp"
+                    android:visibility="gone"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="20"
+                    app:errorEnabled="true">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Monto minimo"
+                        android:maxLength="20" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/rvSeleccionImagen"
+                    android:layout_marginTop="16dp"
+                    android:layout_below="@id/edtMontoMinimo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/actionMenuMedioPago"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom|right"
+        android:backgroundTint="#98232323"
+        android:elevation="10dp"
+        app:menu_animationDelayPerItem="50"
+        app:menu_backgroundColor="#ccffffff"
+        app:menu_buttonSpacing="0dp"
+        app:menu_colorRipple="#99FFFFFF"
+        app:menu_fab_size="normal"
+        app:menu_labels_cornerRadius="3dp"
+        app:menu_labels_ellipsize="none"
+        app:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"
+        app:menu_labels_paddingBottom="4dp"
+        app:menu_labels_paddingRight="8dp"
+        app:menu_labels_paddingTop="4dp"
+        app:menu_labels_position="left"
+        app:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
+        app:menu_labels_singleLine="true"
+        app:menu_openDirection="up"
+
+        app:menu_colorNormal="@color/colorPrimaryDark"
+        app:menu_colorPressed="@color/colorAccent"
+        app:menu_shadowColor="#6a000000"
+        app:menu_shadowRadius="4dp"
+        app:menu_shadowXOffset="1dp"
+        app:menu_shadowYOffset="3dp"
+        app:menu_showShadow="true">
+
+
+        <com.github.clans.fab.FloatingActionButton
+            app:fab_colorNormal="@color/colorPrimary"
+            app:fab_colorPressed="@color/colorPrimary"
+            android:id="@+id/menu_item_cancelar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/pencil_edit"
+            app:fab_label="Cancelar"
+            app:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            app:fab_colorNormal="@color/colorPrimary"
+            app:fab_colorPressed="@color/colorPrimary"
+            android:id="@+id/menu_item_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/pencil_edit"
+            app:fab_label="Editar categoría"
+            app:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            app:fab_colorNormal="@color/colorPrimary"
+            app:fab_colorPressed="@color/colorPrimary"
+
+            android:id="@+id/menu_item_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_delete_white_24dp"
+            app:fab_label="Eliminar categoria"
+            app:fab_size="mini" />
+        <com.github.clans.fab.FloatingActionButton
+            app:fab_colorNormal="@color/colorPrimary"
+            app:fab_colorPressed="@color/colorPrimary"
+            android:id="@+id/menu_item_guardar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_cloud_upload_white_18dp"
+
+            app:fab_label="Guardar categoría"
+            app:fab_size="mini" />
+    </com.github.clans.fab.FloatingActionMenu>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

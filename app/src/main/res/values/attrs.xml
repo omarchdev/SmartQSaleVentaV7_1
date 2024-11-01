@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="GroupedRadioButton">
+        <attr name="group" format="string" />
+    </declare-styleable>
+    <declare-styleable name="RadioCustomButton">
+        <attr name="Title" format="string" />
+        <attr name="Subtitle" format="string" />
+        <attr name="Checked" format="boolean">
+
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="RadioButtonV2">
+        <attr name="title" format="string" />
+        <attr name="subtitle" format="string" />
+    </declare-styleable>
+</resources>
