@@ -3,6 +3,7 @@ package com.omarchdev.smartqsale.smartqsaleventas.Repository
 import com.omarchdev.smartqsale.smartqsaleventas.Model.*
 import retrofit2.Call
 import retrofit2.http.*
+import java.math.BigDecimal
 
 interface IPedidoRespository {
 
@@ -22,6 +23,8 @@ interface IPedidoRespository {
     fun GenerarVenta(@Body solicitudEnvio: SolicitudEnvio<VentaGeneracion>): Call<mRespuestaVenta>
     @POST("api/pedido/GenerarVentaV2")
     fun GenerarVentaV2(@Body solicitudEnvio: SolicitudEnvio<VentaGeneracion>): Call<mRespuestaVenta>
+    @POST("api/pedido/GenerarVentaV4")
+    fun GenerarVentaV4(@Body solicitudEnvio: SolicitudEnvio<VentaGeneracion>): Call<mRespuestaVenta>
     @GET("api/Pedido/GetEstadoPedidoActivo")
     fun GetEstadoPedido(
         @Query("codeCia") codeCia: String,
@@ -140,6 +143,25 @@ interface IPedidoRespository {
         @Query("descripcion") descripcion: String
     ): Call<Int>
 
+
+
+    /*
+        [HttpPost("[action]")]
+        public IActionResult GetBienesServiciosDetraccion([FromQuery(Name = "tipoConsulta")] string TipoMovimientoPedido, [FromQuery(Name = "codeCia")] string nombreCia) {
+    */
+    @GET("api/Pedido/GetBienesServiciosDetraccion")
+    fun GetBienesServiciosDetraccion(
+        @Query("tipoConsulta") tipoConsulta: String,
+        @Query("codeCia") codeCia: String
+    ): Call<List<BienServicioDetraccion>>
+
+
+    /*
+     [HttpPost("[action]")]
+ public IActionResult CalculoDetraccion([FromBody] SolicitudData<decimal> sol)
+    */
+    @POST("api/Pedido/CalculoDetraccion")
+    fun CalculoDetraccion(@Body sol: SolicitudEnvio<InputDetraccionCalculo>): Call<DetraccionCalculo>
 
     @POST("api/ZonaServicio/RegistrarZonaServicioPedido")
     fun RegistrarZonaServicioPedido(@Body sol: SolicitudEnvio<mCabeceraPedido>): Call<ResZonaServicio>

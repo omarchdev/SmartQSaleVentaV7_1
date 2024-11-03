@@ -186,6 +186,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
     EditText searchBox;
     AsyncCabeceraVenta asyncCabeceraVenta;
     DbHelper helper;
+    String codigoDetraccion="";
     DialogSelectModProducto dialogSelectModProducto;
     DialogSelectCombo dialogSelectCombo;
     Dialog dialogProceso;
@@ -1412,7 +1413,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
     public void GuardarPagos(BigDecimal CantidadCambio, int TipoDocPago,
                              boolean generaDoc, int idTipoAtencion, BigDecimal montoPromocion,
                              String obs, BigDecimal montoDetraccion, BigDecimal porcentajeDetraccion,
-                             String cuentaDetraccion, boolean usaDetraccion) {
+                             String cuentaDetraccion, boolean usaDetraccion,String codigoDetraccion) {
 
         this.tp = TipoDocPago;
         this.idTipoAtencionP = idTipoAtencion;
@@ -1424,6 +1425,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
         this.porcentajeDetraccion = porcentajeDetraccion;
         this.cuentaDetraccion = cuentaDetraccion;
         this.usaDetraccion = usaDetraccion;
+        this.codigoDetraccion=codigoDetraccion;
         asyncProcesoVenta.VerificarPermitirVenta(idCabeceraActual, true);
         asyncProcesoVenta.setiVerificarPermitirVenta(new AsyncProcesoVenta.IVerificarPermitirVenta() {
             @Override
@@ -3631,14 +3633,14 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                     generaDocumento, idTipoAtencionP,
                     montoPromocion, observacion, GenerarFecha(),
                     montoDetraccion,porcentajeDetraccion,
-                    cuentaDetraccion,usaDetraccion);
+                    cuentaDetraccion,usaDetraccion,codigoDetraccion);
             SolicitudEnvio<VentaGeneracion> solicitudEnvio = new SolicitudEnvio<>(codeCia, "2", ventaGeneracion,
                     Constantes.Terminal.idTerminal, Constantes.Usuario.idUsuario);
             mRespuestaVenta r = new mRespuestaVenta();
             String data = new Gson().toJson(solicitudEnvio);
-
+            String temp2 = data;
             try {
-                r = iPedidoRespository.GenerarVentaV2(solicitudEnvio).execute().body();
+                r = iPedidoRespository.GenerarVentaV4(solicitudEnvio).execute().body();
                 r.getCabeceraVenta().setRucEmisor(Constantes.Empresa.NumRuc);
             } catch (IOException e) {
                 e.toString();

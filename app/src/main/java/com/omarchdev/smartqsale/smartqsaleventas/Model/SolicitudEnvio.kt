@@ -31,5 +31,6 @@ data class VentaGeneracion(@SerializedName("idCabeceraPedido") val idCabeceraPed
                            @SerializedName("porcentajeDetraccion") val porcentajeDetraccion: BigDecimal,
                            @SerializedName("numeroCuenta") val numeroCuentaDetraccion: String,
                            @SerializedName("usaDetraccion") val usaDetraccion: Boolean,
+                           @SerializedName("codigoDetraccion") val codigoDetraccion:String
 
 )

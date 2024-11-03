@@ -1,6 +1,7 @@
 package com.omarchdev.smartqsale.smartqsaleventas.DialogFragments;
 
 import static com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes.BASECONN.BASE_URL_API;
+import static com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes.ConfigTienda.cCodigo_detraccion_default;
 import static com.omarchdev.smartqsale.smartqsaleventas.Control.MethodsNumber.ReplaceCommaToDot;
 import static com.omarchdev.smartqsale.smartqsaleventas.Controlador.ClickEditTextNumberKt.ClickTextInputLayout;
 import static com.omarchdev.smartqsale.smartqsaleventas.Model.CiaTiendaKt.GetJsonCiaTiendaBase64x3;
@@ -38,12 +39,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
+import com.omarchdev.smartqsale.smartqsaleventas.AsyncTask.AsyncPedido;
 import com.omarchdev.smartqsale.smartqsaleventas.AsyncTask.AsyncProcesoVenta;
 import com.omarchdev.smartqsale.smartqsaleventas.ConexionBd.BdConnectionSql;
 import com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes;
 import com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes.TiposAtencion;
 import com.omarchdev.smartqsale.smartqsaleventas.Control.NumberTextWatcher;
 import com.omarchdev.smartqsale.smartqsaleventas.Controlador.ControladorMediosPago;
+import com.omarchdev.smartqsale.smartqsaleventas.Model.BienServicioDetraccion;
+import com.omarchdev.smartqsale.smartqsaleventas.Model.DetraccionCalculo;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.PagoVentaTemp;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.ProcessResult;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.Promocion;
@@ -83,6 +87,7 @@ public class dialogCobroVenta extends DialogFragment implements View.OnClickList
     Button btnFinalizarVenta;
     List<RadioButton> listRadioTiposAtencion;
     RecyclerView rvMetodosDePago;
+    Spinner spnDetraccion;
     LinearLayout contentDetraccion;
     RvAdapterPagosEnVenta rvAdapterPagosEnVenta;
     RvAdapterGridMetodoPago rvGridMPagos;
@@ -113,7 +118,8 @@ public class dialogCobroVenta extends DialogFragment implements View.OnClickList
     TextView txtTituloAtencion;
     TextInputLayout edtObservacion, txtPorcentajeDetraccion, txtMontoDetraccion, txtCuentaDetraccion;
     BigDecimal saldoPendiente;
-
+    List<BienServicioDetraccion> bienServicioDetraccionList;
+    AsyncPedido asyncPedido;
     final String codeCia = GetJsonCiaTiendaBase64x3();
     Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API)
             .addConverterFactory(GsonConverterFactory.create()).build();
@@ -209,8 +215,8 @@ public class dialogCobroVenta extends DialogFragment implements View.OnClickList
         this.montoUtilizarPromocion = new BigDecimal(0);
         dialog = builder.setView(v).create();
         asyncProcesoVenta = new AsyncProcesoVenta();
+        asyncPedido = new AsyncPedido(this.context);
         setItemClickListener();
-
         dialog.setCanceledOnTouchOutside(false);
         return dialog;
     }
@@ -232,8 +238,10 @@ public class dialogCobroVenta extends DialogFragment implements View.OnClickList
             txtCuentaDetraccion = v.findViewById(R.id.txtCuentaDetraccion);
             contentDetraccion = v.findViewById(R.id.contentDetraccion);
             cbDetraccion = v.findViewById(R.id.cbDetraccion);
+            spnDetraccion = v.findViewById(R.id.spn_detraccion);
             cbDetraccion.setChecked(false);
             CierraDetraccion();
+
             NumberTextWatcher watcherEdtMontoDetraccion = new NumberTextWatcher(txtMontoDetraccion.getEditText());
             NumberTextWatcher watcherEdtPorcentajeDetraccion = new NumberTextWatcher(txtPorcentajeDetraccion.getEditText());
             watcherEdtMontoDetraccion.setINumberTextWatcher(number -> {
@@ -350,16 +358,130 @@ public class dialogCobroVenta extends DialogFragment implements View.OnClickList
 
     public void AbreDetraccion() {
         try {
+            mostrarContenidoDetraccion();
+            inicializarValoresDetraccion();
+            cargarBienesServiciosDetraccion();
+        } catch (Exception ex) {
+            ex.toString();
+        }
+    }
+
+    private void mostrarContenidoDetraccion() {
+        contentDetraccion.setVisibility(View.VISIBLE);
+    }
+
+    private void inicializarValoresDetraccion() {
+        BigDecimal valor = new BigDecimal(0);
+        txtMontoDetraccion.getEditText().setText(String.format("%.2f", valor));
+        txtPorcentajeDetraccion.getEditText().setText(String.format("%.2f", valor));
+        txtCuentaDetraccion.getEditText().setText("");
+    }
+
+    private void cargarBienesServiciosDetraccion() {
+        asyncPedido.GetBienesServiciosDetraccion(result -> {
+            bienServicioDetraccionList = result;
+            configurarSpinnerDetraccion();
+            seleccionarDetraccionPorDefecto();
+            configurarListenerSpinnerDetraccion();
+        });
+    }
+
+    private void configurarSpinnerDetraccion() {
+        ArrayAdapter<BienServicioDetraccion> adDetraccion = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, bienServicioDetraccionList);
+        spnDetraccion.setAdapter(adDetraccion);
+    }
+
+    private void seleccionarDetraccionPorDefecto() {
+        if (cCodigo_detraccion_default != null && !cCodigo_detraccion_default.isEmpty()) {
+            for (int i = 0; i < bienServicioDetraccionList.size(); i++) {
+                if (bienServicioDetraccionList.get(i).getCodigo().equals(cCodigo_detraccion_default)) {
+                    spnDetraccion.setSelection(i);
+                    break;
+                }
+            }
+        }
+    }
+
+    private void configurarListenerSpinnerDetraccion() {
+        spnDetraccion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                actualizarValoresDetraccion(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+    }
+
+    private void actualizarValoresDetraccion(int position) {
+        BigDecimal temp = new BigDecimal(bienServicioDetraccionList.get(position).getTasa_porcentaje());
+        txtPorcentajeDetraccion.getEditText().setText(String.format("%.2f", temp));
+        asyncPedido.CalculoDetraccion(montoTotal, bienServicioDetraccionList.get(position).getCodigo(), result1 -> {
+            DetraccionCalculo detraccionCalculo = result1;
+            txtMontoDetraccion.getEditText().setText(String.format("%.2f", detraccionCalculo.getMonto_depositar_detraccion_banco()));
+            txtCuentaDetraccion.getEditText().setText(detraccionCalculo.getCCuenta_detraccion());
+        });
+    }
+/*
+    public void AbreDetraccion() {
+        try {
             contentDetraccion.setVisibility(View.VISIBLE);
             BigDecimal valor = new BigDecimal(0);
             txtMontoDetraccion.getEditText().setText(String.format("%.2f",valor));
             txtPorcentajeDetraccion.getEditText().setText(String.format("%.2f",valor));
             txtCuentaDetraccion.getEditText().setText("");
+            asyncPedido.GetBienesServiciosDetraccion(
+                    result -> {
+                        bienServicioDetraccionList = result;
+                        ArrayAdapter<BienServicioDetraccion> adDetraccion = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, bienServicioDetraccionList);
+                        spnDetraccion.setAdapter(adDetraccion);
+                        if(cCodigo_detraccion_default!=null){
+                            if(!cCodigo_detraccion_default.isEmpty()){
+                                for (int i = 0; i < bienServicioDetraccionList.size(); i++) {
+                                    if (bienServicioDetraccionList.get(i).getCodigo().equals(cCodigo_detraccion_default)) {
+                                        spnDetraccion.setSelection(i);
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+
+                        spnDetraccion.setOnItemSelectedListener(
+                                new AdapterView.OnItemSelectedListener() {
+                                    @Override
+                                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                         BigDecimal   temp= new BigDecimal( bienServicioDetraccionList.get(position).getTasa_porcentaje());
+                                        txtPorcentajeDetraccion.getEditText().setText(String.format("%.2f",temp));
+                                        asyncPedido.CalculoDetraccion(
+                                                montoTotal,
+                                                bienServicioDetraccionList.get(position).getCodigo(),
+                                                result1 -> {
+                                                    DetraccionCalculo detraccionCalculo = result1;
+                                                    txtMontoDetraccion.getEditText().setText(String.format("%.2f", detraccionCalculo.getMonto_depositar_detraccion_banco()));
+                                                    txtCuentaDetraccion.getEditText().setText(detraccionCalculo.getCCuenta_detraccion());
+                                                }
+                                           );
+                                      //  txtPorcentajeDetraccion.getEditText().setText(String.format("%.2f", bienServicioDetraccionList.get(position).getTasa_porcentaje()));
+                                        // Toast.makeText(context, "Porcentaje: " + bienServicioDetraccionList.get(position).getTasa_porcentaje(), Toast.LENGTH_SHORT).show();
+                                    }
+
+                                    @Override
+                                    public void onNothingSelected(AdapterView<?> parent) {
+
+                                    }
+                                }
+                        );
+
+                    }
+            );
+
         }catch (Exception ex){
             ex.toString();
         }
     }
-
+*/
     public void CierraDetraccion() {
         BigDecimal valor = new BigDecimal(0);
         contentDetraccion.setVisibility(View.GONE);
@@ -490,14 +612,21 @@ public class dialogCobroVenta extends DialogFragment implements View.OnClickList
         }
 
         if (permitir) {
+            String codigoDetraccion="";
+            if(cbDetraccion.isChecked())
+            {
+                codigoDetraccion=bienServicioDetraccionList.get(
+                        spnDetraccion.getSelectedItemPosition()
+                ).getCodigo();
+            }
             listenerVentaFinalizada.GuardarPagos(this.cantidadACuenta,
                     idDocPago, generaDoc, this.rgAtencion.getCheckedRadioButtonId(),
                     this.montoUtilizarPromocion, this.edtObservacion.getEditText().getText().toString(),
                     new BigDecimal(ReplaceCommaToDot(txtMontoDetraccion.getEditText().getText().toString())),
                     new BigDecimal(ReplaceCommaToDot(txtPorcentajeDetraccion.getEditText().getText().toString())),
                     txtCuentaDetraccion.getEditText().getText().toString(),
-                    cbDetraccion.isChecked()
-            );
+                    cbDetraccion.isChecked(),codigoDetraccion );
+
             dialog.dismiss();
         }
 
@@ -722,7 +851,7 @@ public class dialogCobroVenta extends DialogFragment implements View.OnClickList
         void GuardarPagos(BigDecimal CantidadCambio, int TipoDocPago,
                           boolean generaDoc, int idTipoAtencion, BigDecimal montoPromocion
                 , String obs, BigDecimal montoDetraccion, BigDecimal porcentajeDetraccion,
-                          String cuentaDetraccion, boolean usaDetraccion);
+                          String cuentaDetraccion, boolean usaDetraccion,String codigoDetraccion);
 
     }
 

@@ -16,6 +16,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.math.BigDecimal
 
 
 class AsyncPedido(context: Context) {
@@ -258,6 +259,60 @@ class AsyncPedido(context: Context) {
         }
 
     }
+
+    /*
+    @GET("api/Pedido/GetBienesServiciosDetraccion")
+    fun GetBienesServiciosDetraccion(
+        @Query("tipoConsulta") tipoConsulta: String,
+        @Query("codeCia") codeCia: String
+    ): Call<List<BienServicioDetraccion>>
+    */
+    interface IResultBienesServiciosDetraccion {
+        fun ResultBienesServiciosDetraccion(result: List<BienServicioDetraccion>)
+    }
+    fun GetBienesServiciosDetraccion( iResultBienesServiciosDetraccion: IResultBienesServiciosDetraccion) {
+         GlobalScope.launch  {
+             try {
+                 val result = iPedidoRespository.GetBienesServiciosDetraccion(BASECONN.TIPO_CONSULTA, codeCia).execute().body()
+                 launch(Dispatchers.Main){
+                     if (result != null) {
+                         iResultBienesServiciosDetraccion.ResultBienesServiciosDetraccion(result)
+                     }
+                 }
+             }catch (ex:Exception){
+                 launch(Dispatchers.Main){
+                         iResultBienesServiciosDetraccion.ResultBienesServiciosDetraccion(ArrayList())
+
+                 }
+             }
+
+        }
+    }
+
+
+    /*
+        @POST("api/Pedido/CalculoDetraccion")
+    fun CalculoDetraccion(@Body sol: SolicitudEnvio<BigDecimal>): Call<DetraccionCalculo>
+
+    * */
+    interface IResultCalculoDetraccion {
+        fun ResultCalculoDetraccion(result: DetraccionCalculo)
+    }
+    fun CalculoDetraccion(monto: BigDecimal,codigo_detraccion:String, iResultCalculoDetraccion: IResultCalculoDetraccion) {
+         GlobalScope.launch  {
+
+           val detraccionInput=InputDetraccionCalculo(monto,codigo_detraccion)
+           val solicitudEnvioJson = Gson().toJson(SolicitudEnvio(codeCia, TIPO_CONSULTA, detraccionInput))
+           val str=solicitudEnvioJson
+           val result = iPedidoRespository.CalculoDetraccion(SolicitudEnvio(codeCia, TIPO_CONSULTA,detraccionInput)).execute().body()
+           launch(Dispatchers.Main){
+                if (result != null) {
+                    iResultCalculoDetraccion.ResultCalculoDetraccion(result)
+                }
+            }
+        }
+    }
+
 
 
     interface IResultZonaServicioPedido {

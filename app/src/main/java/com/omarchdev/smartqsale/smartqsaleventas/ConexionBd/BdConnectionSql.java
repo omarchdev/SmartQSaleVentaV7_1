@@ -8683,6 +8683,7 @@ public class BdConnectionSql {
 
                     Constantes.ConfigTienda.bVisibleBtnCambioPantalla = rs.getBoolean("bVisible_Btn_Cambio_Mod_Pedido");
                     Constantes.ConfigTienda.bUsaAforo = rs.getBoolean("bUsa_Aforo");
+                    Constantes.ConfigTienda.cCodigo_detraccion_default = rs.getString("cCodigo_detraccion_default");
 
                 }
                 for (int i = 0; i < list1.size(); i++) {
