@@ -1,7 +1,9 @@
 package com.omarchdev.smartqsale.smartqsaleventas.DialogFragments;
 
 import static com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes.BASECONN.BASE_URL_API;
+import static com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes.ConfigTienda.bUsaDetraccion;
 import static com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes.ConfigTienda.cCodigo_detraccion_default;
+import static com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes.ConfigTienda.nMonto_minimo_uso_detraccion;
 import static com.omarchdev.smartqsale.smartqsaleventas.Control.MethodsNumber.ReplaceCommaToDot;
 import static com.omarchdev.smartqsale.smartqsaleventas.Controlador.ClickEditTextNumberKt.ClickTextInputLayout;
 import static com.omarchdev.smartqsale.smartqsaleventas.Model.CiaTiendaKt.GetJsonCiaTiendaBase64x3;
@@ -829,10 +831,10 @@ public class dialogCobroVenta extends DialogFragment implements View.OnClickList
             cbDetraccion.setChecked(false);
             cbDetraccion.setVisibility(View.GONE);
         }else{
-
-            if(montoTotal.compareTo(new BigDecimal(700))>=0){
+            if(bUsaDetraccion && montoTotal.compareTo(new BigDecimal(nMonto_minimo_uso_detraccion))>=0) {
                 cbDetraccion.setChecked(false);
                 cbDetraccion.setVisibility(View.VISIBLE);
+
             }else{
                 cbDetraccion.setChecked(false);
                 cbDetraccion.setVisibility(View.GONE);

@@ -21,7 +21,7 @@ public class mPagosEnVenta {
     boolean esEfectivo;
     @SerializedName("activaPagoExterno")
     boolean activaPagoExterno;
-    @SerializedName("id_cab_pedido")
+    @SerializedName("idCabeceraPedido")
     int IdCabeceraPedido;
 
     @SerializedName("idPago")

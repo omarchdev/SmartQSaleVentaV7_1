@@ -24,10 +24,16 @@ import com.omarchdev.smartqsale.smartqsaleventas.Model.mVendedor;
 import com.omarchdev.smartqsale.smartqsaleventas.Repository.IPagoRepository;
 import com.omarchdev.smartqsale.smartqsaleventas.Repository.IPedidoRespository;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -106,12 +112,44 @@ public class ControladorVentas {
                 pedido = new Pedido();
                 pedido.getCabeceraPedido().setIdCabecera(0);
             }
-            Response<List<mPagosEnVenta>> responsePagosVenta = iPagoRepository.GetPagosPedidoV2(codeCia, "2", idPedido).execute();
+            Response<List<mPagosEnVenta>> responsePagosVenta = iPagoRepository.GetPagosPedidoV3(codeCia, "2", idPedido).execute();
             List<mPagosEnVenta> pagosEnVentas = null;
-            if (responsePagosVenta.code() == 200) {
-                pagosEnVentas = responsePagosVenta.body();
-            } else {
 
+            OkHttpClient client = new OkHttpClient();
+
+            Request request = new Request.Builder()
+                    .url("http://161.132.56.226:7001/api/Pedido/GetPagosRealizadosPedidoV3")
+                    .get()
+                    .addHeader("codeCia", codeCia)
+                    .addHeader("tipoMovimiento", "2")
+                    .addHeader("idPedido", String.valueOf( idPedido)  )
+                    .build();
+
+            String temp=  client.newCall(request).execute().body().string();
+            List<mPagosEnVenta> listTemp= new ArrayList<>();
+            JSONArray jsonArr = new JSONArray(temp);
+            for (int i = 0; i < jsonArr.length(); i++)
+            {
+                JSONObject jsonObj = jsonArr.getJSONObject(i);
+                mPagosEnVenta pago=new mPagosEnVenta();
+                pago.setIdCabeceraPedido(jsonObj.getInt("idCabeceraPedido"));
+                pago.setIdTipoPago(jsonObj.getInt("idTipoPago"));
+                pago.setcTipoPago(jsonObj.getString("cTipoPago"));
+                pago.setTipoPago(jsonObj.getString("tipoPago"));
+                pago.setCantidadPagada(new BigDecimal(jsonObj.getDouble("cantidadPagada")));
+                pago.setEsEfectivo(jsonObj.getBoolean("esEfectivo"));
+                listTemp.add(pago);
+
+
+            }
+
+
+
+            if (responsePagosVenta.code() == 200) {
+               // pagosEnVentas = responsePagosVenta.body();
+                pagosEnVentas = listTemp;
+            } else {
+                pagosEnVentas=new ArrayList<>();
             }
             //      List<mPagosEnVenta> pagos= bdConnectionSql.getPagosRealizadosDetallePedido(idPedido);
             pedido.setPagosEnPedido((ArrayList<mPagosEnVenta>) pagosEnVentas);

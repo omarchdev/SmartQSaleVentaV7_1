@@ -215,7 +215,7 @@ public class DetalleVenta {
         }
 
 
-        return Total;
+        return Total.setScale(2, BigDecimal.ROUND_HALF_UP);
     }
 
     public boolean PermitirGuardarEnUltimo() {

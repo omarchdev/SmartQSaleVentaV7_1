@@ -112,7 +112,9 @@ public class DialogVariantesProducto extends DialogFragment implements AsyncVari
                 if (permitirCantidad) {
                     if (controlCarga) {
                         if (multiplePV) {
-                            precioSelect = priceProductList.get(adapterPriceAdditional.getPosActual()).getAdditionalPrice();
+                            int posActual=adapterPriceAdditional.getPosActual();
+                            AdditionalPriceProduct listTemp=priceProductList.get(posActual);
+                            precioSelect = listTemp.getAdditionalPrice();
                         } else {
                             precioSelect = new BigDecimal(0);
                         }

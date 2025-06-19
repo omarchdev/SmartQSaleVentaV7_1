@@ -9,4 +9,8 @@ class ParenFragment: Fragment() {
         super.onStart()
         activity?.requestedOrientation  = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
     }
+
+
+
 }
+

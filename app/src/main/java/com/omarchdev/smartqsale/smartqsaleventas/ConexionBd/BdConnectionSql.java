@@ -8684,7 +8684,8 @@ public class BdConnectionSql {
                     Constantes.ConfigTienda.bVisibleBtnCambioPantalla = rs.getBoolean("bVisible_Btn_Cambio_Mod_Pedido");
                     Constantes.ConfigTienda.bUsaAforo = rs.getBoolean("bUsa_Aforo");
                     Constantes.ConfigTienda.cCodigo_detraccion_default = rs.getString("cCodigo_detraccion_default");
-
+                    Constantes.ConfigTienda.bUsaDetraccion = rs.getBoolean("bUsa_detraccion");
+                    Constantes.ConfigTienda.nMonto_minimo_uso_detraccion = rs.getFloat("nMonto_minimo_uso_detraccion");
                 }
                 for (int i = 0; i < list1.size(); i++) {
                     for (int j = 0; j < list2.size(); j++) {

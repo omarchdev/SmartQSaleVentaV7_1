@@ -44,10 +44,15 @@ class UsbController{
     }
 
     fun subscribeBroadcast(){
-        val filter = IntentFilter(UsbManager.ACTION_USB_DEVICE_DETACHED)
-        filter.addAction(UsbManager.ACTION_USB_DEVICE_ATTACHED)
-        filter.addAction(ANDROID_USB_PERMISSION)
-        context.registerReceiver(usbReceiver, filter)
+        try{
+            val filter = IntentFilter(UsbManager.ACTION_USB_DEVICE_DETACHED)
+            filter.addAction(UsbManager.ACTION_USB_DEVICE_ATTACHED)
+            filter.addAction(ANDROID_USB_PERMISSION)
+            context.registerReceiver(usbReceiver, filter)
+
+        }catch (e:Exception){
+            Toast.makeText(context,e.toString(),Toast.LENGTH_SHORT).show()
+        }
     }
 
     fun searchDevice(vendorId:Int,productId:Int):UsbDevice?{

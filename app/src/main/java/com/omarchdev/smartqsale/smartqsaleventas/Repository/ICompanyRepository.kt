@@ -9,6 +9,16 @@ import retrofit2.http.Query
 
 interface ICompanyRepository {
 
+    /*
+      [HttpGet("[action]")]
+        public IActionResult GetConfiguracionEmpresa(string codeCia, string codeTipo)
+  */
+    @GET("api/Compania/GetConfiguracionEmpresa")
+    fun GetConfiguracionEmpresa(
+        @Query("codeCia") codeCia: String,
+        @Query("codeTipo") codeTipo: String
+    ): Call<ConfiguracionEmpresa>
+
     @POST("api/Compania/GuardarConfigDiaSemana")
     fun GuardarConfigDiaSemana(@Body sol: SolicitudEnvio<ConfigDiaSemana>): Call<ResultProcces>
 

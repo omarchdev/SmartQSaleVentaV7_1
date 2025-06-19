@@ -239,16 +239,7 @@ public class HistorialVentas extends ActivityParent implements DialogDatePickerS
 
     }
 
-  /*  private void MostrarProgressDialog(String mensaje) {
 
-        ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage(mensaje);
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progressDialog.setCanceledOnTouchOutside(false);
-        dialog = progressDialog;
-        dialog.show();
-
-    }*/
 
     @Override
     protected void onResume() {

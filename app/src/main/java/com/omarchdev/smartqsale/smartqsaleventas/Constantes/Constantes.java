@@ -346,6 +346,12 @@ public abstract class Constantes {
         public static boolean bVisibleBtnCambioPantalla;
         public static boolean bUsaAforo;
         public static String cCodigo_detraccion_default;
+        public static boolean bUsaDetraccion;
+        public static float nMonto_minimo_uso_detraccion;
+
+
+
+
     }
 
     public static abstract class ConfiguracionPantallaPedido {
@@ -609,8 +615,10 @@ public abstract class Constantes {
 
     public static abstract class BASECONN {
         public static final String TIPO_CONSULTA = "2";
-        public static final String BASE_URL = "http://ventas.mbsoftperu.com/App/";
-        public static final String BASE_URL_API = "http://192.99.154.9:7003/";
+        public static final String BASE_URL = "http://161.132.56.226:7001/";
+        //public static final String BASE_URL = "http://ventas.mbsoftperu.com/App/";
+        public static final String BASE_URL_API = "http://161.132.56.226:7001/";
+   //     public static final String BASE_URL_API = "http://192.99.154.9:7003/";
 //        public static final String BASE_URL_API = "http://192.99.154.9:8064/";
 
         //public static final String BASE_URL_API = "http://161.132.38.45:8081/";

@@ -31,7 +31,6 @@ class ApiConsultaDocumento{
         }
         result?.enqueue(object: Callback<PersonaDoc> {
             override fun onFailure(call: Call<PersonaDoc>, t: Throwable) {
-                Log.d("da" ,"demooo")
                 cliente.setiId(-99)
              }
             override fun onResponse(call: Call<PersonaDoc>, response: Response<PersonaDoc>) {

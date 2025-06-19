@@ -55,7 +55,12 @@ public class RvAdapterBluetoothDevice extends RecyclerView.Adapter<RecyclerView.
         try {
 
             DeviceSyncViewHolder deviceSyncViewHolder = (DeviceSyncViewHolder) holder;
-            if (ActivityCompat.checkSelfPermission(activity, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+
+            int check = ActivityCompat.checkSelfPermission(activity, Manifest.permission.BLUETOOTH_CONNECT);
+            int check2 =PackageManager.PERMISSION_GRANTED;
+
+
+            if (check == check2) {
                 deviceSyncViewHolder.txtDevice.setText(list.get(position).getName() + "||" + list.get(position).getAddress());
 
                 // TODO: Consider calling

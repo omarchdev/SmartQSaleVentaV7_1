@@ -92,30 +92,36 @@ public class DialogSelectPrinter extends DialogFragment implements View.OnClickL
         rbUsb.setOnClickListener(this);
         rbPdfRed.setOnClickListener(this);
         rvUsbDevice = new RvUsbDevice();
-        rvUsbDevice.setClickPosition(usbDevice -> {
-            // dbHelper.DeletePrint();
-            try {
-                dbHelper.InsertOptionPrint(rbUsb.getText().toString());
-                dbHelper.DeleteImpresoraRed();
-                dbHelper.InsertImpresoraRed(Integer.toString(usbDevice.getVendorId()),
-                        Integer.parseInt(Integer.toString(usbDevice.getProductId())));
-                Cursor c = dbHelper.SelectImpresoraRed();
-                if (c.getCount() > 0) {
-                    while (c.moveToNext()) {
+        try{
+            rvUsbDevice.setClickPosition(usbDevice -> {
+                // dbHelper.DeletePrint();
+                try {
+                    dbHelper.InsertOptionPrint(rbUsb.getText().toString());
+                    dbHelper.DeleteImpresoraRed();
+                    dbHelper.InsertImpresoraRed(Integer.toString(usbDevice.getVendorId()),
+                            Integer.parseInt(Integer.toString(usbDevice.getProductId())));
+                    Cursor c = dbHelper.SelectImpresoraRed();
+                    if (c.getCount() > 0) {
+                        while (c.moveToNext()) {
 
-                        Toast.makeText(getActivity(), String.valueOf(c.getString(0)), Toast.LENGTH_SHORT).show();
-                        Toast.makeText(getActivity(), String.valueOf(c.getInt(1)), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), String.valueOf(c.getString(0)), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), String.valueOf(c.getInt(1)), Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(getActivity(), "No existe ", Toast.LENGTH_LONG).show();
                     }
-                } else {
-                    Toast.makeText(getActivity(), "No existe ", Toast.LENGTH_LONG).show();
+                    dialog.dismiss();
+                } catch (Exception e) {
+                    Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_SHORT).show();
+                    Log.d("blue",e.toString());
                 }
-                dialog.dismiss();
-            } catch (Exception e) {
-                Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_SHORT).show();
-                Log.d("blue",e.toString());
-            }
 
-        });
+            });
+        }catch (Exception ex){
+            Toast.makeText(getActivity(),ex.toString(),Toast.LENGTH_LONG).show();
+            Log.d("blueD",ex.toString());
+        }
+
         comparacion = "";
         Cursor c = dbHelper.SelectOptionPrint();
 
