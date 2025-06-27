@@ -19,7 +19,7 @@ class ApiConsultaDocumento{
     interface IRConsultaDocumento{
         fun ResultadoConsultaDocumento(customer: mCustomer)
     }
-
+    //sss
     fun ConsultaPersonaPorTipoDocumento(numDoc:String,tipo:String):mCustomer{
         var cliente=mCustomer()
         var iConsultaDocumento:IConsultaDocumento=retro.create(IConsultaDocumento::class.java)
