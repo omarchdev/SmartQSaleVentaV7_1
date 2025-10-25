@@ -1822,6 +1822,154 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
 
     }
 
+
+    ////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////FUNCION REFACTORIZADA
+    private void RegistroVehiculo() {
+        try {
+            iniciarRegistroZonaServicio();
+        } catch (Exception e) {
+            mostrarErrorGeneral(e);
+        }
+    }
+
+    private void iniciarRegistroZonaServicio() {
+        new DfRegistroZonaServicioCw().newInstance(
+                cabeceraPedido.getZonaServicio(),
+                this::procesarZonaServicioSeleccionada
+        ).show(getFragmentManager(), "");
+    }
+
+    private void procesarZonaServicioSeleccionada(mZonaServicio zonaServicio) {
+        mCabeceraPedido cabecera = crearCabeceraPedido(zonaServicio);
+        asyncZonaServicio.RegistrarZonaServicioPedido(cabecera, crearListenerRegistro());
+    }
+
+    private mCabeceraPedido crearCabeceraPedido(mZonaServicio zonaServicio) {
+        mCabeceraPedido cabecera = new mCabeceraPedido();
+        cabecera.setIdCabecera(idCabeceraActual);
+        cabecera.setZonaServicio(zonaServicio);
+        return cabecera;
+    }
+
+    private AsyncZonaServicio.ListenerZonaServicioPedido crearListenerRegistro() {
+        return new AsyncZonaServicio.ListenerZonaServicioPedido() {
+            @Override
+            public void ExisteEnPedido(@NotNull ResZonaServicio respuesta) {
+                mostrarAdvertenciaVehiculoExistente(respuesta);
+            }
+
+            @Override
+            public void RegistroExito(@NotNull ResZonaServicio respuesta) {
+                procesarRegistroExitoso(respuesta);
+            }
+
+            @Override
+            public void ErrorRegistro() {
+                mostrarErrorRegistro();
+            }
+        };
+    }
+
+    private void mostrarAdvertenciaVehiculoExistente(ResZonaServicio respuesta) {
+        String mensaje = "El vehículo con placa " +
+                respuesta.getZonaServicio().getDescripcion() +
+                " ya se encuentra en un pedido guardado";
+
+        new AlertDialog.Builder(context)
+                .setTitle("Advertencia")
+                .setMessage(mensaje)
+                .setPositiveButton("Salir", null)
+                .create()
+                .show();
+    }
+
+    private void procesarRegistroExitoso(ResZonaServicio respuesta) {
+        actualizarCabeceraPedido(respuesta);
+        actualizarInterfazUsuario();
+        mostrarDialogoUltimosPedidos(respuesta);
+    }
+
+    private void actualizarCabeceraPedido(ResZonaServicio respuesta) {
+        cabeceraPedido.setZonaServicio(respuesta.getZonaServicio());
+        cabeceraPedido.setIdentificadorPedido(respuesta.getZonaServicio().getDescripcion());
+        cabeceraPedido.setObservacion(respuesta.getObservacion());
+    }
+
+    private void actualizarInterfazUsuario() {
+        btnZonaServicio.setText(cabeceraPedido.getZonaServicio().getDescripcion());
+    }
+
+    private void mostrarDialogoUltimosPedidos(ResZonaServicio respuesta) {
+        DfUltimosPedidosZonaServicio dialogo = new DfUltimosPedidosZonaServicio()
+                .newInstance(
+                        respuesta.getBTieneVentas(),
+                        respuesta.getCliente(),
+                        respuesta.getZonaServicio(),
+                        crearListenerActualizarZonaServicio()
+                )
+                .ListenerDatosCliente(this::procesarDatosCliente);
+
+        dialogo.show(getFragmentManager(), "");
+    }
+
+    private DfUltimosPedidosZonaServicio.ListenerActualizarZonaServicio crearListenerActualizarZonaServicio() {
+        return zonaServicio ->
+                asyncZonaServicio.ActualizarZonaServicio(zonaServicio, crearListenerActualizacion());
+    }
+
+    private AsyncZonaServicio.ListenerActualizarZonaServicio crearListenerActualizacion() {
+        return new AsyncZonaServicio.ListenerActualizarZonaServicio() {
+            @Override
+            public void ActualizarExito() {
+                mostrarConfirmacionExito();
+            }
+
+            @Override
+            public void ErrorActualizar() {
+                mostrarErrorActualizacion();
+            }
+        };
+    }
+
+    private void procesarDatosCliente(@NotNull mCustomer cliente) {
+        obtenerDato(cliente);
+    }
+
+    private void mostrarConfirmacionExito() {
+        new AlertDialog.Builder(context)
+                .setTitle("Confirmación")
+                .setMessage("Se guardo los datos con éxito")
+                .setPositiveButton("Salir", null)
+                .create()
+                .show();
+    }
+
+    private void mostrarErrorActualizacion() {
+        new AlertDialog.Builder(context)
+                .setTitle("Advertencia")
+                .setMessage("Hubo un problema al guardar los datos. Verifique su conexión a internet")
+                .setPositiveButton("Salir", null)
+                .create()
+                .show();
+    }
+
+    private void mostrarErrorRegistro() {
+        new AlertDialog.Builder(context)
+                .setTitle("Advertencia")
+                .setMessage("Existe un problema al momento de registrar el vehículo. Verifique su conexión a internet.")
+                .create()
+                .show();
+    }
+
+    private void mostrarErrorGeneral(Exception e) {
+        Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
+    }
+
+
+    /*
     private void RegistroVehiculo() {
         try {
 
@@ -1914,6 +2062,8 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
             Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
         }
     }
+
+    */
 
     private void AbrirDialogZonaServicio() {
         if (Constantes.Tienda.cTipoZonaServicio.equals("A")) {

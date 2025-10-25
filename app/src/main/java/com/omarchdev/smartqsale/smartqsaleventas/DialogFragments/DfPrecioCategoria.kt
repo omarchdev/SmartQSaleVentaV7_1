@@ -132,7 +132,7 @@ class DfPrecioCategoria : DialogFragment(), AsyncProducto.ListenerPreciosCategor
                 monto=monto.add(it.precio)
             }
           if(monto.compareTo(product!!.precioVenta)!=0){
-              Toast.makeText(activity, "No", Toast.LENGTH_SHORT).show()
+              Toast.makeText(activity, "La suma de los montos debe ser igual al precio de venta", Toast.LENGTH_SHORT).show()
           }else{
                  listener?.GuardarInfoPrecioCategoria(ArrayList(listPrecioCategoria!!))
                   dismiss()

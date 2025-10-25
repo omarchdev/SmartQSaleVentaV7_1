@@ -15,9 +15,9 @@ interface ICategoriaRepository {
 
 
 
-    @GET("api/Categoria/categoriaVentasLista")
+    @GET("api/Producto/GetCategoriasPrecio")
     fun GetCategoriasPrecio(
-        @Query("id")id:Int,
+        @Query("idProducto")id:Int,
         @Query("tipoConsulta") tipoMov: String,
         @Query("codeCia") nombreCia: String
     ): Call<List<CategoriaPack>>

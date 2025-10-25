@@ -8,8 +8,8 @@ android {
         applicationId "com.omarchdev.smartqsale.smartqsaleventas"
         minSdkVersion 21
         targetSdkVersion 35
-        versionCode 94
-        versionName '1.0.9.4'
+        versionCode 98
+        versionName '1.0.9.8'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         multiDexEnabled true
     }
