@@ -9,7 +9,8 @@
     android:layout_marginBottom="1dp"
     android:animateLayoutChanges="false"
     android:orientation="vertical"
-    card_view:cardBackgroundColor="@color/cardview_light_background"
+    android:background="@color/background_card"
+    card_view:cardBackgroundColor="@color/background_card"
     card_view:cardCornerRadius="10dp"
     card_view:cardElevation="0dp">
 

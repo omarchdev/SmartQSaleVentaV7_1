@@ -99,11 +99,14 @@ public class RvAdapterListVentas extends RecyclerView.Adapter<RecyclerView.ViewH
         if(list.get(position).isbUsaFacturaElectronica()){
             h.txtEstadoCpe.setVisibility(View.VISIBLE);
             if(list.get(position).getEstadoCpe().equals("El documento se genero correctamente")){
-                h.txtEstadoCpe.setTextColor(Color.GREEN);
+               // list.get(position).setEstadoCpe("DISPONIBLE SUNAT");
+                h.txtEstadoCpe.setText("DISPONIBLE SUNAT");
+                h.txtEstadoCpe.setTextColor(Color.rgb(69, 160, 86));
             }else{
+                h.txtEstadoCpe.setText("NO DISPONIBLE SUNAT");
                 h.txtEstadoCpe.setTextColor(Color.RED);
             }
-            h.txtEstadoCpe.setText(list.get(position).getEstadoCpe());
+           // h.txtEstadoCpe.setText(list.get(position).getEstadoCpe());
         }else{
             h.txtEstadoCpe.setVisibility(View.GONE);
         }
@@ -237,7 +240,7 @@ public class RvAdapterListVentas extends RecyclerView.Adapter<RecyclerView.ViewH
             final String codeCia = GetJsonCiaTiendaBase64x3();
 
             Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
-            Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API)
+            Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API).client(Constantes.ConfiRetrofitTimeOut.okHttpClient)
                     .addConverterFactory(GsonConverterFactory.create(gson)).build();
             IVentaRepository iVentaRepository = retro.create(IVentaRepository.class);
 

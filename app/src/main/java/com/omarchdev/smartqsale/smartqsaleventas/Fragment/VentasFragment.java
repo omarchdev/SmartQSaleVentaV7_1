@@ -875,8 +875,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                 } else {
                     textoZonaServicio = Constantes.ZonaServicio.ZonaServicio;
                 }
-                btnZonaServicio.setTextColor(getResources().getColor(R.color.white));
-            } else {
+          } else {
                 btnZonaServicio.setVisibility(View.GONE);
             }
 
@@ -3762,7 +3761,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
         ResultadoComprobante resultadoComprobante;
         mCabeceraVenta cabeceraVenta;
         final String codeCia = GetJsonCiaTiendaBase64x3();
-        Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API)
+        Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API).client(Constantes.ConfiRetrofitTimeOut.okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create()).build();
         IPedidoRespository iPedidoRespository = retro.create(IPedidoRespository.class);
 
@@ -3947,7 +3946,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
     private class ConfirmarCajaAbierta extends AsyncTask<Void, Void, RetornoApertura> {
 
         final String codeCia = GetJsonCiaTiendaBase64x3();
-        Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API)
+        Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API).client(Constantes.ConfiRetrofitTimeOut.okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create()).build();
         ICajaRepository iCajaRepository = retro.create(ICajaRepository.class);
 

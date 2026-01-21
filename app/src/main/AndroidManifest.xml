@@ -155,7 +155,8 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".Activitys.ConfigModificadorProducto" />
-        <activity android:name=".Activitys.ActivityModificadorConfig" />
+        <activity android:name=".Activitys.ActivityModificadorConfig"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".Activitys.CategoriasActivity" />
         <activity
             android:name=".Activitys.ActivityRegistroCategoria"

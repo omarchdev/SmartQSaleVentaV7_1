@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -22,55 +22,65 @@
 
             ></com.wang.avi.AVLoadingIndicatorView>
 
-        <co.ceryle.radiorealbutton.RadioRealButtonGroup
-
-            app:rrbg_borderColor="#b6b6b6"
-            app:rrbg_borderSize="0.1dp"
-            android:id="@+id/rgVar2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:rrbg_animateDrawables_enter="overshoot"
-            app:rrbg_animateTexts_enter="overshoot"
-            app:rrbg_animateTexts_scale="1.2"
-            app:rrbg_animateTexts_textColorTo="#ffffff"
-            app:rrbg_checkedButton="@id/rbTodos"
-            app:rrbg_radius="4dp"
-
-            app:rrbg_selectorBottom="true"
-            app:rrbg_selectorColor="@color/colorAccent"
-            app:rrbg_selectorFullSize="true"
-            app:rrbg_selectorRadius="4dp"
-            app:rrbg_selectorTop="false">
-            <co.ceryle.radiorealbutton.RadioRealButton
-                android:id="@+id/rbTodos"
-                app:rrb_text="Todos"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            </co.ceryle.radiorealbutton.RadioRealButton>
-            <co.ceryle.radiorealbutton.RadioRealButton
-                android:id="@+id/rbVariantes"
-            app:rrb_text="Variantes"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        </co.ceryle.radiorealbutton.RadioRealButton>
-            <co.ceryle.radiorealbutton.RadioRealButton
-                android:id="@+id/rbCombo"
-                app:rrb_text="Combos/Pack"
+            <co.ceryle.radiorealbutton.RadioRealButtonGroup
+                android:minHeight="70dp"
+                app:rrbg_borderColor="#b6b6b6"
+                app:rrbg_borderSize="0.1dp"
+                android:id="@+id/rgVar2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                app:rrbg_animateDrawables_enter="overshoot"
+                app:rrbg_animateTexts_enter="overshoot"
+                app:rrbg_animateTexts_scale="1.2"
+                app:rrbg_animateTexts_textColorTo="#ffffff"
+                app:rrbg_checkedButton="@id/rbTodos"
+                app:rrbg_radius="4dp"
 
-            </co.ceryle.radiorealbutton.RadioRealButton>
-        </co.ceryle.radiorealbutton.RadioRealButtonGroup>
+                app:rrbg_selectorBottom="true"
+                app:rrbg_selectorColor="@color/colorAccent"
+                app:rrbg_selectorFullSize="true"
+                app:rrbg_selectorRadius="4dp"
+                app:rrbg_selectorTop="false">
+                <co.ceryle.radiorealbutton.RadioRealButton
+                    android:id="@+id/rbTodos"
+                    android:minHeight="100dp"
+                    app:rrb_text="Todos"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_below="@id/rgVar2"
-            android:id="@+id/rvListadoProductos"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
+                </co.ceryle.radiorealbutton.RadioRealButton>
+                <co.ceryle.radiorealbutton.RadioRealButton
+                    android:id="@+id/rbVariantes"
+                    android:minHeight="100dp"
+                    app:rrb_text="Variantes"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </co.ceryle.radiorealbutton.RadioRealButton>
+                <co.ceryle.radiorealbutton.RadioRealButton
+                    android:id="@+id/rbCombo"
+                    android:minHeight="100dp"
+                    app:rrb_text="Combos/Pack"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </co.ceryle.radiorealbutton.RadioRealButton>
+            </co.ceryle.radiorealbutton.RadioRealButtonGroup>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_below="@id/rgVar2"
+                android:id="@+id/rvListadoProductos"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
+
+        </LinearLayout>
 
     </RelativeLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

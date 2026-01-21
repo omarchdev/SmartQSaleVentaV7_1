@@ -121,12 +121,10 @@ public class RvAdapterModificador extends RecyclerView.Adapter<RecyclerView.View
         if(position==pos){
 
             vh.itemView.setBackgroundColor(context.getResources().getColor(R.color.colorAccent));
-            vh.txtDescripcionModificador.setTextColor(Color.WHITE);
         }
         else{
 
             vh.itemView.setBackgroundColor(Color.TRANSPARENT);
-            vh.txtDescripcionModificador.setTextColor(Color.WHITE);
 
         }
         if(oldPos>=0){

@@ -118,12 +118,10 @@ public class RvAdapterValorMod extends RecyclerView.Adapter<RecyclerView.ViewHol
         vh.txtDescripcionValor.setText(detalleModificadorList.get(position).getDescripcionModificador());
         if(position==pos){
             vh.itemView.setBackgroundColor(context.getResources().getColor(R.color.colorAccent));
-            vh.txtDescripcionValor.setTextColor(Color.WHITE);
 
         }
         else{
             vh.itemView.setBackgroundColor(Color.TRANSPARENT);
-            vh.txtDescripcionValor.setTextColor(Color.WHITE);
         }
         if(oldPos>=0){
             if(oldPos!=position){

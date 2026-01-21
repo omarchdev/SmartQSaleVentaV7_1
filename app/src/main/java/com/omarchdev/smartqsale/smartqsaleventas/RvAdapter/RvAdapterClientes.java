@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.omarchdev.smartqsale.smartqsaleventas.ClickListener;
 import com.omarchdev.smartqsale.smartqsaleventas.Controlador.MenuResources;
@@ -129,79 +130,94 @@ public class RvAdapterClientes extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        try{
+            final ClienteVH h=(ClienteVH)holder;
+            if(list.get(position).getTipoCliente()==context.getResources().getInteger(R.integer.ValorPersonaNatural)) {
 
-        final ClienteVH h=(ClienteVH)holder;
-        if(list.get(position).getTipoCliente()==context.getResources().getInteger(R.integer.ValorPersonaNatural)) {
-            h.txtNombreCliente.setText(list.get(position).getcName() + " " + list.get(position).getcApellidoPaterno());
-
-            h.imgCliente.setImageBitmap(imgController.textAsBitmap(list.get(position).getcName()));
-        }else if(list.get(position).getTipoCliente()==context.getResources().getInteger(R.integer.ValorPersonaJuridica)){
-            h.txtNombreCliente.setText(list.get(position).getRazonSocial());
-            h.imgCliente.setImageBitmap(imgController.textAsBitmap(list.get(position).getRazonSocial()));
-
-        }
-        h.txtNumDocumento.setTextColor(Color.parseColor
-                (list.get(position).getTipoDocumento().getCColorDescripcion().trim()));
-        h.txtNumDocumento.setText(list.get(position).getTipoDocumento().getCDescripcionCorta()+"\n"+
-                list.get(position).getNumeroRuc());
-
-        if(visibilitySettings){
-            h.btnEdit.setVisibility(View.INVISIBLE);
-            h.btnSetting.setVisibility(View.VISIBLE);
-            h.btnSetting.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    pos=h.getAdapterPosition();
-                    menuResources.OpcionesListado(v);
-                    menuResources.setListenerListadoOpciones(new MenuResources.ListenerListadoOpciones() {
-                        @Override
-                        public void AgregarSubCategoria() {
-
-                        }
-
-                        @Override
-                        public void AccionEditar() {
-                            listenerPosition.ObtenerPosicion(pos);
-                        }
-
-                        @Override
-                        public void AccionAnular() {
-
-                            listenerPosition.ObtenerPosAnular(pos);
-
-                        }
-
-                        @Override
-                        public void AccionVisualizar() {
-
-                            listenerPosition.ObtenerPosVisualizar(pos);
-                        }
-                    });
+                String texto=list.get(position).getcName() + " " + list.get(position).getcApellidoPaterno();
+                if(!texto.trim().isEmpty()) {
+                    h.imgCliente.setImageBitmap(imgController.textAsBitmap(list.get(position).getcName()));
                 }
-            });
-        }else {
-            h.btnSetting.setVisibility(View.INVISIBLE);
+                h.txtNombreCliente.setText(texto);
 
-            h.btnEdit.setVisibility(View.VISIBLE);
-            h.btnEdit.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(clickListener!=null){
+              //
+            }else if(list.get(position).getTipoCliente()==context.getResources().getInteger(R.integer.ValorPersonaJuridica)){
+                h.txtNombreCliente.setText(list.get(position).getRazonSocial());
 
-                        clickListener.clickPositionOption(h.getAdapterPosition(),p);
+                String texto2=list.get(position).getRazonSocial();
+                if(!texto2.trim().isEmpty()) {
+                    h.imgCliente.setImageBitmap(imgController.textAsBitmap(texto2));
 
+                }
+              //
 
+            }
+            h.txtNumDocumento.setTextColor(Color.parseColor
+                    (list.get(position).getTipoDocumento().getCColorDescripcion().trim()));
+            h.txtNumDocumento.setText(list.get(position).getTipoDocumento().getCDescripcionCorta()+"\n"+
+                    list.get(position).getNumeroRuc());
+
+            if(visibilitySettings){
+                h.btnEdit.setVisibility(View.INVISIBLE);
+                h.btnSetting.setVisibility(View.VISIBLE);
+                h.btnSetting.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        pos=h.getAdapterPosition();
+                        menuResources.OpcionesListado(v);
+                        menuResources.setListenerListadoOpciones(new MenuResources.ListenerListadoOpciones() {
+                            @Override
+                            public void AgregarSubCategoria() {
+
+                            }
+
+                            @Override
+                            public void AccionEditar() {
+                                listenerPosition.ObtenerPosicion(pos);
+                            }
+
+                            @Override
+                            public void AccionAnular() {
+
+                                listenerPosition.ObtenerPosAnular(pos);
+
+                            }
+
+                            @Override
+                            public void AccionVisualizar() {
+
+                                listenerPosition.ObtenerPosVisualizar(pos);
+                            }
+                        });
                     }
-                }
-            });
+                });
+            }else {
+                h.btnSetting.setVisibility(View.INVISIBLE);
+
+                h.btnEdit.setVisibility(View.VISIBLE);
+                h.btnEdit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(clickListener!=null){
+
+                            clickListener.clickPositionOption(h.getAdapterPosition(),p);
+
+
+                        }
+                    }
+                });
+            }
+
+
+            if(!list.get(position).getControl1().trim().isEmpty()){
+
+                h.txtNumDocumento.setText(list.get(position).getControl1().trim());
+
+            }
+        }catch (Exception ex) {
+            Toast.makeText(context, ex.toString(), Toast.LENGTH_SHORT).show();
         }
 
-
-        if(!list.get(position).getControl1().trim().isEmpty()){
-
-            h.txtNumDocumento.setText(list.get(position).getControl1().trim());
-
-        }
        // h.txtEmailCliente.setText(list.get(position).getcEmail());
 
     }
@@ -214,7 +230,7 @@ public class RvAdapterClientes extends RecyclerView.Adapter<RecyclerView.ViewHol
     public void AgregarListado(List<mCustomer> list){
 
         this.list=list;
-        notifyDataSetChanged();
 
+        notifyDataSetChanged();
     }
 }

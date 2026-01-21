@@ -53,7 +53,7 @@ public class AsyncModificadores  {
     EliminarValorModificador eliminarValorModificador;
 
 
-    Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API)
+    Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API).client(Constantes.ConfiRetrofitTimeOut.okHttpClient)
             .addConverterFactory(GsonConverterFactory.create()).build();
     IModificadorRepository iModificadorRepository= retro.create(IModificadorRepository.class);
     String ciaCode=GetJsonCiaTiendaBase64x3();
@@ -490,6 +490,7 @@ public class AsyncModificadores  {
         protected Modificador doInBackground(String... strings) {
             SolicitudEnvio<String> sol=new SolicitudEnvio<String>(ciaCode,TIPO_CONSULTA,strings[0], Constantes.Terminal.idTerminal,Constantes.Usuario.idUsuario);
             try {
+
                 return iModificadorRepository.InsertarModificador(sol).execute().body();
             } catch (IOException e) {
                 e.printStackTrace();

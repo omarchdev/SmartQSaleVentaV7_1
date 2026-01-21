@@ -71,11 +71,15 @@
                         android:layout_margin="4dp"
                         android:drawableLeft="@drawable/ic_account_circle_white_24dp"
                         android:gravity="center|right"
+                        android:drawableTint="@color/colorIconoBtnBordeless"
+
                         android:text="Vendedor no especificado" />
 
                     <TextView
                         android:id="@+id/txtNombreCliente"
                         android:layout_width="match_parent"
+                        android:drawableTint="@color/colorIconoBtnBordeless"
+
                         android:layout_height="30dp"
                         android:layout_margin="4dp"
                         android:drawableLeft="@drawable/ic_human_male_female_white_24dp"
@@ -256,6 +260,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
+                        android:drawableTint="@color/colorIconoBtnBordeless"
 
                         android:layout_gravity="center"
                         android:drawableEnd="@drawable/ic_cart_white_24dp"

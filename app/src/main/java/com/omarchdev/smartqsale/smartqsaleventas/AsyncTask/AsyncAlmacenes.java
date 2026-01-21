@@ -7,6 +7,7 @@ import static com.omarchdev.smartqsale.smartqsaleventas.Model.CiaTiendaKt.GetJso
 import android.os.AsyncTask;
 
 import com.omarchdev.smartqsale.smartqsaleventas.ConexionBd.BdConnectionSql;
+import com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mAlmacen;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mMovAlmacen;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mProduct;
@@ -38,7 +39,7 @@ public class AsyncAlmacenes {
     ObtenerProductosMovimiento obtenerProductosMovimiento;
     CompletrarMovTransferencia completrarMovTransferencia;
     ObtenerTipoTransacciones obtenerTipoTransacciones;
-    Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API)
+    Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API).client(Constantes.ConfiRetrofitTimeOut.okHttpClient)
             .addConverterFactory(GsonConverterFactory.create()).build();
     IAlmacenesRepository iAlmacenesRepository = retro.create(IAlmacenesRepository.class);
     String ciaCode = GetJsonCiaTiendaBase64x3();

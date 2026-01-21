@@ -16,6 +16,9 @@ import com.omarchdev.smartqsale.smartqsaleventas.Model.mTipoDocumento;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
 
 /**
  * Created by OMAR CHH on 23/09/2017.
@@ -135,6 +138,15 @@ public abstract class Constantes {
 
         public static List<mMedioPago> mediosPago;
 
+    }
+
+
+    public static  abstract class  ConfiRetrofitTimeOut{
+        public static final OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .connectTimeout(145, TimeUnit.SECONDS) // Tiempo máximo para establecer la conexión
+                .readTimeout(145, TimeUnit.SECONDS)    // Tiempo máximo para leer los datos de respuesta
+                .writeTimeout(145, TimeUnit.SECONDS)   // Tiempo máximo para enviar el cuerpo de la petición
+                .build();
     }
 
     public static abstract class DivisaPorDefecto {

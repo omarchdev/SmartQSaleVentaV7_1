@@ -80,7 +80,7 @@ public class AsyncProducto {
     ListenerConfigProducto listenerConfigProducto;
     ListenerPreciosCategorias listenerPreciosCategorias;
     ResultadoGuardarProducto resultadoGuardarProducto;
-    Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API)
+    Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API).client(Constantes.ConfiRetrofitTimeOut.okHttpClient)
             .addConverterFactory(GsonConverterFactory.create()).build();
     IProductoRepository iProductoRepository = retro.create(IProductoRepository.class);
     ICategoriaRepository iCategoriaRepository = retro.create(ICategoriaRepository.class);

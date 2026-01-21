@@ -123,7 +123,7 @@ public class dialogCobroVenta extends DialogFragment implements View.OnClickList
     List<BienServicioDetraccion> bienServicioDetraccionList;
     AsyncPedido asyncPedido;
     final String codeCia = GetJsonCiaTiendaBase64x3();
-    Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API)
+    Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API).client(Constantes.ConfiRetrofitTimeOut.okHttpClient)
             .addConverterFactory(GsonConverterFactory.create()).build();
     IPedidoRespository iPedidoRespository = retro.create(IPedidoRespository.class);
 

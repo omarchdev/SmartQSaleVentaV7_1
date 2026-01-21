@@ -82,7 +82,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_alignParentRight="true"
-                            android:textColor="@color/white"
+
                             android:layout_centerVertical="true"
                             android:layout_marginTop="15dp"
                             android:layout_weight="1"
@@ -120,7 +120,7 @@
                         android:textColor="#ffffff"
                         android:backgroundTint="@color/colorAccent"
                         android:id="@+id/btnGenerarVariantes"
-                        android:layout_width="wrap_content"
+                        android:layout_width="180dp"
                         android:layout_height="wrap_content"
                         android:text="Generar Variantes"></Button>
 
@@ -170,7 +170,7 @@
                         android:backgroundTint="@color/colorAccent"
                         android:textColor="#ffffff"
                         android:id="@+id/btnEdicionVariantes"
-                        android:layout_width="wrap_content"
+                        android:layout_width="180dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_below="@+id/linearLayout5"

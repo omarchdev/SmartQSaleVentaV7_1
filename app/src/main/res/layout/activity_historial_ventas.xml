@@ -9,7 +9,7 @@
 
 
     <RelativeLayout
-        android:background="@drawable/fondo_img"
+        android:background="@color/background_card"
         android:id="@+id/contentFecha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,7 +24,6 @@
             <com.google.android.material.button.MaterialButton
 
                 android:id="@+id/btnDateVentas1"
-                style="@style/Widget.App.Button.OutlinedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
@@ -33,7 +32,6 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnDateVentas2"
-                style="@style/Widget.App.Button.OutlinedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -52,7 +50,7 @@
         android:layout_marginRight="8dp">
 
         <RelativeLayout
-            android:background="@drawable/fondo_img"
+            android:background="@color/background_card"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:gravity="center">
@@ -60,7 +58,6 @@
             <Button
 
                 android:id="@+id/btnSelectCliente"
-                style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_toLeftOf="@id/btnDeleteCliente"
                 android:layout_height="match_parent"

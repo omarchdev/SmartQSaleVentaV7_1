@@ -51,7 +51,7 @@ public class AsyncCategoria {
     boolean descargarUnidadesMedida;
     ListenerCantidadMaximaPedido listenerCantidadMaximaPedido;
     private ListenerResultCambioCategoriaDefecto listenerResultCambioCategoriaDefecto;
-    Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API)
+    Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API).client(Constantes.ConfiRetrofitTimeOut.okHttpClient)
             .addConverterFactory(GsonConverterFactory.create()).build();
     ICategoriaRepository iCategoriaRepository = retro.create(ICategoriaRepository.class);
     UnidadMedidaRepository iUnidadMedidaRepository = retro.create(UnidadMedidaRepository.class);

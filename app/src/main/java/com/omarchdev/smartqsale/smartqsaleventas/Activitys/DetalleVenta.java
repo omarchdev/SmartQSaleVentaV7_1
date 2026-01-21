@@ -147,9 +147,7 @@ public class DetalleVenta extends ActivityParent
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         txtNumFactura.setVisibility(View.GONE);
         getSupportActionBar().setTitle("Detalle Venta");
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar()
-                .setHomeAsUpIndicator(R.drawable.arrow_back_home);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back_home);
         new DownloadDetalle().execute(idCabeceraVenta);
 
 
@@ -347,11 +345,13 @@ public class DetalleVenta extends ActivityParent
                         fabEnvioCpe.setVisibility(View.VISIBLE);
                         txtEstadoDocumentoCpe.setVisibility(View.VISIBLE);
                         if (result.getCodeStatusCPE().equals("0")) {
-                            txtEstadoDocumentoCpe.setTextColor(Color.GREEN);
-                        } else {
+                            txtEstadoDocumentoCpe.setText("NO DISPONIBLE SUNAT");
                             txtEstadoDocumentoCpe.setTextColor(Color.RED);
+                        } else {
+                            txtEstadoDocumentoCpe.setText("DISPONIBLE SUNAT");
+                            txtEstadoDocumentoCpe.setTextColor(Color.rgb(69, 160, 86));
                         }
-                        txtEstadoDocumentoCpe.setText(result.getcEstadoCPE());
+                        //txtEstadoDocumentoCpe.setText(result.getcEstadoCPE());
                     } else {
                         txtEstadoDocumentoCpe.setVisibility(View.GONE);
                     }
@@ -367,7 +367,7 @@ public class DetalleVenta extends ActivityParent
 
                         }
                         txtEstadoVenta.setText("COMPLETA");
-                        txtEstadoVenta.setTextColor(Color.parseColor("#FF53F637"));
+                        txtEstadoVenta.setTextColor(Color.rgb(69, 160, 86));
                     } else if (result.getEstadoVenta().equals("C")) {
                         fcancelButton.setVisibility(View.GONE);
                         txtEstadoVenta.setText("ANULADA");

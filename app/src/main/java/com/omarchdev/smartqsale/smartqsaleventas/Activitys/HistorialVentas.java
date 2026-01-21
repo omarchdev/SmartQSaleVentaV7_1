@@ -64,7 +64,9 @@ public class HistorialVentas extends ActivityParent implements DialogDatePickerS
     final String codeCia=GetJsonCiaTiendaBase64x3();
 
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
-    Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API)
+
+
+    Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API).client(Constantes.ConfiRetrofitTimeOut.okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson)).build();
     IVentaRepository iVentaRepository= retro.create(IVentaRepository.class);
 
@@ -74,8 +76,16 @@ public class HistorialVentas extends ActivityParent implements DialogDatePickerS
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historial_ventas);
 
+     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+       getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+
+
+        getSupportActionBar().setTitle("Listado artículos");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Historial de Ventas ");
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back_home);
 
         rvAdapter = new RvAdapterListVentas();
         rvAdapter.setListenerCabeceraVenta(this);
@@ -121,11 +131,6 @@ public class HistorialVentas extends ActivityParent implements DialogDatePickerS
         txtTotalVentas.setText(Constantes.DivisaPorDefecto.SimboloDivisa + String.format("%.2f", valorTotalVenta));
     //    ActualizarListaVentas();
         context=this;
-        getSupportActionBar().setTitle("Listado artículos");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle( "Historial de Ventas ");
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back_home);
 
     }
 

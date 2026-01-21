@@ -36,7 +36,10 @@
         <item name="colorControlHighlight">@color/colorPrimary</item>
     </style>
 
-
+    <style name="ButtonPlano" parent="Base.Widget.AppCompat.Button.Borderless">
+        <item name="android:textColor">#121212</item>
+        <item name="android:tint">#121212</item>
+    </style>
     <style name="MyTimePickerDialogStyle" parent="@style/ThemeOverlay.AppCompat.Dialog.Alert">
         <item name="showTitle">false</item>
         <item name="colorControlActivated">#ffd600</item>
@@ -44,21 +47,75 @@
         <item name="android:textColorPrimary">#43a047</item>
         <item name="android:textColorSecondary">#f44336</item>
     </style>
+    <style name="CustomActionBarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/backgroud_app</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="titleTextColor">@color/black</item>
+       <item name="height">?attr/actionBarSize</item>
+        <!-- You can add other attributes here like titleTextStyle, subtitleTextStyle etc. -->
+    </style>
+    <style name="ToolbarTitleVerticalCenter" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textAlignment">viewStart</item>
+    </style>
+    <style name="BtnBorderless" parent="Base.Widget.AppCompat.Button.Borderless">
+        <item name="tint">@color/colorIconoBtnBordeless</item>
+        <item name="android:padding">8dp</item>
+    </style>
 
-    <style name="AppTheme" parent="Theme.MaterialComponents">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light">
         <!-- Customize your theme here. -->
-        <item name="bottomSheetDialogTheme">@style/Theme.Design.BottomSheetDialog</item>
 
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:textColorPrimary">@color/colorPrimaryDark</item>
+
+        <item name="colorControlNormal">@color/colorPrimaryDark</item>
+        <item name="android:textColorSecondary">@color/colorPrimaryDark</item>
+        <item name="colorOnPrimary">@color/colorIconoBtnBordeless</item>
+
+
+
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+
+
+        <item name="imageButtonStyle">@style/BtnBorderless</item>
+
+
+        <item name="android:windowActionBarOverlay">false</item>
+        <item name="windowActionBarOverlay">false</item>
+        <item name="android:colorBackground">@color/backgroud_app</item>
+        <item name="actionBarStyle">@style/CustomActionBarStyle</item>
+        <item name="bottomSheetDialogTheme">@style/Theme.Design.BottomSheetDialog</item>
+        <item name="background">@color/backgroud_app</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">#212121</item>
         <item name="hintTextAppearance">@style/HintText</item>
         <item name="android:textColorHint">@drawable/edit_text_color</item>
         <item name="android:editTextStyle">@style/EditTextHint</item>
 
         <item name="searchViewStyle">@style/MySearchViewStyle</item>
 
+
+
+
+
+
+
+
+
+
+
+    </style>
+    <style name="icBtnPlano" parent="Base.Widget.AppCompat.Button">
+        <item name="android:textColor">#121212</item>
+        <item name="android:tint">#121212</item>
+
     </style>
 
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 </resources>

@@ -42,7 +42,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
                 android:focusable="true"
-                app:cardBackgroundColor="@color/color_Fondo">
+                app:cardBackgroundColor="@color/background_card">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -50,12 +50,14 @@
                     android:padding="15dp">
 
                     <ImageView
+                        app:backgroundTint="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         app:srcCompat="@drawable/history" />
 
                     <TextView
+                        android:text=""
                          android:id="@+id/txtEstadoCierre"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -121,7 +123,7 @@
                 android:orientation="horizontal">
 
                 <RelativeLayout
-                    android:background="@drawable/fondo_img"
+                    android:background="@color/background_card"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="8dp"
@@ -155,7 +157,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:background="@drawable/fondo_img"
+                    android:background="@color/background_card"
 
                     android:layout_width="0dp"
                     android:layout_height="match_parent"

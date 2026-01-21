@@ -59,7 +59,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.3"
-
+                        style="@style/icBtnPlano"
                         android:padding="10dp"
                         app:srcCompat="@drawable/ic_lock_open_variant_white_24dp" />
 
@@ -154,7 +154,6 @@
                                     android:gravity="left|center"
                                     android:paddingLeft="4dp"
                                     android:text="Detalle de venta"
-                                    android:textColor="#ffffff"
                                     android:textStyle="bold" />
 
                                 <TextView
@@ -788,7 +787,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="100dp"
-                            android:background="@color/color_Fondo">
+                            android:background="@color/color_background_carrito">
 
 
                             <LinearLayout

@@ -32,6 +32,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializer;
 import com.omarchdev.smartqsale.smartqsaleventas.AsyncTask.AsyncCaja;
 import com.omarchdev.smartqsale.smartqsaleventas.AsyncTask.AsyncReporteCierreCaja;
+import com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes;
 import com.omarchdev.smartqsale.smartqsaleventas.DialogFragments.DialogAgregarEntrada;
 import com.omarchdev.smartqsale.smartqsaleventas.DialogFragments.DialogAperturaCaja;
 import com.omarchdev.smartqsale.smartqsaleventas.Fragment.detalleFlujoCaja;
@@ -98,7 +99,7 @@ public class CajaFlujoActivity extends ActivityParent implements View.OnClickLis
                                 (json, typeOfT, context) -> LocalDateTime.parse(json.getAsString(),
                                         (json.getAsString().length() == 23) ? DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS") : DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS")
                                 )).create();
-                retro = new Retrofit.Builder().baseUrl(BASE_URL_API)
+                retro = new Retrofit.Builder().baseUrl(BASE_URL_API).client(Constantes.ConfiRetrofitTimeOut.okHttpClient)
                         .addConverterFactory(GsonConverterFactory.create(gson)).build();
             }
             iCierreRepository = retro.create(ICierreRepository.class);
@@ -107,18 +108,23 @@ public class CajaFlujoActivity extends ActivityParent implements View.OnClickLis
             dialogAgregarEntrada = new DialogAgregarEntrada();
             dialogAgregarEntrada.setEntradaRetiroListener(this);
             asyncReporteCierreCaja = new AsyncReporteCierreCaja(this);
-            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
             asyncCaja = new AsyncCaja(this);
             asyncCaja.setListenerAperturaCaja(this);
-            setSupportActionBar(toolbar);
-            getSupportActionBar().setTitle("Flujo de caja");
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
-            floatingActionsMenu = (FloatingActionsMenu) findViewById(R.id.fab);
+            floatingActionsMenu = (FloatingActionsMenu) findViewById(R.id.fab_caja);
             view = findViewById(R.id.main_content);
             flujoCajaresumen = new resumenFlujoCaja();
+            Toolbar toolbar = findViewById(R.id.toolbar_caja);
+// 2. Establece el Toolbar como la Action Bar de la Activity
+            setSupportActionBar(toolbar);
 
+// 3. Habilita el botón 'Up' (la flecha de retroceso)
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setTitle("Caja");
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                // Opcional: Esto también asegura que el icono es visible
+                getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+            }
             flujoCajaDetalle = new detalleFlujoCaja();
             flujoCajaresumen.setCrearVista(this);
             flujoCajaDetalle.setVistaCreada(this);
@@ -155,7 +161,6 @@ public class CajaFlujoActivity extends ActivityParent implements View.OnClickLis
 
             asyncReporteCierreCaja.setListenerRecuperarReporteCierre(this);
 
-            Toast.makeText(getBaseContext(), "Visible", Toast.LENGTH_LONG).show();
         } catch (Exception ex) {
             Toast.makeText(getBaseContext(), ex.toString(), Toast.LENGTH_LONG).show();
         }

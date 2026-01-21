@@ -6,15 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.omarchdev.smartqsale.smartqsaleventas.Activitys.ListadoProductos">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_margin="16dp"
-        app:layout_scrollFlags="scroll|enterAlways"
-        app:srcCompat="@drawable/fab_add"
-        />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -47,6 +38,19 @@
         android:layout_height="match_parent">
 
         </androidx.recyclerview.widget.RecyclerView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="16dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:srcCompat="@drawable/fab_add" />
 
     </RelativeLayout>
 

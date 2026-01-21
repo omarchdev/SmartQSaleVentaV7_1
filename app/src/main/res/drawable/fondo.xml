@@ -5,9 +5,11 @@
 
     <item>
         <shape
+
             android:shape="rectangle">
             <gradient
-                android:startColor="@color/color_Fondo">
+                android:startColor="@color/background_card"
+                android:endColor="@color/background_card">
 
             </gradient>
         </shape>

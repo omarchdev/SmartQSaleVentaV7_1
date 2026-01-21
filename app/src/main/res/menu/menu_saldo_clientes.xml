@@ -4,6 +4,7 @@
 
 
     <item
+        android:iconTint="@color/colorIconoBtnBordeless"
         android:id="@+id/searchToolbar"
         android:hint="Busqueda por cliente"
         android:icon="@drawable/search"
@@ -11,6 +12,7 @@
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="withText|always" />
     <item
+        android:iconTint="@color/colorIconoBtnBordeless"
         android:id="@+id/ic_filter"
         android:icon="@drawable/filter"
         android:title="Filtro"

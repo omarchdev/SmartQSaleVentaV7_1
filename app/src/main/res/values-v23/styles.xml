@@ -4,11 +4,23 @@
     <style name="ButtonStyle">
         <item name="android:layout_margin">4dp</item>
         <item name="android:drawableTint">@color/colorPrimaryDark</item>
-        <item name="android:paddingLeft">12dp</item>
-        <item name="android:paddingRight">12dp</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingRight">4dp</item>
         <item name="android:background">@drawable/fondo_buttons</item>
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
+    <style name="ButtonPlano" parent="Base.Widget.AppCompat.Button.Borderless">
+        <item name="android:textColor">#121212</item>
+        <item name="android:drawableTint">#121212</item>
+    </style>
+
+    <style name="icBtnPlano" parent="Base.Widget.AppCompat.Button">
+        <item name="android:textColor">#121212</item>
+        <item name="android:tint">#121212</item>
+        <item name="android:drawableTint">#121212</item>
+
+    </style>
+
 
     <style name="ButtonStyleVar">
         <item name="android:layout_margin">4dp</item>

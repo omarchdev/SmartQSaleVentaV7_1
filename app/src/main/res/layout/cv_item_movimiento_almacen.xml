@@ -103,7 +103,6 @@
         android:padding="10dp"
         android:text="&#8942;"
         android:textAppearance="?android:textAppearanceLarge"
-    android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

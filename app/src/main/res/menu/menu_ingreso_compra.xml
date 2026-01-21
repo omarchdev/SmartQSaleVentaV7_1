@@ -5,7 +5,7 @@
 
     <item
 
-        android:iconTint="@color/colorAccent"
+        android:iconTint="@color/colorIconoBtnBordeless"
         android:id="@+id/searchToolbar1"
         android:hint="Busqueda por cliente"
         android:icon="@drawable/search_icon_color"
@@ -20,15 +20,16 @@
         app:showAsAction="withText|always"
         android:id="@+id/actionScanCode"
         android:title="Scaneear Codigo"
+        android:iconTint="@color/colorIconoBtnBordeless"
         android:icon="@drawable/ic_barcode_scan_white_36dp"
         ></item>
     <item
+        android:iconTint="@color/colorIconoBtnBordeless"
         android:visible="true"
         android:orderInCategory="3"
         app:showAsAction="withText|always"
         android:id="@+id/actionCheck"
         android:title="Scannear Codigo"
-        android:iconTint="@color/colorAccent"
         android:icon="@drawable/ic_content_save_white_36dp"
         ></item>
 

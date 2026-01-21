@@ -70,7 +70,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:background="@drawable/fondo_img"
+                android:background="@color/background_card"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -84,7 +84,6 @@
 
                     <Button
                         android:id="@+id/btnFechaInicio"
-                        style="@style/Widget.App.Button.OutlinedButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10dp"
@@ -93,7 +92,6 @@
 
                     <Button
                         android:id="@+id/btnFechaFinal"
-                        style="@style/Widget.App.Button.OutlinedButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"

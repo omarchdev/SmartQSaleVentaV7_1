@@ -22,7 +22,7 @@ import static com.omarchdev.smartqsale.smartqsaleventas.Model.CiaTiendaKt.GetJso
 public class ControladorCliente {
 
     final String codeCia=GetJsonCiaTiendaBase64x3();
-    Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API)
+    Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API).client(Constantes.ConfiRetrofitTimeOut.okHttpClient)
             .addConverterFactory(GsonConverterFactory.create()).build();
     IClienteRepository iClienteRepository= retro.create(IClienteRepository.class);
     public byte InsertarCliente(mCustomer cliente) {

@@ -208,10 +208,10 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     });
                 }
                 if (mProductList.get(position).isTipoNormal() || (!mProductList.get(position).isEstadoVariante() && !mProductList.get(position).isTipoPack())) {
-                    holder.itemView.setBackgroundColor(holder.itemView.getContext().getResources().getColor(R.color.color_Fondo));
+                    holder.itemView.setBackgroundColor(holder.itemView.getContext().getResources().getColor(R.color.background_card));
 
                 } else if (mProductList.get(position).isEstadoModificador()) {
-                    holder.itemView.setBackgroundColor(holder.itemView.getContext().getResources().getColor(R.color.color_Fondo));
+                    holder.itemView.setBackgroundColor(holder.itemView.getContext().getResources().getColor(R.color.background_card));
 
                 } else if (mProductList.get(position).isTipoPack()) {
                     holder.itemView.setBackgroundColor(Color.parseColor("#ef5350"));
@@ -220,7 +220,7 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     holder.itemView.setBackgroundColor(Color.parseColor("#00e676"));
                 } else {
 
-                    holder.itemView.setBackgroundColor(holder.itemView.getContext().getResources().getColor(R.color.color_Fondo));
+                    holder.itemView.setBackgroundColor(holder.itemView.getContext().getResources().getColor(R.color.background_card));
                 }
 
 

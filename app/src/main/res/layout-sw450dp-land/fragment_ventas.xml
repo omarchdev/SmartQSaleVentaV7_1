@@ -599,6 +599,7 @@
 
 
                         <Button
+                            android:drawableTint="@color/colorIconoBtnBordeless"
                             android:id="@+id/btnElegirVendedor"
                             style="?android:attr/borderlessButtonStyle"
                             android:layout_width="0dp"
@@ -617,9 +618,12 @@
                             android:layout_height="match_parent"
                             android:layout_weight="0.3"
                             android:padding="10dp"
+                            app:tint="@color/colorIconoBtnBordeless"
+
                             app:srcCompat="@drawable/ic_lock_open_variant_white_24dp" />
 
-                        <Button
+                        <Button    android:drawableTint="@color/colorIconoBtnBordeless"
+
                             style="@style/Widget.AppCompat.Button.Borderless"
                             android:id="@+id/btnElegirCliente"
                             android:layout_width="0dp"
@@ -650,7 +654,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginLeft="0.1dp"
                             android:layout_weight="0.7"
-                            android:visibility="gone">
+                            android:visibility="visible">
 
                         </Button>
                     </LinearLayout>

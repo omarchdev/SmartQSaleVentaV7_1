@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="70dp"
     app:cardBackgroundColor="@color/color_Fondo">
@@ -41,9 +42,10 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:padding="10dp"
+            app:tint="@color/colorIconDelete"
             android:src="@drawable/ic_delete_white_18dp" />
 
 
     </LinearLayout>
 
-</androidx.appcompat.widget.CardView>
+</LinearLayout>

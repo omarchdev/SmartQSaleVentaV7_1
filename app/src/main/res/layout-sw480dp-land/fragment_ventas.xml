@@ -612,12 +612,13 @@
                             android:gravity="center"
                             android:paddingLeft="4dp"
                             android:text="Vendedor"
-                            android:textColor="@color/colorBlanco"
+                            android:drawableTint="@color/colorIconoBtnBordeless"
                             android:textSize="12sp" />
 
                         <ImageView
                             android:id="@+id/imgLock"
                             android:layout_width="0dp"
+                            app:tint="@color/colorIconoBtnBordeless"
                             android:layout_height="match_parent"
                             android:layout_weight="0.3"
                             android:padding="10dp"
@@ -625,7 +626,7 @@
 
                         <Button
                             android:id="@+id/btnElegirCliente"
-
+                            android:drawableTint="@color/colorIconoBtnBordeless"
                             style="?android:attr/borderlessButtonStyle"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -635,7 +636,6 @@
                             android:gravity="center"
                             android:paddingLeft="12sp"
                             android:text="Cliente"
-                            android:textColor="@color/colorBlanco"
                             android:textSize="12sp" />
 
                         <Button

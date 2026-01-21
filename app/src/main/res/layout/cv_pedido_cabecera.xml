@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cv_cabecera_pedido"
     android:layout_width="match_parent"
+    android:background="@color/background_card"
     android:layout_height="wrap_content"
     android:layout_marginBottom="2dp"
     >

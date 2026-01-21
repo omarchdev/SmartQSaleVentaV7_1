@@ -14,7 +14,7 @@
         android:layout_height="wrap_content" />
 
     <LinearLayout
-        android:background="@drawable/fondo_img"
+        android:background="@color/background_card"
          android:id="@+id/contenedorFechas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,7 +24,6 @@
 
         <Button
             android:id="@+id/btnFechaInicio"
-            style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -33,7 +32,6 @@
 
         <Button
             android:id="@+id/btnFechaFinal"
-            style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

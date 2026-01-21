@@ -68,7 +68,6 @@ class ActivityListadoMovAlmacen : ActivityParent(), AsyncAlmacenes.ListenerMovAl
             asyncMovAlmacen.ObtenerTipoTransaccionesAlmacen()
             asyncMovAlmacen.setListenerTipoTransacciones(object:AsyncAlmacenes.ListenerTipoTransacciones{
                 override fun TransaccionResultado(transaccionAlmacenList: MutableList<mTransaccionAlmacen>?) {
-                    Toast.makeText(context,transaccionAlmacenList!!.size.toString(),Toast.LENGTH_SHORT).show()
                     adapterTipoTransaccion.AgregarTransacciones(ArrayList(transaccionAlmacenList))
                     txtTitulo.visibility=View.VISIBLE
                     pb.visibility=View.GONE

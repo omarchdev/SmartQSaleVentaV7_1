@@ -607,8 +607,8 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.7"
-                            android:textColor="@color/white"
                             android:clickable="true"
+                            android:drawableTint="@color/colorIconoBtnBordeless"
                             android:drawableLeft="@drawable/ic_account_plus_white_24dp"
                             android:gravity="center"
                             android:paddingLeft="4dp"
@@ -621,6 +621,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="0.3"
 
+                            app:tint="@color/colorIconoBtnBordeless"
                             android:padding="10dp"
                             app:srcCompat="@drawable/ic_lock_open_variant_white_24dp" />
 
@@ -629,9 +630,9 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="0.1dp"
-                            android:textColor="@color/white"
                             android:layout_weight="0.8"
                             style="?android:attr/borderlessButtonStyle"
+                            android:drawableTint="@color/colorIconoBtnBordeless"
                             android:drawableLeft="@drawable/ic_human_male_female_white_36dp"
                             android:gravity="center"
                             android:paddingLeft="12sp"
@@ -645,7 +646,7 @@
                             android:layout_marginLeft="0.1dp"
                             android:layout_weight="0.7"
                             style="?android:attr/borderlessButtonStyle"
-
+                            android:drawableTint="@color/colorIconoBtnBordeless"
                             android:visibility="gone">
 
                         </Button>

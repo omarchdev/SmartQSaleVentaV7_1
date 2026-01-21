@@ -23,7 +23,7 @@ public class ControladorVendedor {
 
 
     final String codeCia=GetJsonCiaTiendaBase64x3();
-    Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API)
+    Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API).client(Constantes.ConfiRetrofitTimeOut.okHttpClient)
             .addConverterFactory(GsonConverterFactory.create()).build();
     IVendedorRepository iVendedorRepository= retro.create(IVendedorRepository.class);
     public mVendedor getVendedorPorId(int id) {

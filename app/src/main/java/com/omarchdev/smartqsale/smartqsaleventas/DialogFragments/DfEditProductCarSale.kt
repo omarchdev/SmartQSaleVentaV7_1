@@ -45,6 +45,8 @@ class DfEditProductCarSale():DialogFragment(), View.OnClickListener{
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        // Se ha eliminado la línea que forzaba el fondo transparente.
+        // Ahora el diálogo usará el fondo predeterminado del tema (generalmente blanco o claro).
         return inflater.inflate(R.layout.dialog_edit_price, container, false)
     }
 
@@ -53,9 +55,9 @@ class DfEditProductCarSale():DialogFragment(), View.OnClickListener{
         return cantidad.multiply(precioOriginal).subtract(montoDescuento)
     }
     fun descripcionInfoTotal(cantidad:BigDecimal,precioOriginal:BigDecimal,montoDescuento:BigDecimal):String=
-            "${Constantes.DivisaPorDefecto.SimboloDivisa}${String.format("%.2f",cantidad.multiply(precioOriginal))}-" +
-                    "${String.format("%.2f",montoDescuento)}=" +
-                    "${Constantes.DivisaPorDefecto.SimboloDivisa}${String.format("%.2f",montoTotal(cantidad,precioOriginal,montoDescuento))}"
+        "${Constantes.DivisaPorDefecto.SimboloDivisa}${String.format("%.2f",cantidad.multiply(precioOriginal))}-" +
+                "${String.format("%.2f",montoDescuento)}=" +
+                "${Constantes.DivisaPorDefecto.SimboloDivisa}${String.format("%.2f",montoTotal(cantidad,precioOriginal,montoDescuento))}"
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -99,7 +101,7 @@ class DfEditProductCarSale():DialogFragment(), View.OnClickListener{
             edtPrecioUnitario.editText?.addTextChangedListener(watcherEdtPrecio)
             ClickTextInputLayout(edtPrecioUnitario)
 
-            /*  edtPrecioUnitario.editText?.addTextChangedListener(object:TextWatcher{
+            /* edtPrecioUnitario.editText?.addTextChangedListener(object:TextWatcher{
                   override fun afterTextChanged(s: Editable?) {
                   }
                   override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -129,9 +131,9 @@ class DfEditProductCarSale():DialogFragment(), View.OnClickListener{
             edtMontoDescuento.isEnabled=productoEnVenta!!.isUsaDescuento
             edtDescuento.isEnabled=productoEnVenta!!.isUsaDescuento
             cbDescuento.isChecked=productoEnVenta!!.isUsaDescuento
-           txtInfoTotal.text = descripcionInfoTotal(productoEnVenta!! .cantidad.toBigDecimal(),
+            txtInfoTotal.text = descripcionInfoTotal(productoEnVenta!! .cantidad.toBigDecimal(),
                 productoEnVenta!!.precioOriginal,
-               productoEnVenta!!.montoDescuento)
+                productoEnVenta!!.montoDescuento)
             ListenerEdt()
 
             cbDescuento.isChecked=productoEnVenta!!.isUsaDescuento
@@ -149,46 +151,46 @@ class DfEditProductCarSale():DialogFragment(), View.OnClickListener{
             override fun cantidadBigDecimal(number: BigDecimal) {
                 mQ=number
                 txtInfoTotal.text = descripcionInfoTotal(mQ,
-                        precioVentaUnitario,
-                        mD)
+                    precioVentaUnitario,
+                    mD)
             }
 
         }
         ClickEditText(edtQuantityProduct)
         edtQuantityProduct.addTextChangedListener(listenerCantidad)
-       /* edtQuantityProduct.addTextChangedListener(object:TextWatcher{
-            override fun afterTextChanged(s: Editable?) {
+        /* edtQuantityProduct.addTextChangedListener(object:TextWatcher{
+             override fun afterTextChanged(s: Editable?) {
 
-            }
+             }
 
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
+             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+             }
 
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
 
-                if(s.toString().equals("")){
-                    mQ=0.bg
-                }else if(s.toString().equals(".")){
-                    mQ=0.bg
-                }
-                else{
-                    mQ=s.toString().toBigDecimal()
-                }
-                txtInfoTotal.text = descripcionInfoTotal(mQ,
-                        precioVentaUnitario,
-                        mD)
-              /*  edtDescuento.editText?.setText(ObtenerDescuentoPorcentaje
-                (mD,montoTotal(mQ,
-                        precioVentaUnitario, mD)))*/
-            }
-        })*/
+                 if(s.toString().equals("")){
+                     mQ=0.bg
+                 }else if(s.toString().equals(".")){
+                     mQ=0.bg
+                 }
+                 else{
+                     mQ=s.toString().toBigDecimal()
+                 }
+                 txtInfoTotal.text = descripcionInfoTotal(mQ,
+                         precioVentaUnitario,
+                         mD)
+               /* edtDescuento.editText?.setText(ObtenerDescuentoPorcentaje
+                 (mD,montoTotal(mQ,
+                         precioVentaUnitario, mD)))*/
+             }
+         })*/
         val listenerDescuento=NumberTextWatcher(edtMontoDescuento.editText!!)
         listenerDescuento.iNumberTextWatcher=object:INumberTextWatcher{
             override fun cantidadBigDecimal(number: BigDecimal) {
                 mD=number
                 txtInfoTotal.text = descripcionInfoTotal(mQ,
-                        precioVentaUnitario, mD)
+                    precioVentaUnitario, mD)
             }
 
         }
@@ -221,16 +223,26 @@ class DfEditProductCarSale():DialogFragment(), View.OnClickListener{
 
         })*/
     }
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val dialog=super.onCreateDialog(savedInstanceState)
 
-        dialog.window?.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT)
+    // 1. Corregimos onCreateDialog para evitar la doble llamada a super.
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val dialog = super.onCreateDialog(savedInstanceState)
+        // Solicitamos la eliminación del título de la ventana
         dialog.window?.requestFeature(Window.FEATURE_NO_TITLE)
-        return super.onCreateDialog(savedInstanceState)
+        return dialog // Retornamos la instancia configurada
+    }
+
+    // 2. Usamos onStart para asegurar que el diálogo tome el ancho completo de la pantalla
+    override fun onStart() {
+        super.onStart()
+        dialog?.window?.setLayout(
+            WindowManager.LayoutParams.MATCH_PARENT, // Ocupa todo el ancho de la pantalla
+            WindowManager.LayoutParams.WRAP_CONTENT // Ocupa solo el alto necesario por el contenido
+        )
     }
 
     fun ObtenerDescuentoPorcentaje(monto:BigDecimal,montoTotal:BigDecimal):String{
-            return ((monto.multiply(100.bg)).divide(montoTotal)).fortMoneda
+        return ((monto.multiply(100.bg)).divide(montoTotal)).fortMoneda
     }
 
     override fun onClick(v: View?) {
@@ -272,7 +284,7 @@ class DfEditProductCarSale():DialogFragment(), View.OnClickListener{
 
             }
             R.id.btnSalirDialog->{
-                 this.dismiss()
+                this.dismiss()
             }
 
         }

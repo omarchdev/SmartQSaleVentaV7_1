@@ -16,8 +16,6 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
 
-        app:cardBackgroundColor="@color/center_text"
-
         app:cardElevation="16dp"
         app:cardPreventCornerOverlap="true"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -36,7 +34,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:textColor="@color/white"
                 android:text="Texto tienda"
                 android:textSize="20sp"
                 android:textStyle="bold" />

@@ -23,7 +23,6 @@
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
         android:text="Android Studio"
-        android:textColor="#ffffff"
         android:textSize="18sp"
         android:textStyle="bold"
         />

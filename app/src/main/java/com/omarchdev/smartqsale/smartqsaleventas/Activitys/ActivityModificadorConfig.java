@@ -2,6 +2,8 @@ package com.omarchdev.smartqsale.smartqsaleventas.Activitys;
 
 import android.content.DialogInterface;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.DialogFragment;
 import androidx.appcompat.app.AlertDialog;
 
@@ -29,7 +31,7 @@ import com.wang.avi.AVLoadingIndicatorView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActivityModificadorConfig extends ActivityParent implements View.OnClickListener, AsyncModificadores.ListenerModificadoresConfig, DialogAgregarOpcion.ListenerAddOpcion, RvAdapterModificador.ListenerModificadorConfig, DialogAgregarValorModificador.ListenerValorModificador, RvAdapterValorMod.ListenerValorMod {
+public class ActivityModificadorConfig extends AppCompatActivity implements View.OnClickListener, AsyncModificadores.ListenerModificadoresConfig, DialogAgregarOpcion.ListenerAddOpcion, RvAdapterModificador.ListenerModificadorConfig, DialogAgregarValorModificador.ListenerValorModificador, RvAdapterValorMod.ListenerValorMod {
 
     SlidingUpPanelLayout sliding_layout;
     Button btnEditarValores;
@@ -55,6 +57,8 @@ public class ActivityModificadorConfig extends ActivityParent implements View.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modificador_config);
+
+
         try {
             posMod = -10;
             posDelete = -10;
@@ -92,6 +96,28 @@ public class ActivityModificadorConfig extends ActivityParent implements View.On
             rvValoresEdiccion.setAdapter(rvAdapterValorMod1);
             rvValoresEdiccion.setLayoutManager(new LinearLayoutManager(this));
             pbIndicatorValores.hide();
+
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_modificador);
+
+// Establece el título directamente en la Toolbar (antes de setSupportActionBar)
+            toolbar.setTitle("Modificadores");
+// Establece el color del título
+            //toolbar.setTitleTextColor(Color.WHITE);
+
+            setSupportActionBar(toolbar); // Lo configuras como Action Bar
+
+// Ahora puedes configurar el ícono de navegación con getSupportActionBar()
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back_home);
+                // Ya no necesitas setTitle aquí porque lo estableciste en la Toolbar
+            }
+  /*          getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle("Modificadores");
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar()
+                    .setHomeAsUpIndicator(R.drawable.arrow_back_home);
+*/
         } catch (Exception e) {
             e.toString();
             Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();
@@ -99,11 +125,7 @@ public class ActivityModificadorConfig extends ActivityParent implements View.On
 
         txtCargando.setVisibility(View.INVISIBLE);
         rvAdapterModificador.setListenerModificadorConfig(this);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Modificadores");
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar()
-                .setHomeAsUpIndicator(R.drawable.arrow_back_home);
+
         dialogAgregarValorModificador = new DialogAgregarValorModificador();
         dialogAgregarValorModificador.setListenerValorModificador(this);
         btnAgregarValorMod.setOnClickListener(this);

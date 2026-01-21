@@ -6,6 +6,7 @@
     android:layout_height="wrap_content">
 
     <ImageButton
+        app:tint="@color/color_text_label"
         style="@style/Widget.App.Button.OutlinedButton"
         android:id="@+id/btnDeleteImg"
         android:layout_width="wrap_content"
@@ -34,6 +35,7 @@
     <ImageButton
         style="@style/Widget.App.Button.OutlinedButton"
         android:id="@+id/btnUpImg"
+        app:tint="@color/color_text_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -52,6 +54,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
+        app:tint="@color/color_text_label"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgBanner"
@@ -59,6 +62,7 @@
 
     <TextView
         android:id="@+id/txtNumOrden"
+        app:tint="@color/color_text_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

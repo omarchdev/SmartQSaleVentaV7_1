@@ -84,6 +84,7 @@ class ListadoProductosStock : ActivityParent(), AsyncStockProductos.ListenerList
         setContentView(R.layout.activity_listado_productos_stock)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         supportActionBar?.setHomeAsUpIndicator(R.drawable.arrow_back_home)
         supportActionBar?.setTitle("Stock de Productos")
         asyncStockProductos.listenerListadoProductoStock = this
