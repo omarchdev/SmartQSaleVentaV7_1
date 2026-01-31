@@ -39,10 +39,17 @@ class ConfiguracionRol : ActivityParent() {
             pb.visibility = View.INVISIBLE
             content_frame.visibility=View.VISIBLE
             demoFragment.GenerarPantalla(this)
+            demoFragment.listenerRoles=object : ConfiguracionBase.ListenerRoles {
+                        override fun cambioEstadoRol(idRol: Int, estado: Boolean) {
+                            asyncRoles.ActualizarRolProceso(idRol,estado)
+                        }
+                    }
+
            /* if(esAdmistrador){
                 demoFragment.HabilitarSwitch(false)
             }*/
         }catch (e:Exception){
+
             Toast.makeText(this,e.toString(),Toast.LENGTH_LONG).show()
         }
 

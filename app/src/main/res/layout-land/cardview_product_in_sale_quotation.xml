@@ -29,7 +29,7 @@
             <TextView
                 android:id="@+id/productNameInSale"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginBottom="8dp"
                 android:gravity="center|left"
                 android:padding="5dp"
@@ -40,16 +40,15 @@
                 android:textStyle="bold" />
             <TextView
                 android:id="@+id/txtCombo"
-                android:layout_marginLeft="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:layout_marginLeft="8dp"
-                android:id="@+id/txtUnidad"
+                android:layout_marginLeft="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
-
+        <TextView
+            android:layout_weight="0.6"
+            android:id="@+id/txtUnidad"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/quantityInSale"
@@ -76,8 +75,9 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.6"
+
             app:tint="@color/colorIconDelete"
-             android:padding="10dp"
+            android:padding="10dp"
             android:src="@drawable/ic_close_black_24dp" />
     </LinearLayout>
     <LinearLayout

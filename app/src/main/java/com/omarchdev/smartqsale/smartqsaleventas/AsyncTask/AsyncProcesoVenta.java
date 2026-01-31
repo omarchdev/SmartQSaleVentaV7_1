@@ -658,7 +658,10 @@ public class AsyncProcesoVenta {
                 );
                 String json = new Gson().toJson(sol);
                 String demo = json;
-                return iPedidoRespository.IngresaProductoPedido(sol).execute().body();
+
+                return iPedidoRespository.IngresaProductoPedidoV3(sol).execute().body();
+
+//                return iPedidoRespository.IngresaProductoPedido(sol).execute().body();
             } catch (Exception ex) {
                 ProductoEnVenta p = new ProductoEnVenta();
                 p.setIdProducto(-10);

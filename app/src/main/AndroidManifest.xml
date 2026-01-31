@@ -216,6 +216,10 @@
         <activity android:name=".Activitys.RegistroAreaProduccion" />
         <activity android:name=".Activitys.SoporteTecnico" />
         <activity
+            android:name=".Activitys.PinProcesApp"
+            android:label="@string/title_activity_pin_reset_app"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".Activitys.PinResetApp"
             android:label="@string/title_activity_pin_reset_app"
             android:theme="@style/AppTheme.NoActionBar" />

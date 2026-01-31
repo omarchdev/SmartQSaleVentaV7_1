@@ -56,6 +56,7 @@ public class RvAdapterCarSale extends RecyclerView.Adapter<RvAdapterCarSale.Prod
     boolean permitirOpciones = true;
     int position;
 
+
     public void PermitirOpciones(boolean permitirOpciones) {
         this.permitirOpciones = permitirOpciones;
     }
@@ -115,6 +116,11 @@ public class RvAdapterCarSale extends RecyclerView.Adapter<RvAdapterCarSale.Prod
     @Override
     public void onBindViewHolder(ProductInCarSaleViewHolder holder, int position) {
 
+
+        if(list.get(position).getDescUnidad()!=null){
+
+            holder.txtUnidad.setText(list.get(position).getDescUnidad());
+        }
         if (list.get(position).isEsPack()) {
             holder.itemView.setLayoutParams(new LinearLayout.LayoutParams
                     (ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
@@ -134,7 +140,7 @@ public class RvAdapterCarSale extends RecyclerView.Adapter<RvAdapterCarSale.Prod
             holder.itemView.setLayoutParams(new LinearLayout.LayoutParams
                     (ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             holder.productName.setLayoutParams(new LinearLayout.LayoutParams
-                    (ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                    (ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             if (list.get(position).isEsVariante()) {
                 holder.productName.setText(list.get(position).getProductName() + "\n"
                         + list.get(position).getDescripcionVariante());
@@ -328,7 +334,7 @@ public class RvAdapterCarSale extends RecyclerView.Adapter<RvAdapterCarSale.Prod
     public class ProductInCarSaleViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         LinearLayout linearLayout;
         RelativeLayout cv;
-        TextView productName,quantityProduct,subTotalPrice,txtCombo;
+        TextView productName,quantityProduct,subTotalPrice,txtCombo,txtUnidad;
 
         ImageButton imgDelete;
         float PrecioSubtotal=0;
@@ -341,6 +347,7 @@ public class RvAdapterCarSale extends RecyclerView.Adapter<RvAdapterCarSale.Prod
             quantityProduct=(TextView)itemView.findViewById(R.id.quantityInSale);
             subTotalPrice=(TextView)itemView.findViewById(R.id.priceInSale);
             imgDelete=(ImageButton)itemView.findViewById(R.id.deleteInSale);
+            txtUnidad=(TextView)itemView.findViewById(R.id.txtUnidad);
             linearLayout.setOnClickListener(this);
             cv.setOnClickListener(this);
             imgDelete.setOnClickListener(this);

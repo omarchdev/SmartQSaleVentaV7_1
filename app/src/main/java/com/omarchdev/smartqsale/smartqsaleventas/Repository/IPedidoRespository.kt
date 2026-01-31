@@ -182,6 +182,13 @@ interface IPedidoRespository {
     @POST("api/Pedido/IngresaProductoPedido")
     fun IngresaProductoPedido(@Body solicitudVariante: SolicitudEnvio<ProductoEnVenta>): Call<ProductoEnVenta>
 
+    @POST("api/Pedido/IngresaProductoPedidoV2")
+    fun IngresaProductoPedidoV2(@Body solicitudVariante: SolicitudEnvio<ProductoEnVenta>): Call<ProductoEnVenta>
+
+    @POST("api/Pedido/InsertarProductoNormalPedidoV3")
+    fun IngresaProductoPedidoV3(@Body solicitudVariante: SolicitudEnvio<ProductoEnVenta>): Call<ProductoEnVenta>
+
+
 
     @PUT("api/Pedido/GuardarDescuentoPedido")
     fun GuardarDescuentoPedido(@Body sol: SolicitudEnvio<DescuentoSol>): Call<Byte>

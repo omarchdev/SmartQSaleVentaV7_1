@@ -1,8 +1,10 @@
 package com.omarchdev.smartqsale.smartqsaleventas.Activitys
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.activity.result.contract.ActivityResultContracts
 import com.omarchdev.smartqsale.smartqsaleventas.AsyncTask.AsyncRoles
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mRol
 import com.omarchdev.smartqsale.smartqsaleventas.R
@@ -12,15 +14,38 @@ import kotlinx.android.synthetic.main.activity_listado_roles.*
 class ListadoRoles : ActivityParent(), RvAdapterRoles.InterfaceListaRoles {
 
 
-
+    var idPosTemp:Int=-1
 
     override fun ObtenerPosicion(position: Int) {
-        val intent= Intent(this, ConfiguracionRol::class.java)
-        intent.putExtra("idRol",listadoRoles.get(position).idRol)
-        intent.putExtra("nombreRol",listadoRoles.get(position).getcDescripcion())
-        intent.putExtra("esAdmistrador",listadoRoles.get(position).isbEsAdmistrador())
-        startActivity(intent)
+        idPosTemp=position
+
+        val intent= Intent(this, PinProcesApp::class.java)
+        resultLauncher.launch(intent)
+
+
+
+
     }
+
+    private val resultLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        // 3. Aquí recibimos la respuesta
+        if (result.resultCode == Activity.RESULT_OK) {
+            val data: Intent? = result.data
+            val respuesta = data?.getStringExtra("claveResult")
+
+            val intent= Intent(this, ConfiguracionRol::class.java)
+            intent.putExtra("idRol",listadoRoles.get(idPosTemp).idRol)
+            intent.putExtra("nombreRol",listadoRoles.get(idPosTemp).getcDescripcion())
+            intent.putExtra("esAdmistrador",listadoRoles.get(idPosTemp).isbEsAdmistrador())
+            startActivity(intent)
+            // Haz algo con el resultado
+            //Toast.makeText(this, "Recibido: $respuesta", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+
 
     var listadoRoles=ArrayList<mRol>()
     val asyncRoles=AsyncRoles()

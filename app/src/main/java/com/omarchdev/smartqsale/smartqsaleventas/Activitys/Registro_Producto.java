@@ -29,6 +29,8 @@ import com.google.android.material.tabs.TabLayout;
 import com.omarchdev.smartqsale.smartqsaleventas.AsyncTask.AsyncAreasProduccion;
 import com.omarchdev.smartqsale.smartqsaleventas.AsyncTask.AsyncCategoria;
 import com.omarchdev.smartqsale.smartqsaleventas.AsyncTask.AsyncProducto;
+import com.omarchdev.smartqsale.smartqsaleventas.ConexionBd.DbHelper;
+import com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes;
 import com.omarchdev.smartqsale.smartqsaleventas.Controlador.ControladorProductos;
 import com.omarchdev.smartqsale.smartqsaleventas.DialogFragments.DialogCargaAsync;
 import com.omarchdev.smartqsale.smartqsaleventas.DialogFragments.SnackBarsPer;
@@ -53,6 +55,8 @@ import java.util.List;
 public class Registro_Producto extends ActivityParent implements View.OnClickListener,
 AsyncCategoria.ListenerCategoria, AsyncAreasProduccion.ListenerAreasProduccion, AsyncProducto.GetProduct, AsyncCategoria.ListenerCantidadMaximaPedido {
 
+
+     DbHelper helper;
     Menu menu;
     boolean salir;
     AlertDialog.Builder dialogMensaje;
@@ -168,7 +172,7 @@ AsyncCategoria.ListenerCategoria, AsyncAreasProduccion.ListenerAreasProduccion, 
             idProducto=getIntent().getIntExtra(getResources().getString(R.string.CodigoProducto),0);
             estadoModificar=false;
         }
-
+        helper=new DbHelper(this);
     }
 
     @Override
@@ -412,6 +416,15 @@ AsyncCategoria.ListenerCategoria, AsyncAreasProduccion.ListenerAreasProduccion, 
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.fabActionRegistro:
+
+            if (!helper.ObtenerPermiso(Constantes.ProcesosPantalla.GuardarProducto))
+            {
+                new AlertDialog.Builder(this).setTitle("Advertencia")
+                        .setMessage("No tiene permiso para realizar esta accion").setPositiveButton("Aceptar",null).create().show();
+
+                return;
+            }
+
             boolean permitir=true;
             fDatosBasicos.EstadoGuardar();
             product.setPrecioVenta(fDatosBasicos.getPrecioVenta());
@@ -511,6 +524,14 @@ AsyncCategoria.ListenerCategoria, AsyncAreasProduccion.ListenerAreasProduccion, 
             }
             break;
             case R.id.menu_item_edit:
+
+                if (!helper.ObtenerPermiso(Constantes.ProcesosPantalla.GuardarProducto))
+                {
+                    new AlertDialog.Builder(this).setTitle("Advertencia")
+                            .setMessage("No tiene permiso para realizar esta accion").setPositiveButton("Aceptar",null).create().show();
+
+                    return;
+                }
             Toast.makeText(context,
                 "Edición habilitada",Toast.LENGTH_SHORT).show();
             favoriteItem.setEnabled(true);

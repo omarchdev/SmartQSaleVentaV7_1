@@ -24,6 +24,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.omarchdev.smartqsale.smartqsaleventas.AsyncTask.AsyncProducto
 import com.omarchdev.smartqsale.smartqsaleventas.AsyncTask.AsyncProducto.ObtenerProductos
+import com.omarchdev.smartqsale.smartqsaleventas.ConexionBd.DbHelper
+import com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes
 import com.omarchdev.smartqsale.smartqsaleventas.DialogFragments.DialogScannerCam
 import com.omarchdev.smartqsale.smartqsaleventas.DialogFragments.DialogScannerCam.ScannerResult
 import com.omarchdev.smartqsale.smartqsaleventas.DialogFragments.SnackBarsPer
@@ -43,6 +45,7 @@ class ListadoProductos : ActivityParent(), SearchView.OnQueryTextListener, Scann
     var dialogScannerCam: DialogScannerCam? = null
     var searchBox: EditText? = null
     var recyclerView: RecyclerView? = null
+    var helper: DbHelper? = null
     var adapterProductos: RvAdapter? = null
     var asyncProducto: AsyncProducto? = null
     var pbProductos: ProgressBar? = null
@@ -128,6 +131,8 @@ class ListadoProductos : ActivityParent(), SearchView.OnQueryTextListener, Scann
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         descripcion = ""
+        //VerificarPedidoEnProceso();
+        helper = DbHelper(this)
         setContentView(R.layout.activity_listado_productos)
         supportActionBar!!.title = "Listado artículos"
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
@@ -230,6 +235,11 @@ class ListadoProductos : ActivityParent(), SearchView.OnQueryTextListener, Scann
 
     override fun onClick(view: View) {
         if (view.id == R.id.fab) {
+            if (!helper!!.ObtenerPermiso(Constantes.ProcesosPantalla.AgregarNuevoProducto))
+            {
+                Toast.makeText(this, "No tiene permiso para realizar esta accion", Toast.LENGTH_SHORT).show()
+                return;
+            }
             val intentInventario = Intent(this, Registro_Producto::class.java)
             intentInventario.putExtra(ESTADO, NUEVO_PRODUCTO)
             startActivity(intentInventario)

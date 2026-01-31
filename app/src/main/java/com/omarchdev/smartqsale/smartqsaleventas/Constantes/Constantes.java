@@ -61,6 +61,12 @@ public abstract class Constantes {
         public final static int AnularpedidoReserva = 18;
         public final static int RecuperarPedidoReserva = 19;
         public final static int ModificarZonaAtenciónPedidoReserva = 20;
+        public final static int AgregarNuevoProducto = 21;
+        public final static int GuardarProducto = 22;
+        public final static int EditarProducto =23;
+
+
+
 
 
     }
@@ -360,8 +366,10 @@ public abstract class Constantes {
         public static String cCodigo_detraccion_default;
         public static boolean bUsaDetraccion;
         public static float nMonto_minimo_uso_detraccion;
+        public static byte  iTipoListaProductosPantallaPedido;
 
 
+        public static boolean bUsaListaPrecios;
 
 
     }
@@ -627,9 +635,13 @@ public abstract class Constantes {
 
     public static abstract class BASECONN {
         public static final String TIPO_CONSULTA = "2";
-        public static final String BASE_URL = "http://161.132.56.226:7001/";
+        public static final String BASE_URL_TEMP = "http://161.132.56.226:7001/";
+        public static final String BASE_URL= "http://161.132.56.226:7002/";
+
         //public static final String BASE_URL = "http://ventas.mbsoftperu.com/App/";
-        public static final String BASE_URL_API = "http://161.132.56.226:7001/";
+        public static final String BASE_URL_API_TEMP = "http://161.132.56.226:7001/";
+        public static final String BASE_URL_API = "http://161.132.56.226:7002/";
+
    //     public static final String BASE_URL_API = "http://192.99.154.9:7003/";
 //        public static final String BASE_URL_API = "http://192.99.154.9:8064/";
 

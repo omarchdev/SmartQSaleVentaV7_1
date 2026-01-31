@@ -1,13 +1,23 @@
 package com.omarchdev.smartqsale.smartqsaleventas.AsyncTask
 
 import com.omarchdev.smartqsale.smartqsaleventas.ConexionBd.BdConnectionSql
+import com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes.BASECONN
+import com.omarchdev.smartqsale.smartqsaleventas.Model.GetJsonCiaTiendaBase64x3
+import com.omarchdev.smartqsale.smartqsaleventas.Model.ListaPrecioVenta
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mProduct
+import com.omarchdev.smartqsale.smartqsaleventas.Repository.ICierreRepository
+import com.omarchdev.smartqsale.smartqsaleventas.Repository.IProductoRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class AsyncProductKt {
-
+    val codeCia = GetJsonCiaTiendaBase64x3()
+    var retro = Retrofit.Builder().baseUrl(BASECONN.BASE_URL_API)
+        .addConverterFactory(GsonConverterFactory.create()).build()
+    var iProductoRepository = retro.create(IProductoRepository::class.java)
     private val bd=BdConnectionSql.getSinglentonInstance()
 
     interface IVerificarExisteNombre{
@@ -52,4 +62,21 @@ class AsyncProductKt {
 
     }
 
+    /*ListaPrecioVenta*/
+
+    interface IListaPreciosVentaConsulta{
+        fun ResultListasPreciosVenta(listasPrecios:List<ListaPrecioVenta>)
+    }
+
+    var iListaPreciosVentaConsulta:IListaPreciosVentaConsulta?=null
+
+    fun GetListasPreciosVenta(idProduct:Int){
+        GlobalScope.launch  {
+           var result= iProductoRepository.GetPreciosListaProducto(codeCia,BASECONN.TIPO_CONSULTA,idProduct).execute().body()
+            launch(Dispatchers.Main){
+                if(result!=null)
+                iListaPreciosVentaConsulta?.ResultListasPreciosVenta(result)
+            }
+        }
+    }
 }

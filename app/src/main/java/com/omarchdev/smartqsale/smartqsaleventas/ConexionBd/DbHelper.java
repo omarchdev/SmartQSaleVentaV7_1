@@ -167,7 +167,7 @@ public class DbHelper extends SQLiteOpenHelper {
                     estado = c.getInt(0) > 0;
                }
            }else {
-               estado=true;
+               estado=false;
            }
        }catch (Exception e){
            e.toString();

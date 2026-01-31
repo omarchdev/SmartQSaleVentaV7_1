@@ -2,18 +2,24 @@ package com.omarchdev.smartqsale.smartqsaleventas.Fragment
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.widget.*
+import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import com.omarchdev.smartqsale.smartqsaleventas.Controles.CSwitch
-
 import com.omarchdev.smartqsale.smartqsaleventas.R
 
 class ConfiguracionBase : Fragment() {
+    var listenerRoles: ListenerRoles? = null
 
+
+    interface ListenerRoles {
+        fun cambioEstadoRol(idRol: Int, estado: Boolean)
+
+    }
     private var listaSwicht:ArrayList<CSwitch>?=null
     private var contentMantenimiento:LinearLayout?=null
     private var visibleSwitch:Boolean=false
@@ -90,7 +96,16 @@ class ConfiguracionBase : Fragment() {
            nSwitch.isChecked=estadoSwitch
            params.setMargins(left,top,right,bottom)
            nSwitch.layoutParams=params
+           nSwitch.setOnClickListener {it->
+               Log.i("Cambio",nSwitch.isChecked.toString())
+               Log.i("Cambio",id.toString())
+               Log.i("Cambio","Cambio")
+
+               listenerRoles?.cambioEstadoRol(id,nSwitch.isChecked)
+
+           }
            listaSwicht?.add(nSwitch)
+
         }
         listaSwicht?.size
     }

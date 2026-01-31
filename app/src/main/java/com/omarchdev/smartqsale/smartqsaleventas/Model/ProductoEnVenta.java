@@ -88,7 +88,10 @@ public class ProductoEnVenta {
     private String CCodigoImagen;
     private TimeData TiempoInicio;
     private TimeData TiempoFinal;
-
+    @SerializedName("ctipoUnidad")
+    private String ctipoUnidad="";
+    @SerializedName("bUsaListaPrecio")
+    private boolean bUsaListaPrecio=false;
 
     @SerializedName("tiempoInicioT")
     private String TiempoInicioTemp;
@@ -736,6 +739,28 @@ public class ProductoEnVenta {
     public void setTiempoFinalTemp(String tiempoFinalTemp) {
         TiempoFinalTemp = tiempoFinalTemp;
     }
+
+    public void setctipoUnidad(String ctipoUnidad){
+        this.ctipoUnidad = ctipoUnidad;
+    }
+
+    public String getctipoUnidad(){
+        return ctipoUnidad;
+    }
+
+
+    public void setbUsaListaPrecio(boolean bUsaListaPrecio){
+        this.bUsaListaPrecio=bUsaListaPrecio;
+    }
+
+    public boolean getbUsaListaPrecio(){
+        return bUsaListaPrecio;
+        
+    }
+
+
+   // private String ctipoUnidad;
+    //
 }
 
 

@@ -76,7 +76,17 @@ interface IProductoRepository {
         @Query("tipoConsulta") codeTipo: String
     ): Call<BigDecimal>
 
+    /*
+    *    [HttpGet("[action]")]
+   public IActionResult GetPreciosListaProducto(string codeCia, string tipoConsulta, int idProduct) {
 
+    * */
+    @GET("api/producto/GetPreciosListaProducto")
+    fun GetPreciosListaProducto(
+        @Query("codeCia") codeCia: String,
+        @Query("tipoConsulta") tipoConsulta: String,
+        @Query("idProduct") idProduct: Int,
+    ): Call<List<ListaPrecioVenta>>
 
 
 

@@ -25,8 +25,6 @@ public class AsyncRoles {
     }
 
 
-
-
     public void ObtenerRoles(){
             new ObtenerRoles().execute();
     }
@@ -62,6 +60,41 @@ public class AsyncRoles {
         public void ProcesosRolObtenidos(List<mProcesoRol> procesoRols);
         public void ErrorObtenerProcesos();
     }
+
+    //public boolean ActualizarRolProceso(int idProceso,boolean estado)
+    public void ActualizarRolProceso(int idProceso,boolean estado){
+        ActualizarRolProceso act=new ActualizarRolProceso();
+        act.setLpermitir(estado);
+        act.setIdEstado(idProceso);
+        act.execute();
+    }
+    private class ActualizarRolProceso extends AsyncTask<Integer,Void,Integer>{
+
+        public boolean lpermitir;
+        public int idEstado;
+
+        public void setLpermitir(boolean lpermitir){
+            this.lpermitir=lpermitir;
+
+        }
+
+        public void setIdEstado(int idEstado){
+            this.idEstado=idEstado;
+        }
+
+
+
+        @Override
+        protected Integer doInBackground(Integer... integers) {
+            bdConnectionSql.ActualizarRolProceso(idEstado,lpermitir);
+            return   1;
+        }
+        @Override
+        protected void onPostExecute(Integer dato) {
+
+        }
+    }
+
 
     public void ObtenerProcesosRol(int idRol){
         new ObtenerProcesosRol().execute(idRol);

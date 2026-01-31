@@ -96,6 +96,7 @@ import com.omarchdev.smartqsale.smartqsaleventas.DialogFragments.DialogDetalleCa
 import com.omarchdev.smartqsale.smartqsaleventas.DialogFragments.DialogEditQuantity;
 import com.omarchdev.smartqsale.smartqsaleventas.DialogFragments.DialogGuardarPedido;
 import com.omarchdev.smartqsale.smartqsaleventas.DialogFragments.DialogScannerCam;
+import com.omarchdev.smartqsale.smartqsaleventas.DialogFragments.DialogSeleccionListaPrecioFragment;
 import com.omarchdev.smartqsale.smartqsaleventas.DialogFragments.DialogSelectCombo;
 import com.omarchdev.smartqsale.smartqsaleventas.DialogFragments.DialogSelectModProducto;
 import com.omarchdev.smartqsale.smartqsaleventas.DialogFragments.DialogSelectPrecioAdic;
@@ -118,6 +119,7 @@ import com.omarchdev.smartqsale.smartqsaleventas.Model.InfoGuardadoPedido;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.PackElemento;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.Pedido;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.ProductoEnVenta;
+import com.omarchdev.smartqsale.smartqsaleventas.Model.ProductoListaPrecioSeleccion;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.ResZonaServicio;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.ResultadoComprobante;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.RetornoApertura;
@@ -842,7 +844,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
             background_dimmer = rootView.findViewById(R.id.background_dimmer);
             avi = rootView.findViewById(R.id.avi);
             background_dimmer.setOnClickListener(this);
-            background_dimmer.setVisibility(View.INVISIBLE);
+            background_dimmer.setVisibility(View.GONE);
             avi.hide();
             dialogAlertaStock = new DialogAlertaStock();
             asyncProducto.setContext(getContext());
@@ -1098,7 +1100,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
 
     public void GuardarProductoNormalDetallePedido(ProductoEnVenta productoEnVenta) {
 
-        background_dimmer.setVisibility(View.INVISIBLE);
+        background_dimmer.setVisibility(View.GONE);
         avi.hide();
         BuscarProductoEnLista(productoEnVenta.getIdProducto(),
                 productoEnVenta.getCantidadReserva(), productoEnVenta.getStockActual());
@@ -1125,6 +1127,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
 
             MostrarMensajeAlerta("El producto no tiene stock disponible");
         }
+        background_dimmer.setVisibility(View.GONE);
     }
 
     @Override
@@ -1137,6 +1140,8 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
     @Override
     public void NoExisteStock() {
         MostrarMensajeAlerta("No existe stock disponible para el producto");
+        background_dimmer.setVisibility(View.GONE);
+        avi.hide();
     }
 
     @Override
@@ -2147,7 +2152,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
             rv.setVisibility(View.GONE);
             edtSearchProduct.setVisibility(View.VISIBLE);
             asyncCategoria.getCategorias();
-            tipoVistaArticulos = 2;
+            tipoVistaArticulos = Constantes.ConfigTienda.iTipoListaProductosPantallaPedido;
         } catch (Exception ex) {
 
             Log.e("e-panta", ex.toString());
@@ -2312,6 +2317,23 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
     private void GuardarProductoEnPedido(int position) {
 
         try {
+
+            if(Constantes.ConfigTienda.bUsaListaPrecios){
+                DialogSeleccionListaPrecioFragment dialogSeleccionListaPrecioFragment=  DialogSeleccionListaPrecioFragment.
+                        newInstance(productList.get(position).getIdProduct(),productList.get(position).getcProductName());
+                dialogSeleccionListaPrecioFragment.setIDialogSeleccionListaPrecioPedido(
+                        productoListaPrecioSeleccion -> {
+                            productoListaPrecioSeleccion.setIdPedido(idCabeceraActual);
+                            BusquedaProductoIdListaPrecio(productoListaPrecioSeleccion.getIdProducto(),productoListaPrecioSeleccion);
+                        }
+                );
+                dialogSeleccionListaPrecioFragment.show(getFragmentManager(),"SeleccionListaPrecio");
+
+
+                return;
+            }
+
+
             if (productList.get(position).isEstadoVariante()) {
                 try {
                     MostrarVariantes(productList.get(position).getIdProduct(),
@@ -2414,7 +2436,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                         }
                     } else {
                         DialogSelectPrice(productList.get(position).getIdProduct(), productList.get(position).getcProductName());
-                        background_dimmer.setVisibility(View.INVISIBLE);
+                        background_dimmer.setVisibility(View.GONE);
                     }
                 } else {
                     background_dimmer.setVisibility(View.VISIBLE);
@@ -2424,7 +2446,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
 
                     } else {
                         DialogSelectPrice(productList.get(position).getIdProduct(), productList.get(position).getcProductName());
-                        background_dimmer.setVisibility(View.INVISIBLE);
+                        background_dimmer.setVisibility(View.GONE);
                     }
                 }
             }
@@ -2440,7 +2462,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
         adic.setObtenerInfoProduct((idProducto1, cantidad, idPventa) -> {
 
             AbrirDialogModificadorPventa(idProducto1, nombreProducto, idPventa, cantidad);/*
-                background_dimmer.setVisibility(View.INVISIBLE);
+                background_dimmer.setVisibility(View.GONE);
                 ProductoEnVenta productoEnVenta=new ProductoEnVenta();
                 productoEnVenta.setIdProducto(idProducto);
                 productoEnVenta.setIdCabeceraPedido(idCabeceraActual);
@@ -2460,7 +2482,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
 
         DialogSelectPrecioAdic adic = new DialogSelectPrecioAdic();
         adic.setObtenerInfoProduct((idProducto, cantidad, idPventa) -> {
-            background_dimmer.setVisibility(View.INVISIBLE);
+            background_dimmer.setVisibility(View.GONE);
             ProductoEnVenta productoEnVenta = new ProductoEnVenta();
             productoEnVenta.setIdProducto(idProducto);
             productoEnVenta.setIdCabeceraPedido(idCabeceraActual);
@@ -2557,6 +2579,30 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
         } else if (adapterDetalleVenta.CodigoUltimoProduct() != id) {
             productoEnVenta.setMetodoGuardar("N");
             productoEnVenta.setCantidad(1f);
+        }
+        asyncProcesoVenta.ObtenerProductoId(productoEnVenta);
+    }
+
+    public void BusquedaProductoIdListaPrecio(int id,ProductoListaPrecioSeleccion productoLista) {
+        ProductoEnVenta productoEnVenta = new ProductoEnVenta();
+        productoEnVenta.setIdProducto(id);
+        productoEnVenta.setIdCabeceraPedido(idCabeceraActual);
+        productoEnVenta.setbUsaListaPrecio(true);
+        productoEnVenta.setctipoUnidad(productoLista.getCTipo_Unidad());
+        if (adapterDetalleVenta.CodigoUltimoProduct() == id) {
+            if (detalleVenta.PermitirGuardarEnUltimo()) {
+                productoEnVenta.setMetodoGuardar("N");
+                productoEnVenta.setIdDetallePedido(detalleVenta.getObtenerUltimoProducto().getIdDetallePedido());
+
+                productoEnVenta.setCantidad(productoLista.getCantidad().floatValue());
+            } else {
+                productoEnVenta.setMetodoGuardar("N");
+                productoEnVenta.setCantidad(productoLista.getCantidad().floatValue());
+
+            }
+        } else if (adapterDetalleVenta.CodigoUltimoProduct() != id) {
+            productoEnVenta.setMetodoGuardar("N");
+            productoEnVenta.setCantidad(productoLista.getCantidad().floatValue());
         }
         asyncProcesoVenta.ObtenerProductoId(productoEnVenta);
     }

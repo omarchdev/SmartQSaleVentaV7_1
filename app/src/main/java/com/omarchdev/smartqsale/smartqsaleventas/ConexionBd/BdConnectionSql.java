@@ -1639,6 +1639,7 @@ public class BdConnectionSql {
 
                     productoEnVenta.getTiempoInicio().setTimestamp(rs.getTimestamp(30));
                     productoEnVenta.getTiempoFinal().setTimestamp(rs.getTimestamp(31));
+                    productoEnVenta.setDescUnidad(rs.getString(32));
                     list.add(productoEnVenta);
 
                 }
@@ -8686,6 +8687,8 @@ public class BdConnectionSql {
                     Constantes.ConfigTienda.cCodigo_detraccion_default = rs.getString("cCodigo_detraccion_default");
                     Constantes.ConfigTienda.bUsaDetraccion = rs.getBoolean("bUsa_detraccion");
                     Constantes.ConfigTienda.nMonto_minimo_uso_detraccion = rs.getFloat("nMonto_minimo_uso_detraccion");
+                    Constantes.ConfigTienda.iTipoListaProductosPantallaPedido= rs.getByte("iTipoListaProductosPantallaPedido");
+                    Constantes.ConfigTienda.bUsaListaPrecios=rs.getBoolean("bUsaListaPrecios");
                 }
                 for (int i = 0; i < list1.size(); i++) {
                     for (int j = 0; j < list2.size(); j++) {
@@ -10592,6 +10595,7 @@ public class BdConnectionSql {
 
     }
 
+
     // Obtener los roles del sistema para configuracion
     public List<mRol> ObtenerRoles() {
 
@@ -11068,6 +11072,25 @@ public class BdConnectionSql {
         }
         return respuesta;
     }
+
+
+    //Actualizar Rol
+    public Boolean ActualizarRolProceso(int idProceso,boolean estado) {
+
+        PreparedStatement ps = null;
+        Connection con = getConnectionCreate();
+        try {
+            ps = con.prepareStatement("update RolProceso set lacceso=? where idRolProceso=?");
+            ps.setBoolean(1, estado);
+            ps.setInt(2, idProceso);
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            return false;
+        }
+
+    }
+
 
     public List<mProcesoRol> obtenerProcesosRol(int idRol) {
 
