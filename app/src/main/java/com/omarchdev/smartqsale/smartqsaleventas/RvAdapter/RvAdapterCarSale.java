@@ -9,6 +9,8 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import com.google.android.material.textfield.TextInputLayout;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -122,6 +124,8 @@ public class RvAdapterCarSale extends RecyclerView.Adapter<RvAdapterCarSale.Prod
             holder.txtUnidad.setText(list.get(position).getDescUnidad());
         }
         if (list.get(position).isEsPack()) {
+
+
             holder.itemView.setLayoutParams(new LinearLayout.LayoutParams
                     (ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             String nombre = "";
@@ -137,11 +141,14 @@ public class RvAdapterCarSale extends RecyclerView.Adapter<RvAdapterCarSale.Prod
                     (ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         }
         else {
+
             holder.itemView.setLayoutParams(new LinearLayout.LayoutParams
                     (ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+/*
             holder.productName.setLayoutParams(new LinearLayout.LayoutParams
                     (ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            if (list.get(position).isEsVariante()) {
+*/
+              if (list.get(position).isEsVariante()) {
                 holder.productName.setText(list.get(position).getProductName() + "\n"
                         + list.get(position).getDescripcionVariante());
             }else if(list.get(position).isEsModificado()){

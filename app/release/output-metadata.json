@@ -4,15 +4,15 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.omarchdev.smartqsale.smartqsaleventa",
+  "applicationId": "com.omarchdev.smartqsale.smartqsaleventas",
   "variantName": "release",
   "elements": [
     {
       "type": "SINGLE",
       "filters": [],
       "attributes": [],
-      "versionCode": 81,
-      "versionName": "1.0.8.1",
+      "versionCode": 110,
+      "versionName": "1.1.1.0",
       "outputFile": "app-release.apk"
     }
   ],
