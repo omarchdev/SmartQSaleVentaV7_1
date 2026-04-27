@@ -199,6 +199,7 @@ public class ControladorVentas {
             List<ProductoEnVenta> list = iPedidoRespository.GetDetallePedidoId(codeCia, TIPO_CONSULTA, id).execute().body();
             for(int i=0;i<list.size();i++){
                 list.get(i).ConvierteFechaJSON();
+
             }
             return list;
 

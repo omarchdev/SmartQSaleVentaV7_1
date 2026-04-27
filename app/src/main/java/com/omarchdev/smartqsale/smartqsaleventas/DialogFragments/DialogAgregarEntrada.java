@@ -480,7 +480,7 @@ public class DialogAgregarEntrada extends DialogFragment implements View.OnClick
                 movCaja.setFechaTransaccion(new Timestamp(System.currentTimeMillis()));
                 movCaja.setDescripcion(edtObservacion.getText().toString());
                 entradaRetiro.InformacionRetiroEntrada();
-                Toast.makeText(getActivity(), "Se Realizo con exito", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Se realizó con éxito el movimiento", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
 
             }

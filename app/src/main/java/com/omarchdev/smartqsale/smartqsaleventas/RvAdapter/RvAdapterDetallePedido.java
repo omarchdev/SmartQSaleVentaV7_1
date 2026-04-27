@@ -51,7 +51,7 @@ public class RvAdapterDetallePedido extends RecyclerView.Adapter<RecyclerView.Vi
 
         } else {
             h.txtNombreProducto.setPadding(0, 0, 0, 0);
-            h.txtNombreProducto.setText(list.get(position).getProductName() + "\n" + list.get(position).getObservacionProducto());
+            h.txtNombreProducto.setText(list.get(position).getProductName() + "\n"+list.get(position).getDescUnidad() + "\n" + list.get(position).getObservacionProducto());
             h.txtCantidadProducto.setText("x" + String.valueOf(list.get(position).getCantidad()));
             h.txtSubtotalProducto.setVisibility(View.VISIBLE);
             h.txtSubtotalProducto.setText(simboloMoneda + String.format("%.2f", list.get(position).getPrecioVentaFinal()));

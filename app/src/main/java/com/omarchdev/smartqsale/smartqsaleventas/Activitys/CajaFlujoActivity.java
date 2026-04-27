@@ -304,16 +304,16 @@ public class CajaFlujoActivity extends ActivityParent implements View.OnClickLis
     @Override
     public void InformacionRetiroEntrada() {
         new ResumenMovCaja().execute(cierre.getIdCierre());
-        Snackbar snackbar = Snackbar.make(findViewById(R.id.fab), "Se realizo el movimiento", Snackbar.LENGTH_LONG)
+  /*      Snackbar snackbar = Snackbar.make(findViewById(R.id.fab), "Se realizo el movimiento", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).setDuration(4000);
-
-        View snack = snackbar.getView();
-        snack.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+*/
+   //     View snack = snackbar.getView();
+  //      snack.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         /*TextView tv = (TextView) snack.findViewById(android.support.design.R.id.snackbar_text);
 
         tv.setTextColor(Color.parseColor("#ffffff"));
         */
-        snackbar.show();
+//        snackbar.show();
 
 
     }

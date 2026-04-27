@@ -679,7 +679,7 @@ public class AsyncProcesoVenta {
             }*/
             if (listenerProductoSeleccionado != null) {
 
-                if (productoEnVenta.getIdProducto() == -10) {
+                if (productoEnVenta.getItemNum() == 0) {
                     listenerProductoSeleccionado.NoExisteStock();
                 } else {
                     listenerProductoSeleccionado.ObtenerProductoSeleccionado(productoEnVenta);

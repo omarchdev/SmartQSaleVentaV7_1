@@ -681,12 +681,7 @@ public class DetalleVenta extends ActivityParent
                     if (tipoAnulacions.get(0).getCodeAnulacion() == Constantes.TiposAnulacionDocElectronico.GenerarNota) {
                         codeAnulacion = Constantes.TiposAnulacionDocElectronico.GenerarNota;
                         new AlertDialog.Builder(context).setTitle("Atencion").setPositiveButton("Si",
-                                        new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialogInterface, int i) {
-                                                new dfMotivoNota().newInstance("Nota de crédito", "Motivo de la nota de crédito").show(getSupportFragmentManager(), "");
-                                            }
-                                        }).setNegativeButton("No", null).setMessage("Este documento genero un documento electrónico.Se generará " +
+                                        (dialogInterface, i) -> new dfMotivoNota().newInstance("Nota de crédito", "Motivo de la nota de crédito").show(getSupportFragmentManager(), "")).setNegativeButton("No", null).setMessage("Este documento genero un documento electrónico.Se generará " +
                                         "una nota de crédito al eliminar.¿Desea continuar?")
                                 .create().show();
                     }

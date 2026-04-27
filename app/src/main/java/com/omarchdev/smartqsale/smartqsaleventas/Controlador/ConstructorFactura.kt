@@ -114,9 +114,10 @@ class ConstructorFactura(){
         if(p.isControlTiempo){
             linea=linea+p.informacionAdicionalTiempo
         }
-        linea=linea+ completarEspaciosI(10,p.cantidad.fUnid)+
-        completarEspaciosI(10,p.precioOriginal.fortMoneda)+
-                completarEspaciosI(10,p.precioVentaFinal.fortMoneda)
+        linea=linea+ completarEspaciosI(4,p.unidad_medida_impresion)+
+                completarEspaciosI(9,p.cantidad.fUnid)+
+                completarEspaciosI(9,p.precioOriginal.fortMoneda)+
+                completarEspaciosI(9,p.precioVentaFinal.fortMoneda)
 
         return linea
 

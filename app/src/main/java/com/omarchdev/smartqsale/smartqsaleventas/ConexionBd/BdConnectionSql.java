@@ -12726,7 +12726,8 @@ public class BdConnectionSql {
                     p.setMontoDescuento(set.getBigDecimal(10));
                     p.setEsVariante(set.getBoolean(11));
                     p.setDetallePack(set.getString(12));
-
+                    p.setUnidad_medida_impresion(set.getString(13));
+                    p.setDescUnidad(set.getString(14));
                     listaP.add(p);
 
                 }

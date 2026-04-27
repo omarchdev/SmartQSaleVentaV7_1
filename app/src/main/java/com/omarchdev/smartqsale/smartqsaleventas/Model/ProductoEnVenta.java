@@ -101,6 +101,9 @@ public class ProductoEnVenta {
     public int idTerminal;
     public int idUsuario ;
 
+    @SerializedName("unidad_medida_impresion")
+    public String unidad_medida_impresion;
+
     public void ConvierteFechaJSON(){
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -280,6 +283,7 @@ public class ProductoEnVenta {
         EstadoGuardado = "";
         areaProduccion = new mAreaProduccion();
         ComboSimple = false;
+        unidad_medida_impresion="";
     }
 
 
@@ -714,7 +718,8 @@ public class ProductoEnVenta {
         if(!getDescripcionCategoria().trim().equals("")){
             nombre=getDescripcionCategoria()+"\n";
         }
-        nombre=nombre+getProductName();
+        nombre=nombre+getProductName()+"\n";
+        nombre=nombre+getDescUnidad();
         /*
         if(!getDetallePack().trim().equals("")){
             nombre=nombre+"\n"+ getDetallePackFinal();
@@ -759,6 +764,13 @@ public class ProductoEnVenta {
     }
 
 
+    public String getUnidadMedidaImpresion(){
+        return unidad_medida_impresion;
+    }
+
+    public void setUnidad_medida_impresion(String unidad_medida_impresion){
+        this.unidad_medida_impresion=unidad_medida_impresion;
+    }
    // private String ctipoUnidad;
     //
 }

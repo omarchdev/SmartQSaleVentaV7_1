@@ -642,6 +642,7 @@ public abstract class Constantes {
         public static final String BASE_URL_API_TEMP = "http://161.132.56.226:7001/";
         public static final String BASE_URL_API = "http://161.132.56.226:7002/";
 
+
    //     public static final String BASE_URL_API = "http://192.99.154.9:7003/";
 //        public static final String BASE_URL_API = "http://192.99.154.9:8064/";
 

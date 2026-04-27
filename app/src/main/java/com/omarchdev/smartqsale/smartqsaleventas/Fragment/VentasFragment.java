@@ -1718,6 +1718,11 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
             CambiarTipoDeVistaLista();
         } else if (v.getId() == R.id.btnCobrar) {// Cobrar la venta en proceso
             try {
+
+                if(detalleVenta.getLongitud()==0){
+                    return;
+                }
+
                 if (helper.ObtenerPermiso(Constantes.ProcesosPantalla.Cobrar)) {
                     permitirCobrar = true;
                     if (detalleVenta.VerficarProductosControlTiempo() == false) {
@@ -2887,11 +2892,8 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
 
     public void MostrarVentanaVentaRapida() {
         new df_venta_rapida().newInstance(this.idCabeceraActual)
-                .SetListenerAgregarProductoDetallePedido(new df_venta_rapida.ListenerAgregarProductoDetallePedido() {
-                    public void AgregarProductoDetallePedido(@NotNull ProductoEnVenta productoEnVenta) {
-                        VentasFragment.this.ObtenerProductoSeleccionado(productoEnVenta);
-                    }
-                }).show(getFragmentManager(), "");
+                .SetListenerAgregarProductoDetallePedido(productoEnVenta ->
+                        VentasFragment.this.ObtenerProductoSeleccionado(productoEnVenta)).show(getFragmentManager(), "");
     }
 
     @Override
@@ -3913,6 +3915,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
 
         @Override
         protected void onPostExecute(mRespuestaVenta aByte) {
+            asyncProducto.getObtenerProductosVenta(parametroBusqueda, (byte) 108, 0);
 
             if (aByte.getValorRespuesta() > 0) {
                 //    PantallaCategorias();

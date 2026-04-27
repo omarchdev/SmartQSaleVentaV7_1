@@ -259,7 +259,26 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 break;
 
             case 2:
+
+
+
                 ProductosInSaleViewHolder productosInSaleViewHolder = (ProductosInSaleViewHolder) holder;
+
+
+
+                if(mProductList.get(position).isControlStock() && !mProductList.get(position).isEstadoVariante()){
+
+                    productosInSaleViewHolder.txtCantidadProducto.setText(String.format(String.format("%.1f", mProductList.get(position).getdQuantity()) +
+                            "-" + String.format("%.1f",mProductList.get(position).getCantidadReserva()))+"="+String.format(
+                            "%.1f",mProductList.get(position).getdQuantity()-mProductList.get(position).getCantidadReserva()
+
+                    ));
+                    productosInSaleViewHolder.txtCantidadProducto.setVisibility(View.VISIBLE);
+                }else {
+                    productosInSaleViewHolder.txtCantidadProducto.setVisibility(View.INVISIBLE);
+
+                }
+
                 if (Constantes.ConfigTienda.nombreConCategoria) {
                     if (mProductList.get(position).getIdSubCategoria() == 0) {
                         productosInSaleViewHolder.productName.setText(mProductList.get(position).getDescripcionCategoria() + "/" + mProductList.get(position).getcProductName());
@@ -314,6 +333,7 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         ImageView imageViewProduct;
         TextView productName;
         TextView productPrice;
+        TextView txtCantidadProducto;
         int position;
 
         public ProductosInSaleViewHolder(View itemView) {
@@ -323,6 +343,7 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             imageViewProduct = (ImageView) itemView.findViewById(R.id.ImageProductPhoto);
             productName = (TextView) itemView.findViewById(R.id.txtNombreProducto);
             productPrice = (TextView) itemView.findViewById(R.id.txtPrecioProducto);
+            txtCantidadProducto=(TextView)itemView.findViewById(R.id.txtCantidadProducto);
             cv.setOnClickListener(this);
             position = 0;
 
