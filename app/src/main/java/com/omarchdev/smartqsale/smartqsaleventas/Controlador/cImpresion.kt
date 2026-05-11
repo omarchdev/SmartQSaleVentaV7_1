@@ -21,6 +21,7 @@ import java.math.BigDecimal
 class cImpresion(context: Context) {
     val context = context
     private val dbHelper = DbHelper(context)
+    private val formateador = cFormateadorImpresion()
     internal var btConnection: BluetoothConnection =
         BluetoothConnection.getSinglentonInstance(context)
 
@@ -31,9 +32,14 @@ class cImpresion(context: Context) {
         val pagos = pedido.pagosEnPedido
         val entregaPedido = pedido.entregaPedidoInfo
         var textoCuerpo = ""
-        val constructorFactura = ConstructorFactura()
         val docVenta = DocVenta()
         var r = ""
+
+        val medio = getMedioImpresion()
+        var ancho = 1
+        if (medio == "Impresora en Red" || medio == "USB") {
+            ancho = dbHelper.ObtenerImpresoraRed().anchoImpresion
+        }
 
         if (pedido.cabeceraPedido.zonaServicio.idZona != 0) {
             docVenta.imageQrZonaServicio = pedido.cabeceraPedido.GetQrCabeceraZonaServicio()
@@ -50,12 +56,10 @@ class cImpresion(context: Context) {
         } else {
             docVenta.identificador = ""
         }
-        docVenta.total = completarEspaciosI(
-            18, "TOTAL  " +
-                    "${Constantes.SimboloMoneda.moneda}"
-        ) + completarEspaciosI(
-            12,
-            "${cabeceraPedido.totalNeto.fortMoneda}"
+        docVenta.total = formateador.formatearLineaTotal(
+            "TOTAL  " + "${Constantes.SimboloMoneda.moneda}",
+            "${cabeceraPedido.totalNeto.fortMoneda}",
+            ancho
         )
         docVenta.nroPedido = cabeceraPedido.GetIndentificadorUnicoSimple()
         docVenta.fechaEmision = "Fecha del pedido: " + "\n" + cabeceraPedido.fechaReserva
@@ -135,15 +139,12 @@ class cImpresion(context: Context) {
             }
         }
         textoCuerpo =
-            constructorFactura.generarListadoItems53mmPedidoPreCuenta(productos).replaceSpecialChar
+            formateador.obtenerListadoProductosPedidoPreCuenta(productos, ancho).replaceSpecialChar
         docVenta.productos = textoCuerpo
-        docVenta.cabecerasTicket = completarEspacios(10, "Desc") +
-                completarEspacios(5, "Cant") +
-                completarEspacios(16, "P.U") +
-                completarEspacios(5, "P.T")
+        docVenta.cabecerasTicket = formateador.obtenerCabecerasTicketPedido(ancho)
 
 
-        when (getMedioImpresion()) {
+        when (medio) {
             "PDF" -> {
             }
             "Bluetooth" -> {
@@ -262,7 +263,6 @@ class cImpresion(context: Context) {
         var r = ""
         val docVenta = DocVenta()
         var textoCuerpo = ""
-        val constructorFactura = ConstructorFactura()
 
         when (tipo) {
 
@@ -315,10 +315,14 @@ class cImpresion(context: Context) {
         } else {
             docVenta.nombreVendedor = ""
         }
-        docVenta.cabecerasTicket = "Descripcion" + "\n   " +
-                completarEspacios(8, "Cant") +
-                completarEspacios(16, "P.U") +
-                completarEspacios(5, "P.T")
+
+        val medio = getMedioImpresion()
+        var ancho = 1
+        if (medio == "Impresora en Red" || medio == "USB") {
+            ancho = dbHelper.ObtenerImpresoraRed().anchoImpresion
+        }
+
+        docVenta.cabecerasTicket = formateador.obtenerCabecerasTicket(ancho)
 
 
         if (cabeceraVenta.emisor.length > 0) {
@@ -387,63 +391,53 @@ class cImpresion(context: Context) {
 
         if (cabeceraVenta.numCorrelativo != null)
             docVenta.correlativo = cabeceraVenta.numCorrelativo.toString()
+
+        textoCuerpo = formateador.obtenerListadoProductos(productos, ancho).replaceSpecialChar
         docVenta.productos = textoCuerpo
+
         /*
         if(cabeceraVenta.getcValorTotal()!=null){
             if(cabeceraVenta.getcValorTotal().length>0){
                 docVenta.importeLetra=cabeceraVenta.getcValorTotal()
             }
         }*/
-        when (getMedioImpresion()) {
+        when (medio) {
             "PDF" -> {
             }
             "Bluetooth" -> {
                 try {
                     var address = dbHelper.AddressBT()
                     if (!address.equals("N")) {
-                        textoCuerpo =
-                            constructorFactura.generarListadoItems53mm(productos).replaceSpecialChar
-                        docVenta.productos = textoCuerpo
                         if (cabeceraVenta.numSerie != null) {
                             if (cabeceraVenta.numSerie.length > 0) {
-                                docVenta.totalGravada = completarEspaciosI(
-                                    18, "GRAVADA  " +
-                                            "${Constantes.SimboloMoneda.moneda}"
-                                ) +
-                                        completarEspaciosI(
-                                            12,
-                                            cabeceraVenta.totalGravado.fortMoneda
-                                        )
-                                docVenta.totalIgv = completarEspaciosI(
-                                    18,
-                                    "IGV  ${Constantes.SimboloMoneda.moneda}"
-                                ) +
-                                        completarEspaciosI(12, cabeceraVenta.totalIgv.fortMoneda)
+                                docVenta.totalGravada = formateador.formatearLineaTotal(
+                                    "GRAVADA  " + "${Constantes.SimboloMoneda.moneda}",
+                                    cabeceraVenta.totalGravado.fortMoneda,
+                                    ancho
+                                )
+                                docVenta.totalIgv = formateador.formatearLineaTotal(
+                                    "IGV  ${Constantes.SimboloMoneda.moneda}",
+                                    cabeceraVenta.totalIgv.fortMoneda,
+                                    ancho
+                                )
                             }
                         }
                         if (cabeceraVenta.descuentoGlobal.toInt() > 0) {
-                            docVenta.totalDescuento = completarEspaciosI(
-                                18, "DESCUENTO  " +
-                                        "${Constantes.SimboloMoneda.moneda}"
-                            ) +
-                                    completarEspaciosI(
-                                        12,
-                                        "${cabeceraVenta.descuentoGlobal.fortMoneda}"
-                                    )
+                            docVenta.totalDescuento = formateador.formatearLineaTotal(
+                                "DESCUENTO  " + "${Constantes.SimboloMoneda.moneda}",
+                                "${cabeceraVenta.descuentoGlobal.fortMoneda}",
+                                ancho
+                            )
                         }
-                        docVenta.total = completarEspaciosI(
-                            18, "TOTAL  " +
-                                    "${Constantes.SimboloMoneda.moneda}"
-                        ) + completarEspaciosI(
-                            12,
-                            "${cabeceraVenta.totalPagado.fortMoneda}"
+                        docVenta.total = formateador.formatearLineaTotal(
+                            "TOTAL  " + "${Constantes.SimboloMoneda.moneda}",
+                            "${cabeceraVenta.totalPagado.fortMoneda}",
+                            ancho
                         )
-                        docVenta.totalCambio = completarEspaciosI(
-                            18, "VUELTO  " +
-                                    "${Constantes.SimboloMoneda.moneda}"
-                        ) + completarEspaciosI(
-                            12,
-                            cabeceraVenta.totalCambio.multiply(-1.bg).fortMoneda
+                        docVenta.totalCambio = formateador.formatearLineaTotal(
+                            "VUELTO  " + "${Constantes.SimboloMoneda.moneda}",
+                            cabeceraVenta.totalCambio.multiply(-1.bg).fortMoneda,
+                            ancho
                         )
                          GlobalScope.launch  {
                             btConnection.selectDevice(address)
@@ -466,41 +460,39 @@ class cImpresion(context: Context) {
                 }
             }
             "Impresora en Red" -> {
-                textoCuerpo =
-                    constructorFactura.generarListadoItems53mm(productos).replaceSpecialChar
                 var impresionRed = cImpresionRed()
                 var impresora = dbHelper.ObtenerImpresoraRed()
                 if (cabeceraVenta.numSerie != null) {
                     if (cabeceraVenta.numSerie.length > 0) {
-                        docVenta.totalGravada = completarEspaciosI(
-                            18, "GRAVADA  " +
-                                    "${Constantes.SimboloMoneda.moneda}"
-                        ) +
-                                completarEspaciosI(12, cabeceraVenta.totalGravado.fortMoneda)
-                        docVenta.totalIgv =
-                            completarEspaciosI(18, "IGV  ${Constantes.SimboloMoneda.moneda}") +
-                                    completarEspaciosI(12, cabeceraVenta.totalIgv.fortMoneda)
+                        docVenta.totalGravada = formateador.formatearLineaTotal(
+                            "GRAVADA  " + "${Constantes.SimboloMoneda.moneda}",
+                            cabeceraVenta.totalGravado.fortMoneda,
+                            ancho
+                        )
+                        docVenta.totalIgv = formateador.formatearLineaTotal(
+                            "IGV  ${Constantes.SimboloMoneda.moneda}",
+                            cabeceraVenta.totalIgv.fortMoneda,
+                            ancho
+                        )
                     }
                 }
                 if (cabeceraVenta.descuentoGlobal.toInt() > 0) {
-                    docVenta.totalDescuento = completarEspaciosI(
-                        18, "DESCUENTO  " +
-                                "${Constantes.SimboloMoneda.moneda}"
-                    ) +
-                            completarEspaciosI(12, "${cabeceraVenta.descuentoGlobal.fortMoneda}")
+                    docVenta.totalDescuento = formateador.formatearLineaTotal(
+                        "DESCUENTO  " + "${Constantes.SimboloMoneda.moneda}",
+                        "${cabeceraVenta.descuentoGlobal.fortMoneda}",
+                        ancho
+                    )
                 }
-                docVenta.total = completarEspaciosI(
-                    18, "TOTAL  " +
-                            "${Constantes.SimboloMoneda.moneda}"
-                ) + completarEspaciosI(
-                    12,
-                    "${cabeceraVenta.totalPagado.fortMoneda}"
+                docVenta.total = formateador.formatearLineaTotal(
+                    "TOTAL  " + "${Constantes.SimboloMoneda.moneda}",
+                    "${cabeceraVenta.totalPagado.fortMoneda}",
+                    ancho
                 )
-                docVenta.totalCambio = completarEspaciosI(
-                    18, "VUELTO  " +
-                            "${Constantes.SimboloMoneda.moneda}"
-                ) + completarEspaciosI(12, cabeceraVenta.totalCambio.fortMoneda)
-                docVenta.productos = textoCuerpo
+                docVenta.totalCambio = formateador.formatearLineaTotal(
+                    "VUELTO  " + "${Constantes.SimboloMoneda.moneda}",
+                    cabeceraVenta.totalCambio.fortMoneda,
+                    ancho
+                )
                 if (!impresora.IP.equals("") && impresora.puerto != 0) {
                      GlobalScope.launch  {
                         var wifiConnection = WifiConnection()
@@ -527,40 +519,38 @@ class cImpresion(context: Context) {
             "USB" -> {
 
                 Toast.makeText(context, "IMPRESORA USB", Toast.LENGTH_SHORT).show()
-                textoCuerpo =
-                    constructorFactura.generarListadoItems53mm(productos).replaceSpecialChar
                 var impresora = dbHelper.ObtenerImpresoraRed()
                 if (cabeceraVenta.numSerie != null) {
                     if (cabeceraVenta.numSerie.length > 0) {
-                        docVenta.totalGravada = completarEspaciosI(
-                            18, "GRAVADA  " +
-                                    "${Constantes.SimboloMoneda.moneda}"
-                        ) +
-                                completarEspaciosI(12, cabeceraVenta.totalGravado.fortMoneda)
-                        docVenta.totalIgv =
-                            completarEspaciosI(18, "IGV  ${Constantes.SimboloMoneda.moneda}") +
-                                    completarEspaciosI(12, cabeceraVenta.totalIgv.fortMoneda)
+                        docVenta.totalGravada = formateador.formatearLineaTotal(
+                            "GRAVADA  " + "${Constantes.SimboloMoneda.moneda}",
+                            cabeceraVenta.totalGravado.fortMoneda,
+                            ancho
+                        )
+                        docVenta.totalIgv = formateador.formatearLineaTotal(
+                            "IGV  ${Constantes.SimboloMoneda.moneda}",
+                            cabeceraVenta.totalIgv.fortMoneda,
+                            ancho
+                        )
                     }
                 }
                 if (cabeceraVenta.descuentoGlobal.toInt() > 0) {
-                    docVenta.totalDescuento = completarEspaciosI(
-                        18, "DESCUENTO  " +
-                                "${Constantes.SimboloMoneda.moneda}"
-                    ) +
-                            completarEspaciosI(12, "${cabeceraVenta.descuentoGlobal.fortMoneda}")
+                    docVenta.totalDescuento = formateador.formatearLineaTotal(
+                        "DESCUENTO  " + "${Constantes.SimboloMoneda.moneda}",
+                        "${cabeceraVenta.descuentoGlobal.fortMoneda}",
+                        ancho
+                    )
                 }
-                docVenta.total = completarEspaciosI(
-                    18, "TOTAL  " +
-                            "${Constantes.SimboloMoneda.moneda}"
-                ) + completarEspaciosI(
-                    12,
-                    "${cabeceraVenta.totalPagado.fortMoneda}"
+                docVenta.total = formateador.formatearLineaTotal(
+                    "TOTAL  " + "${Constantes.SimboloMoneda.moneda}",
+                    "${cabeceraVenta.totalPagado.fortMoneda}",
+                    ancho
                 )
-                docVenta.totalCambio = completarEspaciosI(
-                    18, "VUELTO  " +
-                            "${Constantes.SimboloMoneda.moneda}"
-                ) + completarEspaciosI(12, cabeceraVenta.totalCambio.fortMoneda)
-                docVenta.productos = textoCuerpo
+                docVenta.totalCambio = formateador.formatearLineaTotal(
+                    "VUELTO  " + "${Constantes.SimboloMoneda.moneda}",
+                    cabeceraVenta.totalCambio.fortMoneda,
+                    ancho
+                )
                 if (!impresora.IP.equals("") && impresora.puerto != 0) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 

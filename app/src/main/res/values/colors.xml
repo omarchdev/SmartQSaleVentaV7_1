@@ -6,7 +6,12 @@
     <color name="colorPrimary">#ab47bc</color>
     <color name="colorPrimaryDark">#790e6b</color>
     <color name="colorAccent">#df78ef</color>
-    <color name="colorPinButton">#C77DD3</color>
+    <color name="colorPinButton">#FFFFFF</color>
+    <color name="colorPinButtonText">#212121</color>
+    <color name="colorPinRipple">#E0E0E0</color>
+    <color name="colorPinIndicatorEmpty">#BDBDBD</color>
+    <color name="colorPinIndicatorFull">@color/colorPrimary</color>
+    <color name="colorPinIndicatorError">#F44336</color>
     <color name="colorIconDelete">#F44336</color>
     <color name="colorFondo">#F2F2F2</color>
     <color name="colorIconoBtnBordeless">#232323</color>

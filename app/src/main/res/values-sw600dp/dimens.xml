@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="pin_button_size">96dp</dimen>
+    <dimen name="pin_button_text_size">32sp</dimen>
+    <dimen name="pin_button_margin">16dp</dimen>
+    <dimen name="pin_indicator_size">16dp</dimen>
+    <dimen name="pin_indicator_margin">10dp</dimen>
+    <dimen name="pin_indicator_stroke">2dp</dimen>
+</resources>

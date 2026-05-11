@@ -254,13 +254,16 @@
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
-    <style name="ButtonPin" parent="@style/Widget.MaterialComponents.Button">
-        <item name="android:textSize">17sp</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="android:layout_margin">4dp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:backgroundTint">@color/colorPinButton</item>
-
+    <style name="ButtonPin" parent="Widget.MaterialComponents.Button">
+        <item name="android:textSize">@dimen/pin_button_text_size</item>
+        <item name="android:textColor">@color/colorPinButtonText</item>
+        <item name="android:layout_margin">@dimen/pin_button_margin</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:background">@drawable/pin_button_background</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="backgroundTint">@null</item>
     </style>
 
     <style name="MyRadioButtonStyle" parent="@android:style/Widget.CompoundButton.RadioButton">

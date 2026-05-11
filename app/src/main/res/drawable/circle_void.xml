@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item >
-        <shape
-            android:shape="oval"
-            >
-            <size android:width="15dp"
-                android:height="15dp"></size>
-            <stroke android:width="0.5dp"
-                android:color="#878787"
-                ></stroke>
-
-
-        </shape>
-
-    </item>
-</selector>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <size
+        android:width="@dimen/pin_indicator_size"
+        android:height="@dimen/pin_indicator_size" />
+    <stroke
+        android:width="@dimen/pin_indicator_stroke"
+        android:color="@color/colorPinIndicatorEmpty" />
+</shape>

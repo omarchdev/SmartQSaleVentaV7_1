@@ -11,6 +11,7 @@ class mImpresora(){
     var idTienda:Int=0
     var idArea=0
     var idImpresora=0
+    var anchoImpresion: Int = 1
 
 
 }

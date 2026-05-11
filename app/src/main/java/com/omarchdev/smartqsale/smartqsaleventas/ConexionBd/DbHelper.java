@@ -64,10 +64,16 @@ public class DbHelper extends SQLiteOpenHelper {
             while(a.moveToNext()){
                 i.setIP(a.getString(0));
                 i.setPuerto(a.getInt(1));
+                if (a.getColumnCount() > 2) {
+                    i.setAnchoImpresion(a.getInt(2));
+                } else {
+                    i.setAnchoImpresion(1);
+                }
             }
         }else{
             i.setPuerto(0);
             i.setIP("");
+            i.setAnchoImpresion(1);
         }
 
        return i;

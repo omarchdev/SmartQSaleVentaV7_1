@@ -297,25 +297,27 @@ class ConstructorFactura(){
 
         var n="["+p.cantidad.fUnid+"]"+p.productName
 
+        val textoDescuento = if (p.montoDescuento.compareTo(BigDecimal.ZERO) == 0) "" else "(${p.montoDescuento.fortMoneda3})"
+
         if(n.length<=16){
             linea=completarEspacios(16,n)+ completarEspaciosI(12, p.precioOriginal.fortMoneda3)+
                     completarEspaciosI(12,p.precioVentaFinal.fortMoneda3)+"\n"+
             completarEspaciosI(16,"")+ completarEspacios(12,
-                    "(${p.montoDescuento.fortMoneda3})")+ completarEspacios(12,"")
+                    textoDescuento)+ completarEspacios(12,"")
 
         }else if(n.length<=32){
            n= completarEspacios(32,n)
            linea=n.substring(0,16)+completarEspaciosI(12, p.precioOriginal.fortMoneda3)+
                    completarEspaciosI(12,p.precioVentaFinal.fortMoneda3)+"\n"+
                    completarEspacios(16,n.substring(16,n.length))+
-                   completarEspaciosI(12,"(${p.montoDescuento.fortMoneda3})")+
+                   completarEspaciosI(12,textoDescuento)+
                    completarEspacios(12,"")
 
         }else if(n.length<=48){
             n=completarEspacios(48,n)
             linea=n.substring(0,16)+completarEspaciosI(12, p.precioOriginal.fortMoneda3)+
                     completarEspaciosI(12,p.precioVentaFinal.fortMoneda3)+"\n"+completarEspacios(16,n.substring(16,32))+
-                    completarEspaciosI(12,"(${p.montoDescuento.fortMoneda3})")+
+                    completarEspaciosI(12,textoDescuento)+
                     completarEspacios(12,"")+"\n"+
                     completarEspacios(16,n.substring(32,n.length))+
                     completarEspacios(12,"")+ completarEspacios(12,"")
@@ -324,7 +326,7 @@ class ConstructorFactura(){
             linea=n.substring(0,16)+completarEspaciosI(12, p.precioOriginal.fortMoneda3)+
                     completarEspaciosI(12,p.precioVentaFinal.fortMoneda3)+"\n"+
                     completarEspacios(16,n.substring(16,32))+
-                    completarEspaciosI(12,"(${p.montoDescuento.fortMoneda3})")+
+                    completarEspaciosI(12,textoDescuento)+
                     completarEspacios(12,"")+"\n"+
                     completarEspacios(16,n.substring(32,48))+
                     completarEspacios(12,"")+
@@ -338,7 +340,7 @@ class ConstructorFactura(){
             linea=n.substring(0,16)+completarEspacios(12, p.precioOriginal.fortMoneda3)+
                     completarEspacios(12,p.precioVentaFinal.fortMoneda3)+"\n"+
                     completarEspacios(16,n.substring(16,32))+
-                    completarEspacios(12,"(${p.montoDescuento.fortMoneda3})")+
+                    completarEspacios(12,textoDescuento)+
                     completarEspacios(12,"")+"\n"+
                     completarEspacios(16,n.substring(32,48))+
                     completarEspacios(12,"")+ completarEspacios(12,"")+"\n"+                                         completarEspacios(16,n.substring(48,64))+
@@ -352,7 +354,7 @@ class ConstructorFactura(){
             linea=n.substring(0,16)+completarEspaciosI(12, p.precioOriginal.fortMoneda3)+
                     completarEspaciosI(12,p.precioVentaFinal.fortMoneda3) +"\n"+
                     completarEspacios(16,n.substring(16,32))+
-                    completarEspaciosI(12,"(${p.montoDescuento.fortMoneda3})")+
+                    completarEspaciosI(12,textoDescuento)+
                     completarEspacios(12,"")+"\n"+
             completarEspacios(16,n.substring(32,48))+
                     completarEspacios(12,"")+ completarEspacios(12,"")+"\n"+                                         completarEspacios(16,n.substring(48,64))+
@@ -368,7 +370,7 @@ class ConstructorFactura(){
             linea=n.substring(0,16)+completarEspaciosI(12, p.precioOriginal.fortMoneda3)+
                     completarEspaciosI(12,p.precioVentaFinal.fortMoneda3) +"\n"+
                     completarEspacios(16,n.substring(16,32))+
-                    completarEspaciosI(12,"(${p.montoDescuento.fortMoneda3})")+
+                    completarEspaciosI(12,textoDescuento)+
                     completarEspacios(12,"")+"\n"+
                     completarEspacios(16,n.substring(32,48))+
                     completarEspacios(12,"")+ completarEspacios(12,"")+"\n"+                                           completarEspacios(16,n.substring(48,64))+
