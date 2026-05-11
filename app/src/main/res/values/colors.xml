@@ -1,43 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="background_app_bar">#989898</color>
-    <color name="purple_700">#FF7B1FA2</color>
-    <color name="purple_200">#FFCE93D8</color>
+    <!-- Brand Colors -->
     <color name="colorPrimary">#ab47bc</color>
     <color name="colorPrimaryDark">#790e6b</color>
     <color name="colorAccent">#df78ef</color>
-    <color name="colorPinButton">#FFFFFF</color>
-    <color name="colorPinButtonText">#212121</color>
-    <color name="colorPinRipple">#E0E0E0</color>
-    <color name="colorPinIndicatorEmpty">#BDBDBD</color>
-    <color name="colorPinIndicatorFull">@color/colorPrimary</color>
-    <color name="colorPinIndicatorError">#F44336</color>
-    <color name="colorIconDelete">#F44336</color>
-    <color name="colorFondo">#F2F2F2</color>
-    <color name="colorIconoBtnBordeless">#232323</color>
-    <color name="colorUno">#cfcfcf</color>
-    <color name="colorDos">#E91F1A</color>
-    <color name="white">#ffffff</color>
-    <color name="black">#000000</color>
+
+    <!-- Semantic Status Colors -->
+    <color name="status_success">#42ff52</color>
+    <color name="status_warning">#ffaf38</color>
+    <color name="status_error">#E91F1A</color>
+    <color name="status_info">#2A8AC7</color>
+
+    <!-- Surface and UI Colors -->
+    <color name="backgroud_app">#EFEFEF</color>
+    <color name="colorBackgroundApp">@color/backgroud_app</color>
     <color name="background_card">#FFFFFF</color>
-    <color name="colorTres">#ffaf38</color>
-    <color name="colorCuatro">#fff239</color>
-    <color name="colorCinco">#42ff52</color>
-    <color name="colorSeis">#2A8AC7</color>
+    <color name="background_app_bar">#989898</color>
+    <color name="colorDivider">#cfcfcf</color>
+    <color name="color_background_carrito">#F8F8F8</color>
+
+    <!-- Grayscale -->
+    <color name="white">#ffffff</color>
+    <color name="gray_50">#FAFAFA</color>
+    <color name="gray_100">#F5F5F5</color>
+    <color name="gray_200">#EEEEEE</color>
+    <color name="gray_300">#E0E0E0</color>
+    <color name="gray_400">#BDBDBD</color>
+    <color name="gray_500">#9E9E9E</color>
+    <color name="gray_600">#757575</color>
+    <color name="gray_700">#616161</color>
+    <color name="gray_800">#424242</color>
+    <color name="gray_900">#212121</color>
+    <color name="black">#000000</color>
+
+    <!-- PIN Specific Colors -->
+    <color name="colorPinButton">#FFFFFF</color>
+    <color name="colorPinButtonText">@color/gray_900</color>
+    <color name="colorPinRipple">@color/gray_300</color>
+    <color name="colorPinIndicatorEmpty">@color/gray_400</color>
+    <color name="colorPinIndicatorFull">@color/colorPrimary</color>
+    <color name="colorPinIndicatorError">@color/status_error</color>
+    <color name="colorIconDelete">@color/status_error</color>
+
+    <!-- Legacy / Compatibility Aliases (To be phased out) -->
+    <color name="colorUno">@color/colorDivider</color>
+    <color name="colorDos">@color/status_error</color>
+    <color name="colorTres">@color/status_warning</color>
+    <color name="colorCuatro">#fff239</color> <!-- Keep specific yellow for now -->
+    <color name="colorCinco">@color/status_success</color>
+    <color name="colorSeis">@color/status_info</color>
     <color name="colorSiete">#ff60dd</color>
     <color name="colorOcho">#65fff2</color>
+    <color name="colorFondo">#F2F2F2</color>
     <color name="colorConstrante">#263238</color>
-    <color name="disabled_color">#ffffff</color>
-    <color name="colorBlanco">#FFFFFF</color>
-    <color name="enabled_color" >#ffffff</color>
+    <color name="colorBlanco">@color/white</color>
     <color name="color_fondo_1">#EDEDED</color>
     <color name="color_Fondo">#E9E9E9</color>
+    <color name="colorIconoBtnBordeless">#232323</color>
+    <color name="disabled_color">@color/white</color>
+    <color name="enabled_color">@color/white</color>
     <color name="enabled_text_hint">#E7E7E7</color>
-    <color name="disabled_text_hint">#212121</color>
-    <color name="color_text_label">#212121</color>
-    <color name="backgroud_app">#EFEFEF</color>
-    <color name="color_text_button_outlined">#212121</color>
-    <color name="color_text_label_contraste">#FFFFFF</color>
+    <color name="disabled_text_hint">@color/gray_900</color>
+    <color name="color_text_label">@color/gray_900</color>
+    <color name="color_text_button_outlined">@color/gray_900</color>
+    <color name="color_text_label_contraste">@color/white</color>
 
-    <color name="color_background_carrito">#F8F8F8</color>
 </resources>

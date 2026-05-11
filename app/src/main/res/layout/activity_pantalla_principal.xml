@@ -23,8 +23,8 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_pantalla_principal"
 
-        app:itemIconTint="#dcdcdc"
-        app:itemTextColor="#dcdcdc"
+        app:itemIconTint="@color/gray_300"
+        app:itemTextColor="@color/gray_300"
         app:itemBackground="@color/colorConstrante"
         app:menu="@menu/activity_pantalla_principal_drawer" >
 
@@ -35,11 +35,11 @@
             android:layout_marginEnd="0dp"
             android:orientation="vertical">
             <Button
-                android:drawableTint="#ffffff"
+                android:drawableTint="@color/white"
                 android:drawableLeft="@drawable/open_door"
                 android:id="@+id/btnCerrarSesion"
                 android:background="@color/colorFondo"
-                android:textColor="#ffffff"
+                android:textColor="@color/white"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_margin="0dp"
                 android:layout_width="match_parent"

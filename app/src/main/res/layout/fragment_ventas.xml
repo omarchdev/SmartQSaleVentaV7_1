@@ -573,7 +573,7 @@
                                                     android:id="@+id/imgTipoLista"
                                                     android:layout_width="100dp"
                                                     android:layout_height="100dp"
-                                                    android:background="#FFFFFF"
+                                                    android:background="@color/white"
                                                     app:srcCompat="@drawable/ic_folder_open_outline_grey600_48dp">
 
                                                 </ImageView>
