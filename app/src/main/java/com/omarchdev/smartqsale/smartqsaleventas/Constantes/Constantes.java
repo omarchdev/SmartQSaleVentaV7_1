@@ -442,7 +442,7 @@ public abstract class Constantes {
 
     public static abstract class DBSQLITE_Database {
 
-        public final static int DATABASE_VERSION = 4;
+        public final static int DATABASE_VERSION = 5;
         public final static String DATABASE_NAME = "MiNegocioDemo.db";
     }
 

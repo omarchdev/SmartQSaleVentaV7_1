@@ -28,17 +28,22 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(Constantes.TransactionDbSqlLite.Create_Table_Device);
         db.execSQL(Constantes.TransactionDbSqlLite.Create_Table_Print_Default);
         db.execSQL(Constantes.TransactionDbSqlLite.Create_Table_User_Register);
-        db.execSQL("Create table ImpresoraRed (IpImpresora text,Puerto integer not null default 9100) ");
+        db.execSQL("Create table ImpresoraRed (IpImpresora text,Puerto integer not null default 9100, AnchoImpresion integer not null default 1) ");
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        switch (newVersion){
-            case 3:
-                db.execSQL("Create table ImpresoraRed (IpImpresora text,Puerto integer not null default 9100) ");
-                break;
+        if (oldVersion < 3) {
+            db.execSQL("Create table ImpresoraRed (IpImpresora text,Puerto integer not null default 9100) ");
+        }
+        if (oldVersion < 5) {
+            try {
+                db.execSQL("ALTER TABLE ImpresoraRed ADD COLUMN AnchoImpresion integer not null default 1");
+            } catch (Exception e) {
+                // In case it already exists
+            }
         }
 
     }
@@ -47,7 +52,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public Cursor SelectImpresoraRed(){
 
         SQLiteDatabase db = getReadableDatabase();
-        String[] campos = new String[]{"IpImpresora,Puerto"};
+        String[] campos = new String[]{"IpImpresora,Puerto,AnchoImpresion"};
         return db.query("ImpresoraRed", campos, null, null, null, null, null);
 
     }
@@ -98,11 +103,12 @@ public class DbHelper extends SQLiteOpenHelper {
 
     }
 
-    public long InsertImpresoraRed(String ip,int puerto){
+    public long InsertImpresoraRed(String ip,int puerto, int ancho){
         SQLiteDatabase db=getWritableDatabase();
         ContentValues values=new ContentValues();
         values.put("IpImpresora",ip);
         values.put("Puerto",puerto);
+        values.put("AnchoImpresion", ancho);
         return db.insert("ImpresoraRed",null,values);
     }
 

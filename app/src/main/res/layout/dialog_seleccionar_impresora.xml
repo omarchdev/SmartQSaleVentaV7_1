@@ -88,6 +88,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
+            <Button
+                android:id="@+id/btnTestPrinterRed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Probar Impresora"
+                android:visibility="gone" />
+
+            <RadioGroup
+                android:id="@+id/rgAncho"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:visibility="gone">
+
+                <RadioButton
+                    android:id="@+id/rb53mm"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="53mm" />
+
+                <RadioButton
+                    android:id="@+id/rb80mm"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="80mm" />
+            </RadioGroup>
+
         </LinearLayout>
     </ScrollView>
 

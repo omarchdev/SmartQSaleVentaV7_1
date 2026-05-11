@@ -16,13 +16,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.omarchdev.smartqsale.smartqsaleventas.Bluetooth.BluetoothConnection;
 import com.omarchdev.smartqsale.smartqsaleventas.ConexionBd.DbHelper;
+import com.omarchdev.smartqsale.smartqsaleventas.Controlador.cImpresionRed;
 import com.omarchdev.smartqsale.smartqsaleventas.R;
 import com.omarchdev.smartqsale.smartqsaleventas.RvAdapter.RvAdapterBluetoothDevice;
 import com.omarchdev.smartqsale.smartqsaleventas.RvAdapter.RvUsbDevice;
@@ -44,6 +47,9 @@ public class DialogSelectPrinter extends DialogFragment implements View.OnClickL
     RecyclerView rv;
     TextView txt;
     EditText edtIP, edtPuerto;
+    Button btnTestPrinterRed;
+    RadioGroup rgAncho;
+    RadioButton rb53mm, rb80mm;
     BluetoothConnection btConnection;
     DbHelper dbHelper;
     String opcionImpresion;
@@ -76,6 +82,10 @@ public class DialogSelectPrinter extends DialogFragment implements View.OnClickL
         dbHelper = new DbHelper(getActivity());
         edtIP = v.findViewById(R.id.edtIP);
         edtPuerto = v.findViewById(R.id.edtPuerto);
+        btnTestPrinterRed = v.findViewById(R.id.btnTestPrinterRed);
+        rgAncho = v.findViewById(R.id.rgAncho);
+        rb53mm = v.findViewById(R.id.rb53mm);
+        rb80mm = v.findViewById(R.id.rb80mm);
         rvAdapterBluetoothDevice = new RvAdapterBluetoothDevice();
         rv.setAdapter(rvAdapterBluetoothDevice);
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -85,12 +95,15 @@ public class DialogSelectPrinter extends DialogFragment implements View.OnClickL
         txt.setVisibility(View.GONE);
         edtIP.setVisibility(View.GONE);
         edtPuerto.setVisibility(View.GONE);
+        btnTestPrinterRed.setVisibility(View.GONE);
+        rgAncho.setVisibility(View.GONE);
         txtSeleccionImpresora.setVisibility(View.GONE);
         rbPdfPrinter.setOnClickListener(this);
         rbNinguno.setOnClickListener(this);
         rbBluetooth.setOnClickListener(this);
         rbUsb.setOnClickListener(this);
         rbPdfRed.setOnClickListener(this);
+        btnTestPrinterRed.setOnClickListener(this);
         rvUsbDevice = new RvUsbDevice();
         try{
             rvUsbDevice.setClickPosition(usbDevice -> {
@@ -99,7 +112,7 @@ public class DialogSelectPrinter extends DialogFragment implements View.OnClickL
                     dbHelper.InsertOptionPrint(rbUsb.getText().toString());
                     dbHelper.DeleteImpresoraRed();
                     dbHelper.InsertImpresoraRed(Integer.toString(usbDevice.getVendorId()),
-                            Integer.parseInt(Integer.toString(usbDevice.getProductId())));
+                            Integer.parseInt(Integer.toString(usbDevice.getProductId())), 2);
                     Cursor c = dbHelper.SelectImpresoraRed();
                     if (c.getCount() > 0) {
                         while (c.moveToNext()) {
@@ -163,8 +176,9 @@ public class DialogSelectPrinter extends DialogFragment implements View.OnClickL
                         dbHelper.InsertOptionPrint(rbPdfRed.getText().toString());
 
                         dbHelper.DeleteImpresoraRed();
+                        int ancho = rb53mm.isChecked() ? 1 : 2;
                         dbHelper.InsertImpresoraRed(edtIP.getText().toString().trim(),
-                                Integer.parseInt(edtPuerto.getText().toString().trim()));
+                                Integer.parseInt(edtPuerto.getText().toString().trim()), ancho);
                     } catch (Exception e) {
                         Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_LONG).show();
                         Log.d("blueB",e.toString());
@@ -191,26 +205,36 @@ public class DialogSelectPrinter extends DialogFragment implements View.OnClickL
                     VerificarBluetooth();
                     edtIP.setVisibility(View.GONE);
                     edtPuerto.setVisibility(View.GONE);
+                    btnTestPrinterRed.setVisibility(View.GONE);
+                    rgAncho.setVisibility(View.GONE);
 
 
                 } else if (comparacion.equals(rbPdfPrinter.getText().toString())) {
                     rbPdfPrinter.setChecked(true);
                     edtIP.setVisibility(View.GONE);
                     edtPuerto.setVisibility(View.GONE);
+                    btnTestPrinterRed.setVisibility(View.GONE);
+                    rgAncho.setVisibility(View.GONE);
                 } else if (comparacion.equals(rbNinguno.getText().toString())) {
                     rbNinguno.setChecked(true);
                     edtIP.setVisibility(View.GONE);
                     edtPuerto.setVisibility(View.GONE);
+                    btnTestPrinterRed.setVisibility(View.GONE);
+                    rgAncho.setVisibility(View.GONE);
                 } else if (comparacion.equals(rbPdfRed.getText().toString())) {
                     rbPdfRed.setChecked(true);
                     edtIP.setVisibility(View.VISIBLE);
                     edtPuerto.setVisibility(View.VISIBLE);
+                    btnTestPrinterRed.setVisibility(View.VISIBLE);
+                    rgAncho.setVisibility(View.VISIBLE);
                     VerificarImpresoraRed();
                 } else if (comparacion.equals(rbUsb.getText().toString())) {
                     rbUsb.setChecked(true);
 
                     edtPuerto.setVisibility(View.GONE);
                     edtIP.setVisibility(View.GONE);
+                    btnTestPrinterRed.setVisibility(View.GONE);
+                    rgAncho.setVisibility(View.GONE);
                     rv.setAdapter(rvUsbDevice);
                     rv.setVisibility(View.VISIBLE);
                     usbController.printDeviceList();
@@ -240,6 +264,8 @@ public class DialogSelectPrinter extends DialogFragment implements View.OnClickL
                 opcionImpresion = rbBluetooth.getText().toString();
                 edtPuerto.setVisibility(View.GONE);
                 edtIP.setVisibility(View.GONE);
+                btnTestPrinterRed.setVisibility(View.GONE);
+                rgAncho.setVisibility(View.GONE);
                 break;
             case R.id.rbNinguno:
                 txt.setVisibility(View.GONE);
@@ -248,6 +274,8 @@ public class DialogSelectPrinter extends DialogFragment implements View.OnClickL
                 opcionImpresion = rbNinguno.getText().toString();
                 edtPuerto.setVisibility(View.GONE);
                 edtIP.setVisibility(View.GONE);
+                btnTestPrinterRed.setVisibility(View.GONE);
+                rgAncho.setVisibility(View.GONE);
                 break;
             case R.id.rbPdfPrinter:
                 txt.setVisibility(View.GONE);
@@ -256,6 +284,8 @@ public class DialogSelectPrinter extends DialogFragment implements View.OnClickL
                 opcionImpresion = rbPdfPrinter.getText().toString();
                 edtPuerto.setVisibility(View.GONE);
                 edtIP.setVisibility(View.GONE);
+                btnTestPrinterRed.setVisibility(View.GONE);
+                rgAncho.setVisibility(View.GONE);
                 break;
             case R.id.rbPdfRed:
                 txt.setVisibility(View.GONE);
@@ -263,6 +293,11 @@ public class DialogSelectPrinter extends DialogFragment implements View.OnClickL
                 txtSeleccionImpresora.setVisibility(View.GONE);
                 edtPuerto.setVisibility(View.VISIBLE);
                 edtIP.setVisibility(View.VISIBLE);
+                btnTestPrinterRed.setVisibility(View.VISIBLE);
+                rgAncho.setVisibility(View.VISIBLE);
+                if (!rb53mm.isChecked() && !rb80mm.isChecked()) {
+                    rb53mm.setChecked(true);
+                }
                 VerificarImpresoraRed();
                 break;
             case R.id.rbUsb:
@@ -270,6 +305,8 @@ public class DialogSelectPrinter extends DialogFragment implements View.OnClickL
                 try {
                     edtPuerto.setVisibility(View.GONE);
                     edtIP.setVisibility(View.GONE);
+                    btnTestPrinterRed.setVisibility(View.GONE);
+                    rgAncho.setVisibility(View.GONE);
                     rv.setAdapter(rvUsbDevice);
                     rv.setVisibility(View.VISIBLE);
                     usbController.printDeviceList();
@@ -284,6 +321,28 @@ public class DialogSelectPrinter extends DialogFragment implements View.OnClickL
                     Log.d("blueC",e.toString());
                 }
 
+                break;
+            case R.id.btnTestPrinterRed:
+                String testIp = edtIP.getText().toString().trim();
+                String testPortStr = edtPuerto.getText().toString().trim();
+                if (testIp.isEmpty() || testPortStr.isEmpty()) {
+                    Toast.makeText(getActivity(), "Ingrese IP y Puerto", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                int testPort = Integer.parseInt(testPortStr);
+                new Thread(() -> {
+                    cImpresionRed printer = new cImpresionRed();
+                    boolean result = printer.ProbarImpresora(testIp, testPort);
+                    if (getActivity() != null) {
+                        getActivity().runOnUiThread(() -> {
+                            if (result) {
+                                Toast.makeText(getActivity(), "Prueba exitosa", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getActivity(), "Error al conectar con la impresora", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                }).start();
                 break;
         }
 
@@ -323,6 +382,12 @@ public class DialogSelectPrinter extends DialogFragment implements View.OnClickL
                     puerto="";
                     ip = c.getString(0);
                     puerto = String.valueOf(c.getInt(1));
+                    int ancho = c.getInt(2);
+                    if (ancho == 1) {
+                        rb53mm.setChecked(true);
+                    } else if (ancho == 2) {
+                        rb80mm.setChecked(true);
+                    }
                     ip.length();
                     puerto.length();
                     edtIP.setText(ip);
