@@ -1,86 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/txtMonto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:background="@color/colorPrimary"
-        android:elevation="10dp"
-        android:padding="15dp"
-        android:text="APERTURA DE CAJA"
-        android:textColor="#ffffff"
-        android:textSize="18sp"
+        android:background="@color/gray_100"
+        android:padding="16dp"
+        android:text="Apertura de Caja"
+        android:textColor="@color/gray_900"
+        android:textSize="20sp"
         android:textStyle="bold" />
-
-
-    <EditText
-        android:id="@+id/edtMontoApertura"
-        android:layout_width="205dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="65dp"
-        android:layout_marginTop="95dp"
-
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="number|numberDecimal"
-        android:maxLength="12"
-        android:text="0.00"
-        android:textSize="24sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-         android:layout_below="@+id/edtMontoApertura"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/txtMoneda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="S/"
+            android:textColor="@color/colorPrimary"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edtMontoApertura"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@null"
+            android:enabled="false"
+            android:text="0.00"
+            android:textColor="@color/gray_900"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Quick add buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
 
         <Button
             android:id="@+id/btn1"
-            android:layout_width="70dp"
-            android:layout_marginEnd="8dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-
-
-            android:text="+S/1" />
+            android:layout_weight="1"
+            android:text="+1"
+            app:cornerRadius="@dimen/radius_medium" />
 
         <Button
             android:id="@+id/btn5"
-            android:layout_marginEnd="8dp"
-            android:layout_width="70dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="+S/5" />
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:text="+5"
+            app:cornerRadius="@dimen/radius_medium" />
 
         <Button
             android:id="@+id/btn10"
-            android:layout_marginEnd="8dp"
-            android:layout_width="80dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="+S/10" />
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:text="+10"
+            app:cornerRadius="@dimen/radius_medium" />
 
         <Button
             android:id="@+id/btn50"
-            android:layout_marginEnd="8dp"
-            android:layout_width="80dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="+S/50" />
-
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:text="+50"
+            app:cornerRadius="@dimen/radius_medium" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/txtMoneda"
-        android:layout_width="wrap_content"
-        android:layout_height="54dp"
-        android:layout_alignTop="@+id/edtMontoApertura"
-        android:layout_toStartOf="@+id/edtMontoApertura"
-        android:gravity="center"
-        android:text="F"
-        android:textSize="24sp" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/gray_200" />
 
-</RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="Use el teclado del sistema para ingresar el monto exacto si es necesario."
+        android:textColor="@color/gray_500"
+        android:textSize="12sp"
+        android:gravity="center" />
+
+</LinearLayout>

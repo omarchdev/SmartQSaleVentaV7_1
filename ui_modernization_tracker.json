@@ -1,0 +1,20 @@
+{
+  "total_files": 255,
+  "completed_files": 0,
+  "status": "IN_PROGRESS",
+  "styles_centralized": false,
+  "files": [
+    {"path": "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_pin_login.xml", "status": "COMPLETED"},
+    {"path": "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_edit_price.xml", "status": "COMPLETED"},
+    {"path": "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_ventas.xml", "status": "COMPLETED"},
+    {"path": "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_main.xml", "status": "PENDING"},
+    {"path": "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_login_principal.xml", "status": "PENDING"},
+    {"path": "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_pantalla_principal.xml", "status": "PENDING"},
+    {"path": "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_registro_producto.xml", "status": "PENDING"},
+    {"path": "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_listado_productos.xml", "status": "PENDING"},
+    {"path": "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_historial_ventas.xml", "status": "PENDING"},
+    {"path": "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_apertura_caja.xml", "status": "PENDING"},
+    {"path": "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_registro_cliente.xml", "status": "PENDING"}
+  ],
+  "note": "This is a partial list of key files. The full list will be managed dynamically."
+}

@@ -102,6 +102,22 @@
     </style>
 
     <!-- Input Layout Styles -->
+    <style name="AppTheme.TextInputLayout.Outlined" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopStart">@dimen/radius_medium</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/radius_medium</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/radius_medium</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/radius_medium</item>
+        <item name="boxStrokeColor">@color/colorPrimary</item>
+        <item name="hintTextColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.EditText.Modern" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@drawable/bg_edittext_modern</item>
+        <item name="android:padding">@dimen/spacing_medium</item>
+        <item name="android:textColor">@color/gray_900</item>
+        <item name="android:textSize">@dimen/text_size_body</item>
+    </style>
+
     <style name="Custom_textinputlayout_filledbox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeColor">@color/colorAccent</item>
         <item name="boxCornerRadiusTopStart">@dimen/radius_small</item>

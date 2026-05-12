@@ -1,76 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="2dp"
+    android:padding="@dimen/spacing_medium">
 
-        android:orientation="vertical"
-        >
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginBottom="2dp"
-        android:gravity="center|left"
-        android:orientation="horizontal"
-        >
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/imgArrowBack"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-           android:layout_weight="1"
-            app:srcCompat="@drawable/arrow_back_simple" />
+            style="@style/AppTheme.Button.Icon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:srcCompat="@drawable/arrow_back_grid"
+            app:tint="@color/gray_800" />
 
-        <EditText
-            android:id="@+id/edtBusquedaVendedor"
+        <TextView
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:text="Seleccionar Vendedor"
+            android:textColor="@color/gray_900"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
-            android:layout_weight="5"
-            android:ems="10"
-            android:hint="Nombre del Vendedor"
-            android:inputType="text"
-            android:maxLines="1" />
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:cardBackgroundColor="@color/gray_100"
+        app:cardCornerRadius="@dimen/radius_medium"
+        app:cardElevation="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                app:srcCompat="@drawable/search"
+                app:tint="@color/gray_500" />
+
+            <EditText
+                android:id="@+id/edtBusquedaVendedor"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@null"
+                android:hint="Buscar por nombre..."
+                android:inputType="text"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="@color/gray_900"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvVendedoresParaVenta"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1" />
+
+    <!-- Legacy hidden listview maintained for ID safety -->
+    <ListView
+        android:id="@+id/listViewVendedoresEnVenta"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnEliminarVendedor"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="ELIMINAR"
+            android:textColor="@color/status_error" />
 
         <Button
             android:id="@+id/btnAgregarVendedor"
-            android:layout_width="wrap_content"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="#ffa03b"
-            android:text="Añadir Vendedor"
-            android:textColor="#ffffff"
-            android:textStyle="bold"
-            android:visibility="gone" />
-
-
+            android:layout_marginStart="16dp"
+            android:layout_weight="1.5"
+            android:backgroundTint="@color/colorPrimary"
+            android:text="AÑADIR NUEVO"
+            android:visibility="gone"
+            app:cornerRadius="@dimen/radius_medium" />
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
 
-        android:orientation="vertical"
-        >
-            <Button
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:id="@+id/btnEliminarVendedor"
-                android:drawableRight="@drawable/ic_delete_white_24dp"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="Eliminar vendedor seleccionado"
-                />
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvVendedoresParaVenta"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-          >
-            </androidx.recyclerview.widget.RecyclerView>
-
-    </LinearLayout>
-    </LinearLayout>
 </LinearLayout>

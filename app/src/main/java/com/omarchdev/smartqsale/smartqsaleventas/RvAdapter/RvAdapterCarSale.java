@@ -340,7 +340,7 @@ public class RvAdapterCarSale extends RecyclerView.Adapter<RvAdapterCarSale.Prod
 
     public class ProductInCarSaleViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         LinearLayout linearLayout;
-        RelativeLayout cv;
+        View cv;
         TextView productName,quantityProduct,subTotalPrice,txtCombo,txtUnidad;
 
         ImageButton imgDelete;
@@ -348,7 +348,7 @@ public class RvAdapterCarSale extends RecyclerView.Adapter<RvAdapterCarSale.Prod
         public ProductInCarSaleViewHolder(View itemView) {
             super(itemView);
             linearLayout=(LinearLayout)itemView.findViewById(R.id.llayoutCardViewProductInCarSale);
-            cv=(RelativeLayout)itemView.findViewById(R.id.cvProduct_in_sale_quotation);
+            cv=itemView.findViewById(R.id.cvProduct_in_sale_quotation);
             productName=(TextView)itemView.findViewById(R.id.productNameInSale);
             txtCombo=(TextView)itemView.findViewById(R.id.txtCombo);
             quantityProduct=(TextView)itemView.findViewById(R.id.quantityInSale);
