@@ -48,7 +48,7 @@ open class ActivityParent(): AppCompatActivity(), ConnectionValid.ConnectionStat
     override fun onCreate(savedInstanceState: Bundle?) {
         this.metricWindow = MetricWindow(this)
 
-        this.window.setSoftInputMode(WindowManager.LayoutParams.WRAP_CONTENT)
+        this.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
         val orientation=resources.configuration.orientation
         var d=metricWindow.height()
         when(orientation){

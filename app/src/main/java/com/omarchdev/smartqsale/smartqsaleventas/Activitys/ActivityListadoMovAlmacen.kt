@@ -248,7 +248,7 @@ class ActivityListadoMovAlmacen : ActivityParent(), AsyncAlmacenes.ListenerMovAl
     private fun MostrarSeleccionarFecha(origen:Byte){
         selectFecha.setOrigen(origen,calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH)+1,calendar.get(Calendar.DAY_OF_MONTH))
-        selectFecha.show(fragmentManager,"Fecha")
+        selectFecha.show(supportFragmentManager,"Fecha")
     }
     private fun listenerButtonFiltro() {
 

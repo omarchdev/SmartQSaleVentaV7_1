@@ -84,7 +84,7 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
         return false
     }
     val calendar:Calendar= Calendar.getInstance()
-    val fm=this@IngresoCompraKt.fragmentManager
+    val fm=this@IngresoCompraKt.supportFragmentManager
     val selectFecha:DialogDatePickerSelect=DialogDatePickerSelect()
     val dialogScan:DialogScannerCam= DialogScannerCam()
     var dia:Int=0
@@ -371,10 +371,10 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
                 "<font color=\"#757575\">" + tituloPantalla +
                         "</font>"))
         txtMensaje.text="Productos en transferencia"
-        btnAlmacen.setText("Seleccion almacén")
-        textAlmacen.setText("Almacén de recepción")
-        textAlmacenDestino.setText("Documentos de Salida")
-        btnAlmacenDestino.setText("Seleccion documento")
+        btnAlmacen.text = "Seleccion almacén"
+        textAlmacen.text = "Almacén de recepción"
+        textAlmacenDestino.text = "Documentos de Salida"
+        btnAlmacenDestino.text = "Seleccion documento"
         btnAlmacen.visibility=View.VISIBLE
         btnAlmacenDestino.visibility=View.VISIBLE
         textAlmacenDestino.visibility=View.VISIBLE
@@ -386,9 +386,9 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
         edtGuiaProveedor.visibility=View.GONE
         btnFechaGuia.visibility=View.GONE
         edtNombreProveedor.setHint("Descripcion")
-        btnFechaCompra.setText("Fecha Transferencia")
+        btnFechaCompra.text = "Fecha Transferencia"
 
-        btnFechaIngreso.setText(TextoFecha("Fecha Recepcion",dia,mes,anio))
+        btnFechaIngreso.text = TextoFecha("Fecha Recepcion",dia,mes,anio)
         fechaMov= GenerarFechaTexto(dia,mes,anio)
         btnFechaIngreso.setOnClickListener(null)
         btnFechaCompra.setOnClickListener(null)
@@ -404,8 +404,8 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
                     override fun MovSeleccionado(movAlmacen: mMovAlmacen) {
                         pbProductosAlmacen.visibility=View.GONE
                         idMovAlmacen=movAlmacen.idMovAlmacen
-                        btnAlmacenDestino.setText("${movAlmacen.descAlmacenI} ")
-                        btnFechaCompra.setText("Fecha Transferencia\n ${movAlmacen.fechaMov}")
+                        btnAlmacenDestino.text = "${movAlmacen.descAlmacenI} "
+                        btnFechaCompra.text = "Fecha Transferencia\n ${movAlmacen.fechaMov}"
                         fechaCompra=movAlmacen.fechaMov.replace("/","-",false)
                         asyncAlmacen.ObtenerProductosMovimiento(movAlmacen.idMovOrigenTransf)
                         asyncAlmacen.setListenerProductosMovimiento {
@@ -504,9 +504,9 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
         tituloPantalla="Salida Transferencia"
         textAlmacenDestino.visibility=View.VISIBLE
         btnAlmacenDestino.visibility=View.VISIBLE
-        textAlmacen.setText("Almacén de Origen")
+        textAlmacen.text = "Almacén de Origen"
         txtInfoProduct.text="Cantidad disponible"
-        textAlmacenDestino.setText("Almacén de Destino ")
+        textAlmacenDestino.text = "Almacén de Destino "
         supportActionBar?.setTitle(Html.fromHtml(
                 "<font color=\"#757575\">" + tituloPantalla +
                         "</font>"))
@@ -724,9 +724,9 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
         fechaGuia=GenerarFechaTexto(dia,mes,anio)
         fechaMov=GenerarFechaTexto(dia,mes,anio)
         fechaCompra=GenerarFechaTexto(dia,mes,anio)
-        btnFechaCompra.setText(TextoFecha(resources.getString(R.string.FechaCompra),dia,mes,anio))
-        btnFechaIngreso.setText(TextoFecha(resources.getString(R.string.FechaMovimiento),dia,mes,anio))
-        btnFechaGuia.setText(TextoFecha(resources.getString(R.string.FechaGuia),dia,mes,anio))
+        btnFechaCompra.text = TextoFecha(resources.getString(R.string.FechaCompra),dia,mes,anio)
+        btnFechaIngreso.text = TextoFecha(resources.getString(R.string.FechaMovimiento),dia,mes,anio)
+        btnFechaGuia.text = TextoFecha(resources.getString(R.string.FechaGuia),dia,mes,anio)
     }
     //Eventos click fechas
     private fun declareOnClickListener(){
@@ -736,7 +736,7 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
             dialogSelectAlmacen.setListenerAlmacen(object:DialogSelectAlmacen.AlmacenSeleccionListener{
                 override fun obtenerAlmacen(idAlmacen: Int, descripcion: String) {
                     idAlmacenOrigen=idAlmacen
-                    btnAlmacen.setText(descripcion)
+                    btnAlmacen.text = descripcion
                     //Eventos cambio almacen origen en la salida
                     if(EsSalida()){
                         adapterProductoCompra.LimpiarLista()
@@ -780,7 +780,7 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
             dialogSelectAlmacen.setListenerAlmacen(object:DialogSelectAlmacen.AlmacenSeleccionListener{
                 override fun obtenerAlmacen(idAlmacen: Int, descripcion: String) {
                         idAlmacenD=idAlmacen
-                        btnAlmacenDestino.setText(descripcion)
+                        btnAlmacenDestino.text = descripcion
                 }
             })
         }
@@ -858,7 +858,7 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
     }
 
     private fun Scannear(){
-            dialogScan.show(parent.fragmentManager,"ScanBarCode")
+            dialogScan.show(supportFragmentManager,"ScanBarCode")
     }
     private fun recibirResultadoScan(){
         dialogScan.setScannerResult {
@@ -951,6 +951,7 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
                 menuSearch.setVisible(false)
                 menuScan.setVisible(false)
             }
+            else -> {}
         }
     }
 
@@ -1044,9 +1045,9 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
            fechaGuia = movAlmacen!!.fechaGuia.replace("/", "-", false)
            fechaMov = movAlmacen!!.fechaMov.replace("/", "-", false)
            fechaCompra = movAlmacen!!.fechaFactura.replace("/", "-", false)
-           btnFechaCompra.setText("${resources.getString(R.string.FechaCompra)} \n ${fechaCompra?.replace("-", "/", false)}")
-           btnFechaGuia.setText("${resources.getString(R.string.FechaGuia)} \n ${fechaGuia?.replace("-", "/", false)}")
-           btnFechaIngreso.setText("${resources.getString(R.string.FechaMovimiento)} \n ${fechaMov?.replace("-", "/", false)}")
+           btnFechaCompra.text = "${resources.getString(R.string.FechaCompra)} \n ${fechaCompra?.replace("-", "/", false)}"
+           btnFechaGuia.text = "${resources.getString(R.string.FechaGuia)} \n ${fechaGuia?.replace("-", "/", false)}"
+           btnFechaIngreso.text = "${resources.getString(R.string.FechaMovimiento)} \n ${fechaMov?.replace("-", "/", false)}"
            edtNombreProveedor.setText("${movAlmacen!!.descripcionMov}")
            edtGuiaProveedor.setText("${movAlmacen!!.nroGuia}")
            tipoMov = movAlmacen.codTransaccion
@@ -1124,8 +1125,8 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
                menuSearch.setVisible(false)
                menuScan.setVisible(false)
                adapterProductoCompra.editableList(false)
-               btnAlmacen.setText("${movAlmacen?.descAlmacenI} ${ObtenerNombreTienda(movAlmacen.idTiendaOrigen)}")
-               btnFechaCompra.setText("Fecha Transferencia \n ${fechaCompra?.replace("-", "/", false)}")
+               btnAlmacen.text = "${movAlmacen?.descAlmacenI} ${ObtenerNombreTienda(movAlmacen.idTiendaOrigen)}"
+               btnFechaCompra.text = "Fecha Transferencia \n ${fechaCompra?.replace("-", "/", false)}"
            }
        }catch (e:Exception){
             Toast.makeText(this,e.toString(),Toast.LENGTH_LONG).show()

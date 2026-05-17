@@ -61,7 +61,7 @@ public class HttpConsultas{
                         listenerResultadoBusquedaCliente?.DatosClienteResultadoSunat(customer)
                     }
                     else{
-                        listenerResultadoBusquedaCliente?.ClienteNoHabilitado(customer?.razonSocial)
+                        listenerResultadoBusquedaCliente?.ClienteNoHabilitado(customer.razonSocial ?: "")
                     }
                 }
 
@@ -107,7 +107,7 @@ public class HttpConsultas{
                 .post(body)
                 .addHeader("Content-Type", "application/json")
                  .build()
-        val client = OkHttpClient().newBuilder().connectTimeout(15, TimeUnit.SECONDS).build()
+        val client = Constantes.ConfiRetrofitTimeOut.okHttpClient
         val response = client.newCall(request).execute()
 
         var linea = ""
@@ -481,7 +481,7 @@ public class HttpConsultas{
         jsonAnulacion.put("numero",docVenta.cabeceraVenta.numCorrelativo)
         jsonAnulacion.put("motivo",motivo)
         try {
-            val client = OkHttpClient().newBuilder().connectTimeout(15, TimeUnit.SECONDS).build()
+            val client = Constantes.ConfiRetrofitTimeOut.okHttpClient
             val mediaType = MediaType.parse("application/json")
             val body = RequestBody.create(mediaType, jsonAnulacion.toString().toByteArray())
             val RUTA = Constantes.TokenFactura.rutaApi.trim()

@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.45" />
+        app:layout_constraintGuide_percent="0.4" />
 
     <LinearLayout
         android:id="@+id/llLeft"
@@ -20,7 +20,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="24dp"
+        android:padding="32dp"
         app:layout_constraintEnd_toStartOf="@+id/glVertical"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -45,55 +45,33 @@
             android:id="@+id/txtMensajeConfirmacion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:text="Ingrese el PIN"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textColor="@color/gray_900"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txtMensajeDefault"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:text="PIN por defecto '1234'"
-            android:textColor="@color/disabled_text_hint"
-            android:textSize="12sp" />
+            android:textColor="@color/gray_600"
+            android:textSize="14sp" />
 
         <LinearLayout
             android:id="@+id/llIndicators"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="48dp"
             android:gravity="center"
             android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/circle1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/pin_indicator_margin"
-                android:src="@drawable/circle_void" />
-
-            <ImageView
-                android:id="@+id/circle2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/pin_indicator_margin"
-                android:src="@drawable/circle_void" />
-
-            <ImageView
-                android:id="@+id/circle3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/pin_indicator_margin"
-                android:src="@drawable/circle_void" />
-
-            <ImageView
-                android:id="@+id/circle4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/pin_indicator_margin"
-                android:src="@drawable/circle_void" />
+            <ImageView android:id="@+id/circle1" style="@style/AppTheme.PIN.Indicator" />
+            <ImageView android:id="@+id/circle2" style="@style/AppTheme.PIN.Indicator" />
+            <ImageView android:id="@+id/circle3" style="@style/AppTheme.PIN.Indicator" />
+            <ImageView android:id="@+id/circle4" style="@style/AppTheme.PIN.Indicator" />
         </LinearLayout>
     </LinearLayout>
 
@@ -107,91 +85,18 @@
         app:layout_constraintStart_toEndOf="@+id/glVertical"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/btnNumber1"
-            style="@style/ButtonPin"
-            android:layout_width="@dimen/pin_button_size"
-            android:layout_height="@dimen/pin_button_size"
-            android:text="1" />
-
-        <Button
-            android:id="@+id/btnNumber2"
-            style="@style/ButtonPin"
-            android:layout_width="@dimen/pin_button_size"
-            android:layout_height="@dimen/pin_button_size"
-            android:text="2" />
-
-        <Button
-            android:id="@+id/btnNumber3"
-            style="@style/ButtonPin"
-            android:layout_width="@dimen/pin_button_size"
-            android:layout_height="@dimen/pin_button_size"
-            android:text="3" />
-
-        <Button
-            android:id="@+id/btnNumber4"
-            style="@style/ButtonPin"
-            android:layout_width="@dimen/pin_button_size"
-            android:layout_height="@dimen/pin_button_size"
-            android:text="4" />
-
-        <Button
-            android:id="@+id/btnNumber5"
-            style="@style/ButtonPin"
-            android:layout_width="@dimen/pin_button_size"
-            android:layout_height="@dimen/pin_button_size"
-            android:text="5" />
-
-        <Button
-            android:id="@+id/btnNumber6"
-            style="@style/ButtonPin"
-            android:layout_width="@dimen/pin_button_size"
-            android:layout_height="@dimen/pin_button_size"
-            android:text="6" />
-
-        <Button
-            android:id="@+id/btnNumber7"
-            style="@style/ButtonPin"
-            android:layout_width="@dimen/pin_button_size"
-            android:layout_height="@dimen/pin_button_size"
-            android:text="7" />
-
-        <Button
-            android:id="@+id/btnNumber8"
-            style="@style/ButtonPin"
-            android:layout_width="@dimen/pin_button_size"
-            android:layout_height="@dimen/pin_button_size"
-            android:text="8" />
-
-        <Button
-            android:id="@+id/btnNumber9"
-            style="@style/ButtonPin"
-            android:layout_width="@dimen/pin_button_size"
-            android:layout_height="@dimen/pin_button_size"
-            android:text="9" />
-
-        <View
-            android:layout_width="@dimen/pin_button_size"
-            android:layout_height="@dimen/pin_button_size"
-            android:layout_margin="@dimen/pin_button_margin" />
-
-        <Button
-            android:id="@+id/btnNumber0"
-            style="@style/ButtonPin"
-            android:layout_width="@dimen/pin_button_size"
-            android:layout_height="@dimen/pin_button_size"
-            android:text="0" />
-
-        <ImageButton
-            android:id="@+id/btnNumberDelete"
-            style="@style/ButtonPin"
-            android:layout_width="@dimen/pin_button_size"
-            android:layout_height="@dimen/pin_button_size"
-            android:padding="20dp"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/backspace"
-            app:tint="@color/colorIconDelete" />
-
+        <Button android:id="@+id/btnNumber1" style="@style/AppTheme.PIN.Button" android:text="1" />
+        <Button android:id="@+id/btnNumber2" style="@style/AppTheme.PIN.Button" android:text="2" />
+        <Button android:id="@+id/btnNumber3" style="@style/AppTheme.PIN.Button" android:text="3" />
+        <Button android:id="@+id/btnNumber4" style="@style/AppTheme.PIN.Button" android:text="4" />
+        <Button android:id="@+id/btnNumber5" style="@style/AppTheme.PIN.Button" android:text="5" />
+        <Button android:id="@+id/btnNumber6" style="@style/AppTheme.PIN.Button" android:text="6" />
+        <Button android:id="@+id/btnNumber7" style="@style/AppTheme.PIN.Button" android:text="7" />
+        <Button android:id="@+id/btnNumber8" style="@style/AppTheme.PIN.Button" android:text="8" />
+        <Button android:id="@+id/btnNumber9" style="@style/AppTheme.PIN.Button" android:text="9" />
+        <View android:id="@+id/btnNumberCancel" android:layout_width="80dp" android:layout_height="80dp" android:layout_margin="8dp" />
+        <Button android:id="@+id/btnNumber0" style="@style/AppTheme.PIN.Button" android:text="0" />
+        <ImageButton android:id="@+id/btnNumberDelete" style="@style/AppTheme.PIN.Button.Icon" android:src="@drawable/backspace" />
     </GridLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

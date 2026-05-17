@@ -1,43 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="135dp"
-    android:layout_height="135dp"
-    android:background="@drawable/fondo_img"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/AppTheme.CategoryGrid.Card"
+    android:layout_width="140dp"
+    android:layout_height="140dp"
+    android:layout_margin="4dp">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/fondo_img"
-
-        android:orientation="vertical"
-        >
+        android:layout_height="match_parent">
 
         <ImageView
-            android:padding="35dp"
             android:id="@+id/imgCategoria"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:tint="#9e9e9e"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/square" />
+            android:layout_height="0dp"
+            android:padding="24dp"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toTopOf="@+id/txtNombreCategoriaGrid"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/square"
+            app:tint="@color/gray_700" />
 
         <TextView
             android:id="@+id/txtNombreCategoriaGrid"
+            style="@style/AppTheme.CategoryGrid.ItemText"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:background="@drawable/fondo_txt_categoria"
-            android:gravity="center"
-            android:maxLines="2"
-            android:text="TextView"
+            android:layout_height="40dp"
+            android:background="@color/gray_100"
+            android:padding="4dp"
+            android:text="Categoría"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-            android:textColor="#ffffff"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    </LinearLayout>
-
-</LinearLayout>
+</com.google.android.material.card.MaterialCardView>

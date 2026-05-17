@@ -1,11 +1,10 @@
 package com.omarchdev.smartqsale.smartqsaleventas.Fragment;
 
 
-import android.app.Activity;
-import android.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
-import android.app.Fragment;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
@@ -17,7 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
-import android.widget.Switch;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -60,7 +59,7 @@ public class VariantesProducto extends Fragment implements View.OnClickListener,
     int positionDeleted;
     SlidingUpPanelLayout panelVariantes;
     Button btnAgregarOpcion;
-    Switch sActivarVariantes;
+    SwitchMaterial sActivarVariantes;
     DialogInsertOption dialogInsertOption;
     TextView txtNumVariantes;
     RvAdapterVariantesOpciones rvAdapterVariantesOpciones;
@@ -192,7 +191,9 @@ public class VariantesProducto extends Fragment implements View.OnClickListener,
 
     @Override
     public void ResultadoActualizarVariante(byte resultado) {
-        dialogCarga.hide();
+        if (dialogCarga != null && dialogCarga.isShowing()) {
+            dialogCarga.dismiss();
+        }
         if(resultado==100){
             try {
                 varianteList.get(positionSelected).setStockProducto(varianteTemp.getStockProducto());
@@ -219,7 +220,9 @@ public class VariantesProducto extends Fragment implements View.OnClickListener,
     @Override
     public void ResultadoEliminarVariante(byte resultado)
     {
-        dialogCarga.hide();
+        if (dialogCarga != null && dialogCarga.isShowing()) {
+            dialogCarga.dismiss();
+        }
         if(resultado==100){
             varianteList.remove(positionSelected);
             rvAdapterVariante.EliminarVariante(positionSelected);
@@ -239,13 +242,17 @@ public class VariantesProducto extends Fragment implements View.OnClickListener,
 
     @Override
     public void GenerarVariantes(List<Variante> varianteList) {
-        dialogCarga.hide();
+        if (dialogCarga != null && dialogCarga.isShowing()) {
+            dialogCarga.dismiss();
+        }
         setVariantes(varianteList);
     }
 
     @Override
     public void ResultadoGuardarOpcion(OpcionVariante opcionVariante) {
-        dialogCarga.hide();
+        if (dialogCarga != null && dialogCarga.isShowing()) {
+            dialogCarga.dismiss();
+        }
         if(rvAdapterVariantesOpciones.getItemCount()<3){
             listOpcionVariante.Insertar(opcionVariante);
             rvAdapterVariantesOpciones.AddElement1(listOpcionVariante.getOpcionVarianteList());
@@ -254,7 +261,9 @@ public class VariantesProducto extends Fragment implements View.OnClickListener,
 
     @Override
     public void ResultadoEliminarOpcion(byte respuesta) {
-        dialogCarga.hide();
+        if (dialogCarga != null && dialogCarga.isShowing()) {
+            dialogCarga.dismiss();
+        }
         if(respuesta==100){
 
             rvAdapterVariantesOpciones.DeleteElement(positionDeleted);
@@ -268,7 +277,9 @@ public class VariantesProducto extends Fragment implements View.OnClickListener,
     @Override
     public void ResultadoGuardarValores(OpcionVariante opcionVariante) {
 
-        dialogCarga.hide();
+        if (dialogCarga != null && dialogCarga.isShowing()) {
+            dialogCarga.dismiss();
+        }
         listOpcionVariante.getList().get(opcionVariante.getiNumIntem()-1).setListValores(listValoresVariantes.getList());
         for(int i=0;i<opcionVariante.getListValores().size();i++){
             listaLabel.add(opcionVariante.getListValores().get(i).getDescripcion());
@@ -279,7 +290,9 @@ public class VariantesProducto extends Fragment implements View.OnClickListener,
 
     @Override
     public void ActualizarEstadoVariante(byte respuesta) {
-        dialogCarga.hide();
+        if (dialogCarga != null && dialogCarga.isShowing()) {
+            dialogCarga.dismiss();
+        }
         if(respuesta==100){
             EstadoVariante=EstadoVarianteTemp;
             sActivarVariantes.setChecked(EstadoVariante);
@@ -357,7 +370,7 @@ public class VariantesProducto extends Fragment implements View.OnClickListener,
             varianteList = new ArrayList<>();
             panelVariantes = (SlidingUpPanelLayout) v.findViewById(R.id.sliding_layout);
             btnEditarVariantes = (Button) v.findViewById(R.id.btnEdicionVariantes);
-            sActivarVariantes = (Switch) v.findViewById(R.id.sActivarVariantes);
+            sActivarVariantes = (SwitchMaterial) v.findViewById(R.id.sActivarVariantes);
             rv = (RecyclerView) v.findViewById(R.id.rvVariantesEditable);
             rvAdapterVariantesProducto = new RvAdapterVariantesProducto();
             rv.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -418,6 +431,14 @@ public class VariantesProducto extends Fragment implements View.OnClickListener,
     @Override
     public void onPause() {
         super.onPause();
+    }
+
+    @Override
+    public void onDestroy() {
+        if (dialogCarga != null && dialogCarga.isShowing()) {
+            dialogCarga.dismiss();
+        }
+        super.onDestroy();
     }
 
     public void CambiarEstadoVariante(boolean EstadoVarianteTemp){
@@ -518,7 +539,7 @@ public class VariantesProducto extends Fragment implements View.OnClickListener,
                     try{
                     dialogEditarVariantes.setData(varianteList.get(positionSelected).getIdVariante(),varianteList.get(positionSelected).getStockProducto(),varianteList.get(positionSelected).getPrecioVenta(),varianteList.get(positionSelected).getPrecioCompra(),varianteList.get(positionSelected).getNombreVariante(),varianteList.get(positionSelected).getCodigoBarra(),varianteList.get(positionSelected).isPVMultiple() );
                     DialogFragment dialogFragment=dialogEditarVariantes;
-                    dialogFragment.show(getActivity().getFragmentManager(),"EdtVar");
+                    dialogFragment.show(getParentFragmentManager(),"EdtVar");
                     }
                     catch (Exception e){
                         e.toString();
@@ -660,7 +681,7 @@ public class VariantesProducto extends Fragment implements View.OnClickListener,
     public void MostrarAgregarOpcion(){
 
         DialogFragment fragment=dialogInsertOption;
-        fragment.show(((Activity)getActivity()).getFragmentManager(),"Agregar Opcion");
+        fragment.show(getParentFragmentManager(),"Agregar Opcion");
 
     }
 
@@ -766,7 +787,7 @@ public class VariantesProducto extends Fragment implements View.OnClickListener,
         if(varianteList.size()>0){
             try {
                 new DfAgregarOpcionVariante().Instance(this,
-                        listOpcionVariante.getList().get(NumItemPadre - 1)).show(getFragmentManager()
+                        listOpcionVariante.getList().get(NumItemPadre - 1)).show(getParentFragmentManager()
                         , "");
             }catch (Exception e){
                 e.toString();
@@ -783,7 +804,7 @@ public class VariantesProducto extends Fragment implements View.OnClickListener,
                 }
                 dialogInsertValorOption.setStringList(listaEtiquetas);
                 listaEtiquetas.clear();
-                fragment.show(((Activity) getActivity()).getFragmentManager(), "Agregar Opcion");
+                fragment.show(getParentFragmentManager(), "Agregar Opcion");
             }
             catch (Exception e){
                 e.toString();

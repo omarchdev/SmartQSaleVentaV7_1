@@ -4,61 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroud_app"
     tools:context=".Activitys.ReporteIngresosRetirosPeriodo">
-    <androidx.cardview.widget.CardView
+
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardView"
+        style="@style/AppTheme.Card.Modern"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:elevation="2dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="16dp"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="16dp">
 
             <Button
                 android:id="@+id/btnFechaInicio"
-                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                style="@style/AppTheme.Button.Outlined"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
                 android:layout_weight="1"
-                android:drawableLeft="@drawable/calendar"
-                android:text="Desde" />
+                android:text="Desde"
+                app:icon="@drawable/calendar" />
 
             <Button
                 android:id="@+id/btnFechaFinal"
-                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                style="@style/AppTheme.Button.Outlined"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
                 android:layout_weight="1"
-                android:drawableRight="@drawable/calendar"
-                android:text="hasta" />
+                android:text="Hasta"
+                app:icon="@drawable/calendar"
+                app:iconGravity="end" />
         </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
     <Button
-        style="@style/Widget.AppCompat.Button.Colored"
         android:id="@+id/btnGenerarReporte"
+        style="@style/AppTheme.Button.Modern"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="32dp"
+        android:paddingStart="32dp"
+        android:paddingEnd="32dp"
         android:text="Generar Reporte"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.464"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView"
-        app:layout_constraintVertical_bias="0.0" />
-
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

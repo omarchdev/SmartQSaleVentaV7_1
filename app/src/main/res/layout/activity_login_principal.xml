@@ -31,13 +31,15 @@
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/AppTheme.TextInputLayout.Outlined"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp">
 
                 <AutoCompleteTextView
                     android:id="@+id/email"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="wrap_content"
                     android:hint="@string/prompt_email"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
@@ -46,13 +48,15 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/AppTheme.TextInputLayout.Outlined"
                 android:layout_width="match_parent"
-                android:layout_height="48dp">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/password"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:hint="@string/prompt_password"
                     android:imeActionId="6"
                     android:imeActionLabel="@string/action_sign_in_short"
@@ -67,12 +71,11 @@
 
             <Button
                 android:id="@+id/email_sign_in_button"
-                style="?android:textAppearanceSmall"
+                style="@style/AppTheme.Button.Modern"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/action_sign_in"
-                android:textStyle="bold" />
+                android:layout_marginTop="24dp"
+                android:text="@string/action_sign_in" />
 
         </LinearLayout>
     </ScrollView>

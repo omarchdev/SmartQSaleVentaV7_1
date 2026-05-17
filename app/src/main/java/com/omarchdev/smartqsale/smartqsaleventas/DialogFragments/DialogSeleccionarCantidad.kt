@@ -2,7 +2,7 @@ package com.omarchdev.smartqsale.smartqsaleventas.DialogFragments
 
 import android.app.AlertDialog
 import android.app.Dialog
-import android.app.DialogFragment
+import androidx.fragment.app.DialogFragment
 import android.os.Bundle
 
 import android.view.LayoutInflater
@@ -50,8 +50,8 @@ class DialogSeleccionarCantidad: DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         var view:View
-        view=LayoutInflater.from(activity).inflate(R.layout.dialog_select_cantidad,null,false)
-        val dialog=AlertDialog.Builder(activity)
+        view=LayoutInflater.from(requireActivity()).inflate(R.layout.dialog_select_cantidad,null,false)
+        val dialog=AlertDialog.Builder(requireActivity())
         try{
 
         dialog.setTitle("$NombreProducto")
@@ -64,7 +64,7 @@ class DialogSeleccionarCantidad: DialogFragment() {
         txtCantidadDisponible.setText("Cantidad disponible "+String.format("%.2f",cantidadDisponible))
         ClickListener()
         }catch (e:Exception){
-            Toast.makeText(activity,e.toString(),Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireActivity(),e.toString(),Toast.LENGTH_SHORT).show()
         }
 
        return dialog.create()

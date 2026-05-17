@@ -8,202 +8,87 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Activitys.PinResetApp">
 
-    <com.wang.avi.AVLoadingIndicatorView
-        android:id="@+id/avi"
-        style="@style/AVLoadingIndicatorView"
-        android:layout_width="wrap_content"
+    <com.google.android.material.card.MaterialCardView
+        style="@style/AppTheme.Card.Modern"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="invisible"
-        app:indicatorColor="@color/colorPrimary"
-        app:indicatorName="BallPulseIndicator"
-        app:layout_constraintBottom_toTopOf="@+id/txtMensajeConfirmacion"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <TextView
-        android:id="@+id/txtTextoPin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Verificando PIN..."
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/avi" />
-
-    <TextView
-        android:id="@+id/txtMensajeConfirmacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Ingrese el PIN"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/llIndicators"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/avi" />
-
-    <LinearLayout
-        android:id="@+id/llIndicators"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/glHorizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtMensajeConfirmacion">
-
-        <ImageView
-            android:id="@+id/circle1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/pin_indicator_margin"
-            android:src="@drawable/circle_void" />
-
-        <ImageView
-            android:id="@+id/circle2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/pin_indicator_margin"
-            android:src="@drawable/circle_void" />
-
-        <ImageView
-            android:id="@+id/circle3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/pin_indicator_margin"
-            android:src="@drawable/circle_void" />
-
-        <ImageView
-            android:id="@+id/circle4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/pin_indicator_margin"
-            android:src="@drawable/circle_void" />
-
-        <ImageView
-            android:id="@+id/circle5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/pin_indicator_margin"
-            android:src="@drawable/circle_void" />
-
-        <ImageView
-            android:id="@+id/circle6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/pin_indicator_margin"
-            android:src="@drawable/circle_void" />
-    </LinearLayout>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/glHorizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.45" />
-
-    <GridLayout
-        android:id="@+id/gridLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:columnCount="3"
+        android:layout_margin="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/glHorizontal">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/btnNumber1"
-            style="@style/ButtonPin"
-            android:layout_width="@dimen/pin_button_size"
-            android:layout_height="@dimen/pin_button_size"
-            android:text="1" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="32dp">
 
-        <Button
-            android:id="@+id/btnNumber2"
-            style="@style/ButtonPin"
-            android:layout_width="@dimen/pin_button_size"
-            android:layout_height="@dimen/pin_button_size"
-            android:text="2" />
+            <com.wang.avi.AVLoadingIndicatorView
+                android:id="@+id/avi"
+                style="@style/AVLoadingIndicatorView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                app:indicatorColor="@color/colorPrimary"
+                app:indicatorName="BallPulseIndicator" />
 
-        <Button
-            android:id="@+id/btnNumber3"
-            style="@style/ButtonPin"
-            android:layout_width="@dimen/pin_button_size"
-            android:layout_height="@dimen/pin_button_size"
-            android:text="3" />
+            <TextView
+                android:id="@+id/txtTextoPin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Verificando PIN..."
+                android:textColor="@color/gray_600"
+                android:visibility="gone" />
 
-        <Button
-            android:id="@+id/btnNumber4"
-            style="@style/ButtonPin"
-            android:layout_width="@dimen/pin_button_size"
-            android:layout_height="@dimen/pin_button_size"
-            android:text="4" />
+            <TextView
+                android:id="@+id/txtMensajeConfirmacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Ingrese el PIN"
+                android:textColor="@color/gray_900"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/btnNumber5"
-            style="@style/ButtonPin"
-            android:layout_width="@dimen/pin_button_size"
-            android:layout_height="@dimen/pin_button_size"
-            android:text="5" />
+            <LinearLayout
+                android:id="@+id/llIndicators"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btnNumber6"
-            style="@style/ButtonPin"
-            android:layout_width="@dimen/pin_button_size"
-            android:layout_height="@dimen/pin_button_size"
-            android:text="6" />
+                <ImageView android:id="@+id/circle1" android:layout_width="16dp" android:layout_height="16dp" android:layout_margin="8dp" android:src="@drawable/circle_void" />
+                <ImageView android:id="@+id/circle2" android:layout_width="16dp" android:layout_height="16dp" android:layout_margin="8dp" android:src="@drawable/circle_void" />
+                <ImageView android:id="@+id/circle3" android:layout_width="16dp" android:layout_height="16dp" android:layout_margin="8dp" android:src="@drawable/circle_void" />
+                <ImageView android:id="@+id/circle4" android:layout_width="16dp" android:layout_height="16dp" android:layout_margin="8dp" android:src="@drawable/circle_void" />
+                <ImageView android:id="@+id/circle5" android:layout_width="16dp" android:layout_height="16dp" android:layout_margin="8dp" android:src="@drawable/circle_void" />
+                <ImageView android:id="@+id/circle6" android:layout_width="16dp" android:layout_height="16dp" android:layout_margin="8dp" android:src="@drawable/circle_void" />
+            </LinearLayout>
 
-        <Button
-            android:id="@+id/btnNumber7"
-            style="@style/ButtonPin"
-            android:layout_width="@dimen/pin_button_size"
-            android:layout_height="@dimen/pin_button_size"
-            android:text="7" />
+            <GridLayout
+                android:id="@+id/gridLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:columnCount="3">
 
-        <Button
-            android:id="@+id/btnNumber8"
-            style="@style/ButtonPin"
-            android:layout_width="@dimen/pin_button_size"
-            android:layout_height="@dimen/pin_button_size"
-            android:text="8" />
+                <Button android:id="@+id/btnNumber1" style="@style/AppTheme.Button.Modern" android:layout_width="64dp" android:layout_height="64dp" android:layout_margin="4dp" android:text="1" app:backgroundTint="@color/gray_100" android:textColor="@color/gray_900" />
+                <Button android:id="@+id/btnNumber2" style="@style/AppTheme.Button.Modern" android:layout_width="64dp" android:layout_height="64dp" android:layout_margin="4dp" android:text="2" app:backgroundTint="@color/gray_100" android:textColor="@color/gray_900" />
+                <Button android:id="@+id/btnNumber3" style="@style/AppTheme.Button.Modern" android:layout_width="64dp" android:layout_height="64dp" android:layout_margin="4dp" android:text="3" app:backgroundTint="@color/gray_100" android:textColor="@color/gray_900" />
+                <Button android:id="@+id/btnNumber4" style="@style/AppTheme.Button.Modern" android:layout_width="64dp" android:layout_height="64dp" android:layout_margin="4dp" android:text="4" app:backgroundTint="@color/gray_100" android:textColor="@color/gray_900" />
+                <Button android:id="@+id/btnNumber5" style="@style/AppTheme.Button.Modern" android:layout_width="64dp" android:layout_height="64dp" android:layout_margin="4dp" android:text="5" app:backgroundTint="@color/gray_100" android:textColor="@color/gray_900" />
+                <Button android:id="@+id/btnNumber6" style="@style/AppTheme.Button.Modern" android:layout_width="64dp" android:layout_height="64dp" android:layout_margin="4dp" android:text="6" app:backgroundTint="@color/gray_100" android:textColor="@color/gray_900" />
+                <Button android:id="@+id/btnNumber7" style="@style/AppTheme.Button.Modern" android:layout_width="64dp" android:layout_height="64dp" android:layout_margin="4dp" android:text="7" app:backgroundTint="@color/gray_100" android:textColor="@color/gray_900" />
+                <Button android:id="@+id/btnNumber8" style="@style/AppTheme.Button.Modern" android:layout_width="64dp" android:layout_height="64dp" android:layout_margin="4dp" android:text="8" app:backgroundTint="@color/gray_100" android:textColor="@color/gray_900" />
+                <Button android:id="@+id/btnNumber9" style="@style/AppTheme.Button.Modern" android:layout_width="64dp" android:layout_height="64dp" android:layout_margin="4dp" android:text="9" app:backgroundTint="@color/gray_100" android:textColor="@color/gray_900" />
+                <View android:layout_width="64dp" android:layout_height="64dp" android:layout_margin="4dp" />
+                <Button android:id="@+id/btnNumber0" style="@style/AppTheme.Button.Modern" android:layout_width="64dp" android:layout_height="64dp" android:layout_margin="4dp" android:text="0" app:backgroundTint="@color/gray_100" android:textColor="@color/gray_900" />
+                <ImageButton android:id="@+id/btnNumberDelete" style="@style/AppTheme.Button.Icon" android:layout_width="64dp" android:layout_height="64dp" android:layout_margin="4dp" android:src="@drawable/backspace" app:tint="@color/status_error" />
+            </GridLayout>
 
-        <Button
-            android:id="@+id/btnNumber9"
-            style="@style/ButtonPin"
-            android:layout_width="@dimen/pin_button_size"
-            android:layout_height="@dimen/pin_button_size"
-            android:text="9" />
-
-        <View
-            android:layout_width="@dimen/pin_button_size"
-            android:layout_height="@dimen/pin_button_size"
-            android:layout_margin="@dimen/pin_button_margin" />
-
-        <Button
-            android:id="@+id/btnNumber0"
-            style="@style/ButtonPin"
-            android:layout_width="@dimen/pin_button_size"
-            android:layout_height="@dimen/pin_button_size"
-            android:text="0" />
-
-        <ImageButton
-            android:id="@+id/btnNumberDelete"
-            style="@style/ButtonPin"
-            android:layout_width="@dimen/pin_button_size"
-            android:layout_height="@dimen/pin_button_size"
-            android:padding="20dp"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/backspace"
-            app:tint="@color/colorIconDelete" />
-
-    </GridLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

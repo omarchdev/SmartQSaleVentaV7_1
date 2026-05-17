@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/AppTheme.Card.Modern"
     android:id="@+id/cvProduct_in_sale_quotation"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:layout_margin="4dp"
     android:clickable="true"
     android:focusable="true"
-    android:foreground="?attr/selectableItemBackground"
-    android:orientation="vertical">
+    android:foreground="?attr/selectableItemBackground">
 
-    <LinearLayout
-        android:id="@+id/llayoutCardViewProductInCarSale"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="@dimen/spacing_medium">
+        android:padding="12dp">
 
         <LinearLayout
+            android:id="@+id/llProductInfo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:layout_constraintEnd_toStartOf="@+id/quantityInSale"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/productNameInSale"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/gray_900"
-                android:textSize="15sp"
+                android:textSize="14sp"
                 android:textStyle="bold"
-                tools:text="Nombre del Producto" />
+                tools:text="Producto de Venta" />
 
             <TextView
                 android:id="@+id/txtCombo"
@@ -40,9 +40,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:textColor="@color/gray_600"
-                android:textSize="12sp"
+                android:textSize="11sp"
                 android:visibility="gone"
-                tools:text="Componentes del combo..."
+                tools:text="Combo Detalle"
                 tools:visibility="visible" />
 
             <TextView
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:textColor="@color/colorPrimary"
-                android:textSize="11sp"
+                android:textSize="10sp"
                 android:textStyle="bold"
                 tools:text="UNIDAD" />
         </LinearLayout>
@@ -60,46 +60,47 @@
             android:id="@+id/quantityInSale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:background="@drawable/pin_button_background"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/bg_edittext_modern"
             android:backgroundTint="@color/gray_100"
             android:gravity="center"
-            android:minWidth="40dp"
-            android:padding="6dp"
+            android:minWidth="48dp"
+            android:padding="8dp"
             android:textColor="@color/gray_900"
-            android:textSize="14sp"
             android:textStyle="bold"
-            tools:text="x2" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/priceInSale"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="x1" />
 
         <TextView
             android:id="@+id/priceInSale"
-            android:layout_width="80dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
             android:gravity="end"
             android:textColor="@color/status_success"
-            android:textSize="15sp"
+            android:textSize="16sp"
             android:textStyle="bold"
-            tools:text="S/ 20.00" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/deleteInSale"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="S/ 0.00" />
 
         <ImageButton
             android:id="@+id/deleteInSale"
-            style="?android:attr/borderlessButtonStyle"
+            style="@style/AppTheme.Button.Icon"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginStart="8dp"
-            android:padding="8dp"
-            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/close"
             app:tint="@color/status_error" />
 
-    </LinearLayout>
+        <!-- Legacy ID maintenance -->
+        <View android:id="@+id/llayoutCardViewProductInCarSale" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@color/gray_200" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</LinearLayout>
+</com.google.android.material.card.MaterialCardView>

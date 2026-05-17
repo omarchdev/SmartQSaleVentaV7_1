@@ -2,7 +2,7 @@ package com.omarchdev.smartqsale.smartqsaleventas.Fragment;
 
 
 import android.app.Activity;
-import android.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -77,7 +77,7 @@ public class clienteFragment extends Fragment implements View.OnClickListener {
 
 
         DialogFragment dialogFragment=dialogAddEditCustomer;
-        dialogFragment.show(((Activity)getContext()).getFragmentManager(),"");
+        dialogFragment.show(getParentFragmentManager(),"");
 
     }
 

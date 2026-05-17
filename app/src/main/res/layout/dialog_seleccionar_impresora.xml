@@ -1,106 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/AppTheme.Card.Modern"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:maxHeight="600dp">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Configurar Impresora"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <RadioGroup
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:orientation="vertical">
 
                 <RadioButton
                     android:id="@+id/rbNinguno"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ninguno" />
+                    android:text="Sin Impresora" />
 
                 <RadioButton
                     android:id="@+id/rbBluetooth"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Bluetooth" />
 
                 <RadioButton
-
                     android:id="@+id/rbPdfRed"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Impresora en Red"
-                    >
-                </RadioButton>
+                    android:text="Red (Ethernet/WiFi)" />
+
                 <RadioButton
                     android:id="@+id/rbUsb"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="USB" />
+
                 <RadioButton
                     android:id="@+id/rbPdfPrinter"
-                    android:visibility="gone"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="PDF" />
-
-
+                    android:text="PDF"
+                    android:visibility="gone" />
             </RadioGroup>
 
-            <TextView
-                android:id="@+id/txtTextoInformacionBluetooth"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="Ninguna impresora fue encontrada.Verifique si el bluetooth se encuentre activo o la impresora este este sincronizada" />
-
-            <TextView
-                android:id="@+id/txtSeleccionImpresora"
+            <LinearLayout
+                android:id="@+id/llBluetoothContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Seleccione una impresora:" />
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
 
-            <androidx.recyclerview.widget.RecyclerView
+                <TextView
+                    android:id="@+id/txtSeleccionImpresora"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Seleccione un dispositivo:"
+                    android:textColor="@color/gray_600"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
 
-                android:id="@+id/rvDriversBT"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvDriversBT"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" />
 
-            </androidx.recyclerview.widget.RecyclerView>
+                <TextView
+                    android:id="@+id/txtTextoInformacionBluetooth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="No se encontraron impresoras. Verifique que el Bluetooth esté activo."
+                    android:textColor="@color/status_error"
+                    android:textSize="12sp" />
+            </LinearLayout>
 
-            <EditText
-                android:id="@+id/edtIP"
-                android:hint="Ip Impresora"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <EditText
-                android:id="@+id/edtPuerto"
-                android:hint="Puerto"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Button
-                android:id="@+id/btnTestPrinterRed"
+            <LinearLayout
+                android:id="@+id/llNetworkContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Probar Impresora"
-                android:visibility="gone" />
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AppTheme.TextInputLayout.Outlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Dirección IP">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtIP"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|text" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AppTheme.TextInputLayout.Outlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:hint="Puerto">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtPuerto"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:text="9100" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/btnTestPrinterRed"
+                    style="@style/AppTheme.Button.Modern"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Probar Conexión" />
+            </LinearLayout>
 
             <RadioGroup
                 android:id="@+id/rgAncho"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:orientation="horizontal"
-                android:padding="10dp"
                 android:visibility="gone">
 
                 <RadioButton
@@ -121,5 +165,4 @@
         </LinearLayout>
     </ScrollView>
 
-
-</LinearLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -4,211 +4,222 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroud_app"
     tools:context="com.omarchdev.smartqsale.smartqsaleventas.Activitys.RegistroUsuario">
 
-    <RelativeLayout
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/pbIndicator"
+        style="@style/AVLoadingIndicatorView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
+        android:visibility="gone"
+        app:indicatorColor="@color/colorAccent"
+        app:indicatorName="BallPulseIndicator"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtCargando"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Cargando información..."
+        android:textColor="@color/colorAccent"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pbIndicator" />
+
+    <ScrollView
+        android:id="@+id/scContent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="32dp">
 
-        <com.wang.avi.AVLoadingIndicatorView
-            android:id="@+id/pbIndicator"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            app:indicatorColor="@color/colorAccent"
-            app:indicatorName="BallPulseIndicator"
-
-            ></com.wang.avi.AVLoadingIndicatorView>
-
-        <TextView
-            android:id="@+id/txtCargando"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/pbIndicator"
-            android:layout_centerHorizontal="true"
-            android:text="Cargando información"
-            android:textColor="@color/colorAccent"
-            android:textStyle="bold" />
-
-        <ScrollView
-            android:id="@+id/scContent"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="visible">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-            <LinearLayout
-                android:paddingBottom="128dp"
+            <com.google.android.material.card.MaterialCardView
+                style="@style/AppTheme.Card.Modern"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:background="#2E2E2E"
-                    android:orientation="horizontal"
-                    android:padding="8dp"
-                    android:paddingTop="16.0dip"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-                    android:paddingBottom="16.0dip">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="Configuración de Tienda"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold" />
 
                     <Spinner
-
                         android:id="@+id/spnTipoTienda"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:spinnerMode="dialog" />
+                        android:layout_height="48dp" />
                 </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtEmail"
+                style="@style/AppTheme.TextInputLayout.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/edtEmail"
-
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtEmailInner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    app:errorEnabled="true">
+                    android:hint="Correo Electrónico"
+                    android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Email"
-                        android:inputType="textEmailAddress" />
-                </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtContrasena"
+                style="@style/AppTheme.TextInputLayout.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                app:passwordToggleEnabled="true">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/edtContrasena"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtContrasenaInner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    app:errorEnabled="true">
+                    android:hint="Contraseña"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Contraseña"
-                        android:imeActionLabel="Contraseña"
-                        android:imeOptions="actionUnspecified"
-                        android:inputType="textPassword"
-                        android:maxLines="1"
-                        android:singleLine="true" />
-                </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtContrasenaConf"
+                style="@style/AppTheme.TextInputLayout.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:passwordToggleEnabled="true">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/edtContrasenaConf"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtContrasenaConfInner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:imeActionLabel="Contraseña (Repetir)"
-                    app:errorEnabled="true">
+                    android:hint="Confirmar Contraseña"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Contraseña(repetir)"
-                        android:imeOptions="actionUnspecified"
-                        android:inputType="textPassword"
-                        android:maxLines="1"
-                        android:singleLine="true" />
-                </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtNombreUsuario"
+                style="@style/AppTheme.TextInputLayout.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/edtTelefono"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtNombreUsuarioInner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp">
+                    android:hint="Nombre Completo"
+                    android:inputType="textPersonName" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputEditText
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtTelefono"
+                style="@style/AppTheme.TextInputLayout.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
 
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Telefono"
-                        android:inputType="phone" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/edtNombreUsuario"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtTelefonoInner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="8dp">
+                    android:hint="Teléfono"
+                    android:inputType="phone" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Nombre completo" />
-                </com.google.android.material.textfield.TextInputLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="24dp"
+                android:background="@color/gray_100" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/edtNumRuc"
-                    android:layout_margin="8dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtNumRuc"
+                style="@style/AppTheme.TextInputLayout.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Numero de RUC" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <Button
-                    android:layout_margin="16dip"
-                    android:id="@+id/btnVerificaRuc"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:text="Verificar numero de RUC" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/edtNombreTienda"
-
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtNumRucInner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp">
+                    android:hint="Número de RUC"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Nombre de la Compañia" />
-                </com.google.android.material.textfield.TextInputLayout>
+            <Button
+                android:id="@+id/btnVerificaRuc"
+                style="@style/AppTheme.Button.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:text="Verificar RUC"
+                app:icon="@drawable/check" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_margin="8dp"
-                    android:id="@+id/edtDireccion"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtNombreTienda"
+                style="@style/AppTheme.TextInputLayout.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Direccion" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-                <Button
-                    android:id="@+id/btnRegistrarUsuario"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtNombreTiendaInner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_margin="8dp"
-                    android:layout_marginTop="32dp"
-                    android:layout_marginBottom="128dp"
-                    android:backgroundTint="@color/colorPrimaryDark"
-                    android:text="Crear nueva cuenta"
-                    android:textColor="#ffffff"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                    android:hint="Nombre Comercial / Tienda" />
+            </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtDireccion"
+                style="@style/AppTheme.TextInputLayout.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp">
 
-        </ScrollView>
-    </RelativeLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtDireccionInner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Dirección"
+                    android:inputType="textPostalAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
 
+            <Button
+                android:id="@+id/btnRegistrarUsuario"
+                style="@style/AppTheme.Button.Modern"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:text="REGISTRAR CUENTA" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

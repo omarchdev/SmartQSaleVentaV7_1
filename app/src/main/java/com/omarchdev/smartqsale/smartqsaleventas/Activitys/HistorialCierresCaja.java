@@ -1,6 +1,6 @@
 package com.omarchdev.smartqsale.smartqsaleventas.Activitys;
 
-import android.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -127,7 +127,7 @@ public class HistorialCierresCaja extends ActivityParent implements View.OnClick
         datePickerSelect = new DialogDatePickerSelect().newInstance(origen, anio, mes, dia);
         datePickerSelect.setFechaListener(this);
         DialogFragment dialogFragment = datePickerSelect;
-        dialogFragment.show(getFragmentManager(), "Seleccionar Fechas");
+        dialogFragment.show(getSupportFragmentManager(), "Seleccionar Fechas");
 
 
     }

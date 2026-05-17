@@ -3,7 +3,8 @@ package com.omarchdev.smartqsale.smartqsaleventas.Activitys;
 import static com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes.ParamActivitys.PARAM_ESTADO_PEDIDO_PAGADO;
 import static com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes.ParamActivitys.PARAM_IDPEDIDO;
 
-import android.app.DialogFragment;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -65,7 +66,8 @@ public class DetallePedido extends ActivityParent implements SlidingUpPanelLayou
             txtEstadoActual, txtClienteEntrega, txtNroCelular, txtFechaCreacion,
             txtEmailEntrega, txtTipoEntrega, txtDireccionEntrega, txtNroPedido, txtTiempoEntrega, txtMetodoPagoEntrega;
     RecyclerView rvDetalle, rvMetodosDePago;
-    RelativeLayout rlFechaEntrega, rlEstadoEntrega;
+    RelativeLayout rlFechaEntrega;
+    LinearLayout rlEstadoEntrega;
     RvAdapterDetallePedido rvAdapterDetallePedido;
     RvAdapterPagosEnVenta rvAdapterPagosEnVenta;
     List<mPagosEnVenta> listpagosventa;
@@ -229,10 +231,12 @@ public class DetallePedido extends ActivityParent implements SlidingUpPanelLayou
                 rlEstadoEntrega.setVisibility(View.GONE);
             }
             if (Constantes.Tienda.ZonasAtencion) {
-                if (Constantes.Tienda.cTipoZonaServicio.equals("A")) {
-                    Drawable image = this.getResources().getDrawable(R.drawable.ic_car_side_grey600_24dp);
-                    image.setBounds(10, 0, image.getIntrinsicWidth(), image.getIntrinsicHeight());
-                    txtZonaServicio.setCompoundDrawables(image, null, null, null);
+                if ("A".equals(Constantes.Tienda.cTipoZonaServicio)) {
+                    Drawable image = ContextCompat.getDrawable(this, R.drawable.ic_car_side_grey600_24dp);
+                    if (image != null) {
+                        image.setBounds(10, 0, image.getIntrinsicWidth(), image.getIntrinsicHeight());
+                        txtZonaServicio.setCompoundDrawables(image, null, null, null);
+                    }
                 }
             } else {
                 txtZonaServicio.setVisibility(View.GONE);
@@ -453,8 +457,7 @@ public class DetallePedido extends ActivityParent implements SlidingUpPanelLayou
                         this, saldoPendiente,
                         Constantes.MediosPago.mediosPago.get(0).getcCodigoMedioPago(),
                         Constantes.MediosPago.mediosPago.get(0).getcDescripcionMedioPago());
-                DialogFragment dialogFragment = dialogCalculadoraPago;
-                dialogFragment.show(getFragmentManager(), "CalculadoraPago");
+                dialogCalculadoraPago.show(getSupportFragmentManager(), "CalculadoraPago");
                 dialogCalculadoraPago.setListenerCantidadPago(this);
             }
         }
@@ -517,7 +520,7 @@ public class DetallePedido extends ActivityParent implements SlidingUpPanelLayou
         @Override
         protected void onPostExecute(Integer integer) {
             super.onPostExecute(integer);
-            dialogCargaAsync.hide();
+            dialogCargaAsync.dismiss();
             new DownloadCabecera().execute(idCabeceraPedido);
         }
 

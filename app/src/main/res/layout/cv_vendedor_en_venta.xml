@@ -1,32 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/AppTheme.Card.Modern"
     android:layout_width="match_parent"
-    android:layout_height="60dp"
-    android:layout_marginBottom="1dp"
-    android:orientation="vertical">
-    <LinearLayout
-        android:layout_marginRight="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#b3b3b3"
-        ></LinearLayout>
+    android:layout_height="wrap_content">
+
     <LinearLayout
         android:id="@+id/linearLayoutVendedor"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clickable="true">
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/txtNombreVendedor"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center|left"
-            android:paddingLeft="10dp"
+            android:layout_height="wrap_content"
             android:text="Nombre Vendedor"
-
-            android:textSize="20sp" />
+            android:textColor="@color/gray_900"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
-</LinearLayout>
+</com.google.android.material.card.MaterialCardView>

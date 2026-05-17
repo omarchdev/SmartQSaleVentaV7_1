@@ -6,8 +6,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.card.MaterialCardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,38 +56,41 @@ public class RvAdapterPedidos extends RecyclerView.Adapter<RecyclerView.ViewHold
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
         CabeceraPedidoViewHolder h = (CabeceraPedidoViewHolder) holder;
-        if(position==0){
-            h.ll_linea_superior.setVisibility(View.GONE);
-        }else{
-            h.ll_linea_superior.setVisibility(View.VISIBLE);
+        if (h.ll_linea_superior != null) {
+            if (position == 0) {
+                h.ll_linea_superior.setVisibility(View.GONE);
+            } else {
+                h.ll_linea_superior.setVisibility(View.VISIBLE);
+            }
         }
 
-        h.txtNroPedido.setText(list.get(position).GetIdentificadorUnicoPedido());
-        h.txtNombrePedido.setText(list.get(position).getIdentificadorPedido());
-        if (!list.get(position).getDenominacionCliente().equals("")) {
+        if (h.txtNroPedido != null) h.txtNroPedido.setText(list.get(position).GetIdentificadorUnicoPedido());
+        if (h.txtNombrePedido != null) h.txtNombrePedido.setText(list.get(position).getIdentificadorPedido());
+        if (h.txtNombreCliente != null && !list.get(position).getDenominacionCliente().isEmpty()) {
             h.txtNombreCliente.setText(list.get(position).getDenominacionCliente());
-        } else {
-
         }
-        if (!list.get(position).getNombreVendedor().equals("")) {
+        if (h.txtNombreVendedor != null && !list.get(position).getNombreVendedor().isEmpty()) {
             h.txtNombreVendedor.setText(list.get(position).getNombreVendedor());
-        } else {
+        }
+        if (h.txtFechaPedido != null) h.txtFechaPedido.setText(list.get(position).getFechaReserva());
+        if (h.txtValorVenta != null) {
+            h.txtValorVenta.setText(Constantes.DivisaPorDefecto.SimboloDivisa +
+                    String.format("%.2f", list.get(position).getTotalNeto()));
+        }
 
+        if (h.txtObservacionZonaServicio != null) {
+            if (list.get(position).getDescripcionPedido().replace("\\n", " \n").isEmpty()) {
+                h.txtObservacionZonaServicio.setVisibility(View.GONE);
+            }
+            h.txtObservacionZonaServicio.setText(list.get(position).getDescripcionPedido().replace("\\n", " \n"));
         }
-        h.txtFechaPedido.setText(list.get(position).getFechaReserva());
-        h.txtValorVenta.setText(Constantes.DivisaPorDefecto.SimboloDivisa +
-                String.format("%.2f", list.get(position).getTotalNeto()));
-
-        if(list.get(position).getDescripcionPedido().replace("\\n"," \n").isEmpty()){
-            h.txtObservacionZonaServicio.setVisibility(View.GONE);
-        }
-        h.txtObservacionZonaServicio.setText(list.get(position).getDescripcionPedido().replace("\\n"," \n"));
-        h.txtObservacioPedido.setText(list.get(position).getObservacionReserva());
-        if(list.get(position).isPermitirModificaciones()){
-            h.contentButton.setVisibility(View.VISIBLE);
-        }
-        else{
-            h.contentButton.setVisibility(View.GONE);
+        if (h.txtObservacioPedido != null) h.txtObservacioPedido.setText(list.get(position).getObservacionReserva());
+        if (h.contentButton != null) {
+            if (list.get(position).isPermitirModificaciones()) {
+                h.contentButton.setVisibility(View.VISIBLE);
+            } else {
+                h.contentButton.setVisibility(View.GONE);
+            }
         }
 
     }
@@ -118,7 +122,7 @@ public class RvAdapterPedidos extends RecyclerView.Adapter<RecyclerView.ViewHold
                 txtNombreVendedor, txtValorVenta,txtNroPedido,txtObservacionZonaServicio,txtObservacioPedido;
         ImageButton btnSuspenderPedido, btnPonerPedidoEnVenta;
         LinearLayout contentButton;
-        ConstraintLayout cv;
+        MaterialCardView cv;
         LinearLayout ll_linea_superior;
 
         public CabeceraPedidoViewHolder(View itemView) {
@@ -137,9 +141,9 @@ public class RvAdapterPedidos extends RecyclerView.Adapter<RecyclerView.ViewHold
             contentButton=itemView.findViewById(R.id.contentButton);
             btnSuspenderPedido = itemView.findViewById(R.id.btnSuspenderPedido);
             btnPonerPedidoEnVenta =  itemView.findViewById(R.id.btnPonerPedidoEnVenta);
-            cv.setOnClickListener(this);
-            btnSuspenderPedido.setOnClickListener(this);
-            btnPonerPedidoEnVenta.setOnClickListener(this);
+            if (cv != null) cv.setOnClickListener(this);
+            if (btnSuspenderPedido != null) btnSuspenderPedido.setOnClickListener(this);
+            if (btnPonerPedidoEnVenta != null) btnPonerPedidoEnVenta.setOnClickListener(this);
 
 
         }
@@ -216,8 +220,9 @@ public class RvAdapterPedidos extends RecyclerView.Adapter<RecyclerView.ViewHold
             @Override
             protected void onPostExecute(Boolean aBoolean) {
                 super.onPostExecute(aBoolean);
-                if(aBoolean)
-                MostrarDetallePedido(list.get(pos).getIdCabecera());
+                if (aBoolean) {
+                    MostrarDetallePedido(list.get(pos).getIdCabecera());
+                }
 
             }
         }

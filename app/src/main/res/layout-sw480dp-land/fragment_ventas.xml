@@ -15,15 +15,7 @@
         <RelativeLayout
             android:id="@+id/rVentas"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="visible">
-
-            <EditText
-                android:id="@+id/edtCodigoBarra"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:text="Hola"
-                android:visibility="invisible" />
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:id="@+id/linearLayoutButtonSales"
@@ -31,107 +23,237 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <!-- Content Area -->
+                <!-- Content Area (Left) -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1.2"
                     android:orientation="vertical">
 
-                    <RelativeLayout
-                        android:id="@+id/content_venta1"
+                    <com.google.android.material.card.MaterialCardView
+                        style="@style/AppTheme.Card.Modern"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:visibility="gone">
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp">
+
                         <LinearLayout
                             android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:padding="8dp">
+
+                            <ImageButton
+                                android:id="@+id/imgBackGrid"
+                                style="@style/AppTheme.Button.Icon"
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                app:srcCompat="@drawable/arrow_back_grid" />
+
+                            <androidx.appcompat.widget.SearchView
+                                android:id="@+id/edtSearchProduct"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/bg_edittext_modern"
+                                android:backgroundTint="@color/white"
+                                app:iconifiedByDefault="false"
+                                app:queryHint="Buscar producto..." />
+
+                            <ImageButton
+                                android:id="@+id/imgBtnScan"
+                                style="@style/AppTheme.Button.Icon"
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:layout_marginStart="8dp"
+                                app:srcCompat="@drawable/ic_barcode_scan_white_24dp"
+                                app:tint="@color/status_success" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvProductsInSale"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:orientation="vertical">
+                            android:clipToPadding="false"
+                            android:padding="8dp" />
+
+                        <com.wang.avi.AVLoadingIndicatorView
+                            android:id="@+id/avi"
+                            style="@style/AVLoadingIndicatorView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            app:indicatorColor="@color/colorPrimary"
+                            app:indicatorName="BallScaleMultipleIndicator" />
+                    </FrameLayout>
+                </LinearLayout>
+
+                <!-- Sidebar Cart (Right) -->
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/AppTheme.Card.Modern"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.8"
+                    android:layout_margin="8dp"
+                    app:cardElevation="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            style="@style/AppTheme.Sales.ActionBar"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:elevation="0dp"
+                            android:padding="8dp">
+
+                            <Button
+                                android:id="@+id/btnElegirVendedor"
+                                style="@style/AppTheme.Sales.ActionButton"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Vnd."
+                                app:icon="@drawable/ic_account_plus_white_24dp" />
+
+                            <ImageButton
+                                android:id="@+id/imgLock"
+                                style="@style/AppTheme.Button.Icon"
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:layout_marginHorizontal="8dp"
+                                app:srcCompat="@drawable/ic_lock_open_variant_white_24dp"
+                                app:tint="@color/gray_600" />
+
+                            <Button
+                                android:id="@+id/btnElegirCliente"
+                                style="@style/AppTheme.Sales.ActionButton"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Cli."
+                                app:icon="@drawable/ic_human_male_female_white_24dp" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/gray_100" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:gravity="center_vertical"
-                                android:orientation="horizontal"
-                                android:padding="@dimen/spacing_small">
-                                <ImageButton android:id="@+id/imgBackGrid" style="@style/AppTheme.Button.Icon" android:layout_width="40dp" android:layout_height="40dp" app:srcCompat="@drawable/arrow_back_grid" />
-                                <ImageButton android:id="@+id/imgTipoVistaLista" style="@style/AppTheme.Button.Icon" android:layout_width="40dp" android:layout_height="40dp" app:srcCompat="@drawable/grid" />
-                                <ImageButton android:id="@+id/imgBtnScan" style="@style/AppTheme.Button.Icon" android:layout_width="40dp" android:layout_height="40dp" app:srcCompat="@drawable/ic_barcode_scan_white_24dp" />
-                                <androidx.appcompat.widget.SearchView android:id="@+id/edtSearchProduct" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:layout_weight="1" android:background="@drawable/pin_button_background" android:backgroundTint="@color/white" app:iconifiedByDefault="false" app:queryHint="Buscar..." />
+                                android:gravity="center_vertical">
+
+                                <TextView
+                                    android:id="@+id/txtCantidadProducto"
+                                    style="@style/AppTheme.Sales.QuantityBadge"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="12dp"
+                                    android:text="x0" />
+
+                                <TextView
+                                    android:id="@+id/txtPrecioUltimoProductoEnCarrito"
+                                    style="@style/AppTheme.Sales.PriceText"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="end"
+                                    android:text="S/ 0.00"
+                                    android:textSize="20sp" />
                             </LinearLayout>
-                            <FrameLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
-                                <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
-                                    <Spinner android:id="@+id/spinnerCategoria" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/white" android:visibility="gone" />
-                                    <androidx.recyclerview.widget.RecyclerView android:id="@+id/rvProductsInSale" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_below="@id/spinnerCategoria" android:padding="8dp" android:visibility="visible" />
-                                    <androidx.recyclerview.widget.RecyclerView android:id="@+id/rvGridarticulosVenta" android:layout_width="match_parent" android:layout_height="match_parent" android:padding="8dp" android:visibility="gone" />
-                                </RelativeLayout>
-                                <com.wang.avi.AVLoadingIndicatorView android:id="@+id/avi" style="@style/AVLoadingIndicatorView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center" app:indicatorColor="@color/colorPrimary" app:indicatorName="BallScaleMultipleIndicator" />
-                            </FrameLayout>
+
+                            <Button
+                                android:id="@+id/btnCobrar"
+                                style="@style/AppTheme.Sales.CheckoutButton"
+                                android:layout_width="match_parent"
+                                android:layout_height="56dp"
+                                android:layout_marginTop="12dp"
+                                android:text="COBRAR" />
                         </LinearLayout>
-                    </RelativeLayout>
 
-                    <RelativeLayout
-                        android:id="@+id/content_venta2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:visibility="visible">
-                        <ScrollView android:layout_width="match_parent" android:layout_height="match_parent" android:clipToPadding="false" android:padding="@dimen/spacing_medium">
-                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
-                                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
-                                    <androidx.cardview.widget.CardView android:id="@+id/content_aforo" android:layout_width="wrap_content" android:layout_height="wrap_content" app:cardBackgroundColor="#3D5AFE" app:cardCornerRadius="@dimen/radius_medium"><LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="center" android:orientation="vertical" android:padding="8dp"><TextView android:id="@+id/txtAforoLibre" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:textColor="@color/white" android:textSize="24sp" android:textStyle="bold" /><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Espacios" android:textColor="@color/white" android:textSize="10sp" /></LinearLayout></androidx.cardview.widget.CardView>
-                                    <TextClock android:id="@+id/textClock" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:format12Hour="hh:mm:ss a" android:textColor="@color/gray_900" android:textSize="18sp" android:textStyle="bold" />
-                                </LinearLayout>
-                                <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" app:cardCornerRadius="@dimen/radius_medium"><LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:padding="8dp"><ImageButton android:id="@+id/btnScanPlaca" style="@style/AppTheme.Button.Icon" android:layout_width="40dp" android:layout_height="40dp" app:srcCompat="@drawable/ic_barcode_scan_white_36dp" app:tint="@color/colorPrimary" /><EditText android:id="@+id/edtPlaca" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:background="@null" android:hint="PLACA" android:textAllCaps="true" android:textColor="@color/gray_900" android:textSize="18sp" android:textStyle="bold" /><ImageView android:id="@+id/imgTipoLista" android:layout_width="56dp" android:layout_height="56dp" android:padding="4dp" android:background="@drawable/pin_button_background" android:backgroundTint="@color/gray_100" app:srcCompat="@drawable/ic_folder_open_outline_grey600_48dp" /></LinearLayout></androidx.cardview.widget.CardView>
-                                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:orientation="horizontal"><Button android:id="@+id/btnTipoLista" style="@style/Widget.MaterialComponents.Button" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:backgroundTint="@color/colorPrimary" android:text="PROCESAR" app:cornerRadius="@dimen/radius_medium" /><Button android:id="@+id/btnHabMod" style="@style/Widget.MaterialComponents.Button.OutlinedButton" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:layout_weight="1" android:text="EDITAR" app:cornerRadius="@dimen/radius_medium" /><ImageButton android:id="@+id/btnLimpiar" style="@style/AppTheme.Button.Icon" android:layout_width="48dp" android:layout_height="48dp" android:layout_marginStart="8dp" android:background="@drawable/pin_button_background" android:backgroundTint="@color/gray_200" app:srcCompat="@drawable/ic_broom_white_36dp" /></LinearLayout>
-                                <!-- IDs Maintenance -->
-                                <EditText android:id="@+id/edtHoraIngreso" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
-                                <EditText android:id="@+id/edtHoraSalida" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
-                                <EditText android:id="@+id/edtTiempoTranscurrido" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
-                                <EditText android:id="@+id/edtEtapaCont" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
-                                <EditText android:id="@+id/edtEspaciosLibres" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
-                                <EditText android:id="@+id/edtObservacion" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
-                                <ImageButton android:id="@+id/btnHoraInit" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
-                                <ImageButton android:id="@+id/btnHoraFin" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
-                                <TextView android:id="@+id/txtEstadoPermitir" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:gravity="center" android:text="ENTRA" android:textColor="@color/colorPrimary" android:textSize="24sp" android:textStyle="bold" />
-                            </LinearLayout>
-                        </ScrollView>
-                    </RelativeLayout>
-                </LinearLayout>
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvCarritoVenta"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
 
-                <!-- Right Side: Cart Detail -->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@color/white"
-                    android:elevation="8dp"
-                    android:orientation="vertical">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="8dp">
-                        <Button android:id="@+id/btnElegirVendedor" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:drawableTop="@drawable/ic_account_plus_white_24dp" android:text="Vendedor" android:textAllCaps="false" android:textSize="10sp" />
-                        <ImageButton android:id="@+id/imgLock" style="?android:attr/borderlessButtonStyle" android:layout_width="40dp" android:layout_height="40dp" app:srcCompat="@drawable/ic_lock_open_variant_white_24dp" />
-                        <Button android:id="@+id/btnElegirCliente" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:drawableTop="@drawable/ic_human_male_female_white_24dp" android:text="Cliente" android:textAllCaps="false" android:textSize="10sp" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:padding="12dp">
+
+                            <Button
+                                android:id="@+id/btnCancelarVenta"
+                                style="@style/AppTheme.Button.Outlined"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="ANULAR"
+                                android:textColor="@color/status_error"
+                                android:textSize="10sp"
+                                app:strokeColor="@color/status_error" />
+
+                            <ImageButton
+                                android:id="@+id/btnOpenGuardarPedido"
+                                style="@style/AppTheme.Button.Icon"
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:layout_marginStart="12dp"
+                                android:background="@drawable/bg_edittext_modern"
+                                android:backgroundTint="@color/gray_100"
+                                app:srcCompat="@drawable/save_white"
+                                app:tint="@color/colorPrimary" />
+                        </LinearLayout>
                     </LinearLayout>
-                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/gray_200" />
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
-                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical"><TextView android:id="@+id/txtCantidadProducto" android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/pin_button_background" android:backgroundTint="@color/gray_100" android:padding="8dp" android:text="x0" android:textStyle="bold" /><TextView android:id="@+id/txtPrecioUltimoProductoEnCarrito" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="end" android:text="S/0.00" android:textColor="@color/status_success" android:textSize="18sp" android:textStyle="bold" /></LinearLayout>
-                        <Button android:id="@+id/btnCobrar" style="@style/Widget.MaterialComponents.Button" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:backgroundTint="@color/colorPrimary" android:text="COBRAR" app:cornerRadius="@dimen/radius_medium" />
-                    </LinearLayout>
-                    <androidx.recyclerview.widget.RecyclerView android:id="@+id/rvCarritoVenta" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" />
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:padding="8dp">
-                        <Button android:id="@+id/btnCancelarVenta" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="ANULAR" android:textColor="@color/status_error" android:textSize="11sp" />
-                        <ImageButton android:id="@+id/btnOpenGuardarPedido" style="@style/AppTheme.Button.Icon" android:layout_width="40dp" android:layout_height="40dp" app:srcCompat="@drawable/save_white" app:tint="@color/colorPrimary" />
-                        <TextView android:id="@+id/txtDescuentoPrecioVenta" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:text="-%" android:textColor="@color/status_success" />
-                    </LinearLayout>
-                    <!-- IDs maintenance -->
-                    <LinearLayout android:id="@+id/linearLayoutBtnDetalleVenta" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
-                    <LinearLayout android:id="@+id/layoutInfo" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
-                    <TextView android:id="@+id/txtNombreUltimoProductoEnCarrito" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
-                    <ImageButton android:id="@+id/imgArrowDisplay" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
-                    <com.sothree.slidinguppanel.SlidingUpPanelLayout android:id="@+id/sliding_layout" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
-                    <RelativeLayout android:id="@+id/linearContenedorVenta" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
-                    <Button android:id="@+id/btnZonaServicio" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
-                    <Button android:id="@+id/btnModoVenta" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
-                </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
+
+            <!-- Compatibility IDs -->
+            <EditText android:id="@+id/edtCodigoBarra" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+            <RelativeLayout android:id="@+id/content_venta1" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+            <RelativeLayout android:id="@+id/content_venta2" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+            <ImageButton android:id="@+id/imgTipoVistaLista" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+            <Spinner android:id="@+id/spinnerCategoria" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+            <androidx.recyclerview.widget.RecyclerView android:id="@+id/rvGridarticulosVenta" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+            <TextView android:id="@+id/txtTextoCarrito" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+            <ProgressBar android:id="@+id/pbPedido" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+            <LinearLayout android:id="@+id/linearLayoutBtnDetalleVenta" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+            <LinearLayout android:id="@+id/layoutInfo" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+            <TextView android:id="@+id/txtNombreUltimoProductoEnCarrito" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+            <ImageButton android:id="@+id/imgArrowDisplay" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+            <com.sothree.slidinguppanel.SlidingUpPanelLayout android:id="@+id/sliding_layout" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+            <RelativeLayout android:id="@+id/linearContenedorVenta" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+            <TextView android:id="@+id/txtDescuentoPrecioVenta" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+            <Button android:id="@+id/btnZonaServicio" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+            <Button android:id="@+id/btnModoVenta" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+            <EditText android:id="@+id/edtHoraIngreso" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+            <EditText android:id="@+id/edtHoraSalida" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+            <EditText android:id="@+id/edtTiempoTranscurrido" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+            <EditText android:id="@+id/edtEtapaCont" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+            <EditText android:id="@+id/edtEspaciosLibres" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+            <EditText android:id="@+id/edtObservacion" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+            <ImageButton android:id="@+id/btnHoraInit" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+            <ImageButton android:id="@+id/btnHoraFin" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+            <TextView android:id="@+id/txtEstadoPermitir" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+
         </RelativeLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </FrameLayout>

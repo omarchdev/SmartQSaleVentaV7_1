@@ -12,7 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.Spinner;
-import android.widget.Switch;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import android.widget.Toast;
 
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mProduct;
@@ -24,7 +24,7 @@ public class ConfigEstadoProductFragment extends Fragment {
 
     boolean controlPeso,controlStock,tipoPack,pVentaLibre,bVisibleWeb;
     String estadoProducto,estadoVisible;
-     Switch sEstadoProducto,sEstadoProductoVisible,sControlPeso,sControlStock,switchPVLibre,switchTiempo,switchVisibleVentaWeb;
+     SwitchMaterial sEstadoProducto,sEstadoProductoVisible,sControlPeso,sControlStock,switchPVLibre,switchTiempo,switchVisibleVentaWeb;
      Spinner spTipoProducto;
 
 

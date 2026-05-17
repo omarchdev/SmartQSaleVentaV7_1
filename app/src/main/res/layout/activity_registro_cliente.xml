@@ -1,350 +1,297 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@color/backgroud_app"
+    tools:context=".Activitys.RegistroCliente">
 
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/avi"
+        style="@style/AVLoadingIndicatorView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
+        android:visibility="gone"
+        app:indicatorColor="@color/colorPrimary"
+        app:indicatorName="BallPulseIndicator"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/txtCargando"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Cargando datos..."
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/avi" />
 
     <RelativeLayout
-
+        android:id="@+id/rlContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.wang.avi.AVLoadingIndicatorView
-            android:id="@+id/avi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            app:indicatorColor="@color/colorPrimaryDark"
-            app:indicatorName="BallPulseIndicator" />
-        <TextView
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/avi"
-            android:id="@+id/txtCargando"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cargando datos"/>
-        <RelativeLayout
-            android:id="@+id/rlContent"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="80dp">
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingLeft="10dp"
-                android:paddingRight="5dp"
+                android:padding="16dp">
 
-                >
-
-                <LinearLayout
-
-                    android:elevation="4dp"
-                    android:paddingTop="12dp"
-                   android:padding="8dp"
-
-                    android:layout_margin="12dp"
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/AppTheme.Card.Modern"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                  >
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tipo de cliente"/>
-                    <Spinner
-                        android:id="@+id/spnTipoCliente"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"></Spinner>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/tilNombreCliente"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_column="1"
-                        android:layout_marginLeft="10dp"
-                        android:layout_row="0"
-                        android:orientation="horizontal"
-                        app:counterEnabled="true"
-                        app:counterMaxLength="30"
+                        android:orientation="vertical"
+                        android:padding="16dp">
 
-                        app:errorEnabled="true"
-                        app:hintAnimationEnabled="true">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="Tipo de cliente"
+                            android:textColor="@color/colorPrimary"
+                            android:textStyle="bold" />
 
-                        <EditText
-                            android:id="@+id/edtCustomerName"
+                        <Spinner
+                            android:id="@+id/spnTipoCliente"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:ems="12"
-                            android:hint="Nombre del Cliente"
-                            android:inputType="text"
-                            android:maxLength="30"
-                            android:maxLines="1" />
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilNombreCliente"
+                    style="@style/AppTheme.TextInputLayout.Outlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nombre del Cliente"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="30"
+                    app:startIconDrawable="@drawable/account">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/tilApellidoPaternoCliente"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtCustomerName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_column="1"
-                        android:layout_marginLeft="10dp"
-                        android:layout_row="0"
-                        android:orientation="horizontal"
-                        app:counterEnabled="true"
-                        app:counterMaxLength="30"
-                        app:errorEnabled="true"
-                        app:errorTextAppearance="@style/Error"
-                        app:hintAnimationEnabled="true">
+                        android:inputType="textPersonName"
+                        android:maxLength="30" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <EditText
-                            android:id="@+id/edtCustomerApellidoPaterno"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:ems="10"
-                            android:hint="Apellido Paterno"
-                            android:inputType="text"
-                            android:maxLength="30"
-                            android:maxLines="1" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilApellidoPaternoCliente"
+                    style="@style/AppTheme.TextInputLayout.Outlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:hint="Apellido Paterno"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="30">
 
-                    </com.google.android.material.textfield.TextInputLayout>
-
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/tilRazonSocial"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtCustomerApellidoPaterno"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_column="1"
-                        android:layout_marginLeft="10dp"
-                        android:layout_row="0"
-                        android:orientation="horizontal"
-                        app:counterEnabled="true"
-                        app:counterMaxLength="80"
-                        app:errorEnabled="true"
-                        app:errorTextAppearance="@style/Error"
-                        app:hintAnimationEnabled="true">
+                        android:inputType="textPersonName"
+                        android:maxLength="30" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <EditText
-                            android:id="@+id/edtRazonSocial"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:ems="10"
-                            android:hint="Razon Social"
-                            android:inputType="text"
-                            android:maxLength="80"
-                            android:maxLines="1" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilApellidoMaternoCLiente"
+                    style="@style/AppTheme.TextInputLayout.Outlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:hint="Apellido Materno"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="30">
 
-                    </com.google.android.material.textfield.TextInputLayout>
-
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/tilNumeroRuc"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtCustomerApellidoMaterno"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_column="1"
-                        android:layout_marginLeft="10dp"
-                        android:layout_row="0"
-                        android:orientation="horizontal"
-                        app:counterEnabled="true"
-                        app:counterMaxLength="15"
-                        app:errorEnabled="true"
-                        app:errorTextAppearance="@style/Error"
-                        app:hintAnimationEnabled="true">
+                        android:inputType="textPersonName"
+                        android:maxLength="30" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <EditText
-                            android:id="@+id/edtNumeroRuc"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:ems="10"
-                            android:hint="Numero de RUC"
-                            android:inputType="number"
-                            android:maxLength="15"
-                            android:maxLines="1" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilRazonSocial"
+                    style="@style/AppTheme.TextInputLayout.Outlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="Razón Social"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="80"
+                    app:startIconDrawable="@drawable/contacts">
 
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/tilApellidoMaternoCLiente"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtRazonSocial"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_column="1"
-                        android:layout_marginLeft="10dp"
-                        android:layout_row="0"
-                        android:orientation="horizontal"
-                        app:counterEnabled="true"
-                        app:counterMaxLength="30"
-                        app:errorEnabled="true"
-                        app:errorTextAppearance="@style/Error"
-                        app:hintAnimationEnabled="true">
+                        android:inputType="text"
+                        android:maxLength="80" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <EditText
-                            android:id="@+id/edtCustomerApellidoMaterno"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:ems="10"
-                            android:hint="Apellido Materno"
-                            android:inputType="text"
-                            android:maxLength="30"
-                            android:maxLines="1" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilNumeroRuc"
+                    style="@style/AppTheme.TextInputLayout.Outlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:hint="Número de RUC"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="15"
+                    app:startIconDrawable="@drawable/credit_card">
 
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/tilNumeroTelefonoCustomer"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtNumeroRuc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_column="1"
-                        android:layout_marginLeft="10dp"
-                        android:layout_row="0"
-                        android:orientation="horizontal"
-                        app:counterEnabled="true"
-                        app:counterMaxLength="15"
-                        app:errorEnabled="true"
-                        app:errorTextAppearance="@style/Error"
-                        app:hintAnimationEnabled="true">
+                        android:inputType="number"
+                        android:maxLength="15" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <EditText
-                            android:id="@+id/edtCustomerPhone"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:ems="10"
-                            android:hint="Numero Telefono"
-                            android:inputType="phone"
-                            android:maxLength="15"
-                            android:maxLines="1" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilNumeroTelefonoCustomer"
+                    style="@style/AppTheme.TextInputLayout.Outlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="Número Teléfono"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="15"
+                    app:startIconDrawable="@drawable/phone">
 
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/tilEmailCliente"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtCustomerPhone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_column="1"
-                        android:layout_marginLeft="10dp"
-                        android:layout_row="0"
-                        android:orientation="horizontal"
-                        app:counterEnabled="true"
-                        app:counterMaxLength="30"
-                        app:errorEnabled="true"
-                        app:errorTextAppearance="@style/Error"
-                        app:hintAnimationEnabled="true">
+                        android:inputType="phone"
+                        android:maxLength="15" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <EditText
-                            android:id="@+id/edtCustomerEmail"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:ems="10"
-                            android:hint="Email"
-                            android:inputType="textEmailAddress"
-                            android:maxLength="30"
-                            android:maxLines="1" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilEmailCliente"
+                    style="@style/AppTheme.TextInputLayout.Outlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:hint="Email"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="30">
 
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-
-                        android:layout_marginBottom="80dp"
-                        android:id="@+id/tilDireccionCliente"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtCustomerEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_column="1"
-                        android:layout_marginLeft="10dp"
-                        android:layout_row="0"
-                        android:orientation="horizontal"
-                        app:counterEnabled="true"
-                        app:counterMaxLength="80"
+                        android:inputType="textEmailAddress"
+                        android:maxLength="30" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        app:errorEnabled="true"
-                        app:errorTextAppearance="@style/Error"
-                        app:hintAnimationEnabled="true">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilDireccionCliente"
+                    style="@style/AppTheme.TextInputLayout.Outlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:hint="Dirección"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="80"
+                    app:startIconDrawable="@drawable/description">
 
-                        <EditText
-                            android:maxLength="80"
-                            android:id="@+id/edtCustomerDirection"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:ems="10"
-                            android:hint="Direccion"
-                            android:inputType="text"
-                            android:maxLines="1" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtCustomerDirection"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPostalAddress"
+                        android:maxLength="80" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                    </com.google.android.material.textfield.TextInputLayout>
-                </LinearLayout>
-            </ScrollView>
-
-        </RelativeLayout>
-
+            </LinearLayout>
+        </ScrollView>
     </RelativeLayout>
+
     <com.github.clans.fab.FloatingActionMenu
         android:id="@+id/actionMenu"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="bottom|right"
-        android:paddingBottom="16dp"
-        android:paddingRight="16dp"
-        app:menu_colorRipple="@color/colorPrimaryDark"
-        android:backgroundTint="#98232323"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:menu_animationDelayPerItem="50"
-        app:menu_backgroundColor="#ccffffff"
-        app:menu_buttonSpacing="0dp"
-        app:menu_fab_size="normal"
-        app:menu_labels_cornerRadius="2dp"
-        app:menu_labels_ellipsize="none"
-        app:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"
-        app:menu_labels_position="left"
-        app:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
-        app:menu_labels_singleLine="true"
-        app:menu_openDirection="up"
+        app:menu_backgroundColor="@android:color/transparent"
+        app:menu_buttonSpacing="8dp"
         app:menu_colorNormal="@color/colorAccent"
         app:menu_colorPressed="@color/colorAccent"
-
-       >
-
-        <com.github.clans.fab.FloatingActionButton
-            app:fab_colorNormal="@color/colorPrimary"
-            app:fab_colorPressed="@color/colorPrimary"
-            android:id="@+id/menu_item_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/pencil_edit"
-            app:fab_label="Editar vendedor"
-            app:fab_size="mini" />
-
+        app:menu_colorRipple="@color/white"
+        app:menu_fab_size="normal"
+        app:menu_icon="@drawable/settings"
+        app:menu_labels_ellipsize="end"
+        app:menu_labels_maxLines="1"
+        app:menu_labels_position="left"
+        app:menu_labels_showShadow="true"
+        app:menu_labels_singleLine="true"
+        app:menu_openDirection="up">
 
         <com.github.clans.fab.FloatingActionButton
-            app:fab_colorNormal="@color/colorPrimary"
-            app:fab_colorPressed="@color/colorPrimary"
             android:id="@+id/menu_item_guardar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/pencil_edit"
-            app:fab_label="Guardar vendedor"
-            app:fab_size="mini" />
+            app:fab_colorNormal="@color/status_success"
+            app:fab_colorPressed="@color/status_success"
+            app:fab_label="Guardar Cliente"
+            app:fab_size="mini"
+            app:srcCompat="@drawable/save" />
 
         <com.github.clans.fab.FloatingActionButton
-            app:fab_colorNormal="@color/colorPrimary"
-            app:fab_colorPressed="@color/colorPrimary"
-            android:id="@+id/menu_item_cancelar"
+            android:id="@+id/menu_item_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/pencil_edit"
-            app:fab_label="Cancelar"
-            app:fab_size="mini" />
-
-        <com.github.clans.fab.FloatingActionButton
             app:fab_colorNormal="@color/colorPrimary"
             app:fab_colorPressed="@color/colorPrimary"
+            app:fab_label="Editar Cliente"
+            app:fab_size="mini"
+            app:srcCompat="@drawable/pencil_edit" />
+
+        <com.github.clans.fab.FloatingActionButton
             android:id="@+id/menu_item_eliminar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/pencil_edit"
-            app:fab_label="Eliminar"
-            app:fab_size="mini" />
+            app:fab_colorNormal="@color/status_error"
+            app:fab_colorPressed="@color/status_error"
+            app:fab_label="Eliminar Cliente"
+            app:fab_size="mini"
+            app:srcCompat="@drawable/delete" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/menu_item_cancelar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/gray_600"
+            app:fab_colorPressed="@color/gray_600"
+            app:fab_label="Cancelar"
+            app:fab_size="mini"
+            app:srcCompat="@drawable/close" />
 
     </com.github.clans.fab.FloatingActionMenu>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

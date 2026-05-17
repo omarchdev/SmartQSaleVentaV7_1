@@ -73,6 +73,7 @@ public class DetalleVenta extends ActivityParent
     FloatingActionButton fabEnvioCpe;
     FloatingActionsMenu floatingActionsMenu;
     mVenta venta;
+    TextView txtObservacion;
     mCabeceraVenta cabeceraVenta;
     List<mDetalleVenta> listDetalleVenta;
     List<ProductoEnVenta> listaProductos;
@@ -119,6 +120,8 @@ public class DetalleVenta extends ActivityParent
         txtIdentificador = findViewById(R.id.txtIdentificador);
         fabImprimirVenta = findViewById(R.id.fabImprimirVenta);
         fabEnvioCpe = findViewById(R.id.fabEnvioCpe);
+
+        txtObservacion=findViewById(R.id.txtObservacion);
         asyncProcesoVenta=new AsyncProcesoVenta();
         fabEnvioCpe.setOnClickListener(this);
         fcancelButton.setOnClickListener(this);

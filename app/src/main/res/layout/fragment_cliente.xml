@@ -1,79 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="@color/backgroud_app"
     tools:context="com.omarchdev.smartqsale.smartqsaleventas.Fragment.clienteFragment">
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
+        <com.google.android.material.card.MaterialCardView
+            style="@style/AppTheme.Card.Modern"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:padding="10dp">
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp">
 
-            <EditText
-                android:id="@+id/edtSearchCliente"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="4.5"
-
-                android:hint="Nombre/Alias" />
-
-            <ImageButton
-                android:id="@+id/btnDeleteTextSearchCliente"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="#ffffff"
-                android:gravity="center"
-
-                android:src="@drawable/close"
-                android:textColor="#012345"
-                android:textSize="35dp" />
-
-            <ImageButton
-                android:elevation="5dp"
-                android:id="@+id/btnViewContact"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="4dp"
-                android:layout_weight="1"
-                android:backgroundTint="#00aeff"
-                android:src="@drawable/ic_contacts_white_24dp" />
-
-            <ImageButton
-                android:elevation="5dp"
-                android:id="@+id/btnAddContact"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="4dp"
-                android:layout_weight="1"
-                android:backgroundTint="#00aeff"
-                android:src="@drawable/ic_account_plus_white_24dp" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="6">
-            <androidx.recyclerview.widget.RecyclerView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/rvListClients"></androidx.recyclerview.widget.RecyclerView>
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp">
 
-        </LinearLayout>
+                <EditText
+                    android:id="@+id/edtSearchCliente"
+                    style="@style/AppTheme.EditText.Modern"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="Nombre o Alias del Cliente"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:textSize="16sp" />
 
+                <ImageButton
+                    android:id="@+id/btnDeleteTextSearchCliente"
+                    style="@style/AppTheme.Button.Icon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/close"
+                    app:tint="@color/gray_600" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@color/gray_200" />
+
+                <ImageButton
+                    android:id="@+id/btnViewContact"
+                    style="@style/AppTheme.Button.Icon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_contacts_white_24dp"
+                    app:tint="@color/colorPrimary" />
+
+                <ImageButton
+                    android:id="@+id/btnAddContact"
+                    style="@style/AppTheme.Button.Icon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_account_plus_white_24dp"
+                    app:tint="@color/status_success" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvListClients"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:padding="8dp" />
 
     </LinearLayout>
-
 
 </FrameLayout>

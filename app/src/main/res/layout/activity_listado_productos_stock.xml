@@ -4,20 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroud_app"
     tools:context=".Activitys.ListadoProductosStock">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvProductosStock"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginBottom="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:clipToPadding="false"
+        android:padding="8dp" />
 </LinearLayout>

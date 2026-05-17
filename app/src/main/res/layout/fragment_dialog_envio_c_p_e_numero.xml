@@ -1,59 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="300dip"
+    style="@style/AppTheme.Card.Modern"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".DialogFragments.DialogEnvioCPENumero">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="24dp">
 
         <TextView
             android:id="@+id/textView44"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="  Envio por WhatsApp"
-            android:textSize="20sp" />
+            android:text="Envío por WhatsApp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/edtCelularEnvio"
+            style="@style/AppTheme.TextInputLayout.Outlined"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dip"
-            android:layout_marginTop="24dip"
-            android:layout_marginEnd="16dip"
-            android:layout_marginBottom="24dip">
+            android:layout_marginTop="24dp"
+            android:hint="Número de Celular">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtCelularEnvioInner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Número celular"
                 android:inputType="phone" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="16dip"
-            android:layout_marginEnd="16dip"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btnSalir"
-                style="@style/ButtonPlano"
-                android:layout_width="wrap_content"
+                style="@style/AppTheme.Button.Outlined"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
                 android:layout_weight="1"
                 android:text="Salir" />
 
             <Button
                 android:id="@+id/btnGuardar"
-                android:layout_width="wrap_content"
+                style="@style/AppTheme.Button.Modern"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:layout_weight="1"
-                android:text="Enviar" />
+                android:text="Enviar"
+                app:icon="@drawable/check" />
         </LinearLayout>
     </LinearLayout>
-</FrameLayout>
+</com.google.android.material.card.MaterialCardView>

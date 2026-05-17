@@ -1,9 +1,9 @@
 package com.omarchdev.smartqsale.smartqsaleventas.DialogFragments;
 
 import android.app.Activity;
-import android.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import com.google.android.material.textfield.TextInputLayout;

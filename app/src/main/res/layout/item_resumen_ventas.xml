@@ -1,43 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/AppTheme.Card.Modern"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp">
+    android:layout_margin="4dp">
 
-    <ImageView
-        android:id="@+id/imgColor"
-        android:layout_width="5dp"
-        android:layout_height="30dp"
-        android:background="@color/colorPrimary" />
-
-    <TextView
-        android:id="@+id/txtTipo"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="11dp"
-        android:layout_toEndOf="@+id/imgColor"
-        android:text="Tipo de pago"
-        />
+        android:padding="12dp">
 
-    <TextView
-        android:textStyle="bold"
-        android:id="@+id/montoDinero"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:text="Monto Dinero"
-        android:textSize="16sp" />
+        <View
+            android:id="@+id/imgColor"
+            android:layout_width="4dp"
+            android:layout_height="0dp"
+            android:background="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txtSubtitulo"
+        <TextView
+            android:id="@+id/txtTipo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="Tipo de Pago"
+            android:textColor="@color/gray_900"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/montoDinero"
+            app:layout_constraintStart_toEndOf="@+id/imgColor"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/txtTipo"
-        android:layout_below="@+id/txtTipo"
-        android:text=""
+        <TextView
+            android:id="@+id/txtSubtitulo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/gray_600"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/montoDinero"
+            app:layout_constraintStart_toStartOf="@+id/txtTipo"
+            app:layout_constraintTop_toBottomOf="@+id/txtTipo" />
 
-        android:textSize="12sp" />
-</RelativeLayout>
+        <TextView
+            android:id="@+id/montoDinero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="S/ 0.00"
+            android:textColor="@color/status_success"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

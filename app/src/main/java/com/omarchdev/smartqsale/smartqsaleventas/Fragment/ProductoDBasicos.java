@@ -60,7 +60,7 @@ import java.util.List;
 
 
 public class ProductoDBasicos extends Fragment implements View.OnClickListener, DialogScannerCam.ScannerResult, CompoundButton.OnCheckedChangeListener, AsyncSubCategorias.ResultadoSubCategorias, AsyncProductKt.IVerificarExisteNombre {
-    List<mUnidadMedida> listaUnidades;
+    List<mUnidadMedida> listaUnidades = new ArrayList<>();
     int idProducto;
     int idSubcategoria;
     boolean cargaInit;
@@ -83,25 +83,26 @@ public class ProductoDBasicos extends Fragment implements View.OnClickListener, 
     int idCategoria;
     byte esFavorito;
     ListenerDatosBasicos listenerDatosBasicos;
-    List<mCategoriaProductos> listCategorias;
+    List<mCategoriaProductos> listCategorias = new ArrayList<>();
     private String NombreTemp;
     private Spinner spinnerCategoria;
     CategoriaAdapter categoriaAdapter;
     int longitudCategorias;
     Spinner spnUnidadMedida, spnAreasProduccion, spnSubCategoria;
-    List<String> listUnidades;
+    List<String> listUnidades = new ArrayList<>();
     RVAdapterAdditionalPrice adapterAdditionalPrice;
-    List<AdditionalPriceProduct> priceProductList;
+    List<AdditionalPriceProduct> priceProductList = new ArrayList<>();
     AsyncAreasProduccion asyncAreasProduccion;
     ArrayAdapter adapterAreasP;
-    List<String> listaAreas;
-    List<String> listaSubCategorias;
-    List<mAreaProduccion> listaAreasProduccion;
-    List<mSubCategoria> mSubCategoriaList;
+    List<String> listaAreas = new ArrayList<>();
+    List<String> listaSubCategorias = new ArrayList<>();
+    List<mAreaProduccion> listaAreasProduccion = new ArrayList<>();
+    List<mSubCategoria> mSubCategoriaList = new ArrayList<>();
     ArrayAdapter adapterSubCategorias;
     AsyncSubCategorias asyncSubCategorias;
     mProduct product;
     AsyncProductKt asyncProductKt;
+    private double cantidadMaximaDefault = -1;
 
     @Override
     public void NombreEnUso(@NotNull String mensaje) {
@@ -127,11 +128,16 @@ public class ProductoDBasicos extends Fragment implements View.OnClickListener, 
 
     public void setListAreasProduccion(List<mAreaProduccion> result) {
         listaAreasProduccion = result;
+        if (listaAreas == null) {
+            listaAreas = new ArrayList<>();
+        }
         listaAreas.clear();
         for (mAreaProduccion a : result) {
             listaAreas.add(a.getCDescripcionArea());
         }
-        adapterAreasP.notifyDataSetChanged();
+        if (adapterAreasP != null) {
+            adapterAreasP.notifyDataSetChanged();
+        }
     }
 
     public int getIdAreaProducction() {
@@ -143,7 +149,9 @@ public class ProductoDBasicos extends Fragment implements View.OnClickListener, 
     public void setListCategorias(List<mCategoriaProductos> listCategorias) {
         this.listCategorias = listCategorias;
         longitudCategorias = listCategorias.size();
-        categoriaAdapter.AddElementRegistroProductos(listCategorias);
+        if (categoriaAdapter != null) {
+            categoriaAdapter.AddElementRegistroProductos(listCategorias);
+        }
     }
 
     public void setListenerDatosBasicos(ListenerDatosBasicos listenerDatosBasicos) {
@@ -165,6 +173,9 @@ public class ProductoDBasicos extends Fragment implements View.OnClickListener, 
         observacionProducto = "";
         idCategoria = 0;
         listCategorias = new ArrayList<>();
+        listaAreas = new ArrayList<>();
+        listaSubCategorias = new ArrayList<>();
+        mSubCategoriaList = new ArrayList<>();
         campoNombre = false;
         campoCodigo = false;
         campoPrecioVenta = false;
@@ -174,7 +185,7 @@ public class ProductoDBasicos extends Fragment implements View.OnClickListener, 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = null;
-        try {
+
             v = inflater.inflate(R.layout.activity_inventario, container, false);
             cargaInit = false;
             NombreTemp = "";
@@ -197,13 +208,18 @@ public class ProductoDBasicos extends Fragment implements View.OnClickListener, 
             edtDescripcion =  v.findViewById(R.id.edtDescripcion);
             edtObservacion =  v.findViewById(R.id.edtObservacion);
 
+            if (cantidadMaximaDefault != -1) {
+                if (edtCantidadMaximaWeb != null && edtCantidadMaximaWeb.getEditText() != null) {
+                    edtCantidadMaximaWeb.getEditText().setText(String.format("%.0f", cantidadMaximaDefault));
+                }
+            }
+
             spnAreasProduccion = v.findViewById(R.id.spnAreasProduccion);
             edtcodeBar = v.findViewById(R.id.edtcodeBar);
             spnUnidadMedida = v.findViewById(R.id.spnUnidadMedida);
             btnScan =  v.findViewById(R.id.btnScan);
             btnScan.setOnClickListener(this);
             spinnerCategoria =  v.findViewById(R.id.spinner_categoria);
-            listUnidades = new ArrayList<>();
             asyncProductKt = new AsyncProductKt();
             categoriaAdapter = new CategoriaAdapter(getContext(), R.layout.support_simple_spinner_dropdown_item, listCategorias);
             spinnerCategoria.setAdapter(categoriaAdapter);
@@ -220,23 +236,34 @@ public class ProductoDBasicos extends Fragment implements View.OnClickListener, 
             rvPrecioVentas.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
             switchPrecioMult.setOnCheckedChangeListener(this);
             switchPrecioMult.setChecked(false);
-            listaAreas = new ArrayList<>();
-            listaAreas.add("Buscando areas de produccion");
+            if (listaAreas.isEmpty()) {
+                listaAreas.add("Buscando areas de produccion");
+            }
             adapterAreasP = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, listaAreas);
             spnAreasProduccion.setAdapter(adapterAreasP);
-            listaSubCategorias = new ArrayList<>();
-            listaSubCategorias.add("Sin subcategorias");
-            mSubCategoriaList = new ArrayList<>();
+            if (listaSubCategorias.isEmpty()) {
+                listaSubCategorias.add("Sin subcategorias");
+            }
             adapterSubCategorias = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, listaSubCategorias);
             asyncSubCategorias = new AsyncSubCategorias();
             asyncSubCategorias.setResultadoSubCategorias(this);
             spnSubCategoria.setAdapter(adapterSubCategorias);
             asyncProductKt.setIverificarExisteNombre(this);
             ClickEditTextNumberKt.ClickTextInputLayout(edtPrecioVenta);
-        } catch (Exception ex) {
-            Toast.makeText(getContext(), ex.toString(), Toast.LENGTH_LONG).show();
-        }
+
+            if (codigoProducto != null && edtCodigo.getEditText() != null) {
+                edtCodigo.getEditText().setText(codigoProducto);
+            }
+            if (codigoBarras != null && edtcodeBar.getEditText() != null) {
+                edtcodeBar.getEditText().setText(codigoBarras);
+            }
+
+            if (product != null) {
+                setInfoProduct(product);
+            }
+
         //  asyncAreasProduccion.setListenerAreasProduccion(this);
+        //  asyncAreasProduccion.ObtenerAreasProduccionRegProd();
         //  asyncAreasProduccion.ObtenerAreasProduccionRegProd();
 
         return v;
@@ -318,11 +345,19 @@ public class ProductoDBasicos extends Fragment implements View.OnClickListener, 
     }
 
     public void setCantidadMaximaDefault(double cantidadMaxima) {
-        edtCantidadMaximaWeb.getEditText().setText(String.format("%.0f", cantidadMaxima));
+        this.cantidadMaximaDefault = cantidadMaxima;
+        if (edtCantidadMaximaWeb != null && edtCantidadMaximaWeb.getEditText() != null) {
+            edtCantidadMaximaWeb.getEditText().setText(String.format("%.0f", cantidadMaxima));
+        }
     }
 
     public BigDecimal getCantidadMaxima() {
-        return new BigDecimal(ReplaceCommaToDot(edtCantidadMaximaWeb.getEditText().getText().toString()));
+        if (edtCantidadMaximaWeb != null && edtCantidadMaximaWeb.getEditText() != null) {
+            String text = edtCantidadMaximaWeb.getEditText().getText().toString();
+            if (text.isEmpty() || text.equals(".")) return BigDecimal.ZERO;
+            return new BigDecimal(ReplaceCommaToDot(text));
+        }
+        return BigDecimal.ZERO;
     }
 
     public void Botones() {
@@ -618,7 +653,7 @@ public class ProductoDBasicos extends Fragment implements View.OnClickListener, 
 
         DialogScannerCam dialogScannerCam = new DialogScannerCam();
         dialogScannerCam.setScannerResult(this);
-        dialogScannerCam.show(getActivity().getFragmentManager(), "hOLA");
+        dialogScannerCam.show(getParentFragmentManager(), "hOLA");
     }
 
 
@@ -626,10 +661,13 @@ public class ProductoDBasicos extends Fragment implements View.OnClickListener, 
         edtNombre.setError("El nombre es muy corto ");
     }
 
-    public BigDecimal getPrecioVenta(){
-
-        return new BigDecimal(ReplaceCommaToDot(edtPrecioVenta.getEditText().getText().toString()));
-
+    public BigDecimal getPrecioVenta() {
+        if (edtPrecioVenta != null && edtPrecioVenta.getEditText() != null) {
+            String text = edtPrecioVenta.getEditText().getText().toString();
+            if (text.isEmpty() || text.equals(".")) return BigDecimal.ZERO;
+            return new BigDecimal(ReplaceCommaToDot(text));
+        }
+        return BigDecimal.ZERO;
     }
 
     @Override
@@ -660,8 +698,10 @@ public class ProductoDBasicos extends Fragment implements View.OnClickListener, 
 
     public void ObtenerUnidadesMedida(List<String> unidadesMedida) {
         this.listUnidades = unidadesMedida;
-        adapterMedida.addAll(listUnidades);
-
+        if (adapterMedida != null) {
+            adapterMedida.clear();
+            adapterMedida.addAll(listUnidades);
+        }
     }
 
     public void UnidadesMedida(List<mUnidadMedida> listaUnidades) {
@@ -677,65 +717,73 @@ public class ProductoDBasicos extends Fragment implements View.OnClickListener, 
 
 
     public void ObtenerCodigoGenerado(String codigoGenerado) {
-
-        edtCodigo.getEditText().setText(codigoGenerado);
-
+        this.codigoProducto = codigoGenerado;
+        if (edtCodigo != null && edtCodigo.getEditText() != null) {
+            edtCodigo.getEditText().setText(codigoGenerado);
+        }
     }
 
     public void HabilitarCampos() {
-        edtCantidadStock.setEnabled(true);
-        edtCantidadStock.getEditText().setEnabled(true);
-        edtPrecioCompra.setEnabled(true);
-        edtPrecioCompra.getEditText().setEnabled(true);
-        edtCantidadMaximaWeb.getEditText().setEnabled(true);
-        spinnerCategoria.setEnabled(true);
-        edtNombre.getEditText().setEnabled(true);
-        edtCodigo.getEditText().setEnabled(true);
-        edtcodeBar.getEditText().setEnabled(true);
-        edtObservacion.getEditText().setEnabled(true);
-        edtDescripcion.getEditText().setEnabled(true);
-        edtCantidadStock.getEditText().setEnabled(true);
-        edtCantidadReserva.getEditText().setEnabled(true);
-        edtPrecioCompra.getEditText().setEnabled(true);
-        edtPrecioVenta.getEditText().setEnabled(true);
-        btnScan.setEnabled(true);
-        spnUnidadMedida.setEnabled(true);
-        edtCantidadStock.getEditText().setEnabled(false);
-        edtPrecioCompra.getEditText().setEnabled(false);
-        edtCantidadReserva.getEditText().setEnabled(false);
-        spnSubCategoria.setEnabled(true);
-        switchPrecioMult.setEnabled(true);
-        btnAgregarPVenta.setEnabled(true);
-        spnAreasProduccion.setEnabled(true);
-        btnAgregarPVenta.setEnabled(true);
+        if (edtPrecioCompra != null) {
+            edtPrecioCompra.setEnabled(true);
+            if (edtPrecioCompra.getEditText() != null) edtPrecioCompra.getEditText().setEnabled(true);
+        }
+        if (edtCantidadMaximaWeb != null && edtCantidadMaximaWeb.getEditText() != null) {
+            edtCantidadMaximaWeb.getEditText().setEnabled(true);
+        }
+        if (spinnerCategoria != null) spinnerCategoria.setEnabled(true);
+        if (edtNombre != null && edtNombre.getEditText() != null) edtNombre.getEditText().setEnabled(true);
+        if (edtCodigo != null && edtCodigo.getEditText() != null) edtCodigo.getEditText().setEnabled(true);
+        if (edtcodeBar != null && edtcodeBar.getEditText() != null) edtcodeBar.getEditText().setEnabled(true);
+        if (edtObservacion != null && edtObservacion.getEditText() != null) edtObservacion.getEditText().setEnabled(true);
+        if (edtDescripcion != null && edtDescripcion.getEditText() != null) edtDescripcion.getEditText().setEnabled(true);
+        if (edtCantidadStock != null && edtCantidadStock.getEditText() != null) {
+            edtCantidadStock.getEditText().setEnabled(true);
+        }
+        if (edtCantidadReserva != null && edtCantidadReserva.getEditText() != null) {
+            edtCantidadReserva.getEditText().setEnabled(true);
+        }
+        if (edtPrecioVenta != null && edtPrecioVenta.getEditText() != null) edtPrecioVenta.getEditText().setEnabled(true);
+        if (btnScan != null) btnScan.setEnabled(true);
+        if (spnUnidadMedida != null) spnUnidadMedida.setEnabled(true);
+
+        if (edtCantidadStock != null && edtCantidadStock.getEditText() != null) edtCantidadStock.getEditText().setEnabled(false);
+        if (edtPrecioCompra != null && edtPrecioCompra.getEditText() != null) edtPrecioCompra.getEditText().setEnabled(false);
+        if (edtCantidadReserva != null && edtCantidadReserva.getEditText() != null) edtCantidadReserva.getEditText().setEnabled(false);
+
+        if (spnSubCategoria != null) spnSubCategoria.setEnabled(true);
+        if (switchPrecioMult != null) switchPrecioMult.setEnabled(true);
+        if (btnAgregarPVenta != null) btnAgregarPVenta.setEnabled(true);
+        if (spnAreasProduccion != null) spnAreasProduccion.setEnabled(true);
     }
 
     public void DeshabilitarCampos() {
-        edtCantidadStock.setEnabled(true);
-        edtCantidadStock.getEditText().setEnabled(false);
-        edtPrecioCompra.setEnabled(true);
-        edtPrecioCompra.getEditText().setEnabled(false);
-        edtCantidadMaximaWeb.getEditText().setEnabled(false);
-        spnUnidadMedida.setEnabled(false);
-        spinnerCategoria.setEnabled(false);
+        if (edtCantidadStock != null) {
+            edtCantidadStock.setEnabled(true);
+            if (edtCantidadStock.getEditText() != null) edtCantidadStock.getEditText().setEnabled(false);
+        }
+        if (edtPrecioCompra != null) {
+            edtPrecioCompra.setEnabled(true);
+            if (edtPrecioCompra.getEditText() != null) edtPrecioCompra.getEditText().setEnabled(false);
+        }
+        if (edtCantidadMaximaWeb != null && edtCantidadMaximaWeb.getEditText() != null) {
+            edtCantidadMaximaWeb.getEditText().setEnabled(false);
+        }
+        if (spnUnidadMedida != null) spnUnidadMedida.setEnabled(false);
+        if (spinnerCategoria != null) spinnerCategoria.setEnabled(false);
 
-        edtCodigo.getEditText().setEnabled(false);
-        edtcodeBar.getEditText().setEnabled(false);
-        edtObservacion.getEditText().setEnabled(false);
-        edtDescripcion.getEditText().setEnabled(false);
-        edtCantidadStock.getEditText().setEnabled(false);
-        edtCantidadReserva.getEditText().setEnabled(false);
-        edtPrecioCompra.getEditText().setEnabled(false);
-        edtNombre.getEditText().setEnabled(false);
-        edtPrecioVenta.getEditText().setEnabled(false);
-        btnScan.setEnabled(false);
-        spnSubCategoria.setEnabled(false);
-        switchPrecioMult.setEnabled(false);
-        btnAgregarPVenta.setEnabled(false);
-        edtCantidadStock.getEditText().setEnabled(false);
-        edtPrecioCompra.getEditText().setEnabled(false);
-        edtCantidadReserva.getEditText().setEnabled(false);
-        spnAreasProduccion.setEnabled(false);
+        if (edtCodigo != null && edtCodigo.getEditText() != null) edtCodigo.getEditText().setEnabled(false);
+        if (edtcodeBar != null && edtcodeBar.getEditText() != null) edtcodeBar.getEditText().setEnabled(false);
+        if (edtObservacion != null && edtObservacion.getEditText() != null) edtObservacion.getEditText().setEnabled(false);
+        if (edtDescripcion != null && edtDescripcion.getEditText() != null) edtDescripcion.getEditText().setEnabled(false);
+        if (edtCantidadReserva != null && edtCantidadReserva.getEditText() != null) edtCantidadReserva.getEditText().setEnabled(false);
+        if (edtNombre != null && edtNombre.getEditText() != null) edtNombre.getEditText().setEnabled(false);
+        if (edtPrecioVenta != null && edtPrecioVenta.getEditText() != null) edtPrecioVenta.getEditText().setEnabled(false);
+        if (btnScan != null) btnScan.setEnabled(false);
+        if (spnSubCategoria != null) spnSubCategoria.setEnabled(false);
+        if (switchPrecioMult != null) switchPrecioMult.setEnabled(false);
+        if (btnAgregarPVenta != null) btnAgregarPVenta.setEnabled(false);
+        if (spnAreasProduccion != null) spnAreasProduccion.setEnabled(false);
     }
 
     @Override
@@ -811,6 +859,9 @@ public class ProductoDBasicos extends Fragment implements View.OnClickListener, 
         this.product = product;
         cargaInit = true;
         idProducto = product.getIdProduct();
+
+        if (spinnerCategoria == null) return;
+
         for (int i = 0; i < longitudCategorias; i++) {
             if (listCategorias.get(i).getIdCategoria() == product.getIdCategoria()) {
                 spinnerCategoria.setSelection(i);

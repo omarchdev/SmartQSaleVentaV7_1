@@ -1,8 +1,8 @@
 package com.omarchdev.smartqsale.smartqsaleventas.DialogFragments;
 
-import android.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import com.google.android.material.textfield.TextInputLayout;
@@ -17,7 +17,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Switch;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import android.widget.Toast;
 
 import com.omarchdev.smartqsale.smartqsaleventas.AsyncTask.AsyncProcesoVenta;
@@ -50,7 +50,7 @@ public class DialogEditVariantes extends DialogFragment implements DialogScanner
     RVAdapterAdditionalPrice adapterAdditionalPrice;
     CheckBox cbPVenta;
     RecyclerView rvPrecioVentas;
-    Switch switchPrecioMult;
+    SwitchMaterial switchPrecioMult;
     AsyncProcesoVenta asyncProcesoVenta;
     @Override
     public void ResultadoScanner(String resultText) {
@@ -63,7 +63,7 @@ public class DialogEditVariantes extends DialogFragment implements DialogScanner
 
             case R.id.btnScanCode:
                 DialogFragment dialogFragment=dialogScannerCam;
-                dialogFragment.show(getFragmentManager(),"Scanner");
+                dialogFragment.show(getChildFragmentManager(),"Scanner");
             break;
             case R.id.btnAgregarPVenta:
                 if(switchPrecioMult.isChecked()) {
@@ -76,7 +76,7 @@ public class DialogEditVariantes extends DialogFragment implements DialogScanner
                 break;
             case R.id.btnSalir:
 
-                getDialog().dismiss();
+                dismiss();
 
                 break;
             case R.id.btnGuardar:
@@ -89,7 +89,7 @@ public class DialogEditVariantes extends DialogFragment implements DialogScanner
                             Toast.LENGTH_LONG).show();
                 }
                 if(p) {
-                    getDialog().dismiss();
+                    dismiss();
                     infoModificarListener.setInfoEditVariante(idVariante,
                             stock,
                             pVenta,
@@ -148,12 +148,14 @@ public class DialogEditVariantes extends DialogFragment implements DialogScanner
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        View v=getActivity().getLayoutInflater().inflate(R.layout.dialog_edit_variante,null);
-        AlertDialog.Builder builder=new AlertDialog.Builder(getActivity()).setView(v);
+        if (getActivity() == null) return super.onCreateDialog(savedInstanceState);
+        
+        View v = getActivity().getLayoutInflater().inflate(R.layout.dialog_edit_variante, null);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity()).setView(v);
         try {
 
-            btnSalir=v.findViewById(R.id.btnSalir);
-            btnGuardar=v.findViewById(R.id.btnGuardar);
+            btnSalir = v.findViewById(R.id.btnSalir);
+            btnGuardar = v.findViewById(R.id.btnGuardar);
             switchPrecioMult = v.findViewById(R.id.switchPrecioMult);
             switchPrecioMult.setOnCheckedChangeListener(this);
             btnGuardar.setOnClickListener(this);
@@ -168,40 +170,64 @@ public class DialogEditVariantes extends DialogFragment implements DialogScanner
             edtPVenta = (TextInputLayout) v.findViewById(R.id.edtPrecioVenta);
             edtCodigoBarra = (TextInputLayout) v.findViewById(R.id.edtCodigoBarra);
             btnScanCode = (ImageButton) v.findViewById(R.id.btnScanCode);
-            edtPVenta.getEditText().setText(String.format("%.2f", pVenta));
-            edtStock.getEditText().setText(String.format("%.2f", stock));
-            edtPCompra.getEditText().setText(String.format("%.2f", pCompra));
-            edtCodigoBarra.getEditText().setText(codigoBarra);
+            
+            if (pVenta != null && edtPVenta.getEditText() != null) {
+                edtPVenta.getEditText().setText(String.format("%.2f", pVenta));
+            }
+            if (stock != null && edtStock.getEditText() != null) {
+                edtStock.getEditText().setText(String.format("%.2f", stock));
+            }
+            if (pCompra != null && edtPCompra.getEditText() != null) {
+                edtPCompra.getEditText().setText(String.format("%.2f", pCompra));
+            }
+            if (codigoBarra != null && edtCodigoBarra.getEditText() != null) {
+                edtCodigoBarra.getEditText().setText(codigoBarra);
+            }
+            
             btnScanCode.setOnClickListener(this);
-            edtStock.getEditText().setEnabled(false);
-            rvPrecioVentas=v.findViewById(R.id.rvPVentaAdd);
+            if (edtStock.getEditText() != null) {
+                edtStock.getEditText().setEnabled(false);
+            }
+            rvPrecioVentas = v.findViewById(R.id.rvPVentaAdd);
             adapterAdditionalPrice = new RVAdapterAdditionalPrice();
             edtStock.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(getActivity(),
-                            "Los cambios en el stock se realizan en la seccion Movimientos Almacén.", Toast.LENGTH_LONG).show();
+                    if (getActivity() != null) {
+                        Toast.makeText(getActivity(),
+                                "Los cambios en el stock se realizan en la seccion Movimientos Almacén.", Toast.LENGTH_LONG).show();
+                    }
                 }
 
             });
 
-            builder.setTitle(tituloVariante);
-            edtPCompra.getEditText().addTextChangedListener(listenerTextWatcherCompra);
-            edtStock.getEditText().addTextChangedListener(listenerTextWatcherStock);
-            edtPVenta.getEditText().addTextChangedListener(listenerTextWatcherPVenta);
-            edtCodigoBarra.getEditText().addTextChangedListener(listenerTextWatcherCodigoBarra);
+            builder.setTitle(tituloVariante != null ? tituloVariante : "");
+            if (edtPCompra.getEditText() != null) {
+                edtPCompra.getEditText().addTextChangedListener(listenerTextWatcherCompra);
+            }
+            if (edtStock.getEditText() != null) {
+                edtStock.getEditText().addTextChangedListener(listenerTextWatcherStock);
+            }
+            if (edtPVenta.getEditText() != null) {
+                edtPVenta.getEditText().addTextChangedListener(listenerTextWatcherPVenta);
+            }
+            if (edtCodigoBarra.getEditText() != null) {
+                edtCodigoBarra.getEditText().addTextChangedListener(listenerTextWatcherCodigoBarra);
+            }
             edtStock.setVisibility(View.GONE);
             rvPrecioVentas.setAdapter(adapterAdditionalPrice);
             rvPrecioVentas.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
             btnAgregarPVenta.setOnClickListener(this);
             switchPrecioMult.setChecked(pmultiple);
-            asyncProcesoVenta=new AsyncProcesoVenta();
-            if(pmultiple){
+            asyncProcesoVenta = new AsyncProcesoVenta();
+            if (pmultiple) {
                 asyncProcesoVenta.ObtenerPreciosVenta(idVariante);
                 asyncProcesoVenta.setListenerPrecioVentaAdiccional(this);
             }
-        }catch (Exception e){
-            Toast.makeText(getActivity(),e.toString(),Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            if (getActivity() != null) {
+                Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_LONG).show();
+            }
         }
         return builder.create();
     }

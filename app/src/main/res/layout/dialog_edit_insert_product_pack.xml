@@ -1,98 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/AppTheme.Card.Modern"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-
-    <Spinner
-        android:id="@+id/spnModificadorPack"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:spinnerMode="dialog"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtCantidad" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edtPrecioVenta"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtCantidad">
+        android:padding="24dp">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edtCantidadLayout"
+            style="@style/AppTheme.TextInputLayout.Outlined"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="P. Unitario de Venta en Combo"
-            android:inputType="numberDecimal" />
-    </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintTop_toTopOf="parent">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edtCantidad"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtCantidad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Cantidad"
+                android:inputType="numberDecimal" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            style="@style/EditTextNumber"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edtPrecioVentaLayout"
+            style="@style/AppTheme.TextInputLayout.Outlined"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Cantidad"
-            android:inputType="numberDecimal" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginTop="16dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/edtCantidadLayout">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edtMontoModifica"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:hint="Monto"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spnModificadorPack">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtPrecioVenta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="P. Unitario en Combo"
+                android:inputType="numberDecimal" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            style="@style/EditTextNumber"
+        <TextView
+            android:id="@+id/lblModificador"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Seleccionar Modificador"
+            android:textColor="@color/gray_600"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/edtPrecioVentaLayout" />
 
-    <Button
-        android:id="@+id/btnAceptar"
-        style="@style/Widget.AppCompat.ButtonBar.AlertDialog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="Guardar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtMontoModifica" />
+        <Spinner
+            android:id="@+id/spnModificadorPack"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintTop_toBottomOf="@+id/lblModificador" />
 
-    <Button
-        android:id="@+id/btnCancelar"
-        style="@style/Widget.AppCompat.ButtonBar.AlertDialog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="Cancelar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnAceptar" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edtMontoModificaLayout"
+            style="@style/AppTheme.TextInputLayout.Outlined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/spnModificadorPack">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtMontoModifica"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Monto de Modificador"
+                android:inputType="numberDecimal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/edtMontoModificaLayout">
+
+            <Button
+                android:id="@+id/btnCancelar"
+                style="@style/AppTheme.Button.Outlined"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:text="Cancelar" />
+
+            <Button
+                android:id="@+id/btnAceptar"
+                style="@style/AppTheme.Button.Modern"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:text="Guardar" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

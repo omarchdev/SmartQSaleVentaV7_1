@@ -5,46 +5,64 @@
     android:id="@+id/configweb"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroud_app"
     tools:context=".ui.configweb.ConfigWebFragment">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edtNombreWeb"
-        android:layout_width="0dp"
+    <com.google.android.material.card.MaterialCardView
+        style="@style/AppTheme.Card.Modern"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:hint="Nombre corto web"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="16dp"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nombre corto web" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:orientation="vertical"
+            android:padding="24dp">
 
-    <TextView
-        android:id="@+id/textView32"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="El nombre corto para web no debe poseer espacios"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtNombreWeb" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Configuración Web"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/txtLinkWeb"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView32" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtNombreWeb"
+                style="@style/AppTheme.TextInputLayout.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre corto web">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textFilter" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textView32"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="El nombre corto para web no debe poseer espacios"
+                android:textColor="@color/gray_600"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txtLinkWeb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@color/gray_100"
+                android:padding="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

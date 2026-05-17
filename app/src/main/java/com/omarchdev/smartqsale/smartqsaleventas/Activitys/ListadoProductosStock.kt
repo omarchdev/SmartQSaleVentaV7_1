@@ -10,7 +10,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
-import android.widget.SearchView
+import androidx.appcompat.widget.SearchView
 import com.omarchdev.smartqsale.smartqsaleventas.AsyncTask.AsyncStockProductos
 import com.omarchdev.smartqsale.smartqsaleventas.ClickListener
 import com.omarchdev.smartqsale.smartqsaleventas.DialogFragments.DfStockAlmacenes
@@ -65,7 +65,7 @@ class ListadoProductosStock : ActivityParent(), AsyncStockProductos.ListenerList
     }
 
     private fun Scannear() {
-        dialogScan.show(fm, "ScanBarCode")
+        dialogScan.show(supportFragmentManager, "ScanBarCode")
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

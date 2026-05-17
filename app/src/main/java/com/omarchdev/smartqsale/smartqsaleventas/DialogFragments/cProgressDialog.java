@@ -21,4 +21,10 @@ public class cProgressDialog {
         return progressDialog;
     }
 
+    public void dismiss() {
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
+    }
+
 }

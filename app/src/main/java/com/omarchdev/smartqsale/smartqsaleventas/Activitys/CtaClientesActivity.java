@@ -14,7 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ProgressBar;
-import android.widget.SearchView;
+import androidx.appcompat.widget.SearchView;
 import android.widget.Toast;
 
 import com.omarchdev.smartqsale.smartqsaleventas.ConexionBd.BdConnectionSql;
@@ -86,7 +86,9 @@ public class  CtaClientesActivity extends ActivityParent implements View.OnClick
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setAdapter(rvAdapterSaldoCliente);
         rv.setVisibility(View.GONE);
-        pb.setVisibility(View.GONE);
+        if (pb != null) {
+            pb.setVisibility(View.GONE);
+        }
         context=this;
 
     }
@@ -192,7 +194,9 @@ public class  CtaClientesActivity extends ActivityParent implements View.OnClick
         protected void onPreExecute() {
             super.onPreExecute();
             rv.setVisibility(View.GONE);
-            pb.setVisibility(View.VISIBLE);
+            if (pb != null) {
+                pb.setVisibility(View.VISIBLE);
+            }
 
         }
 
@@ -203,7 +207,9 @@ public class  CtaClientesActivity extends ActivityParent implements View.OnClick
         @Override
         protected void onPostExecute(List<mSaldoCliente> mSaldoClientes) {
             super.onPostExecute(mSaldoClientes);
-            pb.setVisibility(View.GONE);
+            if (pb != null) {
+                pb.setVisibility(View.GONE);
+            }
             if (mSaldoClientes != null) {
                 rv.setVisibility(View.VISIBLE);
                 rvAdapterSaldoCliente.AddList(mSaldoClientes);

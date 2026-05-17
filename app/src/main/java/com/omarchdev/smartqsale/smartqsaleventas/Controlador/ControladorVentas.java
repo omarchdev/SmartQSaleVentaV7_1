@@ -115,7 +115,7 @@ public class ControladorVentas {
             Response<List<mPagosEnVenta>> responsePagosVenta = iPagoRepository.GetPagosPedidoV3(codeCia, "2", idPedido).execute();
             List<mPagosEnVenta> pagosEnVentas = null;
 
-            OkHttpClient client = new OkHttpClient();
+            OkHttpClient client = Constantes.ConfiRetrofitTimeOut.okHttpClient;
 
             Request request = new Request.Builder()
                     .url("http://161.132.56.226:7001/api/Pedido/GetPagosRealizadosPedidoV3")

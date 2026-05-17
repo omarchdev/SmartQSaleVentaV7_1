@@ -58,7 +58,7 @@ class ReporteIngresosRetirosPeriodo : ActivityParent() {
     private fun MostrarSeleccionarFecha(origen:Byte){
         selectFecha.setOrigen(origen,calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH)+1,calendar.get(Calendar.DAY_OF_MONTH))
-        selectFecha.show(this.fragmentManager,"Fecha")
+        selectFecha.show(this.supportFragmentManager,"Fecha")
     }
     private fun GetFecha(){
         selectFecha.setFechaListener {

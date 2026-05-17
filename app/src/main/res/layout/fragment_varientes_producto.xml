@@ -1,294 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:sothree="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-
+    android:background="@color/backgroud_app"
     tools:context="com.omarchdev.smartqsale.smartqsaleventas.Fragment.VariantesProducto">
-
-
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-     >
+        android:layout_height="match_parent">
+
         <com.wang.avi.AVLoadingIndicatorView
             android:id="@+id/pbIndicator"
+            style="@style/AVLoadingIndicatorView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            app:indicatorName="BallPulseIndicator"
+            android:visibility="gone"
             app:indicatorColor="@color/colorAccent"
+            app:indicatorName="BallPulseIndicator" />
 
-            ></com.wang.avi.AVLoadingIndicatorView>
-            <TextView
-                android:textStyle="bold"
-                android:textColor="@color/colorAccent"
-                android:id="@+id/txtCargando"
-                android:text="Cargando información"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/pbIndicator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/txtCargando"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pbIndicator"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:text="Cargando información"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"
+            android:visibility="gone" />
 
-
-        <com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:sothree="http://schemas.android.com/apk/res-auto"
+        <com.sothree.slidinguppanel.SlidingUpPanelLayout
             android:id="@+id/sliding_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="bottom"
-            sothree:umanoScrollableView="@+id/rvVariantesEditable"
+            sothree:umanoClipPanel="false"
+            sothree:umanoOverlay="true"
             sothree:umanoPanelHeight="0dp"
+            sothree:umanoScrollableView="@+id/rvVariantesEditable"
             sothree:umanoShadowHeight="0dp">
 
-
-
+            <!-- MAIN CONTENT -->
             <RelativeLayout
                 android:id="@+id/contentVariantes"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:padding="12dp">
 
-                <RelativeLayout
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/contenedorPrimario"
+                    style="@style/AppTheme.Card.Modern"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="wrap_content">
 
-                    >
-
-                    <RelativeLayout
-                        android:id="@+id/contentButton"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentTop="true"
-                        android:orientation="horizontal">
+                        android:orientation="vertical"
+                        android:padding="16dp">
 
-                        <Button
-                            android:id="@+id/btnAgregarOpcion"
-                            style="?android:attr/borderlessButtonStyle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentStart="true"
-                            android:layout_alignParentTop="true"
-                            android:drawableRight="@drawable/plus"
-                            android:drawableTint="@color/colorAccent"
-                            android:text="Agregar opcion"
-                            android:textColor="@color/colorAccent"
-                            android:visibility="gone" />
-
-                        <Switch
-                            android:id="@+id/sActivarVariantes"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true"
-
-                            android:layout_centerVertical="true"
-                            android:layout_marginTop="15dp"
-                            android:layout_weight="1"
-                            android:text="Variantes" />
-
-                        <Button
-                            android:id="@+id/btnHabilitaVariante"
+                        <RelativeLayout
+                            android:id="@+id/contentButton"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:layout_centerVertical="true"
-                            android:backgroundTint="@color/colorAccent"
-                            android:gravity="center"
-                            android:text="Habilitar Edición de variantes"
-                            android:textColor="#ffffff"
-                            android:visibility="gone" />
+                            android:gravity="center_vertical">
 
-                    </RelativeLayout>
+                            <Button
+                                android:id="@+id/btnAgregarOpcion"
+                                style="@style/AppTheme.Button.Outlined"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Agregar Opción"
+                                android:visibility="gone"
+                                app:icon="@drawable/plus" />
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rvOpcionesVariantes"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/contentButton"></androidx.recyclerview.widget.RecyclerView>
+                            <com.google.android.material.switchmaterial.SwitchMaterial
+                                android:id="@+id/sActivarVariantes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:text="Habilitar Variantes"
+                                android:textColor="@color/gray_700"
+                                android:textStyle="bold" />
 
-                </RelativeLayout>
+                            <Button
+                                android:id="@+id/btnHabilitaVariante"
+                                style="@style/AppTheme.Button.Modern"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Habilitar Edición"
+                                android:visibility="gone" />
+                        </RelativeLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvOpcionesVariantes"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
                 <RelativeLayout
                     android:id="@+id/contenedorSecundario"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/contenedorPrimario">
-
-                    <Button
-                        android:textColor="#ffffff"
-                        android:backgroundTint="@color/colorAccent"
-                        android:id="@+id/btnGenerarVariantes"
-                        android:layout_width="180dp"
-                        android:layout_height="wrap_content"
-                        android:text="Generar Variantes"></Button>
-
-                    <TextView
-                        android:id="@+id/txtTituloVariante"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/btnGenerarVariantes"
-                        android:text="Descripcion Variante" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_above="@+id/rvVariantes"
-                        android:layout_marginEnd="24dp"
-                        android:layout_toStartOf="@+id/textView7"
-                        android:text="P.Comp" />
-
-                    <TextView
-                        android:id="@+id/textView7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_above="@+id/rvVariantes"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="5dp"
-                        android:text="P.Venta" />
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/contenedorPrimario"
+                    android:layout_marginTop="12dp">
 
                     <LinearLayout
-                        android:id="@+id/linearLayout5"
+                        android:id="@+id/headerActions"
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/colorAccent"
-                        android:orientation="horizontal"></LinearLayout>
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                    <androidx.recyclerview.widget.RecyclerView
+                        <Button
+                            android:id="@+id/btnGenerarVariantes"
+                            style="@style/AppTheme.Button.Modern"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Generar Variantes" />
 
-                        android:id="@+id/rvVariantes"
+                        <Button
+                            android:id="@+id/btnEdicionVariantes"
+                            style="@style/AppTheme.Button.Outlined"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_weight="1"
+                            android:text="Configurar"
+                            app:icon="@drawable/settings" />
+                    </LinearLayout>
+
+                    <com.google.android.material.card.MaterialCardView
+                        style="@style/AppTheme.Card.Modern"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_below="@+id/txtTituloVariante">
+                        android:layout_below="@id/headerActions"
+                        android:layout_marginTop="12dp">
 
-                    </androidx.recyclerview.widget.RecyclerView>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
 
-                    <Button
-                        android:drawableTint="#ffffff"
-                        android:drawableLeft="@drawable/settings"
-                        android:backgroundTint="@color/colorAccent"
-                        android:textColor="#ffffff"
-                        android:id="@+id/btnEdicionVariantes"
-                        android:layout_width="180dp"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_below="@+id/linearLayout5"
-                        android:text="Edicion variantes" />
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/gray_100"
+                                android:padding="12dp">
+
+                                <TextView
+                                    android:id="@+id/txtTituloVariante"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Variante"
+                                    android:textColor="@color/gray_700"
+                                    android:textStyle="bold" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="60dp"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:text="P.Comp"
+                                        android:textColor="@color/gray_600"
+                                        android:textSize="10sp" />
+
+                                    <TextView
+                                        android:id="@+id/textView7"
+                                        android:layout_width="60dp"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:text="P.Venta"
+                                        android:textColor="@color/gray_600"
+                                        android:textSize="10sp" />
+                                </LinearLayout>
+                            </RelativeLayout>
+
+                            <!-- Legacy divider hidden -->
+                            <View android:id="@+id/linearLayout5" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rvVariantes"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
                 </RelativeLayout>
             </RelativeLayout>
 
-
-            <RelativeLayout
-
+            <!-- SLIDING PANEL (EDITION) -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/AppTheme.Card.Modern"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                app:cardElevation="16dp">
 
-                <ImageButton
-                    style="?android:attr/borderlessButtonStyle"
-                    android:tint="@color/colorAccent"
-                    android:id="@+id/btnArrow"
-                    android:backgroundTint="@color/colorAccent"
-                    android:background="?selectableItemBackgroundBorderless"
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignTop="@+id/btnEliminarVariante"
-                    android:layout_toStartOf="@+id/btnEliminarVariante"
-                    app:srcCompat="@drawable/arrowdisplay" />
-
-                <Button
-
-                    android:id="@+id/btnEditarVariante"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginTop="10dp"
-                    android:backgroundTint="@color/colorAccent"
-                    android:drawableRight="@drawable/settings"
-                    android:drawableTint="#ffffff"
-                    android:textStyle="bold"
-                    android:textColor="#ffffff"
-                    android:text="Editar" />
-
-                <TextView
-
-                    android:id="@+id/txtPVenta"
-                    android:gravity="center"
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignEnd="@+id/btnEditarVariante"
-                    android:layout_below="@+id/btnEditarVariante"
-                    android:layout_marginTop="20dp"
-                    android:text="P.Venta" />
-
-                <TextView
-                    android:gravity="center"
-
-                    android:id="@+id/txtPCompra"
-                    android:layout_width="62dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/txtPVenta"
-                    android:layout_marginEnd="15dp"
-                    android:layout_toStartOf="@+id/txtPVenta"
-                    android:text="P.Compra" />
-
-                <TextView
-                    android:gravity="center"
-
-                    android:id="@+id/edtStock"
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/txtPCompra"
-                    android:layout_marginEnd="15dp"
-                    android:layout_toStartOf="@+id/txtPCompra"
-                    android:text="Stock" />
-
-                <TextView
-                    android:id="@+id/textView11"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/edtStock"
-                    android:layout_alignParentStart="true"
-                    android:text="Descripcion Variante"
-                    />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvVariantesEditable"
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_alignParentStart="true"
-                    android:layout_below="@+id/textView11"
-                    android:layout_marginTop="11dp" />
+                    android:padding="16dp">
 
-                <Button
-                    android:id="@+id/btnEliminarVariante"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBaseline="@+id/btnEditarVariante"
-                    android:layout_alignBottom="@+id/btnEditarVariante"
-                    android:layout_alignStart="@+id/edtStock"
-                    android:backgroundTint="#ff4646"
-                    android:drawableRight="@drawable/ic_delete_white_24dp"
-                    android:text="Eliminar"
-                    android:textColor="#ffffff" />
+                    <ImageButton
+                        android:id="@+id/btnArrow"
+                        style="@style/AppTheme.Button.Icon"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        app:srcCompat="@drawable/arrowdisplay"
+                        app:tint="@color/colorPrimary" />
 
-                <TextView
-                    android:layout_marginLeft="5dp"
-                    android:id="@+id/txtNumVariantes"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBaseline="@+id/btnEliminarVariante"
-                    android:layout_alignBottom="@+id/btnEliminarVariante"
-                    android:layout_alignParentStart="true"
-                    android:text="TextView"
-                    android:textColor="@color/colorAccent" />
-            </RelativeLayout>
+                    <TextView
+                        android:id="@+id/txtNumVariantes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="12dp"
+                        android:text="0 Variantes"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold" />
 
+                    <LinearLayout
+                        android:id="@+id/panelActions"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnEliminarVariante"
+                            style="@style/AppTheme.Button.Icon"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            app:icon="@drawable/ic_delete_white_24dp"
+                            app:iconTint="@color/status_error" />
+
+                        <Button
+                            android:id="@+id/btnEditarVariante"
+                            style="@style/AppTheme.Button.Icon"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_marginStart="8dp"
+                            app:icon="@drawable/settings"
+                            app:iconTint="@color/colorPrimary" />
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/panelHeader"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/btnArrow"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/gray_100"
+                        android:padding="8dp">
+
+                        <TextView
+                            android:id="@+id/textView11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Descripción"
+                            android:textColor="@color/gray_700"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/edtStock"
+                                android:layout_width="60dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="Stock"
+                                android:textColor="@color/gray_600"
+                                android:textSize="10sp" />
+
+                            <TextView
+                                android:id="@+id/txtPCompra"
+                                android:layout_width="60dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="P.Comp"
+                                android:textColor="@color/gray_600"
+                                android:textSize="10sp" />
+
+                            <TextView
+                                android:id="@+id/txtPVenta"
+                                android:layout_width="60dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="P.Venta"
+                                android:textColor="@color/gray_600"
+                                android:textSize="10sp" />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvVariantesEditable"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/panelHeader"
+                        android:layout_marginTop="8dp" />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
 
         </com.sothree.slidinguppanel.SlidingUpPanelLayout>
-
-
     </RelativeLayout>
 </FrameLayout>

@@ -80,7 +80,7 @@ public class RvAdapterDetalleVenta extends RecyclerView.Adapter<RecyclerView.Vie
     }
 
     private class DetalleVentaViewHolder extends RecyclerView.ViewHolder {
-        RelativeLayout Slinea;
+        View Slinea;
         TextView txtNombreProducto, txtCantidadProducto, txtSubtotalProducto, txtDetalleArticulo, txtComboDetalle;
 
         public DetalleVentaViewHolder(View itemView) {

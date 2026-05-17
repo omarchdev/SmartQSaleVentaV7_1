@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context="com.omarchdev.smartqsale.smartqsaleventas.Activitys.HistorialCierresCaja">
 
     <ProgressBar
@@ -13,31 +13,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <LinearLayout
-        android:background="@color/background_card"
-         android:id="@+id/contenedorFechas"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/contenedorFechas"
+        style="@style/AppTheme.Card.Modern"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:padding="1dp"
-        android:orientation="horizontal">
+        android:layout_margin="8dp">
 
-        <Button
-            android:id="@+id/btnFechaInicio"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawableLeft="@drawable/calendar"
-            android:text="Fecha inicio" />
+            android:padding="8dp"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btnFechaFinal"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawableRight="@drawable/calendar"
-            android:text="fecha final" />
-    </LinearLayout>
+            <Button
+                android:id="@+id/btnFechaInicio"
+                style="@style/AppTheme.Button.Modern"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="4dp"
+                app:icon="@drawable/calendar"
+                android:text="Fecha inicio" />
+
+            <Button
+                android:id="@+id/btnFechaFinal"
+                style="@style/AppTheme.Button.Modern"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp"
+                app:icon="@drawable/calendar"
+                app:iconGravity="textEnd"
+                android:text="fecha final" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvHistorialCierres"

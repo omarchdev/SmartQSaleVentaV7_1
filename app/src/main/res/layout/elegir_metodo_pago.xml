@@ -1,225 +1,328 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/backgroud_app"
+  android:orientation="vertical"
+>
+  <!-- Title Bar -->
+  <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/white"
-    android:orientation="vertical">
+    android:elevation="4dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="16dp"
+  >
+    <ImageButton
+      android:id="@+id/imgArrowBack"
+      style="@style/AppTheme.Button.Icon"
+      android:layout_width="48dp"
+      android:layout_height="48dp"
+      app:srcCompat="@drawable/arrow_back_grid"
+      app:tint="@color/gray_700"
+    />
 
-    <!-- Title Bar -->
+    <TextView
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_weight="1"
+      android:text="Finalizar Venta"
+      android:textColor="@color/gray_900"
+      android:textSize="20sp"
+      android:textStyle="bold"
+    />
+
     <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:gravity="end"
+      android:orientation="vertical"
+    >
+      <CheckBox
+        android:id="@+id/cbPagoTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:text="Pago Total"
+        android:textSize="12sp"
+        android:textColor="@color/gray_600"
+        android:visibility="visible"
+      />
+
+      <TextView
+        android:id="@+id/txtPrecioTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total S/ 0.00"
+        android:textColor="@color/status_success"
+        android:textSize="18sp"
+        android:textStyle="bold"
+      />
+    </LinearLayout>
+  </LinearLayout>
+
+  <ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+  >
+    <LinearLayout
+      android:id="@+id/contenedorPago"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:padding="16dp"
+    >
+      <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/gray_100"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="16dp">
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:text="Seleccione Método de Pago"
+        android:textColor="@color/gray_700"
+        android:textStyle="bold"
+      />
 
-        <ImageButton
-            android:id="@+id/imgArrowBack"
-            style="@style/AppTheme.Button.Icon"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            app:srcCompat="@drawable/arrow_back_grid" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="Finalizar Venta"
-            android:textColor="@color/gray_900"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <ScrollView
+      <GridView
+        android:id="@+id/gv_metodosPago"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="250dp"
+        android:layout_marginTop="8dp"
+        android:numColumns="3"
+        android:verticalSpacing="16dp"
+        android:horizontalSpacing="16dp"
+        android:stretchMode="columnWidth"
+        android:gravity="center"
+        android:padding="4dp"
+        android:clipToPadding="false"
+        android:descendantFocusability="blocksDescendants"
+        android:scrollbarStyle="outsideOverlay"
+      />
 
+      <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPagos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:nestedScrollingEnabled="false"
+      />
+
+      <TextView
+        android:id="@+id/txtSinMetodoDePago"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="No se agregaron métodos de pago"
+        android:textColor="@color/gray_400"
+        android:visibility="gone"
+      />
+
+      <!-- Receipt Type -->
+      <com.google.android.material.card.MaterialCardView
+        style="@style/AppTheme.Card.Modern"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+      >
         <LinearLayout
-            android:id="@+id/contenedorPago"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:padding="16dp"
+        >
+          <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Tipo de Comprobante"
+            android:textColor="@color/gray_600"
+            android:textSize="12sp"
+            android:textStyle="bold"
+          />
+
+          <Spinner
+            android:id="@+id/spnTipoDocPago"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+          />
+        </LinearLayout>
+      </com.google.android.material.card.MaterialCardView>
+
+      <!-- Sales Preferences Card -->
+      <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardPreferences"
+        style="@style/AppTheme.Card.Modern"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+      >
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:padding="16dp"
+        >
+          <TextView
+            android:id="@+id/txtTituloAtencion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tipo de Atención"
+            android:textColor="@color/gray_600"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+          />
+
+          <RadioGroup
+            android:id="@+id/rgAtencion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            android:visibility="gone"
+          />
+
+          <View
+            android:id="@+id/dividerPreferences"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="@color/gray_200"
+            android:visibility="gone"
+          />
+
+          <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/swPromocion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Aplicar Promoción"
+            android:textColor="@color/gray_700"
+            android:textSize="14sp"
+            android:visibility="gone"
+          />
+        </LinearLayout>
+      </com.google.android.material.card.MaterialCardView>
+
+      <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardOptions"
+        style="@style/AppTheme.Card.Modern"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+      >
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:padding="16dp"
+        >
+          <CheckBox
+            android:id="@+id/cbDetraccion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Aplicar Detracción"
+          />
+
+          <LinearLayout
+            android:id="@+id/contentDetraccion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:visibility="gone"
+          >
+            <Spinner
+              android:id="@+id/spn_detraccion"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+            />
 
-            <!-- Summary Card -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="@dimen/radius_medium"
-                app:cardElevation="@dimen/elevation_low">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:id="@+id/txtPrecioTotal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="TOTAL A COBRAR"
-                        android:textColor="@color/gray_600"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/txtPrecioVenta"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="S/ 0.00"
-                        android:textColor="@color/status_success"
-                        android:textSize="32sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Methods of Payment -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="Método de Pago"
-                android:textColor="@color/gray_900"
-                android:textStyle="bold" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvPagos"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp" />
-
-            <TextView
-                android:id="@+id/txtSinMetodoDePago"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:gravity="center"
-                android:text="No se agregaron métodos de pago"
-                android:textColor="@color/status_error"
-                android:visibility="gone" />
-
-            <!-- Receipt Type -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Tipo de Comprobante"
-                    android:textColor="@color/gray_900"
-                    android:textStyle="bold" />
-
-                <Spinner
-                    android:id="@+id/spnTipoDocPago"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-
-            <CheckBox
-                android:id="@+id/cbPagoTotal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Pago Total"
-                android:visibility="gone" />
-
-            <Switch
-                android:id="@+id/swPromocion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Aplicar Promoción"
-                android:visibility="gone" />
-
-            <RadioGroup
-                android:id="@+id/rgAtencion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:orientation="horizontal"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/txtTituloAtencion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone" />
-
-            <!-- Detraccion -->
-            <CheckBox
-                android:id="@+id/cbDetraccion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Aplicar Detracción" />
-
-            <LinearLayout
-                android:id="@+id/contentDetraccion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <Spinner
-                    android:id="@+id/spn_detraccion"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/txtCuentaDetraccion"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Cuenta Detracción">
-                    <com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent" android:layout_height="wrap_content" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <com.google.android.material.textfield.TextInputLayout android:id="@+id/txtPorcentajeDetraccion" style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:hint="%"><com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent" android:layout_height="wrap_content" /></com.google.android.material.textfield.TextInputLayout>
-                    <com.google.android.material.textfield.TextInputLayout android:id="@+id/txtMontoDetraccion" style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="2" android:layout_marginStart="8dp" android:hint="Monto"><com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent" android:layout_height="wrap_content" /></com.google.android.material.textfield.TextInputLayout>
-                </LinearLayout>
-            </LinearLayout>
-
-            <!-- Observation -->
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/edtObservacion"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+              android:id="@+id/txtCuentaDetraccion"
+              style="@style/AppTheme.TextInputLayout.Outlined"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="8dp"
+              android:hint="Cuenta Detracción"
+            >
+              <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:hint="Notas de la venta">
-                <com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent" android:layout_height="wrap_content" />
+              />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Legacy IDs -->
-            <GridView android:id="@+id/gv_metodosPago" android:layout_width="match_parent" android:layout_height="0dp" android:visibility="gone" />
+            <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="8dp"
+              android:orientation="horizontal"
+            >
+              <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtPorcentajeDetraccion"
+                style="@style/AppTheme.TextInputLayout.Outlined"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="%"
+              >
+                <com.google.android.material.textfield.TextInputEditText
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:inputType="numberDecimal"
+                />
+              </com.google.android.material.textfield.TextInputLayout>
+              <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtMontoDetraccion"
+                style="@style/AppTheme.TextInputLayout.Outlined"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_marginStart="8dp"
+                android:hint="Monto"
+              >
+                <com.google.android.material.textfield.TextInputEditText
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:inputType="numberDecimal"
+                />
+              </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+          </LinearLayout>
 
+          <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edtObservacionLayout"
+            style="@style/AppTheme.TextInputLayout.Outlined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Notas de la venta"
+          >
+            <com.google.android.material.textfield.TextInputEditText
+              android:id="@+id/edtObservacion"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:inputType="textMultiLine"
+            />
+          </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
-    </ScrollView>
+      </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+  </ScrollView>
 
-    <Button
-        android:id="@+id/btnFinalizarVenta"
-        style="@style/Widget.MaterialComponents.Button"
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:layout_margin="16dp"
-        android:backgroundTint="@color/status_success"
-        android:text="PAGAR Y FINALIZAR"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:cornerRadius="@dimen/radius_medium" />
-
+  <Button
+    android:id="@+id/btnFinalizarVenta"
+    style="@style/AppTheme.Button.Modern"
+    android:layout_width="match_parent"
+    android:layout_height="64dp"
+    android:layout_margin="16dp"
+    android:backgroundTint="@color/status_success"
+    android:text="PAGAR Y FINALIZAR"
+    app:icon="@drawable/check"
+  />
 </LinearLayout>

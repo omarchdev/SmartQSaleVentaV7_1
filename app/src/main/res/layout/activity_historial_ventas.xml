@@ -8,9 +8,9 @@
     tools:context="com.omarchdev.smartqsale.smartqsaleventas.Activitys.HistorialVentas">
 
 
-    <RelativeLayout
-        android:background="@color/background_card"
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/contentFecha"
+        style="@style/AppTheme.Card.Modern"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp">
@@ -19,30 +19,36 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:padding="8dp"
             android:orientation="horizontal">
 
-            <com.google.android.material.button.MaterialButton
-
+            <Button
                 android:id="@+id/btnDateVentas1"
-                android:layout_width="wrap_content"
+                style="@style/AppTheme.Button.Modern"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:drawableLeft="@drawable/calendar"
+                android:layout_weight="1"
+                android:layout_marginEnd="4dp"
+                app:icon="@drawable/calendar"
                 android:text="31/12/2017" />
 
-            <com.google.android.material.button.MaterialButton
+            <Button
                 android:id="@+id/btnDateVentas2"
-                android:layout_width="wrap_content"
+                style="@style/AppTheme.Button.Modern"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:drawableRight="@drawable/calendar"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp"
+                app:icon="@drawable/calendar"
+                app:iconGravity="textEnd"
                 android:text="31/12/2017" />
         </LinearLayout>
-    </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
 
-    <RelativeLayout
-        android:layout_below="@+id/contentFecha"
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/contentCliente"
+        style="@style/AppTheme.Card.Modern"
+        android:layout_below="@+id/contentFecha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -50,33 +56,30 @@
         android:layout_marginRight="8dp">
 
         <RelativeLayout
-            android:background="@color/background_card"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:gravity="center">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
 
             <Button
-
                 android:id="@+id/btnSelectCliente"
+                style="@style/AppTheme.Button.Text"
                 android:layout_width="match_parent"
-                android:layout_toLeftOf="@id/btnDeleteCliente"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/btnDeleteCliente"
                 android:layout_alignParentStart="true"
-                android:textColor="@color/white"
-                android:layout_alignParentTop="true"
                 android:text="Seleccione un cliente" />
 
             <ImageButton
-                style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
                 android:id="@+id/btnDeleteCliente"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-
+                style="@style/AppTheme.Button.Icon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
                 app:srcCompat="@drawable/close_outline" />
         </RelativeLayout>
 
-    </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 
     <androidx.recyclerview.widget.RecyclerView

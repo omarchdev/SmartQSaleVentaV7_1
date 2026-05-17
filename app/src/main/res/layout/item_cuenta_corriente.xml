@@ -1,89 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/AppTheme.Card.Modern"
     android:id="@+id/cv_cuentaCorriente"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="0.1dp"
-    android:background="@color/background_card"
+    android:layout_margin="4dp">
 
- >
-
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="6dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="14dp">
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/txtFechaCtaCte"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="21/10/2018" />
+            android:text="00/00/0000"
+            android:textColor="@color/gray_600"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/txtTipoTransaccion"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txtFechaCtaCte"
-            android:layout_marginTop="10dp"
-            android:text="TipoTransaccion"
-
+            android:layout_marginTop="4dp"
+            android:text="Tipo Transacción"
+            android:textColor="@color/gray_900"
             android:textSize="16sp"
             android:textStyle="bold"
-
-            />
-
-        <ImageButton
-            android:id="@+id/imgInfoCancel"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-
-            android:tint="#ab2121"
-            app:srcCompat="@drawable/close_outline" />
+            app:layout_constraintEnd_toStartOf="@+id/txtMontoTrans"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtFechaCtaCte" />
 
         <TextView
             android:id="@+id/txtMetodoPagoTrans"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txtTipoTransaccion"
-            android:layout_marginTop="10dp"
-            android:text="Metodo de pago"
+            android:layout_marginTop="4dp"
+            android:text="Medio Pago"
+            android:textColor="@color/gray_700"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtTipoTransaccion" />
 
-            android:textSize="16sp" />
+        <TextView
+            android:id="@+id/txtDescripcion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/gray_500"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/imgInfoCancel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtMetodoPagoTrans" />
 
         <TextView
             android:id="@+id/txtMontoTrans"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/txtTipoTransaccion"
-            android:layout_alignBottom="@+id/txtTipoTransaccion"
-            android:layout_marginEnd="18dp"
-            android:layout_toStartOf="@+id/imgInfoCancel"
-            android:text="S/1000.00"
+            android:layout_marginEnd="16dp"
+            android:text="S/0.00"
+            android:textColor="@color/status_success"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/txtTipoTransaccion"
+            app:layout_constraintEnd_toStartOf="@+id/imgInfoCancel"
+            app:layout_constraintTop_toTopOf="@+id/txtTipoTransaccion" />
 
-        <TextView
-            android:id="@+id/txtDescripcion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtMetodoPagoTrans"
-            android:layout_marginTop="10dp"
-            android:textSize="16sp" />
+        <ImageButton
+            android:id="@+id/imgInfoCancel"
+            style="@style/AppTheme.Button.Icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/close_outline"
+            app:tint="@color/status_error" />
 
-    </RelativeLayout>
-    <LinearLayout
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-    android:background="#F0F0F0"
-    android:layout_width="match_parent"
-    android:layout_height="0.5dp"></LinearLayout>
-
-
-</RelativeLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroud_app"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Activitys.ListadoTiendas"
     tools:showIn="@layout/activity_listado_tiendas">
@@ -12,9 +13,7 @@
         android:id="@+id/rvListTienda"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></androidx.recyclerview.widget.RecyclerView>
+        android:clipToPadding="false"
+        android:padding="8dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

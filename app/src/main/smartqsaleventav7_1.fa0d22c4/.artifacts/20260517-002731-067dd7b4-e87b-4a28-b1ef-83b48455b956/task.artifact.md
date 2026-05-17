@@ -1,0 +1,5 @@
+- [x] Research existing toolbar implementation in `ActivityConfigProducto`
+- [x] Update `ListadoProductos` to match the modern toolbar style
+    - [x] Modify `activity_listado_productos.xml`
+    - [x] Update `ListadoProductos.kt`
+- [x] Verify changes

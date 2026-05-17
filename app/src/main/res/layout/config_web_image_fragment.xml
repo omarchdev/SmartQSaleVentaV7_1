@@ -5,41 +5,50 @@
     android:id="@+id/configwebimage"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-   >
+    android:background="@color/backgroud_app">
 
-
-    <ImageView
-        android:id="@+id/imgLogo"
-        android:layout_width="160dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="86dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/camera" />
-
-    <Button
-        android:id="@+id/btnSelectImg"
-        android:layout_width="wrap_content"
+    <com.google.android.material.card.MaterialCardView
+        style="@style/AppTheme.Card.Modern"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Seleccionar imagen"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView37" />
+        android:layout_margin="16dp"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/textView37"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="24dp"
-        android:text="Se recomienda usar una imagen con dimensiones de 160 x60 . Esta imagen se usará como logo en la web"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgLogo" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <ImageView
+                android:id="@+id/imgLogo"
+                android:layout_width="160dp"
+                android:layout_height="60dp"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/camera"
+                app:tint="@color/gray_400" />
+
+            <TextView
+                android:id="@+id/textView37"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:text="Recomendado: 160 x 60 px. Esta imagen se usará como logo en la web."
+                android:textColor="@color/gray_600"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btnSelectImg"
+                style="@style/AppTheme.Button.Modern"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Seleccionar Imagen"
+                app:icon="@drawable/image" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

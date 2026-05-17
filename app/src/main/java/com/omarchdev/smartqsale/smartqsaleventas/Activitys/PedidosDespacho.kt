@@ -141,7 +141,7 @@ class PedidosDespacho : AppCompatActivity(),ClickListener, View.OnClickListener,
     private fun MostrarDialogDatePicker(origen: Byte, year: Int, month: Int, day: Int) {
         val dialogDatePickerSelect = DialogDatePickerSelect().newInstance(origen, year, month, day)
         dialogDatePickerSelect.setFechaListener(this)
-        dialogDatePickerSelect.show(this.fragmentManager, "Dialog Fecha")
+        dialogDatePickerSelect.show(this.supportFragmentManager, "Dialog Fecha")
     }
 
 

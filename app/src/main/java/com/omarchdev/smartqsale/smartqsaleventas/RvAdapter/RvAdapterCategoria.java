@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.material.card.MaterialCardView;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mCategoriaProductos;
 import com.omarchdev.smartqsale.smartqsaleventas.R;
 
@@ -54,12 +55,12 @@ public class RvAdapterCategoria extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     public class CategoriaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        RelativeLayout rv;
+        MaterialCardView rv;
         TextView txtNombre;
 
         public CategoriaViewHolder(View itemView) {
             super(itemView);
-            rv = (RelativeLayout) itemView.findViewById(R.id.rvCategoriaProductos);
+            rv = (MaterialCardView) itemView.findViewById(R.id.rvCategoriaProductos);
             txtNombre = (TextView) itemView.findViewById(R.id.txtNombreCategoria);
             txtNombre.setText(" ");
             rv.setOnClickListener(this);

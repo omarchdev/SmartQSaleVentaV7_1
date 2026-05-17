@@ -1,33 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
+    style="@style/AppTheme.Card.Modern"
+    android:id="@+id/rlContent"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp">
 
-    <RelativeLayout
-        android:id="@+id/rlContent"
-        android:background="@color/background_card"
-        android:gravity="center"
+    <TextView
+        android:id="@+id/txtPrecio"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginBottom="4dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="12dp"
+        android:text="precio venta"
+        android:textColor="@color/gray_900"
+        android:textSize="14sp"
+        android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/txtPrecio"
-            android:textStyle="bold"
-            android:text="precio venta"
-            android:layout_margin="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </RelativeLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -1,11 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/backgroud_app"
     tools:context="com.omarchdev.smartqsale.smartqsaleventas.Activitys.ListadoProductos">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/AppTheme.Toolbar.Modern"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:contentInsetStartWithNavigation="0dp">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchViewInline"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bg_edittext_modern"
+            app:iconifiedByDefault="false"
+            app:queryBackground="@android:color/transparent"
+            app:queryHint="Buscar productos..."
+            app:searchIcon="@drawable/search_icon_color" />
+
+    </androidx.appcompat.widget.Toolbar>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -20,9 +41,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:textSize="18sp"
-            android:text="No tiene productos.Para agregar presione el botón '+'"
-
-            />
+            android:text="No tiene productos.Para agregar presione el botón '+'" />
 
         <ProgressBar
             android:id="@+id/pbProductos"
@@ -32,27 +51,22 @@
             android:layout_centerInParent="true" />
 
         <androidx.recyclerview.widget.RecyclerView
-         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:id="@+id/rvProductos"
-         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        </androidx.recyclerview.widget.RecyclerView>
+            android:id="@+id/rvProductos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:padding="8dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_gravity="bottom|right"
             android:layout_margin="16dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginBottom="0dp"
-            app:layout_scrollFlags="scroll|enterAlways"
             app:srcCompat="@drawable/fab_add" />
 
     </RelativeLayout>
 
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>

@@ -51,7 +51,7 @@ class ActModEstadoEntregaEnPedidoFragment : Fragment(), RvAdapterEstadoPedido.IE
                 dialogCarga.getDialogCarga("Guardando estado").show()
             } else {
                 if (mostroCarga) {
-                    dialogCarga.hide()
+                    dialogCarga.dismiss()
                 }
             }
         })

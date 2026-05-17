@@ -1,92 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activitys.PedidosDespacho"
-    >
+    android:background="@color/backgroud_app"
+    tools:context=".Activitys.PedidosDespacho">
 
-    <LinearLayout
-        android:id="@+id/contenedorFechas"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardFilters"
+        style="@style/AppTheme.Card.Modern"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/fondo_img"
-        android:orientation="horizontal"
-        android:padding="1dp">
+        android:layout_margin="12dp"
+        app:layout_constraintTop_toTopOf="parent">
 
-
-        <Button
-            android:id="@+id/btnFechaInicio"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawableLeft="@drawable/calendar"
-            android:text="Fecha inicio" />
-
-        <Button
-            android:id="@+id/btnFechaFinal"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawableRight="@drawable/calendar"
-            android:text="fecha final" />
-    </LinearLayout>
-
-    <RelativeLayout
-        android:id="@+id/rl2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:layout_below="@id/contenedorFechas"
-        android:background="@drawable/fondo_img"
-
-        >
-
-        <RelativeLayout
-
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
 
-            <TextView
-                android:layout_toLeftOf="@id/btnDeleteCliente"
-                android:id="@+id/txtSeleccionarCliente"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                 android:gravity="center"
-                android:text="Seleccione cliente para la busqueda"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-                android:textSize="12sp" />
+                <Button
+                    android:id="@+id/btnFechaInicio"
+                    style="@style/AppTheme.Button.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:text="Desde"
+                    app:icon="@drawable/calendar" />
 
-            <ImageButton
-                style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
-                android:id="@+id/btnDeleteCliente"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:layout_marginBottom="10dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="10dp"
+                <Button
+                    android:id="@+id/btnFechaFinal"
+                    style="@style/AppTheme.Button.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:text="Hasta"
+                    app:icon="@drawable/calendar"
+                    app:iconGravity="end" />
+            </LinearLayout>
 
-                app:srcCompat="@drawable/ic_close_white_24dp" />
+            <RelativeLayout
+                android:id="@+id/rl2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@color/gray_50"
+                android:paddingStart="12dp"
+                android:paddingEnd="4dp">
 
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/txtSeleccionarCliente"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_toStartOf="@id/btnDeleteCliente"
+                    android:gravity="center_vertical"
+                    android:text="Filtrar por Cliente"
+                    android:textColor="@color/gray_700"
+                    android:textStyle="bold" />
 
-    </RelativeLayout>
+                <ImageButton
+                    android:id="@+id/btnDeleteCliente"
+                    style="@style/AppTheme.Button.Icon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    app:srcCompat="@drawable/ic_close_white_24dp"
+                    app:tint="@color/status_error" />
+            </RelativeLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <androidx.recyclerview.widget.RecyclerView
-
-        android:layout_below="@id/rl2"
         android:id="@+id/rv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-  />
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardFilters" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

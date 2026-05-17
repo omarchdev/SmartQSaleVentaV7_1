@@ -1,78 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="wrap_content"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/AppTheme.Card.Modern"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#17000000"
-    android:gravity="center"
-    android:layout_margin="5dp">
-
-    <EditText
-        android:layout_margin="5dp"
-        android:background="#ffffff"
-        android:layout_width="280dp"
-        android:layout_height="50dp"
-        android:hint="Empresa"/>
-    <EditText
-        android:hint="Nombre Proveedor"
-        android:layout_margin="5dp"
-        android:background="#ffffff"
-        android:layout_width="280dp"
-        android:layout_height="50dp" />
-
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="280dp"
-        android:layout_height="50dp"
-        android:layout_margin="5dp"
-        android:background="#ffffff"
-        android:hint="Telefono"
-        android:inputType="phone" />
-
-
-    <EditText
-        android:hint="Telefono 2"
-        android:layout_margin="5dp"
-        android:background="#ffffff"
-        android:layout_width="280dp"
-        android:layout_height="50dp"
-        android:inputType="phone"/>
-
-    <EditText
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:layout_margin="5dp"
-        android:background="#ffffff"
-        android:layout_width="280dp"
-        android:layout_height="50dp" />
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="280dp"
-        android:layout_height="50dp"
-        android:layout_margin="5dp"
-        android:background="#ffffff"
-        android:hint="Comentario"/>
+    android:layout_margin="16dp">
 
     <LinearLayout
-
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
 
-        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Datos del Proveedor"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            android:layout_marginBottom="16dp"/>
 
-        <ImageButton
-            android:layout_width="60dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            android:background="#d50000"
-            android:src="@drawable/ic_delete_white_48dp" />
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/AppTheme.TextInputLayout.Outlined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Empresa" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <ImageButton
-            android:layout_width="60dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            android:background="#64dd17"
-            android:src="@drawable/ic_content_save_white_48dp" />
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/AppTheme.TextInputLayout.Outlined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre Proveedor" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/AppTheme.TextInputLayout.Outlined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Teléfono"
+                android:inputType="phone" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/AppTheme.TextInputLayout.Outlined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Teléfono 2"
+                android:inputType="phone" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/AppTheme.TextInputLayout.Outlined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/AppTheme.TextInputLayout.Outlined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Comentario" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end">
+
+            <Button
+                style="@style/AppTheme.Button.Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ELIMINAR"
+                android:textColor="@color/status_error" />
+
+            <Button
+                style="@style/AppTheme.Button.Modern"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="GUARDAR"
+                app:icon="@drawable/save" />
+        </LinearLayout>
     </LinearLayout>
-
-
-</LinearLayout>
+</com.google.android.material.card.MaterialCardView>

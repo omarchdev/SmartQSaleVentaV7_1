@@ -5,7 +5,7 @@ import static com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes.BA
 import static com.omarchdev.smartqsale.smartqsaleventas.Model.CiaTiendaKt.GetJsonCiaTiendaBase64x3;
 
 import android.app.AlertDialog;
-import android.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -213,14 +213,14 @@ public class CajaFlujoActivity extends ActivityParent implements View.OnClickLis
             case R.id.btnIngresos:
                 floatingActionsMenu.collapse();
                 dialogAgregarEntrada.setCierre(cierre);
-                dialogFragment.show(getFragmentManager(), "Entrada");
+                dialogFragment.show(getSupportFragmentManager(), "Entrada");
 
                 break;
 
             case R.id.btnRetiros:
                 floatingActionsMenu.collapse();
                 dialogAgregarEntrada.setCierre(cierre);
-                dialogFragment.show(getFragmentManager(), "Retiro");
+                dialogFragment.show(getSupportFragmentManager(), "Retiro");
                 break;
 
             case R.id.btnCerrarCaja:
@@ -414,7 +414,7 @@ public class CajaFlujoActivity extends ActivityParent implements View.OnClickLis
     private void DialogAperturaCaja() {
 
         DialogFragment dialogFragment = aperturaCaja;
-        dialogFragment.show(getFragmentManager(), "Apertura Caja");
+        dialogFragment.show(getSupportFragmentManager(), "Apertura Caja");
 
     }
 

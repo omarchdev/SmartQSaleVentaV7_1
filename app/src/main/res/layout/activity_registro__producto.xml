@@ -5,144 +5,107 @@
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroud_app"
+    android:fitsSystemWindows="true"
+    tools:context=".Activitys.Registro_Producto">
 
-    tools:context="com.omarchdev.smartqsale.smartqsaleventas.Activitys.Registro_Producto">
-    <LinearLayout
-        android:orientation="vertical"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        style="@style/AppTheme.AppBar.White"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appbar"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            style="@style/AppTheme.Toolbar.White"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/AppTheme.AppBarOverlay">
+            app:title="Agregar producto" />
 
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:backgroundTint="@color/white"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:layout_weight="1"
-                style="@style/CustomActionBarStyle"
-                app:title="@string/app_name">
-
-            </androidx.appcompat.widget.Toolbar>
-
-            <com.google.android.material.tabs.TabLayout
-
-                android:id="@+id/tabs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:tabMode="scrollable"
-                app:tabSelectedTextColor="@color/colorAccent">
-
-                <com.google.android.material.tabs.TabItem
-
-                    android:id="@+id/tabItem"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/TabDatosBasicos" />
-
-                <com.google.android.material.tabs.TabItem
-
-                    android:id="@+id/tabItem2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/TabRespresentacionProducto" />
-
-                <com.google.android.material.tabs.TabItem
-
-                    android:id="@+id/tabItem3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/TabEstados" />
-
-
-            </com.google.android.material.tabs.TabLayout>
-        </com.google.android.material.appbar.AppBarLayout>
-        <RelativeLayout
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs"
+            style="@style/AppTheme.TabLayout.White"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <androidx.viewpager.widget.ViewPager
+            android:layout_height="wrap_content"
+            app:tabIndicatorColor="@color/black"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="@color/black"
+            app:tabTextColor="@color/gray_600">
 
-                android:id="@+id/container"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fabActionRegistro"
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_gravity="bottom|right"
-                android:layout_margin="16dp"
+                android:text="@string/TabDatosBasicos" />
 
-                android:layout_marginEnd="0dp"
-                android:layout_marginBottom="0dp"
-                android:visibility="visible"
-                app:fab_size="normal"
-                app:srcCompat="@drawable/ic_content_save_white_36dp" />
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabItem2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/TabRespresentacionProducto" />
 
-            <com.github.clans.fab.FloatingActionMenu
-                android:id="@+id/actionMenu"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="bottom|right"
-                android:elevation="4dp"
-                app:menu_animationDelayPerItem="50"
-                app:menu_backgroundColor="#ccffffff"
-                app:menu_buttonSpacing="0dp"
-                app:menu_colorRipple="#99FFFFFF"
-                app:menu_fab_size="normal"
-                app:menu_labels_cornerRadius="3dp"
-                app:menu_labels_ellipsize="none"
-                app:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"
-                app:menu_labels_paddingBottom="4dp"
-                app:menu_labels_paddingRight="8dp"
-                app:menu_labels_paddingTop="4dp"
-                app:menu_labels_position="left"
-                app:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
-                app:menu_labels_singleLine="true"
-                app:menu_openDirection="up"
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabItem3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/TabEstados" />
+        </com.google.android.material.tabs.TabLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
-                app:menu_colorNormal="@color/colorAccent"
-                app:menu_colorPressed="@color/colorAccent"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-                app:menu_shadowRadius="4dp"
-                app:menu_shadowXOffset="1dp"
-                app:menu_shadowYOffset="3dp"
-                app:menu_showShadow="true">
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/fabActionRegistro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:visibility="visible"
+        app:fab_colorNormal="@color/status_success"
+        app:fab_colorPressed="@color/status_success_dark"
+        app:fab_size="normal"
+        app:srcCompat="@drawable/save" />
 
-                <com.github.clans.fab.FloatingActionButton
-                    android:id="@+id/menu_item_edit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_pencil_white_18dp"
-                    app:fab_colorNormal="@color/colorPrimary"
-                    app:fab_colorPressed="@color/colorPrimary"
-                    app:fab_label="Editar producto"
-                    app:fab_size="mini" />
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/actionMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        app:menu_animationDelayPerItem="50"
+        app:menu_backgroundColor="@android:color/transparent"
+        app:menu_buttonSpacing="8dp"
+        app:menu_colorNormal="@color/colorAccent"
+        app:menu_colorPressed="@color/colorAccent"
+        app:menu_fab_size="normal"
+        app:menu_icon="@drawable/settings"
+        app:menu_labels_position="left"
+        app:menu_labels_showShadow="true"
+        app:menu_openDirection="up">
 
-                <com.github.clans.fab.FloatingActionButton
-                    app:fab_colorNormal="@color/colorPrimary"
-                    app:fab_colorPressed="@color/colorPrimary"
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/menu_item_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/colorPrimary"
+            app:fab_colorPressed="@color/colorPrimaryDark"
+            app:fab_label="Editar producto"
+            app:fab_size="mini"
+            app:srcCompat="@drawable/pencil_edit" />
 
-                    android:id="@+id/menu_item_delete"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_delete_white_24dp"
-                    app:fab_label="Eliminar producto"
-                    app:fab_size="mini" />
-            </com.github.clans.fab.FloatingActionMenu>
-
-        </RelativeLayout>
-    </LinearLayout>
-
-
-
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/menu_item_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/status_error"
+            app:fab_colorPressed="@color/status_error_dark"
+            app:fab_label="Eliminar producto"
+            app:fab_size="mini"
+            app:srcCompat="@drawable/ic_delete_white_24dp" />
+    </com.github.clans.fab.FloatingActionMenu>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

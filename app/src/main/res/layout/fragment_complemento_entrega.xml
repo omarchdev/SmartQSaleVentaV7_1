@@ -1,59 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/AppTheme.Card.Modern"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".DialogFragments.ComplementoEntregaFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
 
         <TextView
             android:id="@+id/txtTituloEstadoEntrega"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Titulo"
-            android:textSize="24sp" />
+            android:text="Detalles de Entrega"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/AppTheme.TextInputLayout.Outlined"
             android:layout_width="match_parent"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp">
+            android:layout_marginTop="24dp"
+            android:hint="Observaciones">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtDescripcionEntrega"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Descripción"
-                android:inputType="textNoSuggestions|textMultiLine"
-                android:minLines="4" />
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:minLines="3" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
             android:orientation="horizontal">
 
             <Button
-
                 android:id="@+id/btnSalirCom"
-                style="?attr/materialButtonOutlinedStyle"
-                android:layout_width="wrap_content"
+                style="@style/AppTheme.Button.Outlined"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_marginEnd="8dp"
                 android:layout_weight="1"
                 android:text="Salir" />
 
             <Button
                 android:id="@+id/btnGuardarCom"
-                android:layout_width="wrap_content"
+                style="@style/AppTheme.Button.Modern"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_weight="1"
                 android:text="Guardar" />
         </LinearLayout>
     </LinearLayout>
-</FrameLayout>
+</com.google.android.material.card.MaterialCardView>

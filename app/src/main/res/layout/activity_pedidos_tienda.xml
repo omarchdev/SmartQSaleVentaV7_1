@@ -6,44 +6,56 @@
     android:layout_height="match_parent"
     tools:context=".Activitys.PedidosTienda">
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <RelativeLayout
-            android:layout_margin="8dp"
-            android:background="@drawable/fondo_img"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/backgroud_app">
+
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/rl1"
+            style="@style/AppTheme.Card.Modern"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:elevation="5dp"
-                android:gravity="center">
+                android:gravity="center"
+                android:padding="8dp">
+
                 <Button
                     android:id="@+id/btnSelectDate1"
-                    style="@style/Widget.App.Button.OutlinedButton"
-                    android:layout_width="wrap_content"
+                    style="@style/AppTheme.Button.Modern"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/calendar"
-                    android:padding="10dp"
-                    android:text="10/12/2017"
-                    android:textSize="16dp" />
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    app:icon="@drawable/calendar"
+                    android:text="10/12/2017" />
+
                 <Button
                     android:id="@+id/btnSelectDate2"
-                    style="@style/Widget.App.Button.OutlinedButton"
-                    android:layout_width="wrap_content"
+                    style="@style/AppTheme.Button.Modern"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:drawableRight="@drawable/calendar"
-                    android:text="15/12/2017"
-                    android:textSize="16dp" />
+                    android:layout_weight="1"
+                    android:layout_marginStart="4dp"
+                    app:icon="@drawable/calendar"
+                    app:iconGravity="textEnd"
+                    android:text="15/12/2017" />
             </LinearLayout>
-        </RelativeLayout>
-        <SearchView
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.appcompat.widget.SearchView
             android:id="@+id/sview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:queryHint="omar chumioque" />
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_edittext_modern"
+            app:iconifiedByDefault="false"
+            app:queryHint="Buscar pedido..." />
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipePedidos"
             android:layout_width="match_parent"

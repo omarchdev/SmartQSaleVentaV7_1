@@ -2,7 +2,7 @@ package com.omarchdev.smartqsale.smartqsaleventas.DialogFragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,7 +11,6 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -22,6 +21,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.omarchdev.smartqsale.smartqsaleventas.AsyncTask.AsyncClientes;
 import com.omarchdev.smartqsale.smartqsaleventas.AsyncTask.AsyncZonaServicio;
 import com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes;
@@ -83,7 +83,7 @@ public class DialogGuardarPedido extends DialogFragment implements View.OnClickL
     Calendar fEntrega;
     int dia, mes, anio;
     DialogDatePickerSelect dateDialog;
-    CheckBox cbTipoContrato;
+    SwitchMaterial cbTipoContrato;
     String cTipoPedido;
     AsyncZonaServicio asyncZonaServicio;
     AsyncClientes asyncClientes;
@@ -116,7 +116,7 @@ public class DialogGuardarPedido extends DialogFragment implements View.OnClickL
 
         dateDialog = new DialogDatePickerSelect();
         dateDialog.setOrigen((byte) 0, anio, mes, dia);
-        dateDialog.show(this.getFragmentManager(), "PedidoReservaDate");
+        dateDialog.show(getParentFragmentManager(), "PedidoReservaDate");
         dateDialog.setFechaListener(new DialogDatePickerSelect.interfaceFecha() {
             @Override
             public void getFechaSelecionada(int day, int month, int year, byte origen) {
@@ -405,33 +405,36 @@ public class DialogGuardarPedido extends DialogFragment implements View.OnClickL
     }
 
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        if (getActivity() == null) return super.onCreateDialog(savedInstanceState);
         builder = new AlertDialog.Builder(getActivity());
         View v = getActivity().getLayoutInflater().inflate(R.layout.dialog_salvar_perdido, null);
-        try {
-            activaEntregaPedido = false;
-            cbTipoContrato = v.findViewById(R.id.cbTipoContrato);
-            fEntrega = Calendar.getInstance();
-            this.txtIndentificador = (TextInputLayout) v.findViewById(R.id.InLIndentificadorPedido);
-            this.txtObservacion = (TextInputLayout) v.findViewById(R.id.InLObservacionPedido);
-            this.edtNombreCliente = (TextInputLayout) v.findViewById(R.id.edtNombreCliente);
-            this.contentEntregaDatos = (LinearLayout) v.findViewById(R.id.linearContentEntregaDatos);
-            this.spinner = v.findViewById(R.id.spnMediosPagoDel);
-            this.edtNombreClienteDel = v.findViewById(R.id.edtNombreClienteDel);
-            this.edtEmail = v.findViewById(R.id.edtEmail);
-            this.edtReferencia = v.findViewById(R.id.edtReferencia);
-            this.edtCiudad = v.findViewById(R.id.edtCiudad);
-            this.asyncClientes = new AsyncClientes();
-            this.btnSalir = v.findViewById(R.id.btnSalirPed);
-            this.btnAceptar = v.findViewById(R.id.btnAceptarPed);
-            this.edtCelular = v.findViewById(R.id.edtCelular);
+        activaEntregaPedido = false;
+        cbTipoContrato = v.findViewById(R.id.cbTipoContrato);
+        fEntrega = Calendar.getInstance();
+        this.txtIndentificador = (TextInputLayout) v.findViewById(R.id.InLIndentificadorPedido);
+        this.txtObservacion = (TextInputLayout) v.findViewById(R.id.InLObservacionPedido);
+        this.edtNombreCliente = (TextInputLayout) v.findViewById(R.id.edtNombreCliente);
+        this.contentEntregaDatos = (LinearLayout) v.findViewById(R.id.linearContentEntregaDatos);
+        this.spinner = v.findViewById(R.id.spnMediosPagoDel);
+        this.edtNombreClienteDel = v.findViewById(R.id.edtNombreClienteDel);
+        this.edtEmail = v.findViewById(R.id.edtEmail);
+        this.edtReferencia = v.findViewById(R.id.edtReferencia);
+        this.edtCiudad = v.findViewById(R.id.edtCiudad);
+        this.asyncClientes = new AsyncClientes();
+        this.btnSalir = v.findViewById(R.id.btnSalirPed);
+        this.btnAceptar = v.findViewById(R.id.btnAceptarPed);
+        this.edtCelular = v.findViewById(R.id.edtCelular);
+        if (this.edtNombreCliente != null) {
             this.edtNombreCliente.setVisibility(View.GONE);
-            this.edtCallaDel = v.findViewById(R.id.edtCallaDel);
-            this.btnGetDate = v.findViewById(R.id.btnGetDate);
-            btnGetDate.setOnClickListener(this);
-            this.txtFEntrega = v.findViewById(R.id.txtFEntrega);
-            asyncClientes.setObtenerDatoCliente(this);
-            this.btnSalir.setOnClickListener(this);
-            this.btnAceptar.setOnClickListener(this);
+        }
+        this.edtCallaDel = v.findViewById(R.id.edtCallaDel);
+        this.btnGetDate = v.findViewById(R.id.btnGetDate);
+        if (btnGetDate != null) btnGetDate.setOnClickListener(this);
+        this.txtFEntrega = v.findViewById(R.id.txtFEntrega);
+        asyncClientes.setObtenerDatoCliente(this);
+        if (this.btnSalir != null) this.btnSalir.setOnClickListener(this);
+        if (this.btnAceptar != null) this.btnAceptar.setOnClickListener(this);
+        if (this.edtCelular != null && this.edtCelular.getEditText() != null) {
             this.edtCelular.getEditText().addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -450,69 +453,90 @@ public class DialogGuardarPedido extends DialogFragment implements View.OnClickL
 
                 }
             });
-            contentEntregaDatos.setVisibility(View.GONE);
-            if (this.visibleID2) {
+        }
+        if (contentEntregaDatos != null) contentEntregaDatos.setVisibility(View.GONE);
+        if (this.visibleID2) {
+            if (this.edtNombreCliente != null) {
                 this.edtNombreCliente.setVisibility(View.VISIBLE);
-                this.edtNombreCliente.getEditText().setText(this.identificador2);
-                this.edtNombreCliente.getEditText().addTextChangedListener(new C05951());
-            } else {
-                this.edtNombreCliente.setVisibility(View.GONE);
-                this.edtNombreCliente.getEditText().setText("");
+                if (this.edtNombreCliente.getEditText() != null) {
+                    this.edtNombreCliente.getEditText().setText(this.identificador2);
+                    this.edtNombreCliente.getEditText().addTextChangedListener(new C05951());
+                }
             }
-            if (Constantes.Tienda.ZonasAtencion) {
+        } else {
+            if (this.edtNombreCliente != null) {
+                this.edtNombreCliente.setVisibility(View.GONE);
+                if (this.edtNombreCliente.getEditText() != null) {
+                    this.edtNombreCliente.getEditText().setText("");
+                }
+            }
+        }
+        if (Constantes.Tienda.ZonasAtencion) {
+            if (this.txtIndentificador != null && this.txtIndentificador.getEditText() != null) {
                 this.txtIndentificador.getEditText().setInputType(View.VISIBLE);
                 this.txtIndentificador.getEditText().setTextIsSelectable(false);
                 this.txtIndentificador.getEditText().setClickable(false);
                 this.txtIndentificador.getEditText().setFocusable(false);
             }
-            if (!Constantes.ConfigTienda.bUsaFechaEntrega) {
-                txtFEntrega.setVisibility(View.GONE);
-                btnGetDate.setVisibility(View.GONE);
-            }
-            if (zonaServicio.getIdZona() != 0) {
-                asyncZonaServicio = new AsyncZonaServicio();
-                asyncZonaServicio.ObtenerTipoZonaServicio(zonaServicio.getIdZona());
-                asyncZonaServicio.setListenerZonasServicio(this);
-            }
-            this.btnScan = (ImageButton) v.findViewById(R.id.btnScanCode);
-            if (reservaPedido == false) {
-                txtIndentificador.setVisibility(View.GONE);
-                builder.setView(v).setTitle("Guardar datos del cliente");
-            } else {
-                txtIndentificador.setVisibility(View.VISIBLE);
-                builder.setView(v).setTitle("Guardar Pedido");
-            }
-            builder.setView(v);
-            //  builder.setView(v).setPositiveButton("Guardar", new C05973()).setNegativeButton("Cancelar", new C05962()).setTitle("Guardar Pedido");
+        }
+        if (!Constantes.ConfigTienda.bUsaFechaEntrega) {
+            if (txtFEntrega != null) txtFEntrega.setVisibility(View.GONE);
+            if (btnGetDate != null) btnGetDate.setVisibility(View.GONE);
+        }
+        if (zonaServicio != null && zonaServicio.getIdZona() != 0) {
+            asyncZonaServicio = new AsyncZonaServicio();
+            asyncZonaServicio.ObtenerTipoZonaServicio(zonaServicio.getIdZona());
+            asyncZonaServicio.setListenerZonasServicio(this);
+        }
+        this.btnScan = (ImageButton) v.findViewById(R.id.btnScanCode);
+        if (reservaPedido == false) {
+            if (txtIndentificador != null) txtIndentificador.setVisibility(View.GONE);
+            builder.setView(v).setTitle("Guardar datos del cliente");
+        } else {
+            if (txtIndentificador != null) txtIndentificador.setVisibility(View.VISIBLE);
+            builder.setView(v).setTitle("Guardar Pedido");
+        }
+        builder.setView(v);
+        //  builder.setView(v).setPositiveButton("Guardar", new C05973()).setNegativeButton("Cancelar", new C05962()).setTitle("Guardar Pedido");
+        if (this.txtIndentificador != null && this.txtIndentificador.getEditText() != null) {
             this.txtIndentificador.getEditText().setText(this.identificadorPedido);
+        }
+        if (this.txtObservacion != null && this.txtObservacion.getEditText() != null) {
             this.txtObservacion.getEditText().setText(this.observacion);
-            this.dialog = builder.create();
-            this.dialog.setCanceledOnTouchOutside(false);
-            this.btnScan.setOnClickListener(new C05984());
-            controladorVentas = new ControladorVentas();
-            if (cTipoPedido.trim().equals("02")) {
-                this.cbTipoContrato.setChecked(true);
-            } else {
-                this.cbTipoContrato.setChecked(false);
-            }
-            fechaDefecto();
-            if (tipoZonaServicio != null) {
-                if (tipoZonaServicio.getIdTipoZonaServicio() == Constantes.TIPOZONASERVICIO.DELIVERY) {
-                    if (!reservaPedido) {
-                        builder.setTitle("Guardar datos del cliente");
-                    } else {
-                        builder.setTitle("Guardar Pedido");
-                    }
+        }
+        this.dialog = builder.create();
+        this.dialog.setCanceledOnTouchOutside(false);
+        if (this.btnScan != null) this.btnScan.setOnClickListener(new C05984());
+        controladorVentas = new ControladorVentas();
+        if (cTipoPedido != null && cTipoPedido.trim().equals("02")) {
+            if (this.cbTipoContrato != null) this.cbTipoContrato.setChecked(true);
+        } else {
+            if (this.cbTipoContrato != null) this.cbTipoContrato.setChecked(false);
+        }
+        fechaDefecto();
+        if (tipoZonaServicio != null) {
+            if (tipoZonaServicio.getIdTipoZonaServicio() == Constantes.TIPOZONASERVICIO.DELIVERY) {
+                if (!reservaPedido) {
+                    builder.setTitle("Guardar datos del cliente");
                 } else {
                     builder.setTitle("Guardar Pedido");
                 }
+            } else {
+                builder.setTitle("Guardar Pedido");
             }
-
-        } catch (Exception e) {
-
-            Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_LONG).show();
         }
 
+        try {
+
+        } catch (Exception e) {
+            if (getActivity() != null) {
+                Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_LONG).show();
+            }
+        }
+
+        if (this.dialog == null) {
+            this.dialog = builder.create();
+        }
         return this.dialog;
     }
 
@@ -578,6 +602,6 @@ public class DialogGuardarPedido extends DialogFragment implements View.OnClickL
     public void Scan() {
         DialogScannerCam dialogScannerCam = new DialogScannerCam();
         dialogScannerCam.setScannerResult(new C09375());
-        dialogScannerCam.show(getActivity().getFragmentManager(), "hOLA");
+        dialogScannerCam.show(getParentFragmentManager(), "hOLA");
     }
 }

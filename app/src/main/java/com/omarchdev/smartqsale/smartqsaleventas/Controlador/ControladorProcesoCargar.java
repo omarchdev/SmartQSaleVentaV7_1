@@ -93,10 +93,19 @@ public class ControladorProcesoCargar {
     }
     public void FinalizarDialogCarga(){
 
-        if(context!=null) {
+        if(context!=null && dialog != null && dialog.isShowing()) {
             dialog.dismiss();
         }
 
+    }
+
+    public void dismiss() {
+        if (dialog != null && dialog.isShowing()) {
+            dialog.dismiss();
+        }
+        if (dialogCargaAsync != null) {
+            dialogCargaAsync.dismiss();
+        }
     }
 
 }

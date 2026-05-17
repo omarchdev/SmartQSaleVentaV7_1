@@ -1,92 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:background="@color/backgroud_app">
 
-    <ScrollView
-
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardFilters"
+        style="@style/AppTheme.Card.Modern"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ProgressBar
-                android:layout_centerInParent="true"
-                android:elevation="8dp"
-                android:id="@+id/pbChart"
-                style="?android:attr/progressBarStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                />
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        app:layout_constraintTop_toTopOf="parent">
 
-            <RelativeLayout
-                android:layout_below="@id/rgSeleccion"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <com.github.mikephil.charting.charts.PieChart
-                    android:id="@+id/pieChartResumen"
-                    android:layout_width="match_parent"
-                    android:layout_height="500dp"
-                    android:background="#ffffff"
-                    android:layout_marginBottom="100dp"
-                    ></com.github.mikephil.charting.charts.PieChart>
-            </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
             <LinearLayout
-                android:layout_alignParentTop="true"
-                android:id="@+id/contenedorFechas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:padding="1dp"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/btnFechaInicio"
+                    style="@style/AppTheme.Button.Outlined"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
                     android:layout_weight="1"
-                    android:drawableLeft="@drawable/calendar"
-                    android:text="Fecha inicio" />
+                    android:text="Desde"
+                    app:icon="@drawable/calendar" />
 
                 <Button
                     android:id="@+id/btnFechaFinal"
+                    style="@style/AppTheme.Button.Outlined"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
                     android:layout_weight="1"
-                    android:drawableRight="@drawable/calendar"
-                    android:text="fecha final" />
+                    android:text="Hasta"
+                    app:icon="@drawable/calendar"
+                    app:iconGravity="end" />
             </LinearLayout>
+
             <RadioGroup
-                android:layout_below="@id/contenedorFechas"
                 android:id="@+id/rgSeleccion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="0dp"
-                android:orientation="horizontal"
-                >
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
                 <RadioButton
                     android:id="@+id/rbUnidades"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Por Unidades vendidas" />
+                    android:text="Unidades"
+                    android:textSize="12sp" />
+
                 <RadioButton
                     android:id="@+id/rbMonto"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Por monto recaudado" />
+                    android:text="Monto"
+                    android:textSize="12sp" />
             </RadioGroup>
-        </RelativeLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardFilters">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/pieChartResumen"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:background="@color/white" />
+
+            <ProgressBar
+                android:id="@+id/pbChart"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="-200dp"
+                android:elevation="10dp"
+                android:visibility="gone" />
+
+        </LinearLayout>
     </ScrollView>
 
+    <!-- Legacy Compatibility -->
+    <View android:id="@+id/contenedorFechas" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"/>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

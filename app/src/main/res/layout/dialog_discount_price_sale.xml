@@ -1,81 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="10dp"
-    >
-
-
-    <TextView
-        android:id="@+id/edtProcentajeDescuento"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:text="Precio de Venta" />
-
-    <TextView
-        android:id="@+id/txtPrecioOriginal"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_marginBottom="10dp"
-        android:gravity="center"
-        android:text="S/100.00"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-    <TextView
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Ingrese el porcentaje de descuento:"/>
-    <EditText
-        android:id="@+id/edtPorcentaje"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:inputType="numberDecimal"
-        android:gravity="center"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:drawableRight="@drawable/percent"/>
-    <TextView
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:text="Precio de venta con descuento"
-        android:gravity="center"/>
-
-    <TextView
-        android:id="@+id/txtPrecioDescuentoFinal"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:gravity="center"
-        android:text="S/ ..."
-        android:textSize="22sp"
-        android:textStyle="bold" />
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/AppTheme.Card.Modern"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_marginBottom="10dp">
+        android:orientation="vertical"
+        android:padding="24dp">
 
-        <ImageButton
-            android:src="@drawable/ic_close_white_36dp"
-            android:layout_width="100dp"
-            android:layout_height="70dp"
-            android:layout_marginRight="10dp"
-            android:backgroundTint="#ff3134"
-            android:elevation="8dp" />
+        <TextView
+            android:id="@+id/edtProcentajeDescuento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Precio de Venta Original"
+            android:textColor="@color/gray_600"
+            android:textSize="14sp" />
 
-        <ImageButton
-            android:src="@drawable/ic_check_white_36dp"
-            android:layout_width="100dp"
-            android:layout_height="70dp"
-            android:backgroundTint="#4dfa4a"
-            android:elevation="8dp" />
+        <TextView
+            android:id="@+id/txtPrecioOriginal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:text="S/ 0.00"
+            android:textColor="@color/gray_900"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:text="Ingrese el porcentaje de descuento"
+            android:textColor="@color/gray_700" />
+
+        <EditText
+            android:id="@+id/edtPorcentaje"
+            style="@style/AppTheme.EditText.Modern"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:drawableEnd="@drawable/percent"
+            android:drawablePadding="8dp"
+            android:gravity="center"
+            android:inputType="numberDecimal"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:drawableTint="@color/colorPrimary" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:text="Precio Final con Descuento"
+            android:textColor="@color/gray_600"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/txtPrecioDescuentoFinal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:text="S/ 0.00"
+            android:textColor="@color/status_success"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                style="@style/AppTheme.Button.Outlined"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cancelar"
+                android:textColor="@color/status_error"
+                app:strokeColor="@color/status_error" />
+
+            <Button
+                style="@style/AppTheme.Button.Modern"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:text="Aplicar" />
+        </LinearLayout>
+
     </LinearLayout>
-</LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

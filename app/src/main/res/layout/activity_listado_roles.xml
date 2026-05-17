@@ -4,49 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroud_app"
     tools:context=".Activitys.ListadoRoles">
 
+    <ProgressBar
+        android:id="@+id/pbRoles"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
-        android:padding="24dp"
         android:id="@+id/txtMensaje"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:textSize="18sp"
+        android:gravity="center"
+        android:padding="24dp"
+        android:text="No se encontraron roles configurados"
+        android:textColor="@color/gray_600"
+        android:textSize="16sp"
         android:textStyle="bold"
-        android:text="TextView"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:id="@+id/rvRoles"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:clipToPadding="false"
+        android:padding="8dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-    <ProgressBar
-        android:id="@+id/pbRoles"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

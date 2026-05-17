@@ -5,7 +5,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -18,7 +18,6 @@ import com.omarchdev.smartqsale.smartqsaleventas.R;
 
 public class DialogEditQuantity extends DialogFragment implements View.OnClickListener {
 
-    Context context;
     EditText edtquantity;
     ImageButton imgPlus,imgMinus;
 
@@ -32,8 +31,8 @@ public class DialogEditQuantity extends DialogFragment implements View.OnClickLi
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState){
 
-        AlertDialog.Builder builder= new AlertDialog.Builder(context);
-        View v=((Activity)context).getLayoutInflater().inflate(R.layout.dialog_edit_price,null);
+        AlertDialog.Builder builder= new AlertDialog.Builder(getActivity());
+        View v=((Activity)getActivity()).getLayoutInflater().inflate(R.layout.dialog_edit_price,null);
         edtquantity=(EditText)v.findViewById(R.id.edtQuantityProduct);
         imgPlus=(ImageButton)v.findViewById(R.id.btnPlus);
         imgMinus=(ImageButton)v.findViewById(R.id.btnMinusb);

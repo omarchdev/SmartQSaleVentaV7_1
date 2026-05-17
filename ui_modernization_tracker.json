@@ -1,20 +1,1465 @@
 {
-  "total_files": 255,
-  "completed_files": 0,
-  "status": "IN_PROGRESS",
-  "styles_centralized": false,
-  "files": [
-    {"path": "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_pin_login.xml", "status": "COMPLETED"},
-    {"path": "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_edit_price.xml", "status": "COMPLETED"},
-    {"path": "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_ventas.xml", "status": "COMPLETED"},
-    {"path": "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_main.xml", "status": "PENDING"},
-    {"path": "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_login_principal.xml", "status": "PENDING"},
-    {"path": "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_pantalla_principal.xml", "status": "PENDING"},
-    {"path": "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_registro_producto.xml", "status": "PENDING"},
-    {"path": "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_listado_productos.xml", "status": "PENDING"},
-    {"path": "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_historial_ventas.xml", "status": "PENDING"},
-    {"path": "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_apertura_caja.xml", "status": "PENDING"},
-    {"path": "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_registro_cliente.xml", "status": "PENDING"}
-  ],
-  "note": "This is a partial list of key files. The full list will be managed dynamically."
+    "total_files":  362,
+    "completed_files":  302,
+    "status":  "IN_PROGRESS",
+    "styles_centralized":  true,
+    "files":  [
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_pin_login.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_edit_price.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_ventas.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_main.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_login_principal.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_pantalla_principal.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_registro_producto.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_inventario.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_listado_productos.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_historial_ventas.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_apertura_caja.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_registro_cliente.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_categorias.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_listado_clientes.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_listado_vendedores.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_caja_flujo.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_flujo_caja.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_inventario_productos.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_listado_tiendas.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_historial_cierres_caja.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_reporte_almacen.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_reporte_vendedor.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_reporte_ventas_productos.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_reporte_periodo_tienda.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_registro_tienda.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_registro_usuario.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_registro_vendedor.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_registro_categoria.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_registro_sub_categoria.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_configuracion_almacen.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_configuracion_usuario.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_configuracion_rol.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_modificador_config.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_operario_config.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_printer.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_scanner.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_add_edit_proveedor.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_add_product_compra.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_agregar_categoria.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_cam_scanner.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_menu.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_pack.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_mesa_config.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_modificador.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_detalle_venta.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_detalle_pedido.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_entrega_pedido.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_pedidos_tienda.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_reporte_ventas_caja.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_reporte_cierre_caja.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_edit_variantes.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_select_cantidad.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_pedido.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_producto_select_compra.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_tipo_transaccion.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_pedido_cabecera.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_img_metodo_pago.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/item_articulo_combo.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/item_metodo_pago.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/item_opcion_variante.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/item_saldo.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cardview_product.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cardview_customer.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_cta_clientes.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_pago_cta_cte.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_cta_x_cliente.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_config_clientes.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_config_producto.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_config_categorias.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_ediccion_variantes.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_listado__almacenes.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_listado_medio_pago.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_ventas_por_vendedor.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_areas_produccion_lista.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_lista_impresoras_areas.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_registro_area_produccion.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_listado_productos_stock.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_listado_mov_almacen.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_listado_usuarios.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_pedidos_despacho.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_soporte_tecnico.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_select_tienda.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_cam_scanner.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_add_edit_customer.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_agregar_vendedor.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_chart.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_demo.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_ingreso_compra_kt.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_inventario2.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_log.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_login.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_main2.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_main3.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_pin_reset_app.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_registros.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_scrolling.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_test_print_html.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_add_modificador.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_add_valor_mod.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_alert_stock.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_detail_cliente.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_detail_proveedor.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_discount_price_sale.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_medio_pago.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_pedido_venta.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_estado_pedido.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_pedido_resumen.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_area_produccion.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_operario_pedido.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_select_operario.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_categoria_precio.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_precio_adicional.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_valor_modificador.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_modificador_config.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_producto_detalle_pedido.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_product_lista_precio.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_tranferencia_almacen.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_hcierre.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_variante.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_variante_edit.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_stock_almacen.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_tienda_select.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_cliente_simple.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_login_principal12.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_flujo_caja_main.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_reporte_ventas_cierre.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_reporte_ingresos_retiros_periodo.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_salida_dinero.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_entrada_dinero_caja.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_information_product.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_insert_price_additional.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_select_precio_venta.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_select_unit.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/df_motivo_nota.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/df_confi_terminal.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/df_registro_datos_pedido_cw.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/df_registro_zona_servicio_cw.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_movimiento_almacen.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_tipo_pago_monto.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_ventas_vendedor.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_mod_product.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_device_disponible.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_resumen_ventas_producto.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_reporte_ventas_productos.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_reporte_ventas_vendedor.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_configuracion_base.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_detalle_flujo_caja.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_resumen_flujo_caja.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_producto_dbasicos.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_registro__producto.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_varientes_producto.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_agregar_pventa.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_elegir_variante.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_resultado_venta.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_transacciones_almacen.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_pago_cta_cte.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_select_combo.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_categoria.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_tienda.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_vendedor_en_venta.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_sub_categoria.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/agregar_cliente.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/busqueda_categoria.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_categoria.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_impresora.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/item_grid_articulo.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/item_grid_categoria.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/item_pago_venta_simple.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/item_image_banner.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/item_cuenta_corriente.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/item_color.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_cabecera_pedido.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_producto_stock.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/nav_header_pantalla_principal.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_cliente.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_proovedor.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_main.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_blank.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_select_tienda.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_entrega_pedido.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_banner_web.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_caja_flujo.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_time_picker.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_scrolling.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_test_print_html.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialogrecycler.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/df_control_peso.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/calculadora_pago.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/add_edit_provider.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/registro_vendedor.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cardview_proveedor.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/config_logo_web_fg.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_movimiento_caja.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_producto.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/content_demo.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/main_fragment.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/content_scrolling.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/window_background.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/df_stock_almacenes.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/elegir_metodo_pago.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/expandable_toolbar.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/section_ex1_header.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/banner_web_activity.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/busqueda_vendedores.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/custom_title_dialog.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_elegir_fecha.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/calculador_descuento.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_lista_precio.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_edit_variante.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_insert_option.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_sale_history.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_elegir_guardar.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_salvar_perdido.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/content_pin_reset_app.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/config_general_web_activity.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/config_general_web_fragment.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/config_num_phone_web_activity.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/config_num_phone_web_fragment.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/config_product_visibilidad_tienda_activity.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/config_product_visibilidad_tienda_fragment.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/config_web_menu_activity.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/config_web_menu_fragment.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/config_web_base_activity.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/config_web_base_fragment.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/config_logo_web_activity.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/config_web_image_activity.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/config_web_image_fragment.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/config_dias_entrega_activity.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/config_dias_entrega_fragment.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/config_zona_servicio_fragment.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/config_zona_servicio_mesa_activity.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/listado_zona_servicio_activity.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/listado_zona_servicio_fragment.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/item_bluetooth_device.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_config_modificador_producto.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/act_mod_estado_entrega_en_pedido_activity.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/act_mod_estado_entrega_en_pedido_fragment.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/entrega_pedido_datos_entrega_fragment.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/estado_pago_en_pedido_activity.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/estado_pago_en_pedido_fragment.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/estado_pago_flujo_pedido_activity.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/estado_pago_flujo_pedido_fragment.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/pedido_reserva_resumen_activity.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/pedido_reserva_resumen_fragment.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/pedidos_guardados_resumen_activity.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_message_slow_connect.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_message_break_connection.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_conexion_perdida.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_spn_areas_produccion.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_dialog_envio_c_p_e_numero.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_dialog_mod_precio_lista.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_dialog_seleccion_lista_precio.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_dialog_agregar_sub_categoria.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_df_agregar_opcion_variante.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_df_precio_categoria.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_df_reporte_cierre_caja.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_df_venta_rapida.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_detalle_carrito_venta.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_edit_insert_product_pack.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_insert_values_option.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_listado_transferencias.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_seleccionar_impresora.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_select_almacen.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_select_categoria.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/dialog_select__mod_producto.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/df_edit_product_tiempo_pedido.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/df_producto_control_tiempo_nuevo.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/df_select_zona_servicio.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/df_ventas_zona_servicio.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/layout_registro_cliente.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/lista_precios_select_activity.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/lista_precios_select_fragment.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/list_productos_lista_precios_activity.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/list_productos_lista_precios_fragment.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/operario_config_fragment.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout-land/activity_historial_ventas.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout-sw730dp-port/fragment_ventas.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout-sw450dp-land/activity_config_pack.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout-sw450dp-land/activity_ingreso_compra_kt.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout-sw450dp-land/busqueda_cliente_venta.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout-sw450dp-land/calculadora_pago.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout-sw450dp-land/df_select_zona_servicio.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout-sw450dp-land/df_ventas_zona_servicio.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout-sw450dp-land/dialog_add_product_compra.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout-sw450dp-land/dialog_elegir_variante.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout-sw450dp-land/dialog_select_combo.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout-sw450dp-land/fragment_ventas.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout-sw450dp-land/item_grid_articulo.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout-sw450dp-land/item_grid_categoria.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout-sw600dp-land/item_grid_articulo.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout-sw600dp-land/item_grid_categoria.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout-sw600dp-port/item_grid_categoria.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout-w320dp/item_grid_articulo.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout-w320dp/item_grid_categoria.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout-w480dp/item_grid_articulo.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout-w480dp/item_grid_categoria.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout-w600dp/item_grid_articulo.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout-sw600dp-land/dialog_elegir_variante.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout-sw730dp-port/item_grid_categoria.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/item_resumen_ventas.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/item_cabecera_venta.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_config_pack.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_pedidos_en_reserva.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/busqueda_cliente_venta.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/busqueda_vendedores_venta.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cardview_additionalprice.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cardview_product_in_sale_quotation.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cardview_subtotalventa.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_registro_categorias.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_registro_medio_pago.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/spinner_adapter_medio_pago.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/spinner_list_medio_pago.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/spinner_item_selector.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_listado_roles.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_registro_cliente.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_registro_impresora.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/activity_registro__producto.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/app_bar_pantalla_principal.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cardviewproductsinsale.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cardview_tipo_cantidad_pago.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/config_web_activity.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/config_web_fragment.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/content_activity_registro_categoria.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/content_activity_scanner.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/content_inventario_productos.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/content_listado_clientes.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/content_listado_tiendas.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/content_listado_vendedores.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/content_lista_impresoras_areas.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/content_pantalla_principal.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/custom_view_notificacion_order.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_cliente.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/cv_item_resumen_mp_cierre.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/detalle_pedido_activity.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/detalle_pedido_fragment.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/df_select_operarios.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_activity_registro_producto.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_char_ventas_producto.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_complemento_entrega.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_config_estado_product.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_date_time_picker.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_flujo_caja_main.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_fragment_inventario.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_list_sale_quotation.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_registro_producto_datos_basicos.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_registro_vehiculo.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_representacion_producto.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_select_product_time_list_dialog.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_select_product_time_list_dialog_item.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/horas_entrega_activity.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/horas_entrega_fragment.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout-land/activity_select_tienda.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout-land/cardview_product_in_sale_quotation.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout-land/fragment_ventas.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout-land/activity_pin_login.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_select_product_time_list_dialog_temp.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_select_product_time_temp.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout-large-land/activity_pin_login.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout-sw480dp-land/fragment_ventas.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout-sw600dp/cv_pedido_cabecera.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout-sw600dp-land/fragment_ventas.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout-land/content_pin_reset_app.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_select_anulacion.xml",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "path":  "C:/Users/omarc/proyectos android/SmartQSaleVentaV7_1/app/src/main/res/layout/fragment_select_product_time_list_dialog1.xml",
+                      "status":  "COMPLETED"
+                  }
+              ],
+    "note":  "Phase 26 complete. 302 layouts modernized."
 }

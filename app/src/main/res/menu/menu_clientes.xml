@@ -10,6 +10,6 @@
         android:title="Busqueda de productos"
         android:orderInCategory="1"
 
-        app:actionViewClass="android.widget.SearchView"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="always|withText" />
 </menu>

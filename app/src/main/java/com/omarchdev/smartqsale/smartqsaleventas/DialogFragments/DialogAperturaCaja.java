@@ -2,7 +2,7 @@ package com.omarchdev.smartqsale.smartqsaleventas.DialogFragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -42,45 +42,52 @@ public class DialogAperturaCaja extends DialogFragment implements View.OnClickLi
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-
+        if (getActivity() == null) return super.onCreateDialog(savedInstanceState);
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         View v = getActivity().getLayoutInflater().inflate(R.layout.dialog_apertura_caja, null);
 
-        bMonto = new BigDecimal(0);
-        montoApertura = String.format("%.2f", bMonto);
+        try {
+            bMonto = new BigDecimal(0);
+            montoApertura = String.format("%.2f", bMonto);
 
-        btn1 = (Button) v.findViewById(R.id.btn1);
-        btn5 = (Button) v.findViewById(R.id.btn5);
-        btn10 = (Button) v.findViewById(R.id.btn10);
-        btn50 = (Button) v.findViewById(R.id.btn50);
-        txtMonto = (TextView) v.findViewById(R.id.txtMonto);
-        editText = (EditText) v.findViewById(R.id.edtMontoApertura);
-        txtMoneda=v.findViewById(R.id.txtMoneda);
-
-
-        txtMoneda.setText(Constantes.DivisaPorDefecto.SimboloDivisa);
-        btn1.setText("+" + Constantes.DivisaPorDefecto.SimboloDivisa + "1");
-        btn5.setText("+" + Constantes.DivisaPorDefecto.SimboloDivisa + "5");
-        btn10.setText("+" + Constantes.DivisaPorDefecto.SimboloDivisa + "10");
-        btn50.setText("+" + Constantes.DivisaPorDefecto.SimboloDivisa + "50");
-        editText.setText(montoApertura);
-        editText.setSelection(montoApertura.length());
-        NumberTextWatcher textWatcher=new NumberTextWatcher( editText);
-        textWatcher.setINumberTextWatcher(this);
-        editText.addTextChangedListener(textWatcher);
-       // editText.addTextChangedListener(this);
-        btn1.setOnClickListener(this);
-        btn5.setOnClickListener(this);
-        btn10.setOnClickListener(this);
-        btn50.setOnClickListener(this);
-        builder.setPositiveButton("Abrir Caja", (dialog, which) -> aperturaCaja.VerificarCajaAbierta(bMonto)).
-                setNegativeButton("Cancelar", (dialog, which) -> dialog.dismiss());
-
-        dialog = builder.setView(v).create();
-        dialog.setCanceledOnTouchOutside(false);
+            btn1 = (Button) v.findViewById(R.id.btn1);
+            btn5 = (Button) v.findViewById(R.id.btn5);
+            btn10 = (Button) v.findViewById(R.id.btn10);
+            btn50 = (Button) v.findViewById(R.id.btn50);
+            txtMonto = (TextView) v.findViewById(R.id.txtMonto);
+            editText = (EditText) v.findViewById(R.id.edtMontoApertura);
+            txtMoneda = v.findViewById(R.id.txtMoneda);
 
 
-        return dialog;
+            if (txtMoneda != null) txtMoneda.setText(Constantes.DivisaPorDefecto.SimboloDivisa);
+            if (btn1 != null) btn1.setText("+" + Constantes.DivisaPorDefecto.SimboloDivisa + "1");
+            if (btn5 != null) btn5.setText("+" + Constantes.DivisaPorDefecto.SimboloDivisa + "5");
+            if (btn10 != null) btn10.setText("+" + Constantes.DivisaPorDefecto.SimboloDivisa + "10");
+            if (btn50 != null) btn50.setText("+" + Constantes.DivisaPorDefecto.SimboloDivisa + "50");
+            if (editText != null) {
+                editText.setText(montoApertura);
+                editText.setSelection(montoApertura.length());
+                NumberTextWatcher textWatcher = new NumberTextWatcher(editText);
+                textWatcher.setINumberTextWatcher(this);
+                editText.addTextChangedListener(textWatcher);
+            }
+            // editText.addTextChangedListener(this);
+            if (btn1 != null) btn1.setOnClickListener(this);
+            if (btn5 != null) btn5.setOnClickListener(this);
+            if (btn10 != null) btn10.setOnClickListener(this);
+            if (btn50 != null) btn50.setOnClickListener(this);
+            builder.setPositiveButton("Abrir Caja", (dialog, which) -> {
+                if (aperturaCaja != null) aperturaCaja.VerificarCajaAbierta(bMonto);
+            }).setNegativeButton("Cancelar", (dialog, which) -> dialog.dismiss());
+
+        } catch (Exception e) {
+             e.printStackTrace();
+        }
+
+        this.dialog = builder.setView(v).create();
+        this.dialog.setCanceledOnTouchOutside(false);
+
+        return this.dialog;
     }
 /*
     @Override

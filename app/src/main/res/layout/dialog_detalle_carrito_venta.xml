@@ -1,50 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/AppTheme.Card.Modern"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/white"
-    android:orientation="vertical">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/gray_100"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="16dp">
+        android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            app:srcCompat="@drawable/car_sale"
-            app:tint="@color/colorPrimary" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/gray_100"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                app:srcCompat="@drawable/car_sale"
+                app:tint="@color/colorPrimary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Resumen del Carrito"
+                android:textColor="@color/gray_900"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvDetalleVenta"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:clipToPadding="false"
+            android:padding="8dp" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/txtTextoCarrito"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:text="Resumen del Carrito"
-            android:textColor="@color/gray_900"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:gravity="center"
+            android:padding="32dp"
+            android:text="El carrito está vacío"
+            android:textColor="@color/gray_500"
+            android:visibility="gone" />
+
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvDetalleVenta"
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:clipToPadding="false"
-        android:padding="8dp" />
-
-    <TextView
-        android:id="@+id/txtTextoCarrito"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="32dp"
-        android:text="El carrito está vacío"
-        android:textColor="@color/gray_500"
-        android:visibility="gone" />
-
-</LinearLayout>
+</com.google.android.material.card.MaterialCardView>

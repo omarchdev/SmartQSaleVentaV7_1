@@ -1,181 +1,255 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/AppTheme.Card.Modern"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/white"
-    android:orientation="vertical">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/gray_100"
-        android:padding="16dp"
-        android:text="Guardar Pedido"
-        android:textColor="@color/gray_900"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:maxHeight="500dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="20dp">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/InLIndentificadorPedido"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Identificador del Pedido"
-                app:startIconDrawable="@drawable/account">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/InLObservacionPedido"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:hint="Observaciones">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="top"
-                    android:inputType="textMultiLine"
-                    android:minLines="3" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <CheckBox
-                android:id="@+id/cbTipoContrato"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="¿Es un pedido para entrega?" />
-
-            <!-- Hidden Fields maintained for code logic -->
-            <com.google.android.material.textfield.TextInputLayout android:id="@+id/edtNombreCliente" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone"><com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent" android:layout_height="wrap_content" /></com.google.android.material.textfield.TextInputLayout>
-
-            <LinearLayout
-                android:id="@+id/linearContentEntregaDatos"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Datos de Entrega"
-                    android:textColor="@color/colorPrimary"
-                    android:textStyle="bold" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/edtNombreClienteDel"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:hint="Cliente">
-                    <com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent" android:layout_height="wrap_content" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:hint="Fecha de Entrega">
-                        <EditText
-                            android:id="@+id/edtFechaEntrega"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:enabled="false" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <ImageButton
-                        android:id="@+id/btnGetDate"
-                        style="@style/AppTheme.Button.Icon"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:layout_marginStart="8dp"
-                        app:srcCompat="@drawable/calendar"
-                        app:tint="@color/colorPrimary" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/txtFEntrega"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:visibility="gone" />
-
-                <com.google.android.material.textfield.TextInputLayout android:id="@+id/edtCelular" style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:hint="Celular"><com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent" android:layout_height="wrap_content" /></com.google.android.material.textfield.TextInputLayout>
-                <com.google.android.material.textfield.TextInputLayout android:id="@+id/edtEmail" style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:hint="Email"><com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent" android:layout_height="wrap_content" /></com.google.android.material.textfield.TextInputLayout>
-                <com.google.android.material.textfield.TextInputLayout android:id="@+id/edtReferencia" style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:hint="Referencia"><com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent" android:layout_height="wrap_content" /></com.google.android.material.textfield.TextInputLayout>
-                <com.google.android.material.textfield.TextInputLayout android:id="@+id/edtCiudad" style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:hint="Ciudad"><com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent" android:layout_height="wrap_content" /></com.google.android.material.textfield.TextInputLayout>
-                <com.google.android.material.textfield.TextInputLayout android:id="@+id/edtCallaDel" style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:hint="Dirección"><com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent" android:layout_height="wrap_content" /></com.google.android.material.textfield.TextInputLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Medio de Pago"
-                    android:textColor="@color/gray_600"
-                    android:textSize="12sp" />
-
-                <Spinner
-                    android:id="@+id/spnMediosPagoDel"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="4dp"
-                    android:background="@color/gray_50" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-    </ScrollView>
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="end"
-        android:orientation="horizontal"
-        android:padding="16dp">
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btnSalirPed"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CANCELAR"
-            android:textColor="@color/gray_700" />
 
-        <Button
-            android:id="@+id/btnAceptarPed"
-            style="@style/Widget.MaterialComponents.Button"
-            android:layout_width="wrap_content"
+        <ScrollView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:backgroundTint="@color/colorPrimary"
-            android:text="GUARDAR"
-            app:cornerRadius="@dimen/radius_medium" />
+            android:maxHeight="500dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/InLIndentificadorPedido"
+                        style="@style/AppTheme.TextInputLayout.Outlined"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="Identificador del Pedido"
+                        app:startIconDrawable="@drawable/account">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <ImageButton
+                        android:id="@+id/btnScanCode"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="8dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        app:srcCompat="@drawable/barcode_scan"
+                        app:tint="@color/colorPrimary" />
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/InLObservacionPedido"
+                    style="@style/AppTheme.TextInputLayout.Outlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:hint="Observaciones">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top"
+                        android:inputType="textMultiLine"
+                        android:minLines="3" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/cbTipoContrato"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="¿Es un pedido para entrega?"
+                    android:textColor="@color/gray_700"
+                    android:textStyle="bold" />
+
+                <!-- Hidden Fields maintained for code logic -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edtNombreCliente"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:visibility="gone">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearContentEntregaDatos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="Datos de Entrega"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edtNombreClienteDel"
+                        style="@style/AppTheme.TextInputLayout.Outlined"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Cliente">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtNombreClienteDelEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/AppTheme.TextInputLayout.Outlined"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="Fecha de Entrega">
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edtFechaEntrega"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:focusable="false" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <ImageButton
+                            android:id="@+id/btnGetDate"
+                            style="@style/AppTheme.Button.Icon"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_marginStart="8dp"
+                            app:srcCompat="@drawable/calendar"
+                            app:tint="@color/colorPrimary" />
+                    </LinearLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edtCelular"
+                        style="@style/AppTheme.TextInputLayout.Outlined"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:hint="Celular">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtCelularEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="phone" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edtEmail"
+                        style="@style/AppTheme.TextInputLayout.Outlined"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:hint="Email">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtEmailEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textEmailAddress" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edtCallaDel"
+                        style="@style/AppTheme.TextInputLayout.Outlined"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:hint="Dirección">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtCallaDelEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edtReferencia"
+                        style="@style/AppTheme.TextInputLayout.Outlined"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:hint="Referencia">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtReferenciaEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Medio de Pago"
+                        android:textColor="@color/gray_600"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/spnMediosPagoDel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp" />
+
+                    <!-- Legacy and additional fields -->
+                    <com.google.android.material.textfield.TextInputLayout android:id="@+id/edtCiudad" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone"><com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent" android:layout_height="wrap_content" /></com.google.android.material.textfield.TextInputLayout>
+                    <TextView android:id="@+id/txtFEntrega" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <Button
+                android:id="@+id/btnSalirPed"
+                style="@style/AppTheme.Button.Outlined"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cancelar"
+                android:textColor="@color/gray_700"
+                app:strokeColor="@color/gray_300" />
+
+            <Button
+                android:id="@+id/btnAceptarPed"
+                style="@style/AppTheme.Button.Modern"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Guardar"
+                app:icon="@drawable/save" />
+        </LinearLayout>
+
     </LinearLayout>
 
-</LinearLayout>
+</com.google.android.material.card.MaterialCardView>

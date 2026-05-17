@@ -6,6 +6,7 @@ import android.app.Dialog;
 
 
 import android.content.Context;
+import android.util.Log;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -86,11 +87,11 @@ public class dialogSelectCustomer extends DialogFragment implements DialogAddEdi
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder;
+        Context context = requireContext();
 
-        View v=((Activity)context).getLayoutInflater().inflate(R.layout.busqueda_cliente_venta,null);
+        View v = getActivity().getLayoutInflater().inflate(R.layout.busqueda_cliente_venta, null);
         try {
 
-            context=getActivity();
             builder = new AlertDialog.Builder(getActivity());
             controladorCliente = new ControladorCliente();
             dialogAddEditCustomer = new DialogAddEditCustomer();
@@ -138,8 +139,10 @@ public class dialogSelectCustomer extends DialogFragment implements DialogAddEdi
                 this.contentBusquedaAvanzada.setVisibility(View.VISIBLE);
                 this.lista1 = new ArrayList();
                 this.lista2 = new ArrayList();
-                for (Control1Cliente control1Cliente : Constantes.ControlCliente.control1Clientes) {
-                    this.lista1.add(control1Cliente.getDescripcionControl());
+                if (Constantes.ControlCliente.control1Clientes != null) {
+                    for (Control1Cliente control1Cliente : Constantes.ControlCliente.control1Clientes) {
+                        this.lista1.add(control1Cliente.getDescripcionControl());
+                    }
                 }
                 this.adapSpinner1Cliente = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, this.lista1);
                 this.spnControl1.setAdapter(this.adapSpinner1Cliente);
@@ -157,11 +160,14 @@ public class dialogSelectCustomer extends DialogFragment implements DialogAddEdi
                 this.contentBusquedaAvanzada.setVisibility(View.GONE);
             }
         }catch (Exception e){
-            e.toString();
-            builder=null;
+            Log.e("dialogSelectCustomer", "Error in onCreateDialog", e);
+            builder = new AlertDialog.Builder(getActivity());
          }
 
         new DownloadListClientes().execute("");
+        if (dialog == null) {
+            dialog = builder.create();
+        }
         return dialog;
     }
 
@@ -248,10 +254,10 @@ public class dialogSelectCustomer extends DialogFragment implements DialogAddEdi
     @Override
     public void ClienteSeleccionado(mCustomer cliente) {
         mCustomer customer=new mCustomer();
-        if(cliente.getTipoCliente()==context.getResources().getInteger(R.integer.ValorPersonaNatural)) {
+        if(cliente.getTipoCliente()==requireContext().getResources().getInteger(R.integer.ValorPersonaNatural)) {
             customer.setcName(cliente.getcName());
         }
-        else if(cliente.getTipoCliente()==context.getResources().getInteger(R.integer.ValorPersonaJuridica)){
+        else if(cliente.getTipoCliente()==requireContext().getResources().getInteger(R.integer.ValorPersonaJuridica)){
             customer.setcName(cliente.getRazonSocial());
         }
         customer.setcEmail(cliente.getcEmail());

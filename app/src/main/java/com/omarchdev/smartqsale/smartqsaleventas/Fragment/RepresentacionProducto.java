@@ -21,12 +21,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.omarchdev.smartqsale.smartqsaleventas.Controlador.RadioGroupedButton;
@@ -52,7 +52,7 @@ public class RepresentacionProducto extends Fragment implements View.OnClickList
     RadioGroup rgShape;
     Bitmap bmpImg;
     ImageView imageProduct;
-    ImageButton imgChoisePhoto, imgTakePhoto;
+    Button imgChoisePhoto, imgTakePhoto;
     boolean modificoImagen;
     static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int CAMERA_PERMISSION_REQUEST_CODE = 1;
@@ -69,7 +69,7 @@ public class RepresentacionProducto extends Fragment implements View.OnClickList
     RadioGroupedButton rb1, rb2, rb3, rb4, rb5, rb6, rb7, rb8;
     RadioGroup rgImagen;
     RadioButton rbColor, rbImagen;
-    RelativeLayout rlayoutColor;
+    ConstraintLayout rlayoutColor;
     ConstraintLayout rlayoutImagen;
     String ColorSeleccionado;
     String FormaSeleccionada;
@@ -113,11 +113,11 @@ public class RepresentacionProducto extends Fragment implements View.OnClickList
         rbImagen = (RadioButton) v.findViewById(R.id.rbImagen);
         rbColor = (RadioButton) v.findViewById(R.id.rbColor);
 
-        rlayoutColor = (RelativeLayout) v.findViewById(R.id.rlayoutColor);
+        rlayoutColor = (ConstraintLayout) v.findViewById(R.id.rlayoutColor);
         rlayoutImagen = v.findViewById(R.id.rlayoutImagen);
 
-        imgChoisePhoto = (ImageButton) v.findViewById(R.id.btnBuscarImagen);
-        imgTakePhoto = (ImageButton) v.findViewById(R.id.btnCamaraImagen);
+        imgChoisePhoto = (Button) v.findViewById(R.id.btnBuscarImagen);
+        imgTakePhoto = (Button) v.findViewById(R.id.btnCamaraImagen);
         imageProduct = (ImageView) v.findViewById(R.id.imageProduct);
 
 

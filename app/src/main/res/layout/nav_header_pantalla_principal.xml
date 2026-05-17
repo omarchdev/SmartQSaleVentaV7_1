@@ -1,41 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="8dp"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+    android:layout_margin="16dp"
+    app:cardBackgroundColor="@color/colorPrimary"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:srcCompat="@mipmap/ic_launcher" />
-
-    <TextView
-        android:id="@+id/txtNombreEmpresa"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="8dp"
-        android:text="Android Studio"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        />
-    <TextView
-        android:id="@+id/txtNombrePropietario"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:padding="8dp"
-        android:textColor="#ffffff"
-        android:textSize="14sp"
-        android:textStyle="bold"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="24dp">
 
-        ></TextView>
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            app:srcCompat="@mipmap/ic_launcher_foreground" />
 
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/txtNombreEmpresa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Nombre Empresa"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtNombrePropietario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Nombre Propietario"
+                android:textColor="@color/gray_100"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

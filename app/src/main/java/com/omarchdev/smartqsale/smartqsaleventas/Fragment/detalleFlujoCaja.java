@@ -69,8 +69,12 @@ public class detalleFlujoCaja extends Fragment {
 
     public void OcultarPantalla() {
 
-        rv.setVisibility(View.GONE);
-        progressBar.setVisibility(View.VISIBLE);
+        if (rv != null) {
+            rv.setVisibility(View.GONE);
+        }
+        if (progressBar != null) {
+            progressBar.setVisibility(View.VISIBLE);
+        }
 
     }
 
@@ -83,8 +87,12 @@ public class detalleFlujoCaja extends Fragment {
 
     public void MostrarPantalla() {
 
-        progressBar.setVisibility(View.GONE);
-        rv.setVisibility(View.VISIBLE);
+        if (progressBar != null) {
+            progressBar.setVisibility(View.GONE);
+        }
+        if (rv != null) {
+            rv.setVisibility(View.VISIBLE);
+        }
 
     }
 

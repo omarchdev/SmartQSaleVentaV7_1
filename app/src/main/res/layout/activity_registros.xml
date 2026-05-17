@@ -1,64 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center|top"
+    android:background="@color/backgroud_app"
     tools:context="com.omarchdev.smartqsale.smartqsaleventas.Activitys.ActivityRegistros">
 
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/btnRCliente"
+        <Button
+            android:id="@+id/btnRCliente"
+            style="@style/AppTheme.Button.Modern"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_margin="8dp"
+            android:text="Cliente"
+            app:icon="@drawable/account"
+            app:iconGravity="top" />
 
-        android:layout_width="140dp"
-        android:layout_height="80dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="13dp"
+        <Button
+            android:id="@+id/btnRVendedor"
+            style="@style/AppTheme.Button.Modern"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_margin="8dp"
+            android:text="Vendedor"
+            app:icon="@drawable/account_card_details"
+            app:iconGravity="top" />
 
-        android:layout_marginTop="45dp"
-        android:layout_toStartOf="@+id/btnRVendedor"
-        android:backgroundTint="#f48824"
-        android:text="Cliente"
-        android:textColor="#ffffff"
-        android:textStyle="bold" />
+        <Button
+            android:id="@+id/btnRInventario"
+            style="@style/AppTheme.Button.Modern"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_margin="8dp"
+            android:text="Inventario"
+            app:icon="@drawable/archive"
+            app:iconGravity="top" />
 
-    <Button
-        android:id="@+id/btnRVendedor"
-        android:layout_width="140dp"
-        android:layout_height="80dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/btnRCliente"
-        android:layout_marginEnd="51dp"
-        android:layout_marginLeft="80dp"
-        android:backgroundTint="#f48824"
-        android:text="Vendedor"
-        android:textColor="#ffffff"
-        android:textStyle="bold" />
+        <Button
+            android:id="@+id/btnCategoria"
+            style="@style/AppTheme.Button.Modern"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_margin="8dp"
+            android:text="Categorías"
+            app:icon="@drawable/alpha_p_box"
+            app:iconGravity="top" />
 
-    <Button
-        android:id="@+id/btnRInventario"
-        android:layout_width="140dp"
-        android:layout_height="80dp"
+    </GridLayout>
 
-        android:layout_alignStart="@+id/btnRCliente"
-        android:layout_below="@+id/btnRCliente"
-        android:layout_marginTop="21dp"
-
-
-        android:backgroundTint="#f48824"
-        android:text="Inventario"
-        android:textColor="#ffffff"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/btnCategoria"
-        android:layout_width="140dp"
-        android:layout_height="80dp"
-        android:layout_alignTop="@+id/btnRInventario"
-        android:layout_toEndOf="@+id/btnRCliente"
-        android:backgroundTint="#f48824"
-        android:text="Categorias"
-        android:textColor="#ffffff"
-        android:textStyle="bold" />
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,42 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/AppTheme.Card.Modern"
     android:id="@+id/LLDialogAddPrice"
-    android:orientation="vertical" android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-    <RelativeLayout
-        android:layout_width="350dp"
-        android:layout_height="100dp">
+    <LinearLayout
+        android:id="@+id/RLContentEditTextAddPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="32dp">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Ingrese Precio Adicional"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold" />
 
-        <RelativeLayout
+        <EditText
+            android:id="@+id/edtAddPrice"
+            style="@style/AppTheme.EditText.Modern"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="0.00"
+            android:inputType="numberDecimal"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-            android:id="@+id/RLContentEditTextAddPrice"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:gravity="center">
+    </LinearLayout>
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:background="#ff8c00"
-                android:padding="5dp">
-
-                <EditText
-                    android:id="@+id/edtAddPrice"
-                    android:layout_width="200dp"
-                    android:layout_height="60dp"
-                    android:gravity="center"
-                    android:hint="0"
-                    android:inputType="numberDecimal" />
-
-            </RelativeLayout>
-        </RelativeLayout>
-
-
-    </RelativeLayout>
-
-</LinearLayout>
+</com.google.android.material.card.MaterialCardView>

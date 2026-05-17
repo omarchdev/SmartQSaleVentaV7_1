@@ -6,8 +6,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import androidx.appcompat.widget.Toolbar;
 
 import androidx.fragment.app.Fragment;
@@ -44,6 +42,7 @@ import com.omarchdev.smartqsale.smartqsaleventas.Model.mCategoriaProductos;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mProduct;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mUnidadMedida;
 import com.omarchdev.smartqsale.smartqsaleventas.R;
+import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 
 import org.jetbrains.annotations.NotNull;
@@ -79,7 +78,7 @@ AsyncCategoria.ListenerCategoria, AsyncAreasProduccion.ListenerAreasProduccion, 
     DialogCargaAsync cargaAsync;
     Dialog dialog;
     ImagenesController imagenesController;
-    com.github.clans.fab.FloatingActionButton buttonEdit,buttonDelete;
+    FloatingActionButton buttonEdit,buttonDelete;
     static Context context;
     boolean procesoVariantes;
     byte favorite;
@@ -113,7 +112,15 @@ AsyncCategoria.ListenerCategoria, AsyncAreasProduccion.ListenerAreasProduccion, 
         estadoModificar=true;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Agregar producto");
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Agregar producto");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+        toolbar.setTitleTextColor(getResources().getColor(R.color.black));
+        if (toolbar.getNavigationIcon() != null) {
+            toolbar.getNavigationIcon().setTint(getResources().getColor(R.color.black));
+        }
         dialogMensaje=new AlertDialog.Builder(this);
         permitirGuardarVariantes=false;
         imagenesController=new ImagenesController();
@@ -125,7 +132,6 @@ AsyncCategoria.ListenerCategoria, AsyncAreasProduccion.ListenerAreasProduccion, 
         product.setEsFavorito(false);
         EstadoConfigVaria =false;
         cargaAsync=new DialogCargaAsync(this);
-        toolbar.inflateMenu(R.menu.menu_registro__producto);
         representacionProducto=new RepresentacionProducto();
         representacionProducto.setListenerRepresentacionProducto(getRepresentacion);
         fab=(FloatingActionButton)findViewById(R.id.fabActionRegistro);
@@ -140,9 +146,6 @@ AsyncCategoria.ListenerCategoria, AsyncAreasProduccion.ListenerAreasProduccion, 
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.setOffscreenPageLimit(10);
         listaUnidades=new ArrayList<>();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back_home);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         actionMenu=(FloatingActionMenu)findViewById(R.id.actionMenu);
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));

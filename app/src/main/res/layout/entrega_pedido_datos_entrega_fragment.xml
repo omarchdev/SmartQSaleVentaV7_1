@@ -4,201 +4,81 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroud_app"
     tools:context=".Fragment.EntregaPedidoDatosEntrega">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/txtTituloDatosEntrega"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Datos de entrega"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="vertical"
+            android:padding="16dp">
 
-        <android.support.v7.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:paddingTop="24dp"
-            android:paddingBottom="24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtTituloDatosEntrega"
-            app:layout_constraintVertical_bias="0.0">
-
-            <TableLayout
+            <TextView
+                android:id="@+id/txtTituloDatosEntrega"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="8dp"
-                android:paddingTop="16dp">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Resumen de Entrega"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-                <TableRow
+            <com.google.android.material.card.MaterialCardView
+                style="@style/AppTheme.Card.Modern"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TableLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="8dp">
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:stretchColumns="1">
 
-                    <TextView
-                        android:id="@+id/txtEtqNroPedido"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Nro Pedido"
-                        android:textStyle="bold" />
+                    <TableRow android:layout_marginBottom="12dp">
+                        <TextView android:id="@+id/txtEtqNroPedido" android:text="Nro Pedido" android:textColor="@color/gray_600" android:textStyle="bold" />
+                        <TextView android:id="@+id/txtNroPedido" android:gravity="end" android:textColor="@color/gray_900" android:textStyle="bold" />
+                    </TableRow>
 
-                    <TextView
-                        android:id="@+id/txtNroPedido"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="5"
-                        android:textAlignment="textEnd" />
-                </TableRow>
+                    <TableRow android:layout_marginBottom="12dp">
+                        <TextView android:id="@+id/txtEtqEstadoActual" android:text="Estado" android:textColor="@color/gray_600" android:textStyle="bold" />
+                        <TextView android:id="@+id/txtEstadoActual" android:gravity="end" android:textColor="@color/colorPrimary" android:textStyle="bold" />
+                    </TableRow>
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="8dp">
+                    <TableRow android:layout_marginBottom="12dp">
+                        <TextView android:id="@+id/txtEtqFechaCreacion" android:text="Creación" android:textColor="@color/gray_600" android:textStyle="bold" />
+                        <TextView android:id="@+id/txtFechaCreacion" android:gravity="end" android:textColor="@color/gray_800" />
+                    </TableRow>
 
-                    <TextView
-                        android:id="@+id/txtEtqEstadoActual"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Estado Actual"
-                        android:textStyle="bold" />
+                    <View android:layout_height="1dp" android:background="@color/gray_100" android:layout_marginBottom="12dp" />
 
-                    <TextView
-                        android:id="@+id/txtEstadoActual"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="5"
-                        android:textAlignment="textEnd" />
-                </TableRow>
+                    <TableRow android:layout_marginBottom="12dp">
+                        <TextView android:id="@+id/txtEtqCliente" android:text="Cliente" android:textColor="@color/gray_600" android:textStyle="bold" />
+                        <TextView android:id="@+id/txtCliente" android:gravity="end" android:textColor="@color/gray_900" android:textStyle="bold" />
+                    </TableRow>
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="8dp">
+                    <TableRow android:layout_marginBottom="12dp">
+                        <TextView android:id="@+id/txtEtqCelular" android:text="Celular" android:textColor="@color/gray_600" android:textStyle="bold" />
+                        <TextView android:id="@+id/txtCelular" android:gravity="end" android:textColor="@color/gray_800" />
+                    </TableRow>
 
-                    <TextView
-                        android:id="@+id/txtEtqFechaCreacion"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Fecha de Creacion"
-                        android:textStyle="bold" />
+                    <TableRow android:layout_marginBottom="12dp">
+                        <TextView android:id="@+id/txtEtqTipoEntrega" android:text="Tipo" android:textColor="@color/gray_600" android:textStyle="bold" />
+                        <TextView android:id="@+id/txtTipoEntrega" android:gravity="end" android:textColor="@color/gray_800" />
+                    </TableRow>
 
-                    <TextView
-                        android:id="@+id/txtFechaCreacion"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="5"
-                        android:textAlignment="textEnd" />
-                </TableRow>
+                    <TableRow>
+                        <TextView android:id="@+id/txtEtqDireccion" android:text="Dirección" android:textColor="@color/gray_600" android:textStyle="bold" />
+                        <TextView android:id="@+id/txtDireccion" android:gravity="end" android:textColor="@color/gray_800" />
+                    </TableRow>
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="8dp">
+                </TableLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-                    <TextView
-                        android:id="@+id/txtEtqCliente"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Cliente"
-                        android:textStyle="bold" />
+        </LinearLayout>
+    </ScrollView>
 
-                    <TextView
-                        android:id="@+id/txtCliente"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="5"
-                        android:textAlignment="textEnd" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="8dp">
-
-                    <TextView
-                        android:id="@+id/txtEtqCelular"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Nro Celular"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/txtCelular"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="5"
-                        android:textAlignment="textEnd" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="8dp">
-
-                    <TextView
-                        android:id="@+id/txtEtqTipoEntrega"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Tipo de Entrega"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/txtTipoEntrega"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="5"
-                        android:textAlignment="textEnd" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="8dp">
-
-                    <TextView
-                        android:id="@+id/txtEtqDireccion"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Direccion"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/txtDireccion"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="5"
-                        android:textAlignment="textEnd" />
-                </TableRow>
-
-            </TableLayout>
-        </android.support.v7.widget.CardView>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

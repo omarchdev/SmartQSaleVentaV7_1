@@ -41,7 +41,7 @@ class PedidoReservaResumenFragment : Fragment() {
 
 
             if(it.loading==false){
-                dialogCargaAsync?.hide()
+                dialogCargaAsync?.dismiss()
             }else{
                 dialogCargaAsync=DialogCargaAsync(context)
                 dialogCargaAsync?.getDialogCarga("Espere un momento")?.show()

@@ -406,7 +406,9 @@ public class AsyncModificadores  {
         protected void onPostExecute(Modificador modificador) {
             super.onPostExecute(modificador);
             listenerConfigProdMod.ResultadoIngresarModificadorProducto(modificador);
-            dialog.hide();
+            if (dialog != null && dialog.isShowing()) {
+                dialog.dismiss();
+            }
         }
     }
 
@@ -446,7 +448,9 @@ public class AsyncModificadores  {
         protected void onPostExecute(Byte aByte) {
             super.onPostExecute(aByte);
             listenerConfigProdMod.ResultadoActEstadoModProd(aByte);
-            dialog.hide();
+            if (dialog != null && dialog.isShowing()) {
+                dialog.dismiss();
+            }
         }
     }
 
@@ -595,6 +599,12 @@ public class AsyncModificadores  {
     public void cancelarBusqueda(){
         if(buscarModificadores!=null) {
             buscarModificadores.cancel(true);
+        }
+    }
+
+    public void dismissDialog() {
+        if (dialog != null && dialog.isShowing()) {
+            dialog.dismiss();
         }
     }
 

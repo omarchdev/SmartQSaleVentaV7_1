@@ -4,43 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroud_app"
     tools:context=".Activitys.ListaImpresorasAreas">
-    <LinearLayout
-        android:orientation="vertical"
+
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <com.google.android.material.appbar.AppBarLayout
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/AppTheme.AppBarOverlay">
+            android:layout_height="?attr/actionBarSize"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                style="@style/CustomActionBarStyle"/>
+    </com.google.android.material.appbar.AppBarLayout>
 
-        </com.google.android.material.appbar.AppBarLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <include layout="@layout/content_lista_impresoras_areas" />
 
-            <include layout="@layout/content_lista_impresoras_areas" />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_gravity="bottom|end"
-                android:layout_margin="@dimen/fab_margin"
-                android:layout_marginEnd="0dp"
-                android:layout_marginBottom="0dp"
-                app:srcCompat="@drawable/fab_add" />
-
-        </RelativeLayout>
-    </LinearLayout>
-
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        app:srcCompat="@drawable/fab_add"
+        app:tint="@color/white" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

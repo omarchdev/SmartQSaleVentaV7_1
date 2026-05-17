@@ -1,120 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-
-    android:layout_margin="5dp">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Nombre del Cliente"
-        android:textSize="15dp"
-        />
-
-    <TextView
-        android:id="@+id/txtDetailClientNombre"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Nombre Cliente"
-        android:textSize="20sp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#dce1e1e1"></LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Alias"
-        android:textSize="15sp"
-        />
-    <TextView
-        android:id="@+id/txtDetailClientAlias"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Alias"
-        android:textSize="20sp"
-        />
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#dce1e1e1"></LinearLayout>
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:text="Direccion"
-        android:textSize="15sp"
-        />
-    <TextView
-        android:id="@+id/txtDetailDireccion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Direccion"
-        android:textSize="20sp"
-        />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#dce1e1e1"></LinearLayout>
-
-    <Button
-        android:id="@+id/btnCallFirstNumber"
-        style="?android:attr/imageButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:layout_margin="5dp"
-        android:background="#00aeff"
-        android:drawableLeft="@android:drawable/ic_menu_call"
-        android:padding="5dp"
-        android:visibility="gone" />
-
-    <Button
-        android:id="@+id/btnSendEmail"
-        android:background="#00aeff"
-        android:visibility="gone"
-        android:padding="5dp"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:drawableLeft="@android:drawable/ic_dialog_email" />
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/AppTheme.Card.Modern"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-       >
+        android:orientation="vertical"
+        android:padding="24dp">
 
-        <Button
-            android:textColor="#ffffff"
-            android:id="@+id/btnCloseDialogDetailCliente"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:padding="5dp"
-            android:gravity="center"
-            android:backgroundTint="#ff0804"
-            android:text="Cerrar"
-            android:drawableLeft="@drawable/ic_close_white_24dp"
-            android:elevation="5dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Detalle del Cliente"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp"/>
 
-        <Button
-            android:elevation="5dp"
-            android:id="@+id/btnEditCliente"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre"
+            android:textColor="@color/gray_600"
+            android:textSize="12sp"
+            android:textStyle="bold" />
 
-            android:backgroundTint="#00aeff"
-            android:drawableLeft="@drawable/pencil_edit"
-            android:padding="5dp"
-            android:text="Editar"
-            android:textColor="#ffffff" />
+        <TextView
+            android:id="@+id/txtDetailClientNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Nombre Cliente"
+            android:textColor="@color/gray_900"
+            android:textSize="18sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="@color/gray_200" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alias"
+            android:textColor="@color/gray_600"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtDetailClientAlias"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Alias"
+            android:textColor="@color/gray_900"
+            android:textSize="18sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="@color/gray_200" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dirección"
+            android:textColor="@color/gray_600"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtDetailDireccion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Direccion"
+            android:textColor="@color/gray_900"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnCloseDialogDetailCliente"
+                style="@style/AppTheme.Button.Outlined"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cerrar"
+                android:textColor="@color/gray_700"
+                app:strokeColor="@color/gray_300" />
+
+            <Button
+                android:id="@+id/btnEditCliente"
+                style="@style/AppTheme.Button.Modern"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:text="Editar"
+                app:icon="@drawable/pencil_edit" />
+        </LinearLayout>
+
+        <!-- Hidden but existing IDs -->
+        <Button android:id="@+id/btnCallFirstNumber" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+        <Button android:id="@+id/btnSendEmail" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+
     </LinearLayout>
 
-</LinearLayout>
+</com.google.android.material.card.MaterialCardView>

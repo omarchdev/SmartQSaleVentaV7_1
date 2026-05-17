@@ -4,117 +4,90 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="@color/backgroud_app"
     tools:context=".Activitys.SoporteTecnico">
 
-
-    <Button
-
-        android:id="@+id/btnCall"
-        android:layout_width="220dp"
-        android:layout_height="80dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-
-        android:drawablePadding="24dp"
-        android:drawableRight="@drawable/whatsapp"
-        android:text="Contactar a\n servicio TÉCNICO"
-        app:layout_constraintBottom_toTopOf="@+id/btnReiniciarApp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCallNumber"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/btnReiniciarApp"
-        android:layout_width="220dp"
-        android:layout_height="80dp"
-        android:layout_marginBottom="72dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-
-        android:drawablePadding="24dp"
-        android:drawableRight="@drawable/resetdraw"
-        android:text="Reiniciar Aplicación"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/txtMensaje"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="@color/gray_900"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="32dp" />
+
+        <Button
+            android:id="@+id/btnCallNumber"
+            style="@style/AppTheme.Button.Modern"
+            android:layout_width="260dp"
+            android:layout_height="72dp"
+            app:icon="@drawable/ic_phone_white_48dp"
+            app:iconSize="32dp"
+            app:iconGravity="textEnd"
+            android:text="Llamar a soporte" />
+
+        <Button
+            android:id="@+id/btnCall"
+            style="@style/AppTheme.Button.Modern"
+            android:layout_width="260dp"
+            android:layout_height="72dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#25D366"
+            app:icon="@drawable/whatsapp"
+            app:iconSize="32dp"
+            app:iconGravity="textEnd"
+            android:text="WhatsApp Soporte" />
+
+        <Button
+            android:id="@+id/btnActualizar"
+            style="@style/AppTheme.Button.Modern"
+            android:layout_width="260dp"
+            android:layout_height="72dp"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"
+            app:icon="@drawable/ic_download_white_36dp"
+            app:iconGravity="textEnd"
+            android:text="Actualizar App" />
+
+        <Button
+            android:id="@+id/btnReiniciarApp"
+            style="@style/AppTheme.Button.Outlined"
+            android:layout_width="260dp"
+            android:layout_height="72dp"
+            android:layout_marginTop="32dp"
+            app:icon="@drawable/resetdraw"
+            app:iconGravity="textEnd"
+            android:text="Reiniciar Aplicación" />
+
+        <TextView
+            android:id="@+id/txtVersion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:text="Versión: 1.0.0"
+            android:textColor="@color/gray_500"
+            android:textSize="14sp" />
+
+    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/pb"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:elevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btnCallNumber"
-        android:layout_width="220dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-
-        android:drawableRight="@drawable/ic_phone_white_48dp"
-        android:text="Llamar a servicio técnico"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtMensaje" />
-
-    <Button
-        android:id="@+id/btnActualizar"
-        android:layout_width="220dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
-
-        android:drawableRight="@drawable/ic_download_white_36dp"
-        android:text="Actualizar Aplicacion"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCallNumber" />
-
-    <TextView
-
-        android:id="@+id/txtMensaje"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:textColor="#000000"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/txtVersion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="demo"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnReiniciarApp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

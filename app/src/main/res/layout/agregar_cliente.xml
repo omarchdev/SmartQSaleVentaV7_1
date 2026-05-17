@@ -1,212 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroud_app"
     android:orientation="vertical">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3">
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:padding="16dp">
 
-        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        <com.google.android.material.card.MaterialCardView
+            style="@style/AppTheme.Card.Modern"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:paddingLeft="10dp"
-            android:paddingRight="5dp">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:gravity="center"
+                    android:text="Registrar Cliente"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilNombreCliente"
+                    style="@style/AppTheme.TextInputLayout.Outlined"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_column="1"
-                    android:layout_marginLeft="10dp"
-                    android:layout_row="0"
-                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp"
                     app:counterEnabled="true"
                     app:counterMaxLength="30"
+                    app:errorEnabled="true">
 
-                    app:errorEnabled="true"
-                    app:hintAnimationEnabled="true">
-
-                    <EditText
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtCustomerName"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:ems="12"
+                        android:layout_height="wrap_content"
                         android:hint="Nombre del Cliente"
-                        android:inputType="text"
-                        android:maxLength="30"
-                        android:maxLines="1" />
-
+                        android:inputType="textPersonName"
+                        android:maxLength="30" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilApellidoPaternoCliente"
+                    style="@style/AppTheme.TextInputLayout.Outlined"
                     android:layout_width="match_parent"
-
                     android:layout_height="wrap_content"
-                    android:layout_column="1"
-                    android:layout_marginLeft="10dp"
-                    android:layout_row="0"
-                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp"
                     app:counterEnabled="true"
                     app:counterMaxLength="30"
-                    app:errorEnabled="true"
-                    app:errorTextAppearance="@style/Error"
-                    app:hintAnimationEnabled="true">
+                    app:errorEnabled="true">
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtCustomerApellidoPaterno"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:ems="10"
+                        android:layout_height="wrap_content"
                         android:hint="Apellido Paterno"
-                        android:inputType="text"
-                        android:maxLength="30"
-                        android:maxLines="1" />
-
+                        android:inputType="textPersonName"
+                        android:maxLength="30" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilApellidoMaternoCLiente"
+                    style="@style/AppTheme.TextInputLayout.Outlined"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_column="1"
-                    android:layout_marginLeft="10dp"
-                    android:layout_row="0"
-                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp"
                     app:counterEnabled="true"
                     app:counterMaxLength="30"
-                    app:errorEnabled="true"
-                    app:errorTextAppearance="@style/Error"
-                    app:hintAnimationEnabled="true">
+                    app:errorEnabled="true">
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtCustomerApellidoMaterno"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:ems="10"
+                        android:layout_height="wrap_content"
                         android:hint="Apellido Materno"
-                        android:inputType="text"
-                        android:maxLength="30"
-                        android:maxLines="1" />
-
+                        android:inputType="textPersonName"
+                        android:maxLength="30" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilNumeroTelefonoCustomer"
+                    style="@style/AppTheme.TextInputLayout.Outlined"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_column="1"
-                    android:layout_marginLeft="10dp"
-                    android:layout_row="0"
-                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp"
                     app:counterEnabled="true"
                     app:counterMaxLength="15"
-                    app:errorEnabled="true"
-                    app:errorTextAppearance="@style/Error"
-                    app:hintAnimationEnabled="true">
+                    app:errorEnabled="true">
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtCustomerPhone"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:ems="10"
-                        android:hint="Numero Telefono"
+                        android:layout_height="wrap_content"
+                        android:hint="Número de Teléfono"
                         android:inputType="phone"
-                        android:maxLength="15"
-                        android:maxLines="1" />
-
+                        android:maxLength="15" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilEmailCliente"
+                    style="@style/AppTheme.TextInputLayout.Outlined"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_column="1"
-                    android:layout_marginLeft="10dp"
-                    android:layout_row="0"
-                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp"
                     app:counterEnabled="true"
                     app:counterMaxLength="30"
-                    app:errorEnabled="true"
-                    app:errorTextAppearance="@style/Error"
-                    app:hintAnimationEnabled="true">
+                    app:errorEnabled="true">
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtCustomerEmail"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:ems="10"
+                        android:layout_height="wrap_content"
                         android:hint="Email"
                         android:inputType="textEmailAddress"
-                        android:maxLength="30"
-                        android:maxLines="1" />
-
+                        android:maxLength="30" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilDireccionCliente"
+                    style="@style/AppTheme.TextInputLayout.Outlined"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_column="1"
-                    android:layout_marginLeft="10dp"
-                    android:layout_row="0"
-                    android:orientation="horizontal"
                     app:counterEnabled="true"
-                    app:counterMaxLength="30"
+                    app:counterMaxLength="250"
+                    app:errorEnabled="true">
 
-                    app:errorEnabled="true"
-                    app:errorTextAppearance="@style/Error"
-                    app:hintAnimationEnabled="true">
-
-                    <EditText
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtCustomerDirection"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:ems="10"
-                        android:hint="Direccion"
-                        android:inputType="text"
-                        android:maxLines="1" />
-
+                        android:layout_height="wrap_content"
+                        android:hint="Dirección"
+                        android:inputType="textPostalAddress"
+                        android:maxLength="250" />
                 </com.google.android.material.textfield.TextInputLayout>
+
             </LinearLayout>
-        </ScrollView>
-    </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </ScrollView>
 
     <LinearLayout
-
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp">
 
         <Button
             android:id="@+id/btnCancelar"
+            style="@style/AppTheme.Button.Outlined"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:layout_weight="1"
-            android:backgroundTint="#ff3333"
-            android:gravity="center"
             android:text="Cancelar"
-            android:textColor="#ffffff" />
+            android:textColor="@color/status_error"
+            app:strokeColor="@color/status_error" />
 
         <Button
             android:id="@+id/btnGuardar"
+            style="@style/AppTheme.Button.Modern"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_weight="1"
-            android:backgroundTint="#5f4eff"
-            android:gravity="center"
-            android:text="Guardar"
-            android:textColor="#ffffff" />
+            android:text="Guardar" />
     </LinearLayout>
 
 </LinearLayout>

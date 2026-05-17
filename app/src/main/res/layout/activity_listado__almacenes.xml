@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-
     android:layout_height="match_parent"
+    android:background="@color/backgroud_app"
     tools:context=".Activitys.Listado_Almacenes">
 
 
@@ -34,14 +34,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:id="@+id/rvListadoAlm"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/rvListadoAlm"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></androidx.recyclerview.widget.RecyclerView>
+        android:clipToPadding="false"
+        android:padding="8dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     <TextView
         android:textStyle="bold"

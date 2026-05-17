@@ -1,52 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/AppTheme.Card.Modern"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout2"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:padding="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp">
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <ImageView
-            android:id="@+id/imgBack"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/relativeLayout2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignTop="@+id/btnAgregar"
-            android:src="@drawable/arrow_back_simple" />
+            android:gravity="center_vertical">
 
-        <EditText
-            android:id="@+id/edtNombreCtegoria"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/imgBack"
-            android:layout_toEndOf="@+id/imgBack"
-            android:ems="10"
-            android:hint="Buscar Categoria"
-            android:inputType="textPersonName" />
+            <ImageButton
+                android:id="@+id/imgBack"
+                style="@style/AppTheme.Button.Icon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentStart="true"
+                app:srcCompat="@drawable/arrow_back_simple"
+                app:tint="@color/gray_700" />
 
-        <Button
-            android:id="@+id/btnAgregar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-            android:backgroundTint="@color/colorPrimary"
-            android:text="Agregar"
-            android:textColor="@android:color/white" />
-    </RelativeLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/AppTheme.TextInputLayout.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_toStartOf="@id/btnAgregar"
+                android:layout_toEndOf="@id/imgBack"
+                android:hint="Buscar Categoría">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvCategoriaProductos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/relativeLayout2"
-       />
-</RelativeLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtNombreCtegoria"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnAgregar"
+                style="@style/AppTheme.Button.Modern"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
+                android:text="NUEVA" />
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCategoriaProductos"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:layout_marginTop="16dp"
+            android:clipToPadding="false"
+            android:padding="4dp" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

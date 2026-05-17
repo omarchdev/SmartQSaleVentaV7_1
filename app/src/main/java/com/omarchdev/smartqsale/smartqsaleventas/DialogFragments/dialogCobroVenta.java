@@ -11,7 +11,7 @@ import static com.omarchdev.smartqsale.smartqsaleventas.Model.CiaTiendaKt.GetJso
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -32,7 +32,7 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
-import android.widget.Switch;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -84,7 +84,7 @@ public class dialogCobroVenta extends DialogFragment implements View.OnClickList
     int idCabeceraPedido;
     String TextoTituloPago;
     ImageButton imgArrowBack;
-    RelativeLayout rvContenedorPago;
+    LinearLayout rvContenedorPago;
     TextView txtSinMetodoDePago, txtTituloPrecio;
     Button btnFinalizarVenta;
     List<RadioButton> listRadioTiposAtencion;
@@ -112,7 +112,7 @@ public class dialogCobroVenta extends DialogFragment implements View.OnClickList
     mCustomer cliente;
     BigDecimal montoTotal;
     boolean permitirVenta;
-    Switch swPromocion;
+    SwitchMaterial swPromocion;
     Promocion promocionGeneral;
     RadioGroup rgAtencion;
     BigDecimal montoUtilizarPromocion;
@@ -272,7 +272,7 @@ public class dialogCobroVenta extends DialogFragment implements View.OnClickList
             rvMetodosDePago.setLayoutManager(new LinearLayoutManager(context));
             rvMetodosDePago.setAdapter(rvAdapterPagosEnVenta);
             swPromocion = v.findViewById(R.id.swPromocion);
-            edtObservacion = v.findViewById(R.id.edtObservacion);
+            edtObservacion = v.findViewById(R.id.edtObservacionLayout);
             rgAtencion = v.findViewById(R.id.rgAtencion);
             rvAdapterPagosEnVenta.setListenerCantidadPagos(this);
             rvGridMPagos = new RvAdapterGridMetodoPago();
@@ -354,7 +354,7 @@ public class dialogCobroVenta extends DialogFragment implements View.OnClickList
 
             new DownloadList().execute();
         } catch (Exception e) {
-            e.toString();
+            Log.e("dialogCobroVenta", "Error en declararVariables: " + e.getMessage(), e);
         }
     }
 
@@ -739,7 +739,7 @@ public class dialogCobroVenta extends DialogFragment implements View.OnClickList
                 DialogCalculadoraPago dialogCalculadoraPago = new DialogCalculadoraPago().newInstance(idMetodoPago,
                         context, CantidadTotalPago, codigoMetodoPago, nombreTipoPago);
                 DialogFragment dialogFragment = dialogCalculadoraPago;
-                dialogFragment.show(getFragmentManager(), "CalculadoraPago");
+                dialogFragment.show(getParentFragmentManager(), "CalculadoraPago");
                 dialogCalculadoraPago.setListenerCantidadPago(this);
 
             } else {
@@ -748,7 +748,7 @@ public class dialogCobroVenta extends DialogFragment implements View.OnClickList
                 final String nombreMedio = nombreTipoPago;
                 DialogScannerCam scannerCam = new DialogScannerCam();
                 scannerCam.setScannerResult(resultText -> PasarCantidadCancelada(idMP, new BigDecimal(resultText), codigo, nombreMedio));
-                scannerCam.show(getFragmentManager(), "");
+                scannerCam.show(getParentFragmentManager(), "");
             }
         }
     }
@@ -931,7 +931,7 @@ public class dialogCobroVenta extends DialogFragment implements View.OnClickList
             if (promocion.getIdPromocion() == -99) {
                 dialogCobroVenta.this.swPromocion.setChecked(false);
             } else if (promocion.getIdPromocion() > 0) {
-                Switch switchR = dialogCobroVenta.this.swPromocion;
+                SwitchMaterial switchR = dialogCobroVenta.this.swPromocion;
                 StringBuilder stringBuilder = new StringBuilder();
                 stringBuilder.append("PROMOCION : ACTIVADO ");
                 stringBuilder.append(dialogCobroVenta.this.promocionGeneral.getDescripcion());

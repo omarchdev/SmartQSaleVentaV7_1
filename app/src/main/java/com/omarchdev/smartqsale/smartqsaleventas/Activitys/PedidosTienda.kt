@@ -3,7 +3,7 @@ package com.omarchdev.smartqsale.smartqsaleventas.Activitys
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.SearchView
+import androidx.appcompat.widget.SearchView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.omarchdev.smartqsale.smartqsaleventas.AsyncTask.AsyncPedidos
 import com.omarchdev.smartqsale.smartqsaleventas.ClickListener
@@ -114,7 +114,7 @@ class PedidosTienda : ActivityParent(), ClickListener,
     private fun MostrarDialogDatePicker(origen: Byte, year: Int, month: Int, day: Int) {
         val dialogDatePickerSelect = DialogDatePickerSelect().newInstance(origen, year, month, day)
         dialogDatePickerSelect.setFechaListener(this)
-        dialogDatePickerSelect.show(this.fragmentManager, "Dialog Fecha")
+        dialogDatePickerSelect.show(this.supportFragmentManager, "Dialog Fecha")
     }
 
     override fun getFechaSelecionada(day: Int, month: Int, year: Int, origen: Byte) {

@@ -20,7 +20,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.SearchView;
+import androidx.appcompat.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 

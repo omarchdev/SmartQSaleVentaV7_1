@@ -1,53 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/AppTheme.Card.Modern"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <LinearLayout
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:orientation="horizontal"
-        android:background="#FFCCCCCC"
-        app:layout_constraintTop_toTopOf="parent"
-        ></LinearLayout>
-
-    <TextView
-        android:id="@+id/txtDescripcionModificador"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="16dp">
 
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/txtDescripcionModificador"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Nombre del Modificador"
+            android:textColor="@color/gray_900"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnEditar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageButton
+            android:id="@+id/btnEditar"
+            style="@style/AppTheme.Button.Icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnDelete"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/pencil_edit"
+            app:tint="@color/gray_700" />
 
-    <ImageButton
-        android:id="@+id/btnDelete"
+        <ImageButton
+            android:id="@+id/btnDelete"
+            style="@style/AppTheme.Button.Icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_delete_white_24dp"
+            app:tint="@color/status_error" />
 
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        android:background="?selectableItemBackgroundBorderless"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_delete_white_24dp" />
-
-    <Button
-        android:id="@+id/btnEditar"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:drawableTint="@color/colorIconoBtnBordeless"
-
-        android:drawableTop="@drawable/pencil_edit"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnDelete"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

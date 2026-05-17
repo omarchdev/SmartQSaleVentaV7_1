@@ -2,7 +2,7 @@ package com.omarchdev.smartqsale.smartqsaleventas.DialogFragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;

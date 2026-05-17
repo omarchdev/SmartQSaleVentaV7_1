@@ -30,21 +30,21 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_marginEnd="0dp"
+            android:padding="16dp"
             android:orientation="vertical">
             <Button
-                android:drawableTint="@color/white"
-                android:drawableLeft="@drawable/open_door"
                 android:id="@+id/btnCerrarSesion"
-                android:background="@color/colorFondo"
-                android:textColor="@color/white"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_margin="0dp"
+                style="@style/AppTheme.Button.Modern"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Cerrar Sesión"/>
+                android:layout_height="wrap_content"
+                android:text="Cerrar Sesión"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/gray_900"
+                app:icon="@drawable/open_door"
+                app:iconTint="@color/gray_900"
+                app:iconGravity="textStart" />
         </LinearLayout>
 
     </com.google.android.material.navigation.NavigationView>

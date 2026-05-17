@@ -19,6 +19,7 @@ import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.material.card.MaterialCardView;
 import com.omarchdev.smartqsale.smartqsaleventas.ConexionBd.BdConnectionSql;
 import com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes;
 import com.omarchdev.smartqsale.smartqsaleventas.InterfaceDetalleCarritoVenta;
@@ -329,7 +330,7 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     class ProductosInSaleViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        RelativeLayout cv;
+        MaterialCardView cv;
         ImageView imageViewProduct;
         TextView productName;
         TextView productPrice;
@@ -339,7 +340,7 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         public ProductosInSaleViewHolder(View itemView) {
 
             super(itemView);
-            cv = (RelativeLayout) itemView.findViewById(R.id.cvProductInSale);
+            cv = (MaterialCardView) itemView.findViewById(R.id.cvProductInSale);
             imageViewProduct = (ImageView) itemView.findViewById(R.id.ImageProductPhoto);
             productName = (TextView) itemView.findViewById(R.id.txtNombreProducto);
             productPrice = (TextView) itemView.findViewById(R.id.txtPrecioProducto);
@@ -363,7 +364,7 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     class ProductosViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        RelativeLayout cv;
+        MaterialCardView cv;
         TextView tvPrecio;
         TextView tvCantidad;
         TextView tvProductId;
@@ -376,7 +377,7 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         public ProductosViewHolder(View itemView) {
             super(itemView);
-            cv = (RelativeLayout) itemView.findViewById(R.id.cvProduct);
+            cv = (MaterialCardView) itemView.findViewById(R.id.cvProduct);
             tvPrecio = (TextView) itemView.findViewById(R.id.tvPrecio);
             tvCantidad = (TextView) itemView.findViewById(R.id.tvCantidad);
             tvProductName = (TextView) itemView.findViewById(R.id.tvproductName);

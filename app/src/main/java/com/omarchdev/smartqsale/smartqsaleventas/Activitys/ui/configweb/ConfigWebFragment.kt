@@ -70,18 +70,18 @@ class ConfigWebFragment : Fragment(), TextWatcher {
             viewModel.CargaUrl()
             edtNombreWeb.editText?.addTextChangedListener(this)
             viewModel.linkResult.observe(viewLifecycleOwner, Observer {
-                dialogGuardar?.hide()
+                dialogGuardar?.dismiss()
                 txtLinkWeb.setText(it)
             })
             viewModel.resultGuardarOk.observe(viewLifecycleOwner, Observer {
                 AlertDialog.Builder(context).setTitle("Confirmación").setMessage(it).setPositiveButton("Salir", null)
                         .create().show()
-                dialogGuardar?.hide()
+                dialogGuardar?.dismiss()
             })
             viewModel.resultGuardarError.observe(viewLifecycleOwner, Observer {
                 AlertDialog.Builder(context).setTitle("Advertencia").setMessage(it).setPositiveButton("Salir", null)
                         .create().show()
-                dialogGuardar?.hide()
+                dialogGuardar?.dismiss()
             })
             viewModel.UrlInit.observe(viewLifecycleOwner, Observer {
                 edtNombreWeb.editText?.setText(it)

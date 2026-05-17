@@ -6,34 +6,44 @@
     android:layout_height="match_parent"
     tools:context=".Activitys.RegistroTienda">
 
-    <LinearLayout
-        android:id="@+id/content"
-        android:orientation="horizontal"
+    <com.google.android.material.card.MaterialCardView
+        style="@style/AppTheme.Card.Modern"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/edtNombreTienda"
-            android:layout_marginTop="16dp"
-            android:layout_marginRight="8dp"
-            app:errorEnabled="true"
-            app:counterMaxLength="100"
-            app:counterEnabled="true"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Información de la Tienda"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginBottom="16dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtNombreTienda"
+                style="@style/AppTheme.TextInputLayout.Outlined"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Nombre de Tienda" />
-        </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
+                app:counterEnabled="true"
+                app:counterMaxLength="100">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nombre de Tienda" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

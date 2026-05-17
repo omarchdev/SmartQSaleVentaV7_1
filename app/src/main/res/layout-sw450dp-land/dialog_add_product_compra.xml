@@ -1,175 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/AppTheme.Card.Modern"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
-
-    <TextView
-        android:id="@+id/textView27"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="Cantidad \n a ingresar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView28"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView27"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="Precio Compra"
-        app:layout_constraintStart_toEndOf="@+id/textView27"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView29"
-        android:layout_width="81dp"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView27"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="Total"
-        app:layout_constraintStart_toEndOf="@+id/textView28"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/edtCantidad"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView27"
-        android:layout_alignStart="@+id/textView27"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="numberDecimal"
-        android:text="0"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView27" />
-
-    <EditText
-        android:id="@+id/edtPrecioCompra"
-        android:layout_width="93dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView27"
-        android:layout_alignStart="@+id/textView28"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="28dp"
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="numberDecimal"
-        android:text="0"
-        android:textSize="14sp"
-        app:layout_constraintStart_toEndOf="@+id/edtCantidad"
-        app:layout_constraintTop_toBottomOf="@+id/textView28" />
-
-
-    <TextView
-
-        android:id="@+id/txtTotal"
-        android:layout_width="81dp"
-        android:layout_height="46dp"
-        android:layout_below="@+id/textView27"
-        android:layout_alignStart="@+id/textView29"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="28dp"
-        android:gravity="center"
-        android:text="0"
-         android:textSize="14sp"
-        app:layout_constraintStart_toEndOf="@+id/edtPrecioCompra"
-        app:layout_constraintTop_toBottomOf="@+id/textView29" />
-
-
-    <com.wang.avi.AVLoadingIndicatorView
-        android:id="@+id/avi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="276dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:indicatorColor="@color/colorPrimary"
-        app:indicatorName="BallScaleMultipleIndicator"
-        app:layout_constraintBottom_toBottomOf="@+id/contentProduct"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView30"
-        android:layout_width="wrap_content"
-        android:layout_height="27dp"
-        android:layout_above="@+id/listAlmacen"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:text="Stock en Almacén"
-        android:textColor="#616161"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtCantidad" />
-
-    <ListView
-        android:id="@+id/listAlmacen"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/contentButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView30"
-        app:layout_constraintVertical_bias="0.015" />
+        android:layout_height="wrap_content"
+        android:padding="24dp">
 
-    <RelativeLayout
-        android:id="@+id/contentButton"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginBottom="8dp"
+        <LinearLayout
+            android:id="@+id/llInputs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent">
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/AppTheme.TextInputLayout.Outlined"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Cantidad">
 
-        app:layout_constraintStart_toStartOf="parent">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtCantidad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:inputType="numberDecimal" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/AppTheme.TextInputLayout.Outlined"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_weight="1"
+                android:hint="P. Compra">
 
-            android:id="@+id/btnGuardar"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:text="Guardar"
-             />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtPrecioCompra"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:inputType="numberDecimal" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:id="@+id/btnCancelar"
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/gray_100"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TOTAL"
+                    android:textColor="@color/gray_600"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.00"
+                    android:textColor="@color/status_success"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView30"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Stock por Almacén"
+            android:textColor="@color/gray_700"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/llInputs" />
+
+        <ListView
+            android:id="@+id/listAlmacen"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="8dp"
+            android:divider="@color/gray_100"
+            android:dividerHeight="1dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView30" />
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/avi"
+            style="@style/AVLoadingIndicatorView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_toStartOf="@+id/btnGuardar"
-            android:text="Cancelar"
-            style="@style/Widget.AppCompat.Button.Colored"
-            />
-    </RelativeLayout>
+            android:elevation="10dp"
+            android:visibility="gone"
+            app:indicatorColor="@color/colorPrimary"
+            app:indicatorName="BallScaleMultipleIndicator"
+            app:layout_constraintBottom_toBottomOf="@+id/listAlmacen"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/listAlmacen" />
 
+        <LinearLayout
+            android:id="@+id/contentButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/listAlmacen">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/btnCancelar"
+                style="@style/AppTheme.Button.Outlined"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:text="Cancelar" />
+
+            <Button
+                android:id="@+id/btnGuardar"
+                style="@style/AppTheme.Button.Modern"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:text="Guardar" />
+        </LinearLayout>
+
+        <!-- Compatibility -->
+        <View android:id="@+id/textView27" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"/>
+        <View android:id="@+id/textView28" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"/>
+        <View android:id="@+id/textView29" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

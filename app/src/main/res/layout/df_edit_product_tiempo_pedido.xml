@@ -1,133 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/AppTheme.Card.Modern"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-
-    <TextView
-        android:layout_marginBottom="16sp"
-        android:layout_marginRight="20sp"
-        android:id="@+id/txtNombreProducto"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:padding="24dp">
 
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Hora Inicio"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNombreProducto" />
+        <TextView
+            android:id="@+id/txtNombreProducto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre del Producto"
+            android:textColor="@color/gray_900"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/edtHoraInicial"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:focusable="false"
-        android:focusedByDefault="false"
-        android:focusableInTouchMode="false"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+        <LinearLayout
+            android:id="@+id/llTime1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/txtNombreProducto">
 
-    <TextView
-        android:id="@+id/textView22"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Hora Final"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtHoraInicial" />
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/AppTheme.TextInputLayout.Outlined"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Hora Inicio">
 
-    <EditText
-        android:id="@+id/edtHoraFinal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtHoraInicial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        android:focusable="false"
-        android:focusedByDefault="false"
-        android:focusableInTouchMode="false"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+            <ImageButton
+                android:id="@+id/btnClock1"
+                style="@style/AppTheme.Button.Icon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                app:srcCompat="@drawable/ic_clock_outline_grey600_24dp"
+                app:tint="@color/colorPrimary" />
+        </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/btnClock2"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        app:layout_constraintStart_toEndOf="@+id/edtHoraFinal"
-        app:layout_constraintTop_toBottomOf="@+id/textView22"
-        app:srcCompat="@drawable/ic_clock_outline_grey600_36dp" />
+        <LinearLayout
+            android:id="@+id/llTime2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/llTime1">
 
-    <Button
-        android:id="@+id/btnGuardar"
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/AppTheme.TextInputLayout.Outlined"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Hora Final">
 
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Guardar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtHoras" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtHoraFinal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/btnSalir"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Salir"
-        style="@style/Widget.AppCompat.Button.Colored"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnGuardar"
-        app:layout_constraintTop_toBottomOf="@+id/txtHoras" />
+            <ImageButton
+                android:id="@+id/btnClock2"
+                style="@style/AppTheme.Button.Icon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                app:srcCompat="@drawable/ic_clock_outline_grey600_24dp"
+                app:tint="@color/colorPrimary" />
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Total de horas : "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtHoraFinal" />
+        <LinearLayout
+            android:id="@+id/llSummary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/llTime2">
 
-    <TextView
-        android:id="@+id/txtHoras"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="9"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/edtHoraFinal" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total de horas:"
+                android:textColor="@color/gray_600" />
+
+            <TextView
+                android:id="@+id/txtHoras"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="0.0"
+                android:textColor="@color/gray_900"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/llSummary">
+
+            <Button
+                android:id="@+id/btnSalir"
+                style="@style/AppTheme.Button.Outlined"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:text="Salir" />
+
+            <Button
+                android:id="@+id/btnGuardar"
+                style="@style/AppTheme.Button.Modern"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:text="Guardar" />
+        </LinearLayout>
+
+        <!-- Compatibility -->
+        <View android:id="@+id/textView17" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"/>
+        <View android:id="@+id/textView22" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

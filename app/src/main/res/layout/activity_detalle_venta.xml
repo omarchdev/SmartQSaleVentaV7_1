@@ -4,249 +4,286 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp"
+    android:background="@color/backgroud_app"
     tools:context="com.omarchdev.smartqsale.smartqsaleventas.Activitys.DetalleVenta">
-
 
     <ProgressBar
         android:id="@+id/pbDetalleVenta"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true" />
+        android:layout_centerInParent="true"
+        android:elevation="10dp" />
 
     <ScrollView
-        android:fadeScrollbars="true"
         android:id="@+id/svContent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:clipToPadding="false">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="100dp"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp">
+            android:paddingBottom="100dp">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/txtFechaPedido"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center|left"
-                    android:padding="8dp"
-                    android:text="FechaPedido"
-
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/txtEstadoVenta"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:text="EstadoVenta"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-            </RelativeLayout>
-
-
-            <TextView
-                android:id="@+id/txtNombreCliente"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:drawableLeft="@drawable/ic_human_male_female_white_24dp"
-                android:drawableTint="@color/colorIconoBtnBordeless"
-
-                android:gravity="center|right"
-                android:text="Cliente no especificado"
-               />
-
-
-            <TextView
-                android:id="@+id/txtNombreVendedor"
-
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:drawableLeft="@drawable/ic_account_circle_white_36dp"
-                android:drawableTint="@color/colorIconoBtnBordeless"
-                android:gravity="center|right"
-                android:text="Vendedor no especificado"
-                />
-
-            <TextView
-
-                android:id="@+id/txtNumFactura"
-                android:padding="8dp"
-
-                android:gravity="right"
-                android:text="numero de factura"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:textSize="18dp"
-                android:textAlignment="textEnd"
-                android:id="@+id/txtEstadoDocumentoCpe"
+            <com.google.android.material.card.MaterialCardView
+                style="@style/AppTheme.Card.Modern"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
-            <TextView
-                android:id="@+id/txtIdentificador"
-               android:layout_width="match_parent"
+                android:layout_marginBottom="16dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/txtFechaPedido"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="FechaPedido"
+                        android:textColor="@color/gray_600"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txtEstadoVenta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="EstadoVenta"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtNombreCliente"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtFechaPedido"
+                        android:layout_marginTop="16dp"
+                        android:drawableStart="@drawable/ic_human_male_female_white_24dp"
+                        android:drawablePadding="12dp"
+                        app:drawableTint="@color/gray_700"
+                        android:text="Cliente no especificado"
+                        android:textColor="@color/gray_900"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtNombreVendedor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtNombreCliente"
+                        android:layout_marginTop="8dp"
+                        android:drawableStart="@drawable/ic_account_circle_white_36dp"
+                        android:drawablePadding="12dp"
+                        app:drawableTint="@color/gray_700"
+                        android:text="Vendedor no especificado"
+                        android:textColor="@color/gray_700"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txtNumFactura"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtNombreVendedor"
+                        android:layout_marginTop="8dp"
+                        android:text="Número de factura"
+                        android:textColor="@color/gray_600"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/txtEstadoDocumentoCpe"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtNumFactura"
+                        android:layout_marginTop="4dp"
+                        android:text="TextView"
+                        android:textColor="@color/status_success"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtIdentificador"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtEstadoDocumentoCpe"
+                        android:textColor="@color/gray_400"
+                        android:textSize="10sp" />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/AppTheme.Card.Modern"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                >
+                android:layout_marginBottom="16dp">
 
-            </TextView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                    <TextView
+                        style="@style/AppTheme.SaleDetail.SectionTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:text="Resumen de Cobro" />
 
-                <TextView
-                    android:id="@+id/txtValorBruto"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:gravity="center|right"
-                    android:text="Valor bruto"
-                    android:textStyle="bold" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
+                        <TextView
+                            android:id="@+id/txtValorBruto"
+                            style="@style/AppTheme.SaleDetail.Label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Valor bruto" />
 
-                <TextView
-                    android:id="@+id/txtValorDescuento"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_below="@id/txtValorBruto"
-                    android:gravity="center|right"
-                    android:text="Descuento"
-                    android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/txtValorBrutoDato"
+                            style="@style/AppTheme.SaleDetail.Data"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:text="S/0.00" />
 
-                <TextView
-                    android:id="@+id/txtValorNeto"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_below="@id/txtValorDescuento"
-                    android:gravity="center|right"
-                    android:text="Valor Neto"
-                    android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/txtValorDescuento"
+                            style="@style/AppTheme.SaleDetail.Label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/txtValorBruto"
+                            android:layout_marginTop="8dp"
+                            android:text="Descuento" />
 
-                <TextView
-                    android:id="@+id/txtValorBrutoDato"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentRight="true"
-                    android:gravity="center|right"
-                    android:text="0"
-               />
+                        <TextView
+                            android:id="@+id/valorDescuentoDato"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_below="@id/txtValorBrutoDato"
+                            android:layout_marginTop="8dp"
+                            android:text="S/0.00"
+                            android:textColor="@color/status_error" />
 
-                <TextView
-                    android:id="@+id/valorDescuentoDato"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_below="@id/txtValorBrutoDato"
-                    android:gravity="center|right"
-                    android:text="0"
-                    />
+                        <View
+                            android:id="@+id/divider"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@id/txtValorDescuento"
+                            android:layout_marginTop="12dp"
+                            android:background="@color/gray_200" />
 
-                <TextView
-                    android:id="@+id/txtValorNetoDato"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_below="@id/valorDescuentoDato"
-                    android:gravity="center|right"
-                    android:text="0"
+                        <TextView
+                            android:id="@+id/txtValorNeto"
+                            style="@style/AppTheme.SaleDetail.TotalLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/divider"
+                            android:layout_marginTop="12dp"
+                            android:text="TOTAL" />
 
-                    android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/txtValorNetoDato"
+                            style="@style/AppTheme.SaleDetail.TotalData"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_below="@id/divider"
+                            android:layout_marginTop="12dp"
+                            android:text="S/0.00" />
 
-
-            </RelativeLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0.2dp"
-                android:background="#61878787">
-
-            </LinearLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
             <TextView
+                style="@style/AppTheme.SaleDetail.Subtitle"
                 android:layout_width="match_parent"
-                android:drawableTint="@color/colorIconoBtnBordeless"
-
-                android:layout_height="40dp"
-                android:drawableRight="@drawable/ic_shopping_white_24dp"
-               android:gravity="center"
-                android:text="Articulos vendidos"
-             />
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="Artículos Vendidos" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvDetallePedido"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0.2dp"
-                android:background="#61878787"></LinearLayout>
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:layout_marginBottom="16dp" />
 
             <TextView
+                style="@style/AppTheme.SaleDetail.Subtitle"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:gravity="center|left"
-                android:text="Metodos de pago"
-           />
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="Métodos de Pago" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvMetodosDePago"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:layout_marginBottom="16dp" />
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/AppTheme.Card.Modern"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-            </androidx.recyclerview.widget.RecyclerView>
-
-            <TextView
-                android:id="@+id/textView31"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Observacion" />
-
-            <TextView
-                android:id="@+id/txtObservacion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="40dp"
-                android:layout_marginTop="12dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Vuelto"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-                    />
+                    <TextView
+                        android:id="@+id/textView31"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Observación"
+                        android:textColor="@color/gray_600"
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/txtValorCambio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:text="S/100.00"
-                    android:textColor="#f23434"
-                    android:textStyle="bold" />
-            </RelativeLayout>
+                    <TextView
+                        android:id="@+id/txtObservacion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:textColor="@color/gray_900" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Vuelto"
+                            android:textColor="@color/gray_700"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtValorCambio"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:text="S/0.00"
+                            android:textColor="@color/status_error"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
         </LinearLayout>
-
-
     </ScrollView>
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu
@@ -255,19 +292,16 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:layout_margin="16dp"
-        app:fab_addButtonColorNormal="@android:color/holo_blue_dark"
-        app:fab_addButtonSize="normal"
+        app:fab_addButtonColorNormal="@color/colorPrimaryDark"
         app:fab_labelStyle="@style/LabelFloatingButton"
-        app:fab_labelsPosition="left"
+        app:fab_labelsPosition="left">
 
-        >
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabEnvioCpe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_colorNormal="#28aef1"
+            app:fab_colorNormal="#25D366"
             app:fab_icon="@drawable/ic_whatsapp_white_48dp"
             app:fab_size="mini"
             app:fab_title="Enviar comprobante" />
@@ -276,7 +310,7 @@
             android:id="@+id/fabImprimirVenta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_colorNormal="#28aef1"
+            app:fab_colorNormal="@color/colorPrimary"
             app:fab_icon="@drawable/ic_receipt_white_24dp"
             app:fab_size="mini"
             app:fab_title="Imprimir" />
@@ -285,9 +319,10 @@
             android:id="@+id/fabCancelarVenta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_colorNormal="#f12828"
+            app:fab_colorNormal="@color/status_error"
             app:fab_icon="@drawable/close_circle"
             app:fab_size="mini"
             app:fab_title="Anular venta" />
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
 </RelativeLayout>

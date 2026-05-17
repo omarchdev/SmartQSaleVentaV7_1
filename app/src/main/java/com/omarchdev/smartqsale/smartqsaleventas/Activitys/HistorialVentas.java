@@ -1,6 +1,6 @@
 package com.omarchdev.smartqsale.smartqsaleventas.Activitys;
 
-import android.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -107,7 +107,6 @@ public class HistorialVentas extends ActivityParent implements DialogDatePickerS
         btnSelectCliente = (Button) findViewById(R.id.btnSelectCliente);
         btnDelete = (ImageButton) findViewById(R.id.btnDeleteCliente);
         txtTotalVentas = (TextView) findViewById(R.id.txtTotalDatoVentas);
-        txtObservacion=findViewById(R.id.txtObservacion);
         btnSelectDate1.setOnClickListener(this);
         btnSelectDate2.setOnClickListener(this);
         btnSelectCliente.setOnClickListener(this);
@@ -228,7 +227,7 @@ public class HistorialVentas extends ActivityParent implements DialogDatePickerS
         DialogDatePickerSelect dialogDatePickerSelect = new DialogDatePickerSelect().newInstance(origen, year, month, day);
         dialogDatePickerSelect.setFechaListener(this);
         DialogFragment dialogFragment = dialogDatePickerSelect;
-        dialogFragment.show(this.getFragmentManager(), "Dialog Fecha");
+        dialogFragment.show(this.getSupportFragmentManager(), "Dialog Fecha");
     }
 
     @Override

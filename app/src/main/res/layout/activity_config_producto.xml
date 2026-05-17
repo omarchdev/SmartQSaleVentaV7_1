@@ -1,14 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/backgroud_app"
     tools:context="com.omarchdev.smartqsale.smartqsaleventas.Activitys.ActivityConfigProducto">
 
+    <!-- Espacio manual para la barra de estado -->
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/AppTheme.Toolbar.Modern"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:contentInsetStartWithNavigation="0dp">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchViewInline"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bg_edittext_modern"
+            app:iconifiedByDefault="false"
+            app:queryBackground="@android:color/transparent"
+            app:queryHint="Buscar productos..."
+            app:searchIcon="@drawable/search_icon_color" />
+
+    </androidx.appcompat.widget.Toolbar>
 
     <RelativeLayout
-
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -18,69 +41,61 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             app:indicatorName="BallPulseIndicator"
-            app:indicatorColor="@color/colorAccent"
-
-            ></com.wang.avi.AVLoadingIndicatorView>
+            app:indicatorColor="@color/colorAccent" />
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <co.ceryle.radiorealbutton.RadioRealButtonGroup
-                android:minHeight="70dp"
-                app:rrbg_borderColor="#b6b6b6"
-                app:rrbg_borderSize="0.1dp"
-                android:id="@+id/rgVar2"
+            <com.google.android.material.card.MaterialCardView
+                style="@style/AppTheme.Card.Modern"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:rrbg_animateDrawables_enter="overshoot"
-                app:rrbg_animateTexts_enter="overshoot"
-                app:rrbg_animateTexts_scale="1.2"
-                app:rrbg_animateTexts_textColorTo="#ffffff"
-                app:rrbg_checkedButton="@id/rbTodos"
-                app:rrbg_radius="4dp"
+                android:layout_height="wrap_content">
 
-                app:rrbg_selectorBottom="true"
-                app:rrbg_selectorColor="@color/colorAccent"
-                app:rrbg_selectorFullSize="true"
-                app:rrbg_selectorRadius="4dp"
-                app:rrbg_selectorTop="false">
-                <co.ceryle.radiorealbutton.RadioRealButton
-                    android:id="@+id/rbTodos"
-                    android:minHeight="100dp"
-                    app:rrb_text="Todos"
+                <co.ceryle.radiorealbutton.RadioRealButtonGroup
+                    android:id="@+id/rgVar2"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="48dp"
+                    app:rrbg_animateDrawables_enter="overshoot"
+                    app:rrbg_animateTexts_enter="overshoot"
+                    app:rrbg_checkedButton="@id/rbTodos"
+                    app:rrbg_radius="@dimen/radius_medium"
+                    app:rrbg_selectorColor="@color/colorAccent"
+                    app:rrbg_selectorFullSize="true">
 
-                </co.ceryle.radiorealbutton.RadioRealButton>
-                <co.ceryle.radiorealbutton.RadioRealButton
-                    android:id="@+id/rbVariantes"
-                    android:minHeight="100dp"
-                    app:rrb_text="Variantes"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    <co.ceryle.radiorealbutton.RadioRealButton
+                        android:id="@+id/rbTodos"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:rrb_text="Todos" />
 
-                </co.ceryle.radiorealbutton.RadioRealButton>
-                <co.ceryle.radiorealbutton.RadioRealButton
-                    android:id="@+id/rbCombo"
-                    android:minHeight="100dp"
-                    app:rrb_text="Combos/Pack"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    <co.ceryle.radiorealbutton.RadioRealButton
+                        android:id="@+id/rbVariantes"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:rrb_text="Variantes" />
 
-                </co.ceryle.radiorealbutton.RadioRealButton>
-            </co.ceryle.radiorealbutton.RadioRealButtonGroup>
+                    <co.ceryle.radiorealbutton.RadioRealButton
+                        android:id="@+id/rbCombo"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:rrb_text="Combos/Pack" />
+                </co.ceryle.radiorealbutton.RadioRealButtonGroup>
+            </com.google.android.material.card.MaterialCardView>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_below="@id/rgVar2"
                 android:id="@+id/rvListadoProductos"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:padding="8dp" />
 
         </LinearLayout>
 
     </RelativeLayout>
 
-
-</RelativeLayout>
+</LinearLayout>

@@ -1,74 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/AppTheme.Card.Modern"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/white"
-    android:orientation="vertical"
-    android:padding="20dp">
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/txtTitulo"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Opciones del Producto"
-        android:textColor="@color/gray_900"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:orientation="vertical"
+        android:padding="24dp">
 
-    <com.wang.avi.AVLoadingIndicatorView
-        android:id="@+id/pbIndicator"
-        style="@style/AVLoadingIndicatorView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        app:indicatorColor="@color/colorPrimary"
-        app:indicatorName="BallPulseIndicator" />
-
-    <TextView
-        android:id="@+id/txtCargando"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Cargando opciones..."
-        android:textColor="@color/gray_600" />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:maxHeight="350dp">
-
-        <LinearLayout
-            android:id="@+id/llContent"
+        <TextView
+            android:id="@+id/txtTitulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
+            android:text="Opciones del Producto"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/txtMensaje"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textColor="@color/status_error"
-        android:visibility="gone" />
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/pbIndicator"
+            style="@style/AVLoadingIndicatorView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"
+            app:indicatorColor="@color/colorPrimary"
+            app:indicatorName="BallPulseIndicator" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Notas adicionales">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtModificador"
+        <TextView
+            android:id="@+id/txtCargando"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="top"
-            android:inputType="textMultiLine"
-            android:minLines="2" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:gravity="center"
+            android:text="Cargando opciones..."
+            android:textColor="@color/gray_600"
+            android:visibility="gone" />
 
-</LinearLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:maxHeight="400dp">
+
+            <LinearLayout
+                android:id="@+id/llContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/txtMensaje"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/status_error"
+            android:textSize="12sp"
+            android:visibility="gone" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/AppTheme.TextInputLayout.Outlined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:hint="Notas Adicionales">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtModificador"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:minLines="2" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

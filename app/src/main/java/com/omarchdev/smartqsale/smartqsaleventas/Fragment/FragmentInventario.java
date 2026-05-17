@@ -211,8 +211,12 @@ public class FragmentInventario extends Fragment implements View.OnClickListener
         protected void onPreExecute() {
             super.onPreExecute();
 
-            rv.setVisibility(View.GONE);
-            mProgressBar.setVisibility(View.VISIBLE);
+            if (rv != null) {
+                rv.setVisibility(View.GONE);
+            }
+            if (mProgressBar != null) {
+                mProgressBar.setVisibility(View.VISIBLE);
+            }
         }
 
         @Override
@@ -233,8 +237,12 @@ public class FragmentInventario extends Fragment implements View.OnClickListener
         @Override
         protected void onPostExecute(List<mProduct> mProductList) {
             super.onPostExecute(mProductList);
-            mProgressBar.setVisibility(View.GONE);
-            rv.setVisibility(View.VISIBLE);
+            if (mProgressBar != null) {
+                mProgressBar.setVisibility(View.GONE);
+            }
+            if (rv != null) {
+                rv.setVisibility(View.VISIBLE);
+            }
             CargarListaEnPantalla(mProductList);
         }
     }

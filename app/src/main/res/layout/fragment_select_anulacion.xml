@@ -1,52 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/AppTheme.Card.Modern"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".DialogFragments.SelectAnulacion">
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
 
         <TextView
             android:id="@+id/textView26"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="Seleccione un método de anulación"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="Método de Anulación"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <ListView
             android:id="@+id/listAnulaciones"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:divider="@color/colorBlanco"
-            app:layout_constraintBottom_toTopOf="@+id/btnSalir"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView26"
-            app:layout_constraintVertical_bias="0.626" />
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="16dp"
+            android:divider="@color/gray_100"
+            android:dividerHeight="1dp" />
 
         <Button
             android:id="@+id/btnSalir"
-            style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+            style="@style/AppTheme.Button.Outlined"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="Salir"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_gravity="end"
+            android:layout_marginTop="16dp"
+            android:text="Salir" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

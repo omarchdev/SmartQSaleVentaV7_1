@@ -3,7 +3,7 @@ package com.omarchdev.smartqsale.smartqsaleventas.DialogFragments;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.content.Context;
 import android.os.Bundle;
 import com.google.android.material.textfield.TextInputLayout;
@@ -34,7 +34,6 @@ import java.util.List;
 
 public class DialogAddEditCustomer extends DialogFragment implements View.OnClickListener {
 
-    Context context;
     mCustomer cliente;
     ListenerAddCustomer listenerAddCustomer;
 
@@ -77,16 +76,11 @@ public class DialogAddEditCustomer extends DialogFragment implements View.OnClic
     }
 
     public DialogAddEditCustomer() {
-
-        this.context=context;
-
         metodo=0;
     }
 
 
-    public void setInfo(Context context,mCustomer customer,byte metodo){
-
-        this.context=context;
+    public void setInfo(mCustomer customer,byte metodo){
         this.cliente=customer;
         this.metodo=metodo;
 
@@ -95,6 +89,7 @@ public class DialogAddEditCustomer extends DialogFragment implements View.OnClic
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         try {
+            Context context = requireContext();
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
             View v = ((Activity) context).getLayoutInflater().inflate(R.layout.dialog_registro_cliente, null);
             cliente = new mCustomer();
@@ -131,11 +126,11 @@ public class DialogAddEditCustomer extends DialogFragment implements View.OnClic
             builder.setView(v);
             builder.setTitle("Agregar Cliente");
 
-            spinner.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, listTipoCliente));
+            spinner.setAdapter(new ArrayAdapter<String>(requireContext(), android.R.layout.simple_dropdown_item_1line, listTipoCliente));
             spinner.setSelection(0);
 
             InterfazPersonaNatural();
-            asyncClientes.setContext(context);
+            asyncClientes.setContext(requireContext());
             spinner.setOnItemSelectedListener(selectionListener);
 
             dialog = builder.create();
@@ -144,7 +139,13 @@ public class DialogAddEditCustomer extends DialogFragment implements View.OnClic
             dialog.setCanceledOnTouchOutside(false);
 
         }catch (Exception e){
-            Toast.makeText(context,e.toString(),Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(),e.toString(),Toast.LENGTH_LONG).show();
+        }
+        if (dialog == null) {
+            dialog = new AlertDialog.Builder(requireContext())
+                    .setMessage("Error al crear el diálogo: " + (cliente != null ? cliente.getcName() : ""))
+                    .setPositiveButton("Cerrar", null)
+                    .create();
         }
         return dialog;
     }
@@ -303,11 +304,11 @@ public class DialogAddEditCustomer extends DialogFragment implements View.OnClic
     AdapterView.OnItemSelectedListener selectionListener=new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            if(position==context.getResources().getInteger(R.integer.PositionPNatural)){
-                TipoCliente=context.getResources().getInteger(R.integer.ValorPersonaNatural);
+            if(position==requireContext().getResources().getInteger(R.integer.PositionPNatural)){
+                TipoCliente=requireContext().getResources().getInteger(R.integer.ValorPersonaNatural);
                 InterfazPersonaNatural();
-            }else if(position==context.getResources().getInteger(R.integer.PositionPJuridica)){
-                TipoCliente=context.getResources().getInteger(R.integer.ValorPersonaJuridica);
+            }else if(position==requireContext().getResources().getInteger(R.integer.PositionPJuridica)){
+                TipoCliente=requireContext().getResources().getInteger(R.integer.ValorPersonaJuridica);
 
                 InterfazPersonaJuridica();
             }

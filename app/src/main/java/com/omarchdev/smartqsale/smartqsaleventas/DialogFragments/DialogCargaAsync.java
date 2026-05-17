@@ -27,7 +27,13 @@ public class DialogCargaAsync {
         return progressDialog;
     }
 
-    public void hide(){
-        progressDialog.hide();
+    public void dismiss() {
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
+    }
+
+    public boolean isShowing() {
+        return progressDialog != null && progressDialog.isShowing();
     }
 }

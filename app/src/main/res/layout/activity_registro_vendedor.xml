@@ -31,117 +31,108 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <LinearLayout
-
-                android:elevation="2dp"
-                android:layout_margin="12dp"
-                android:padding="20dp"
+            <com.google.android.material.card.MaterialCardView
+                style="@style/AppTheme.Card.Modern"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp">
 
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/edtNombre"
-
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:counterEnabled="true"
-                    app:counterMaxLength="40"
-                    app:errorEnabled="true">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Datos del Vendedor"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_marginBottom="16dp"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edtNombre"
+                        style="@style/AppTheme.TextInputLayout.Outlined"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Nombres"
-                        android:maxLength="40" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/edtApellidoPaterno"
-
-                    app:counterEnabled="true"
-                    app:counterMaxLength="30"
-                    app:errorEnabled="true"
-
-                    >
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Apellido paterno"
                         app:counterEnabled="true"
-                        app:counterMaxLength="30"
-                        app:errorEnabled="true" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        app:counterMaxLength="40">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:counterEnabled="true"
-                    android:id="@+id/edtApellidMaterno"
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Nombres"
+                            android:maxLength="40" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    app:counterMaxLength="30"
-                    app:errorEnabled="true">
-
-                    <com.google.android.material.textfield.TextInputEditText
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edtApellidoPaterno"
+                        style="@style/AppTheme.TextInputLayout.Outlined"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Apellido Materno"
-                        android:maxLength="30" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_marginTop="8dp"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="30">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Apellido paterno"
+                            app:counterEnabled="true"
+                            app:counterMaxLength="30" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    android:visibility="gone"
-                    app:errorEnabled="true">
-
-                    <com.google.android.material.textfield.TextInputEditText
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edtApellidMaterno"
+                        style="@style/AppTheme.TextInputLayout.Outlined"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Comision"
-                        android:inputType="numberDecimal"
-                        android:maxLength="10" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_marginTop="8dp"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="30">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:counterEnabled="true"
-                    android:id="@+id/edtNumeroTelefono"
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Apellido Materno"
+                            android:maxLength="30" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    app:counterMaxLength="15"
-                    app:errorEnabled="true">
-
-                    <com.google.android.material.textfield.TextInputEditText
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edtNumeroTelefono"
+                        style="@style/AppTheme.TextInputLayout.Outlined"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Numero telefono"
-                        android:maxLength="15" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_marginTop="8dp"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="15">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:counterEnabled="true"
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Número teléfono"
+                            android:maxLength="15" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    android:id="@+id/edtEmail"
-
-                    app:counterMaxLength="60"
-                    app:errorEnabled="true">
-
-                    <com.google.android.material.textfield.TextInputEditText
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edtEmail"
+                        style="@style/AppTheme.TextInputLayout.Outlined"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Email"
-                        android:maxLength="60" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_marginTop="8dp"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="60">
 
-            </LinearLayout>
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Email"
+                            android:maxLength="60" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
         </ScrollView>
 

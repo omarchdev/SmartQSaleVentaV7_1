@@ -6,4 +6,7 @@
     <dimen name="pin_indicator_size">16dp</dimen>
     <dimen name="pin_indicator_margin">10dp</dimen>
     <dimen name="pin_indicator_stroke">2dp</dimen>
+    <dimen name="text_size_category_item">16sp</dimen>
+    <dimen name="text_size_product_name">16sp</dimen>
+    <dimen name="text_size_product_quantity">14sp</dimen>
 </resources>

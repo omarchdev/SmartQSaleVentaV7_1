@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroud_app"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.omarchdev.smartqsale.smartqsaleventas.Activitys.ActivityRegistroCategoria"
-    tools:showIn="@layout/activity_registro_categoria">
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    tools:showIn="@layout/activity_registro_categoria" />

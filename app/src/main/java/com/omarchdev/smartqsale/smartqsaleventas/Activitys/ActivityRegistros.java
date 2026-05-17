@@ -1,6 +1,6 @@
 package com.omarchdev.smartqsale.smartqsaleventas.Activitys;
 
-import android.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -63,7 +63,7 @@ public class ActivityRegistros extends ActivityParent implements View.OnClickLis
     private void MostrarVendedores() {
         dialogSelectVendedor selectVendedor = new dialogSelectVendedor();
         DialogFragment dialogFragment = selectVendedor;
-        dialogFragment.show(getFragmentManager(), "Mostrar Vendedores Registro");
+        dialogFragment.show(getSupportFragmentManager(), "Mostrar Vendedores Registro");
     }
 
     private void MostrarDialogCliente() {
@@ -73,7 +73,7 @@ public class ActivityRegistros extends ActivityParent implements View.OnClickLis
 
     private void MostrarDialogCategorias() {
         DialogFragment dialogFragment = new DialogSelectCategoria();
-        dialogFragment.show(getFragmentManager(), "Seleccionar sCategorias");
+        dialogFragment.show(getSupportFragmentManager(), "Seleccionar sCategorias");
     }
 }
 

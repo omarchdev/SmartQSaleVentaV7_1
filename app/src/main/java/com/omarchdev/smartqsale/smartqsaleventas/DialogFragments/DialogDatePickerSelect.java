@@ -2,7 +2,7 @@ package com.omarchdev.smartqsale.smartqsaleventas.DialogFragments;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.os.Bundle;
 import android.widget.DatePicker;
 

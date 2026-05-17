@@ -5,7 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.SearchView
+import androidx.appcompat.widget.SearchView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -57,7 +57,7 @@ class ListProductosListaPreciosFragment : Fragment(), ClickPositionRv, SearchVie
                     dialogCargaAsync= DialogCargaAsync(context)
                     dialogCargaAsync?.getDialogCarga("Guardando información")?.show()
                 }else{
-                    dialogCargaAsync?.hide()
+                    dialogCargaAsync?.dismiss()
 
                     if(it.terminate){
                         if(it.resultOk){

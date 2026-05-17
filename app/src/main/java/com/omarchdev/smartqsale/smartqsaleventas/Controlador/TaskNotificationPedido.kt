@@ -61,6 +61,7 @@ class TaskNotificationPedido(context: Context,activity: Activity?=null) {
                                 }
                             }
                         }
+                        else -> {}
                     }
                 }
                 catch (ex:Exception){

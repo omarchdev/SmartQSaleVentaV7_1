@@ -86,7 +86,7 @@ class operario_config : Fragment() {
                 dialogCargaAsync= DialogCargaAsync(context)
                 dialogCargaAsync?.getDialogCarga("Obteniendo información")?.show()
             }else{
-                dialogCargaAsync?.hide()
+                dialogCargaAsync?.dismiss()
                 if(it.terminate==true){
 
                 }
@@ -98,7 +98,7 @@ class operario_config : Fragment() {
                 dialogCargaAsync= DialogCargaAsync(context)
                 dialogCargaAsync?.getDialogCarga("Guardando operario")?.show()
             }else{
-                dialogCargaAsync?.hide()
+                dialogCargaAsync?.dismiss()
                 if(it.terminate==true){
 
                     AlertDialog.Builder(requireContext())

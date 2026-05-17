@@ -2,7 +2,7 @@ package com.omarchdev.smartqsale.smartqsaleventas.DialogFragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -154,98 +154,119 @@ public class DialogVariantesProducto extends DialogFragment implements AsyncVari
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        if (getActivity() == null) return super.onCreateDialog(savedInstanceState);
         View v = getActivity().getLayoutInflater().inflate(R.layout.dialog_elegir_variante, null);
-        avLoadingIndicatorView = (AVLoadingIndicatorView) v.findViewById(R.id.pbIndicator);
-        precios = new ArrayList<>();
-        adapterPriceAdditional = new RvAdapterPriceAdditional();
-        rvMultiplePrecio = v.findViewById(R.id.rvMultiplePrecio);
-        rvMultiplePrecio.setAdapter(adapterPriceAdditional);
-        rvMultiplePrecio.setLayoutManager(new LinearLayoutManager(getActivity()));
-        permitirCantidad = true;
-        contentMensaje = v.findViewById(R.id.contentMensaje);
-        btnAceptar = v.findViewById(R.id.btnAceptar);
-        btnCancelar = v.findViewById(R.id.btnCancelar);
-        txtCantidad = v.findViewById(R.id.txtCantidad);
-        progressBar = v.findViewById(R.id.progressBar);
-        txtCantidad.setVisibility(View.GONE);
-        btnAceptar.setOnClickListener(this);
-        btnCancelar.setOnClickListener(this);
-        asyncProducto = new AsyncProducto();
-        opcionesSeleccionadas = new ArrayList<>();
-        opcionesSeleccionadas.add("");
-        opcionesSeleccionadas.add("");
-        opcionesSeleccionadas.add("");
-        txtInformacionProducto = v.findViewById(R.id.txtInformacionProducto);
-        contenedorValores = v.findViewById(R.id.contenedorValores);
-        txtAlertaValores = v.findViewById(R.id.txtMensajeValores);
-        txtTituloOpcion1 = v.findViewById(R.id.txtTituloOpcion1);
-        txtTituloOpcion2 = v.findViewById(R.id.txtTituloOpcion2);
-        txtTituloOpcion3 = v.findViewById(R.id.txtTituloOpcion3);
-        txtPrecioVenta = v.findViewById(R.id.txtPrecioVenta);
-        clickNumberPickerView = v.findViewById(R.id.clickNumberPickerView);
-        radioRealButtonGroup1 = v.findViewById(R.id.rgVar1);
-        radioRealButtonGroup2 = v.findViewById(R.id.rgVar2);
-        radioRealButtonGroup3 = v.findViewById(R.id.rgVar3);
-        radioRealButtonGroup1.setBorderColor(Color.parseColor("#b6b6b6"));
-        radioRealButtonGroup1.setDividerColor(R.color.colorAccent);
-        radioRealButtonGroup2.setBorderColor(Color.parseColor("#b6b6b6"));
-        radioRealButtonGroup2.setDividerColor(Color.parseColor("#b6b6b6"));
-        radioRealButtonGroup3.setBorderColor(Color.parseColor("#b6b6b6"));
-        radioRealButtonGroup3.setDividerColor(R.color.colorAccent);
-        progressBar.setVisibility(View.GONE);
-        priceProductList = new ArrayList<>();
-        asyncVariantes = new AsyncVariantes();
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        numOpciones = 0;
-        numValores = 0;
-        imgProducto = (ImageView) v.findViewById(R.id.imgProduct);
-        builder.setView(v);
-        builder.setTitle(titulo);
-        txtTituloOpcion1.setText("");
-        txtTituloOpcion2.setText("");
-        txtTituloOpcion3.setText("");
-        clickNumberPickerView.setPickerValue(1);
-        controlCarga = false;
-        contentMensaje.setVisibility(View.GONE);
-        txtPrecioVenta.setVisibility(View.GONE);
-        switch (tipoRepresentacion) {
+        try {
+            avLoadingIndicatorView = (AVLoadingIndicatorView) v.findViewById(R.id.pbIndicator);
+            precios = new ArrayList<>();
+            adapterPriceAdditional = new RvAdapterPriceAdditional();
+            rvMultiplePrecio = v.findViewById(R.id.rvMultiplePrecio);
+            if (rvMultiplePrecio != null) {
+                rvMultiplePrecio.setAdapter(adapterPriceAdditional);
+                rvMultiplePrecio.setLayoutManager(new LinearLayoutManager(getActivity()));
+            }
+            permitirCantidad = true;
+            contentMensaje = v.findViewById(R.id.contentMensaje);
+            btnAceptar = v.findViewById(R.id.btnAceptar);
+            btnCancelar = v.findViewById(R.id.btnCancelar);
+            txtCantidad = v.findViewById(R.id.txtCantidad);
+            progressBar = v.findViewById(R.id.progressBar);
+            if (txtCantidad != null) txtCantidad.setVisibility(View.GONE);
+            if (btnAceptar != null) btnAceptar.setOnClickListener(this);
+            if (btnCancelar != null) btnCancelar.setOnClickListener(this);
+            asyncProducto = new AsyncProducto();
+            opcionesSeleccionadas = new ArrayList<>();
+            opcionesSeleccionadas.add("");
+            opcionesSeleccionadas.add("");
+            opcionesSeleccionadas.add("");
+            txtInformacionProducto = v.findViewById(R.id.txtInformacionProducto);
+            contenedorValores = v.findViewById(R.id.contenedorValores);
+            txtAlertaValores = v.findViewById(R.id.txtMensajeValores);
+            txtTituloOpcion1 = v.findViewById(R.id.txtTituloOpcion1);
+            txtTituloOpcion2 = v.findViewById(R.id.txtTituloOpcion2);
+            txtTituloOpcion3 = v.findViewById(R.id.txtTituloOpcion3);
+            txtPrecioVenta = v.findViewById(R.id.txtPrecioVenta);
+            clickNumberPickerView = v.findViewById(R.id.clickNumberPickerView);
+            radioRealButtonGroup1 = v.findViewById(R.id.rgVar1);
+            radioRealButtonGroup2 = v.findViewById(R.id.rgVar2);
+            radioRealButtonGroup3 = v.findViewById(R.id.rgVar3);
+            if (radioRealButtonGroup1 != null) {
+                radioRealButtonGroup1.setBorderColor(Color.parseColor("#b6b6b6"));
+                radioRealButtonGroup1.setDividerColor(R.color.colorAccent);
+            }
+            if (radioRealButtonGroup2 != null) {
+                radioRealButtonGroup2.setBorderColor(Color.parseColor("#b6b6b6"));
+                radioRealButtonGroup2.setDividerColor(Color.parseColor("#b6b6b6"));
+            }
+            if (radioRealButtonGroup3 != null) {
+                radioRealButtonGroup3.setBorderColor(Color.parseColor("#b6b6b6"));
+                radioRealButtonGroup3.setDividerColor(R.color.colorAccent);
+            }
+            if (progressBar != null) progressBar.setVisibility(View.GONE);
+            priceProductList = new ArrayList<>();
+            asyncVariantes = new AsyncVariantes();
+            numOpciones = 0;
+            numValores = 0;
+            imgProducto = (ImageView) v.findViewById(R.id.imgProduct);
+            builder.setView(v);
+            builder.setTitle(titulo != null ? titulo : "");
+            if (txtTituloOpcion1 != null) txtTituloOpcion1.setText("");
+            if (txtTituloOpcion2 != null) txtTituloOpcion2.setText("");
+            if (txtTituloOpcion3 != null) txtTituloOpcion3.setText("");
+            if (clickNumberPickerView != null) clickNumberPickerView.setPickerValue(1);
+            controlCarga = false;
+            if (contentMensaje != null) contentMensaje.setVisibility(View.GONE);
+            if (txtPrecioVenta != null) txtPrecioVenta.setVisibility(View.GONE);
+            switch (tipoRepresentacion) {
 
-            case 1:
-                try {
-                    Uri = codigoForma;
-                    Uri = Uri.trim();
-                    imgProducto.setImageResource(getActivity().getResources().getIdentifier(Uri, null, getActivity().getPackageName()));
-                    imgProducto.setColorFilter(Color.parseColor(codigoColor));
-                } catch (Exception e) {
-                    e.toString();
-                }
-                break;
-            case 2:
-                try {
-                    if (bmp != null) {
-
-
-                    } else {
-                        Uri = Uri + codigoForma;
-                        Picasso.get()
-                                .load(BASE_URL_API+"api/producto/GetImageProduct?codeCia="+GetJsonCiaTiendaBase64x3()+"&tipoConsulta=2&idProduct=" +idProducto)
-                                .error(R.drawable.circle_full_error)
-                                .into( imgProducto);
+                case 1:
+                    try {
+                        Uri = codigoForma;
+                        if (Uri != null) {
+                            Uri = Uri.trim();
+                            if (imgProducto != null && getActivity() != null) {
+                                imgProducto.setImageResource(getActivity().getResources().getIdentifier(Uri, null, getActivity().getPackageName()));
+                                if (codigoColor != null) {
+                                    imgProducto.setColorFilter(Color.parseColor(codigoColor));
+                                }
+                            }
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                } catch (Exception e) {
-                    e.toString();
-                }
-                break;
+                    break;
+                case 2:
+                    try {
+                        if (bmp != null) {
 
+
+                        } else {
+                            Uri = Uri + codigoForma;
+                            if (imgProducto != null) {
+                                Picasso.get()
+                                        .load(BASE_URL_API + "api/producto/GetImageProduct?codeCia=" + GetJsonCiaTiendaBase64x3() + "&tipoConsulta=2&idProduct=" + idProducto)
+                                        .error(R.drawable.circle_full_error)
+                                        .into(imgProducto);
+                            }
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    break;
+
+            }
+            if (txtInformacionProducto != null) txtInformacionProducto.setText(descripcion != null ? descripcion : "");
+            if (contenedorValores != null) contenedorValores.setVisibility(View.INVISIBLE);
+            if (txtAlertaValores != null) txtAlertaValores.setVisibility(View.INVISIBLE);
+            asyncVariantes.ObtenerValoresVariante(idProducto);
+            asyncVariantes.setVariantesProduct(this);
+            if (avLoadingIndicatorView != null) avLoadingIndicatorView.show();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        txtInformacionProducto.setText(descripcion);
-        contenedorValores.setVisibility(View.INVISIBLE);
-        txtAlertaValores.setVisibility(View.INVISIBLE);
-        asyncVariantes.ObtenerValoresVariante(idProducto);
-        asyncVariantes.setVariantesProduct(this);
-        avLoadingIndicatorView.show();
-        dialog = builder.create();
-        return dialog;
+        this.dialog = builder.create();
+        return this.dialog;
     }
 
 

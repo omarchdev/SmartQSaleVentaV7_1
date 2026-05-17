@@ -211,6 +211,11 @@ class AsyncCaja(private val context: Context?) {
         ObtenerCierrePorId().execute(idCierre)
     }
 
+    fun dismiss() {
+        dialogCargaAsync.dismiss()
+        controladorProcesoCargar?.dismiss()
+    }
+
     private inner class ObtenerCierrePorId : AsyncTask<Int?, Void?, mCierre?>() {
         override fun onPreExecute() {
             super.onPreExecute()

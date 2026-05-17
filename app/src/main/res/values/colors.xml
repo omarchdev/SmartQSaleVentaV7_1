@@ -6,9 +6,11 @@
     <color name="colorAccent">#df78ef</color>
 
     <!-- Semantic Status Colors -->
-    <color name="status_success">#42ff52</color>
+    <color name="status_success">#008308</color>
+    <color name="status_success_dark">#005b05</color>
     <color name="status_warning">#ffaf38</color>
     <color name="status_error">#E91F1A</color>
+    <color name="status_error_dark">#b51915</color>
     <color name="status_info">#2A8AC7</color>
 
     <!-- Surface and UI Colors -->

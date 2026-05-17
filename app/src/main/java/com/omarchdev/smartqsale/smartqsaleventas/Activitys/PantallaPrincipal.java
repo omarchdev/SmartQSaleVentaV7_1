@@ -3,7 +3,7 @@ package com.omarchdev.smartqsale.smartqsaleventas.Activitys;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -59,6 +59,7 @@ public class PantallaPrincipal extends AppCompatActivity
     DialogCargaAsync dialogCargaAsync;
     DialogAperturaCaja dialogAperturaCaja;
     AsyncCaja asyncCaja;
+    AlertDialog alertDialog;
     int id = 0;
     Button btnCerrarSesion;
     Transition set;
@@ -229,7 +230,7 @@ public class PantallaPrincipal extends AppCompatActivity
         } else if (id == R.id.nav_Impresoras) {
 
             DialogFragment dialogFragment = new DialogSelectPrinter();
-            dialogFragment.show(getFragmentManager(), "Seleccionar Impresora");
+            dialogFragment.show(getSupportFragmentManager(), "Seleccionar Impresora");
 
         } else if (id == R.id.nav_CuentasCliente) {
             if (helper.ObtenerPermiso(Constantes.ProcesosPantalla.CuentaCorrienteCliente)) {
@@ -367,7 +368,9 @@ public class PantallaPrincipal extends AppCompatActivity
     }
 
     private void MensajeCerrarSesion() {
-        Dialog dialog;
+        if (alertDialog != null && alertDialog.isShowing()) {
+            alertDialog.dismiss();
+        }
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Advertencia").
                 setMessage("¿Está seguro de cerrar su sesión?").
@@ -383,9 +386,9 @@ public class PantallaPrincipal extends AppCompatActivity
                 }).
                 setNegativeButton("Cancelar", null);
 
-        dialog = builder.create();
-        dialog.setCanceledOnTouchOutside(false);
-        dialog.show();
+        alertDialog = builder.create();
+        alertDialog.setCanceledOnTouchOutside(false);
+        alertDialog.show();
     }
 
     private void ActivityListadoProductos() {
@@ -519,7 +522,7 @@ public class PantallaPrincipal extends AppCompatActivity
     public void AperturarCaja() {
 
         DialogFragment dialogFragment = dialogAperturaCaja;
-        dialogFragment.show(getFragmentManager(), "Apertura caja");
+        dialogFragment.show(getSupportFragmentManager(), "Apertura caja");
     }
 
     @Override
@@ -544,7 +547,18 @@ public class PantallaPrincipal extends AppCompatActivity
 
     @Override
     protected void onDestroy() {
-        //     bdConnectionSql.closeConnection();
+        if (dialog != null && dialog.isShowing()) {
+            dialog.dismiss();
+        }
+        if (dialogCargaAsync != null) {
+            dialogCargaAsync.dismiss();
+        }
+        if (alertDialog != null && alertDialog.isShowing()) {
+            alertDialog.dismiss();
+        }
+        if (asyncCaja != null) {
+            asyncCaja.dismiss();
+        }
         super.onDestroy();
     }
 
@@ -580,8 +594,11 @@ public class PantallaPrincipal extends AppCompatActivity
     }
 
     public void MensajeAlerta(String titulo, String mensaje) {
-
-        new AlertDialog.Builder(this).setPositiveButton("Salir", null)
-                .setMessage(mensaje).setTitle(titulo).create().show();
+        if (alertDialog != null && alertDialog.isShowing()) {
+            alertDialog.dismiss();
+        }
+        alertDialog = new AlertDialog.Builder(this).setPositiveButton("Salir", null)
+                .setMessage(mensaje).setTitle(titulo).create();
+        alertDialog.show();
     }
 }

@@ -34,7 +34,7 @@ class FacturaActivaController{
         var url1 = "$rutaApi$pre"
         var tok = "$tokenEnvio:$tokenP2".replace("\n","").replace("\r","")
         var token1_64 = Base64.encodeToString(tok.toByteArray(), Base64.DEFAULT).replace("\n","")
-        val client = OkHttpClient().newBuilder().connectTimeout(15,TimeUnit.SECONDS).build()
+        val client = Constantes.ConfiRetrofitTimeOut.okHttpClient
         val mediaType = MediaType.parse("application/json")
         val body = RequestBody.create(mediaType, envio.toString().toByteArray())
         val request = Request.Builder()
@@ -145,7 +145,7 @@ class FacturaActivaController{
                     jsonDocElectronico.put("descuento", jsonDescuento)
                     jsonDocElectronico.put("detalle", jsonArrayDetalle)
                     jsonDocElectronico.put("impuesto", jsonArrayImpuesto)
-                    var clientResult=OkHttpClient().newBuilder().connectTimeout(15,TimeUnit.SECONDS).build()
+                    var clientResult = Constantes.ConfiRetrofitTimeOut.okHttpClient
                     val mediaT = MediaType.parse("application/json")
                     val body = RequestBody.create(mediaT, jsonDocElectronico.toString().toByteArray())
                     val request2 = Request.Builder()
@@ -236,7 +236,7 @@ class FacturaActivaController{
             var url1 = "$rutaApi$pre"
             var tok = "$tokenEnvio:$tokenP2".replace("\n","").replace("\r","")
             var token1_64 = Base64.encodeToString(tok.toByteArray(), Base64.DEFAULT).replace("\n","")
-            val client = OkHttpClient().newBuilder().connectTimeout(15,TimeUnit.SECONDS).build()
+            var clientResult = Constantes.ConfiRetrofitTimeOut.okHttpClient
             val mediaType = MediaType.parse("application/json")
             val body = RequestBody.create(mediaType, envio.toString().toByteArray())
             val request = Request.Builder()
@@ -333,7 +333,7 @@ class FacturaActivaController{
                     jsonDocElectronico.put("descuento", jsonDescuento)
                     jsonDocElectronico.put("detalle", jsonArrayDetalle)
                     jsonDocElectronico.put("impuesto", jsonArrayImpuesto)
-                    var clientResult=OkHttpClient().newBuilder().connectTimeout(15,TimeUnit.SECONDS).build()
+                    var clientResult = Constantes.ConfiRetrofitTimeOut.okHttpClient
                     val mediaT = MediaType.parse("application/json")
                     val body = RequestBody.create(mediaT, jsonDocElectronico.toString().toByteArray())
                     val request2 = Request.Builder()
@@ -453,7 +453,7 @@ class FacturaActivaController{
 
                 val url = rutaApi + "/emission/summaries"
 
-                var clientResult=OkHttpClient().newBuilder().connectTimeout(15,TimeUnit.SECONDS).build()
+                var clientResult = Constantes.ConfiRetrofitTimeOut.okHttpClient
                 val mediaT = MediaType.parse("application/json")
                 val body = RequestBody.create(mediaT, jsonDocumento.toString().toByteArray())
                 val request2 = Request.Builder()

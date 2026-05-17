@@ -52,7 +52,7 @@ class ReporteVendedor : ActivityParent(), AsyncReporte.ListenerReportePVendedor,
         var fInicioText = ""
         var fFinalText = ""
         var permitir = true
-        val fm = this@ReporteVendedor.fragmentManager
+        val fm = this@ReporteVendedor.supportFragmentManager
         private fun TextoFecha(titulo: String, dia: Int, mes: Int, anio: Int): String = "$titulo \n $dia/$mes/$anio"
         var idVendedor = 0
         val listVendedor = ArrayList<mVendedor>()

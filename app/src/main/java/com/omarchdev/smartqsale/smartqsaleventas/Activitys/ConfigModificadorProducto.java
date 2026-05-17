@@ -17,8 +17,8 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.SearchView;
-import android.widget.Switch;
+import androidx.appcompat.widget.SearchView;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,11 +47,12 @@ public class ConfigModificadorProducto extends ActivityParent implements AsyncMo
     int positionMP;
     int positionM;
     boolean estadoActual,estadoTemp;
-    Switch switch1;
+    SwitchMaterial switch1;
     AVLoadingIndicatorView pbIndicator,pbIndicator2;
     TextView txtNumModProd,txtAdvModProd;
     SearchView searchView;
     EditText searchBox;
+    AlertDialog alertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,13 +125,15 @@ public class ConfigModificadorProducto extends ActivityParent implements AsyncMo
         SearchManager searchManager=(SearchManager)getSystemService(Context.SEARCH_SERVICE);
 
         searchView=findViewById(R.id.searchView);
-        searchView.onActionViewExpanded();
-        searchView.clearFocus();
+        if (searchView != null) {
+            searchView.onActionViewExpanded();
+            searchView.clearFocus();
+        }
         SearchableInfo searchableInfo = searchManager.getSearchableInfo(getComponentName());
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-        int searchimgId=getResources().getIdentifier ("android:id/search_button", null, null);
-        int imageId=getResources().getIdentifier ("android:id/search_close_btn", null, null);
-        int searchTextId = getResources().getIdentifier ("android:id/search_src_text", null, null);
+        int searchimgId = androidx.appcompat.R.id.search_button;
+        int imageId = androidx.appcompat.R.id.search_close_btn;
+        int searchTextId = androidx.appcompat.R.id.search_src_text;
         searchBox=((EditText) searchView.findViewById (searchTextId));
         ImageView searchClose=((ImageView)searchView.findViewById(imageId));
         ImageView imgSearch=((ImageView)searchView.findViewById(searchimgId));
@@ -160,6 +163,17 @@ public class ConfigModificadorProducto extends ActivityParent implements AsyncMo
         super.onResume();
 
         asyncModificadores.ObtenerConfiguracionModificadoresProducto(idProducto);
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (alertDialog != null && alertDialog.isShowing()) {
+            alertDialog.dismiss();
+        }
+        if (asyncModificadores != null) {
+            asyncModificadores.dismissDialog();
+        }
+        super.onDestroy();
     }
 
     @Override
@@ -227,10 +241,13 @@ public class ConfigModificadorProducto extends ActivityParent implements AsyncMo
         switch (modificador.getIdModificador()){
 
             case -10:
-                new AlertDialog.Builder(this).setTitle("Advertencia")
+                if (isFinishing()) break;
+                if (alertDialog != null && alertDialog.isShowing()) alertDialog.dismiss();
+                alertDialog = new AlertDialog.Builder(this).setTitle("Advertencia")
                         .setMessage(modificador.getDescripcion())
                         .setPositiveButton("Salir",null)
-                        .create().show();
+                        .create();
+                alertDialog.show();
                 break;
 
             case -5:
@@ -368,9 +385,11 @@ public class ConfigModificadorProducto extends ActivityParent implements AsyncMo
             }
     }
     private void MensajeAlerta(String titulo,String mensaje){
-
+        if (isFinishing()) return;
+        if (alertDialog != null && alertDialog.isShowing()) alertDialog.dismiss();
         AlertDialog.Builder builder=new AlertDialog.Builder(this);
-        builder.setMessage(mensaje).setTitle(titulo).setPositiveButton("Salir",null).create().show();
+        alertDialog = builder.setMessage(mensaje).setTitle(titulo).setPositiveButton("Salir",null).create();
+        alertDialog.show();
 
     }
     private void CambiarEstadoVariante(boolean EstadoModificador){
@@ -378,8 +397,8 @@ public class ConfigModificadorProducto extends ActivityParent implements AsyncMo
     }
 
     private void VerificarEstadoModificador(String mensaje){
-
-        Dialog dialog;
+        if (isFinishing()) return;
+        if (alertDialog != null && alertDialog.isShowing()) alertDialog.dismiss();
         AlertDialog.Builder builder=new AlertDialog.Builder(this);
         builder.setMessage(mensaje);
         builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -396,9 +415,9 @@ public class ConfigModificadorProducto extends ActivityParent implements AsyncMo
 
         });
 
-        dialog=builder.create();
-        dialog.show();
-        dialog.setCanceledOnTouchOutside(false);
+        alertDialog=builder.create();
+        alertDialog.show();
+        alertDialog.setCanceledOnTouchOutside(false);
     }
 
 

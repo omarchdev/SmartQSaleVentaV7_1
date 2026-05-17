@@ -1,103 +1,120 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroud_app"
     tools:context="com.omarchdev.smartqsale.smartqsaleventas.Fragment.ConfigEstadoProductFragment">
 
-   <LinearLayout
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-       android:gravity="center"
-       android:orientation="vertical"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent">}
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
 
+            <com.google.android.material.card.MaterialCardView
+                style="@style/AppTheme.Card.Modern"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-       <Switch
-           android:layout_marginLeft="10dp"
-           android:textSize="15sp"
-           android:id="@+id/switchEstado"
-           android:layout_width="250dp"
-           android:layout_height="wrap_content"
-           android:text="@string/estado_producto_cabecera"
-           android:shadowColor="@color/colorPrimary"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-       <Switch
-           android:layout_marginLeft="10dp"
-           android:id="@+id/switchEstadoVisible"
-           android:layout_width="250dp"
-           android:layout_height="wrap_content"
-           android:layout_marginTop="10dp"
-           android:shadowColor="@color/colorPrimary"
-           android:text="@string/estado_visible_cabecera"
-           android:textSize="15sp"
-           />
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switchEstado"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/estado_producto_cabecera"
+                        android:textColor="@color/gray_700"
+                        android:textStyle="bold" />
 
-       <Switch
-           android:id="@+id/switchVisibleVentaWeb"
-           android:layout_width="250dp"
-           android:layout_marginTop="10dp"
-           android:layout_marginLeft="10dp"
-           android:layout_height="wrap_content"
-           android:text="Visible en web:" />
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switchEstadoVisible"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/estado_visible_cabecera"
+                        android:textColor="@color/gray_700" />
 
-       <Switch
-           android:layout_marginTop="10dp"
-           android:layout_marginLeft="10dp"
-           android:textSize="15sp"
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switchVisibleVentaWeb"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Visible en Web"
+                        android:textColor="@color/gray_700" />
 
-           android:id="@+id/switchControlPorPeso"
-           android:layout_width="250dp"
-           android:layout_height="wrap_content"
-           android:text="@string/control_peso_opcion"
-           android:shadowColor="@color/colorPrimary"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@color/gray_100" />
 
-       <Switch
-           android:layout_marginLeft="10dp"
-           android:id="@+id/switchControlStock"
-           android:layout_width="250dp"
-           android:layout_height="wrap_content"
-           android:layout_marginTop="10dp"
-           android:shadowColor="@color/colorPrimary"
-           android:text="@string/control_stock_opcion"
-           android:textSize="15sp"
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switchControlPorPeso"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/control_peso_opcion"
+                        android:textColor="@color/gray_700" />
 
- />
-       <Switch
-           android:layout_marginLeft="10dp"
-           android:id="@+id/switchPVLibre"
-           android:layout_width="250dp"
-           android:layout_height="wrap_content"
-           android:layout_marginTop="10dp"
-           android:shadowColor="@color/colorPrimary"
-           android:text="Precio de Venta Variable"
-           android:textSize="15sp"
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switchControlStock"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/control_stock_opcion"
+                        android:textColor="@color/gray_700" />
 
-           />
-       <Switch
-           android:layout_marginLeft="10dp"
-           android:id="@+id/switchTiempo"
-           android:layout_width="250dp"
-           android:layout_height="wrap_content"
-           android:layout_marginTop="10dp"
-           android:shadowColor="@color/colorPrimary"
-           android:text="Control por tiempo"
-           android:textSize="15sp"
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switchPVLibre"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Precio de Venta Variable"
+                        android:textColor="@color/gray_700" />
 
-           />
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switchTiempo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Control por Tiempo"
+                        android:textColor="@color/gray_700" />
 
-       <TextView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_marginTop="10dp"
-           android:text="Seleccione el tipo de producto" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@color/gray_100" />
 
-       <Spinner
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tipo de Producto"
+                        android:textColor="@color/gray_600"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
 
-           android:id="@+id/spTipoProducto"
-           android:layout_width="250dp"
-           android:layout_height="wrap_content"
-           android:layout_marginTop="10dp"></Spinner>
+                    <Spinner
+                        android:id="@+id/spTipoProducto"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="4dp" />
 
-       </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-</FrameLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

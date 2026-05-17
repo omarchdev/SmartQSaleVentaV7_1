@@ -5,7 +5,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes;
@@ -80,7 +79,7 @@ public class RvAdapterResumenCaja extends RecyclerView.Adapter<RecyclerView.View
 
     public class ResumenPagoVH extends RecyclerView.ViewHolder {
 
-        ImageView imgColor;
+        View imgColor;
         TextView txtTipo;
         TextView txtMonto;
         TextView subtitulo;
@@ -91,7 +90,7 @@ public class RvAdapterResumenCaja extends RecyclerView.Adapter<RecyclerView.View
 
             txtTipo = (TextView) itemView.findViewById(R.id.txtTipo);
             txtMonto = (TextView) itemView.findViewById(R.id.montoDinero);
-            imgColor = (ImageView) itemView.findViewById(R.id.imgColor);
+            imgColor = (View) itemView.findViewById(R.id.imgColor);
             subtitulo = (TextView) itemView.findViewById(R.id.txtSubtitulo);
 
         }

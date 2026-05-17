@@ -25,7 +25,7 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import androidx.appcompat.widget.SearchView;
 import android.widget.Spinner;
-import android.widget.Switch;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -87,7 +87,7 @@ public class ActivityConfigPack extends ActivityParent implements View.OnClickLi
     TextView txtCargando;
     mProduct product;
     boolean click;
-    Switch sComboRapido;
+    SwitchMaterial sComboRapido;
     EditText edtParametro;
     int idCategoria;
     String parametro;

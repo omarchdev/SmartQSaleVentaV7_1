@@ -4,84 +4,117 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-
+    android:background="@color/backgroud_app"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp"
     tools:context="com.omarchdev.smartqsale.smartqsaleventas.Activitys.AddEditCustomer">
 
-    <RelativeLayout
+    <com.google.android.material.card.MaterialCardView
+        style="@style/AppTheme.Card.Modern"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="10dp"
-        android:gravity="center">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/txtTitulo"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:gravity="center"
-            android:text="Agregar Cliente"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
 
-        <EditText
-            android:id="@+id/edtCustomerName"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_below="@id/txtTitulo"
+            <TextView
+                android:id="@+id/txtTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:gravity="center"
+                android:text="Datos del Cliente"
+                android:textColor="@color/colorPrimary"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-            android:hint="Nombre del Cliente" />
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/AppTheme.TextInputLayout.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
 
-        <EditText
-            android:id="@+id/edtCustomerAlias"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_below="@id/edtCustomerName"
-            android:hint="Alias del Cliente" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtCustomerName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nombre del Cliente"
+                    android:inputType="textPersonName" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/edtCustomerEmail"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_below="@id/edtCustomerAlias"
-            android:hint="Email Cliente"
-            android:inputType="textEmailAddress" />
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/AppTheme.TextInputLayout.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
 
-        <EditText
-            android:id="@+id/edtCustomerPhone"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_below="@id/edtCustomerEmail"
-            android:hint="Celular Cliente"
-            android:inputType="phone" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtCustomerAlias"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Alias del Cliente"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/AppTheme.TextInputLayout.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
 
-        <Button
-            android:id="@+id/btnCancelCustomer"
-            android:layout_width="140dp"
-            android:layout_height="60dp"
-            android:layout_below="@+id/edtCustomerPhone"
-            android:layout_margin="10dp"
-            android:background="#ff0d00"
-            android:drawableRight="@drawable/ic_close_white_36dp"
-            android:text="Cancelar"
-            android:textColor="#ffffff" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtCustomerEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/AppTheme.TextInputLayout.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
 
-            android:id="@+id/btnSaveCustomer"
-            android:layout_width="140dp"
-            android:layout_height="60dp"
-            android:layout_below="@+id/edtCustomerPhone"
-            android:layout_margin="10dp"
-            android:layout_toRightOf="@id/btnCancelCustomer"
-            android:background="#00aeff"
-            android:drawableRight="@drawable/ic_content_save_white_36dp"
-            android:text="Guardar"
-            android:textColor="#ffffff" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtCustomerPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Teléfono"
+                    android:inputType="phone" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
+                <Button
+                    android:id="@+id/btnCancelCustomer"
+                    style="@style/AppTheme.Button.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:text="Cancelar"
+                    android:textColor="@color/status_error"
+                    app:strokeColor="@color/status_error" />
+
+                <Button
+                    android:id="@+id/btnSaveCustomer"
+                    style="@style/AppTheme.Button.Modern"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Guardar"
+                    app:icon="@drawable/ic_content_save_white_36dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </LinearLayout>

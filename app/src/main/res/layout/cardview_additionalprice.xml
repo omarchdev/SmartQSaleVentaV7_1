@@ -1,65 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="100dp"
-    android:layout_height="wrap_content"
-
-
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/AppTheme.Card.Modern"
     android:id="@+id/cvAdditionalPrice"
-  android:layout_margin="4dp"
-    android:animateLayoutChanges="false"
-   >
+    android:layout_width="100dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <RelativeLayout
-            android:id="@+id/RLTextoTituloPrecio"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="30dp"
+            android:background="@color/gray_100"
+            android:gravity="center"
+            android:text="Precio"
+            android:textColor="@color/gray_600"
+            android:textSize="11sp"
+            android:textStyle="bold" />
 
-            >
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="Precio "
-                android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/RLTextoPrecio"
+        <TextView
+            android:id="@+id/txtAdditionalPrice"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_below="@+id/RLTextoTituloPrecio">
+            android:gravity="center"
+            android:text="S/ 0.00"
+            android:textColor="@color/gray_900"
+            android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:id="@+id/txtAdditionalPrice"
-                android:text="S/"
-
-                android:layout_alignParentTop="true" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
+        <ImageButton
+            android:id="@+id/imgbtnDeletePriceAdditional"
+            style="@style/AppTheme.Button.Icon"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_below="@+id/RLTextoPrecio">
+            android:background="@color/status_error"
+            app:srcCompat="@drawable/ic_delete_white_24dp"
+            app:tint="@color/white" />
 
-            <ImageButton
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/imgbtnDeletePriceAdditional"
-                android:backgroundTint="@android:color/holo_red_dark"
-                android:src="@drawable/ic_delete_white_24dp" />
+    </LinearLayout>
 
-        </RelativeLayout>
-    </RelativeLayout>
+    <!-- Legacy Compatibility IDs -->
+    <View android:id="@+id/RLTextoTituloPrecio" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+    <View android:id="@+id/RLTextoPrecio" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
 
-
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

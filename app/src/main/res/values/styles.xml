@@ -2,7 +2,7 @@
 
     <!-- Base Application Theme -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
-        <item name="android:fitsSystemWindows">true</item>
+
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:colorBackground">@color/backgroud_app</item>
 
@@ -10,6 +10,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/gray_900</item>
 
         <!-- UI colors -->
         <item name="colorControlNormal">@color/colorPrimaryDark</item>
@@ -26,9 +28,12 @@
         <item name="textAppearanceButton">@style/AppTheme.Text.Button</item>
     </style>
 
-    <style name="AppTheme.NoActionBar">
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
     </style>
 
     <!-- Splash Screen Theme -->
@@ -42,6 +47,70 @@
         <item name="android:background">@color/backgroud_app</item>
         <item name="titleTextColor">@color/black</item>
         <item name="height">?attr/actionBarSize</item>
+    </style>
+
+    <!-- Centralized AppBar and Toolbar Styles -->
+    <style name="AppTheme.AppBar.White" parent="Widget.MaterialComponents.AppBarLayout.Surface">
+        <item name="android:background">@color/white</item>
+        <item name="android:elevation">4dp</item>
+    </style>
+
+    <style name="AppTheme.Toolbar.White" parent="Widget.MaterialComponents.Toolbar">
+        <item name="android:background">@color/white</item>
+        <item name="android:layout_height">120dp</item>
+        <item name="titleTextColor">@color/black</item>
+        <item name="navigationIcon">@drawable/arrow_back_grid</item>
+        <item name="navigationIconTint">@color/black</item>
+        <item name="android:theme">@style/AppTheme.ThemeOverlay.White</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="android:gravity">top</item>
+        <item name="titleMarginTop">16dp</item>
+    </style>
+
+    <style name="AppTheme.Toolbar.Modern" parent="Widget.MaterialComponents.Toolbar">
+        <item name="android:background">@color/white</item>
+        <item name="titleTextColor">@color/gray_900</item>
+        <item name="android:elevation">@dimen/elevation_low</item>
+        <item name="titleTextAppearance">@style/AppTheme.Toolbar.Title.Modern</item>
+        <item name="navigationIcon">@drawable/arrow_back_home</item>
+        <item name="navigationIconTint">@color/gray_700</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+    </style>
+
+    <style name="AppTheme.Toolbar.Title.Modern" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_size_title</item>
+        <item name="android:textColor">@color/gray_900</item>
+    </style>
+
+    <style name="AppTheme.Toolbar.White.Tall" parent="AppTheme.Toolbar.White">
+        <!-- Kept for compatibility, now inherits the centralized 120dp height -->
+    </style>
+
+    <style name="AppTheme.ThemeOverlay.White" parent="ThemeOverlay.AppCompat.Light">
+        <item name="colorControlNormal">@color/black</item>
+        <item name="android:textColorPrimary">@color/black</item>
+        <item name="android:textColorSecondary">@color/gray_700</item>
+        <item name="actionMenuTextColor">@color/black</item>
+    </style>
+
+    <style name="AppTheme.TabLayout.White" parent="Widget.MaterialComponents.TabLayout">
+        <item name="tabIndicatorColor">@color/black</item>
+        <item name="tabSelectedTextColor">@color/black</item>
+        <item name="tabTextColor">@color/gray_600</item>
+        <item name="android:background">@color/white</item>
+        <item name="tabTextAppearance">@style/AppTheme.Text.Tab</item>
+        <item name="tabIndicatorHeight">2dp</item>
+    </style>
+
+    <style name="AppTheme.Text.Tab" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="AppTheme.Toolbar" parent="AppTheme.Toolbar.White">
+        <!-- Kept for compatibility, redirects to White style -->
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -75,7 +144,29 @@
         <item name="android:layout_margin">@dimen/spacing_tiny</item>
         <item name="android:padding">@dimen/spacing_small</item>
         <item name="android:textColor">@color/white</item>
-        <item name="cornerRadius">@dimen/radius_small</item>
+        <item name="cornerRadius">@dimen/radius_medium</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+    </style>
+
+    <style name="AppTheme.Button.Modern" parent="AppTheme.Button">
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:textSize">@dimen/text_size_button</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AppTheme.Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="cornerRadius">@dimen/radius_medium</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="strokeColor">@color/colorPrimary</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.Button.Text" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
     <style name="AppTheme.Button.Icon" parent="Widget.AppCompat.ImageButton">
@@ -88,7 +179,114 @@
         <!-- Kept for compatibility -->
     </style>
 
-    <!-- PIN Screen Styles -->
+    <!-- Sales Screen Styles -->
+    <style name="AppTheme.Sales.ActionBar" parent="">
+        <item name="android:background">@color/white</item>
+        <item name="android:elevation">@dimen/elevation_low</item>
+        <item name="android:padding">@dimen/spacing_small</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="AppTheme.Sales.ActionButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/gray_900</item>
+        <item name="android:textSize">12sp</item>
+        <item name="iconTint">@color/gray_700</item>
+        <item name="iconPadding">4dp</item>
+    </style>
+
+    <style name="AppTheme.Sales.CartSummary" parent="">
+        <item name="android:background">@color/white</item>
+        <item name="android:padding">@dimen/spacing_medium</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="AppTheme.Sales.CheckoutButton" parent="AppTheme.Button.Modern">
+        <item name="android:backgroundTint">@color/colorPrimary</item>
+        <item name="android:minWidth">120dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="AppTheme.Sales.QuantityBadge" parent="AppTheme.Text">
+        <item name="android:background">@drawable/bg_edittext_modern</item>
+        <item name="android:backgroundTint">@color/gray_100</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="AppTheme.Sales.PriceText" parent="AppTheme.Text">
+        <item name="android:textColor">@color/status_success</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="AppTheme.Sales.AforoCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/colorPrimary</item>
+        <item name="cardCornerRadius">@dimen/radius_medium</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="AppTheme.Sales.AforoText" parent="AppTheme.Text">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">28sp</item>
+    </style>
+
+    <style name="AppTheme.Sales.AforoLabel" parent="AppTheme.Text">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="AppTheme.Sales.PlateInput" parent="AppTheme.EditText.Modern">
+        <item name="android:background">@null</item>
+        <item name="android:textColor">@color/gray_900</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:padding">8dp</item>
+    </style>
+
+    <style name="AppTheme.Sales.SearchInput" parent="AppTheme.EditText.Modern">
+        <item name="android:background">@drawable/bg_edittext_modern</item>
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="AppTheme.PIN.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/gray_900</item>
+        <item name="backgroundTint">@color/gray_100</item>
+        <item name="cornerRadius">@dimen/radius_medium</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:padding">0dp</item>
+    </style>
+
+    <style name="AppTheme.PIN.Button.Icon" parent="AppTheme.PIN.Button">
+        <item name="android:padding">20dp</item>
+        <item name="tint">@color/status_error</item>
+        <item name="iconGravity">textStart</item>
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+        <item name="backgroundTint">@null</item>
+    </style>
+
+    <style name="AppTheme.PIN.Indicator" parent="">
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:layout_margin">12dp</item>
+        <item name="android:src">@drawable/circle_void</item>
+    </style>
+
     <style name="ButtonPin" parent="Widget.MaterialComponents.Button">
         <item name="android:textSize">@dimen/pin_button_text_size</item>
         <item name="android:textColor">@color/colorPinButtonText</item>
@@ -142,6 +340,61 @@
 
     <style name="searchViewStyle" parent="MySearchViewStyle" />
 
+    <!-- Card Styles -->
+    <style name="AppTheme.Card.Modern" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">@dimen/radius_medium</item>
+        <item name="cardElevation">@dimen/elevation_low</item>
+        <item name="android:layout_margin">@dimen/spacing_small</item>
+    </style>
+
+    <style name="AppTheme.Card.Elevated" parent="AppTheme.Card.Modern">
+        <item name="cardElevation">@dimen/elevation_medium</item>
+    </style>
+
+    <!-- Category Grid Styles -->
+    <style name="AppTheme.CategoryGrid.Card" parent="AppTheme.Card.Modern">
+        <item name="android:clickable">false</item>
+        <item name="android:focusable">false</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+    </style>
+
+    <style name="AppTheme.CategoryGrid.ItemText" parent="AppTheme.Text">
+        <item name="android:textSize">@dimen/text_size_category_item</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/gray_900</item>
+    </style>
+
+    <!-- Product Grid Styles -->
+    <style name="AppTheme.ProductGrid.Card" parent="AppTheme.Card.Modern">
+        <item name="android:clickable">false</item>
+        <item name="android:focusable">false</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+    </style>
+
+    <style name="AppTheme.ProductGrid.NameText" parent="AppTheme.Text">
+        <item name="android:textSize">@dimen/text_size_product_name</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/gray_900</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:padding">4dp</item>
+    </style>
+
+    <style name="AppTheme.ProductGrid.NameText.Overlay" parent="AppTheme.ProductGrid.NameText">
+        <item name="android:background">#99000000</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="AppTheme.ProductGrid.QuantityText" parent="AppTheme.Text">
+        <item name="android:textSize">@dimen/text_size_product_quantity</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@color/status_error</item>
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:paddingEnd">4dp</item>
+    </style>
+
     <!-- Dialog Styles -->
     <style name="DialogStyle" parent="Theme.MaterialComponents.DayNight.Dialog">
         <item name="android:windowMinWidthMajor">97%</item>
@@ -156,6 +409,7 @@
         <item name="android:padding">@dimen/spacing_tiny</item>
         <item name="android:background">@drawable/backgroundtext</item>
         <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
     <style name="FondoImagenes">
@@ -207,4 +461,70 @@
         <item name="android:textSize">@dimen/text_size_body</item>
     </style>
 
+    <!-- Sale Item Header Styles -->
+    <style name="AppTheme.SaleItem.Label" parent="AppTheme.Text">
+        <item name="android:textSize">@dimen/text_size_body</item>
+        <item name="android:textColor">@color/gray_600</item>
+    </style>
+
+    <style name="AppTheme.SaleItem.Data" parent="AppTheme.Text">
+        <item name="android:textSize">@dimen/text_size_body</item>
+        <item name="android:textColor">@color/gray_800</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AppTheme.SaleItem.DocTitle" parent="AppTheme.Text.Title">
+        <item name="android:textSize">@dimen/text_size_title</item>
+        <item name="android:textColor">@color/gray_900</item>
+    </style>
+
+    <style name="AppTheme.SaleItem.Total" parent="AppTheme.Text.Headline">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/gray_900</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Sale Detail Styles -->
+    <style name="AppTheme.SaleDetail" />
+
+    <style name="AppTheme.SaleDetail.SectionTitle">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    
+    <style name="AppTheme.SaleDetail.Label">
+        <item name="android:textColor">@color/gray_700</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    
+    <style name="AppTheme.SaleDetail.Data">
+        <item name="android:textColor">@color/gray_900</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    
+    <style name="AppTheme.SaleDetail.TotalLabel">
+        <item name="android:textColor">@color/gray_900</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    
+    <style name="AppTheme.SaleDetail.TotalData">
+        <item name="android:textColor">@color/status_success</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    
+    <style name="AppTheme.SaleDetail.Subtitle">
+        <item name="android:textColor">@color/gray_700</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="AppTheme.Spinner.Outlined" parent="Widget.AppCompat.Spinner">
+        <item name="android:background">@drawable/bg_spinner_outlined</item>
+        <item name="android:layout_height">52dp</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">40dp</item>
+        <item name="android:overlapAnchor">false</item>
+    </style>
 </resources>

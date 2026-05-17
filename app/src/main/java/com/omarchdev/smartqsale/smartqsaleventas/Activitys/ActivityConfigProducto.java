@@ -8,15 +8,17 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.SearchView;
+import androidx.appcompat.widget.SearchView;
 import android.widget.Toast;
 
 import com.omarchdev.smartqsale.smartqsaleventas.AsyncTask.AsyncProducto;
@@ -31,7 +33,7 @@ import java.util.List;
 import co.ceryle.radiorealbutton.RadioRealButton;
 import co.ceryle.radiorealbutton.RadioRealButtonGroup;
 
-public class ActivityConfigProducto extends ActivityParent implements AsyncProducto.ObtenerProductos, RvAdapter.AccionConfigProduct, DialogScannerCam.ScannerResult, SearchView.OnQueryTextListener, RadioRealButtonGroup.OnPositionChangedListener {
+public class ActivityConfigProducto extends ActivityParent implements AsyncProducto.ObtenerProductos, RvAdapter.AccionConfigProduct, DialogScannerCam.ScannerResult, androidx.appcompat.widget.SearchView.OnQueryTextListener, RadioRealButtonGroup.OnPositionChangedListener {
 
     RecyclerView rvProductos;
     RvAdapter rvAdapter;
@@ -40,7 +42,7 @@ public class ActivityConfigProducto extends ActivityParent implements AsyncProdu
     final byte metodoTodos=100;
     final byte metodoBusqueda=103;
     byte metodoRealizar=0;
-    SearchView searchView;
+    androidx.appcompat.widget.SearchView searchView;
     DialogScannerCam dialogScannerCam;
     EditText searchBox;
     RadioRealButtonGroup rgVar2;
@@ -59,32 +61,16 @@ public class ActivityConfigProducto extends ActivityParent implements AsyncProdu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        MenuInflater inflater=getMenuInflater();
-        inflater.inflate(R.menu.menu_listado_productos,menu);
-        SearchManager searchManager=(SearchManager)getSystemService(Context.SEARCH_SERVICE);
-        searchView=(SearchView)menu.findItem(R.id.searchToolbar1).getActionView();
-        SearchableInfo searchableInfo = searchManager.getSearchableInfo(getComponentName());
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-        int searchimgId=getResources().getIdentifier ("android:id/search_button", null, null);
-        int imageId=getResources().getIdentifier ("android:id/search_close_btn", null, null);
-        int searchTextId = getResources().getIdentifier ("android:id/search_src_text", null, null);
-        searchBox=((EditText) searchView.findViewById (searchTextId));
-        ImageView searchClose=((ImageView)searchView.findViewById(imageId));
-        ImageView imgSearch=((ImageView)searchView.findViewById(searchimgId));
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_listado_productos, menu);
 
+        // Removemos la lógica del SearchView de aquí ya que ahora es inline en el XML
+        MenuItem searchItem = menu.findItem(R.id.searchToolbar1);
+        if (searchItem != null) {
+            searchItem.setVisible(false);
+        }
 
-        searchView.setQueryHint("Busqueda de producto");
-        searchView.setSearchableInfo(searchableInfo);
-        searchView.setOnQueryTextListener(this);
-
-        imgSearch.setColorFilter(getResources().getColor(R.color.colorAccent));
-        searchClose.setColorFilter(getResources().getColor(R.color.colorAccent));
-        searchBox.setHintTextColor(getResources().getColor(R.color.colorAccent));
-        searchBox.setTextColor(getResources().getColor(R.color.colorAccent));
-        searchBox.setHighlightColor(getResources().getColor(R.color.colorAccent));
-        searchBox.setDrawingCacheBackgroundColor(getResources().getColor(R.color.colorAccent));
         return super.onCreateOptionsMenu(menu);
-
     }
 
     @Override
@@ -92,14 +78,30 @@ public class ActivityConfigProducto extends ActivityParent implements AsyncProdu
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_config_producto);
 
-        getSupportActionBar().setTitle("Listado artículos");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle((Html.fromHtml("<font color=\"#757575\">" + "Listado productos"+ "</font>")));
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
-        getSupportActionBar()
-                .setHomeAsUpIndicator(R.drawable.arrow_back_home);
-        getSupportActionBar().setElevation(0);
+        // Forzar color de barra de estado si es posible
+        /*if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            getWindow().setStatusBarColor(Color.WHITE);
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }*/
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                getSupportActionBar().setDisplayShowHomeEnabled(true);
+            }
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onBackPressed();
+                }
+            });
+
+            // Inicializar SearchView Inline
+            searchView = findViewById(R.id.searchViewInline);
+            searchView.setOnQueryTextListener(this);
+        }
         dialogScannerCam =new DialogScannerCam();
         dialogScannerCam.setScannerResult(this);
         positionSelected=0;

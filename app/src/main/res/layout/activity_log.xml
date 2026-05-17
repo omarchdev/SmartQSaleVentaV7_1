@@ -1,65 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
     android:layout_width="match_parent"
-    android:background="@color/gray_900"
-    android:gravity="center"
     android:layout_height="match_parent"
+    android:background="@color/gray_900"
     tools:context="com.omarchdev.smartqsale.smartqsaleventas.Activitys.LogActivity">
 
-    <LinearLayout
-        android:background="@color/white"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardLogin"
+        style="@style/AppTheme.Card.Modern"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="40dp"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:paddingLeft="25dp"
-        android:paddingRight="25dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/linearLayout">
+        android:layout_margin="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/edtUserLog"
-            android:textStyle="bold"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:inputType="text"
-            android:hint="Usuario"/>
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="32dp">
 
-        <EditText
-            android:id="@+id/edtPasswordLog"
-            android:textStyle="bold"
-            android:layout_marginTop="25dp"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:inputType="textPassword"
-            android:hint="Contraseña"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:gravity="center"
+                android:text="Acceso Administrativo"
+                android:textColor="@color/colorPrimary"
+                android:textSize="22sp"
+                android:textStyle="bold" />
 
-        <Button
-            android:layout_marginTop="25dp"
-            android:id="@+id/btnAccessLog"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="Ingresar"/>
-    </LinearLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/AppTheme.TextInputLayout.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtUserLog"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Usuario"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/AppTheme.TextInputLayout.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtPasswordLog"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Contraseña"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnAccessLog"
+                style="@style/AppTheme.Button.Modern"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ingresar" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <ProgressBar
         android:id="@+id/progressBarLogin"
-        style="@android:style/Widget.DeviceDefault.Light.ProgressBar"
-
+        style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp"
-        android:visibility="gone" />
+        android:layout_marginTop="24dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardLogin" />
 
-
-</RelativeLayout>
-
+</androidx.constraintlayout.widget.ConstraintLayout>

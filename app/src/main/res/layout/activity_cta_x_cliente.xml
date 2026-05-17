@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
    tools:context="com.omarchdev.smartqsale.smartqsaleventas.Activitys.Activity_cta_x_cliente">
 
 
@@ -20,72 +21,46 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed|enterAlways">
-
+            app:expandedTitleMarginStart="16dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbarExpandable"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed" />
+                app:layout_collapseMode="pin" />
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_marginTop="?attr/actionBarSize"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:orientation="vertical"
                 android:padding="16dp"
-                android:scaleType="centerCrop"
-                app:layout_collapseMode="pin">
-
-                <TextView
-                    android:id="@+id/txtDVencimiento"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Dias de vencimiento"
-                    android:visibility="gone" />
-
-                <TextView
-                    android:id="@+id/txtEmail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_above="@+id/txtEmailDato"
-                    android:layout_alignParentStart="true"
-                    android:text="Email Contacto"
-                    android:textSize="16sp"
-                    android:visibility="gone" />
-
-                <TextView
-                    android:id="@+id/txtEmailDato"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_above="@+id/txtSaldo"
-                    android:layout_alignParentEnd="true"
-                    android:text="Email"
-                    android:textSize="16sp"
-                    android:visibility="gone" />
+                app:layout_collapseMode="parallax">
 
                 <TextView
                     android:id="@+id/txtSaldo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-
                     android:text="Saldo Total"
-                    android:textSize="16sp" />
-
+                    android:textColor="@color/gray_300"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/txtSaldoDatos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_below="@+id/txtEmailDato"
-                    android:text="Saldo Total"
-                    android:textSize="18sp"
+                    android:text="S/ 0.00"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
-            </RelativeLayout>
+                <!-- Keeping hidden IDs for compatibility -->
+                <TextView android:id="@+id/txtDVencimiento" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+                <TextView android:id="@+id/txtEmail" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+                <TextView android:id="@+id/txtEmailDato" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+
+            </LinearLayout>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
@@ -93,11 +68,6 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-
-
-        android:layout_marginTop="35dp"
         android:clipToPadding="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 

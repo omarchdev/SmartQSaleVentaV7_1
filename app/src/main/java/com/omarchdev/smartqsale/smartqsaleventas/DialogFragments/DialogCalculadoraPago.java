@@ -3,7 +3,7 @@ package com.omarchdev.smartqsale.smartqsaleventas.DialogFragments;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
@@ -102,6 +102,7 @@ public class DialogCalculadoraPago extends DialogFragment implements View.OnClic
     }
 
 
+    @androidx.annotation.NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 

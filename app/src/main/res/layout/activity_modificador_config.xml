@@ -53,16 +53,17 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:padding="8dp">
 
                 <Button
                     android:id="@+id/btnAddModificador"
-                    style="@style/Widget.AppCompat.Button.Colored"
-                    android:layout_width="wrap_content"
+                    style="@style/AppTheme.Button.Modern"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:drawableRight="@drawable/fab_add"
+                    app:icon="@drawable/fab_add"
+                    app:iconGravity="textEnd"
                     android:text="Agregar Modificadores" />
 
                 <LinearLayout
@@ -94,13 +95,13 @@
                     </LinearLayout>
 
                     <Button
-
                         android:id="@+id/btnEditarValores"
-                        style="@style/Widget.AppCompat.Button.Colored"
-                        android:layout_width="wrap_content"
+                        style="@style/AppTheme.Button.Modern"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:drawableRight="@drawable/pencil_edit"
+                        android:layout_margin="16dp"
+                        app:icon="@drawable/pencil_edit"
+                        app:iconGravity="textEnd"
                         android:text="Editar valores" />
 
                     <RelativeLayout
@@ -152,46 +153,56 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:padding="16dp"
+                android:background="@color/white">
 
-                <Button
-                    android:id="@+id/btnAgregarValorMod"
-                    style="@style/Widget.AppCompat.Button.Colored"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/llActions"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_toStartOf="@+id/btnEditarValorMod"
-                    android:drawableRight="@drawable/fab_add"
-                    android:text="Agregar" />
+                    android:orientation="horizontal"
+                    android:layout_alignParentTop="true">
 
-                <Button
-                    android:id="@+id/btnEditarValorMod"
-                    style="@style/Widget.AppCompat.Button.Colored"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:drawableRight="@drawable/pencil_edit"
-                    android:text="Editar" />
+                    <Button
+                        android:id="@+id/btnAgregarValorMod"
+                        style="@style/AppTheme.Button.Modern"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:icon="@drawable/fab_add"
+                        android:text="Agregar" />
 
-                <Button
-                    android:id="@+id/btnEliminarValorMod"
-                    style="@style/Widget.AppCompat.Button.Colored"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_toEndOf="@+id/btnEditarValorMod"
-                    android:drawableRight="@drawable/ic_delete_white_24dp"
-                    android:text="Eliminar" />
+                    <Button
+                        android:id="@+id/btnEditarValorMod"
+                        style="@style/AppTheme.Button.Modern"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="4dp"
+                        app:icon="@drawable/pencil_edit"
+                        android:text="Editar" />
+
+                    <Button
+                        android:id="@+id/btnEliminarValorMod"
+                        style="@style/AppTheme.Button.Modern"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="4dp"
+                        app:icon="@drawable/ic_delete_white_24dp"
+                        android:backgroundTint="@color/status_error"
+                        android:text="Eliminar" />
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/textView21"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/btnAgregarValorMod"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="11dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_below="@+id/llActions"
+                    android:layout_marginTop="16dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/gray_700"
                     android:text="Descripción del valor" />
 
                 <androidx.recyclerview.widget.RecyclerView

@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.material.card.MaterialCardView;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.Variante;
 import com.omarchdev.smartqsale.smartqsaleventas.R;
 
@@ -52,7 +53,7 @@ public class RvAdapterVariantesProducto extends RecyclerView.Adapter<RecyclerVie
     private class VarianteVH extends  RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView txtNombreVariante,txtStockVariante,txtPc,txtPv;
-        RelativeLayout rlItemVariante;
+        MaterialCardView rlItemVariante;
         OnItemClicked onItemClicked;
 
         public void setOnItemClicked(OnItemClicked onItemClicked){
@@ -67,7 +68,7 @@ public class RvAdapterVariantesProducto extends RecyclerView.Adapter<RecyclerVie
             txtStockVariante=(TextView)itemView.findViewById(R.id.edtStock);
             txtPc=(TextView)itemView.findViewById(R.id.txtPc);
             txtPv=(TextView)itemView.findViewById(R.id.txtPv);
-            rlItemVariante=(RelativeLayout)itemView.findViewById(R.id.rlItemVariante);
+            rlItemVariante=(MaterialCardView)itemView.findViewById(R.id.rlItemVariante);
             itemView.setOnClickListener(this);
 
 

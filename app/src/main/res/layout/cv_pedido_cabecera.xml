@@ -1,208 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/AppTheme.Card.Modern"
     android:id="@+id/cv_cabecera_pedido"
     android:layout_width="match_parent"
-    android:background="@color/background_card"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="2dp"
-    >
+    android:layout_height="wrap_content">
 
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:id="@+id/ll_linea_superior"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="8dp"
-        android:layout_marginStart="8dp"
-        android:background="#c2c2c2"
-        app:layout_constraintBottom_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"></LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
+        android:layout_height="wrap_content"
+        android:padding="16dp">
 
         <LinearLayout
-            android:id="@+id/contentInfo"
+            android:id="@+id/ll_linea_superior"
             android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_200"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtNombrePedido"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toLeftOf="@id/contentButton"
-            android:orientation="vertical"
-            android:paddingLeft="8dp"
-            android:paddingRight="10dp">
+            android:text="Pedido1"
+            android:textColor="@color/gray_900"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
+        <TextView
+            android:id="@+id/txtFechaPedido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="15/12/2017"
+            android:textColor="@color/gray_600"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/txtNombrePedido"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_gravity="left"
-                    android:foregroundGravity="left"
-                    android:text="Pedido1"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Cliente:"
+            android:textColor="@color/gray_700"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtNombrePedido" />
 
-                <TextView
-                    android:id="@+id/txtFechaPedido"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="4dp"
-                    android:foregroundGravity="right"
-                    android:text="15/12/2017"
-                    android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txtNombreCliente"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Cliente no especificado"
+            android:textAlignment="viewEnd"
+            android:textColor="@color/gray_900"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/textView2"
+            app:layout_constraintEnd_toStartOf="@+id/contentButton"
+            app:layout_constraintStart_toEndOf="@+id/textView2"
+            app:layout_constraintTop_toTopOf="@+id/textView2" />
 
-            </LinearLayout>
+        <TextView
+            android:id="@+id/txtLabelVendedor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Vendedor:"
+            android:textColor="@color/gray_700"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtNombreCliente" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
+        <TextView
+            android:id="@+id/txtNombreVendedor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Vendedor no especificado"
+            android:textAlignment="viewEnd"
+            android:textColor="@color/gray_900"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/txtLabelVendedor"
+            app:layout_constraintEnd_toStartOf="@+id/contentButton"
+            app:layout_constraintStart_toEndOf="@+id/txtLabelVendedor"
+            app:layout_constraintTop_toTopOf="@+id/txtLabelVendedor" />
 
-                android:gravity="center">
+        <TextView
+            android:id="@+id/txtValorVenta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="S/0.00"
+            android:textColor="@color/status_success"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtNombreVendedor" />
 
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_gravity="left"
-
-                    android:foregroundGravity="left"
-                    android:text="Cliente" />
-
-                <TextView
-                    android:id="@+id/txtNombreCliente"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:layout_alignParentEnd="true"
-                    android:foregroundGravity="right"
-                    android:text="Cliente no especificado"
-                    android:textStyle="bold" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-
-                android:gravity="center">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_gravity="left"
-                    android:text="Vendedor" />
-
-                <TextView
-                    android:id="@+id/txtNombreVendedor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:foregroundGravity="right"
-                    android:text="Vendedor no especificado"
-                    android:textStyle="bold" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:gravity="center">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_gravity="left"
-                    android:foregroundGravity="left"
-
-                    android:text="Valor" />
-
-                <TextView
-                    android:id="@+id/txtValorVenta"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:foregroundGravity="right"
-                    android:text="S/10000.000"
-                    android:textStyle="bold" />
-
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/txtNroPedido"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:text="Nro Pedido"
-                android:textStyle="bold"></TextView>
-
-            <TextView
-                android:id="@+id/txtObservacionZonaServicio"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp">
-
-            </TextView>
-
-
-            <TextView
-                android:id="@+id/txtObservacioPedido"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/txtNroPedido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Nro Pedido"
+            android:textColor="@color/gray_600"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtValorVenta" />
 
         <LinearLayout
             android:id="@+id/contentButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:gravity="center"
             android:orientation="vertical"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageButton
                 android:id="@+id/btnSuspenderPedido"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="5dp"
-                android:backgroundTint="#fa4848"
-                android:elevation="4dp"
-                android:src="@drawable/ic_delete_white_24dp" />
+                style="@style/AppTheme.Button.Icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:srcCompat="@drawable/ic_delete_white_24dp"
+                app:tint="@color/status_error" />
 
             <ImageButton
                 android:id="@+id/btnPonerPedidoEnVenta"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:backgroundTint="#64dd17"
-                android:elevation="4dp"
-                android:src="@drawable/ic_package_up_white_24dp" />
+                style="@style/AppTheme.Button.Icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                app:srcCompat="@drawable/ic_package_up_white_24dp"
+                app:tint="@color/status_success" />
         </LinearLayout>
 
-    </RelativeLayout>
+        <!-- Hidden but existing IDs -->
+        <TextView
+            android:id="@+id/txtObservacionZonaServicio"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
 
+        <TextView
+            android:id="@+id/txtObservacioPedido"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

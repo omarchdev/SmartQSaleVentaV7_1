@@ -9,7 +9,7 @@
         android:hint="Busqueda por cliente"
         android:icon="@drawable/search"
         android:title="Busqued por cliente"
-        app:actionViewClass="android.widget.SearchView"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="withText|always" />
     <item
         android:iconTint="@color/colorIconoBtnBordeless"

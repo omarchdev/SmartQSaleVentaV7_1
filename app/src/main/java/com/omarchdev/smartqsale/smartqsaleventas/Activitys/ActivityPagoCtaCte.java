@@ -2,7 +2,7 @@ package com.omarchdev.smartqsale.smartqsaleventas.Activitys;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -144,7 +144,7 @@ public class ActivityPagoCtaCte extends ActivityParent implements DialogPagoCtaC
             MedioPagoSpinnerAdapter medioPagoSpinnerAdapter = new MedioPagoSpinnerAdapter(context, list);
             spinnerMedioPago.setAdapter(medioPagoSpinnerAdapter);
             dialogFragment = pagoCtaCte;
-            dialogFragment.show(getFragmentManager(), "Pago");
+            dialogFragment.show(getSupportFragmentManager(), "Pago");
 
             spinnerMedioPago.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
@@ -181,7 +181,7 @@ public class ActivityPagoCtaCte extends ActivityParent implements DialogPagoCtaC
         switch (v.getId()) {
 
             case R.id.btnIngresarMonto:
-                dialogFragment.show(getFragmentManager(), "Pago");
+                dialogFragment.show(getSupportFragmentManager(), "Pago");
 
                 break;
 
@@ -249,7 +249,7 @@ public class ActivityPagoCtaCte extends ActivityParent implements DialogPagoCtaC
         DialogDatePickerSelect dialogDatePickerSelect = new DialogDatePickerSelect().newInstance(origen, year, month, day);
         dialogDatePickerSelect.setFechaListener(this);
         DialogFragment dialogFragment = dialogDatePickerSelect;
-        dialogFragment.show(this.getFragmentManager(), "Dialog Fecha");
+        dialogFragment.show(this.getSupportFragmentManager(), "Dialog Fecha");
     }
 
     private class ProcesarPagoCtaCte extends AsyncTask<Void, Void, Byte> {

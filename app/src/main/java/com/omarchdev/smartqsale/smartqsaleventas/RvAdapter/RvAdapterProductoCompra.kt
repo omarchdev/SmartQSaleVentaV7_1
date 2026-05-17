@@ -104,7 +104,7 @@ class RvAdapterProductoCompra: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         when(visible){
 
             false->h.btnEliminar.visibility=View.INVISIBLE
-
+            else -> {}
         }
     }
     fun eliminarProductoPosition(position: Int){

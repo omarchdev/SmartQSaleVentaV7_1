@@ -1,101 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/AppTheme.Card.Modern"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".DialogFragments.DateTimePicker">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabDatePicker"
+            style="@style/Widget.MaterialComponents.TabLayout.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            app:tabIndicatorColor="@color/white"
+            app:tabSelectedTextColor="@color/white"
+            app:tabTextColor="@color/gray_200">
 
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tabDatePicker"
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabFecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/ic_calendar_today_white_24dp"
+                android:text="Fecha" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabHora"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/ic_clock_outline_white_24dp"
+                android:text="Hora" />
+        </com.google.android.material.tabs.TabLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:padding="8dp">
+
+            <DatePicker
+                android:id="@+id/calendarSelect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:calendarViewShown="false"
+                android:datePickerMode="spinner" />
+
+            <TimePicker
+                android:id="@+id/timeSelect"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:tabIndicatorColor="@color/colorAccent"
-                app:tabIndicatorFullWidth="true"
-                app:tabInlineLabel="true"
-                app:tabMinWidth="180dp"
-                app:tabSelectedTextColor="@color/colorAccent"
-                app:tabUnboundedRipple="false">
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tabFecha"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:icon="@drawable/ic_calendar_today_white_24dp"
-                    android:text="Fecha" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tabHora"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:icon="@drawable/ic_clock_outline_white_24dp"
-                    android:text="Hora" />
-
-            </com.google.android.material.tabs.TabLayout>
-        </LinearLayout>
-
-        <DatePicker
-
-            android:id="@+id/calendarSelect"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|center_horizontal|center_vertical"
-            android:foregroundGravity="center_vertical"
-            android:minHeight="350dp"
-            android:visibility="visible" />
-
-        <TimePicker
-            android:id="@+id/timeSelect"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_gravity="center_vertical"
-
-            android:foregroundGravity="center"
-            android:minHeight="350dp"
-            android:scrollbarSize="4dp"
-            android:timePickerMode="spinner"
-            android:visibility="visible" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:timePickerMode="spinner"
+                android:visibility="gone" />
+        </FrameLayout>
 
         <TextView
             android:id="@+id/txtDateTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:padding="24dp"
-            android:text="TextView"
-            android:textSize="24sp" />
+            android:background="@color/gray_100"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="Seleccione Fecha/Hora"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp">
 
             <Button
                 android:id="@+id/btnSalir"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="wrap_content"
+                style="@style/AppTheme.Button.Outlined"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
                 android:layout_weight="1"
                 android:text="Salir" />
 
             <Button
                 android:id="@+id/btnGuardar"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="wrap_content"
+                style="@style/AppTheme.Button.Modern"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:layout_weight="1"
                 android:text="Guardar" />
         </LinearLayout>
     </LinearLayout>
-</FrameLayout>
+</com.google.android.material.card.MaterialCardView>

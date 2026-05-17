@@ -57,42 +57,38 @@
 
         <Button
             android:id="@+id/btn1"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            style="@style/AppTheme.Button.Outlined"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="+1"
-            app:cornerRadius="@dimen/radius_medium" />
+            android:text="+1" />
 
         <Button
             android:id="@+id/btn5"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            style="@style/AppTheme.Button.Outlined"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_weight="1"
-            android:text="+5"
-            app:cornerRadius="@dimen/radius_medium" />
+            android:text="+5" />
 
         <Button
             android:id="@+id/btn10"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            style="@style/AppTheme.Button.Outlined"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_weight="1"
-            android:text="+10"
-            app:cornerRadius="@dimen/radius_medium" />
+            android:text="+10" />
 
         <Button
             android:id="@+id/btn50"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            style="@style/AppTheme.Button.Outlined"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_weight="1"
-            android:text="+50"
-            app:cornerRadius="@dimen/radius_medium" />
+            android:text="+50" />
     </LinearLayout>
 
     <View

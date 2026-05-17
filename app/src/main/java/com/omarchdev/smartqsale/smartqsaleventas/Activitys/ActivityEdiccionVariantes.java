@@ -1,13 +1,13 @@
 package com.omarchdev.smartqsale.smartqsaleventas.Activitys;
 
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
-import android.widget.SearchView;
+import androidx.appcompat.widget.SearchView;
 import com.omarchdev.smartqsale.smartqsaleventas.AsyncTask.AsyncVariantes;
 import com.omarchdev.smartqsale.smartqsaleventas.ConexionBd.BdConnectionSql;
 import com.omarchdev.smartqsale.smartqsaleventas.DialogFragments.DialogScannerCam;
@@ -61,12 +61,12 @@ public  class ActivityEdiccionVariantes extends ActivityParent implements AsyncV
 
 
     private void PantallaVariante(){
-        FragmentManager fragment=getFragmentManager();
+        FragmentManager fragment=getSupportFragmentManager();
 
         FragmentTransaction ft=fragment.beginTransaction();
         ft.replace(R.id.content_Edit_Variante,variantesProducto);
         ft.commit();
-        /*FragmentManager fml=getFragmentManager();
+        /*FragmentManager fml=getSupportFragmentManager();
 
 
         FragmentTransaction ftl=fml.beginTransaction();

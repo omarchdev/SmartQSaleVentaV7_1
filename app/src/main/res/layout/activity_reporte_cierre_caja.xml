@@ -6,17 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".Activitys.ReporteCierreCaja">
 
-    <RelativeLayout
-
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cv_select_cierre"
-        android:layout_width="0dp"
+        style="@style/AppTheme.Card.Modern"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_weight="4"
-        android:background="@drawable/fondo_img"
+        android:layout_margin="16dp"
         android:focusable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,27 +25,27 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-
-                app:srcCompat="@drawable/history" />
+                android:layout_alignParentEnd="true"
+                app:srcCompat="@drawable/history"
+                app:tint="@color/colorPrimary" />
 
             <TextView
                 android:id="@+id/txtEstadoCierre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-                android:textSize="18sp" />
+                android:textColor="@color/gray_900"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/txtPeriodoCaja"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txtEstadoCierre"
-                android:textColor="#00E5FF" />
+                android:layout_marginTop="4dp"
+                android:textColor="@color/gray_600" />
 
         </RelativeLayout>
-
-
-    </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

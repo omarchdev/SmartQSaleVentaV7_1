@@ -87,6 +87,7 @@
         <activity android:name=".Activitys.TestActivityPrintHtml" />
         <activity android:name=".Activitys.HistorialVentas" />
         <activity android:name=".Activitys.DetalleVenta" />
+        <activity android:name=".Activitys.DetalleVentaV2" />
         <activity
             android:name=".Activitys.LoginActivity"
             android:label="@string/title_activity_pantalla_principal"
@@ -139,14 +140,16 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_inventario_productos"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activitys.ListadoProductos" />
+        <activity android:name=".Activitys.ListadoProductos"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activitys.Main2Activity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activitys.ActivityConfigProducto"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activitys.ActivityEdiccionVariantes"
             android:configChanges="keyboardHidden|orientation|screenSize" />

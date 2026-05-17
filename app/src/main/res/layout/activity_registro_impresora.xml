@@ -4,90 +4,129 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroud_app"
     tools:context=".Activitys.RegistroImpresora">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
-
-        <com.google.android.material.textfield.TextInputLayout
-
-            app:counterEnabled="true"
-            app:counterMaxLength="50"
-            app:errorEnabled="true"
-            android:id="@+id/edtDescripcion"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:maxLength="50"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Descripción impresora" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            app:errorEnabled="true"
-            android:id="@+id/edtIp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="IP" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-
-            app:errorEnabled="true"
-            android:id="@+id/edtPuerto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:inputType="number"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Puerto" />
-        </com.google.android.material.textfield.TextInputLayout>
-        <Button
-            android:id="@+id/btnProbarImpresora"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="Probar impresora">
+            android:orientation="vertical"
+            android:padding="16dp">
 
-        </Button>
+            <com.google.android.material.card.MaterialCardView
+                style="@style/AppTheme.Card.Modern"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
 
-        <FrameLayout
-            android:id="@+id/content_SpnTiendas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-        </FrameLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edtDescripcion"
+                        style="@style/AppTheme.TextInputLayout.Outlined"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Descripción impresora"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="50"
+                        app:startIconDrawable="@drawable/description">
 
-        <FrameLayout
-            android:id="@+id/content_SpnAreas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:maxLength="50" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-        </FrameLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edtIp"
+                        style="@style/AppTheme.TextInputLayout.Outlined"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:hint="IP Address"
+                        app:startIconDrawable="@drawable/atom">
 
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-    </LinearLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edtPuerto"
+                        style="@style/AppTheme.TextInputLayout.Outlined"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:hint="Puerto"
+                        app:startIconDrawable="@drawable/settings">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/btnProbarImpresora"
+                        style="@style/AppTheme.Button.Modern"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Probar impresora"
+                        app:icon="@drawable/check" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/AppTheme.Card.Modern"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="Asignación"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold" />
+
+                    <FrameLayout
+                        android:id="@+id/content_SpnTiendas"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginVertical="8dp"
+                        android:background="@color/gray_100" />
+
+                    <FrameLayout
+                        android:id="@+id/content_SpnAreas"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

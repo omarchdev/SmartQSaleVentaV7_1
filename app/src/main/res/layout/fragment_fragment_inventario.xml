@@ -1,119 +1,111 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-
+    android:background="@color/backgroud_app"
     tools:context="com.omarchdev.smartqsale.smartqsaleventas.Fragment.FragmentInventario">
 
-     <RelativeLayout
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardHeader"
+        style="@style/AppTheme.Card.Modern"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:id="@+id/ContenedorBotones"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/ContenedorBarraBusqueda"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:padding="12dp">
 
-
-            <Button
-
-                android:id="@+id/btnAgregarProducto"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/ContenedorBarraBusqueda"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:backgroundTint="@android:color/holo_blue_dark"
-                android:gravity="center"
-                android:padding="6dp"
-                android:text="Agregar Producto"
-                android:textColor="#FFFFFF"
-                android:textSize="10sp" />
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-            <Button
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AppTheme.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Buscar Producto"
+                    app:startIconDrawable="@drawable/search">
 
-                android:id="@+id/btnReservaProducto"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/sv_Product"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                android:layout_width="wrap_content"
+                <ImageButton
+                    android:id="@+id/btnScanProduct"
+                    style="@style/AppTheme.Button.Icon"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/barcode_scan"
+                    app:tint="@color/status_success" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ContenedorBotones"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:backgroundTint="@android:color/holo_blue_dark"
-                android:padding="6dp"
-                android:text="Productos en Reserva"
-                android:textColor="#FFFFFF"
-                android:textSize="10sp" />
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
 
+                <Button
+                    android:id="@+id/btnAgregarProducto"
+                    style="@style/AppTheme.Button.Modern"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:text="Nuevo"
+                    app:icon="@drawable/plus" />
+
+                <Button
+                    android:id="@+id/btnReservaProducto"
+                    style="@style/AppTheme.Button.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:text="Reservas"
+                    app:icon="@drawable/inventory" />
+            </LinearLayout>
         </LinearLayout>
-        <RelativeLayout
+    </com.google.android.material.card.MaterialCardView>
 
-            android:id="@+id/ContenedorBarraBusqueda"
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardHeader" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvInventario"
         android:layout_width="match_parent"
-            android:layout_height="80dp"
-        android:padding="10dp"
-        >
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardHeader" />
 
-        <EditText
+    <!-- Legacy Compatibility -->
+    <View android:id="@+id/btnBuscarProducto" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"/>
 
-            android:id="@+id/sv_Product"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:hint="Buscar Producto" />
-
-        <ImageButton
-            android:id="@+id/btnBuscarProducto"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_toRightOf="@+id/sv_Product"
-            android:backgroundTint="@android:color/holo_blue_dark"
-            android:elevation="5dp"
-            android:src="@drawable/search" />
-
-            <ImageButton
-                android:id="@+id/btnScanProduct"
-                android:layout_width="80dp"
-                android:layout_height="50dp"
-                android:layout_alignParentTop="true"
-                android:layout_toEndOf="@+id/btnBuscarProducto"
-                android:backgroundTint=" #ff830f"
-                android:src="@drawable/barcode_scan" />
-    </RelativeLayout>
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/ContenedorBotones"
-        android:gravity="center">
-
-        <ProgressBar
-
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:foregroundGravity="center" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvInventario"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:background="#EEEEEE"
-            android:padding="3dp"
-            android:scrollbars="vertical">
-
-
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-    </RelativeLayout>
-    </RelativeLayout>
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

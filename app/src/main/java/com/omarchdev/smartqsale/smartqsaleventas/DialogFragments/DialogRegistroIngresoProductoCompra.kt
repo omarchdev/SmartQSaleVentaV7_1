@@ -2,7 +2,7 @@ package com.omarchdev.smartqsale.smartqsaleventas.DialogFragments
 
 import android.app.AlertDialog
 import android.app.Dialog
-import android.app.DialogFragment
+import androidx.fragment.app.DialogFragment
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -107,7 +107,7 @@ class DialogRegistroIngresoProductoCompra: DialogFragment(), AsyncProducto.Liste
     override fun onStart() {
         super.onStart()
         if (dialog != null) {
-            dialog.window!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+            dialog?.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
         }
     }
     fun listenerButton(){
@@ -195,7 +195,7 @@ class DialogRegistroIngresoProductoCompra: DialogFragment(), AsyncProducto.Liste
         }
         try {
             avi.hide()
-             listAlmacen.adapter = ArrayAdapter(activity, android.R.layout.simple_list_item_1, listString)
+             listAlmacen.adapter = ArrayAdapter(requireActivity(), android.R.layout.simple_list_item_1, listString)
         }catch (e:Exception){
             e.toString()
         }

@@ -12,7 +12,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -62,6 +62,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.card.MaterialCardView;
 import com.google.gson.Gson;
 import com.omarchdev.smartqsale.smartqsaleventas.Activitys.HistorialVentas;
 import com.omarchdev.smartqsale.smartqsaleventas.Activitys.PedidosEnReserva;
@@ -209,7 +210,6 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
     String simboloMoneda, observacion, textoCantidad;
     AsyncPedido asyncPedido;
     mVendedor vendedor;
-    ImageView imgCandado;
     BigDecimal montoApertura, CantidadCambio, CantidadCobrar, CantidadDescuento, CobrarSinDescuento, cantidadADescontar;
     dialogSelectCustomer selectCustomer;
     dialogSelectVendedor selectVendedor;
@@ -220,8 +220,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
     mProduct product;
     ControladorProductos controladorProductos;
     DetalleVenta detalleVenta;
-    ImageButton imgBtnScan, btnScanPlaca;
-    ImageView imgArrowDisplay;
+    ImageButton imgBtnScan, btnScanPlaca, imgCandado, imgArrowDisplay;
     boolean permitirGuardarPedido;
     List<mProduct> productList;
     RecyclerView rv;
@@ -251,7 +250,8 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
     boolean descargaDatos;
     View background_dimmer;
     Dialog dialog;
-    LinearLayout linearLayout, content_aforo;
+    LinearLayout linearLayout;
+    MaterialCardView content_aforo;
     int idCabeceraActual = 0;
     AsyncCaja asyncCaja;
     TransitionSet set;
@@ -476,7 +476,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
     AsyncProcesoVenta.ProductoSeleccionadoVariante listenerSeleccionProductoVariante = new AsyncProcesoVenta.ProductoSeleccionadoVariante() {
         @Override
         public void ResultadoSeleccion(ProductoEnVenta productoEnVenta) {
-            dialogProceso.hide();
+            dialogProceso.dismiss();
             if (productoEnVenta.getIdProducto() != 0) {
                 adapterDetalleVenta.addElementVariante(productoEnVenta);
                 adapterDetalleVenta.setNumeroItem(detalleVenta.getUltimoProductoIngresado().getItemNum() + 1);
@@ -489,12 +489,16 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
     AsyncProducto.ObtenerProductos listenerObtenerProductos = new AsyncProducto.ObtenerProductos() {
         @Override
         public void ObtenerListaProductos(List<mProduct> mProductList) {
-            pb.setVisibility(View.GONE);
+            if (pb != null) {
+                pb.setVisibility(View.GONE);
+            }
             setListenerText();
             if (mProductList != null) {
                 if (tipoVistaArticulos == 2) {
 
-                    edtSearchProduct.setVisibility(View.VISIBLE);
+                    if (edtSearchProduct != null) {
+                        edtSearchProduct.setVisibility(View.VISIBLE);
+                    }
                     gvCategoria.setVisibility(View.GONE);
                     rv.setVisibility(View.GONE);
                     imgBackGrid.setVisibility(View.VISIBLE);
@@ -507,7 +511,9 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                     gvCategoria.setVisibility(View.GONE);
                     //  gridview.setVisibility(View.GONE);
                     rvGridarticulosVenta.setVisibility(View.GONE);
-                    edtSearchProduct.setVisibility(View.VISIBLE);
+                    if (edtSearchProduct != null) {
+                        edtSearchProduct.setVisibility(View.VISIBLE);
+                    }
                     rv.setVisibility(View.VISIBLE);
                     CargarListaEnPantallaLista(mProductList);
 
@@ -525,7 +531,9 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
     AsyncCategoria.ListenerCategoria listenerCategoria = new AsyncCategoria.ListenerCategoria() {
         @Override
         public void CategoriasObtenidas(List<mCategoriaProductos> categoriaProductosList) {
-            pb.setVisibility(View.GONE);
+            if (pb != null) {
+                pb.setVisibility(View.GONE);
+            }
             if (categoriaProductosList != null) {
                 if (tipoVistaArticulos == 2) {
                     gvCategoria.setVisibility(View.VISIBLE);
@@ -545,7 +553,9 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                     listaCategorias = categoriaProductosList;
                     categoriaAdapter.AddElementSpinnerVentas(listaCategorias);
                     spinnerCategorias.setSelection(0);
-                    pb.setVisibility(View.GONE);
+                    if (pb != null) {
+                        pb.setVisibility(View.GONE);
+                    }
 
                 }
 
@@ -625,15 +635,21 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
             btnHoraFin = rootView.findViewById(R.id.btnHoraFin);
             btnHoraInit = rootView.findViewById(R.id.btnHoraInit);
             btnLimpiar = rootView.findViewById(R.id.btnLimpiar);
-            edtPlaca.setMaxLines(1);
+            if (edtPlaca != null) {
+                edtPlaca.setMaxLines(1);
+            }
             InputFilter[] filterArray = new InputFilter[1];
             filterArray[0] = new InputFilter.LengthFilter(7);
             timeDataInicio = new TimeData();
             timeDataSalida = new TimeData();
-            edtPlaca.setFilters(filterArray);
+            if (edtPlaca != null) {
+                edtPlaca.setFilters(filterArray);
+            }
             edtHoraIngreso = rootView.findViewById(R.id.edtHoraIngreso);
             imgTipoLista = rootView.findViewById(R.id.imgTipoLista);
-            imgTipoLista.setOnClickListener(this);
+            if (imgTipoLista != null) {
+                imgTipoLista.setOnClickListener(this);
+            }
             asyncPedido = new AsyncPedido(getContext());
             setHasOptionsMenu(true);
             dialogSelectModProducto = new DialogSelectModProducto();
@@ -668,7 +684,9 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
             context = getContext();
             linearLayout = rootView.findViewById(R.id.layoutInfo);
             rvAdapterGridArticulo = new rvAdapterGridArticulo(getContext());
-            gridview.setAdapter(rvAdapterGridArticulo);
+            if (gridview != null) {
+                gridview.setAdapter(rvAdapterGridArticulo);
+            }
             tipoVistaArticulos = 2; //  1 para mostrar como lista  --- 2 para mostrar como grid
             CantidadCobrar = new BigDecimal(0);
             //bdConnectionSql = BdConnectionSql.getSinglentonInstance();
@@ -786,20 +804,30 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
             rvDetalleVenta.setAdapter(adapterDetalleVenta);
             rvDetalleVenta.setLayoutManager(new LinearLayoutManager(getContext()));
             rvDetalleVenta.setHasFixedSize(false);
-            btnTipoLista.setOnClickListener(this);
+            if (btnTipoLista != null) {
+                btnTipoLista.setOnClickListener(this);
+            }
             adapterDetalleVenta.setListenerCantidad(this);
             pb = rootView.findViewById(R.id.pbPedido);
-            pb.setVisibility(View.GONE);
-            rvVentas.setVisibility(View.VISIBLE);
+            if (pb != null) {
+                pb.setVisibility(View.GONE);
+            }
+            if (rvVentas != null) {
+                rvVentas.setVisibility(View.VISIBLE);
+            }
             asyncCaja = new AsyncCaja(getContext());
-            btnTipoLista.setText("Procesar");
+            if (btnTipoLista != null) {
+                btnTipoLista.setText("Procesar");
+            }
             set = new TransitionSet().
                     addTransition(new Fade())
                     .setInterpolator(isVisible() ? new LinearOutSlowInInterpolator() :
                             new FastOutLinearInInterpolator());
             //AsyncCategoria Carga
             adapterCategoria = new RvGridAdapterCategoria();
-            gvCategoria.setAdapter(adapterCategoria);
+            if (gvCategoria != null) {
+                gvCategoria.setAdapter(adapterCategoria);
+            }
             asyncCaja.setListenerAperturaCaja(this);
             asyncCategoria = new AsyncCategoria();
             asyncCategoria.setListenerCategoria(listenerCategoria);
@@ -823,13 +851,17 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
             dialogSelectModProducto.setListenerModProdSeleccion(this);
             rvAdapter.setDatosSeleccionProductoLista(this);
             //new DownloadList().execute(parametroBusqueda);
-            pb.setVisibility(View.GONE);
+            if (pb != null) {
+                pb.setVisibility(View.GONE);
+            }
             //VerificarPedidoEnProceso();
             helper = new DbHelper(context);
             rvDetalleVenta.setHasFixedSize(false);
             asyncCabeceraVenta = new AsyncCabeceraVenta(context);
-            edtSearchProduct.onActionViewExpanded();
-            edtSearchProduct.setVisibility(View.VISIBLE);
+            if (edtSearchProduct != null) {
+                edtSearchProduct.onActionViewExpanded();
+                edtSearchProduct.setVisibility(View.VISIBLE);
+            }
             asyncProcesoVenta.setContext(getContext());
             setListenerText();
             //bdConnectionSql.setContext1(getContext());
@@ -852,11 +884,19 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
             asyncZonaServicio = new AsyncZonaServicio();
             btnZonaServicio = rootView.findViewById(R.id.btnZonaServicio);
             permitirModificarDatosProductoUnico = false;
-            edtSearchProduct.setQuery("", false);
+            if (edtSearchProduct != null) {
+                edtSearchProduct.setQuery("", false);
+            }
             observacion = "";
-            edtPlaca.setInputType(EditorInfo.TYPE_TEXT_FLAG_CAP_CHARACTERS);
-            edtHoraIngreso.setKeyListener(null);
-            edtHoraSalida.setKeyListener(null);
+            if (edtPlaca != null) {
+                edtPlaca.setInputType(EditorInfo.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+            }
+            if (edtHoraIngreso != null) {
+                edtHoraIngreso.setKeyListener(null);
+            }
+            if (edtHoraSalida != null) {
+                edtHoraSalida.setKeyListener(null);
+            }
             if (bVisibleBtnCambioPantalla) {
                 btnModoVenta.setVisibility(View.VISIBLE);
             } else {
@@ -883,23 +923,43 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
 
             taskNotificationPedido = new TaskNotificationPedido(getContext(), getActivity());
             taskNotificationPedido.taskPedidoNuevos();
-            btnZonaServicio.setOnClickListener(this);
+            if (btnZonaServicio != null) {
+                btnZonaServicio.setOnClickListener(this);
+            }
 
             new CargaInformacion().execute();
             productoTempTiempoVehiculo = new mProduct();
             productoEnVentaTempVehiculo = new ProductoEnVenta();
             txtEstadoPermitir.setText("----------");
-            btnHabMod.setOnClickListener(this);
-            edtHoraIngreso.setOnClickListener(this);
-            edtHoraSalida.setOnClickListener(this);
-            btnHoraFin.setOnClickListener(this);
-            btnHoraInit.setOnClickListener(this);
-            //new DateTimePicker().show(getFragmentManager(),"date_dialog");
-            btnScanPlaca.setOnClickListener(this);
-            btnLimpiar.setOnClickListener(this);
+            if (btnHabMod != null) {
+                btnHabMod.setOnClickListener(this);
+            }
+            if (edtHoraIngreso != null) {
+                edtHoraIngreso.setOnClickListener(this);
+            }
+            if (edtHoraSalida != null) {
+                edtHoraSalida.setOnClickListener(this);
+            }
+            if (btnHoraFin != null) {
+                btnHoraFin.setOnClickListener(this);
+            }
+            if (btnHoraInit != null) {
+                btnHoraInit.setOnClickListener(this);
+            }
+            //new DateTimePicker().show(getParentFragmentManager(),"date_dialog");
+            if (btnScanPlaca != null) {
+                btnScanPlaca.setOnClickListener(this);
+            }
+            if (btnLimpiar != null) {
+                btnLimpiar.setOnClickListener(this);
+            }
             asyncPedido.setResultAforo(this);
-            edtTiempoTranscurrido.setVisibility(View.VISIBLE);
-            edtObservacion.setVisibility(View.GONE);
+            if (edtTiempoTranscurrido != null) {
+                edtTiempoTranscurrido.setVisibility(View.VISIBLE);
+            }
+            if (edtObservacion != null) {
+                edtObservacion.setVisibility(View.GONE);
+            }
 
         } catch (Exception e) {
             Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
@@ -917,18 +977,21 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        edtCodigoBarra.addTextChangedListener(listenerCodigoBarra);
-
+        if (edtCodigoBarra != null) {
+            edtCodigoBarra.addTextChangedListener(listenerCodigoBarra);
+        }
 
     }
 
     private void setListenerText() {
-
+        if (edtSearchProduct == null) return;
         edtSearchProduct.setQueryHint("Busqueda de producto");
         edtSearchProduct.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                pb.setVisibility(View.GONE);
+                if (pb != null) {
+                    pb.setVisibility(View.GONE);
+                }
                 rvGridarticulosVenta.setVisibility(View.GONE);
                 rv.setVisibility(View.GONE);
                 parametroBusqueda = query;
@@ -942,7 +1005,9 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
             public boolean onQueryTextChange(String newText) {
 
                 if (newText.isEmpty()) {
-                    pb.setVisibility(View.GONE);
+                    if (pb != null) {
+                        pb.setVisibility(View.GONE);
+                    }
                     //gridview.setVisibility(View.GONE);
                     rvGridarticulosVenta.setVisibility(View.GONE);
                     rv.setVisibility(View.GONE);
@@ -1005,16 +1070,22 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
         switch (Constantes.ConfigTienda.idCategoriaDefecto) {
 
             case -1:
-                pb.setVisibility(View.VISIBLE);
+                if (pb != null) {
+                    pb.setVisibility(View.VISIBLE);
+                }
 
                 asyncProducto.getObtenerProductosVenta("", (byte) 108, 0);
                 break;
             case 0:
-                pb.setVisibility(View.VISIBLE);
+                if (pb != null) {
+                    pb.setVisibility(View.VISIBLE);
+                }
                 asyncProducto.getObtenerProductosVenta("", (byte) 104, 0);
                 break;
             default:
-                pb.setVisibility(View.VISIBLE);
+                if (pb != null) {
+                    pb.setVisibility(View.VISIBLE);
+                }
 
                 asyncProducto.getObtenerProductosVenta("", (byte) 105, Constantes.ConfigTienda.idCategoriaDefecto);
                 break;
@@ -1026,7 +1097,9 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
 
     @Override
     public void onResume() {
-        edtSearchProduct.clearFocus();
+        if (edtSearchProduct != null) {
+            edtSearchProduct.clearFocus();
+        }
         super.onResume();
         PantallaInicio();
         asyncPedido.ConsultaAforoDisponible();
@@ -1074,7 +1147,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
     //Resultado de Guardar Pack en detalle Pedido
     @Override
     public void PackResultadoGuardar(PackElemento packElemento) {
-        dialogProceso.hide();
+        dialogProceso.dismiss();
         if (packElemento.isPermitir()) {
             adapterDetalleVenta.addElementoPack(packElemento);
             adapterDetalleVenta.setNumeroItem(detalleVenta.getUltimoProductoIngresado().getItemNum() + 1);
@@ -1146,7 +1219,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
 
     @Override
     public void ResultadoGuardarProdMod(ProductoEnVenta productoEnVenta) {
-        dialogProceso.hide();
+        dialogProceso.dismiss();
         BuscarProductoEnLista(productoEnVenta.getIdProducto(), productoEnVenta.getCantidadReserva(), productoEnVenta.getStockActual());
         if (productoEnVenta.getIdProducto() >= 0) {
             if (productoEnVenta.getRespuestaGuardar() == 100) {
@@ -1300,7 +1373,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
 
         if (!productoEnVenta.isControlTiempo()) {
             new DfEditProductCarSale().newInstance(productoEnVenta,
-                    productoEnVenta1 -> asyncProducto.ActualizarProductoEnPedido(idCabeceraActual, productoEnVenta1)).show(getFragmentManager(), "Editar Producto");
+                    productoEnVenta1 -> asyncProducto.ActualizarProductoEnPedido(idCabeceraActual, productoEnVenta1)).show(getParentFragmentManager(), "Editar Producto");
         } else {
             new DfEditProductTiempoPedido()
                     .newInstance(productoEnVenta)
@@ -1318,7 +1391,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                             public void ErrorGuardar() {
                             }
                         });
-                    }).show(getFragmentManager(), "EditarTiempo");
+                    }).show(getParentFragmentManager(), "EditarTiempo");
         }
 
 
@@ -1482,7 +1555,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                         DialogCargaAsync cargaTiempo = new DialogCargaAsync(context);
                         cargaTiempo.getDialogCarga("Espere un momento").show();
                         asyncPedido.GetTiempoAsync(time -> {
-                            cargaTiempo.hide();
+                            cargaTiempo.dismiss();
                             tiempoTempVehiculo = time;
                             edtHoraIngreso.setText(time);
                         });
@@ -1491,10 +1564,10 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                                     tiempoTempVehiculo = horaInicio;
                                     edtHoraIngreso.setText(horaInicio);
                                 }
-                        ).show(getFragmentManager(), "dialog_time_select");*/
+                        ).show(getParentFragmentManager(), "dialog_time_select");*/
                     }
                 });
-        dialogProductTime.show(getFragmentManager(), "dialog_time");
+        dialogProductTime.show(getParentFragmentManager(), "dialog_time");
     }
 
     public void GuardarPedidoVehiculo() {
@@ -1518,7 +1591,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
 
                 @Override
                 public void RegistroExito(@NotNull ResZonaServicio respuesta) {
-                    cargaAsyncTemp.hide();
+                    cargaAsyncTemp.dismiss();
                     if (productoTempTiempoVehiculo.getIdProduct() != 0) {
                         txtEstadoPermitir.setText("Entra");
                         cabeceraPedido.setZonaServicio(respuesta.getZonaServicio());
@@ -1533,7 +1606,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                                 new AsyncProcesoVenta.ListenerAgregarProductoPedidoTiempo() {
                                     @Override
                                     public void ExitoAgregar(ProductoEnVenta productoEnVenta) {
-                                        cargaAsyncTemp.hide();
+                                        cargaAsyncTemp.dismiss();
                                         txtEstadoPermitir.setText("Entrada");
                                         productoEnVenta.setMetodoGuardar("N");
                                         GuardarProductoNormalDetallePedido(productoEnVenta);
@@ -1545,7 +1618,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
 
                                     @Override
                                     public void ErrorAgregar() {
-                                        cargaAsyncTemp.hide();
+                                        cargaAsyncTemp.dismiss();
                                         new AlertDialog.Builder(context).setTitle("Advertencia")
                                                 .setMessage("Hubo un problema al guardar la información" +
                                                         ".Verifique su conexión a internet")
@@ -1554,7 +1627,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
 
                                     @Override
                                     public void ErrorAgregarAdvertencia(String mensaje) {
-                                        cargaAsyncTemp.hide();
+                                        cargaAsyncTemp.dismiss();
                                         new AlertDialog.Builder(context).setTitle("Advertencia").setMessage(mensaje).setPositiveButton("Aceptar", null).create().show();
                                         asyncPedido.ConsultaAforoDisponible();
                                     }
@@ -1570,12 +1643,12 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
 
                 @Override
                 public void ErrorRegistro() {
-                    cargaAsyncTemp.hide();
+                    cargaAsyncTemp.dismiss();
                 }
 
                 @Override
                 public void ExisteEnPedido(@NotNull ResZonaServicio respuesta) {
-                    cargaAsyncTemp.hide();
+                    cargaAsyncTemp.dismiss();
                     txtEstadoPermitir.setText("Salida");
                     DialogCargaAsync cargaAsyncTemp2 = new DialogCargaAsync(context);
                     cargaAsyncTemp2.getDialogCarga("Espere un momento").show();
@@ -1585,7 +1658,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                                 @Override
                                 public void PedidoEncontrado(int idPedido) {
                                     asyncPedido.ConsultaAforoDisponible();
-                                    cargaAsyncTemp2.hide();
+                                    cargaAsyncTemp2.dismiss();
                                     try {
                                         txtEstadoPermitir.setText("Salida");
                                         new ObtenerPedido().execute(idPedido);
@@ -1599,7 +1672,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                                 public void PedidoError() {
 
                                     asyncPedido.ConsultaAforoDisponible();
-                                    cargaAsyncTemp2.hide();
+                                    cargaAsyncTemp2.dismiss();
                                 }
                             });
 
@@ -1626,7 +1699,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
         asyncPedido.ActualizaPedidoProductoUnico(pedidoTemp, new AsyncPedido.IUpdateInfo() {
             @Override
             public void ResultUpdateOk(@NotNull String mensaje) {
-                cargaAsyncPrUnico.hide();
+                cargaAsyncPrUnico.dismiss();
                 cabeceraPedido.setIdentificadorPedido(edtPlaca.getText().toString().trim());
                 new AlertDialog.Builder(getContext()).setPositiveButton("Aceptar", null)
                         .setTitle("Confirmación").setMessage(mensaje).create().show();
@@ -1636,7 +1709,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
 
             @Override
             public void ResultError(@NotNull String mensaje) {
-                cargaAsyncPrUnico.hide();
+                cargaAsyncPrUnico.dismiss();
                 new AlertDialog.Builder(getContext()).setPositiveButton("Aceptar", null).setTitle("Advertencia").setMessage(mensaje).create().show();
 
             }
@@ -1676,7 +1749,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
 
             });
 
-            camPlaca.show(getActivity().getFragmentManager(), "");
+            camPlaca.show(getParentFragmentManager(), "");
         } else if (v.getId() == R.id.btnHabMod) {
 
             HabilitarModificacion();
@@ -1848,7 +1921,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
         new DfRegistroZonaServicioCw().newInstance(
                 cabeceraPedido.getZonaServicio(),
                 this::procesarZonaServicioSeleccionada
-        ).show(getFragmentManager(), "");
+        ).show(getParentFragmentManager(), "");
     }
 
     private void procesarZonaServicioSeleccionada(mZonaServicio zonaServicio) {
@@ -1921,7 +1994,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                 )
                 .ListenerDatosCliente(this::procesarDatosCliente);
 
-        dialogo.show(getFragmentManager(), "");
+        dialogo.show(getParentFragmentManager(), "");
     }
 
     private DfUltimosPedidosZonaServicio.ListenerActualizarZonaServicio crearListenerActualizarZonaServicio() {
@@ -2050,7 +2123,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                                                                 obtenerDato(cliente);
                                                             }
                                                         }
-                                                ).show(getFragmentManager(), "");
+                                                ).show(getParentFragmentManager(), "");
 
 
                                     }
@@ -2065,7 +2138,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                                     }
                                 });
 
-                    }).show(getFragmentManager(), "");
+                    }).show(getParentFragmentManager(), "");
 
         } catch (Exception e) {
             Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
@@ -2146,16 +2219,24 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
             }
 
 
-        }).show(getFragmentManager(), "ZonaServicio");
+        }).show(getParentFragmentManager(), "ZonaServicio");
 
     }
 
     private void PantallaCategorias() {
         try {
-            spinnerCategorias.setVisibility(View.GONE);
-            rvGridarticulosVenta.setVisibility(View.GONE);
-            rv.setVisibility(View.GONE);
-            edtSearchProduct.setVisibility(View.VISIBLE);
+            if (spinnerCategorias != null) {
+                spinnerCategorias.setVisibility(View.GONE);
+            }
+            if (rvGridarticulosVenta != null) {
+                rvGridarticulosVenta.setVisibility(View.GONE);
+            }
+            if (rv != null) {
+                rv.setVisibility(View.GONE);
+            }
+            if (edtSearchProduct != null) {
+                edtSearchProduct.setVisibility(View.VISIBLE);
+            }
             asyncCategoria.getCategorias();
             tipoVistaArticulos = Constantes.ConfigTienda.iTipoListaProductosPantallaPedido;
         } catch (Exception ex) {
@@ -2192,7 +2273,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
 
     public void DialogVendedor() {
         DialogFragment dialogFragment = selectVendedor;
-        dialogFragment.show(((Activity) getContext()).getFragmentManager(), "Elegir Vendedor");
+        dialogFragment.show(getParentFragmentManager(), "Elegir Vendedor");
 
     }
 
@@ -2251,7 +2332,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                 Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
             }
         });
-        dialogScannerCam.show(getActivity().getFragmentManager(), "cam");
+        dialogScannerCam.show(getParentFragmentManager(), "cam");
     }
 
     private void setItemClickListenerCategorias() {
@@ -2262,18 +2343,24 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
             switch (i) {
 
                 case 0:
-                    pb.setVisibility(View.VISIBLE);
+                    if (pb != null) {
+                        pb.setVisibility(View.VISIBLE);
+                    }
 
                     asyncProducto.getObtenerProductosVenta("", (byte) 108, 0);
                     break;
 
                 case 1:
-                    pb.setVisibility(View.VISIBLE);
+                    if (pb != null) {
+                        pb.setVisibility(View.VISIBLE);
+                    }
                     asyncProducto.getObtenerProductosVenta("", (byte) 104, 0);
                     break;
 
                 default:
-                    pb.setVisibility(View.VISIBLE);
+                    if (pb != null) {
+                        pb.setVisibility(View.VISIBLE);
+                    }
 
                     asyncProducto.getObtenerProductosVenta("", (byte) 105, (int) adapterCategoria.getItemId(i));
                     break;
@@ -2316,7 +2403,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                                 }
                             });
                 })
-                .show(getFragmentManager(), "HoraInicio");
+                .show(getParentFragmentManager(), "HoraInicio");
     }
 
     private void GuardarProductoEnPedido(int position) {
@@ -2332,7 +2419,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                             BusquedaProductoIdListaPrecio(productoListaPrecioSeleccion.getIdProducto(),productoListaPrecioSeleccion);
                         }
                 );
-                dialogSeleccionListaPrecioFragment.show(getFragmentManager(),"SeleccionListaPrecio");
+                dialogSeleccionListaPrecioFragment.show(getParentFragmentManager(),"SeleccionListaPrecio");
 
 
                 return;
@@ -2374,7 +2461,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                                         }
                                     });
                         })
-                        .show(getFragmentManager(), "HoraInicio");
+                        .show(getParentFragmentManager(), "HoraInicio");
 */
             } else if (productList.get(position).isTipoPack()) {
 
@@ -2413,7 +2500,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                         product.setdQuantity(peso.floatValue());
                         BusquedaProductoPeso(product);
                     }
-                }).show(getFragmentManager(), "");
+                }).show(getParentFragmentManager(), "");
             } else if (productList.get(position).isEstadoModificador()) {
                 if (!productList.get(position).isMultiplePVenta()) {
                     try {
@@ -2478,9 +2565,9 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
         });
         adic.setIdProducto(idProducto);
         adic.setTitulo(titulo);
-        adic.show(getFragmentManager(), "adic_dialog2");
+        adic.show(getParentFragmentManager(), "adic_dialog2");
      /*   androidx.core.app.DialogFragment df = adic;
-        df.show(getFragmentManager(), "");*/
+        df.show(getParentFragmentManager(), "");*/
     }
 
     public void DialogSelectPrice(int idProduct, String titulo) {
@@ -2498,9 +2585,9 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
         });
         adic.setIdProducto(idProduct);
         adic.setTitulo(titulo);
-        adic.show(getFragmentManager(), "adic_dialog");
+        adic.show(getParentFragmentManager(), "adic_dialog");
  /*       DialogFragment df = adic;
-        df.show(getFragmentManager(), "");
+        df.show(getParentFragmentManager(), "");
 
 */
     }
@@ -2509,8 +2596,8 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
 // DialogFragment dialogFragment = dialogSelectModProducto;
         dialogSelectModProducto.setIdProduct(idProducto, nombreProducto);
         dialogSelectModProducto.setIdPventaCantidad(idPrecioVenta, cantidad);
-        dialogSelectModProducto.show(getFragmentManager(), "SelectModProduct");
-        //  dialogFragment.show(getFragmentManager(), "SelectModProduct");
+        dialogSelectModProducto.show(getParentFragmentManager(), "SelectModProduct");
+        //  dialogFragment.show(getParentFragmentManager(), "SelectModProduct");
     }
 
     public void AbrirDialogModificador(int idProducto, String nombreProducto) {
@@ -2518,8 +2605,8 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
         // DialogFragment dialogFragment = dialogSelectModProducto;
         dialogSelectModProducto.setIdProduct(idProducto, nombreProducto);
         dialogSelectModProducto.setIdPventaCantidad(0, 1f);
-        //  dialogFragment.show(getFragmentManager(), "SelectModProduct");
-        dialogSelectModProducto.show(getFragmentManager(), "SelectModProduct");
+        //  dialogFragment.show(getParentFragmentManager(), "SelectModProduct");
+        dialogSelectModProducto.show(getParentFragmentManager(), "SelectModProduct");
     }
 
     public void AbrirDialogComboPack(mProduct producto) {
@@ -2530,7 +2617,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
         dialogSelectCombo.setProductTemp(producto);
         dialogSelectCombo.setPrecio(producto.getPrecioVenta());
 
-        dialogSelectCombo.show(getFragmentManager(), "");
+        dialogSelectCombo.show(getParentFragmentManager(), "");
 
     }
 
@@ -2893,7 +2980,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
     public void MostrarVentanaVentaRapida() {
         new df_venta_rapida().newInstance(this.idCabeceraActual)
                 .SetListenerAgregarProductoDetallePedido(productoEnVenta ->
-                        VentasFragment.this.ObtenerProductoSeleccionado(productoEnVenta)).show(getFragmentManager(), "");
+                        VentasFragment.this.ObtenerProductoSeleccionado(productoEnVenta)).show(getParentFragmentManager(), "");
     }
 
     @Override
@@ -2965,7 +3052,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
     public void mostrarEditarCantidadProducto() {
 
         DialogFragment dialogFragment = new DialogEditQuantity().newInstance();
-        dialogFragment.show(((Activity) getContext()).getFragmentManager(), "Detalle Venta");
+        dialogFragment.show(getParentFragmentManager(), "Detalle Venta");
     }
 
     public void mensajeAlertaNoHayProducto() {
@@ -2990,7 +3077,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                     medioPagoList, cliente, observacion);
             CobroVenta.setListenerVentaFinalizada(this);
             DialogFragment dialogFragmet = CobroVenta;
-            dialogFragmet.show(((Activity) getContext()).getFragmentManager(), "Metodos de Pago");
+            dialogFragmet.show(getParentFragmentManager(), "Metodos de Pago");
         } catch (Exception e) {
             e.toString();
             Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
@@ -3002,7 +3089,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
         dialogCalculadoraDescuento.setInfoDescuento(getContext(), CobrarSinDescuento, CantidadDescuento, TipoDescuento);
         dialogCalculadoraDescuento.setListenerDescuento(this);
         DialogFragment dialogFragment = dialogCalculadoraDescuento;
-        dialogFragment.show(((Activity) getContext()).getFragmentManager(), "Calculadora Descuento");
+        dialogFragment.show(getParentFragmentManager(), "Calculadora Descuento");
 
     }
 
@@ -3024,7 +3111,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
     private void mostrarSeleccionCliente() {
         //  DialogFragment dialogFragment = selectCustomer;
         selectCustomer.setContext(getContext());
-        //dialogFragment.show(getFragmentManager(), "seleccionCliente");
+        //dialogFragment.show(getParentFragmentManager(), "seleccionCliente");
         selectCustomer.show(getParentFragmentManager(), "seleccionCliente");
     }
 
@@ -3062,7 +3149,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                 .setReservaPedido(reservaPedido)
                 .setIdentificador2Visible(
                         this.cabeceraPedido.getZonaServicio().getBZonaLibre()).setZonaServicio
-                        (this.cabeceraPedido.getZonaServicio()).show(((Activity) getContext()).getFragmentManager(), "");
+                        (this.cabeceraPedido.getZonaServicio()).show(getParentFragmentManager(), "");
 
 
     }
@@ -3104,7 +3191,9 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
     }
 
     private void GenerarNuevoPedido2(int idCabeceraPedido, mCustomer client, String nuevaFechaEntrega) {
-        edtSearchProduct.clearFocus();
+        if (edtSearchProduct != null) {
+            edtSearchProduct.clearFocus();
+        }
         idCabeceraActual = idCabeceraPedido;
         cabeceraPedido = new mCabeceraPedido();
         cabeceraPedido.setcEstadoEntregaPedido("00");
@@ -3203,14 +3292,22 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
     }
 
     public boolean VolverPantallaPrinciparCategorias() {
-        if (gvCategoria.getVisibility() == View.VISIBLE) {
+        if (gvCategoria != null && gvCategoria.getVisibility() == View.VISIBLE) {
             return false;
         } else {
             tipoVistaArticulos = 2;
-            spinnerCategorias.setVisibility(View.GONE);
-            rvGridarticulosVenta.setVisibility(View.GONE);
-            rv.setVisibility(View.GONE);
-            pb.setVisibility(View.GONE);
+            if (spinnerCategorias != null) {
+                spinnerCategorias.setVisibility(View.GONE);
+            }
+            if (rvGridarticulosVenta != null) {
+                rvGridarticulosVenta.setVisibility(View.GONE);
+            }
+            if (rv != null) {
+                rv.setVisibility(View.GONE);
+            }
+            if (pb != null) {
+                pb.setVisibility(View.GONE);
+            }
             asyncCategoria.getCategorias();
 
             return true;
@@ -3362,7 +3459,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
         DialogVentaResultado ventaResultado = new DialogVentaResultado().newInstance(list, CantidadCambio, cabeceraVenta);
         ventaResultado.setListenerTerminarVenta(this);
         DialogFragment dialogFragment = ventaResultado;
-        dialogFragment.show(getActivity().getFragmentManager(), "Venta Finalizada");
+        dialogFragment.show(getParentFragmentManager(), "Venta Finalizada");
     }
 
     private void MostrarVentaFallida() {
@@ -3385,7 +3482,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
         dialogVariantesProducto.setDescripcion(descripcion);
         dialogVariantesProducto.setTitulo(titulo);
         dialogVariantesProducto.setControStock(controlStock);
-        dialogFragment.show(getActivity().getFragmentManager(), "");
+        dialogFragment.show(getParentFragmentManager(), "");
 
     }
 
@@ -3410,7 +3507,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
     public void AperturarCaja() {
 
         DialogFragment dialogFragment = dialogAperturaCaja;
-        dialogFragment.show(getActivity().getFragmentManager(), "AperturaCaja");
+        dialogFragment.show(getParentFragmentManager(), "AperturaCaja");
     }
 
     @Override
@@ -3487,7 +3584,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             asyncPedido.ConsultaAforoDisponible();
-            dialogCargaAsync.hide();
+            dialogCargaAsync.dismiss();
             try {
 
 
@@ -3536,7 +3633,9 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
         protected void onPostExecute(Pedido pedido) {
             super.onPostExecute(pedido);
             idCabeceraActual = pedido.getCabeceraPedido().getIdCabecera();
-            edtSearchProduct.clearFocus();
+            if (edtSearchProduct != null) {
+                edtSearchProduct.clearFocus();
+            }
             cabeceraPedido = pedido.getCabeceraPedido();
             imgTipoLista.setImageDrawable(getContext().getResources().getDrawable(R.drawable.ic_folder_open_outline_grey600_48dp));
             edtPlaca.setText("");
@@ -3610,7 +3709,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
 
             txtNombreUltimoProductoEnCarrito.setText(detalleVenta.getTextoUltimoItemPedido());
             txtPrecioUltimoProductoEnCarrito.setText(DecimalControlKt.montoDecimalPrecioSimbolo(detalleVenta.ObtenerPrecioUltimoProducto()));
-            cargaAsync.hide();
+            cargaAsync.dismiss();
             ModificarTextoDescuento();
             cantidad();
         }

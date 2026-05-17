@@ -4,15 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical"
-    android:padding="@dimen/spacing_medium">
+    android:background="@color/backgroud_app"
+    android:orientation="vertical">
 
+    <!-- Title Bar -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="4dp"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="16dp">
 
         <ImageButton
             android:id="@+id/imgArrowBack"
@@ -20,7 +23,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             app:srcCompat="@drawable/arrow_back_grid"
-            app:tint="@color/gray_800" />
+            app:tint="@color/gray_700" />
 
         <TextView
             android:layout_width="0dp"
@@ -37,11 +40,10 @@
         android:id="@+id/svCliente"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/pin_button_background"
-        android:backgroundTint="@color/gray_100"
+        android:layout_margin="12dp"
+        android:background="@drawable/bg_edittext_modern"
+        android:backgroundTint="@color/white"
         app:iconifiedByDefault="false"
-        app:queryBackground="@android:color/transparent"
         app:queryHint="Buscar cliente..." />
 
     <!-- Advanced search options container -->
@@ -49,7 +51,8 @@
         android:id="@+id/contentBusquedaAvanzada"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
         android:orientation="vertical"
         android:visibility="gone">
 
@@ -70,17 +73,15 @@
             <Spinner
                 android:id="@+id/spnControl1"
                 android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:background="@color/gray_50" />
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
             <Spinner
                 android:id="@+id/spnControl2"
                 android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_weight="1"
-                android:background="@color/gray_50" />
+                android:layout_weight="1" />
         </LinearLayout>
     </LinearLayout>
 
@@ -88,8 +89,9 @@
         android:id="@+id/rvClientesParaVenta"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:padding="8dp" />
 
     <!-- Maintenance IDs -->
     <EditText
@@ -101,28 +103,28 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="16dp">
 
         <Button
             android:id="@+id/btnEliminarCliente"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
+            style="@style/AppTheme.Button.Outlined"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="ELIMINAR"
-            android:textColor="@color/status_error" />
+            android:text="Eliminar"
+            android:textColor="@color/status_error"
+            app:strokeColor="@color/status_error" />
 
         <Button
             android:id="@+id/btnAgregarCliente"
-            style="@style/Widget.MaterialComponents.Button"
+            style="@style/AppTheme.Button.Modern"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_weight="1.5"
-            android:backgroundTint="@color/colorPrimary"
-            android:text="NUEVO CLIENTE"
-            app:cornerRadius="@dimen/radius_medium" />
+            android:text="Nuevo Cliente"
+            app:icon="@drawable/plus" />
     </LinearLayout>
 
 </LinearLayout>

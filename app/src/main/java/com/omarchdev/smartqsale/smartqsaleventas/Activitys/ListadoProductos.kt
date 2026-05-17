@@ -1,7 +1,6 @@
 package com.omarchdev.smartqsale.smartqsaleventas.Activitys
 
 import android.Manifest
-import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -12,8 +11,9 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
+import androidx.appcompat.widget.SearchView
+import androidx.appcompat.widget.Toolbar
 import android.widget.ProgressBar
-import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -59,27 +59,13 @@ class ListadoProductos : ActivityParent(), SearchView.OnQueryTextListener, Scann
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.menu_listado_productos, menu)
-        val searchManager = getSystemService(SEARCH_SERVICE) as SearchManager
-        searchView = menu.findItem(R.id.searchToolbar1).actionView as SearchView
-        val searchableInfo = searchManager.getSearchableInfo(componentName)
-        searchView!!.setSearchableInfo(searchManager.getSearchableInfo(componentName))
-        val searchimgId = resources.getIdentifier("android:id/search_button", null, null)
-        val imageId = resources.getIdentifier("android:id/search_close_btn", null, null)
-        val searchTextId = resources.getIdentifier("android:id/search_src_text", null, null)
-        searchBox = searchView!!.findViewById<View>(searchTextId) as EditText
-        val searchClose = searchView!!.findViewById<View>(imageId) as ImageView
-        val imgSearch = searchView!!.findViewById<View>(searchimgId) as ImageView
-        searchView!!.queryHint = "Busqueda de producto"
-        searchView!!.setSearchableInfo(searchableInfo)
-        searchView!!.setOnQueryTextListener(this)
-        imgSearch.setColorFilter(resources.getColor(R.color.colorAccent))
-        searchClose.setColorFilter(resources.getColor(R.color.colorAccent))
-        searchBox!!.setHintTextColor(resources.getColor(R.color.colorAccent))
-        searchBox!!.setTextColor(resources.getColor(R.color.colorAccent))
-        searchBox!!.highlightColor =
-            resources.getColor(R.color.colorAccent)
-        searchBox!!.drawingCacheBackgroundColor =
-            resources.getColor(R.color.colorAccent)
+
+        // Hide the search menu item as we now use an inline SearchView
+        val searchItem = menu.findItem(R.id.searchToolbar1)
+        if (searchItem != null) {
+            searchItem.isVisible = false
+        }
+
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -134,11 +120,29 @@ class ListadoProductos : ActivityParent(), SearchView.OnQueryTextListener, Scann
         //VerificarPedidoEnProceso();
         helper = DbHelper(this)
         setContentView(R.layout.activity_listado_productos)
-        supportActionBar!!.title = "Listado artículos"
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.title = "Listado productos"
-        supportActionBar!!.setDisplayShowHomeEnabled(true)
-        supportActionBar!!.setHomeAsUpIndicator(R.drawable.arrow_back_home)
+
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        if (toolbar != null) {
+            setSupportActionBar(toolbar)
+            if (supportActionBar != null) {
+                supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+                supportActionBar!!.setDisplayShowHomeEnabled(true)
+                supportActionBar!!.setHomeAsUpIndicator(R.drawable.arrow_back_home)
+                supportActionBar!!.title = "Listado productos"
+            }
+            toolbar.setNavigationOnClickListener { onBackPressed() }
+
+            // Initialize Inline SearchView
+            searchView = findViewById(R.id.searchViewInline)
+            searchView?.setOnQueryTextListener(this)
+
+            // Get access to the inner EditText of the SearchView for scanner results
+            val searchTextId = searchView?.context?.resources?.getIdentifier("android:id/search_src_text", null, null)
+            if (searchTextId != null && searchTextId != 0) {
+                searchBox = searchView?.findViewById(searchTextId)
+            }
+        }
+
         dialogScannerCam = DialogScannerCam()
         dialogScannerCam!!.setScannerResult(this)
         NUEVO_PRODUCTO = this.resources.getInteger(R.integer.NuevoProducto)
@@ -200,12 +204,12 @@ class ListadoProductos : ActivityParent(), SearchView.OnQueryTextListener, Scann
     }
 
     fun Scan() {
-        dialogScannerCam!!.show(this.fragmentManager, "")
+        dialogScannerCam?.show(supportFragmentManager, "Scanner")
     }
 
     override fun ResultadoScanner(resultText: String) {
-        searchView!!.isIconified = false
-        searchBox!!.setText(resultText)
+        searchView?.isIconified = false
+        searchView?.setQuery(resultText, true)
     }
 
     override fun ObtenerListaProductos(mProductList: List<mProduct>) {

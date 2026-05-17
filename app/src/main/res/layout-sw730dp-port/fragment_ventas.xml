@@ -15,15 +15,7 @@
         <RelativeLayout
             android:id="@+id/rVentas"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="visible">
-
-            <EditText
-                android:id="@+id/edtCodigoBarra"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:text="Hola"
-                android:visibility="invisible" />
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:id="@+id/linearLayoutButtonSales"
@@ -32,117 +24,89 @@
                 android:orientation="vertical">
 
                 <!-- Top Actions (Tablet size) -->
-                <LinearLayout
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/AppTheme.Card.Modern"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:elevation="@dimen/elevation_low"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:padding="@dimen/spacing_medium">
-
-                    <Button
-                        android:id="@+id/btnElegirVendedor"
-                        style="@style/Widget.MaterialComponents.Button.TextButton"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:drawableLeft="@drawable/ic_account_plus_white_36dp"
-                        android:drawablePadding="8dp"
-                        android:text="Vendedor"
-                        android:textAllCaps="false"
-                        android:textColor="@color/gray_900"
-                        android:textSize="16sp" />
-
-                    <ImageButton
-                        android:id="@+id/imgLock"
-                        style="?android:attr/borderlessButtonStyle"
-                        android:layout_width="56dp"
-                        android:layout_height="56dp"
-                        android:padding="12dp"
-                        android:scaleType="fitCenter"
-                        app:srcCompat="@drawable/ic_lock_open_variant_white_24dp"
-                        app:tint="@color/gray_600" />
-
-                    <Button
-                        android:id="@+id/btnElegirCliente"
-                        style="@style/Widget.MaterialComponents.Button.TextButton"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:drawableLeft="@drawable/ic_human_male_female_white_36dp"
-                        android:drawablePadding="8dp"
-                        android:text="Cliente"
-                        android:textAllCaps="false"
-                        android:textColor="@color/gray_900"
-                        android:textSize="16sp" />
-
-                    <Button
-                        android:id="@+id/btnZonaServicio"
-                        style="@style/Widget.MaterialComponents.Button.TextButton"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textAllCaps="false"
-                        android:textColor="@color/gray_900"
-                        android:visibility="gone" />
-
-                    <Button
-                        android:id="@+id/btnModoVenta"
-                        style="@style/Widget.MaterialComponents.Button.TextButton"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textAllCaps="false"
-                        android:textColor="@color/gray_900"
-                        android:visibility="gone" />
-
-                </LinearLayout>
-
-                <!-- Cart Summary & Checkout -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="@dimen/spacing_large">
+                    android:layout_margin="12dp"
+                    app:cardElevation="4dp">
 
                     <LinearLayout
-                        android:id="@+id/linearLayoutBtnDetalleVenta"
-                        android:layout_width="0dp"
+                        style="@style/AppTheme.Sales.ActionBar"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:orientation="horizontal">
+                        android:elevation="0dp"
+                        android:padding="8dp">
+
+                        <Button
+                            android:id="@+id/btnElegirVendedor"
+                            style="@style/AppTheme.Sales.ActionButton"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Vendedor"
+                            android:textSize="14sp"
+                            app:icon="@drawable/ic_account_plus_white_36dp"
+                            app:iconSize="32dp" />
+
+                        <ImageButton
+                            android:id="@+id/imgLock"
+                            style="@style/AppTheme.Button.Icon"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:layout_marginHorizontal="12dp"
+                            app:srcCompat="@drawable/ic_lock_open_variant_white_24dp"
+                            app:tint="@color/gray_600" />
+
+                        <Button
+                            android:id="@+id/btnElegirCliente"
+                            style="@style/AppTheme.Sales.ActionButton"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Cliente"
+                            android:textSize="14sp"
+                            app:icon="@drawable/ic_human_male_female_white_36dp"
+                            app:iconSize="32dp" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Cart Summary & Checkout -->
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/AppTheme.Card.Modern"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginBottom="12dp">
+
+                    <LinearLayout
+                        style="@style/AppTheme.Sales.CartSummary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp">
 
                         <LinearLayout
-                            android:id="@+id/layoutInfo"
-                            android:layout_width="match_parent"
+                            android:id="@+id/linearLayoutBtnDetalleVenta"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:background="?attr/selectableItemBackground"
+                            android:clickable="true"
+                            android:focusable="true"
                             android:orientation="horizontal">
 
                             <TextView
                                 android:id="@+id/txtCantidadProducto"
+                                style="@style/AppTheme.Sales.QuantityBadge"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/pin_button_background"
-                                android:backgroundTint="@color/gray_100"
-                                android:drawableLeft="@drawable/car_sale"
-                                android:drawablePadding="8dp"
-                                android:drawableTint="@color/colorPrimary"
-                                android:gravity="center"
-                                android:padding="12dp"
+                                android:padding="16dp"
                                 android:text="x0"
-                                android:textColor="@color/gray_900"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
+                                android:textSize="20sp"
+                                app:drawableStartCompat="@drawable/car_sale" />
 
                             <LinearLayout
-                                android:id="@+id/content_Text"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="24dp"
@@ -155,63 +119,47 @@
                                     android:layout_height="wrap_content"
                                     android:ellipsize="end"
                                     android:maxLines="1"
-                                    android:text="Detalle de venta"
+                                    android:text="Detalle de Venta"
                                     android:textColor="@color/gray_900"
                                     android:textSize="18sp"
                                     android:textStyle="bold" />
 
                                 <TextView
                                     android:id="@+id/txtPrecioUltimoProductoEnCarrito"
+                                    style="@style/AppTheme.Sales.PriceText"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Presiona aquí"
-                                    android:textColor="@color/status_success"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold" />
-
+                                    android:text="Presiona para ver más"
+                                    android:textSize="16sp" />
                             </LinearLayout>
                         </LinearLayout>
+
+                        <Button
+                            android:id="@+id/btnCobrar"
+                            style="@style/AppTheme.Sales.CheckoutButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="24dp"
+                            android:minWidth="160dp"
+                            android:paddingVertical="16dp"
+                            android:text="COBRAR\nS/ 0.00"
+                            android:textSize="18sp" />
+
                     </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
-                    <Button
-                        android:id="@+id/btnCobrar"
-                        style="@style/Widget.MaterialComponents.Button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
-                        android:backgroundTint="@color/colorPrimary"
-                        android:minWidth="140dp"
-                        android:paddingTop="16dp"
-                        android:paddingBottom="16dp"
-                        android:text="Cobrar\nS/0.00"
-                        android:textAllCaps="true"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:cornerRadius="@dimen/radius_medium" />
-
-                </LinearLayout>
-
-                <!-- Toggle Visual -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="12dp">
-
-                    <ImageButton
-                        android:id="@+id/imgArrowDisplay"
-                        style="?android:attr/borderlessButtonStyle"
-                        android:layout_width="64dp"
-                        android:layout_height="32dp"
-                        android:scaleType="fitCenter"
-                        app:srcCompat="@drawable/arrowdisplay"
-                        app:tint="@color/gray_400" />
-                </LinearLayout>
+                <!-- Main Content Toggle Visual -->
+                <ImageButton
+                    android:id="@+id/imgArrowDisplay"
+                    style="@style/AppTheme.Button.Icon"
+                    android:layout_width="64dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/arrowdisplay"
+                    app:tint="@color/gray_400" />
 
                 <!-- Main Content -->
-                <LinearLayout
+                <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1">
@@ -233,7 +181,7 @@
                             android:layout_height="match_parent"
                             android:orientation="vertical">
 
-                            <!-- NORMAL SALES (Tablet Portrait) -->
+                            <!-- NORMAL SALES -->
                             <RelativeLayout
                                 android:id="@+id/content_venta1"
                                 android:layout_width="match_parent"
@@ -250,7 +198,7 @@
                                         android:layout_height="wrap_content"
                                         android:gravity="center_vertical"
                                         android:orientation="horizontal"
-                                        android:padding="@dimen/spacing_medium">
+                                        android:padding="12dp">
 
                                         <ImageButton
                                             android:id="@+id/imgBackGrid"
@@ -259,31 +207,25 @@
                                             android:layout_height="56dp"
                                             app:srcCompat="@drawable/arrow_back_grid" />
 
-                                        <ImageButton
-                                            android:id="@+id/imgTipoVistaLista"
-                                            style="@style/AppTheme.Button.Icon"
-                                            android:layout_width="56dp"
-                                            android:layout_height="56dp"
-                                            app:srcCompat="@drawable/grid" />
-
-                                        <ImageButton
-                                            android:id="@+id/imgBtnScan"
-                                            style="@style/AppTheme.Button.Icon"
-                                            android:layout_width="56dp"
-                                            android:layout_height="56dp"
-                                            app:srcCompat="@drawable/ic_barcode_scan_white_24dp" />
-
                                         <androidx.appcompat.widget.SearchView
                                             android:id="@+id/edtSearchProduct"
                                             android:layout_width="0dp"
                                             android:layout_height="wrap_content"
                                             android:layout_marginStart="16dp"
                                             android:layout_weight="1"
-                                            android:background="@drawable/pin_button_background"
+                                            android:background="@drawable/bg_edittext_modern"
                                             android:backgroundTint="@color/white"
                                             app:iconifiedByDefault="false"
                                             app:queryHint="Buscar producto..." />
 
+                                        <ImageButton
+                                            android:id="@+id/imgBtnScan"
+                                            style="@style/AppTheme.Button.Icon"
+                                            android:layout_width="56dp"
+                                            android:layout_height="56dp"
+                                            android:layout_marginStart="8dp"
+                                            app:srcCompat="@drawable/ic_barcode_scan_white_24dp"
+                                            app:tint="@color/status_success" />
                                     </LinearLayout>
 
                                     <FrameLayout
@@ -291,74 +233,12 @@
                                         android:layout_height="0dp"
                                         android:layout_weight="1">
 
-                                        <RelativeLayout
+                                        <androidx.recyclerview.widget.RecyclerView
+                                            android:id="@+id/rvProductsInSale"
                                             android:layout_width="match_parent"
-                                            android:layout_height="match_parent">
-
-                                            <Spinner
-                                                android:id="@+id/spinnerCategoria"
-                                                android:layout_width="match_parent"
-                                                android:layout_height="wrap_content"
-                                                android:background="@color/white"
-                                                android:visibility="gone" />
-
-                                            <GridView
-                                                android:id="@+id/gv_Categorias"
-                                                android:layout_width="match_parent"
-                                                android:layout_height="match_parent"
-                                                android:layout_below="@id/spinnerCategoria"
-                                                android:numColumns="4"
-                                                android:padding="16dp"
-                                                android:horizontalSpacing="16dp"
-                                                android:verticalSpacing="16dp"
-                                                android:visibility="gone" />
-
-                                            <androidx.recyclerview.widget.RecyclerView
-                                                android:id="@+id/rvProductsInSale"
-                                                android:layout_width="match_parent"
-                                                android:layout_height="match_parent"
-                                                android:layout_below="@id/spinnerCategoria"
-                                                android:padding="8dp"
-                                                android:visibility="visible" />
-
-                                            <androidx.recyclerview.widget.RecyclerView
-                                                android:id="@+id/rvGridarticulosVenta"
-                                                android:layout_width="match_parent"
-                                                android:layout_height="match_parent"
-                                                android:padding="8dp"
-                                                android:visibility="gone" />
-
-                                            <GridView
-                                                android:id="@+id/gv_articulosVenta"
-                                                android:layout_width="match_parent"
-                                                android:layout_height="match_parent"
-                                                android:layout_below="@id/spinnerCategoria"
-                                                android:columnWidth="120dp"
-                                                android:numColumns="auto_fit"
-                                                android:padding="16dp"
-                                                android:visibility="gone" />
-
-                                            <TextView
-                                                android:id="@+id/txtTextoCarrito"
-                                                android:layout_width="match_parent"
-                                                android:layout_height="match_parent"
-                                                android:gravity="center"
-                                                android:padding="48dp"
-                                                android:text="No hay productos en el Inventario"
-                                                android:textColor="@color/gray_500"
-                                                android:textSize="24sp"
-                                                android:textStyle="bold"
-                                                android:visibility="gone"
-                                                app:drawableTopCompat="@drawable/inventory" />
-
-                                            <ProgressBar
-                                                android:id="@+id/pbPedido"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_centerInParent="true"
-                                                android:visibility="gone" />
-
-                                        </RelativeLayout>
+                                            android:layout_height="match_parent"
+                                            android:clipToPadding="false"
+                                            android:padding="8dp" />
 
                                         <com.wang.avi.AVLoadingIndicatorView
                                             android:id="@+id/avi"
@@ -372,7 +252,7 @@
                                 </LinearLayout>
                             </RelativeLayout>
 
-                            <!-- VEHICLE (Tablet Portrait) -->
+                            <!-- VEHICLE / PARKING -->
                             <RelativeLayout
                                 android:id="@+id/content_venta2"
                                 android:layout_width="match_parent"
@@ -381,13 +261,13 @@
 
                                 <ScrollView
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:padding="@dimen/spacing_large">
+                                    android:layout_height="match_parent">
 
                                     <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:orientation="vertical">
+                                        android:orientation="vertical"
+                                        android:padding="24dp">
 
                                         <!-- Header Stats -->
                                         <LinearLayout
@@ -396,15 +276,13 @@
                                             android:gravity="center"
                                             android:orientation="horizontal">
 
-                                            <androidx.cardview.widget.CardView
+                                            <com.google.android.material.card.MaterialCardView
                                                 android:id="@+id/content_aforo"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                app:cardBackgroundColor="#3D5AFE"
-                                                app:cardCornerRadius="@dimen/radius_large">
+                                                style="@style/AppTheme.Sales.AforoCard"
+                                                android:layout_width="160dp">
 
                                                 <LinearLayout
-                                                    android:layout_width="wrap_content"
+                                                    android:layout_width="match_parent"
                                                     android:layout_height="wrap_content"
                                                     android:gravity="center"
                                                     android:orientation="vertical"
@@ -412,21 +290,20 @@
 
                                                     <TextView
                                                         android:id="@+id/txtAforoLibre"
+                                                        style="@style/AppTheme.Sales.AforoText"
                                                         android:layout_width="wrap_content"
                                                         android:layout_height="wrap_content"
                                                         android:text="0"
-                                                        android:textColor="@color/white"
-                                                        android:textSize="48sp"
-                                                        android:textStyle="bold" />
+                                                        android:textSize="48sp" />
 
                                                     <TextView
+                                                        style="@style/AppTheme.Sales.AforoLabel"
                                                         android:layout_width="wrap_content"
                                                         android:layout_height="wrap_content"
                                                         android:text="Espacios Libres"
-                                                        android:textColor="@color/white"
-                                                        android:textSize="14sp" />
+                                                        android:textSize="12sp" />
                                                 </LinearLayout>
-                                            </androidx.cardview.widget.CardView>
+                                            </com.google.android.material.card.MaterialCardView>
 
                                             <LinearLayout
                                                 android:layout_width="wrap_content"
@@ -446,18 +323,18 @@
                                                 <TextView
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
-                                                    android:text="Hora del dispositivo"
+                                                    android:text="Hora del Dispositivo"
                                                     android:textColor="@color/gray_600"
-                                                    android:textSize="16sp" />
+                                                    android:textSize="14sp" />
                                             </LinearLayout>
                                         </LinearLayout>
 
                                         <!-- Plate Input -->
-                                        <androidx.cardview.widget.CardView
+                                        <com.google.android.material.card.MaterialCardView
+                                            style="@style/AppTheme.Card.Modern"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:layout_marginTop="48dp"
-                                            app:cardCornerRadius="@dimen/radius_large">
+                                            android:layout_marginTop="48dp">
 
                                             <LinearLayout
                                                 android:layout_width="match_parent"
@@ -475,28 +352,24 @@
 
                                                 <EditText
                                                     android:id="@+id/edtPlaca"
+                                                    style="@style/AppTheme.Sales.PlateInput"
                                                     android:layout_width="0dp"
                                                     android:layout_height="wrap_content"
-                                                    android:layout_weight="1"
                                                     android:layout_marginStart="24dp"
-                                                    android:background="@null"
+                                                    android:layout_weight="1"
                                                     android:hint="ABC-123"
-                                                    android:textAllCaps="true"
-                                                    android:textColor="@color/gray_900"
-                                                    android:textSize="32sp"
-                                                    android:textStyle="bold" />
+                                                    android:textSize="40sp" />
 
                                                 <ImageView
                                                     android:id="@+id/imgTipoLista"
-                                                    android:layout_width="96dp"
-                                                    android:layout_height="96dp"
+                                                    android:layout_width="80dp"
+                                                    android:layout_height="80dp"
                                                     android:layout_marginStart="24dp"
-                                                    android:padding="8dp"
-                                                    android:background="@drawable/pin_button_background"
-                                                    android:backgroundTint="@color/gray_100"
+                                                    android:padding="12dp"
+                                                    android:background="@color/gray_100"
                                                     app:srcCompat="@drawable/ic_folder_open_outline_grey600_48dp" />
                                             </LinearLayout>
-                                        </androidx.cardview.widget.CardView>
+                                        </com.google.android.material.card.MaterialCardView>
 
                                         <LinearLayout
                                             android:layout_width="match_parent"
@@ -506,17 +379,16 @@
 
                                             <Button
                                                 android:id="@+id/btnTipoLista"
-                                                style="@style/Widget.MaterialComponents.Button"
+                                                style="@style/AppTheme.Button.Modern"
                                                 android:layout_width="0dp"
                                                 android:layout_height="72dp"
                                                 android:layout_weight="2"
-                                                android:backgroundTint="@color/colorPrimary"
                                                 android:text="PROCESAR"
                                                 android:textSize="20sp" />
 
                                             <Button
                                                 android:id="@+id/btnHabMod"
-                                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                                style="@style/AppTheme.Button.Outlined"
                                                 android:layout_width="0dp"
                                                 android:layout_height="72dp"
                                                 android:layout_marginStart="24dp"
@@ -530,12 +402,12 @@
                                                 android:layout_width="72dp"
                                                 android:layout_height="72dp"
                                                 android:layout_marginStart="24dp"
-                                                android:background="@drawable/pin_button_background"
+                                                android:background="@drawable/bg_edittext_modern"
                                                 android:backgroundTint="@color/gray_200"
-                                                app:srcCompat="@drawable/ic_broom_white_36dp" />
+                                                app:srcCompat="@drawable/ic_broom_white_36dp"
+                                                app:tint="@color/gray_700" />
                                         </LinearLayout>
 
-                                        <!-- Status Indicator -->
                                         <TextView
                                             android:id="@+id/txtEstadoPermitir"
                                             android:layout_width="match_parent"
@@ -544,7 +416,7 @@
                                             android:gravity="center"
                                             android:text="ENTRA"
                                             android:textColor="@color/colorPrimary"
-                                            android:textSize="64sp"
+                                            android:textSize="80sp"
                                             android:textStyle="bold" />
 
                                         <!-- Hidden IDs -->
@@ -556,80 +428,97 @@
                                         <EditText android:id="@+id/edtObservacion" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
                                         <ImageButton android:id="@+id/btnHoraInit" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
                                         <ImageButton android:id="@+id/btnHoraFin" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+
                                     </LinearLayout>
                                 </ScrollView>
                             </RelativeLayout>
                         </LinearLayout>
 
-                        <!-- Cart Detail (Tablet Portrait) -->
-                        <RelativeLayout
+                        <!-- Cart Pull-up Detail -->
+                        <com.google.android.material.card.MaterialCardView
                             android:id="@+id/linearContenedorVenta"
+                            style="@style/AppTheme.Card.Modern"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@color/white"
-                            android:elevation="16dp">
-
-                            <View
-                                android:layout_width="60dp"
-                                android:layout_height="4dp"
-                                android:layout_centerHorizontal="true"
-                                android:layout_marginTop="12dp"
-                                android:background="@color/gray_300" />
+                            app:cardElevation="16dp"
+                            app:cardCornerRadius="24dp">
 
                             <LinearLayout
-                                android:id="@+id/contentButton"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/rvCarritoVenta"
-                                android:gravity="center_vertical"
-                                android:orientation="horizontal"
-                                android:padding="24dp">
+                                android:orientation="vertical">
 
-                                <Button
-                                    android:id="@+id/btnCancelarVenta"
-                                    style="@style/Widget.MaterialComponents.Button.TextButton"
-                                    android:layout_width="0dp"
+                                <View
+                                    android:layout_width="60dp"
+                                    android:layout_height="4dp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginTop="12dp"
+                                    android:background="@color/gray_300" />
+
+                                <LinearLayout
+                                    android:id="@+id/contentButton"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:text="ANULAR"
-                                    android:textColor="@color/status_error"
-                                    android:textSize="18sp" />
-
-                                <ImageButton
-                                    android:id="@+id/btnOpenGuardarPedido"
-                                    style="@style/AppTheme.Button.Icon"
-                                    android:layout_width="64dp"
-                                    android:layout_height="64dp"
-                                    android:background="@drawable/pin_button_background"
-                                    android:backgroundTint="@color/gray_100"
-                                    app:srcCompat="@drawable/save_white"
-                                    app:tint="@color/colorPrimary" />
-
-                                <TextView
-                                    android:id="@+id/txtDescuentoPrecioVenta"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="32dp"
-                                    android:layout_weight="1.5"
-                                    android:drawableLeft="@drawable/percent1"
-                                    android:drawablePadding="16dp"
                                     android:gravity="center_vertical"
-                                    android:text="S/0.00"
-                                    android:textColor="@color/status_success"
-                                    android:textSize="18sp"
-                                    android:textStyle="bold" />
+                                    android:orientation="horizontal"
+                                    android:padding="24dp">
+
+                                    <Button
+                                        android:id="@+id/btnCancelarVenta"
+                                        style="@style/AppTheme.Button.Outlined"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="ANULAR"
+                                        android:textColor="@color/status_error"
+                                        app:strokeColor="@color/status_error" />
+
+                                    <ImageButton
+                                        android:id="@+id/btnOpenGuardarPedido"
+                                        style="@style/AppTheme.Button.Icon"
+                                        android:layout_width="64dp"
+                                        android:layout_height="64dp"
+                                        android:layout_marginHorizontal="16dp"
+                                        android:background="@drawable/bg_edittext_modern"
+                                        android:backgroundTint="@color/gray_100"
+                                        app:srcCompat="@drawable/save_white"
+                                        app:tint="@color/colorPrimary" />
+
+                                    <TextView
+                                        android:id="@+id/txtDescuentoPrecioVenta"
+                                        style="@style/AppTheme.Sales.PriceText"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.5"
+                                        android:gravity="end|center_vertical"
+                                        android:text="S/ 0.00"
+                                        android:textSize="24sp"
+                                        app:drawableStartCompat="@drawable/percent1"
+                                        android:drawablePadding="12dp" />
+                                </LinearLayout>
+
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/rvCarritoVenta"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="450dp"
+                                    android:clipToPadding="false"
+                                    android:paddingBottom="16dp" />
+
                             </LinearLayout>
-
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/rvCarritoVenta"
-                                android:layout_width="match_parent"
-                                android:layout_height="450dp"
-                                android:clipToPadding="false"
-                                android:paddingBottom="16dp" />
-
-                        </RelativeLayout>
+                        </com.google.android.material.card.MaterialCardView>
                     </com.sothree.slidinguppanel.SlidingUpPanelLayout>
-                </LinearLayout>
+                </FrameLayout>
+
+                <!-- Hidden legacy buttons -->
+                <Button android:id="@+id/btnZonaServicio" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+                <Button android:id="@+id/btnModoVenta" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+                <EditText android:id="@+id/edtCodigoBarra" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+                <ImageButton android:id="@+id/imgTipoVistaLista" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+                <Spinner android:id="@+id/spinnerCategoria" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+                <androidx.recyclerview.widget.RecyclerView android:id="@+id/rvGridarticulosVenta" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+                <TextView android:id="@+id/txtTextoCarrito" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+                <ProgressBar android:id="@+id/pbPedido" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+
             </LinearLayout>
         </RelativeLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

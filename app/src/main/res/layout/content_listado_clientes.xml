@@ -4,39 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroud_app"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Activitys.ListadoClientes"
     tools:showIn="@layout/activity_listado_clientes">
-    <RelativeLayout
-        android:gravity="center"
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/avi"
+        style="@style/AVLoadingIndicatorView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
+        android:visibility="gone"
+        app:indicatorColor="@color/colorPrimary"
+        app:indicatorName="BallPulseIndicator"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtCargando"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Cargando información..."
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/avi" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvListadoClientes"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:padding="8dp" />
 
-
-        <TextView
-            android:id="@+id/txtCargando"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/avi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cargando información"/>
-        <com.wang.avi.AVLoadingIndicatorView
-            android:id="@+id/avi"
-            app:indicatorName="BallPulseIndicator"
-            app:indicatorColor="@color/colorPrimary"
-            android:layout_centerInParent="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
-          <androidx.recyclerview.widget.RecyclerView
-            android:visibility="invisible"
-            android:id="@+id/rvListadoClientes"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-
-            >
-
-
-        </androidx.recyclerview.widget.RecyclerView>
-    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

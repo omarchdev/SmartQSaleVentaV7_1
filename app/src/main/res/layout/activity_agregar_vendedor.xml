@@ -4,58 +4,87 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroud_app"
     tools:context=".Activitys.AgregarVendedor">
 
-
-    <LinearLayout
-        android:orientation="vertical"
+    <com.google.android.material.card.MaterialCardView
+        style="@style/AppTheme.Card.Modern"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:layout_constraintTop_toTopOf="parent">
 
-
-        <com.google.android.material.textfield.TextInputLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="hint" />
+                android:layout_marginBottom="24dp"
+                android:gravity="center"
+                android:text="Nuevo Vendedor"
+                android:textColor="@color/colorPrimary"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:background="#7993ff87"
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/AppTheme.TextInputLayout.Outlined"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="hint" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginBottom="8dp">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nombre" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/AppTheme.TextInputLayout.Outlined"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="hint" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginBottom="8dp">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Apellido" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/AppTheme.TextInputLayout.Outlined"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="hint" />
-        </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
+                android:layout_marginBottom="8dp">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="DNI / Documento" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/AppTheme.TextInputLayout.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Teléfono" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                style="@style/AppTheme.Button.Modern"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Registrar Vendedor" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

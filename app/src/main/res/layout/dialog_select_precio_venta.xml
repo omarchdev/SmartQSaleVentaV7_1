@@ -1,62 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/AppTheme.Card.Modern"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/white"
-    android:orientation="vertical"
-    android:padding="20dp">
-
-    <TextView
-        android:id="@+id/txtTitulo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Seleccionar Precio"
-        android:textColor="@color/gray_900"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <ProgressBar
-        android:id="@+id/pb"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:visibility="gone" />
+    android:layout_height="wrap_content">
 
     <LinearLayout
-        android:id="@+id/contentPV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="24dp">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvPVAddicional"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/txtTitulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:text="Seleccionar Precio"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="0dp"
+        <ProgressBar
+            android:id="@+id/pb"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:indeterminate="true"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/contentPV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPVAddicional"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Cantidad a agregar:"
-                android:textColor="@color/gray_700"
-                android:textStyle="bold" />
+                android:minHeight="100dp" />
 
-            <!-- Placeholder for ClickNumberPickerView -->
             <View
-                android:id="@+id/clickNumberPickerView"
-                android:layout_width="120dp"
-                android:layout_height="40dp" />
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/gray_200" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Cantidad a agregar"
+                    android:textColor="@color/gray_700"
+                    android:textStyle="bold" />
+
+                <!-- Placeholder for ClickNumberPickerView -->
+                <View
+                    android:id="@+id/clickNumberPickerView"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:background="@color/gray_100" />
+            </LinearLayout>
         </LinearLayout>
+
     </LinearLayout>
 
-</LinearLayout>
+</com.google.android.material.card.MaterialCardView>

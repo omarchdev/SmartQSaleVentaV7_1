@@ -339,7 +339,7 @@ public class RvAdapterCarSale extends RecyclerView.Adapter<RvAdapterCarSale.Prod
     }
 
     public class ProductInCarSaleViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        LinearLayout linearLayout;
+        View linearLayout;
         View cv;
         TextView productName,quantityProduct,subTotalPrice,txtCombo,txtUnidad;
 
@@ -347,7 +347,7 @@ public class RvAdapterCarSale extends RecyclerView.Adapter<RvAdapterCarSale.Prod
         float PrecioSubtotal=0;
         public ProductInCarSaleViewHolder(View itemView) {
             super(itemView);
-            linearLayout=(LinearLayout)itemView.findViewById(R.id.llayoutCardViewProductInCarSale);
+            linearLayout=itemView.findViewById(R.id.llayoutCardViewProductInCarSale);
             cv=itemView.findViewById(R.id.cvProduct_in_sale_quotation);
             productName=(TextView)itemView.findViewById(R.id.productNameInSale);
             txtCombo=(TextView)itemView.findViewById(R.id.txtCombo);
@@ -366,7 +366,7 @@ public class RvAdapterCarSale extends RecyclerView.Adapter<RvAdapterCarSale.Prod
             if(v.getId()==R.id.deleteInSale){
                 VerificarEliminacionProductoLista();
             }
-            else if(v.getId()==R.id.llayoutCardViewProductInCarSale){
+            else if(v.getId()==R.id.llayoutCardViewProductInCarSale || v.getId() == R.id.cvProduct_in_sale_quotation){
 
                 if (RvAdapterCarSale.this.permitirOpciones) {
 

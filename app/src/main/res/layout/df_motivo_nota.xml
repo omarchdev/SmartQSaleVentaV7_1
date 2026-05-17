@@ -1,67 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/AppTheme.Card.Modern"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".DialogFragments.dfMotivoNota">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/edtMotivoNota"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            app:errorEnabled="true"
-            app:counterEnabled="true"
-            app:counterMaxLength="200"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtTituloMotivo">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:maxLength="200"
-                android:maxLines="4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Motivo de la nota a generar" />
-        </com.google.android.material.textfield.TextInputLayout>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
 
         <TextView
             android:id="@+id/txtTituloMotivo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="Ingrese el motivo "
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginBottom="16dp"
+            android:text="Motivo de la Nota"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/btnAceptar"
-            style="@style/Widget.AppCompat.Button.Colored"   android:layout_width="wrap_content"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edtMotivoNota"
+            style="@style/AppTheme.TextInputLayout.Outlined"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="Aceptar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtMotivoNota" />
+            app:counterEnabled="true"
+            app:counterMaxLength="200"
+            app:errorEnabled="true">
 
-        <Button
-            android:id="@+id/btnCancelar"
-            style="@style/Widget.AppCompat.Button.Colored"     android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:hint="Ingrese el motivo de la nota"
+                android:inputType="textMultiLine"
+                android:maxLength="200"
+                android:minLines="3" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="Cancelar"
-            app:layout_constraintEnd_toStartOf="@+id/btnAceptar"
-            app:layout_constraintTop_toBottomOf="@+id/edtMotivoNota" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+            android:layout_marginTop="24dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnCancelar"
+                style="@style/AppTheme.Button.Outlined"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:text="Cancelar"
+                android:textColor="@color/status_error"
+                app:strokeColor="@color/status_error" />
+
+            <Button
+                android:id="@+id/btnAceptar"
+                style="@style/AppTheme.Button.Modern"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:text="Aceptar" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -4,139 +4,135 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroud_app"
     tools:context=".Fragment.ReporteVentasVendedor">
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ScrollView
+        <RelativeLayout
+            android:id="@+id/contentft"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="4dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="match_parent">
 
-            <LinearLayout
-                android:orientation="vertical"
+            <ProgressBar
+                android:id="@+id/pb"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:elevation="10dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txtMensaje"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:padding="24dp"
+                android:text="Error al conseguir la información. Verifique su conexión."
+                android:textColor="@color/gray_600"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <ScrollView
+                android:id="@+id/contentData"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                >
-                <RelativeLayout
-                    android:id="@+id/contentft"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <ProgressBar
-                        android:id="@+id/pb"
-                        android:layout_centerInParent="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <TextView
-                        android:id="@+id/txtMensaje"
-                        android:gravity="center"
-                        android:textStyle="bold"
-                        android:textSize="16sp"
-                        android:layout_margin="24dp"
-                        android:text="Error al conseguir la información.Verifique su conexión a internet"
-                        android:layout_centerInParent="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent" />
+                android:visibility="visible">
 
-                    <RelativeLayout
-                        android:visibility="visible"
-                        android:id="@+id/contentData"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardView"
+                        style="@style/AppTheme.Card.Modern"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="wrap_content">
+
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"    
-                            android:orientation="vertical">
-                            <androidx.cardview.widget.CardView
-                                android:id="@+id/cardView"
-                                android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="12dp">
+
+                            <Button
+                                android:id="@+id/btnFechaInicio"
+                                style="@style/AppTheme.Button.Outlined"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginEnd="8dp"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="8dp"
-                                android:elevation="2dp"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent">
+                                android:layout_marginEnd="4dp"
+                                android:layout_weight="1"
+                                android:text="Desde"
+                                app:icon="@drawable/calendar" />
 
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
-
-                                    <Button
-                                        android:id="@+id/btnFechaInicio"
-                                        style="@style/Widget.AppCompat.Button.Borderless.Colored"
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="1"
-                                        android:drawableLeft="@drawable/calendar"
-                                        android:text="Desde" />
-
-                                    <Button
-                                        android:id="@+id/btnFechaFinal"
-                                        style="@style/Widget.AppCompat.Button.Borderless.Colored"
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="1"
-                                        android:drawableRight="@drawable/calendar"
-                                        android:text="hasta" />
-                                </LinearLayout>
-
-                            </androidx.cardview.widget.CardView>
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">
-                                <LinearLayout
-                                    android:orientation="vertical"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-
-                                    <TextView
-                                        android:id="@+id/txt1"
-                                        android:layout_margin="4dp"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Lista de vendedores"/>
-
-                                    <com.github.mikephil.charting.charts.BarChart
-                                        android:layout_margin="4dp"
-                                        android:id="@+id/barChartResumen"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="250dp"
-                                        android:background="#ffffff">
-                                    </com.github.mikephil.charting.charts.BarChart>
-                                    <TextView
-                                        android:id="@+id/txt2"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Ventas por vendedores"/>
-                                    <androidx.recyclerview.widget.RecyclerView
-                                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                                        android:id="@+id/rvVendedores"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        />
-
-                                </LinearLayout>
-                            </RelativeLayout>
+                            <Button
+                                android:id="@+id/btnFechaFinal"
+                                style="@style/AppTheme.Button.Outlined"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_weight="1"
+                                android:text="Hasta"
+                                app:icon="@drawable/calendar"
+                                app:iconGravity="end" />
                         </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
 
-                    </RelativeLayout>
+                    <com.google.android.material.card.MaterialCardView
+                        style="@style/AppTheme.Card.Modern"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp">
 
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="16dp">
 
-                </RelativeLayout>
+                            <TextView
+                                android:id="@+id/txt1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="16dp"
+                                android:text="Resumen por Vendedores"
+                                android:textColor="@color/colorPrimary"
+                                android:textStyle="bold" />
 
-            </LinearLayout>
+                            <com.github.mikephil.charting.charts.BarChart
+                                android:id="@+id/barChartResumen"
+                                android:layout_width="match_parent"
+                                android:layout_height="300dp" />
 
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
 
-        </ScrollView>
+                    <TextView
+                        android:id="@+id/txt2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="Detalle de Ventas"
+                        android:textColor="@color/gray_700"
+                        android:textStyle="bold" />
 
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvVendedores"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false" />
+
+                </LinearLayout>
+            </ScrollView>
+        </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

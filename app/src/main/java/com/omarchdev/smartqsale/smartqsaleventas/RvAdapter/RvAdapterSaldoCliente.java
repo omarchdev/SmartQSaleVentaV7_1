@@ -1,12 +1,12 @@
 package com.omarchdev.smartqsale.smartqsaleventas.RvAdapter;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.android.material.card.MaterialCardView;
 import com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mSaldoCliente;
 import com.omarchdev.smartqsale.smartqsaleventas.R;
@@ -67,15 +67,15 @@ public class RvAdapterSaldoCliente extends RecyclerView.Adapter<RecyclerView.Vie
 
         TextView txtNombre;
         TextView txtSaldo;
-        ConstraintLayout relativeLayout;
+        MaterialCardView container;
 
         public SaldoClienteViewHolder(View itemView) {
             super(itemView);
 
             txtNombre = (TextView) itemView.findViewById(R.id.txtNombreCliente);
             txtSaldo = (TextView) itemView.findViewById(R.id.txtMontoCliente);
-            relativeLayout = itemView.findViewById(R.id.rlSaldoCliente);
-            relativeLayout.setOnClickListener(this);
+            container = itemView.findViewById(R.id.rlSaldoCliente);
+            container.setOnClickListener(this);
 
 
         }

@@ -34,106 +34,96 @@
 
         <LinearLayout
             android:id="@+id/content"
-
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
             <TextView
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:text="Seleccion de caja"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="Selección de caja"
+                android:textColor="@color/gray_600"
+                android:textStyle="bold"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"/>
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-
-                <RelativeLayout
-
-                    android:id="@+id/cv_select_cierre"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:layout_weight="4"
-                    android:background="@drawable/fondo_img"
-                    android:focusable="true">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentTop="true"
-                        android:padding="16dp">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-
-                            android:tint="#00E5FF"
-                            app:srcCompat="@drawable/history" />
-
-                        <TextView
-                            android:id="@+id/txtEstadoCierre"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-
-                            android:textSize="18sp" />
-
-                        <TextView
-                            android:id="@+id/txtPeriodoCaja"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/txtEstadoCierre"
-                            android:textColor="#00E5FF"/>
-
-                    </RelativeLayout>
-
-
-                </RelativeLayout>
-
-            </LinearLayout>
-
-            <Button
-                android:visibility="gone"
-                android:id="@+id/btnDetalleReporte"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_select_cierre"
+                style="@style/AppTheme.Card.Modern"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/fondo_img"
-                android:text="Ver detalle reporte"
-                android:textColor="#757575" />
-            <RelativeLayout
-                android:padding="4dp"
-                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <com.github.mikephil.charting.charts.BarChart
+                android:focusable="true">
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        app:srcCompat="@drawable/history"
+                        app:tint="@color/colorPrimary" />
+
+                    <TextView
+                        android:id="@+id/txtEstadoCierre"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/gray_900"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtPeriodoCaja"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtEstadoCierre"
+                        android:layout_marginTop="4dp"
+                        android:textColor="@color/gray_600" />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <Button
+                android:id="@+id/btnDetalleReporte"
+                style="@style/AppTheme.Button.Text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Ver detalle reporte"
+                android:visibility="gone" />
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/AppTheme.Card.Modern"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp">
+
+                <com.github.mikephil.charting.charts.BarChart
                     android:id="@+id/barChartResumen"
                     android:layout_width="match_parent"
                     android:layout_height="220dp"
-                    android:background="#ffffff"></com.github.mikephil.charting.charts.BarChart>
-            </RelativeLayout>
+                    android:padding="8dp"
+                    android:background="@color/white" />
+            </com.google.android.material.card.MaterialCardView>
 
             <TextView
-                android:layout_margin="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="8dp"
                 android:text="Ventas por vendedor"
-                />
+                android:textColor="@color/gray_700"
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvVentasVendedores"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                ></androidx.recyclerview.widget.RecyclerView>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:nestedScrollingEnabled="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
         </LinearLayout>
 
 
