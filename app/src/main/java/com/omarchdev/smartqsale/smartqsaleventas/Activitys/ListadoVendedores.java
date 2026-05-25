@@ -54,6 +54,12 @@ public class ListadoVendedores extends ActivityParent implements RvAdapterClient
                 });
             }
 
+            rvVendedores = findViewById(R.id.rvVendedores);
+            avi = findViewById(R.id.avi);
+            txt = findViewById(R.id.txtCargando);
+            fabAgregar = findViewById(R.id.fab);
+
+            adapterVendedores = new RvAdapterVendedores();
             rvVendedores.setAdapter(adapterVendedores);
             rvVendedores.setLayoutManager(new LinearLayoutManager(this));
          asyncVendedores = new AsyncVendedores();
