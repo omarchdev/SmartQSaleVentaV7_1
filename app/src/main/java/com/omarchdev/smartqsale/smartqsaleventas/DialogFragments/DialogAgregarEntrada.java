@@ -338,6 +338,7 @@ public class DialogAgregarEntrada extends DialogFragment implements View.OnClick
 
     private void ModificarDialog() {
 
+        txtTitulo.setTextColor(Color.WHITE);
         switch (tipo) {
 
             case "Entrada":
