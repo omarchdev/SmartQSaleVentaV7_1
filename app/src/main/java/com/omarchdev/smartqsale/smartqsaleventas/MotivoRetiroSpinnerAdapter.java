@@ -48,7 +48,7 @@ public class MotivoRetiroSpinnerAdapter extends ArrayAdapter<mMotivo_Ingreso_Ret
 
         TextView label = new TextView(context);
         label.setPadding(10, 30, 10, 30);
-        label.setTextColor(Color.WHITE);
+        label.setTextColor(Color.BLACK);
         label.setText(list.get(position).getDescripcionMotivo());
         return label;
     }
@@ -59,7 +59,7 @@ public class MotivoRetiroSpinnerAdapter extends ArrayAdapter<mMotivo_Ingreso_Ret
 
         TextView label = new TextView(context);
         label.setPadding(10, 30, 10, 30);
-        label.setTextColor(Color.WHITE);
+        label.setTextColor(Color.BLACK);
         label.setText(list.get(position).getDescripcionMotivo());
 
         return label;

@@ -38,17 +38,21 @@ public class ListadoVendedores extends ActivityParent implements RvAdapterClient
 
         try {
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-            setSupportActionBar(toolbar);
-            getSupportActionBar().setTitle("Listado  Vendedores");
-            txt = findViewById(R.id.txtCargando);
-            avi = findViewById(R.id.avi);
-            fabAgregar = findViewById(R.id.fab);
-            rvVendedores = findViewById(R.id.rvVendedores);
-            adapterVendedores = new RvAdapterVendedores();
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setTitle("Vendedores");
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
-            getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back_home);
+            if (toolbar != null) {
+                setSupportActionBar(toolbar);
+                if (getSupportActionBar() != null) {
+                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                    getSupportActionBar().setDisplayShowHomeEnabled(true);
+                    getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back_home);
+                    getSupportActionBar().setTitle("Vendedores");
+                }
+                toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        onBackPressed();
+                    }
+                });
+            }
 
             rvVendedores.setAdapter(adapterVendedores);
             rvVendedores.setLayoutManager(new LinearLayoutManager(this));

@@ -111,15 +111,20 @@ AsyncCategoria.ListenerCategoria, AsyncAreasProduccion.ListenerAreasProduccion, 
         salir=false;
         estadoModificar=true;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Agregar producto");
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
-        }
-        toolbar.setTitleTextColor(getResources().getColor(R.color.black));
-        if (toolbar.getNavigationIcon() != null) {
-            toolbar.getNavigationIcon().setTint(getResources().getColor(R.color.black));
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setTitle("Agregar producto");
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                getSupportActionBar().setDisplayShowHomeEnabled(true);
+                getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back_home);
+            }
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onBackPressed();
+                }
+            });
         }
         dialogMensaje=new AlertDialog.Builder(this);
         permitirGuardarVariantes=false;

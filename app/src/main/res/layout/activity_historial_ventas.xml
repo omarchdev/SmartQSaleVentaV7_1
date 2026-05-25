@@ -1,137 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context="com.omarchdev.smartqsale.smartqsaleventas.Activitys.HistorialVentas">
+    android:background="@color/backgroud_app"
+    tools:context=".Activitys.HistorialVentas">
 
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/contentFecha"
-        style="@style/AppTheme.Card.Modern"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/AppTheme.Toolbar.Modern"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp">
+        android:layout_height="?attr/actionBarSize"
+        app:contentInsetStartWithNavigation="0dp" />
 
-        <LinearLayout
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/contentFecha"
+            style="@style/AppTheme.Card.Modern"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="8dp"
-            android:orientation="horizontal">
+            android:layout_margin="8dp">
 
-            <Button
-                android:id="@+id/btnDateVentas1"
-                style="@style/AppTheme.Button.Modern"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginEnd="4dp"
-                app:icon="@drawable/calendar"
-                android:text="31/12/2017" />
-
-            <Button
-                android:id="@+id/btnDateVentas2"
-                style="@style/AppTheme.Button.Modern"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="4dp"
-                app:icon="@drawable/calendar"
-                app:iconGravity="textEnd"
-                android:text="31/12/2017" />
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/contentCliente"
-        style="@style/AppTheme.Card.Modern"
-        android:layout_below="@+id/contentFecha"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp">
-
-            <Button
-                android:id="@+id/btnSelectCliente"
-                style="@style/AppTheme.Button.Text"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toStartOf="@id/btnDeleteCliente"
-                android:layout_alignParentStart="true"
-                android:text="Seleccione un cliente" />
+                android:gravity="center"
+                android:padding="8dp"
+                android:orientation="horizontal">
 
-            <ImageButton
-                android:id="@+id/btnDeleteCliente"
-                style="@style/AppTheme.Button.Icon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                app:srcCompat="@drawable/close_outline" />
-        </RelativeLayout>
+                <Button
+                    android:id="@+id/btnDateVentas1"
+                    style="@style/AppTheme.Button.Modern"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    app:icon="@drawable/calendar"
+                    android:text="31/12/2017" />
 
-    </com.google.android.material.card.MaterialCardView>
+                <Button
+                    android:id="@+id/btnDateVentas2"
+                    style="@style/AppTheme.Button.Modern"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="4dp"
+                    app:icon="@drawable/calendar"
+                    app:iconGravity="textEnd"
+                    android:text="31/12/2017" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/contentCliente"
+            style="@style/AppTheme.Card.Modern"
+            android:layout_below="@+id/contentFecha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp">
+
+                <Button
+                    android:id="@+id/btnSelectCliente"
+                    style="@style/AppTheme.Button.Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toStartOf="@id/btnDeleteCliente"
+                    android:layout_alignParentStart="true"
+                    android:text="Seleccione un cliente" />
+
+                <ImageButton
+                    android:id="@+id/btnDeleteCliente"
+                    style="@style/AppTheme.Button.Icon"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    app:srcCompat="@drawable/close_outline" />
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_above="@+id/contentTotal"
-        android:layout_below="@+id/contentCliente"
-        android:id="@+id/rvHistorialVentas"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-
-    </androidx.recyclerview.widget.RecyclerView>
-
-    <androidx.cardview.widget.CardView
-
-       android:layout_alignParentBottom="true"
-        android:id="@+id/contentTotal"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="8dp"
-        android:background="#333333"
-        android:elevation="10dp">
-
-        <RelativeLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_above="@+id/contentTotal"
+            android:layout_below="@+id/contentCliente"
+            android:id="@+id/rvHistorialVentas"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#333333">
+            >
 
-            <TextView
-                android:layout_width="wrap_content"
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <androidx.cardview.widget.CardView
+
+           android:layout_alignParentBottom="true"
+            android:id="@+id/contentTotal"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="8dp"
+            android:background="#333333"
+            android:elevation="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="10dp"
-                android:gravity="center"
-                android:text="Valor Total"
-                android:textColor="#ffffff"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:background="#333333">
 
-            <TextView
-                android:id="@+id/txtTotalDatoVentas"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:text="S/100.00"
-                android:textColor="#23d929"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:text="Valor Total"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
-</RelativeLayout>
+                <TextView
+                    android:id="@+id/txtTotalDatoVentas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:text="S/100.00"
+                    android:textColor="#23d929"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</LinearLayout>

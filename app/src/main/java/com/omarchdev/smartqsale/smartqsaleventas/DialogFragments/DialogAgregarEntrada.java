@@ -17,8 +17,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -50,7 +50,7 @@ public class DialogAgregarEntrada extends DialogFragment implements View.OnClick
 
     mDetalleMovCaja movCaja;
     String temp;
-    RelativeLayout relativeLayout;
+    LinearLayout layoutContent;
     mCierre cierre;
     int idMedioPago;
     int idMotivo;
@@ -98,7 +98,7 @@ public class DialogAgregarEntrada extends DialogFragment implements View.OnClick
         mResumenMedioPagoList = new ArrayList<>();
         context=getActivity();
         montoApertura = Constantes.DivisaPorDefecto.SimboloDivisa + String.format("%.2f", bMonto);
-        relativeLayout = (RelativeLayout) v.findViewById(R.id.rlContent);
+        layoutContent = (LinearLayout) v.findViewById(R.id.rlContent);
         spnMedioPago = (Spinner) v.findViewById(R.id.spMedio_Pago);
         spnMotivo = (Spinner) v.findViewById(R.id.spMotivo_Ingreso);
         edtMontoAgregar = (EditText) v.findViewById(R.id.edtMontoApertura);
@@ -374,7 +374,7 @@ public class DialogAgregarEntrada extends DialogFragment implements View.OnClick
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            relativeLayout.setVisibility(View.GONE);
+            layoutContent.setVisibility(View.GONE);
             pbDialog.setVisibility(View.VISIBLE);
 
         }
@@ -417,7 +417,7 @@ public class DialogAgregarEntrada extends DialogFragment implements View.OnClick
             }
             if (listMedioPago != null) {
                 if (mResumenMedioPagoList != null) {
-                    relativeLayout.setVisibility(View.VISIBLE);
+                    layoutContent.setVisibility(View.VISIBLE);
                     adapterMPagoSpinner.AddElement(listMedioPago);
                     adapterMotivoRetiro.AddElement(listMotivo);
                 } else {
@@ -445,7 +445,7 @@ public class DialogAgregarEntrada extends DialogFragment implements View.OnClick
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            relativeLayout.setVisibility(View.GONE);
+            layoutContent.setVisibility(View.GONE);
             pbDialog.setVisibility(View.VISIBLE);
 
 
@@ -465,7 +465,7 @@ public class DialogAgregarEntrada extends DialogFragment implements View.OnClick
         protected void onPostExecute(Byte aByte) {
             super.onPostExecute(aByte);
             pbDialog.setVisibility(View.GONE);
-            relativeLayout.setVisibility(View.VISIBLE);
+            layoutContent.setVisibility(View.VISIBLE);
             if (aByte == 0) {
 
                 Toast.makeText(getActivity(), "Verifique su conexion", Toast.LENGTH_SHORT).show();

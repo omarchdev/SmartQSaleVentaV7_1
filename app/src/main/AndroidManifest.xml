@@ -67,6 +67,7 @@
         <activity android:name=".Activitys.ConfigCategorias" />
         <activity
             android:name=".Activitys.AddEditProduct"
+            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".Activitys.PantallaPrincipal"
@@ -85,7 +86,8 @@
             android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity android:name=".Activitys.DetallePedido" />
         <activity android:name=".Activitys.TestActivityPrintHtml" />
-        <activity android:name=".Activitys.HistorialVentas" />
+        <activity android:name=".Activitys.HistorialVentas"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activitys.DetalleVenta" />
         <activity android:name=".Activitys.DetalleVentaV2" />
         <activity
@@ -93,7 +95,8 @@
             android:label="@string/title_activity_pantalla_principal"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".Activitys.CtaClientesActivity" />
+        <activity android:name=".Activitys.CtaClientesActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activitys.Activity_cta_x_cliente"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -152,6 +155,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activitys.ActivityEdiccionVariantes"
+            android:theme="@style/AppTheme.NoActionBar"
             android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity
             android:name=".Activitys.ActivityConfigPack"
@@ -189,6 +193,7 @@
         <activity android:name=".Activitys.RegistroCliente" />
         <activity
             android:name=".Activitys.IngresoCompraKt"
+            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".Activitys.ActivityListadoMovAlmacen" />
         <activity android:name=".Activitys.ConfiguracionUsuario" />

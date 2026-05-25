@@ -16,15 +16,21 @@ class ListadoTiendas : ActivityParent(), RvAdapterTiendasIngreso.PositionClick1 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_listado_tiendas)
-        setSupportActionBar(toolbar )
+        val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
+        if (toolbar != null) {
+            setSupportActionBar(toolbar)
+            if (supportActionBar != null) {
+                supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+                supportActionBar!!.setDisplayShowHomeEnabled(true)
+                supportActionBar!!.setHomeAsUpIndicator(R.drawable.arrow_back_home)
+                supportActionBar!!.title = "Tiendas"
+            }
+            toolbar.setNavigationOnClickListener { onBackPressed() }
+        }
         rvAdapterTiendas.tipoVista=2
         rvAdapterTiendas.positionClick=this
         rvListTienda.adapter=rvAdapterTiendas
         rvListTienda.layoutManager=LinearLayoutManager(this)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.arrow_back_home)
-        supportActionBar?.setTitle( "Tiendas")
 
         fab.setOnClickListener { view ->
             AbrirRegistroTienda(0)

@@ -9,10 +9,12 @@
     tools:context="com.omarchdev.smartqsale.smartqsaleventas.Activitys.ActivityEdiccionVariantes">
 
 
-   <LinearLayout
-       android:orientation="horizontal"
-       android:layout_width="match_parent"
-       android:layout_height="50dp"></LinearLayout>
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/AppTheme.Toolbar.Modern"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:contentInsetStartWithNavigation="0dp" />
 
     <FrameLayout
         android:id="@+id/content_Edit_Variante"

@@ -53,7 +53,7 @@ public class AdapterMPagoSpinner extends ArrayAdapter<mMedioPago> {
 
         TextView label = new TextView(context);
         label.setPadding(10, 30, 10, 30);
-        label.setTextColor(Color.WHITE);
+        label.setTextColor(Color.BLACK);
         label.setText(list.get(position).getcDescripcionMedioPago());
         return label;
     }
@@ -64,7 +64,7 @@ public class AdapterMPagoSpinner extends ArrayAdapter<mMedioPago> {
 
         TextView label = new TextView(context);
         label.setPadding(10, 30, 10, 30);
-        label.setTextColor(Color.WHITE);
+        label.setTextColor(Color.BLACK);
         label.setText(list.get(position).getcDescripcionMedioPago());
 
         return label;

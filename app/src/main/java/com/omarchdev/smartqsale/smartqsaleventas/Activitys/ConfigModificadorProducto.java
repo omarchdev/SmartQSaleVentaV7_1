@@ -58,6 +58,23 @@ public class ConfigModificadorProducto extends ActivityParent implements AsyncMo
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_config_modificador_producto);
+
+        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                getSupportActionBar().setDisplayShowHomeEnabled(true);
+                getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back_home);
+            }
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onBackPressed();
+                }
+            });
+        }
+
         txtNumModProd=findViewById(R.id.txtNumModProd);
         modificadores=new ArrayList<>();
         modificadoresProducto=new ArrayList<>();
@@ -131,23 +148,11 @@ public class ConfigModificadorProducto extends ActivityParent implements AsyncMo
         }
         SearchableInfo searchableInfo = searchManager.getSearchableInfo(getComponentName());
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-        int searchimgId = androidx.appcompat.R.id.search_button;
-        int imageId = androidx.appcompat.R.id.search_close_btn;
-        int searchTextId = androidx.appcompat.R.id.search_src_text;
-        searchBox=((EditText) searchView.findViewById (searchTextId));
-        ImageView searchClose=((ImageView)searchView.findViewById(imageId));
-        ImageView imgSearch=((ImageView)searchView.findViewById(searchimgId));
-
 
         searchView.setQueryHint("Busqueda de producto");
         searchView.setSearchableInfo(searchableInfo);
         searchView.setOnQueryTextListener(this);
 
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back_home);
-        getSupportActionBar().setElevation(10);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(nombre);
         btnAddMod.setOnClickListener(v -> {
             Toast.makeText(this,"as",Toast.LENGTH_SHORT).show();
             Intent intent=new Intent(this,ActivityModificadorConfig.class);

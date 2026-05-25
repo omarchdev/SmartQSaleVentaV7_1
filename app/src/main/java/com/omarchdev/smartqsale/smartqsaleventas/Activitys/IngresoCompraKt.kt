@@ -153,35 +153,18 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_ingreso_compra,menu)
         menuSaveItem=menu!!.findItem(R.id.actionCheck)
-        menuSearch=menu!!.findItem(R.id.searchToolbar1)
-
-        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        val searchView = menu.findItem(R.id.searchToolbar1).actionView as SearchView
-
-        val searchableInfo = searchManager.getSearchableInfo(componentName)
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
-
-        val searchimgId = resources.getIdentifier("android:id/search_button", null, null)
-        val imageId = resources.getIdentifier("android:id/search_close_btn", null, null)
-        val searchTextId = resources.getIdentifier("android:id/search_src_text", null, null)
-        val searchBox = searchView.findViewById<View>(searchTextId) as EditText
-        val searchClose = searchView.findViewById<View>(imageId) as ImageView
-        val imgSearch = searchView.findViewById<View>(searchimgId) as ImageView
-        searchView.queryHint = "Busqueda de producto"
-        searchView.setSearchableInfo(searchableInfo)
-        searchView.setOnQueryTextListener(this)
-        imgSearch.setColorFilter(resources.getColor(R.color.colorAccent))
-        searchClose.setColorFilter(resources.getColor(R.color.colorAccent))
-        searchBox.setHintTextColor(resources.getColor(R.color.colorAccent))
-        searchBox.setTextColor(resources.getColor(R.color.colorAccent))
-        searchBox.highlightColor = resources.getColor(R.color.colorAccent)
-        searchBox.drawingCacheBackgroundColor = resources.getColor(R.color.colorAccent)
+        
+        // Hide the old search item
+        val searchItem = menu.findItem(R.id.searchToolbar1)
+        if (searchItem != null) {
+            searchItem.setVisible(false)
+        }
+        
          menuScan=menu!!.findItem(R.id.actionScanCode)
         dialogScan.setScannerResult {
-        panel.panelState=SlidingUpPanelLayout.PanelState.EXPANDED
-        menuScan.setVisible(true)
-        searchView.onActionViewExpanded()
-        searchBox.setText(it)
+            panel.panelState=SlidingUpPanelLayout.PanelState.EXPANDED
+            val searchViewInline = findViewById<SearchView>(R.id.searchViewInline)
+            searchViewInline?.setQuery(it, true)
         }
         return super.onCreateOptionsMenu(menu)
     }
@@ -255,6 +238,20 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ingreso_compra_kt)
         try {
+            val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
+            if (toolbar != null) {
+                setSupportActionBar(toolbar)
+                if (supportActionBar != null) {
+                    supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+                    supportActionBar!!.setDisplayShowHomeEnabled(true)
+                    supportActionBar!!.setHomeAsUpIndicator(R.drawable.arrow_back_home)
+                }
+                toolbar.setNavigationOnClickListener { onBackPressed() }
+
+                // Inicializar SearchView Inline
+                val searchViewInline = findViewById<SearchView>(R.id.searchViewInline)
+                searchViewInline?.setOnQueryTextListener(this)
+            }
 
               declareOnClickListener()
             recibirResultadoScan()
@@ -933,12 +930,13 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
     }
 
     override fun onPanelStateChanged(panel: View?, previousState: SlidingUpPanelLayout.PanelState?, newState: SlidingUpPanelLayout.PanelState?) {
+        val searchViewInline = findViewById<SearchView>(R.id.searchViewInline)
         when(newState){
             SlidingUpPanelLayout.PanelState.EXPANDED->{
         //        toolbarCompras?.setTitle("Seleccion producto")
                 supportActionBar!!.setTitle(Html.fromHtml("<font color=\"#757575\">" + "Seleccion producto" + "</font>"))
                 menuSaveItem.setVisible(false)
-                menuSearch.setVisible(true)
+                searchViewInline?.visibility = View.VISIBLE
                 menuScan.setVisible(true)
             }
             SlidingUpPanelLayout.PanelState.COLLAPSED->{
@@ -948,7 +946,7 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
                                 "</font>"))
 
                 menuSaveItem.setVisible(true)
-                menuSearch.setVisible(false)
+                searchViewInline?.visibility = View.GONE
                 menuScan.setVisible(false)
             }
             else -> {}

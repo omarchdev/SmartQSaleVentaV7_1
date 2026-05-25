@@ -17,6 +17,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -55,26 +56,12 @@ public class ListadoClientes extends ActivityParent implements RvAdapterClientes
         try{
             MenuInflater inflater = getMenuInflater();
             inflater.inflate(R.menu.menu_clientes, menu);
-            SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-            searchView = (SearchView) menu.findItem(R.id.searchToolbar1).getActionView();
-            SearchableInfo searchableInfo = searchManager.getSearchableInfo(getComponentName());
-            searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-            int searchimgId = getResources().getIdentifier("android:id/search_button", null, null);
-            int imageId = getResources().getIdentifier("android:id/search_close_btn", null, null);
-            int searchTextId = getResources().getIdentifier("android:id/search_src_text", null, null);
-            searchBox = ((EditText) searchView.findViewById(searchTextId));
-            ImageView searchClose = ((ImageView) searchView.findViewById(imageId));
-            ImageView imgSearch = ((ImageView) searchView.findViewById(searchimgId));
 
-            searchView.setQueryHint("Busqueda de clientes");
-            searchView.setSearchableInfo(searchableInfo);
-            searchView.setOnQueryTextListener(this);
-            imgSearch.setColorFilter(getResources().getColor(R.color.colorAccent));
-            searchClose.setColorFilter(getResources().getColor(R.color.colorAccent));
-            searchBox.setHintTextColor(getResources().getColor(R.color.colorAccent));
-            searchBox.setTextColor(getResources().getColor(R.color.colorAccent));
-            searchBox.setHighlightColor(getResources().getColor(R.color.colorAccent));
-            searchBox.setDrawingCacheBackgroundColor(getResources().getColor(R.color.colorAccent));
+            // Ocultar el item de búsqueda del menú ya que usamos el inline
+            MenuItem searchItem = menu.findItem(R.id.searchToolbar1);
+            if (searchItem != null) {
+                searchItem.setVisible(false);
+            }
 
         }catch (Exception ex){
             Toast.makeText(this,ex.toString(),Toast.LENGTH_SHORT).show();
@@ -96,6 +83,25 @@ public class ListadoClientes extends ActivityParent implements RvAdapterClientes
 
             context = this;
             setSupportActionBar(toolbar);
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                getSupportActionBar().setDisplayShowHomeEnabled(true);
+                getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back_home);
+                getSupportActionBar().setTitle("Clientes");
+            }
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onBackPressed();
+                }
+            });
+
+            // Inicializar SearchView Inline
+            searchView = findViewById(R.id.searchViewInline);
+            if (searchView != null) {
+                searchView.setOnQueryTextListener(this);
+            }
+
             asyncClientes = new AsyncClientes();
             avi = findViewById(R.id.avi);
             txtCargando = findViewById(R.id.txtCargando);
@@ -115,14 +121,7 @@ public class ListadoClientes extends ActivityParent implements RvAdapterClientes
                 }
             });
 
-
             rvAdapterClientes.setListenerPosition(this);
-
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setTitle("Clientes");
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
-            getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back_home);
-
             asyncClientes.setContext(this);
 
         } catch (Exception ex) {

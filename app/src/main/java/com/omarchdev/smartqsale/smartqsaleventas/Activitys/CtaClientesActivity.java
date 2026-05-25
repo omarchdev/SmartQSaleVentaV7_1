@@ -46,11 +46,12 @@ public class  CtaClientesActivity extends ActivityParent implements View.OnClick
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_saldo_clientes, menu);
-        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        searchView = (SearchView) menu.findItem(R.id.searchToolbar).getActionView();
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-        searchView.setQueryHint("Busqueda por cliente");
-        searchView.setOnQueryTextListener(this);
+        
+        // Hide the old search item
+        MenuItem searchItem = menu.findItem(R.id.searchToolbar);
+        if (searchItem != null) {
+            searchItem.setVisible(false);
+        }
 
         return true;
     }
@@ -68,10 +69,30 @@ public class  CtaClientesActivity extends ActivityParent implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cta_clientes);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        getSupportActionBar().setTitle("Cuentas por cliente");
+        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                getSupportActionBar().setDisplayShowHomeEnabled(true);
+                getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back_home);
+                getSupportActionBar().setTitle("Cuentas por cliente");
+            }
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onBackPressed();
+                }
+            });
+
+            // Inicializar SearchView Inline
+            searchView = findViewById(R.id.searchViewInline);
+            if (searchView != null) {
+                searchView.setOnQueryTextListener(this);
+            }
+        }
+
         customer = new mCustomer();
         saldoCero = 0;
         nombreCliente = "";

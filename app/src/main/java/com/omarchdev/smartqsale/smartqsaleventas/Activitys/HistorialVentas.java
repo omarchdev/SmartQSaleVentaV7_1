@@ -76,16 +76,22 @@ public class HistorialVentas extends ActivityParent implements DialogDatePickerS
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historial_ventas);
 
-     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-       getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-
-
-        getSupportActionBar().setTitle("Listado artículos");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Historial de Ventas ");
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back_home);
+        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                getSupportActionBar().setDisplayShowHomeEnabled(true);
+                getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back_home);
+                getSupportActionBar().setTitle("Historial de Ventas");
+            }
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onBackPressed();
+                }
+            });
+        }
 
         rvAdapter = new RvAdapterListVentas();
         rvAdapter.setListenerCabeceraVenta(this);

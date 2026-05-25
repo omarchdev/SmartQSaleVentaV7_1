@@ -5,19 +5,12 @@
     android:layout_width="match_parent" android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context="com.omarchdev.smartqsale.smartqsaleventas.Activitys.ActivityModificadorConfig">
-    <com.google.android.material.appbar.AppBarLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_modificador"
+        style="@style/AppTheme.Toolbar.Modern"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        android:id="@+id/appBarLayout">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_modificador"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            style="@style/CustomActionBarStyle"/>
-
-    </com.google.android.material.appbar.AppBarLayout>
+        android:layout_height="?attr/actionBarSize"
+        app:contentInsetStartWithNavigation="0dp" />
 
     <RelativeLayout android:layout_width="match_parent"  android:layout_height="match_parent">
 

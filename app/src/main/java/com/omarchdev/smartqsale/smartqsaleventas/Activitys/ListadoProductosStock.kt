@@ -33,33 +33,18 @@ class ListadoProductosStock : ActivityParent(), AsyncStockProductos.ListenerList
     private lateinit var menuScan: MenuItem
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_listado_productos, menu)
-        menuSearch = menu!!.findItem(R.id.searchToolbar1)
+        
+        // Hide the old search item
+        val searchItem = menu.findItem(R.id.searchToolbar1)
+        if (searchItem != null) {
+            searchItem.setVisible(false)
+        }
+        
         menuScan = menu!!.findItem(R.id.actionScanCode)
-        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        val searchView = menu.findItem(R.id.searchToolbar1).actionView as SearchView
-
-        val searchableInfo = searchManager.getSearchableInfo(componentName)
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
-
-        val searchimgId = resources.getIdentifier("android:id/search_button", null, null)
-        val imageId = resources.getIdentifier("android:id/search_close_btn", null, null)
-        val searchTextId = resources.getIdentifier("android:id/search_src_text", null, null)
-        val searchBox = searchView.findViewById<View>(searchTextId) as EditText
-        val searchClose = searchView.findViewById<View>(imageId) as ImageView
-        val imgSearch = searchView.findViewById<View>(searchimgId) as ImageView
-        searchView.queryHint = "Busqueda de producto"
-        searchView.setSearchableInfo(searchableInfo)
-        searchView.setOnQueryTextListener(this)
-        imgSearch.setColorFilter(resources.getColor(R.color.colorAccent))
-        searchClose.setColorFilter(resources.getColor(R.color.colorAccent))
-        searchBox.setHintTextColor(resources.getColor(R.color.colorAccent))
-        searchBox.setTextColor(resources.getColor(R.color.colorAccent))
-        searchBox.highlightColor = resources.getColor(R.color.colorAccent)
-        searchBox.drawingCacheBackgroundColor = resources.getColor(R.color.colorAccent)
+        
         dialogScan.setScannerResult {
-            menuScan.setVisible(true)
-            searchView.onActionViewExpanded()
-            searchBox.setText(it)
+            val searchViewInline = findViewById<SearchView>(R.id.searchViewInline)
+            searchViewInline?.setQuery(it, true)
         }
         return super.onCreateOptionsMenu(menu)
     }
@@ -82,11 +67,23 @@ class ListadoProductosStock : ActivityParent(), AsyncStockProductos.ListenerList
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_listado_productos_stock)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.arrow_back_home)
-        supportActionBar?.setTitle("Stock de Productos")
+        val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
+        if (toolbar != null) {
+            setSupportActionBar(toolbar)
+            if (supportActionBar != null) {
+                supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+                supportActionBar!!.setDisplayShowHomeEnabled(true)
+                supportActionBar!!.setHomeAsUpIndicator(R.drawable.arrow_back_home)
+                supportActionBar!!.title = "Stock de Productos"
+            }
+            toolbar.setNavigationOnClickListener { onBackPressed() }
+
+            // Inicializar SearchView Inline
+            val searchViewInline = findViewById<SearchView>(R.id.searchViewInline)
+            searchViewInline?.setOnQueryTextListener(this)
+        }
+
         asyncStockProductos.listenerListadoProductoStock = this
         rvAdapterStockProductos = RvAdapterStockProductos(productos)
         rvAdapterStockProductos?.clickListener = this

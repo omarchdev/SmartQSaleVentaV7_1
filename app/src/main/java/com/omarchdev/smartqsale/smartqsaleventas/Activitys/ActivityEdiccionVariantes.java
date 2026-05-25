@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.View;
 import androidx.appcompat.widget.SearchView;
 import com.omarchdev.smartqsale.smartqsaleventas.AsyncTask.AsyncVariantes;
 import com.omarchdev.smartqsale.smartqsaleventas.ConexionBd.BdConnectionSql;
@@ -34,15 +35,26 @@ public  class ActivityEdiccionVariantes extends ActivityParent implements AsyncV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ediccion_variantes);
 
-        nombreProducto=getIntent().getExtras().getString("NombreProducto", " Nombre Producto");
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                getSupportActionBar().setDisplayShowHomeEnabled(true);
+                getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back_home);
+            }
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onBackPressed();
+                }
+            });
+        }
 
-        getSupportActionBar().setTitle((Html.fromHtml("<font color=\"#757575\">" + nombreProducto + "</font>")));
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
-        getSupportActionBar()
-                .setHomeAsUpIndicator(R.drawable.arrow_back_home);
-        getSupportActionBar().setElevation(0);
+        nombreProducto=getIntent().getExtras().getString("NombreProducto", " Nombre Producto");
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(nombreProducto);
+        }
 
         idProduct = getIntent().getExtras().getInt("IdProduct", 0);
         variantesProducto = new VariantesProducto();

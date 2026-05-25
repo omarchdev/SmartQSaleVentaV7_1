@@ -1,550 +1,564 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@color/backgroud_app">
 
-    <ScrollView
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/AppTheme.Toolbar.Modern"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:fillViewport="true"
-        android:nestedScrollingEnabled="true">
+        android:layout_height="?attr/actionBarSize"
+        app:contentInsetStartWithNavigation="0dp" />
 
-        <LinearLayout
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:descendantFocusability="beforeDescendants"
-            android:focusableInTouchMode="true"
-            android:orientation="vertical"
-            android:padding="12dp"
-            android:paddingBottom="80dp">
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:fillViewport="true"
+            android:nestedScrollingEnabled="true">
 
-            <!-- Card: Clasificación (Categoría y Subcategoría) -->
-            <com.google.android.material.card.MaterialCardView
-                style="@style/AppTheme.Card.Modern"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp">
+                android:descendantFocusability="beforeDescendants"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:paddingBottom="80dp">
 
-                <LinearLayout
+                <!-- Card: Clasificación (Categoría y Subcategoría) -->
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/AppTheme.Card.Modern"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="12dp"
-                        android:text="Clasificación"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginBottom="4dp"
-                        android:text="Categoría"
-                        android:textColor="@color/gray_600"
-                        android:textSize="12sp" />
-
-                    <Spinner
-                        android:id="@+id/spinner_categoria"
-                        style="@style/AppTheme.Spinner.Outlined"
-                        android:layout_width="match_parent"
-                        android:spinnerMode="dialog" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginBottom="4dp"
-                        android:text="Subcategoría"
-                        android:textColor="@color/gray_600"
-                        android:textSize="12sp" />
-
-                    <Spinner
-                        android:id="@+id/spnSubCategoria"
-                        style="@style/AppTheme.Spinner.Outlined"
-                        android:layout_width="match_parent"
-                        android:spinnerMode="dialog" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- Card: Datos Principales e Imagen -->
-            <com.google.android.material.card.MaterialCardView
-                style="@style/AppTheme.Card.Modern"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="12dp"
-                        android:text="Información del Producto"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/edtProductName"
-                        style="@style/AppTheme.TextInputLayout.Outlined"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Nombre del producto (*)"
-                            android:inputType="text"
-                            android:maxLines="1" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <!-- Sección Imagen Optimizada -->
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:gravity="center">
-
-                        <ImageView
-                            android:id="@+id/imageProduct"
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
-                            android:layout_centerHorizontal="true"
-                            android:adjustViewBounds="true"
-                            android:scaleType="centerCrop"
-                            android:visibility="gone"
-                            app:srcCompat="@drawable/image" />
-
-                        <ImageButton
-                            android:id="@+id/btnBuscarImagen"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_alignBottom="@id/imageProduct"
-                            android:layout_marginEnd="8dp"
-                            android:layout_toStartOf="@id/imageProduct"
-                            android:backgroundTint="#ff8d1b"
-                            android:elevation="4dp"
-                            android:visibility="gone"
-                            app:srcCompat="@drawable/gallery" />
-
-                        <ImageButton
-                            android:id="@+id/btnCamaraImagen"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_above="@id/btnBuscarImagen"
-                            android:layout_marginEnd="8dp"
-                            android:layout_marginBottom="8dp"
-                            android:layout_toStartOf="@id/imageProduct"
-                            android:backgroundTint="#ff8d1b"
-                            android:elevation="4dp"
-                            android:visibility="gone"
-                            app:srcCompat="@drawable/camera" />
-                    </RelativeLayout>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- Card: Identificación y Escaneo -->
-            <com.google.android.material.card.MaterialCardView
-                style="@style/AppTheme.Card.Modern"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="12dp"
-                        android:text="Identificación"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/editCodigoProducto"
-                        style="@style/AppTheme.TextInputLayout.Outlined"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Codigo del Producto(*)"
-                            android:inputType="text"
-                            android:maxLines="1" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginBottom="8dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:text="Clasificación"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginBottom="4dp"
+                            android:text="Categoría"
+                            android:textColor="@color/gray_600"
+                            android:textSize="12sp" />
+
+                        <Spinner
+                            android:id="@+id/spinner_categoria"
+                            style="@style/AppTheme.Spinner.Outlined"
+                            android:layout_width="match_parent"
+                            android:spinnerMode="dialog" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginBottom="4dp"
+                            android:text="Subcategoría"
+                            android:textColor="@color/gray_600"
+                            android:textSize="12sp" />
+
+                        <Spinner
+                            android:id="@+id/spnSubCategoria"
+                            style="@style/AppTheme.Spinner.Outlined"
+                            android:layout_width="match_parent"
+                            android:spinnerMode="dialog" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Card: Datos Principales e Imagen -->
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/AppTheme.Card.Modern"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:text="Información del Producto"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
 
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/edtcodeBar"
+                            android:id="@+id/edtProductName"
                             style="@style/AppTheme.TextInputLayout.Outlined"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1">
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="Codigo de Barras"
+                                android:hint="Nombre del producto (*)"
                                 android:inputType="text"
                                 android:maxLines="1" />
                         </com.google.android.material.textfield.TextInputLayout>
 
-                        <Button
-                            android:id="@+id/btnScan"
-                            style="@style/AppTheme.Button.Modern"
-                            android:layout_width="wrap_content"
+                        <!-- Sección Imagen Optimizada -->
+                        <RelativeLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:text="Scan"
-                            app:icon="@drawable/barcode_scan" />
+                            android:layout_marginTop="16dp"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:id="@+id/imageProduct"
+                                android:layout_width="120dp"
+                                android:layout_height="120dp"
+                                android:layout_centerHorizontal="true"
+                                android:adjustViewBounds="true"
+                                android:scaleType="centerCrop"
+                                android:visibility="gone"
+                                app:srcCompat="@drawable/image" />
+
+                            <ImageButton
+                                android:id="@+id/btnBuscarImagen"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_alignBottom="@id/imageProduct"
+                                android:layout_marginEnd="8dp"
+                                android:layout_toStartOf="@id/imageProduct"
+                                android:backgroundTint="#ff8d1b"
+                                android:elevation="4dp"
+                                android:visibility="gone"
+                                app:srcCompat="@drawable/gallery" />
+
+                            <ImageButton
+                                android:id="@+id/btnCamaraImagen"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_above="@id/btnBuscarImagen"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginBottom="8dp"
+                                android:layout_toStartOf="@id/imageProduct"
+                                android:backgroundTint="#ff8d1b"
+                                android:elevation="4dp"
+                                android:visibility="gone"
+                                app:srcCompat="@drawable/camera" />
+                        </RelativeLayout>
                     </LinearLayout>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+                </com.google.android.material.card.MaterialCardView>
 
-            <!-- Card: Medida y Producción -->
-            <com.google.android.material.card.MaterialCardView
-                style="@style/AppTheme.Card.Modern"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp">
-
-                <LinearLayout
+                <!-- Card: Identificación y Escaneo -->
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/AppTheme.Card.Modern"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
+                    android:layout_marginBottom="8dp">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="12dp"
-                        android:text="Medida y Producción"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginBottom="4dp"
-                        android:text="Selección unidad de medida"
-                        android:textColor="@color/gray_600"
-                        android:textSize="12sp" />
-
-                    <Spinner
-                        android:id="@+id/spnUnidadMedida"
-                        style="@style/AppTheme.Spinner.Outlined"
-                        android:layout_width="match_parent" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginBottom="4dp"
-                        android:text="Área de Producción"
-                        android:textColor="@color/gray_600"
-                        android:textSize="12sp" />
-
-                    <Spinner
-                        android:id="@+id/spnAreasProduccion"
-                        style="@style/AppTheme.Spinner.Outlined"
-                        android:layout_width="match_parent" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- Card: Inventario y Precios -->
-            <com.google.android.material.card.MaterialCardView
-                style="@style/AppTheme.Card.Modern"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="12dp"
-                        android:text="Inventario y Precios"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <!-- Fila Stock y Reserva -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:text="Identificación"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
 
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/edtCantidadStock"
+                            android:id="@+id/editCodigoProducto"
                             style="@style/AppTheme.TextInputLayout.Outlined"
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Codigo del Producto(*)"
+                                android:inputType="text"
+                                android:maxLines="1" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:visibility="gone"
-                            app:hintAnimationEnabled="true">
+                            android:layout_marginTop="8dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/edtcodeBar"
+                                style="@style/AppTheme.TextInputLayout.Outlined"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Codigo de Barras"
+                                    android:inputType="text"
+                                    android:maxLines="1" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <Button
+                                android:id="@+id/btnScan"
+                                style="@style/AppTheme.Button.Modern"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:text="Scan"
+                                app:icon="@drawable/barcode_scan" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Card: Medida y Producción -->
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/AppTheme.Card.Modern"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:text="Medida y Producción"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginBottom="4dp"
+                            android:text="Selección unidad de medida"
+                            android:textColor="@color/gray_600"
+                            android:textSize="12sp" />
+
+                        <Spinner
+                            android:id="@+id/spnUnidadMedida"
+                            style="@style/AppTheme.Spinner.Outlined"
+                            android:layout_width="match_parent" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginBottom="4dp"
+                            android:text="Área de Producción"
+                            android:textColor="@color/gray_600"
+                            android:textSize="12sp" />
+
+                        <Spinner
+                            android:id="@+id/spnAreasProduccion"
+                            style="@style/AppTheme.Spinner.Outlined"
+                            android:layout_width="match_parent" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Card: Inventario y Precios -->
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/AppTheme.Card.Modern"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:text="Inventario y Precios"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <!-- Fila Stock y Reserva -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/edtCantidadStock"
+                                style="@style/AppTheme.TextInputLayout.Outlined"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:visibility="gone"
+                                app:hintAnimationEnabled="true">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:hint="Cantidad"
+                                    android:inputType="number|numberDecimal"
+                                    android:maxLines="1" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/edtCantidadReserva"
+                                style="@style/AppTheme.TextInputLayout.Outlined"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_weight="1"
+                                android:visibility="gone">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:hint="Reserva"
+                                    android:inputType="number|numberDecimal"
+                                    android:maxLines="1" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+
+                        <!-- Fila Web y Compra -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/edtCantidadMaximaWeb"
+                            style="@style/AppTheme.TextInputLayout.Outlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:hint="Cantidad"
-                                android:inputType="number|numberDecimal"
-                                android:maxLines="1" />
+                                android:hint="Cantidad limite para pedido web"
+                                android:inputType="number" />
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/edtCantidadReserva"
+                            android:id="@+id/edtPrecioCompra"
                             style="@style/AppTheme.TextInputLayout.Outlined"
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_weight="1"
+                            android:layout_marginTop="8dp"
                             android:visibility="gone">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:hint="Reserva"
-                                android:inputType="number|numberDecimal"
-                                android:maxLines="1" />
+                                android:hint="Precio compra"
+                                android:inputType="number|numberDecimal" />
                         </com.google.android.material.textfield.TextInputLayout>
+
+                        <!-- Fila Precio Venta y Switch -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/edtPrecioVenta"
+                                style="@style/AppTheme.TextInputLayout.Outlined"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:hint="Precio venta"
+                                    android:inputType="number|numberDecimal" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <Switch
+                                android:id="@+id/switchPrecioMult"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:text="Múltiple"
+                                android:textColor="@color/gray_800"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+
+                        <!-- Sección Precios Adicionales -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Precios de Venta:"
+                                android:textColor="@color/gray_700"
+                                android:textStyle="bold" />
+
+                            <ImageButton
+                                android:id="@+id/btnAgregarPVenta"
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:background="@drawable/fondo_rectangle_border_radius"
+                                android:padding="6dp"
+                                app:srcCompat="@drawable/fab_add"
+                                app:tint="@color/colorPrimary" />
+                        </LinearLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvPVentaAdd"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:minHeight="40dp" />
                     </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
-                    <!-- Fila Web y Compra -->
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/edtCantidadMaximaWeb"
-                        style="@style/AppTheme.TextInputLayout.Outlined"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp">
+                <!-- Card: Detalles y Estados -->
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/AppTheme.Card.Modern"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:hint="Cantidad limite para pedido web"
-                            android:inputType="number" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/edtPrecioCompra"
-                        style="@style/AppTheme.TextInputLayout.Outlined"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:visibility="gone">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:hint="Precio compra"
-                            android:inputType="number|numberDecimal" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <!-- Fila Precio Venta y Switch -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:text="Detalles Finales"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
 
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/edtPrecioVenta"
+                            android:id="@+id/edtDescripcion"
                             style="@style/AppTheme.TextInputLayout.Outlined"
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1">
+                            app:counterEnabled="true"
+                            app:counterMaxLength="1000">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:hint="Precio venta"
-                                android:inputType="number|numberDecimal" />
+                                android:gravity="top"
+                                android:hint="Descripcion del producto"
+                                android:inputType="textMultiLine"
+                                android:lines="4"
+                                android:minLines="3" />
                         </com.google.android.material.textfield.TextInputLayout>
 
-                        <Switch
-                            android:id="@+id/switchPrecioMult"
-                            android:layout_width="wrap_content"
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/edtObservacion"
+                            style="@style/AppTheme.TextInputLayout.Outlined"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:text="Múltiple"
-                            android:textColor="@color/gray_800"
-                            android:textSize="13sp" />
+                            android:layout_marginTop="8dp">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Observacion"
+                                android:inputType="text" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <!-- Switches de Configuración -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:orientation="vertical">
+
+                            <Switch
+                                android:id="@+id/switchEstado"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="8dp"
+                                android:text="@string/estado_producto_cabecera"
+                                android:textSize="14sp"
+                                android:visibility="gone" />
+
+                            <Switch
+                                android:id="@+id/switchEstadoVisible"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="8dp"
+                                android:text="@string/estado_visible_cabecera"
+                                android:textSize="14sp"
+                                android:visibility="gone" />
+
+                            <Switch
+                                android:id="@+id/switchControlPorPeso"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="8dp"
+                                android:text="@string/control_peso_opcion"
+                                android:textSize="14sp"
+                                android:visibility="gone" />
+
+                            <Switch
+                                android:id="@+id/switchControlStock"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="8dp"
+                                android:text="@string/control_stock_opcion"
+                                android:textSize="14sp"
+                                android:visibility="gone" />
+                        </LinearLayout>
                     </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
-                    <!-- Sección Precios Adicionales -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Precios de Venta:"
-                            android:textColor="@color/gray_700"
-                            android:textStyle="bold" />
-
-                        <ImageButton
-                            android:id="@+id/btnAgregarPVenta"
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
-                            android:background="@drawable/fondo_rectangle_border_radius"
-                            android:padding="6dp"
-                            app:srcCompat="@drawable/fab_add"
-                            app:tint="@color/colorPrimary" />
-                    </LinearLayout>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rvPVentaAdd"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:minHeight="40dp" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- Card: Detalles y Estados -->
-            <com.google.android.material.card.MaterialCardView
-                style="@style/AppTheme.Card.Modern"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="12dp"
-                        android:text="Detalles Finales"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/edtDescripcion"
-                        style="@style/AppTheme.TextInputLayout.Outlined"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:counterEnabled="true"
-                        app:counterMaxLength="1000">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="top"
-                            android:hint="Descripcion del producto"
-                            android:inputType="textMultiLine"
-                            android:lines="4"
-                            android:minLines="3" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/edtObservacion"
-                        style="@style/AppTheme.TextInputLayout.Outlined"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Observacion"
-                            android:inputType="text" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <!-- Switches de Configuración -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:orientation="vertical">
-
-                        <Switch
-                            android:id="@+id/switchEstado"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:padding="8dp"
-                            android:text="@string/estado_producto_cabecera"
-                            android:textSize="14sp"
-                            android:visibility="gone" />
-
-                        <Switch
-                            android:id="@+id/switchEstadoVisible"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:padding="8dp"
-                            android:text="@string/estado_visible_cabecera"
-                            android:textSize="14sp"
-                            android:visibility="gone" />
-
-                        <Switch
-                            android:id="@+id/switchControlPorPeso"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:padding="8dp"
-                            android:text="@string/control_peso_opcion"
-                            android:textSize="14sp"
-                            android:visibility="gone" />
-
-                        <Switch
-                            android:id="@+id/switchControlStock"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:padding="8dp"
-                            android:text="@string/control_stock_opcion"
-                            android:textSize="14sp"
-                            android:visibility="gone" />
-                    </LinearLayout>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-        </LinearLayout>
-    </ScrollView>
-</FrameLayout>
+            </LinearLayout>
+        </ScrollView>
+    </FrameLayout>
+</LinearLayout>
