@@ -67,13 +67,17 @@
         <item name="titleMarginTop">16dp</item>
     </style>
 
-    <style name="AppTheme.Toolbar.Modern" parent="Widget.MaterialComponents.Toolbar">
-        <item name="android:background">@color/white</item>
-        <item name="titleTextColor">@color/gray_900</item>
+    <style name="AppTheme.Toolbar.Modern" parent="AppTheme.Toolbar.Base.White">
         <item name="android:elevation">@dimen/elevation_low</item>
         <item name="titleTextAppearance">@style/AppTheme.Toolbar.Title.Modern</item>
+    </style>
+
+    <style name="AppTheme.Toolbar.Base.White" parent="Widget.MaterialComponents.Toolbar">
+        <item name="android:background">@color/white</item>
+        <item name="titleTextColor">@color/gray_900</item>
         <item name="navigationIcon">@drawable/arrow_back_home</item>
-        <item name="navigationIconTint">@color/gray_700</item>
+        <item name="navigationIconTint">@color/black</item>
+        <item name="android:theme">@style/AppTheme.ThemeOverlay.White</item>
         <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
     </style>
 
@@ -92,6 +96,7 @@
         <item name="android:textColorPrimary">@color/black</item>
         <item name="android:textColorSecondary">@color/gray_700</item>
         <item name="actionMenuTextColor">@color/black</item>
+        <item name="android:actionMenuTextColor">@color/black</item>
     </style>
 
     <style name="AppTheme.TabLayout.White" parent="Widget.MaterialComponents.TabLayout">

@@ -1,6 +1,5 @@
 package com.omarchdev.smartqsale.smartqsaleventas.Activitys
 
-import android.app.FragmentManager
 import android.app.SearchManager
 import android.content.Context
 import android.os.Bundle
@@ -23,7 +22,6 @@ import kotlinx.android.synthetic.main.activity_listado_productos_stock.*
 class ListadoProductosStock : ActivityParent(), AsyncStockProductos.ListenerListadoProductoStock, SearchView.OnQueryTextListener, ClickListener {
 
 
-    val fm: FragmentManager = this@ListadoProductosStock.fragmentManager
     val dialogScan: DialogScannerCam = DialogScannerCam()
     var a: DfStockAlmacenes? = null
     val asyncStockProductos = AsyncStockProductos()

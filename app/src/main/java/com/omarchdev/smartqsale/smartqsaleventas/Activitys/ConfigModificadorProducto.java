@@ -86,7 +86,9 @@ public class ConfigModificadorProducto extends ActivityParent implements AsyncMo
             idProducto=getIntent().getIntExtra("IdProducto",0);
         btnAgregarModificador=findViewById(R.id.btnAgregarModificador);
         switch1=findViewById(R.id.switch1);
-        getSupportActionBar().setTitle(nombre);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(nombre);
+        }
         asyncModificadores=new AsyncModificadores();
         asyncModificadores.setContext(this);
 
@@ -101,65 +103,70 @@ public class ConfigModificadorProducto extends ActivityParent implements AsyncMo
         adapterModificares=new RvAdapterModificares();
         adapterModificaresProduct=new RvAdapterModificares();
         btnEliminarModProd=findViewById(R.id.btnEliminarModProd);
-        rvModificadoresProducto.setLayoutManager(new LinearLayoutManager(this));
-        rvModificadores.setLayoutManager(new LinearLayoutManager(this));
-        rvModificadores.setAdapter(adapterModificares);
-        rvModificadoresProducto.setAdapter(adapterModificaresProduct);
+        if (rvModificadoresProducto != null) {
+            rvModificadoresProducto.setLayoutManager(new LinearLayoutManager(this));
+            rvModificadoresProducto.setAdapter(adapterModificaresProduct);
+        }
+        if (rvModificadores != null) {
+            rvModificadores.setLayoutManager(new LinearLayoutManager(this));
+            rvModificadores.setAdapter(adapterModificares);
+        }
         pbIndicator2=findViewById(R.id.pbIndicator2);
         btnAgregar=findViewById(R.id.btnAgregar);
         asyncModificadores.setListenerConfigProdMod(this
         );
 
-        btnAgregarModificador.setOnClickListener(this);
-        btnAgregar.setOnClickListener(this);
+        if (btnAgregarModificador != null) btnAgregarModificador.setOnClickListener(this);
+        if (btnAgregar != null) btnAgregar.setOnClickListener(this);
 
         adapterModificares.setClickModificador(position -> positionM=position);
         adapterModificaresProduct.setClickModificador(position -> positionMP=position);
-        sliding_layout.setVisibility(View.INVISIBLE);
-        pbIndicator.show();
-        switch1.setOnClickListener(this);
-        btnCancelar.setOnClickListener(this);
-        btnEliminarModProd.setOnClickListener(this);
+        if (sliding_layout != null) sliding_layout.setVisibility(View.INVISIBLE);
+        if (pbIndicator != null) pbIndicator.show();
+        if (switch1 != null) switch1.setOnClickListener(this);
+        if (btnCancelar != null) btnCancelar.setOnClickListener(this);
+        if (btnEliminarModProd != null) btnEliminarModProd.setOnClickListener(this);
 
-        sliding_layout.addPanelSlideListener(new SlidingUpPanelLayout.PanelSlideListener() {
-            @Override
-            public void onPanelSlide(View panel, float slideOffset) {
-
-            }
-
-            @Override
-            public void onPanelStateChanged(View panel, SlidingUpPanelLayout.PanelState previousState, SlidingUpPanelLayout.PanelState newState) {
-                if(newState== SlidingUpPanelLayout.PanelState.COLLAPSED){
-
-                    getSupportActionBar().setTitle(nombre);
+        if (sliding_layout != null) {
+            sliding_layout.addPanelSlideListener(new SlidingUpPanelLayout.PanelSlideListener() {
+                @Override
+                public void onPanelSlide(View panel, float slideOffset) {
 
                 }
-                else{
-                    getSupportActionBar().setTitle("Modificadores disponibles");
+
+                @Override
+                public void onPanelStateChanged(View panel, SlidingUpPanelLayout.PanelState previousState, SlidingUpPanelLayout.PanelState newState) {
+                    if (getSupportActionBar() != null) {
+                        if (newState == SlidingUpPanelLayout.PanelState.COLLAPSED) {
+                            getSupportActionBar().setTitle(nombre);
+                        } else {
+                            getSupportActionBar().setTitle("Modificadores disponibles");
+                        }
+                    }
                 }
-            }
-        });
+            });
+        }
         SearchManager searchManager=(SearchManager)getSystemService(Context.SEARCH_SERVICE);
 
         searchView=findViewById(R.id.searchView);
         if (searchView != null) {
             searchView.onActionViewExpanded();
             searchView.clearFocus();
+            SearchableInfo searchableInfo = searchManager.getSearchableInfo(getComponentName());
+            searchView.setSearchableInfo(searchableInfo);
+            searchView.setQueryHint("Busqueda de producto");
+            searchView.setOnQueryTextListener(this);
         }
-        SearchableInfo searchableInfo = searchManager.getSearchableInfo(getComponentName());
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 
-        searchView.setQueryHint("Busqueda de producto");
-        searchView.setSearchableInfo(searchableInfo);
-        searchView.setOnQueryTextListener(this);
-
-        btnAddMod.setOnClickListener(v -> {
-            Toast.makeText(this,"as",Toast.LENGTH_SHORT).show();
-            Intent intent=new Intent(this,ActivityModificadorConfig.class);
-            startActivity(intent);
-        });
-        pbIndicator2.hide();
-        content_mod_add.setVisibility(View.GONE);
+        if (btnAddMod != null) {
+            btnAddMod.setOnClickListener(v -> {
+                Toast.makeText(this,"as",Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(this,ActivityModificadorConfig.class);
+                startActivity(intent);
+            });
+        }
+        if (pbIndicator2 != null) pbIndicator2.hide();
+        if (content_mod_add != null) content_mod_add.setVisibility(View.GONE);
     }
 
 

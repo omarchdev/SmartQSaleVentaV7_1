@@ -161,7 +161,10 @@
             android:name=".Activitys.ActivityConfigPack"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".Activitys.ConfigModificadorProducto" />
+        <activity
+            android:name=".Activitys.ConfigModificadorProducto"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activitys.ActivityModificadorConfig"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".Activitys.CategoriasActivity" />
@@ -252,7 +255,9 @@
             android:label="@string/title_activity_lista_impresoras_areas"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activitys.RegistroImpresora" />
-        <activity android:name=".Activitys.ListadoProductosStock" />
+        <activity
+            android:name=".Activitys.ListadoProductosStock"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activitys.PedidosTienda" />
 
         <uses-library

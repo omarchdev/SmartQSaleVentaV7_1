@@ -13,6 +13,11 @@ import kotlinx.android.synthetic.main.df_stock_almacenes.*
 
 class DfStockAlmacenes: DialogFragment(), AsyncStockProductos.ListenerStockAlmacenes {
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setStyle(STYLE_NORMAL, R.style.DialogStyle)
+    }
+
     private var lista:ArrayList<AlmacenProducto>?=null
     private var idProducto=0
     private var nombre=""
@@ -33,10 +38,21 @@ class DfStockAlmacenes: DialogFragment(), AsyncStockProductos.ListenerStockAlmac
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val dialog=super.onCreateDialog(savedInstanceState)
-        dialog.window?.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT)
+        val dialog = super.onCreateDialog(savedInstanceState)
         dialog.window?.requestFeature(Window.FEATURE_NO_TITLE)
         return dialog
+    }
+
+    override fun onStart() {
+        super.onStart()
+        dialog?.window?.apply {
+            setLayout(
+                WindowManager.LayoutParams.MATCH_PARENT,
+                WindowManager.LayoutParams.WRAP_CONTENT
+            )
+            // Opcional: para forzar el fondo transparente si el CardView ya tiene esquinas
+            setBackgroundDrawableResource(android.R.color.transparent)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

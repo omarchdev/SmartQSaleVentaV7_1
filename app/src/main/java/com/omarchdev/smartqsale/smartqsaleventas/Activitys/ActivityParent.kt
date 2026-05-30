@@ -46,6 +46,7 @@ open class ActivityParent(): AppCompatActivity(), ConnectionValid.ConnectionStat
     var messageSlowConnect: MessageSlowConnect?=null
     var messageBreakConnection:MessageBreakConnection?=null
     override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         this.metricWindow = MetricWindow(this)
 
         this.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
@@ -97,10 +98,6 @@ open class ActivityParent(): AppCompatActivity(), ConnectionValid.ConnectionStat
         connectionValid.connectionStatus=this
         messageSlowConnect=MessageSlowConnect()
         messageBreakConnection=MessageBreakConnection()
-
-        super.onCreate(savedInstanceState)
-
-
 
     }
     private fun VerificaConexion(){

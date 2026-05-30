@@ -95,7 +95,7 @@ public  class ActivityEdiccionVariantes extends ActivityParent implements AsyncV
     @Override
     public void onBackPressed() {
 
-        if(variantesProducto.EstadoPantallaExpand()== SlidingUpPanelLayout.PanelState.EXPANDED) {
+        if(variantesProducto != null && variantesProducto.EstadoPantallaExpand()== SlidingUpPanelLayout.PanelState.EXPANDED) {
             variantesProducto.OcultarPanel();
         }
         else {

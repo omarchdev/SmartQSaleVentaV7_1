@@ -412,7 +412,9 @@ public class VariantesProducto extends Fragment implements View.OnClickListener,
             EstadoVariante=false;
             imgArrow.setOnClickListener(this);
             pbIndicator.show();
-            panelVariantes.addPanelSlideListener(this);
+            if (panelVariantes != null) {
+                panelVariantes.addPanelSlideListener(this);
+            }
             asyncVariantes.setiActualizaValorOpcion(this);
 
         }catch (Exception e){
@@ -503,7 +505,9 @@ public class VariantesProducto extends Fragment implements View.OnClickListener,
 
         switch (view.getId()){
             case R.id.btnArrow:
-                panelVariantes.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+                if (panelVariantes != null) {
+                    panelVariantes.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+                }
                 break;
             case R.id.sActivarVariantes:
                 if(EstadoVariante){
@@ -523,8 +527,10 @@ public class VariantesProducto extends Fragment implements View.OnClickListener,
 
             case R.id.btnEdicionVariantes:
                 if(varianteList.size()>0) {
-                    panelVariantes.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
+                    if (panelVariantes != null) {
+                        panelVariantes.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
                     }
+                }
                 else{
                     Toast.makeText(getActivity(),"No tiene variantes para editar",Toast.LENGTH_SHORT).show();
                 }
@@ -701,11 +707,15 @@ public class VariantesProducto extends Fragment implements View.OnClickListener,
     */}
 
     public SlidingUpPanelLayout.PanelState EstadoPantallaExpand(){
-
-        return panelVariantes.getPanelState();
+        if (panelVariantes != null) {
+            return panelVariantes.getPanelState();
+        }
+        return SlidingUpPanelLayout.PanelState.COLLAPSED;
     }
     public void OcultarPanel(){
-        panelVariantes.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+        if (panelVariantes != null) {
+            panelVariantes.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+        }
     }
 
     public void setVariantes(List<Variante> varianteList){

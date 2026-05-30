@@ -112,17 +112,27 @@ AsyncCategoria.ListenerCategoria, AsyncAreasProduccion.ListenerAreasProduccion, 
         estadoModificar=true;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
-            setSupportActionBar(toolbar);
-            if (getSupportActionBar() != null) {
-                getSupportActionBar().setTitle("Agregar producto");
-                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                getSupportActionBar().setDisplayShowHomeEnabled(true);
-                getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back_home);
-            }
+            toolbar.setTitle("Agregar producto");
             toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     onBackPressed();
+                }
+            });
+            // Inflamos el menú manualmente ya que usamos NoActionBar
+            toolbar.inflateMenu(R.menu.menu_registro__producto);
+            menu = toolbar.getMenu();
+            favoriteItem = menu.findItem(R.id.actionFavoriteProduct);
+
+            if (favoriteItem != null) {
+                favoriteItem.setEnabled(estadoModificar);
+                favoriteItem.setIcon(favorite == 1 ? R.drawable.favorite : R.drawable.favorite_outline);
+            }
+
+            toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    return onOptionsItemSelected(item);
                 }
             });
         }
@@ -375,6 +385,12 @@ AsyncCategoria.ListenerCategoria, AsyncAreasProduccion.ListenerAreasProduccion, 
         getMenuInflater().inflate(R.menu.menu_registro__producto, menu);
         this.menu=menu;
         favoriteItem=menu.findItem(R.id.actionFavoriteProduct);
+
+        if (favoriteItem != null) {
+            favoriteItem.setEnabled(estadoModificar);
+            favoriteItem.setIcon(favorite == 1 ? R.drawable.favorite : R.drawable.favorite_outline);
+        }
+
         return true;
     }
 
@@ -657,16 +673,25 @@ AsyncCategoria.ListenerCategoria, AsyncAreasProduccion.ListenerAreasProduccion, 
             finish();
         }
         else{
-            getSupportActionBar().setTitle(product.getcProductName());
-            favoriteItem.setEnabled(false);
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            if(toolbar != null) {
+                toolbar.setTitle(product.getcProductName());
+            }
+            if (favoriteItem != null) {
+                favoriteItem.setEnabled(false);
+            }
             configEstadoProductFragment.setInfoProduct(product);
             if(product.isEsFavorito()){
-                favoriteItem.setIcon(R.drawable.favorite);
+                if (favoriteItem != null) {
+                    favoriteItem.setIcon(R.drawable.favorite);
+                }
                 favorite=1;
 
             }
             else{
-                favoriteItem.setIcon(R.drawable.favorite_outline);
+                if (favoriteItem != null) {
+                    favoriteItem.setIcon(R.drawable.favorite_outline);
+                }
                 favorite=0;
             }
             CodigoAnterior=product.getcKey();

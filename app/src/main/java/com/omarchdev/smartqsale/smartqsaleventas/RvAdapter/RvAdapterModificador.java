@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -54,7 +53,7 @@ public class RvAdapterModificador extends RecyclerView.Adapter<RecyclerView.View
     private class ModificadorVH extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView txtDescripcionModificador;
-        Button btnEditar;
+        ImageButton btnEditar;
         ImageButton btnDelete;
 
         public ModificadorVH(View itemView) {

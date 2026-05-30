@@ -6,8 +6,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.google.android.material.card.MaterialCardView;
 
 import com.omarchdev.smartqsale.smartqsaleventas.Model.Modificador;
 import com.omarchdev.smartqsale.smartqsaleventas.R;
@@ -49,7 +50,7 @@ public class RvAdapterModificares extends RecyclerView.Adapter<RecyclerView.View
     }
 
     private class ModificadorVH extends RecyclerView.ViewHolder implements View.OnClickListener {
-        RelativeLayout rlContent;
+        MaterialCardView rlContent;
         TextView txtDescripcionModificador;
         OnModClicked onModClicked;
 

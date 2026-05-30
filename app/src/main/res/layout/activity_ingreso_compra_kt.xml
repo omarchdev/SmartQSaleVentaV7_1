@@ -57,76 +57,6 @@
             app:umanoPanelHeight="0dp"
             app:umanoScrollableView="@id/rvSeleccionProductos"
             app:umanoShadowHeight="0dp">
-
-            <!-- CONTENT PANEL (Product Selection) -->
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/backgroud_app">
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cardHeaderProduct"
-                    style="@style/AppTheme.Card.Modern"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="12dp">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="12dp">
-
-                        <TextView
-                            android:id="@+id/txtMonto"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentStart="true"
-                            android:text="Nombre producto"
-                            android:textColor="@color/gray_900"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/txtInfoProduct"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:text="Info articulo"
-                            android:textColor="@color/colorPrimary"
-                            android:textStyle="bold" />
-                    </RelativeLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <ProgressBar
-                    android:id="@+id/pbProductosAlmacen"
-                    style="?android:attr/progressBarStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:elevation="5dp"
-                    android:visibility="gone" />
-
-                <TextView
-                    android:id="@+id/txtMensajePAlmacen"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:gravity="center"
-                    android:padding="32dp"
-                    android:text="No tiene productos en el almacén seleccionado"
-                    android:textColor="@color/gray_500"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:visibility="gone" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvSeleccionProductos"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_below="@id/cardHeaderProduct"
-                    android:clipToPadding="false"
-                    android:padding="8dp" />
-            </RelativeLayout>
-
             <!-- MAIN PANEL (Purchase Form) -->
             <ScrollView
                 android:layout_width="match_parent"
@@ -212,134 +142,204 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1">
 
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/edtGuiaProveedor"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:hint="Guía" />
-                            </com.google.android.material.textfield.TextInputLayout>
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edtGuiaProveedor"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:hint="Guía" />
+                                </com.google.android.material.textfield.TextInputLayout>
 
-                            <Button
-                                android:id="@+id/btnFechaGuia"
-                                style="@style/AppTheme.Button.Modern"
+                                <Button
+                                    android:id="@+id/btnFechaGuia"
+                                    style="@style/AppTheme.Button.Modern"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:text="Fecha"
+                                    app:icon="@drawable/calendar" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        style="@style/AppTheme.Card.Modern"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+
+                            <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:text="Fecha"
-                                app:icon="@drawable/calendar" />
+                                android:layout_marginBottom="12dp"
+                                android:text="Almacén"
+                                android:textColor="@color/gray_600"
+                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:id="@+id/btnAlmacen"
+                                    style="@style/AppTheme.Button.Outlined"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Origen" />
+
+                                <Button
+                                    android:id="@+id/btnAlmacenDestino"
+                                    style="@style/AppTheme.Button.Outlined"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_weight="1"
+                                    android:text="Destino" />
+                            </LinearLayout>
+
+                            <!-- Compatibility labels -->
+                            <TextView android:id="@+id/textAlmacen" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+                            <TextView android:id="@+id/textAlmacenDestino" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
                         </LinearLayout>
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        style="@style/AppTheme.Card.Modern"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:id="@+id/btnselectProduct"
+                                    style="@style/AppTheme.Button.Modern"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Seleccionar Productos"
+                                    app:icon="@drawable/plus" />
+
+                                <ImageButton
+                                    android:id="@+id/btnScan"
+                                    style="@style/AppTheme.Button.Icon"
+                                    android:layout_width="56dp"
+                                    android:layout_height="56dp"
+                                    android:layout_marginStart="8dp"
+                                    app:srcCompat="@drawable/barcode_scan"
+                                    app:tint="@color/colorPrimary" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/txtMensaje"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="24dp"
+                                android:gravity="center"
+                                android:padding="16dp"
+                                android:text="Para agregar productos presione el botón superior"
+                                android:textColor="@color/gray_500"
+                                android:textStyle="bold" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rvProductoParaCompra"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:minHeight="200dp"
+                                android:nestedScrollingEnabled="false" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+            </ScrollView>
+            <!-- CONTENT PANEL (Product Selection) -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/backgroud_app">
 
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardHeaderProduct"
                     style="@style/AppTheme.Card.Modern"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp">
+                    android:layout_margin="12dp">
 
-                    <LinearLayout
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp">
+                        android:padding="12dp">
 
                         <TextView
+                            android:id="@+id/txtMonto"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="12dp"
-                            android:text="Almacén"
-                            android:textColor="@color/gray_600"
+                            android:layout_alignParentStart="true"
+                            android:text="Nombre producto"
+                            android:textColor="@color/gray_900"
                             android:textStyle="bold" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <Button
-                                android:id="@+id/btnAlmacen"
-                                style="@style/AppTheme.Button.Outlined"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Origen" />
-
-                            <Button
-                                android:id="@+id/btnAlmacenDestino"
-                                style="@style/AppTheme.Button.Outlined"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:layout_weight="1"
-                                android:text="Destino" />
-                        </LinearLayout>
-
-                        <!-- Compatibility labels -->
-                        <TextView android:id="@+id/textAlmacen" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
-                        <TextView android:id="@+id/textAlmacenDestino" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    style="@style/AppTheme.Card.Modern"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
-
-                            <Button
-                                android:id="@+id/btnselectProduct"
-                                style="@style/AppTheme.Button.Modern"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Seleccionar Productos"
-                                app:icon="@drawable/plus" />
-
-                            <ImageButton
-                                android:id="@+id/btnScan"
-                                style="@style/AppTheme.Button.Icon"
-                                android:layout_width="56dp"
-                                android:layout_height="56dp"
-                                android:layout_marginStart="8dp"
-                                app:srcCompat="@drawable/barcode_scan"
-                                app:tint="@color/colorPrimary" />
-                        </LinearLayout>
 
                         <TextView
-                            android:id="@+id/txtMensaje"
-                            android:layout_width="match_parent"
+                            android:id="@+id/txtInfoProduct"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="24dp"
-                            android:gravity="center"
-                            android:padding="16dp"
-                            android:text="Para agregar productos presione el botón superior"
-                            android:textColor="@color/gray_500"
+                            android:layout_alignParentEnd="true"
+                            android:text="Info articulo"
+                            android:textColor="@color/colorPrimary"
                             android:textStyle="bold" />
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rvProductoParaCompra"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:minHeight="200dp"
-                            android:nestedScrollingEnabled="false" />
-                    </LinearLayout>
+                    </RelativeLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-            </LinearLayout>
-        </ScrollView>
+                <ProgressBar
+                    android:id="@+id/pbProductosAlmacen"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:elevation="5dp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/txtMensajePAlmacen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:padding="32dp"
+                    android:text="No tiene productos en el almacén seleccionado"
+                    android:textColor="@color/gray_500"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvSeleccionProductos"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/cardHeaderProduct"
+                    android:clipToPadding="false"
+                    android:padding="8dp" />
+            </RelativeLayout>
+
+
     </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

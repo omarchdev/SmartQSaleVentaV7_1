@@ -18,6 +18,13 @@ public class Fragment_Registro_DatosBasicos extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View rootView=inflater.inflate(R.layout.activity_inventario,container,false);
+
+        // Ocultar el toolbar redundante cuando se usa como fragmento
+        View toolbarInterno = rootView.findViewById(R.id.toolbar);
+        if (toolbarInterno != null) {
+            toolbarInterno.setVisibility(View.GONE);
+        }
+
         return rootView;
     }
 }

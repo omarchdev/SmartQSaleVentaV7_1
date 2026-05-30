@@ -14,15 +14,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        app:elevation="0dp">
+        android:fitsSystemWindows="true"
+        app:elevation="4dp">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            style="@style/AppTheme.Toolbar.Modern"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:contentInsetStartWithNavigation="0dp"
-            app:title="Agregar producto" />
+            android:background="@color/white"
+            app:navigationIcon="@drawable/arrow_back_home"
+            app:navigationIconTint="@color/colorPrimary"
+            app:title="Agregar producto"
+            app:titleTextColor="@color/gray_900"
+            app:theme="@style/ThemeOverlay.AppCompat.Light"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
@@ -30,26 +35,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:tabIndicatorColor="@color/black"
-            app:tabMode="fixed"
+            app:tabMode="scrollable"
             app:tabSelectedTextColor="@color/black"
-            app:tabTextColor="@color/gray_600">
+            app:tabTextColor="@color/gray_600"
+            app:tabMinWidth="0dp">
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/tabItem"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="20dp"
                 android:text="@string/TabDatosBasicos" />
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/tabItem2"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="20dp"
                 android:text="@string/TabRespresentacionProducto" />
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/tabItem3"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="20dp"
                 android:text="@string/TabEstados" />
         </com.google.android.material.tabs.TabLayout>
     </com.google.android.material.appbar.AppBarLayout>
@@ -70,7 +76,7 @@
         app:fab_colorNormal="@color/status_success"
         app:fab_colorPressed="@color/status_success_dark"
         app:fab_size="normal"
-        app:srcCompat="@drawable/save" />
+        android:src="@drawable/save_white" />
 
     <com.github.clans.fab.FloatingActionMenu
         android:id="@+id/actionMenu"
@@ -97,7 +103,7 @@
             app:fab_colorPressed="@color/colorPrimaryDark"
             app:fab_label="Editar producto"
             app:fab_size="mini"
-            app:srcCompat="@drawable/pencil_edit" />
+            android:src="@drawable/pencil_edit" />
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/menu_item_delete"
@@ -107,7 +113,7 @@
             app:fab_colorPressed="@color/status_error_dark"
             app:fab_label="Eliminar producto"
             app:fab_size="mini"
-            app:srcCompat="@drawable/ic_delete_white_24dp" />
+            android:src="@drawable/ic_delete_white_24dp" />
     </com.github.clans.fab.FloatingActionMenu>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

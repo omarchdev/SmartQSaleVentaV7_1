@@ -221,6 +221,23 @@
     </LinearLayout>
 
     <!-- Hidden variants/compatibility elements -->
+    <androidx.appcompat.widget.Toolbar android:id="@+id/toolbar" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone">
+        <androidx.appcompat.widget.SearchView android:id="@+id/searchViewInline" android:layout_width="0dp" android:layout_height="0dp" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <com.sothree.slidinguppanel.SlidingUpPanelLayout
+        android:id="@+id/panel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone">
+        <View android:layout_width="0dp" android:layout_height="0dp" />
+        <View android:layout_width="0dp" android:layout_height="0dp" />
+    </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+
+    <ProgressBar android:id="@+id/pbProductosAlmacen" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+    <TextView android:id="@+id/txtMensajePAlmacen" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+    <TextView android:id="@+id/txtInfoProduct" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+
     <RelativeLayout android:id="@+id/contentPantalla" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
     <View android:id="@+id/contentFechaCompra" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
     <View android:id="@+id/contentProveedor" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />

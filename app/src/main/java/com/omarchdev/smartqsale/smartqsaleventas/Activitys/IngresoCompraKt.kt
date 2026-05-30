@@ -15,6 +15,7 @@ import android.text.InputType
 import android.util.Log
 import android.view.*
 import android.widget.*
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.GridLayoutManager
 import com.omarchdev.smartqsale.smartqsaleventas.AsyncTask.AsyncAlmacenes
 import com.omarchdev.smartqsale.smartqsaleventas.AsyncTask.AsyncProducto
@@ -103,9 +104,9 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
     val adapterProductoCompra= RvAdapterProductoCompra()
     val listProductAlmacen= mutableListOf<mProduct>()
     private lateinit var adapterProductosCompras: RvAdapterSelectCompraProduct
-    private lateinit var menuSaveItem: MenuItem
-    private lateinit var menuSearch: MenuItem
-    private lateinit var menuScan: MenuItem
+    private var menuSaveItem: MenuItem? = null
+    private var menuSearch: MenuItem? = null
+    private var menuScan: MenuItem? = null
     var dialogGuardarProcesoAlmacen= DialogGuardarProcesoAlmacen()
     val asyncAlmacen= AsyncAlmacenes()
     var fechaGuia:String?=""
@@ -152,15 +153,14 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_ingreso_compra,menu)
-        menuSaveItem=menu!!.findItem(R.id.actionCheck)
+        menuSaveItem = menu.findItem(R.id.actionCheck)
         
-        // Hide the old search item
+        // Initialize menuSearch and hide the old search item
         val searchItem = menu.findItem(R.id.searchToolbar1)
-        if (searchItem != null) {
-            searchItem.setVisible(false)
-        }
+        menuSearch = searchItem
+        menuSearch?.setVisible(false)
         
-         menuScan=menu!!.findItem(R.id.actionScanCode)
+        menuScan = menu.findItem(R.id.actionScanCode)
         dialogScan.setScannerResult {
             panel.panelState=SlidingUpPanelLayout.PanelState.EXPANDED
             val searchViewInline = findViewById<SearchView>(R.id.searchViewInline)
@@ -237,7 +237,7 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ingreso_compra_kt)
-        try {
+
             val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
             if (toolbar != null) {
                 setSupportActionBar(toolbar)
@@ -294,10 +294,7 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
             pbProductosAlmacen.visibility=View.GONE
             VerificarMovAlmacen()
 
-        }catch(e:Exception){
-      Toast.makeText(this,e.toString(),Toast.LENGTH_LONG).show()
 
-        }
     }
 
     fun VerificarMovAlmacen(){
@@ -446,7 +443,7 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
     }
     fun PantallaIngresoVentaCancelada(){
 
-        edtNombreProveedor.hint="Observación"
+        edtNombreProveedor.hint="Proveedor"
         edtNombreProveedor.maxLines=3
         textAlmacenDestino.visibility=View.GONE
         textAlmacen.visibility=View.GONE
@@ -474,7 +471,7 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
 
     fun PantallaIngresoAjusteInventario(){
         btnFechaCompra.visibility=View.GONE
-        edtNombreProveedor.hint="Observación"
+        edtNombreProveedor.hint="Proveedor"
         edtGuiaProveedor.visibility=View.GONE
         btnFechaGuia.visibility=View.GONE
         edtNombreProveedor.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.comentario_libro,0)
@@ -494,7 +491,7 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
     fun PantallaSalidaTransferencia(){
 
         btnFechaCompra.visibility=View.GONE
-        edtNombreProveedor.hint="Observación"
+        edtNombreProveedor.hint="Proveedor"
         edtGuiaProveedor.visibility=View.GONE
         btnFechaGuia.visibility=View.GONE
         edtNombreProveedor.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.comentario_libro,0)
@@ -517,7 +514,7 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
     fun PantallaIngresoInicialInventario(){
         txtInfoProduct.text="Precio Compra"
         btnFechaCompra.visibility=View.GONE
-        edtNombreProveedor.hint="Observación"
+        edtNombreProveedor.hint="Proveedor"
         edtGuiaProveedor.visibility=View.GONE
         btnFechaGuia.visibility=View.GONE
         edtNombreProveedor.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.comentario_libro,0)
@@ -533,7 +530,7 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
     fun PantallaSalidaPorCaducidad(){
         txtInfoProduct.text="Cantidad disponible"
         btnFechaCompra.visibility=View.GONE
-        edtNombreProveedor.hint="Observación"
+        edtNombreProveedor.hint="Proveedor"
         edtGuiaProveedor.visibility=View.GONE
         btnFechaGuia.visibility=View.GONE
         edtNombreProveedor.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.comentario_libro,0)
@@ -552,7 +549,7 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
     }
     fun PantallaSalidaVentas(){
         btnFechaCompra.visibility=View.GONE
-        edtNombreProveedor.hint="Observación"
+        edtNombreProveedor.hint="Proveedor"
         edtGuiaProveedor.visibility=View.GONE
         btnFechaGuia.visibility=View.GONE
         edtNombreProveedor.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.comentario_libro,0)
@@ -574,7 +571,7 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
 
     fun PantallaSalidaAjusteInventario(){
         btnFechaCompra.visibility=View.GONE
-        edtNombreProveedor.hint="Observación"
+        edtNombreProveedor.hint="Proveedor"
         edtGuiaProveedor.visibility=View.GONE
         btnFechaGuia.visibility=View.GONE
         edtNombreProveedor.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.comentario_libro,0)
@@ -625,8 +622,8 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
         override fun RegistroProcesarExito() {
             controladorProcesoCargar.FinalizarDialogCarga()
             MensajeTransaccionCompleta("Confirmación","Movimiento realizado con éxito")
-            menuSearch.setVisible(false)
-            menuSaveItem.setVisible(false)
+            menuSearch?.setVisible(false)
+            menuSaveItem?.setVisible(false)
             btnAlmacen.isEnabled=false
             btnAlmacenDestino.isEnabled=false
             btnScan.isEnabled=false
@@ -640,8 +637,8 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
         override fun RegistrogGuardarCompletar(){
         controladorProcesoCargar.FinalizarDialogCarga()
             MensajeTransaccionCompleta("Confirmación","Se guardo el movimiento con éxito")
-            menuSearch.setVisible(false)
-            menuSaveItem.setVisible(false)
+            menuSearch?.setVisible(false)
+            menuSaveItem?.setVisible(false)
             btnAlmacen.isEnabled=false
             btnAlmacenDestino.isEnabled=false
             btnScan.isEnabled=false
@@ -656,8 +653,8 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
             try {
                 controladorProcesoCargar.FinalizarDialogCarga()
                 MensajeTransaccionCompleta("Error", "Error al procesar el movimiento")
-                menuSearch.setVisible(false)
-                menuSaveItem.setVisible(false)
+                menuSearch?.setVisible(false)
+                menuSaveItem?.setVisible(false)
                 btnAlmacen.isEnabled=false
                 btnAlmacenDestino.isEnabled=false
                 btnScan.isEnabled=false
@@ -675,8 +672,8 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
         override fun ErrorProcedimiento() {
             controladorProcesoCargar.FinalizarDialogCarga()
             MensajeTransaccionCompleta("Error","Error al procesar el movimiento")
-            menuSearch.setVisible(false)
-            menuSaveItem.setVisible(false)
+            menuSearch?.setVisible(false)
+            menuSaveItem?.setVisible(false)
             btnAlmacen.isEnabled=false
             btnAlmacenDestino.isEnabled=false
             btnScan.isEnabled=false
@@ -690,8 +687,8 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
         override fun ErrorConnection() {
             controladorProcesoCargar.FinalizarDialogCarga()
             MensajeTransaccionCompleta("Error al procesar el ingreso","Error")
-            menuSearch.setVisible(false)
-            menuSaveItem.setVisible(false)
+            menuSearch?.setVisible(false)
+            menuSaveItem?.setVisible(false)
             btnAlmacen.isEnabled=false
             btnAlmacenDestino.isEnabled=false
             btnScan.isEnabled=false
@@ -934,10 +931,10 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
         when(newState){
             SlidingUpPanelLayout.PanelState.EXPANDED->{
         //        toolbarCompras?.setTitle("Seleccion producto")
-                supportActionBar!!.setTitle(Html.fromHtml("<font color=\"#757575\">" + "Seleccion producto" + "</font>"))
-                menuSaveItem.setVisible(false)
+                supportActionBar?.setTitle(Html.fromHtml("<font color=\"#757575\">" + "Seleccion producto" + "</font>"))
+                menuSaveItem?.setVisible(false)
                 searchViewInline?.visibility = View.VISIBLE
-                menuScan.setVisible(true)
+                menuScan?.setVisible(true)
             }
             SlidingUpPanelLayout.PanelState.COLLAPSED->{
       //          toolbarCompras?.setTitle("Ingreso por Compra")
@@ -945,9 +942,9 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
                         "<font color=\"#757575\">" + tituloPantalla +
                                 "</font>"))
 
-                menuSaveItem.setVisible(true)
+                menuSaveItem?.setVisible(true)
                 searchViewInline?.visibility = View.GONE
-                menuScan.setVisible(false)
+                menuScan?.setVisible(false)
             }
             else -> {}
         }
@@ -1066,9 +1063,9 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
                 edtNombreProveedor.isEnabled = false
                 edtGuiaProveedor.isEnabled = false
                 btnselectProduct.isEnabled = false
-                menuSaveItem.setVisible(false)
-                menuSearch.setVisible(false)
-                menuScan.setVisible(false)
+                menuSaveItem?.setVisible(false)
+                menuSearch?.setVisible(false)
+                menuScan?.setVisible(false)
                 adapterProductoCompra.editableList(false)
             }
            if (!EsSalida()) {
@@ -1119,9 +1116,9 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
                btnAlmacenDestino.isEnabled = false
                edtGuiaProveedor.isEnabled = false
                btnselectProduct.isEnabled = false
-               menuSaveItem.setVisible(false)
-               menuSearch.setVisible(false)
-               menuScan.setVisible(false)
+               menuSaveItem?.setVisible(false)
+               menuSearch?.setVisible(false)
+               menuScan?.setVisible(false)
                adapterProductoCompra.editableList(false)
                btnAlmacen.text = "${movAlmacen?.descAlmacenI} ${ObtenerNombreTienda(movAlmacen.idTiendaOrigen)}"
                btnFechaCompra.text = "Fecha Transferencia \n ${fechaCompra?.replace("-", "/", false)}"
@@ -1183,12 +1180,12 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
     fun procesoTransferirMovimiento(){
         asyncAlmacen.CompletarMovTransferencia(idMovAlmacen,fechaMov,edtNombreProveedor.text.toString(),fechaCompra)
         controladorProcesoCargar.IniciarDialogCarga("Procesando transferencia")
-        menuSaveItem.setVisible(false)
+        menuSaveItem?.setVisible(false)
         edtNombreProveedor.inputType=InputType.TYPE_NULL
         asyncAlmacen.setListenerCompletarMovTrans(object:AsyncAlmacenes.ListenerCompletarMovTrans{
             override fun ExitoTransferencia() {
                 controladorProcesoCargar.FinalizarDialogCarga()
-                menuSaveItem.setVisible(false)
+                menuSaveItem?.setVisible(false)
                 MensajeTransaccionCompleta("Confirmación","Ingreso por transferencia realizado con éxito")
                 btnAlmacen.isEnabled=false
                 btnAlmacenDestino.isEnabled=false
@@ -1201,7 +1198,7 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
             }
             override fun ErrorTransferencia() {
                 controladorProcesoCargar.FinalizarDialogCarga()
-                menuSaveItem.setVisible(false)
+                menuSaveItem?.setVisible(false)
                 MensajeAdvertencia("Error en la transferencia.Verifique su conexión a internet","Error")
                 btnAlmacen.isEnabled=false
                 btnAlmacenDestino.isEnabled=false
@@ -1216,7 +1213,7 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
             override fun ErrorConnection() {
 
                 controladorProcesoCargar.FinalizarDialogCarga()
-                menuSaveItem.setVisible(false)
+                menuSaveItem?.setVisible(false)
                 MensajeAdvertencia("Error al momento de completar a transferencia.Verifique su conexión a internet","Error")
                 btnAlmacen.isEnabled=false
                 btnAlmacenDestino.isEnabled=false
@@ -1231,7 +1228,7 @@ class IngresoCompraKt : ActivityParent(), SlidingUpPanelLayout.PanelSlideListene
             override fun AnotherError() {
 
                 controladorProcesoCargar.FinalizarDialogCarga()
-                menuSaveItem.setVisible(false)
+                menuSaveItem?.setVisible(false)
                 MensajeAdvertencia("Error en la transferencia.Reinicie la aplicación","Error")
                 btnAlmacen.isEnabled=false
                 btnAlmacenDestino.isEnabled=false
