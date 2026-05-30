@@ -16,34 +16,50 @@
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#3a4b53"
+        style="@style/AppTheme.NavigationView.Principal"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_pantalla_principal"
-
-        app:itemIconTint="@color/gray_300"
-        app:itemTextColor="@color/gray_300"
-        app:itemBackground="@color/colorConstrante"
-        app:menu="@menu/activity_pantalla_principal_drawer" >
+        app:itemShapeAppearanceOverlay="@style/ShapeAppearance.App.SmallComponent"
+        app:itemShapeFillColor="@color/nav_item_background_state"
+        app:itemShapeInsetStart="16dp"
+        app:itemShapeInsetEnd="16dp"
+        app:itemHorizontalPadding="12dp"
+        app:itemIconPadding="24dp"
+        app:subheaderColor="#99000000"
+        app:subheaderInsetStart="12dp"
+        app:itemVerticalPadding="12dp"
+        app:menu="@menu/activity_pantalla_principal_drawer">
 
         <LinearLayout
+            android:id="@+id/layout_footer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:padding="16dp"
-            android:orientation="vertical">
-            <Button
+            android:orientation="vertical"
+            android:paddingStart="32dp"
+            android:paddingEnd="32dp"
+            android:paddingBottom="16dp">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="8dp"
+                android:background="#1A000000" />
+
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnCerrarSesion"
-                style="@style/AppTheme.Button.Modern"
+                style="@style/AppTheme.Button.CerrarSesion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="start|center_vertical"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
                 android:text="Cerrar Sesión"
-                android:backgroundTint="@color/white"
-                android:textColor="@color/gray_900"
+                android:textAllCaps="false"
                 app:icon="@drawable/open_door"
-                app:iconTint="@color/gray_900"
                 app:iconGravity="textStart" />
         </LinearLayout>
 

@@ -3600,7 +3600,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                     observacion = cabeceraPedido.getObservacion();
                     ActualizaBotonCobrar();
                     descargaDatos = false;
-                    Snackbar.make(rootView, "Pedido Recuperado", Snackbar.LENGTH_SHORT).show();
+                    //Snackbar.make(rootView, "Pedido Recuperado", Snackbar.LENGTH_SHORT).show();
                     ModificarValorDescuento();
                     if (cabeceraPedido.getZonaServicio().getDescripcion().length() > 0) {
                         btnZonaServicio.setText(cabeceraPedido.getZonaServicio().getDescripcion());

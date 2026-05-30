@@ -12,12 +12,11 @@
 
     <style name="TitleApparence">
         <item name="android:textColor">
-            #ffffff
+            @color/black
         </item>
         <item name="android:backgroundTint">
-            #ffffff
+            @color/black
         </item>
-
     </style>
 
     <style name="ButtonOkDialog">
@@ -119,5 +118,6 @@
     <style name="AppTheme.NoActionBar" parent="AppTheme">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="colorControlNormal">@color/black</item>
     </style>
 </resources>

@@ -14,7 +14,7 @@
     <color name="status_info">#2A8AC7</color>
 
     <!-- Surface and UI Colors -->
-    <color name="backgroud_app">#EFEFEF</color>
+    <color name="backgroud_app">#FFFFFF</color>
     <color name="colorBackgroundApp">@color/backgroud_app</color>
     <color name="background_card">#FFFFFF</color>
     <color name="background_app_bar">#989898</color>

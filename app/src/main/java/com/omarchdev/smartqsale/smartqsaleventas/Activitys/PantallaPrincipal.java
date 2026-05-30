@@ -14,6 +14,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.core.view.GravityCompat;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.graphics.Insets;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 
@@ -91,6 +94,11 @@ public class PantallaPrincipal extends AppCompatActivity
         btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
         btnCerrarSesion.setVisibility(View.GONE);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
+        ViewCompat.setOnApplyWindowInsetsListener(navigationView, (v, insets) -> {
+            Insets bars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(v.getPaddingLeft(), bars.top, v.getPaddingRight(), bars.bottom);
+            return insets;
+        });
         navigationView.setNavigationItemSelectedListener(this);
         asyncCaja = new AsyncCaja(this);
         asyncCaja.setListenerAperturaCaja(this);
