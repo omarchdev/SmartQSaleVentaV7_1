@@ -12,7 +12,17 @@ import com.omarchdev.smartqsale.smartqsaleventas.Controlador.ControladorProcesoC
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mVendedor;
 import com.wang.avi.AVLoadingIndicatorView;
 
+import static com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes.BASECONN.BASE_URL_API;
+import static com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes.BASECONN.TIPO_CONSULTA;
+import static com.omarchdev.smartqsale.smartqsaleventas.Model.CiaTiendaKt.GetJsonCiaTiendaBase64x3;
+
+import com.omarchdev.smartqsale.smartqsaleventas.Repository.IVendedorRepository;
+
+import java.io.IOException;
 import java.util.List;
+
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AsyncVendedores {
 
@@ -25,6 +35,11 @@ public class AsyncVendedores {
     GuardarVendedor guardarVendedor;
     ObtenerVendedorId obtenerVendedorId;
     EliminarVendedor eliminarVendedor;
+
+    Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API).client(Constantes.ConfiRetrofitTimeOut.okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create()).build();
+    IVendedorRepository iVendedorRepository = retro.create(IVendedorRepository.class);
+    final String codeCia = GetJsonCiaTiendaBase64x3();
 
     public void setListenerRegistroVendedor(ListenerRegistroVendedor listenerRegistroVendedor){
 
@@ -159,8 +174,19 @@ public class AsyncVendedores {
 
         @Override
         protected mVendedor doInBackground(Integer... integers) {
-
-            return bdConnectionSql.ObtenerVendedorPorId(integers[0]);
+            try {
+                return iVendedorRepository.ObtenerVendedorPorId(integers[0], TIPO_CONSULTA, codeCia).execute().body();
+            } catch (IOException e) {
+                e.printStackTrace();
+                mVendedor vendedor = new mVendedor();
+                vendedor.setIdVendedor(-99);
+                return vendedor;
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                mVendedor vendedor = new mVendedor();
+                vendedor.setIdVendedor(-99);
+                return vendedor;
+            }
         }
 
         @Override

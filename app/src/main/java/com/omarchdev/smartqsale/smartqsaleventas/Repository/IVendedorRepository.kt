@@ -3,6 +3,7 @@ package com.omarchdev.smartqsale.smartqsaleventas.Repository
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mVendedor
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.Query
 
 interface IVendedorRepository {
@@ -11,5 +12,12 @@ interface IVendedorRepository {
     fun GetVendedores(@Query("codecia")codeCia:String,
                       @Query("tipoconsulta")tipoConsulta:String,
                       @Query("param")param:String): Call<List<mVendedor>>
+
+    @GET("api/Vendedor/ObtenerVendedorPorId")
+    fun ObtenerVendedorPorId(
+        @Header("idVendedor") idVendedor: Int,
+        @Query("tipoConsulta") tipoConsulta: String,
+        @Query("codeCia") codeCia: String
+    ): Call<mVendedor>
 
 }
