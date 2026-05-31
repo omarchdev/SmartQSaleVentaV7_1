@@ -48,7 +48,7 @@ public class Activity_cta_x_cliente extends ActivityParent implements RvAdapterD
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cta_x_cliente);
-        toolbar = (Toolbar) findViewById(R.id.toolbarExpandable);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         txtEmail = (TextView) findViewById(R.id.txtEmailDato);
         txtSaldo = (TextView) findViewById(R.id.txtSaldoDatos);
         customer = new mCustomer();

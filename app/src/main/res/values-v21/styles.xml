@@ -65,16 +65,14 @@
     <style name="AppTheme" parent="Theme.MaterialComponents.Light">
         <!-- Customize your theme here. -->
 
-        <item name="android:fitsSystemWindows">true</item>
         <item name="android:textColorPrimary">@color/colorPrimaryDark</item>
 
         <item name="colorControlNormal">@color/colorPrimaryDark</item>
         <item name="android:textColorSecondary">@color/colorPrimaryDark</item>
         <item name="colorOnPrimary">@color/colorIconoBtnBordeless</item>
 
-
-
-        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
 
 
         <item name="imageButtonStyle">@style/BtnBorderless</item>
@@ -118,6 +116,8 @@
     <style name="AppTheme.NoActionBar" parent="AppTheme">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
         <item name="colorControlNormal">@color/black</item>
     </style>
 </resources>

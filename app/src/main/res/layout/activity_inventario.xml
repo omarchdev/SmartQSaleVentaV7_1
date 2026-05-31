@@ -7,17 +7,9 @@
     android:orientation="vertical"
     android:background="@color/backgroud_app">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        style="@style/AppTheme.Toolbar.Modern"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        app:contentInsetStartWithNavigation="0dp" />
-
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="match_parent">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -33,6 +25,7 @@
                 android:focusableInTouchMode="true"
                 android:orientation="vertical"
                 android:padding="12dp"
+                android:paddingTop="4dp"
                 android:paddingBottom="80dp">
 
                 <!-- Card: Clasificación (Categoría y Subcategoría) -->

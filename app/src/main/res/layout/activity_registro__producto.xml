@@ -14,48 +14,58 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:fitsSystemWindows="true"
         app:elevation="4dp">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
+            style="@style/AppTheme.Toolbar.Modern"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            app:contentInsetStartWithNavigation="0dp"
             app:navigationIcon="@drawable/arrow_back_home"
-            app:navigationIconTint="@color/colorPrimary"
-            app:title="Agregar producto"
-            app:titleTextColor="@color/gray_900"
-            app:theme="@style/ThemeOverlay.AppCompat.Light"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+            app:navigationIconTint="@color/black">
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Agregar producto"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="18sp" />
+
+        </androidx.appcompat.widget.Toolbar>
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
             style="@style/AppTheme.TabLayout.White"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             app:tabIndicatorColor="@color/black"
-            app:tabMode="scrollable"
             app:tabSelectedTextColor="@color/black"
             app:tabTextColor="@color/gray_600"
-            app:tabMinWidth="0dp">
+            app:tabMinWidth="0dp"
+
+            app:tabGravity="start">
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/tabItem"
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                android:layout_height="fill_parent"
                 android:text="@string/TabDatosBasicos" />
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/tabItem2"
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                android:layout_height="fill_parent"
                 android:text="@string/TabRespresentacionProducto" />
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/tabItem3"
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                android:layout_height="fill_parent"
                 android:text="@string/TabEstados" />
         </com.google.android.material.tabs.TabLayout>
     </com.google.android.material.appbar.AppBarLayout>
@@ -64,6 +74,7 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="4dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <com.github.clans.fab.FloatingActionButton

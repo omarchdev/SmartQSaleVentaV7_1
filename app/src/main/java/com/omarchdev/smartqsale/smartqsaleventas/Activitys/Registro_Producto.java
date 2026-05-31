@@ -111,30 +111,15 @@ AsyncCategoria.ListenerCategoria, AsyncAreasProduccion.ListenerAreasProduccion, 
         salir=false;
         estadoModificar=true;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (toolbar != null) {
-            toolbar.setTitle("Agregar producto");
-            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onBackPressed();
-                }
-            });
-            // Inflamos el menú manualmente ya que usamos NoActionBar
-            toolbar.inflateMenu(R.menu.menu_registro__producto);
-            menu = toolbar.getMenu();
-            favoriteItem = menu.findItem(R.id.actionFavoriteProduct);
-
-            if (favoriteItem != null) {
-                favoriteItem.setEnabled(estadoModificar);
-                favoriteItem.setIcon(favorite == 1 ? R.drawable.favorite : R.drawable.favorite_outline);
-            }
-
-            toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-                @Override
-                public boolean onMenuItemClick(MenuItem item) {
-                    return onOptionsItemSelected(item);
-                }
-            });
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+        TextView toolbarTitle = findViewById(R.id.toolbar_title);
+        if (toolbarTitle != null) {
+            toolbarTitle.setText("Agregar producto");
         }
         dialogMensaje=new AlertDialog.Builder(this);
         permitirGuardarVariantes=false;
@@ -673,9 +658,11 @@ AsyncCategoria.ListenerCategoria, AsyncAreasProduccion.ListenerAreasProduccion, 
             finish();
         }
         else{
-            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-            if(toolbar != null) {
-                toolbar.setTitle(product.getcProductName());
+            if(getSupportActionBar() != null) {
+                TextView toolbarTitle = findViewById(R.id.toolbar_title);
+                if (toolbarTitle != null) {
+                    toolbarTitle.setText(product.getcProductName());
+                }
             }
             if (favoriteItem != null) {
                 favoriteItem.setEnabled(false);

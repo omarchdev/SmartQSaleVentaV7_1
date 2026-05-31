@@ -201,12 +201,6 @@ public class ProductoDBasicos extends Fragment implements View.OnClickListener, 
             imageProduct =  v.findViewById(R.id.imageProduct);
             edtNombre =  v.findViewById(R.id.edtProductName);
 
-            // Ocultar el toolbar redundante cuando se usa como fragmento
-            View toolbarInterno = v.findViewById(R.id.toolbar);
-            if (toolbarInterno != null) {
-                toolbarInterno.setVisibility(View.GONE);
-            }
-
             edtCodigo =  v.findViewById(R.id.editCodigoProducto);
             edtCantidadStock = v.findViewById(R.id.edtCantidadStock);
             edtCantidadReserva = v.findViewById(R.id.edtCantidadReserva);
