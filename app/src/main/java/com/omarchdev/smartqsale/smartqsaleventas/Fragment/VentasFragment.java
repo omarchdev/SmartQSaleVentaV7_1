@@ -3936,7 +3936,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
             String data = new Gson().toJson(solicitudEnvio);
             String temp2 = data;
             try {
-                r = iPedidoRespository.GenerarVentaV4(solicitudEnvio).execute().body();
+                r = iPedidoRespository.GenerarVentaV5(solicitudEnvio).execute().body();
                 r.getCabeceraVenta().setRucEmisor(Constantes.Empresa.NumRuc);
             } catch (IOException e) {
                 e.toString();
@@ -4114,7 +4114,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
 
 
             try {
-                return iCajaRepository.AperturarCaja(solicitudEnvio).execute().body();
+                return iCajaRepository.AperturarCajaV2(solicitudEnvio).execute().body();
             } catch (IOException e) {
                 RetornoApertura retorno = new RetornoApertura((byte) 99, 0);
                 return retorno;

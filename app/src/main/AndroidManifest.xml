@@ -47,7 +47,8 @@
             android:exported="false" />
         <activity android:name=".Activitys.ActivityOperarioEdit"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activitys.BannerWeb" />
+        <activity android:name=".Activitys.BannerWeb"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activitys.PedidoReservaResumen"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activitys.ListProductosListaPrecios"
@@ -100,7 +101,8 @@
         <activity android:name=".Activitys.TestActivityPrintHtml" />
         <activity android:name=".Activitys.HistorialVentas"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activitys.DetalleVenta" />
+        <activity android:name=".Activitys.DetalleVenta"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activitys.DetalleVentaV2" />
         <activity
             android:name=".Activitys.LoginActivity"

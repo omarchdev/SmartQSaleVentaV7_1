@@ -13,10 +13,11 @@ import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -67,7 +68,7 @@ public class DetalleVenta extends ActivityParent
     AsyncProcesoVenta asyncProcesoVenta;
     RvAdapterPagosEnVenta rvAdapterPagosEnVenta;
     RecyclerView rvDetallePedido, rvMetodosPago;
-    ScrollView svContent;
+    NestedScrollView svContent;
     ProgressBar progressBar;
     FloatingActionButton fcancelButton, fabImprimirVenta;
     FloatingActionButton fabEnvioCpe;
@@ -105,7 +106,7 @@ public class DetalleVenta extends ActivityParent
         listDetalleVenta = new ArrayList<>();
         listPagosVenta = new ArrayList<>();
         txtEstadoDocumentoCpe = (TextView) findViewById(R.id.txtEstadoDocumentoCpe);
-        svContent = (ScrollView) findViewById(R.id.svContent);
+        svContent = findViewById(R.id.svContent);
         txtFechaVenta = (TextView) findViewById(R.id.txtFechaPedido);
         txtEstadoVenta = (TextView) findViewById(R.id.txtEstadoVenta);
         txtNombreCliente = (TextView) findViewById(R.id.txtNombreCliente);
@@ -144,16 +145,23 @@ public class DetalleVenta extends ActivityParent
         rvMetodosPago.setAdapter(rvAdapterPagosEnVenta);
         fabEnvioCpe.setVisibility(View.GONE);
         txtEstadoDocumentoCpe.setVisibility(View.GONE);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
         fabImprimirVenta.setOnClickListener(this);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         txtNumFactura.setVisibility(View.GONE);
-        getSupportActionBar().setTitle("Detalle Venta");
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back_home);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back_home);
+        }
+        TextView toolbarTitle = findViewById(R.id.toolbar_title);
+        if (toolbarTitle != null) {
+            toolbarTitle.setText("Detalle Venta");
+        }
+
         new DownloadDetalle().execute(idCabeceraVenta);
-
-
     }
 
     @Override

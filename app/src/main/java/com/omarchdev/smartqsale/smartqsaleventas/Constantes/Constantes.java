@@ -636,11 +636,13 @@ public abstract class Constantes {
     public static abstract class BASECONN {
         public static final String TIPO_CONSULTA = "2";
         public static final String BASE_URL_TEMP = "http://161.132.56.226:7001/";
-        public static final String BASE_URL= "http://161.132.56.226:7002/";
+        // public static final String BASE_URL= "http://161.132.56.226:7002/";
+         public static final String BASE_URL= "http://161.132.56.226:7003/";
 
         //public static final String BASE_URL = "http://ventas.mbsoftperu.com/App/";
         public static final String BASE_URL_API_TEMP = "http://161.132.56.226:7001/";
-        public static final String BASE_URL_API = "http://161.132.56.226:7002/";
+//        public static final String BASE_URL_API = "http://161.132.56.226:7002/";
+        public static final String BASE_URL_API = "http://161.132.56.226:7003/";
 
 
    //     public static final String BASE_URL_API = "http://192.99.154.9:7003/";

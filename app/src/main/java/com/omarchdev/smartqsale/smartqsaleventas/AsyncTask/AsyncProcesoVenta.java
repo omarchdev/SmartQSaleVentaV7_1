@@ -912,7 +912,7 @@ public class AsyncProcesoVenta {
                     Constantes.Usuario.idUsuario);
             ProcessResult<Integer> result = new ProcessResult<>();
             try {
-                result = iPedidoRespository.PermitirPedidoVenta(sol).execute().body();
+                result = iPedidoRespository.PermitirPedidoVentaV2(sol).execute().body();
             } catch (IOException e) {
                 e.printStackTrace();
             }

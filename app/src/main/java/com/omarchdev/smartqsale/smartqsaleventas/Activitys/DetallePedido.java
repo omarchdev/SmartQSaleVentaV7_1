@@ -26,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -161,8 +162,19 @@ public class DetallePedido extends ActivityParent implements SlidingUpPanelLayou
         context = this;
         try {
 
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            Toolbar toolbar = findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setDisplayShowTitleEnabled(false);
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                getSupportActionBar().setDisplayShowHomeEnabled(true);
+                getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back_home);
+            }
+            TextView toolbarTitle = findViewById(R.id.toolbar_title);
+            if (toolbarTitle != null) {
+                toolbarTitle.setText("Detalle del Pedido");
+            }
+
             saldoPendiente = new BigDecimal(0);
             helper = new DbHelper(this);
             permitir = true;
@@ -204,31 +216,31 @@ public class DetallePedido extends ActivityParent implements SlidingUpPanelLayou
             txtFechaEntrega = findViewById(R.id.txtFechaEntrega);
             rvAdapterDetallePedido = new RvAdapterDetallePedido();
             rvDetalle = findViewById(R.id.rvDetallePedido);
-            rvDetalle.setAdapter(rvAdapterDetallePedido);
-            rvDetalle.setLayoutManager(new LinearLayoutManager(this));
+            if (rvDetalle != null) {
+                rvDetalle.setAdapter(rvAdapterDetallePedido);
+                rvDetalle.setLayoutManager(new LinearLayoutManager(this));
+            }
             idCabeceraPedido = getIntent().getIntExtra(PARAM_IDPEDIDO, 0);
             estadoPagado = getIntent().getBooleanExtra(PARAM_ESTADO_PEDIDO_PAGADO, false);
             rvMetodosDePago = findViewById(R.id.rvMetodosDePago);
             rvAdapterPagosEnVenta = new RvAdapterPagosEnVenta(idCabeceraPedido);
-            rvMetodosDePago.setAdapter(rvAdapterPagosEnVenta);
-            rvMetodosDePago.setLayoutManager(new LinearLayoutManager(this));
-            rvMetodosDePago.setHasFixedSize(true);
+            if (rvMetodosDePago != null) {
+                rvMetodosDePago.setAdapter(rvAdapterPagosEnVenta);
+                rvMetodosDePago.setLayoutManager(new LinearLayoutManager(this));
+                rvMetodosDePago.setHasFixedSize(true);
+            }
             byte type = 2;
             rvAdapterPagosEnVenta.setTypeView(type);
-            btnEstadoPago.setOnClickListener(this);
+            if (btnEstadoPago != null) btnEstadoPago.setOnClickListener(this);
 
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
             fLayout = findViewById(R.id.content);
-            getSupportActionBar().setTitle("Detalle del Pedido");
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
-            getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back_home);
-            fabImprimirVenta.setOnClickListener(this);
+            if (fabImprimirVenta != null) fabImprimirVenta.setOnClickListener(this);
             rb1 = findViewById(R.id.rb1);
             rb2 = findViewById(R.id.rb2);
-            btnEstadoEntrega.setOnClickListener(this);
+            if (btnEstadoEntrega != null) btnEstadoEntrega.setOnClickListener(this);
             if (!Constantes.ConfigTienda.bUsaFechaEntrega) {
-                rlFechaEntrega.setVisibility(View.GONE);
-                rlEstadoEntrega.setVisibility(View.GONE);
+                if (rlFechaEntrega != null) rlFechaEntrega.setVisibility(View.GONE);
+                if (rlEstadoEntrega != null) rlEstadoEntrega.setVisibility(View.GONE);
             }
             if (Constantes.Tienda.ZonasAtencion) {
                 if ("A".equals(Constantes.Tienda.cTipoZonaServicio)) {
@@ -239,24 +251,23 @@ public class DetallePedido extends ActivityParent implements SlidingUpPanelLayou
                     }
                 }
             } else {
-                txtZonaServicio.setVisibility(View.GONE);
+                if (txtZonaServicio != null) txtZonaServicio.setVisibility(View.GONE);
             }
-            getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back_home);
             //   rvAdapterDetallePedido.AddElement(controladorVentas.getDetallePedidoId(idCabeceraPedido));
             if (Constantes.Tienda.cTipoZonaServicio.equals("A")) {
                 panel.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
             }
             panel.addPanelSlideListener(this);
             panel.setTouchEnabled(false);
-            rb1.setEnabled(false);
-            rb2.setEnabled(false);
-            content_datos_entrega.setVisibility(View.GONE);
+            if (rb1 != null) rb1.setEnabled(false);
+            if (rb2 != null) rb2.setEnabled(false);
+            if (content_datos_entrega != null) content_datos_entrega.setVisibility(View.GONE);
             pbPedido = findViewById(R.id.pbPedido);
-            fabAdelanto.setOnClickListener(this);
-            if (estadoPagado) {
-
-                fabAdelanto.setVisibility(View.GONE);
-
+            if (fabAdelanto != null) {
+                fabAdelanto.setOnClickListener(this);
+                if (estadoPagado) {
+                    fabAdelanto.setVisibility(View.GONE);
+                }
             }
             rvAdapterPagosEnVenta.setiAdapterPagos(this);
             rvAdapterPagosEnVenta.setShowDelete((!estadoPagado && Constantes.ConfigTienda.bUsaAdelantoPagoPedido));
@@ -326,17 +337,21 @@ public class DetallePedido extends ActivityParent implements SlidingUpPanelLayou
         txtValorBruto.setText(DecimalControlKt.montoDecimalPrecioSimbolo(cabeceraPedido.getTotalBruto()));
         txtValorNeto.setText(DecimalControlKt.montoDecimalPrecioSimbolo(cabeceraPedido.getTotalNeto()));
         if (estadoPagado) {
-            txtDocPago.setVisibility(View.VISIBLE);
-            txtDocPago.setText(cabeceraPedido.getDocumentoPago());
+            if (txtDocPago != null) {
+                txtDocPago.setVisibility(View.VISIBLE);
+                txtDocPago.setText(cabeceraPedido.getDocumentoPago());
+            }
         } else {
-            txtDocPago.setVisibility(View.GONE);
+            if (txtDocPago != null) txtDocPago.setVisibility(View.GONE);
         }
         if (cabeceraPedido.getZonaServicio().getIdZona() == 0) {
 
-            txtZonaServicio.setVisibility(View.GONE);
+            if (txtZonaServicio != null) txtZonaServicio.setVisibility(View.GONE);
         } else {
-            txtZonaServicio.setText(cabeceraPedido.getZonaServicio().getDescripcion());
-            txtZonaServicio.setVisibility(View.VISIBLE);
+            if (txtZonaServicio != null) {
+                txtZonaServicio.setText(cabeceraPedido.getZonaServicio().getDescripcion());
+                txtZonaServicio.setVisibility(View.VISIBLE);
+            }
         }
     }
 
@@ -554,10 +569,10 @@ public class DetallePedido extends ActivityParent implements SlidingUpPanelLayou
         protected void onPreExecute() {
 
             super.onPreExecute();
-            llContentPedido.setVisibility(View.GONE);
-            pbPedido.setVisibility(View.VISIBLE);
-            fabAdelanto.setVisibility(View.GONE);
-            fabImprimirVenta.setVisibility(View.GONE);
+            if (llContentPedido != null) llContentPedido.setVisibility(View.GONE);
+            if (pbPedido != null) pbPedido.setVisibility(View.VISIBLE);
+            if (fabAdelanto != null) fabAdelanto.setVisibility(View.GONE);
+            if (fabImprimirVenta != null) fabImprimirVenta.setVisibility(View.GONE);
         }
 
         @Override
@@ -570,10 +585,10 @@ public class DetallePedido extends ActivityParent implements SlidingUpPanelLayou
         @Override
         protected void onPostExecute(Pedido pedido) {
             super.onPostExecute(pedido);
-            fabAdelanto.setVisibility(View.VISIBLE);
-            fabImprimirVenta.setVisibility(View.VISIBLE);
-            llContentPedido.setVisibility(View.VISIBLE);
-            pbPedido.setVisibility(View.GONE);
+            if (fabAdelanto != null) fabAdelanto.setVisibility(View.VISIBLE);
+            if (fabImprimirVenta != null) fabImprimirVenta.setVisibility(View.VISIBLE);
+            if (llContentPedido != null) llContentPedido.setVisibility(View.VISIBLE);
+            if (pbPedido != null) pbPedido.setVisibility(View.GONE);
             pedidoResult = pedido;
             if (pedido != null) {
                 listpagosventa = pedido.getPagosEnPedido();
@@ -594,7 +609,7 @@ public class DetallePedido extends ActivityParent implements SlidingUpPanelLayou
                 listaProductos = pedido.getListProducto();
                 rvAdapterDetallePedido.AddElement(listaProductos);
                 if (pedido.getIdEntregaPedido() != 0) {
-                    content_datos_entrega.setVisibility(View.VISIBLE);
+                    if (content_datos_entrega != null) content_datos_entrega.setVisibility(View.VISIBLE);
                     txtEstadoActual.setText("");
                     txtMetodoPagoEntrega.setText(pedido.getEntregaPedidoInfo().getMedioPagoEntrega().getCDescripcionMedioPago());
                     txtFechaCreacion.setText(pedido.getEntregaPedidoInfo().getCFechaCreacion());
@@ -610,8 +625,8 @@ public class DetallePedido extends ActivityParent implements SlidingUpPanelLayou
                     txtNroPedido.setText(pedido.getEntregaPedidoInfo().getCNumeroPedido());
                     txtTiempoEntrega.setText(pedido.getEntregaPedidoInfo().getTiempoEntregaPedido().getCDescripcionEntrega());
                     try {
-                        btnEstadoEntrega.setText("Estado de entrega\n" + pedido.getFlujoEntrega().EstadoEntrega());
-                        btnEstadoPago.setText("Estado de pago\n" + pedido.getFlujoPagoPedido().EstadoPagoEntrega());
+                        if (btnEstadoEntrega != null) btnEstadoEntrega.setText("Estado de entrega\n" + pedido.getFlujoEntrega().EstadoEntrega());
+                        if (btnEstadoPago != null) btnEstadoPago.setText("Estado de pago\n" + pedido.getFlujoPagoPedido().EstadoPagoEntrega());
                     } catch (Exception e) {
 
                         Log.d("error", e.toString());
@@ -620,9 +635,9 @@ public class DetallePedido extends ActivityParent implements SlidingUpPanelLayou
 
                 } else {
 
-                    content_datos_entrega.setVisibility(View.GONE);
+                    if (content_datos_entrega != null) content_datos_entrega.setVisibility(View.GONE);
                 }
-                fabAdelanto.setVisibility((Constantes.ConfigTienda.bUsaAdelantoPagoPedido) ? View.VISIBLE : View.GONE);
+                if (fabAdelanto != null) fabAdelanto.setVisibility((Constantes.ConfigTienda.bUsaAdelantoPagoPedido) ? View.VISIBLE : View.GONE);
 
             } else {
                 finish();

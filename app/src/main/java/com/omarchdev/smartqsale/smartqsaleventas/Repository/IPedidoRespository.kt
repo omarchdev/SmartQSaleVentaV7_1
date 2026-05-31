@@ -13,6 +13,11 @@ interface IPedidoRespository {
     @POST("api/pedido/PermitirVentaPedido")
     fun PermitirPedidoVenta(@Body solicitudEnvio: SolicitudEnvio<PedidoVentaPermite>): Call<ProcessResult<Int>>
 
+
+    @POST("api/pedido/PermitirVentaPedidov2")
+    fun PermitirPedidoVentaV2(@Body solicitudEnvio: SolicitudEnvio<PedidoVentaPermite>): Call<ProcessResult<Int>>
+
+
     @POST("api/pedido/GuardarPagoTemporal")
     fun GuardarPagoTemporal(@Body solicitudEnvio: SolicitudEnvio<PagoVentaTemp>): Call<ProcessResult<Boolean>>
 
@@ -25,6 +30,10 @@ interface IPedidoRespository {
     fun GenerarVentaV2(@Body solicitudEnvio: SolicitudEnvio<VentaGeneracion>): Call<mRespuestaVenta>
     @POST("api/pedido/GenerarVentaV4")
     fun GenerarVentaV4(@Body solicitudEnvio: SolicitudEnvio<VentaGeneracion>): Call<mRespuestaVenta>
+    @POST("api/pedido/GenerarVentaV5")
+    fun GenerarVentaV5(@Body solicitudEnvio: SolicitudEnvio<VentaGeneracion>): Call<mRespuestaVenta>
+
+
     @GET("api/Pedido/GetEstadoPedidoActivo")
     fun GetEstadoPedido(
         @Query("codeCia") codeCia: String,

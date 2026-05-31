@@ -12,4 +12,9 @@ interface ICajaRepository {
     @POST("api/caja/AperturarCaja")
     fun AperturarCaja(@Body solicitudEnvio: SolicitudEnvio<BigDecimal>): Call<RetornoApertura>
 
+
+
+    @POST("api/caja/AperturarCajaV2")
+    fun AperturarCajaV2(@Body solicitudEnvio: SolicitudEnvio<BigDecimal>): Call<RetornoApertura>
+
 }

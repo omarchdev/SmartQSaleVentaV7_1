@@ -10,6 +10,7 @@ import android.content.pm.PackageManager;
 import android.provider.Settings;
 import androidx.annotation.NonNull;
 
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import androidx.core.app.ActivityCompat;
@@ -29,7 +30,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
@@ -69,7 +69,7 @@ public class LoginPrincipal12 extends ActivityParent implements LoaderCallbacks<
     Button btnCrearCuenta;
     String email, myIMEI ;
     String contrasena;
-    LinearLayout email_login_form;
+    MaterialCardView email_login_form;
     BdConnectionSql bdConnectionSql=BdConnectionSql.getSinglentonInstance();
     AsyncUsers asyncUsers;
     DbHelper dbHelper;
@@ -81,6 +81,7 @@ public class LoginPrincipal12 extends ActivityParent implements LoaderCallbacks<
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_principal12);
+        avi=findViewById(R.id.avi);
         // Set up the login form.
         try {
             tipo=0;
@@ -100,7 +101,6 @@ public class LoginPrincipal12 extends ActivityParent implements LoaderCallbacks<
             dbHelper = new DbHelper(this);
             email = "";
             contrasena = "";
-            avi=findViewById(R.id.avi);
 
         /*
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -183,7 +183,9 @@ public class LoginPrincipal12 extends ActivityParent implements LoaderCallbacks<
     @Override
     protected void onResume() {
         super.onResume();
-        avi.show();
+        if (avi != null) {
+            avi.show();
+        }
         verificarExisteUsuario();
     }
     private void permissionGranted() {
