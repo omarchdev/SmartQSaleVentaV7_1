@@ -1,250 +1,276 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@color/backgroud_app"
+    android:fitsSystemWindows="true"
     tools:context=".Activitys.IngresoCompraKt">
 
-    <com.wang.avi.AVLoadingIndicatorView
-        android:id="@+id/pbIndicator"
-        style="@style/AVLoadingIndicatorView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:elevation="10dp"
-        android:visibility="gone"
-        app:indicatorColor="@color/colorAccent"
-        app:indicatorName="BallPulseIndicator"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/AppTheme.Toolbar.Modern"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:padding="8dp">
+        android:layout_height="?attr/actionBarSize"
+        app:contentInsetStartWithNavigation="0dp">
 
-        <!-- Left Panel: Data -->
-        <com.google.android.material.card.MaterialCardView
-            style="@style/AppTheme.Card.Modern"
-            android:layout_width="0dp"
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchViewInline"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bg_edittext_modern"
+            android:visibility="gone"
+            app:iconifiedByDefault="false"
+            app:queryBackground="@android:color/transparent"
+            app:queryHint="Buscar productos..."
+            app:searchIcon="@drawable/search_icon_color" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/pbIndicator"
+            style="@style/AVLoadingIndicatorView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="10dp"
+            android:visibility="gone"
+            app:indicatorColor="@color/colorAccent"
+            app:indicatorName="BallPulseIndicator"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="4dp">
+            android:orientation="horizontal"
+            android:padding="8dp">
 
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <!-- Left Panel: Data -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/AppTheme.Card.Modern"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="4dp">
 
-                <LinearLayout
+                <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
+                    android:layout_height="match_parent">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="vertical"
+                        android:padding="16dp">
 
-                        <Button
-                            android:id="@+id/btnFechaCompra"
-                            style="@style/AppTheme.Button.Outlined"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="4dp"
-                            android:layout_weight="1"
-                            android:text="Compra"
-                            app:icon="@drawable/calendar" />
-
-                        <Button
-                            android:id="@+id/btnFechaIngreso"
-                            style="@style/AppTheme.Button.Outlined"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
-                            android:layout_weight="1"
-                            android:text="Ingreso"
-                            app:icon="@drawable/calendar" />
-                    </LinearLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/AppTheme.TextInputLayout.Outlined"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:hint="Proveedor"
-                        app:startIconDrawable="@drawable/truck">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/edtNombreProveedor"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="textCapWords" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                            android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:orientation="horizontal">
+                            <Button
+                                android:id="@+id/btnFechaCompra"
+                                style="@style/AppTheme.Button.Outlined"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="4dp"
+                                android:layout_weight="1"
+                                android:text="Compra"
+                                app:icon="@drawable/calendar" />
+
+                            <Button
+                                android:id="@+id/btnFechaIngreso"
+                                style="@style/AppTheme.Button.Outlined"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_weight="1"
+                                android:text="Ingreso"
+                                app:icon="@drawable/calendar" />
+                        </LinearLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
                             style="@style/AppTheme.TextInputLayout.Outlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:hint="Proveedor"
+                            app:startIconDrawable="@drawable/truck">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edtNombreProveedor"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="textCapWords" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/AppTheme.TextInputLayout.Outlined"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:hint="Guía">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edtGuiaProveedor"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <Button
+                                android:id="@+id/btnFechaGuia"
+                                style="@style/AppTheme.Button.Icon"
+                                android:layout_width="56dp"
+                                android:layout_height="56dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_gravity="bottom"
+                                app:srcCompat="@drawable/calendar" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="16dp"
+                            android:background="@color/gray_100" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Almacén Origen"
+                            android:textColor="@color/gray_600"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <Button
+                            android:id="@+id/btnAlmacen"
+                            style="@style/AppTheme.Button.Outlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Origen" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:text="Almacén Destino"
+                            android:textColor="@color/gray_600"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <Button
+                            android:id="@+id/btnAlmacenDestino"
+                            style="@style/AppTheme.Button.Outlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Destino" />
+
+                    </LinearLayout>
+                </ScrollView>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Right Panel: Products -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/AppTheme.Card.Modern"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.2"
+                android:layout_margin="4dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:id="@+id/contentSelectProduct"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="12dp">
+
+                        <Button
+                            android:id="@+id/btnselectProduct"
+                            style="@style/AppTheme.Button.Modern"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:hint="Guía">
+                            android:text="Añadir Ítems"
+                            app:icon="@drawable/plus" />
 
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/edtGuiaProveedor"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <Button
-                            android:id="@+id/btnFechaGuia"
+                        <ImageButton
+                            android:id="@+id/btnScan"
                             style="@style/AppTheme.Button.Icon"
                             android:layout_width="56dp"
                             android:layout_height="56dp"
                             android:layout_marginStart="8dp"
-                            android:layout_gravity="bottom"
-                            app:srcCompat="@drawable/calendar" />
+                            app:srcCompat="@drawable/barcode_scan"
+                            app:tint="@color/status_success" />
                     </LinearLayout>
 
-                    <View
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvProductoParaCompra"
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginBottom="16dp"
-                        android:background="@color/gray_100" />
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/contentSelectProduct"
+                        android:clipToPadding="false"
+                        android:padding="8dp" />
 
                     <TextView
+                        android:id="@+id/txtMensaje"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Almacén Origen"
-                        android:textColor="@color/gray_600"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:padding="32dp"
+                        android:text="Presione '+' para añadir productos"
+                        android:textColor="@color/gray_500" />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-                    <Button
-                        android:id="@+id/btnAlmacen"
-                        style="@style/AppTheme.Button.Outlined"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Origen" />
+        </LinearLayout>
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:text="Almacén Destino"
-                        android:textColor="@color/gray_600"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/btnAlmacenDestino"
-                        style="@style/AppTheme.Button.Outlined"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Destino" />
-
-                </LinearLayout>
-            </ScrollView>
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Right Panel: Products -->
-        <com.google.android.material.card.MaterialCardView
-            style="@style/AppTheme.Card.Modern"
+        <!-- Hidden variants/compatibility elements -->
+        <com.sothree.slidinguppanel.SlidingUpPanelLayout
+            android:id="@+id/panel"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1.2"
-            android:layout_margin="4dp">
+            android:layout_height="0dp"
+            android:visibility="gone">
+            <View android:layout_width="0dp" android:layout_height="0dp" />
+            <View android:layout_width="0dp" android:layout_height="0dp" />
+        </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+        <ProgressBar android:id="@+id/pbProductosAlmacen" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+        <TextView android:id="@+id/txtMensajePAlmacen" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+        <TextView android:id="@+id/txtInfoProduct" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
 
-                <LinearLayout
-                    android:id="@+id/contentSelectProduct"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="12dp">
+        <RelativeLayout android:id="@+id/contentPantalla" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+        <View android:id="@+id/contentFechaCompra" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+        <View android:id="@+id/contentProveedor" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+        <View android:id="@+id/contentProveedorInfo" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+        <View android:id="@+id/contentAlmacen" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+        <TextView android:id="@+id/textAlmacen" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+        <TextView android:id="@+id/textAlmacenDestino" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@+id/rvSeleccionProductos" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
 
-                    <Button
-                        android:id="@+id/btnselectProduct"
-                        style="@style/AppTheme.Button.Modern"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Añadir Ítems"
-                        app:icon="@drawable/plus" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <ImageButton
-                        android:id="@+id/btnScan"
-                        style="@style/AppTheme.Button.Icon"
-                        android:layout_width="56dp"
-                        android:layout_height="56dp"
-                        android:layout_marginStart="8dp"
-                        app:srcCompat="@drawable/barcode_scan"
-                        app:tint="@color/status_success" />
-                </LinearLayout>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvProductoParaCompra"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_below="@id/contentSelectProduct"
-                    android:clipToPadding="false"
-                    android:padding="8dp" />
-
-                <TextView
-                    android:id="@+id/txtMensaje"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:gravity="center"
-                    android:padding="32dp"
-                    android:text="Presione '+' para añadir productos"
-                    android:textColor="@color/gray_500" />
-            </RelativeLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-    </LinearLayout>
-
-    <!-- Hidden variants/compatibility elements -->
-    <androidx.appcompat.widget.Toolbar android:id="@+id/toolbar" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone">
-        <androidx.appcompat.widget.SearchView android:id="@+id/searchViewInline" android:layout_width="0dp" android:layout_height="0dp" />
-    </androidx.appcompat.widget.Toolbar>
-
-    <com.sothree.slidinguppanel.SlidingUpPanelLayout
-        android:id="@+id/panel"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:visibility="gone">
-        <View android:layout_width="0dp" android:layout_height="0dp" />
-        <View android:layout_width="0dp" android:layout_height="0dp" />
-    </com.sothree.slidinguppanel.SlidingUpPanelLayout>
-
-    <ProgressBar android:id="@+id/pbProductosAlmacen" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
-    <TextView android:id="@+id/txtMensajePAlmacen" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
-    <TextView android:id="@+id/txtInfoProduct" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
-
-    <RelativeLayout android:id="@+id/contentPantalla" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
-    <View android:id="@+id/contentFechaCompra" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
-    <View android:id="@+id/contentProveedor" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
-    <View android:id="@+id/contentProveedorInfo" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
-    <View android:id="@+id/contentAlmacen" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
-    <TextView android:id="@+id/textAlmacen" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
-    <TextView android:id="@+id/textAlmacenDestino" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
-    <androidx.recyclerview.widget.RecyclerView android:id="@+id/rvSeleccionProductos" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

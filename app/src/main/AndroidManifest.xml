@@ -198,7 +198,8 @@
             android:name=".Activitys.IngresoCompraKt"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".Activitys.ActivityListadoMovAlmacen" />
+        <activity android:name=".Activitys.ActivityListadoMovAlmacen"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activitys.ConfiguracionUsuario" />
         <activity android:name=".Activitys.ListadoUsuarios" />
         <activity android:name=".Activitys.ConfiguracionAlmacen" />

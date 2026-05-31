@@ -2,6 +2,7 @@ package com.omarchdev.smartqsale.smartqsaleventas.Activitys
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.widget.Toolbar
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mMovAlmacen
 import com.omarchdev.smartqsale.smartqsaleventas.R
 import kotlinx.android.synthetic.main.activity_listado_mov_almacen.*
@@ -48,6 +49,8 @@ class ActivityListadoMovAlmacen : ActivityParent(), AsyncAlmacenes.ListenerMovAl
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_listado_mov_almacen)
         try {
+            val toolbar = findViewById<Toolbar>(R.id.toolbar)
+            setSupportActionBar(toolbar)
             adapterMovAlmacen.setContexto(this)
             rvListadoMovAlm.layoutManager = LinearLayoutManager(this)
             rvListadoMovAlm.adapter = adapterMovAlmacen
