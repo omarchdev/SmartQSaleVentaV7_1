@@ -16,6 +16,7 @@ import static com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes.BA
 import static com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes.BASECONN.TIPO_CONSULTA;
 import static com.omarchdev.smartqsale.smartqsaleventas.Model.CiaTiendaKt.GetJsonCiaTiendaBase64x3;
 
+import com.omarchdev.smartqsale.smartqsaleventas.Model.SolicitudEnvio;
 import com.omarchdev.smartqsale.smartqsaleventas.Repository.IVendedorRepository;
 
 import java.io.IOException;
@@ -243,8 +244,22 @@ public class AsyncVendedores {
 
         @Override
         protected Byte doInBackground(Void... voids) {
-
-            return bdConnectionSql.RegistroVendedor(vendedor);
+            try {
+                SolicitudEnvio<mVendedor> solicitud = new SolicitudEnvio<>(
+                    codeCia,
+                    TIPO_CONSULTA,
+                    vendedor,
+                    Constantes.Terminal.idTerminal,
+                    Constantes.Usuario.idUsuario
+                );
+                return iVendedorRepository.RegistroVendedor(solicitud).execute().body();
+            } catch (IOException e) {
+                e.printStackTrace();
+                return (byte) 99;
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                return (byte) 99;
+            }
         }
 
         @Override
