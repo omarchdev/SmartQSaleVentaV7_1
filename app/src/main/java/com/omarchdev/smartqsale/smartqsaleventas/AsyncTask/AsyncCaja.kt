@@ -11,6 +11,7 @@ import com.omarchdev.smartqsale.smartqsaleventas.Controlador.ControladorProcesoC
 import com.omarchdev.smartqsale.smartqsaleventas.DialogFragments.DialogCargaAsync
 import com.omarchdev.smartqsale.smartqsaleventas.Model.GetJsonCiaTiendaBase64x3
 import com.omarchdev.smartqsale.smartqsaleventas.Model.RetornoApertura
+import com.omarchdev.smartqsale.smartqsaleventas.Model.SolicitudEnvio
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mCierre
 import com.omarchdev.smartqsale.smartqsaleventas.Repository.ICierreRepository
 import retrofit2.Retrofit
@@ -90,7 +91,18 @@ class AsyncCaja(private val context: Context?) {
         }
 
         override fun doInBackground(vararg integers: Int?): Byte {
-            return bdConnectionSql.CerrarCaja(integers[0]!!)
+            return try {
+                val solicitud = SolicitudEnvio(
+                    codeCia = codeCia,
+                    tipoMov = BASECONN.TIPO_CONSULTA,
+                    data = integers[0]!!,
+                    idTerminal = Constantes.Terminal.idTerminal,
+                    idUsuario = Constantes.Usuario.idUsuario
+                )
+                iCierreRepository.CerrarCaja(solicitud).execute().body() ?: 0
+            } catch (e: Exception) {
+                1
+            }
         }
     }
 

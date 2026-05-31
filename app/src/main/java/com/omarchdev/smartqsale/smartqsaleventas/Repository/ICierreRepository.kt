@@ -2,8 +2,10 @@ package com.omarchdev.smartqsale.smartqsaleventas.Repository
 
 import com.omarchdev.smartqsale.smartqsaleventas.Model.*
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface ICierreRepository {
@@ -48,7 +50,6 @@ interface ICierreRepository {
         @Header("idUsuario") idUsuario: Int
     ): Call<mCierre>
 
-
-
-
+    @POST("api/Cierre/CerrarCaja")
+    fun CerrarCaja(@Body solicitudEnvio: SolicitudEnvio<Int>): Call<Byte>
 }
