@@ -5,6 +5,7 @@ import android.content.Context
 import android.os.AsyncTask
 import android.widget.Toast
 import com.omarchdev.smartqsale.smartqsaleventas.ConexionBd.BdConnectionSql
+import com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes
 import com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes.BASECONN
 import com.omarchdev.smartqsale.smartqsaleventas.Controlador.ControladorProcesoCargar
 import com.omarchdev.smartqsale.smartqsaleventas.DialogFragments.DialogCargaAsync
@@ -141,7 +142,17 @@ class AsyncCaja(private val context: Context?) {
         }
 
         override fun doInBackground(vararg voids: Void?): mCierre {
-            return bdConnectionSql.ObtenerIdCierre()
+            return try {
+                iCierreRepository.ObtenerIdCierre(
+                    codeCia,
+                    BASECONN.TIPO_CONSULTA,
+                    Constantes.Empresa.idEmpresa,
+                    Constantes.Tienda.idTienda,
+                    Constantes.Usuario.idUsuario
+                ).execute().body() ?: mCierre().apply { idCierre = -1 }
+            } catch (e: Exception) {
+                mCierre().apply { idCierre = -2 }
+            }
         }
 
         override fun onPostExecute(mCierre: mCierre) {
@@ -173,7 +184,17 @@ class AsyncCaja(private val context: Context?) {
         }
 
         override fun doInBackground(vararg voids: Void?): mCierre {
-            return bdConnectionSql.ObtenerIdCierre()
+            return try {
+                iCierreRepository.ObtenerIdCierre(
+                    codeCia,
+                    BASECONN.TIPO_CONSULTA,
+                    Constantes.Empresa.idEmpresa,
+                    Constantes.Tienda.idTienda,
+                    Constantes.Usuario.idUsuario
+                ).execute().body() ?: mCierre().apply { idCierre = -1 }
+            } catch (e: Exception) {
+                mCierre().apply { idCierre = -2 }
+            }
         }
 
         override fun onPostExecute(cierre: mCierre) {

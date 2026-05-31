@@ -39,6 +39,15 @@ interface ICierreRepository {
     @GET("api/Cierre/getMovimientoCaja")
     fun getMovimientoCaja(@Header("idCierre") idCierre:Int,@Query("tipoConsulta") tipoConsulta:String,@Query("codeCia") codeCia:String): Call<List<mDetalleMovCaja>>
 
+    @GET("api/Cierre/ObtenerIdCierre")
+    fun ObtenerIdCierre(
+        @Query("codeCia") codeCia: String,
+        @Query("tipoConsulta") tipoConsulta: String,
+        @Header("idCompany") idCompany: Int,
+        @Header("idTienda") idTienda: Int,
+        @Header("idUsuario") idUsuario: Int
+    ): Call<mCierre>
+
 
 
 
