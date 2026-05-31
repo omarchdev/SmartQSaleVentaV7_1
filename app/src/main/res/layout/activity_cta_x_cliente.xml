@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroud_app"
+    android:fitsSystemWindows="true"
    tools:context="com.omarchdev.smartqsale.smartqsaleventas.Activitys.Activity_cta_x_cliente">
 
 

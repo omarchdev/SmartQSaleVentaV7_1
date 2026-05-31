@@ -1,11 +1,11 @@
 package com.omarchdev.smartqsale.smartqsaleventas.Activitys
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.widget.Toolbar
 import com.omarchdev.smartqsale.smartqsaleventas.Activitys.ui.listadozonaservicio.ListadoZonaServicioFragment
 import com.omarchdev.smartqsale.smartqsaleventas.R
 
-class ListadoZonaServicio : AppCompatActivity() {
+class ListadoZonaServicio : ActivityParent() {
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
@@ -14,6 +14,10 @@ class ListadoZonaServicio : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.listado_zona_servicio_activity)
+
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Zonas de servicio"
         supportActionBar?.setDisplayShowHomeEnabled(true)

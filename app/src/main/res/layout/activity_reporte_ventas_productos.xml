@@ -13,24 +13,20 @@
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        style="@style/AppTheme.AppBar.White">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
+            style="@style/AppTheme.Toolbar.Modern"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:layout_scrollFlags="scroll|enterAlways"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:title="Reporte de Productos" />
+            app:layout_scrollFlags="scroll|enterAlways" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
-            style="@style/Widget.MaterialComponents.TabLayout.Colored"
+            style="@style/AppTheme.TabLayout.White"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:tabIndicatorColor="@color/white"
-            app:tabSelectedTextColor="@color/white"
-            app:tabTextColor="@color/gray_200">
+            android:layout_height="wrap_content">
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/tabItem"

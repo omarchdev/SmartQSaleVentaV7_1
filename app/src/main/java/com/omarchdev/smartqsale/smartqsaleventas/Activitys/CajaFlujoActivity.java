@@ -113,7 +113,7 @@ public class CajaFlujoActivity extends ActivityParent implements View.OnClickLis
             floatingActionsMenu = (FloatingActionsMenu) findViewById(R.id.fab_caja);
             view = findViewById(R.id.main_content);
             flujoCajaresumen = new resumenFlujoCaja();
-            Toolbar toolbar = findViewById(R.id.toolbar_caja);
+            Toolbar toolbar = findViewById(R.id.toolbar);
 // 2. Establece el Toolbar como la Action Bar de la Activity
             setSupportActionBar(toolbar);
 

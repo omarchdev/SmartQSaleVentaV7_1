@@ -39,22 +39,33 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".Activitys.ListadoZonaServicio"
+            android:theme="@style/AppTheme.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".Activitys.ConfigZonaServicioMesa"
+            android:theme="@style/AppTheme.NoActionBar"
             android:exported="false" />
-        <activity android:name=".Activitys.ActivityOperarioEdit" />
+        <activity android:name=".Activitys.ActivityOperarioEdit"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activitys.BannerWeb" />
-        <activity android:name=".Activitys.PedidoReservaResumen" />
-        <activity android:name=".Activitys.ListProductosListaPrecios" />
-        <activity android:name=".Activitys.ListaPreciosSelect" />
+        <activity android:name=".Activitys.PedidoReservaResumen"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activitys.ListProductosListaPrecios"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activitys.ListaPreciosSelect"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activitys.HorasEntregaActivity" />
-        <activity android:name=".Activitys.config_dias_entrega" />
-        <activity android:name=".Activitys.ConfigNumPhoneWeb" />
-        <activity android:name=".Activitys.ConfigGeneralWeb" />
+        <activity android:name=".Activitys.config_dias_entrega"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activitys.ConfigNumPhoneWeb"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activitys.ConfigGeneralWeb"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activitys.ConfigProductVisibilidadTienda" />
-        <activity android:name=".Activitys.ConfigWebMenu" />
-        <activity android:name=".Activitys.ConfigWebImage" />
+        <activity android:name=".Activitys.ConfigWebMenu"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activitys.ConfigWebImage"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activitys.ActEstadoPagoFlujoPedido" />
         <activity android:name=".Activitys.EstadoPagoEnPedido" />
         <activity android:name=".Activitys.ActModEstadoEntregaEnPedido" />
@@ -63,7 +74,8 @@
             android:name=".Activitys.EntregaPedidoAct"
             android:label="@string/title_activity_entrega_pedido"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activitys.ConfigWeb" />
+        <activity android:name=".Activitys.ConfigWeb"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activitys.ConfigCategorias" />
         <activity
             android:name=".Activitys.AddEditProduct"
@@ -255,7 +267,9 @@
             android:name=".Activitys.ListaImpresorasAreas"
             android:label="@string/title_activity_lista_impresoras_areas"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activitys.RegistroImpresora" />
+        <activity
+            android:name=".Activitys.RegistroImpresora"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activitys.ListadoProductosStock"
             android:theme="@style/AppTheme.NoActionBar" />

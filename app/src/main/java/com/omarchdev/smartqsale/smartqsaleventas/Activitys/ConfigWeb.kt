@@ -1,11 +1,11 @@
 package com.omarchdev.smartqsale.smartqsaleventas.Activitys
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.omarchdev.smartqsale.smartqsaleventas.Activitys.ui.configweb.ConfigWebFragment
 import com.omarchdev.smartqsale.smartqsaleventas.R
 
-class ConfigWeb : AppCompatActivity() {
+class ConfigWeb : ActivityParent() {
 
 
 
@@ -13,16 +13,21 @@ class ConfigWeb : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.config_web_activity)
 
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
                     .replace(R.id.container,ConfigWebFragment.newInstance() )
                     .commitNow()
         }
 
-        supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setTitle("Configuración web")
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.arrow_back_home)
+        if (getSupportActionBar() != null) {
+            getSupportActionBar()!!.setDisplayShowHomeEnabled(true)
+            getSupportActionBar()!!.setDisplayHomeAsUpEnabled(true)
+            getSupportActionBar()!!.setTitle("Configuración web")
+            getSupportActionBar()!!.setHomeAsUpIndicator(R.drawable.arrow_back_home)
+        }
 
     }
 

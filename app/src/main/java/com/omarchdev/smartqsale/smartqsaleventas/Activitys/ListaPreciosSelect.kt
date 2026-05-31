@@ -1,11 +1,11 @@
 package com.omarchdev.smartqsale.smartqsaleventas.Activitys
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.omarchdev.smartqsale.smartqsaleventas.Activitys.ui.listapreciosselect.ListaPreciosSelectFragment
 import com.omarchdev.smartqsale.smartqsaleventas.R
 
-class ListaPreciosSelect : AppCompatActivity() {
+class ListaPreciosSelect : ActivityParent() {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
@@ -13,15 +13,21 @@ class ListaPreciosSelect : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.lista_precios_select_activity)
+
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
                     .replace(R.id.container, ListaPreciosSelectFragment.newInstance())
                     .commitNow()
         }
-        supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.arrow_back_home)
+        if (getSupportActionBar() != null) {
+            getSupportActionBar()!!.setDisplayShowHomeEnabled(true)
+            getSupportActionBar()!!.setDisplayHomeAsUpEnabled(true)
+            getSupportActionBar()!!.setHomeAsUpIndicator(R.drawable.arrow_back_home)
+            getSupportActionBar()!!.setTitle("Listas de precios")
+        }
     }
 
 }

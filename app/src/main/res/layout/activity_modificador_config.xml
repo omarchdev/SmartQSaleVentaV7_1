@@ -2,11 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent" android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context="com.omarchdev.smartqsale.smartqsaleventas.Activitys.ActivityModificadorConfig">
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_modificador"
+        android:id="@+id/toolbar"
         style="@style/AppTheme.Toolbar.Modern"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"

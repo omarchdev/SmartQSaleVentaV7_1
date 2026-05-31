@@ -6,6 +6,7 @@ import androidx.appcompat.app.AlertDialog
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import com.omarchdev.smartqsale.smartqsaleventas.AsyncTask.AsyncAreasProduccion
 import com.omarchdev.smartqsale.smartqsaleventas.AsyncTask.AsyncImpresora
 import com.omarchdev.smartqsale.smartqsaleventas.Controlador.ControladorProcesoCargar
@@ -61,6 +62,10 @@ class RegistroImpresora : ActivityParent(), SelectTienda.TiendaInterface, SpnAre
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro_impresora)
+
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
         selectTienda= SelectTienda().newInstance(this,"Seleccione una tienda ")
         selectArea=SpnAreasProduccion().newInstance(this,"Seleccione un área")
         asyncImpresora.listenerImpresora=this

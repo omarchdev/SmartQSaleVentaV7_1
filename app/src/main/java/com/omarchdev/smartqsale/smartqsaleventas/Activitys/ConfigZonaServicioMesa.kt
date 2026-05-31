@@ -1,11 +1,11 @@
 package com.omarchdev.smartqsale.smartqsaleventas.Activitys
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.omarchdev.smartqsale.smartqsaleventas.Activitys.ui.main.ConfigZonaServicioMesaFragment
 import com.omarchdev.smartqsale.smartqsaleventas.R
 
-class ConfigZonaServicioMesa : AppCompatActivity() {
+class ConfigZonaServicioMesa : ActivityParent() {
 
 
 
@@ -16,6 +16,10 @@ class ConfigZonaServicioMesa : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.config_zona_servicio_mesa_activity)
+
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Configuración"
         supportActionBar?.setDisplayShowHomeEnabled(true)

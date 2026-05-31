@@ -97,7 +97,7 @@ public class ActivityModificadorConfig extends AppCompatActivity implements View
             rvValoresEdiccion.setLayoutManager(new LinearLayoutManager(this));
             pbIndicatorValores.hide();
 
-            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_modificador);
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
 // Establece el título directamente en la Toolbar (antes de setSupportActionBar)
             toolbar.setTitle("Modificadores");
