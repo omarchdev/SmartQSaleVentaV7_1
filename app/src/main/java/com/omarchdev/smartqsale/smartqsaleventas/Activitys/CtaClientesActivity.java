@@ -17,20 +17,31 @@ import android.widget.ProgressBar;
 import androidx.appcompat.widget.SearchView;
 import android.widget.Toast;
 
-import com.omarchdev.smartqsale.smartqsaleventas.ConexionBd.BdConnectionSql;
+import com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes;
 import com.omarchdev.smartqsale.smartqsaleventas.Controlador.ControladorProcesoCargar;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mCustomer;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mSaldoCliente;
 import com.omarchdev.smartqsale.smartqsaleventas.R;
+import com.omarchdev.smartqsale.smartqsaleventas.Repository.IClienteRepository;
 import com.omarchdev.smartqsale.smartqsaleventas.RvAdapter.RvAdapterSaldoCliente;
 
+import java.io.IOException;
 import java.util.List;
+
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+import static com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes.BASECONN.BASE_URL_API;
+import static com.omarchdev.smartqsale.smartqsaleventas.Model.CiaTiendaKt.GetJsonCiaTiendaBase64x3;
 
 public class  CtaClientesActivity extends ActivityParent implements View.OnClickListener, SearchView.OnQueryTextListener, RvAdapterSaldoCliente.ClickItem {
 
     RecyclerView rv;
     CheckBox cb;
-    BdConnectionSql bdConnectionSql = BdConnectionSql.getSinglentonInstance();
+    final String codeCia = GetJsonCiaTiendaBase64x3();
+    Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API).client(Constantes.ConfiRetrofitTimeOut.okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create()).build();
+    IClienteRepository iClienteRepository = retro.create(IClienteRepository.class);
     RvAdapterSaldoCliente rvAdapterSaldoCliente;
     mCustomer customer;
     ProgressBar pb;
@@ -188,11 +199,13 @@ public class  CtaClientesActivity extends ActivityParent implements View.OnClick
 
         @Override
         protected Boolean doInBackground(Void... voids) {
-
-         //   estado= bdConnectionSql.VerificarConexion();
-
-             customer = bdConnectionSql.getClienteId(idCliente);
-            return true;
+            try {
+                customer = iClienteRepository.GetCustomerById("2", codeCia, idCliente).execute().body();
+                return customer != null;
+            } catch (IOException e) {
+                e.printStackTrace();
+                return false;
+            }
         }
 
         @Override
@@ -223,7 +236,12 @@ public class  CtaClientesActivity extends ActivityParent implements View.OnClick
 
         @Override
         protected List<mSaldoCliente> doInBackground(Void... voids) {
-            return bdConnectionSql.getSaldosClientes(saldoCero, nombreCliente);
+            try {
+                return iClienteRepository.GetSaldosClientes("2", codeCia, saldoCero, nombreCliente).execute().body();
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            }
         }
         @Override
         protected void onPostExecute(List<mSaldoCliente> mSaldoClientes) {

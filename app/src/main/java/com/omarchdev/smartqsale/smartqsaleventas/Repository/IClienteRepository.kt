@@ -2,6 +2,7 @@ package com.omarchdev.smartqsale.smartqsaleventas.Repository
 
 import com.omarchdev.smartqsale.smartqsaleventas.Model.SolicitudEnvio
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mCustomer
+import com.omarchdev.smartqsale.smartqsaleventas.Model.mSaldoCliente
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -19,7 +20,16 @@ interface IClienteRepository {
                            @Query("codecia") nombreCia: String,
                            @Query("idCliente") idCliente: Int): Call<mCustomer>
 
+    @GET("api/Cliente/GetCustomerById")
+    fun GetCustomerById(@Query("tipoconsulta") tipoMov: String,
+                        @Query("codecia") nombreCia: String,
+                        @Query("idCliente") idCliente: Int): Call<mCustomer>
 
+    @GET("api/Cliente/GetSaldosClientes")
+    fun GetSaldosClientes(@Query("tipoconsulta") tipoMov: String,
+                          @Query("codecia") nombreCia: String,
+                          @Query("saldoCero") saldoCero: Byte,
+                          @Query("nombreCliente") nombreCliente: String): Call<List<mSaldoCliente>>
 
     @GET("api/Cliente/GetClienteNumTelefono")
     fun GetClienteNumTelefono(@Query("tipoconsulta") tipoMov: String,
