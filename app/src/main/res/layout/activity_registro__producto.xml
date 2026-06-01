@@ -23,8 +23,7 @@
             android:layout_height="wrap_content"
             android:minHeight="?attr/actionBarSize"
             app:contentInsetStartWithNavigation="0dp"
-            app:navigationIcon="@drawable/arrow_back_home"
-            app:navigationIconTint="@color/black">
+            app:navigationIcon="@drawable/arrow_back_home">
 
             <TextView
                 android:id="@+id/toolbar_title"

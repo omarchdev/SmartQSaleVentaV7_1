@@ -26,6 +26,7 @@ public class mCierre {
     private BigDecimal totalVentas;
     private String descripcionEstado;
     private int numTransacciones;
+    private int idUsuario;
 /*    @SerializedName("fechaApertura")
     private String fechaAperturaTemp;
     @SerializedName("fechaCierre")
@@ -67,6 +68,7 @@ public class mCierre {
         fechaApertura = new Timestamp(lnMilisegundos);
         fechaCierre = new Timestamp(lnMilisegundos);
         numTransacciones=0;
+        idUsuario = 0;
     }
 
     public int getNumTransacciones() {
@@ -75,6 +77,14 @@ public class mCierre {
 
     public void setNumTransacciones(int numTransacciones) {
         this.numTransacciones = numTransacciones;
+    }
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public int getIdCierre() {

@@ -28,4 +28,10 @@ interface IUsuarioRepository {
 
     @POST("api/Usuario/EliminarUsuario")
     fun EliminarUsuario(@Body solicitudEnvio: SolicitudEnvio<Int>): Call<Byte>
+
+    @GET("api/Usuario/ObtenerUsuariosRegistradosFiltro")
+    fun ObtenerUsuariosRegistradosFiltro(
+        @Query("idCompany") idCompany: Int,
+        @Query("idTienda") idTienda: Int
+    ): Call<List<mUsuario>>
 }

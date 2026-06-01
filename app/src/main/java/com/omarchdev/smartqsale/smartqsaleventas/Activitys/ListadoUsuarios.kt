@@ -3,6 +3,7 @@ package com.omarchdev.smartqsale.smartqsaleventas.Activitys
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.widget.Toolbar
 import androidx.appcompat.app.AlertDialog
 import android.view.View
 import com.omarchdev.smartqsale.smartqsaleventas.AsyncTask.AsyncUsers
@@ -22,6 +23,8 @@ class ListadoUsuarios : ActivityParent() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_listado_usuarios)
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
         rvUsuarios.adapter = rvAdapterUsuarios
         txtMensajeError.visibility = View.GONE
         ClickAgregarCliente()

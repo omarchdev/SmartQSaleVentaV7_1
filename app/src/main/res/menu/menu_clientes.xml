@@ -2,8 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-
-        android:iconTint="@color/colorIconoBtnBordeless"
         android:id="@+id/searchToolbar1"
         android:hint="Busqueda de productos"
         android:icon="@drawable/search_icon_color"

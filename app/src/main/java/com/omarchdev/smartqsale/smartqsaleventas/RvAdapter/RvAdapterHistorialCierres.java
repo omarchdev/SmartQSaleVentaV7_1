@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mCierre;
+import com.omarchdev.smartqsale.smartqsaleventas.Model.mUsuario;
 import com.omarchdev.smartqsale.smartqsaleventas.R;
 
 import java.text.SimpleDateFormat;
@@ -20,10 +21,19 @@ import java.util.List;
 public class RvAdapterHistorialCierres extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     List<mCierre> list;
+    List<mUsuario> listaUsuarios = new ArrayList<>();
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm aa");
     ObtenerCierre obtenerCierre;
     public RvAdapterHistorialCierres() {
         list = new ArrayList<>();
+    }
+
+    public void setUsuarios(List<mUsuario> usuarios) {
+        this.listaUsuarios.clear();
+        if (usuarios != null) {
+            this.listaUsuarios.addAll(usuarios);
+        }
+        notifyDataSetChanged();
     }
 
     public void setObtenerCierre(ObtenerCierre obtenerCierre) {
@@ -45,6 +55,17 @@ public class RvAdapterHistorialCierres extends RecyclerView.Adapter<RecyclerView
         CierresViewHolder h = (CierresViewHolder) holder;
         h.fechaApertura.setText(dateFormat.format(list.get(position).getFechaApertura()));
         h.txtNumTransa.setText("# Transacciones "+String.valueOf(list.get(position).getNumTransacciones()));
+        
+        int userId = list.get(position).getIdUsuario();
+        String nombre = "Desconocido";
+        for (mUsuario u : listaUsuarios) {
+            if (u.getIdUsuario() == userId) {
+                nombre = u.getNombreUsuario();
+                break;
+            }
+        }
+        h.txtUsuario.setText("Usuario: " + nombre);
+
         if (list.get(position).getEstadoCierre().equals("C")) {
             h.txtInfoCierre.setText("Caja cerrada:\n"+"#"+String.valueOf(list.get(position).getIdCierre()));
             if (list.get(position).getFechaCierre() != null) {
@@ -84,13 +105,14 @@ public class RvAdapterHistorialCierres extends RecyclerView.Adapter<RecyclerView
 
     private class CierresViewHolder extends RecyclerView.ViewHolder  {
 
-        TextView fechaApertura, fechaCierre,txtInfoCierre,txtNumTransa;
+        TextView fechaApertura, fechaCierre,txtInfoCierre,txtNumTransa,txtUsuario;
         public CierresViewHolder(View itemView) {
             super(itemView);
             fechaApertura = (TextView) itemView.findViewById(R.id.txtFechaApertura);
             fechaCierre = (TextView) itemView.findViewById(R.id.txtFechaCierre);
             txtInfoCierre=(TextView)itemView.findViewById(R.id.txtInfoCierre);
             txtNumTransa=itemView.findViewById(R.id.txtNumTransa);
+            txtUsuario=itemView.findViewById(R.id.txtUsuario);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -214,8 +214,10 @@
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".Activitys.ActivityListadoMovAlmacen"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activitys.ConfiguracionUsuario" />
-        <activity android:name=".Activitys.ListadoUsuarios" />
+        <activity android:name=".Activitys.ConfiguracionUsuario"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activitys.ListadoUsuarios"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activitys.ConfiguracionAlmacen" />
         <activity android:name=".Activitys.Listado_Almacenes" />
         <activity android:name=".Activitys.ActivityDemo" />

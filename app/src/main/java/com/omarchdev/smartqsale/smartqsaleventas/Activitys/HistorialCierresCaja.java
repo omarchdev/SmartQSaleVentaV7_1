@@ -22,6 +22,9 @@ import com.omarchdev.smartqsale.smartqsaleventas.RvAdapter.RvAdapterHistorialCie
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
+import java.util.ArrayList;
+import com.omarchdev.smartqsale.smartqsaleventas.Model.mUsuario;
+import com.omarchdev.smartqsale.smartqsaleventas.AsyncTask.AsyncUsers;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -31,7 +34,7 @@ import static com.omarchdev.smartqsale.smartqsaleventas.Model.CiaTiendaKt.GetJso
 
 public class HistorialCierresCaja extends ActivityParent implements View.OnClickListener, DialogDatePickerSelect.interfaceFecha, RvAdapterHistorialCierres.ObtenerCierre {
 
-    Button btnFechaInicio, btnFechaFinal;
+    Button btnFechaInicio, btnFechaFinal, btnFiltrarUsuario;
     int dia, mes, anio, diaf, mesf, aniof;
     int fechaInicio, fechaFinal;
     String sFechaInicio, sFechaFinal;
@@ -46,6 +49,10 @@ public class HistorialCierresCaja extends ActivityParent implements View.OnClick
 
     Calendar c = Calendar.getInstance();
 
+    AsyncUsers asyncUsers;
+    List<mUsuario> listaUsuarios = new ArrayList<>();
+    int idUsuarioSeleccionado = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,8 +61,10 @@ public class HistorialCierresCaja extends ActivityParent implements View.OnClick
 
         btnFechaInicio = (Button) findViewById(R.id.btnFechaInicio);
         btnFechaFinal = (Button) findViewById(R.id.btnFechaFinal);
+        btnFiltrarUsuario = (Button) findViewById(R.id.btnFiltrarUsuario);
         btnFechaFinal.setOnClickListener(this);
         btnFechaInicio.setOnClickListener(this);
+        btnFiltrarUsuario.setOnClickListener(this);
         intent = getIntent();
         diaf = c.get(Calendar.DAY_OF_MONTH);
         mesf = c.get(Calendar.MONTH) + 1;
@@ -70,6 +79,7 @@ public class HistorialCierresCaja extends ActivityParent implements View.OnClick
 
         btnFechaInicio.setText("Desde \n"+convertirFormatoFecha(fechaInicio));
         btnFechaFinal.setText("Hasta \n"+convertirFormatoFecha(fechaFinal));
+        btnFiltrarUsuario.setText("Todos");
 
         rv = (RecyclerView) findViewById(R.id.rvHistorialCierres);
         rvAdapterHistorialCierres = new RvAdapterHistorialCierres();
@@ -87,8 +97,31 @@ public class HistorialCierresCaja extends ActivityParent implements View.OnClick
         rv.setHasFixedSize(false);
         rv.setAdapter(rvAdapterHistorialCierres);
 
+        asyncUsers = new AsyncUsers();
+        asyncUsers.setContext(this);
+        asyncUsers.setListenerObtenerUsuarios(new AsyncUsers.ListenerObtenerUsuarios() {
+            @Override
+            public void UsuariosObtenidos(List<mUsuario> usuarioList) {
+                listaUsuarios.clear();
+                listaUsuarios.addAll(usuarioList);
+                rvAdapterHistorialCierres.setUsuarios(usuarioList);
+                new DonwloadHistorialCierres().execute(sFecha(dia, mes, anio), sFecha(diaf, mesf, aniof));
+            }
 
-        new DonwloadHistorialCierres().execute(sFecha(dia, mes, anio), sFecha(diaf, mesf, aniof));
+            @Override
+            public void ErrorConnection() {
+                Toast.makeText(HistorialCierresCaja.this, "Error de conexión al obtener usuarios", Toast.LENGTH_SHORT).show();
+                new DonwloadHistorialCierres().execute(sFecha(dia, mes, anio), sFecha(diaf, mesf, aniof));
+            }
+
+            @Override
+            public void ErrorConsulta() {
+                Toast.makeText(HistorialCierresCaja.this, "Error al consultar usuarios", Toast.LENGTH_SHORT).show();
+                new DonwloadHistorialCierres().execute(sFecha(dia, mes, anio), sFecha(diaf, mesf, aniof));
+            }
+        });
+
+        asyncUsers.ObtenerUsuariosFiltro();
 
     }
 
@@ -116,6 +149,26 @@ public class HistorialCierresCaja extends ActivityParent implements View.OnClick
                 m = (fechaFinal % 10000) / 100;
                 d = fechaFinal % 100;
                 MostrarDatePicker((byte) 2, d, m, a);
+                break;
+
+            case R.id.btnFiltrarUsuario:
+                if (listaUsuarios != null && !listaUsuarios.isEmpty()) {
+                    String[] nombres = new String[listaUsuarios.size()];
+                    for (int i = 0; i < listaUsuarios.size(); i++) {
+                        nombres[i] = listaUsuarios.get(i).getNombreUsuario();
+                    }
+                    androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
+                    builder.setTitle("Seleccionar Usuario");
+                    builder.setItems(nombres, (dialog, which) -> {
+                        mUsuario seleccionado = listaUsuarios.get(which);
+                        idUsuarioSeleccionado = seleccionado.getIdUsuario();
+                        btnFiltrarUsuario.setText(seleccionado.getNombreUsuario());
+                        new DonwloadHistorialCierres().execute(sFecha(dia, mes, anio), sFecha(diaf, mesf, aniof));
+                    });
+                    builder.show();
+                } else {
+                    Toast.makeText(this, "No se han cargado los usuarios", Toast.LENGTH_SHORT).show();
+                }
                 break;
 
         }
@@ -195,7 +248,7 @@ public class HistorialCierresCaja extends ActivityParent implements View.OnClick
         @Override
         protected List<mCierre> doInBackground(String... strings) {
             try {
-                return iCierreRepository.GetCierresHistorial(strings[0], strings[1], "2", codeCia).execute().body();
+                return iCierreRepository.GetCierresHistorial(strings[0], strings[1], "2", codeCia, idUsuarioSeleccionado).execute().body();
             } catch (IOException e) {
                 e.printStackTrace();
                 return null;

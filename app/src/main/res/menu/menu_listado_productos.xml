@@ -5,8 +5,6 @@
 
 
     <item
-
-        android:iconTint="@color/colorIconoBtnBordeless"
         android:id="@+id/searchToolbar1"
         android:hint="Busqueda de productos"
         android:icon="@drawable/search_icon_color"
@@ -16,7 +14,6 @@
         app:showAsAction="always|withText" />
 
         <item
-            android:iconTint="@color/colorIconoBtnBordeless"
          android:orderInCategory="2"
          app:showAsAction="withText|always"
          android:id="@+id/actionScanCode"

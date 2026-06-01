@@ -6,6 +6,9 @@ import android.content.DialogInterface
 import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.Toolbar
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -95,6 +98,9 @@ class ConfiguracionUsuario : ActivityParent(), SelectTienda.TiendaInterface {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_configuracion_usuario)
 
+            val toolbar = findViewById<Toolbar>(R.id.toolbar)
+            setSupportActionBar(toolbar)
+
             selectTienda=SelectTienda().newInstance(this,"Seleccione una Tienda")
 
             val fml = supportFragmentManager
@@ -108,7 +114,6 @@ class ConfiguracionUsuario : ActivityParent(), SelectTienda.TiendaInterface {
             supportActionBar?.setDisplayShowHomeEnabled(true)
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
             supportActionBar?.setHomeAsUpIndicator(R.drawable.arrow_back_home)
-            supportActionBar?.hide()
             supportActionBar?.setTitle("Registro de usuario" )
             asyncUser.setContext(this)
             asyncUser.setListenerRoles(listenerRoles)
@@ -121,10 +126,47 @@ class ConfiguracionUsuario : ActivityParent(), SelectTienda.TiendaInterface {
 
             content_tienda.visibility=View.GONE
             ConfiguracionPantalla()
+            setupPinInputs()
 
 
         }catch (e:Exception){
            Toast.makeText(this,e.toString(),Toast.LENGTH_SHORT ).show()}
+    }
+
+    private fun setupPinInputs() {
+        edtPin1.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                if (s?.length == 1) edtPin2.requestFocus()
+            }
+        })
+
+        edtPin2.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                if (s?.length == 1) edtPin3.requestFocus()
+                else if (s?.length == 0) edtPin1.requestFocus()
+            }
+        })
+
+        edtPin3.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                if (s?.length == 1) edtPin4.requestFocus()
+                else if (s?.length == 0) edtPin2.requestFocus()
+            }
+        })
+
+        edtPin4.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                if (s?.length == 0) edtPin3.requestFocus()
+            }
+        })
     }
 
     private fun ConfiguracionPantalla(){
@@ -138,12 +180,10 @@ class ConfiguracionUsuario : ActivityParent(), SelectTienda.TiendaInterface {
                 spnTipoRol.isEnabled=true
 
                 content_tienda.visibility=View.VISIBLE
-                supportActionBar?.show()
                 pb.visibility=View.GONE
                 txtCargando.visibility=View.GONE
             }
             Constantes.EstadoConfiguracion.Visualizar->{
-                supportActionBar?.hide()
                 supportActionBar?.setTitle( "Usuario" )
                 edtNombreUsuario.isEnabled=false
                 edtPin1.isEnabled=false
@@ -168,7 +208,6 @@ class ConfiguracionUsuario : ActivityParent(), SelectTienda.TiendaInterface {
             Constantes.EstadoConfiguracion.Editar->{
                 txtRol.visibility=View.GONE
                 txtTituloPin.visibility=View.GONE
-                supportActionBar?.hide()
                 edtNombreUsuario.isEnabled=true
                 edtPin1.isEnabled=true
                 edtPin3.isEnabled=true
@@ -242,7 +281,6 @@ class ConfiguracionUsuario : ActivityParent(), SelectTienda.TiendaInterface {
         if(estadoConfiguracion.equals(Constantes.EstadoConfiguracion.Visualizar)){
             menuSaveItem.isVisible=false
         }
-        supportActionBar?.show()
     }
 
     val listenerRoles=object:AsyncUsers.ListenerRoles{

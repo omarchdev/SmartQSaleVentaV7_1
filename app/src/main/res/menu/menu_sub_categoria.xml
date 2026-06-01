@@ -4,7 +4,6 @@
 
     <item
         app:showAsAction="always"
-        android:iconTint="@color/colorIconoBtnBordeless"
         android:orderInCategory="1"
         android:visible="true"
         android:enabled="true"

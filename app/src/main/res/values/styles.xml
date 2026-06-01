@@ -62,6 +62,7 @@
         <item name="titleTextColor">@color/black</item>
         <item name="navigationIcon">@drawable/arrow_back_grid</item>
         <item name="navigationIconTint">@color/black</item>
+        <item name="iconTint">@color/black</item>
         <item name="android:theme">@style/AppTheme.ThemeOverlay.White</item>
         <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="android:gravity">top</item>
@@ -78,6 +79,7 @@
         <item name="titleTextColor">@color/gray_900</item>
         <item name="navigationIcon">@drawable/arrow_back_home</item>
         <item name="navigationIconTint">@color/black</item>
+        <item name="iconTint">@color/black</item>
         <item name="android:theme">@style/AppTheme.ThemeOverlay.White</item>
         <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
     </style>
@@ -136,6 +138,7 @@
         <item name="titleTextColor">@color/black</item>
         <item name="subtitleTextColor">@color/black</item>
         <item name="navigationIconTint">@color/black</item>
+        <item name="iconTint">@color/black</item>
         <item name="colorControlNormal">@color/black</item>
         <item name="titleTextAppearance">@style/AppTheme.Toolbar.Title.Principal</item>
         <item name="subtitleTextAppearance">@style/AppTheme.Toolbar.Subtitle.Principal</item>

@@ -58,6 +58,7 @@ interface ICierreRepository {
         @Query("fechaInicio") fechaInicio: String,
         @Query("fechaFinal") fechaFinal: String,
         @Query("tipoConsulta") tipoConsulta: String,
-        @Query("codeCia") codeCia: String
+        @Query("codeCia") codeCia: String,
+        @Query("idUsuario") idUsuario: Int
     ): Call<List<mCierre>>
 }

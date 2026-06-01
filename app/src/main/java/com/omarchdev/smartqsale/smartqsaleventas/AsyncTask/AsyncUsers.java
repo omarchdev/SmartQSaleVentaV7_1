@@ -42,6 +42,7 @@ public class AsyncUsers  {
     EditarUsuarioId editarUsuarioId;
     ControladorProcesoCargar controladorProcesoCargar;
     EliminarUsuario eliminarUsuario;
+    ObtenerUsuariosFiltro obtenerUsuariosFiltro;
 
     Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API).client(Constantes.ConfiRetrofitTimeOut.okHttpClient)
             .addConverterFactory(GsonConverterFactory.create()).build();
@@ -375,6 +376,13 @@ public class AsyncUsers  {
 
     }
 
+    public void ObtenerUsuariosFiltro(){
+
+        obtenerUsuariosFiltro=new ObtenerUsuariosFiltro();
+        obtenerUsuariosFiltro.execute();
+
+    }
+
     public interface ListenerObtenerUsuarios{
 
         public void UsuariosObtenidos(List<mUsuario> usuarioList);
@@ -424,6 +432,46 @@ public class AsyncUsers  {
                 else if(mUsuarios.get(0).getIdUsuario()==-98){
                     listenerObtenerUsuarios.ErrorConnection();
                 }else if(mUsuarios.get(0).getIdUsuario()>0){
+                    listenerObtenerUsuarios.UsuariosObtenidos(mUsuarios);
+                }
+            }
+        }
+    }
+
+    private class ObtenerUsuariosFiltro extends AsyncTask<Void,Void,List<mUsuario>>{
+
+        @Override
+        protected List<mUsuario> doInBackground(Void... voids) {
+            try {
+                return iUsuarioRepository.ObtenerUsuariosRegistradosFiltro(Constantes.Empresa.idEmpresa, Constantes.Tienda.idTienda).execute().body();
+            } catch (IOException e) {
+                e.printStackTrace();
+                List<mUsuario> errorList = new ArrayList<>();
+                mUsuario user = new mUsuario();
+                user.setIdUsuario(-98);
+                errorList.add(user);
+                return errorList;
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                List<mUsuario> errorList = new ArrayList<>();
+                mUsuario user = new mUsuario();
+                user.setIdUsuario(-99);
+                errorList.add(user);
+                return errorList;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(List<mUsuario> mUsuarios) {
+            super.onPostExecute(mUsuarios);
+            if(listenerObtenerUsuarios!=null){
+
+                if(mUsuarios.get(0).getIdUsuario()==-99){
+                    listenerObtenerUsuarios.ErrorConsulta();
+                }
+                else if(mUsuarios.get(0).getIdUsuario()==-98){
+                    listenerObtenerUsuarios.ErrorConnection();
+                }else if(mUsuarios.get(0).getIdUsuario()>=0){
                     listenerObtenerUsuarios.UsuariosObtenidos(mUsuarios);
                 }
             }

@@ -9,7 +9,7 @@
     tools:context=".Activitys.ListadoClientes"
   >
 
-    <androidx.appcompat.widget.Toolbar
+    <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         style="@style/AppTheme.Toolbar.Modern"
         android:layout_width="match_parent"
@@ -27,7 +27,7 @@
             app:queryHint="Buscar clientes..."
             app:searchIcon="@drawable/search_icon_color" />
 
-    </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.MaterialToolbar>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
