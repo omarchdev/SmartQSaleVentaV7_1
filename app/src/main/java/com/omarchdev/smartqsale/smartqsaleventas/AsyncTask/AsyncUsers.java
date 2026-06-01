@@ -8,9 +8,19 @@ import com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes;
 import com.omarchdev.smartqsale.smartqsaleventas.Controlador.ControladorProcesoCargar;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mRol;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mUsuario;
+import com.omarchdev.smartqsale.smartqsaleventas.Repository.IUsuarioRepository;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+import static com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes.BASECONN.BASE_URL_API;
+import static com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes.BASECONN.TIPO_CONSULTA;
+import static com.omarchdev.smartqsale.smartqsaleventas.Model.CiaTiendaKt.GetJsonCiaTiendaBase64x3;
+import com.omarchdev.smartqsale.smartqsaleventas.Model.SolicitudEnvio;
 
 /**
  * Created by OMAR CHH on 08/05/2018.
@@ -32,6 +42,11 @@ public class AsyncUsers  {
     EditarUsuarioId editarUsuarioId;
     ControladorProcesoCargar controladorProcesoCargar;
     EliminarUsuario eliminarUsuario;
+
+    Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API).client(Constantes.ConfiRetrofitTimeOut.okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create()).build();
+    IUsuarioRepository iUsuarioRepository = retro.create(IUsuarioRepository.class);
+    final String codeCia = GetJsonCiaTiendaBase64x3();
 
     public void setContext(Context context){
         if(context!=null) {
@@ -379,7 +394,23 @@ public class AsyncUsers  {
 
         @Override
         protected List<mUsuario> doInBackground(Void... voids) {
-            return bdConnectionSql.ObtenerUsuariosRegistrados();
+            try {
+                return iUsuarioRepository.ObtenerUsuariosRegistrados(Constantes.Empresa.idEmpresa, Constantes.Tienda.idTienda).execute().body();
+            } catch (IOException e) {
+                e.printStackTrace();
+                List<mUsuario> errorList = new ArrayList<>();
+                mUsuario user = new mUsuario();
+                user.setIdUsuario(-98);
+                errorList.add(user);
+                return errorList;
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                List<mUsuario> errorList = new ArrayList<>();
+                mUsuario user = new mUsuario();
+                user.setIdUsuario(-99);
+                errorList.add(user);
+                return errorList;
+            }
         }
 
         @Override
@@ -426,15 +457,32 @@ public class AsyncUsers  {
 
         @Override
         protected mUsuario doInBackground(Integer... integers) {
-            return bdConnectionSql.obtenerInformacionUsuario(integers[0]);
+            try {
+                return iUsuarioRepository.ObtenerUsuarioPorId(Constantes.Empresa.idEmpresa, Constantes.Tienda.idTienda, integers[0]).execute().body();
+            } catch (IOException e) {
+                e.printStackTrace();
+                mUsuario usuario = new mUsuario();
+                usuario.setIdUsuario(-98);
+                return usuario;
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                mUsuario usuario = new mUsuario();
+                usuario.setIdUsuario(-99);
+                return usuario;
+            }
         }
 
         @Override
         protected void onPostExecute(mUsuario usuario) {
             super.onPostExecute(usuario);
             if(listenerResultadoUsuarioSolicitado!=null){
-                listenerResultadoUsuarioSolicitado.UsuarioObtenido(usuario);
-
+                if (usuario.getIdUsuario() > 0) {
+                    listenerResultadoUsuarioSolicitado.UsuarioObtenido(usuario);
+                } else if (usuario.getIdUsuario() == -98) {
+                    listenerResultadoUsuarioSolicitado.ErrorConnection();
+                } else {
+                    listenerResultadoUsuarioSolicitado.ErrorObtener();
+                }
             }
         }
     }
@@ -475,7 +523,22 @@ public class AsyncUsers  {
 
         @Override
         protected Byte doInBackground(mUsuario... mUsuarios) {
-            return bdConnectionSql.EditarUsuarioRegistrado(mUsuarios[0]);
+            try {
+                SolicitudEnvio<mUsuario> solicitud = new SolicitudEnvio<>(
+                        codeCia,
+                        TIPO_CONSULTA,
+                        mUsuarios[0],
+                        Constantes.Terminal.idTerminal,
+                        Constantes.Usuario.idUsuario
+                );
+                return iUsuarioRepository.EditarUsuarioRegistrado(solicitud).execute().body();
+            } catch (IOException e) {
+                e.printStackTrace();
+                return (byte) 98;
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                return (byte) 99;
+            }
         }
 
         @Override
@@ -546,8 +609,22 @@ public class AsyncUsers  {
 
         @Override
         protected Byte doInBackground(Integer... integers) {
-            return bdConnectionSql.EliminarUsuario(integers[0]);
-
+                try {
+                SolicitudEnvio<Integer> solicitud = new SolicitudEnvio<>(
+                        codeCia,
+                        TIPO_CONSULTA,
+                        integers[0],
+                        Constantes.Terminal.idTerminal,
+                        Constantes.Usuario.idUsuario
+                );
+                return iUsuarioRepository.EliminarUsuario(solicitud).execute().body();
+            } catch (IOException e) {
+                e.printStackTrace();
+                return (byte) 98;
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                return (byte) 99;
+            }
         }
 
         @Override

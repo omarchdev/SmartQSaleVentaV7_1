@@ -52,4 +52,12 @@ interface ICierreRepository {
 
     @POST("api/Cierre/CerrarCaja")
     fun CerrarCaja(@Body solicitudEnvio: SolicitudEnvio<Int>): Call<Byte>
+
+    @GET("api/Cierre/GetCierresHistorial")
+    fun GetCierresHistorial(
+        @Query("fechaInicio") fechaInicio: String,
+        @Query("fechaFinal") fechaFinal: String,
+        @Query("tipoConsulta") tipoConsulta: String,
+        @Query("codeCia") codeCia: String
+    ): Call<List<mCierre>>
 }

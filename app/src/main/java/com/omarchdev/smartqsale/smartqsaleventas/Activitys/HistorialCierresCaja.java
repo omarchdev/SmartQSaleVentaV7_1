@@ -12,14 +12,22 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.omarchdev.smartqsale.smartqsaleventas.ConexionBd.BdConnectionSql;
+import com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes;
 import com.omarchdev.smartqsale.smartqsaleventas.DialogFragments.DialogDatePickerSelect;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mCierre;
 import com.omarchdev.smartqsale.smartqsaleventas.R;
+import com.omarchdev.smartqsale.smartqsaleventas.Repository.ICierreRepository;
 import com.omarchdev.smartqsale.smartqsaleventas.RvAdapter.RvAdapterHistorialCierres;
 
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
+
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+import static com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes.BASECONN.BASE_URL_API;
+import static com.omarchdev.smartqsale.smartqsaleventas.Model.CiaTiendaKt.GetJsonCiaTiendaBase64x3;
 
 public class HistorialCierresCaja extends ActivityParent implements View.OnClickListener, DialogDatePickerSelect.interfaceFecha, RvAdapterHistorialCierres.ObtenerCierre {
 
@@ -31,7 +39,10 @@ public class HistorialCierresCaja extends ActivityParent implements View.OnClick
     ProgressBar pb;
     RecyclerView rv;
     RvAdapterHistorialCierres rvAdapterHistorialCierres;
-    BdConnectionSql bdConnectionSql = BdConnectionSql.getSinglentonInstance();
+    final String codeCia = GetJsonCiaTiendaBase64x3();
+    Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API).client(Constantes.ConfiRetrofitTimeOut.okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create()).build();
+    ICierreRepository iCierreRepository = retro.create(ICierreRepository.class);
 
     Calendar c = Calendar.getInstance();
 
@@ -183,13 +194,21 @@ public class HistorialCierresCaja extends ActivityParent implements View.OnClick
 
         @Override
         protected List<mCierre> doInBackground(String... strings) {
-            return bdConnectionSql.getCierresHistorial(strings[0], strings[1]);
+            try {
+                return iCierreRepository.GetCierresHistorial(strings[0], strings[1], "2", codeCia).execute().body();
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            }
         }
 
         @Override
         protected void onPostExecute(List<mCierre> mCierres) {
             super.onPostExecute(mCierres);
             if (mCierres != null) {
+                for (mCierre c : mCierres) {
+                    c.ConvierteFechaJSON();
+                }
                 rvAdapterHistorialCierres.AddElement(mCierres);
                 rvAdapterHistorialCierres.notifyDataSetChanged();
             } else if (mCierres == null) {
