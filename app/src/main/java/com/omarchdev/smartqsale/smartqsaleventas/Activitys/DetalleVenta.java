@@ -21,6 +21,18 @@ import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import static com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes.BASECONN.BASE_URL_API;
+import static com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes.BASECONN.TIPO_CONSULTA;
+import static com.omarchdev.smartqsale.smartqsaleventas.Model.CiaTiendaKt.GetJsonCiaTiendaBase64x3;
+
+import com.omarchdev.smartqsale.smartqsaleventas.Model.SolicitudEnvio;
+import com.omarchdev.smartqsale.smartqsaleventas.Model.MotivoAnulacionDto;
+import com.omarchdev.smartqsale.smartqsaleventas.Model.ActualizarNotaDto;
+import com.omarchdev.smartqsale.smartqsaleventas.Repository.IVentaRepository;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import java.io.IOException;
+
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.omarchdev.smartqsale.smartqsaleventas.AsyncTask.AsyncProcesoVenta;
@@ -61,6 +73,10 @@ public class DetalleVenta extends ActivityParent
         implements View.OnClickListener, dfMotivoNota.IMotivoNota, SelectAnulacion.CodeAnulacion {
 
     BdConnectionSql bdConnectionSql = BdConnectionSql.getSinglentonInstance();
+    Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API).client(Constantes.ConfiRetrofitTimeOut.okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create()).build();
+    IVentaRepository iVentaRepository = retro.create(IVentaRepository.class);
+    final String codeCia = GetJsonCiaTiendaBase64x3();
     TextView txtFechaVenta, txtEstadoVenta, txtIdentificador, txtNumFactura, txtNombreCliente;
     TextView txtEstadoDocumentoCpe, txtNombreVendedor, txtValorBruto, txtValorDescuento, txtValorNeto, txtValorCambio;
     RvAdapterDetalleVenta adapter;
@@ -438,27 +454,44 @@ public class DetalleVenta extends ActivityParent
 
         @Override
         protected Byte doInBackground(Void... voids) {
-
-            respuesta = bdConnectionSql.getEstadoVenta(idCabeceraVenta);
-            if (respuesta == 2) {
-                respuesta = bdConnectionSql.cancelarVenta(idCabeceraVenta).getRespuesta();
-            }
-            if (cabeceraVenta.getNumeroCorrelativo() != null && cabeceraVenta.getNumSerie() != null) {
-                if (!cabeceraVenta.getNumSerie().trim().isEmpty() && !cabeceraVenta.getNumeroCorrelativo().trim().isEmpty()) {
-
-                    mDocVenta doc = bdConnectionSql.GenerarNota(idCabeceraVenta, motivo);
-
-                    if (Constantes.ConfigTienda.CodeFacturacion.equals(Constantes.TFacturacion.cNuFactura)) {
-                        HttpConsultas c = new HttpConsultas();
-                        resultadoComprobante = c.GenerarDocumentoElectronicoNubefact(doc);
-                    } else if (Constantes.ConfigTienda.CodeFacturacion.equals(Constantes.TFacturacion.cActFactura)) {
-                        FacturaActivaController facturaActivaController = new FacturaActivaController();
-                        resultadoComprobante = facturaActivaController.EmitirComprobanteElectronico(doc);
-                    }
-
-                    //     bdConnectionSql.ActualizarEstadoNotaGenerada(resultadoComprobante,idCabeceraVenta);
-
+            try {
+                respuesta = iVentaRepository.GetEstadoVenta(codeCia, TIPO_CONSULTA, idCabeceraVenta).execute().body().byteValue();
+                if (respuesta == 2) {
+                    SolicitudEnvio<Integer> solicitud = new SolicitudEnvio<>(
+                        codeCia,
+                        TIPO_CONSULTA,
+                        idCabeceraVenta,
+                        Constantes.Terminal.idTerminal,
+                        Constantes.Usuario.idUsuario
+                    );
+                    respuesta = iVentaRepository.CancelarVenta(solicitud).execute().body().getRespuesta();
                 }
+                if (cabeceraVenta.getNumeroCorrelativo() != null && cabeceraVenta.getNumSerie() != null) {
+                    if (!cabeceraVenta.getNumSerie().trim().isEmpty() && !cabeceraVenta.getNumeroCorrelativo().trim().isEmpty()) {
+                        SolicitudEnvio<MotivoAnulacionDto> solNota = new SolicitudEnvio<>(
+                            codeCia,
+                            TIPO_CONSULTA,
+                            new MotivoAnulacionDto(idCabeceraVenta, motivo),
+                            Constantes.Terminal.idTerminal,
+                            Constantes.Usuario.idUsuario
+                        );
+                        mDocVenta doc = iVentaRepository.GenerarNota(solNota).execute().body();
+
+                        if (Constantes.ConfigTienda.CodeFacturacion.equals(Constantes.TFacturacion.cNuFactura)) {
+                            HttpConsultas c = new HttpConsultas();
+                            resultadoComprobante = c.GenerarDocumentoElectronicoNubefact(doc);
+                        } else if (Constantes.ConfigTienda.CodeFacturacion.equals(Constantes.TFacturacion.cActFactura)) {
+                            FacturaActivaController facturaActivaController = new FacturaActivaController();
+                            resultadoComprobante = facturaActivaController.EmitirComprobanteElectronico(doc);
+                        }
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                respuesta = 0;
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                respuesta = 0;
             }
             return respuesta;
         }
@@ -510,45 +543,77 @@ public class DetalleVenta extends ActivityParent
 
         @Override
         protected Byte doInBackground(Void... voids) {
-            r = bdConnectionSql.VerificarConfigCorrelativosNota();
-            if (r.getPermitir()) {
-                respuesta = bdConnectionSql.getEstadoVenta(idCabeceraVenta);
-                if (respuesta == 2) {
-                }
-                if (cabeceraVenta.getNumeroCorrelativo() != null && cabeceraVenta.getNumSerie() != null) {
-                    if (!cabeceraVenta.getNumSerie().trim().isEmpty() && !cabeceraVenta.getNumeroCorrelativo().trim().isEmpty()) {
+            try {
+                r = iVentaRepository.VerificarConfigCorrelativosNota(codeCia, TIPO_CONSULTA, Constantes.Terminal.idTerminal).execute().body();
+                if (r.getPermitir()) {
+                    respuesta = iVentaRepository.GetEstadoVenta(codeCia, TIPO_CONSULTA, idCabeceraVenta).execute().body().byteValue();
+                    if (cabeceraVenta.getNumeroCorrelativo() != null && cabeceraVenta.getNumSerie() != null) {
+                        if (!cabeceraVenta.getNumSerie().trim().isEmpty() && !cabeceraVenta.getNumeroCorrelativo().trim().isEmpty()) {
 
-                        mDocVenta doc = bdConnectionSql.GenerarNota(idCabeceraVenta, motivo);
+                            SolicitudEnvio<MotivoAnulacionDto> solNota = new SolicitudEnvio<>(
+                                codeCia,
+                                TIPO_CONSULTA,
+                                new MotivoAnulacionDto(idCabeceraVenta, motivo),
+                                Constantes.Terminal.idTerminal,
+                                Constantes.Usuario.idUsuario
+                            );
+                            mDocVenta doc = iVentaRepository.GenerarNota(solNota).execute().body();
 
-                        if (Constantes.ConfigTienda.CodeFacturacion.equals(Constantes.TFacturacion.cNuFactura)) {
-                            HttpConsultas c = new HttpConsultas();
-                            resultadoComprobante = c.GenerarDocumentoElectronicoNubefact(doc);
-                            if (resultadoComprobante.getCodeSuccess() == 200) {
+                            if (Constantes.ConfigTienda.CodeFacturacion.equals(Constantes.TFacturacion.cNuFactura)) {
+                                HttpConsultas c = new HttpConsultas();
+                                resultadoComprobante = c.GenerarDocumentoElectronicoNubefact(doc);
+                                if (resultadoComprobante.getCodeSuccess() == 200) {
+                                    respuesta = 101;
+                                }
+                                SolicitudEnvio<ActualizarNotaDto> solActualizar = new SolicitudEnvio<>(
+                                    codeCia,
+                                    TIPO_CONSULTA,
+                                    new ActualizarNotaDto(idCabeceraVenta, resultadoComprobante),
+                                    Constantes.Terminal.idTerminal,
+                                    Constantes.Usuario.idUsuario
+                                );
+                                iVentaRepository.ActualizarEstadoNotaGenerada(solActualizar).execute();
+                            } else if (Constantes.ConfigTienda.CodeFacturacion.equals(Constantes.TFacturacion.cActFactura)) {
+                                FacturaActivaController facturaActivaController = new FacturaActivaController();
+                                resultadoComprobante = facturaActivaController.EmitirComprobanteElectronico(doc);
+                                if (resultadoComprobante.getCodeSuccess() == 200) {
+                                    respuesta = 101;
+                                }
+                                SolicitudEnvio<ActualizarNotaDto> solActualizar = new SolicitudEnvio<>(
+                                    codeCia,
+                                    TIPO_CONSULTA,
+                                    new ActualizarNotaDto(idCabeceraVenta, resultadoComprobante),
+                                    Constantes.Terminal.idTerminal,
+                                    Constantes.Usuario.idUsuario
+                                );
+                                iVentaRepository.ActualizarEstadoNotaGenerada(solActualizar).execute();
+                            } else if (Constantes.ConfigTienda.CodeFacturacion.equals(Constantes.TFacturacion.cMobileSoftPeru)) {
+                                resultadoComprobante = new ResultadoComprobante();
+                                resultadoComprobante.setCodeSuccess(200);
+                                resultadoComprobante.setEstadoRespuesta("OK");
+                                resultadoComprobante.setMensaje("");
+                                resultadoComprobante.setRecibido(true);
+
+                                SolicitudEnvio<ActualizarNotaDto> solActualizar = new SolicitudEnvio<>(
+                                    codeCia,
+                                    TIPO_CONSULTA,
+                                    new ActualizarNotaDto(idCabeceraVenta, resultadoComprobante),
+                                    Constantes.Terminal.idTerminal,
+                                    Constantes.Usuario.idUsuario
+                                );
+                                iVentaRepository.ActualizarEstadoNotaGenerada(solActualizar).execute();
+
                                 respuesta = 101;
                             }
-                            bdConnectionSql.ActualizarEstadoNotaGenerada(resultadoComprobante, idCabeceraVenta);
-                        } else if (Constantes.ConfigTienda.CodeFacturacion.equals(Constantes.TFacturacion.cActFactura)) {
-                            FacturaActivaController facturaActivaController = new FacturaActivaController();
-                            resultadoComprobante = facturaActivaController.EmitirComprobanteElectronico(doc);
-                            if (resultadoComprobante.getCodeSuccess() == 200) {
-                                respuesta = 101;
-                            }
-                            bdConnectionSql.ActualizarEstadoNotaGenerada(resultadoComprobante, idCabeceraVenta);
-                        } else if (Constantes.ConfigTienda.CodeFacturacion.equals(Constantes.TFacturacion.cMobileSoftPeru)) {
-                            resultadoComprobante = new ResultadoComprobante();
-                            resultadoComprobante.setCodeSuccess(200);
-                            resultadoComprobante.setEstadoRespuesta("OK");
-
-                            resultadoComprobante.setMensaje("");
-                            resultadoComprobante.setRecibido(true);
-                            bdConnectionSql.ActualizarEstadoNotaGenerada(resultadoComprobante, idCabeceraVenta);
-
-                            respuesta = 101;
                         }
-
-
                     }
                 }
+            } catch (IOException e) {
+                e.printStackTrace();
+                respuesta = 0;
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                respuesta = 0;
             }
             return respuesta;
         }
@@ -607,31 +672,46 @@ public class DetalleVenta extends ActivityParent
 
         @Override
         protected Byte doInBackground(Void... voids) {
-            //r=bdConnectionSql.VerificarConfigCorrelativosNota();
-            respuesta = bdConnectionSql.getEstadoVenta(idCabeceraVenta);
-            if (respuesta == 2) {
-                respuesta = bdConnectionSql.cancelarVenta(idCabeceraVenta).getRespuesta();
-            }
-            if (cabeceraVenta.getNumeroCorrelativo() != null && cabeceraVenta.getNumSerie() != null) {
-                if (!cabeceraVenta.getNumSerie().trim().isEmpty() && !cabeceraVenta.getNumeroCorrelativo().trim().isEmpty()) {
-                    mDocVenta doc = bdConnectionSql.AnularDocumento(idCabeceraVenta, motivo);
-                    if (Constantes.ConfigTienda.CodeFacturacion.equals(Constantes.TFacturacion.cNuFactura)) {
-                        HttpConsultas c = new HttpConsultas();
-                        resultadoComprobante = c.AnularDocumento(doc, motivo);
-                    } else if (Constantes.ConfigTienda.CodeFacturacion.equals(Constantes.TFacturacion.cActFactura)) {
-                        FacturaActivaController facturaActivaController = new FacturaActivaController();
-                        if (doc.getCodeResult() == 100) {
-                            resultadoComprobante = facturaActivaController.ComunicacionBajaDocumento(doc, motivo);
-
-                        }
-
-                    }
-                    /*    if(doc.getCodeResult()==100)
-                        bdConnectionSql.ActualizarEstadoComunicacionBaja( idCabeceraVenta,resultadoComprobante);
-*/
+            try {
+                respuesta = iVentaRepository.GetEstadoVenta(codeCia, TIPO_CONSULTA, idCabeceraVenta).execute().body().byteValue();
+                if (respuesta == 2) {
+                    SolicitudEnvio<Integer> solicitud = new SolicitudEnvio<>(
+                        codeCia,
+                        TIPO_CONSULTA,
+                        idCabeceraVenta,
+                        Constantes.Terminal.idTerminal,
+                        Constantes.Usuario.idUsuario
+                    );
+                    respuesta = iVentaRepository.CancelarVenta(solicitud).execute().body().getRespuesta();
                 }
+                if (cabeceraVenta.getNumeroCorrelativo() != null && cabeceraVenta.getNumSerie() != null) {
+                    if (!cabeceraVenta.getNumSerie().trim().isEmpty() && !cabeceraVenta.getNumeroCorrelativo().trim().isEmpty()) {
+                        SolicitudEnvio<MotivoAnulacionDto> solAnulacion = new SolicitudEnvio<>(
+                            codeCia,
+                            TIPO_CONSULTA,
+                            new MotivoAnulacionDto(idCabeceraVenta, motivo),
+                            Constantes.Terminal.idTerminal,
+                            Constantes.Usuario.idUsuario
+                        );
+                        mDocVenta doc = iVentaRepository.AnularDocumento(solAnulacion).execute().body();
+                        if (Constantes.ConfigTienda.CodeFacturacion.equals(Constantes.TFacturacion.cNuFactura)) {
+                            HttpConsultas c = new HttpConsultas();
+                            resultadoComprobante = c.AnularDocumento(doc, motivo);
+                        } else if (Constantes.ConfigTienda.CodeFacturacion.equals(Constantes.TFacturacion.cActFactura)) {
+                            FacturaActivaController facturaActivaController = new FacturaActivaController();
+                            if (doc.getCodeResult() == 100) {
+                                resultadoComprobante = facturaActivaController.ComunicacionBajaDocumento(doc, motivo);
+                            }
+                        }
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                respuesta = 0;
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                respuesta = 0;
             }
-
             return respuesta;
         }
 
@@ -679,7 +759,15 @@ public class DetalleVenta extends ActivityParent
 
         @Override
         protected List<TipoAnulacion> doInBackground(Void... voids) {
-            return bdConnectionSql.ObtenerTiposAnulacionDocumento(idCabeceraVenta);
+            try {
+                return iVentaRepository.ObtenerTiposAnulacionDocumento(codeCia, TIPO_CONSULTA, idCabeceraVenta).execute().body();
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                return null;
+            }
         }
 
         @Override
