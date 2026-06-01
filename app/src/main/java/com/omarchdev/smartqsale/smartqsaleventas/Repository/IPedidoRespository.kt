@@ -21,6 +21,9 @@ interface IPedidoRespository {
     @POST("api/pedido/GuardarPagoTemporal")
     fun GuardarPagoTemporal(@Body solicitudEnvio: SolicitudEnvio<PagoVentaTemp>): Call<ProcessResult<Boolean>>
 
+    @POST("api/pedido/EliminarPagoTemporal")
+    fun EliminarPagoTemporal(@Body solicitudEnvio: SolicitudEnvio<EliminarPagoTemporalDto>): Call<ProcessResult<Boolean>>
+
     @POST("api/pedido/GetPagosTemporalesPedido")
     fun GetPagosTemporalesPedido(@Body solicitudEnvio: SolicitudEnvio<Int>): Call<List<mPagosEnVenta>>
 

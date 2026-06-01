@@ -2,6 +2,18 @@ package com.omarchdev.smartqsale.smartqsaleventas.Activitys;
 
 import static com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes.ParamActivitys.PARAM_ESTADO_PEDIDO_PAGADO;
 import static com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes.ParamActivitys.PARAM_IDPEDIDO;
+import static com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes.BASECONN.BASE_URL_API;
+import static com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes.BASECONN.TIPO_CONSULTA;
+import static com.omarchdev.smartqsale.smartqsaleventas.Model.CiaTiendaKt.GetJsonCiaTiendaBase64x3;
+
+import com.omarchdev.smartqsale.smartqsaleventas.Model.SolicitudEnvio;
+import com.omarchdev.smartqsale.smartqsaleventas.Model.PagoVentaTemp;
+import com.omarchdev.smartqsale.smartqsaleventas.Model.EliminarPagoTemporalDto;
+import com.omarchdev.smartqsale.smartqsaleventas.Model.ProcessResult;
+import com.omarchdev.smartqsale.smartqsaleventas.Repository.IPedidoRespository;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import java.io.IOException;
 
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
@@ -94,6 +106,11 @@ public class DetallePedido extends ActivityParent implements SlidingUpPanelLayou
     BigDecimal saldoPendiente;
     Context context;
     Pedido pedidoResult;
+
+    Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API).client(Constantes.ConfiRetrofitTimeOut.okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create()).build();
+    IPedidoRespository iPedidoRepository = retro.create(IPedidoRespository.class);
+    final String codeCia = GetJsonCiaTiendaBase64x3();
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -527,7 +544,18 @@ public class DetallePedido extends ActivityParent implements SlidingUpPanelLayou
         @Override
         protected Integer doInBackground(Integer... integers) {
 
-            BdConnectionSql.getSinglentonInstance().EliminarPagoTemporalv2(integers[0], integers[1], integers[2]);
+            SolicitudEnvio<EliminarPagoTemporalDto> sol = new SolicitudEnvio<>(
+                    codeCia,
+                    TIPO_CONSULTA,
+                    new EliminarPagoTemporalDto(integers[0], integers[1], integers[2]),
+                    Constantes.Terminal.idTerminal,
+                    Constantes.Usuario.idUsuario
+            );
+            try {
+                iPedidoRepository.EliminarPagoTemporal(sol).execute();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
             return null;
         }
@@ -551,7 +579,29 @@ public class DetallePedido extends ActivityParent implements SlidingUpPanelLayou
 
         @Override
         protected RetornoPagoTemporal doInBackground(mPagosEnVenta... mPagosEnVentas) {
-            return BdConnectionSql.getSinglentonInstance().GuardarPagoTemporal(idCabeceraPedido, mPagosEnVentas[0]);
+            mPagosEnVentas[0].setIdCabeceraPedido(idCabeceraPedido);
+            PagoVentaTemp temp = new PagoVentaTemp(
+                    mPagosEnVentas[0].getIdTipoPago(),
+                    mPagosEnVentas[0].getcTipoPago(),
+                    mPagosEnVentas[0].getTipoPago(),
+                    mPagosEnVentas[0].getCantidadPagada(),
+                    mPagosEnVentas[0].isEsEfectivo(),
+                    mPagosEnVentas[0].isActivaPagoExterno(),
+                    idCabeceraPedido
+            );
+            SolicitudEnvio<PagoVentaTemp> sol = new SolicitudEnvio<>(
+                    codeCia,
+                    TIPO_CONSULTA,
+                    temp,
+                    Constantes.Terminal.idTerminal,
+                    Constantes.Usuario.idUsuario
+            );
+            try {
+                iPedidoRepository.GuardarPagoTemporal(sol).execute();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
         }
 
         @Override
