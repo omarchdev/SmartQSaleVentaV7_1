@@ -34,3 +34,36 @@ data class VentaGeneracion(@SerializedName("idCabeceraPedido") val idCabeceraPed
                            @SerializedName("codigoDetraccion") val codigoDetraccion:String
 
 )
+
+data class VerificarStockRequest(
+    @SerializedName("idAlmacen") val idAlmacen: Int,
+    @SerializedName("productList") val productList: List<mProduct>
+)
+
+data class CompletarTransferenciaRequest(
+    @SerializedName("idMovimiento") val idMovimiento: Int,
+    @SerializedName("descripcion") val descripcion: String,
+    @SerializedName("fechaMov") val fechaMov: String,
+    @SerializedName("fechaTransferencia") val fechaTransferencia: String
+)
+
+data class EliminarAlmacenRequest(
+    @SerializedName("idAlmacen") val idAlmacen: Int,
+    @SerializedName("idTienda") val idTienda: Int
+)
+
+data class MovimientoAlmacenRegistroRequest(
+    @SerializedName("idMovCabecera") val idMovCabecera: Int,
+    @SerializedName("fechaMov") val fechaMov: String,
+    @SerializedName("fechaGuia") val fechaGuia: String,
+    @SerializedName("fechaCompra") val fechaCompra: String,
+    @SerializedName("numRemision") val numRemision: String,
+    @SerializedName("nombreProveedor") val nombreProveedor: String,
+    @SerializedName("idAlmacen") val idAlmacen: Int,
+    @SerializedName("idAlmacenDestino") val idAlmacenDestino: Int,
+    @SerializedName("productList") val productList: List<mProduct>,
+    @SerializedName("metodoGuardar") val metodoGuardar: String,
+    @SerializedName("codTransaccion") val codTransaccion: String,
+    @SerializedName("estadoMov") val estadoMov: String,
+    @SerializedName("movSalida") val movSalida: Boolean
+)

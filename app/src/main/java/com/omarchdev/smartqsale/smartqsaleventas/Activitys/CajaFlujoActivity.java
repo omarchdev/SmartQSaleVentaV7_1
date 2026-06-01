@@ -46,6 +46,8 @@ import com.omarchdev.smartqsale.smartqsaleventas.Model.mResumenTotalVentas;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mVentasPorHora;
 import com.omarchdev.smartqsale.smartqsaleventas.R;
 import com.omarchdev.smartqsale.smartqsaleventas.Repository.ICierreRepository;
+import com.omarchdev.smartqsale.smartqsaleventas.Repository.IUsuarioRepository;
+import com.omarchdev.smartqsale.smartqsaleventas.Model.mUsuario;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -535,6 +537,17 @@ public class CajaFlujoActivity extends ActivityParent implements View.OnClickLis
 
                 cierre = iCierreRepository.getCabeceraCierreCaja(integers[0], TIPO_CONSULTA, codeCia).execute().body();
                 cierre.ConvierteFechaJSON();
+                if (cierre != null && cierre.getIdUsuario() > 0) {
+                    try {
+                        IUsuarioRepository iUsuarioRepository = retro.create(IUsuarioRepository.class);
+                        mUsuario user = iUsuarioRepository.ObtenerUsuarioPorId(Constantes.Empresa.idEmpresa, Constantes.Tienda.idTienda, cierre.getIdUsuario()).execute().body();
+                        if (user != null) {
+                            cierre.setNombreUsuario(user.getNombreUsuario());
+                        }
+                    } catch (Exception uex) {
+                        uex.printStackTrace();
+                    }
+                }
                 resumenTotalVentas = iCierreRepository.ObtenerCabeceraResumen(integers[0], TIPO_CONSULTA, codeCia).execute().body();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -552,6 +565,11 @@ public class CajaFlujoActivity extends ActivityParent implements View.OnClickLis
             flujoCajaresumen.ProcesoCabeceraResumen(mResumenTotalVentas);
             floatingActionsMenu.setVisibility(View.VISIBLE);
             flujoCajaresumen.MostrarPantalla();
+            if (getSupportActionBar() != null && cierre != null && cierre.getNombreUsuario() != null && !cierre.getNombreUsuario().isEmpty()) {
+                getSupportActionBar().setSubtitle("Usuario: " + cierre.getNombreUsuario());
+            } else if (getSupportActionBar() != null) {
+                getSupportActionBar().setSubtitle(null);
+            }
             if (cierre.getEstadoCierre().equals("A")) {
                 btnAbrirCaja.setVisibility(View.GONE);
             } else if (cierre.getEstadoCierre().equals("C")) {

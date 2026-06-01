@@ -6,13 +6,16 @@ import static com.omarchdev.smartqsale.smartqsaleventas.Model.CiaTiendaKt.GetJso
 
 import android.os.AsyncTask;
 
-import com.omarchdev.smartqsale.smartqsaleventas.ConexionBd.BdConnectionSql;
 import com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mAlmacen;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mMovAlmacen;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mProduct;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mTransaccionAlmacen;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mTransacciones_Almacen;
+import com.omarchdev.smartqsale.smartqsaleventas.Model.SolicitudEnvio;
+import com.omarchdev.smartqsale.smartqsaleventas.Model.CompletarTransferenciaRequest;
+import com.omarchdev.smartqsale.smartqsaleventas.Model.EliminarAlmacenRequest;
+import com.omarchdev.smartqsale.smartqsaleventas.Model.MovimientoAlmacenRegistroRequest;
 import com.omarchdev.smartqsale.smartqsaleventas.Repository.IAlmacenesRepository;
 
 import java.io.IOException;
@@ -24,7 +27,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AsyncAlmacenes {
 
-    BdConnectionSql bdConnectionSql = BdConnectionSql.getSinglentonInstance();
     ListenerAlmacenes listenerAlmacenes;
     BusquedaAlmacenes busquedaAlmacenes;
     ObtenerMovAlmacenes obtenerMovAlmacenes;
@@ -294,75 +296,34 @@ public class AsyncAlmacenes {
 
         @Override
         protected Byte doInBackground(Void... voids) {
-
-            if (estadoMov.equals("N")) {
-                if (MetodoGuardar.equals("P")) {
-                    if (MovSalida) {
-                        respuesta = bdConnectionSql.VerificarTipoAlmacen(idAlmacen);
-                        if (respuesta == 40) {
-
-                            productosVerificar = bdConnectionSql.VerificarStockAlmacen(idAlmacen, productList);
-                        } else if (respuesta == 50) {
-                            productosVerificar = bdConnectionSql.consultarProductosDisponibles(idAlmacen, productList);
-
-                        }
-                        for (int i = 0; i < productosVerificar.size(); i++) {
-                            for (int a = 0; a < productList.size(); a++) {
-                                if (productosVerificar.get(i).getIdProduct() == productList.get(a).getIdProduct()) {
-                                    if (productosVerificar.get(i).getdQuantity() < productList.get(a).getdQuantity()) {
-                                        permitirCantidad = false;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    if (permitirCantidad) {
-                        respuesta = bdConnectionSql.GuardarIngresoAlmacenProcesarCompra(fechaMov,
-                                fechaGuia, fechaCompra,
-                                numRemision, nombreProveedor,
-                                idAlmacen, idAlmacenDestino, productList,
-                                codTransaccion, MovSalida);
-                    } else {
-                        respuesta = 50;
-                    }
-                } else if (MetodoGuardar.equals("A")) {
-                    respuesta = bdConnectionSql.GuardarMovAlmacenSinProcesar(fechaMov,
-                            fechaGuia, fechaCompra,
-                            numRemision, nombreProveedor, idAlmacen, idAlmacenDestino, productList, codTransaccion);
-                }
-            } else if (estadoMov.equals("E")) {
-                if (MetodoGuardar.equals("P")) {
-                    if (MovSalida) {
-                        respuesta = bdConnectionSql.VerificarTipoAlmacen(idAlmacen);
-                        if (respuesta == 50) {
-                            productosVerificar = bdConnectionSql.consultarProductosDisponibles(idAlmacen, productList);
-                            for (int i = 0; i < productosVerificar.size(); i++) {
-                                for (int a = 0; a < productList.size(); a++) {
-                                    if (productosVerificar.get(i).getIdProduct() == productList.get(a).getIdProduct()) {
-                                        if (productosVerificar.get(i).getdQuantity() < productList.get(a).getdQuantity()) {
-                                            permitirCantidad = false;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    if (permitirCantidad) {
-                        respuesta = bdConnectionSql.EditarMovAlmacenProcesar(idMovCabecera, fechaMov,
-                                fechaGuia, fechaCompra, numRemision, nombreProveedor, idAlmacen, idAlmacenDestino, productList,
-                                codTransaccion, MovSalida);
-                    } else {
-                        respuesta = 50;
-                    }
-
-                } else if (MetodoGuardar.equals("A")) {
-                    respuesta = bdConnectionSql.EditarMovAlmacenSinProcesar(idMovCabecera, fechaMov,
-                            fechaGuia, fechaCompra, numRemision, nombreProveedor, idAlmacen, idAlmacenDestino, productList,
-                            codTransaccion);
-                }
+            try {
+                MovimientoAlmacenRegistroRequest data = new MovimientoAlmacenRegistroRequest(
+                    idMovCabecera,
+                    fechaMov,
+                    fechaGuia,
+                    fechaCompra,
+                    numRemision,
+                    nombreProveedor,
+                    idAlmacen,
+                    idAlmacenDestino,
+                    productList,
+                    MetodoGuardar,
+                    codTransaccion,
+                    estadoMov,
+                    MovSalida
+                );
+                SolicitudEnvio<MovimientoAlmacenRegistroRequest> request = new SolicitudEnvio<>(
+                    ciaCode,
+                    TIPO_CONSULTA,
+                    data,
+                    Constantes.Terminal.idTerminal,
+                    Constantes.Usuario.idUsuario
+                );
+                return iAlmacenesRepository.RegistrarMovimientoAlmacen(request).execute().body();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return (byte) 98;
             }
-
-            return respuesta;
         }
 
         @Override
@@ -421,12 +382,17 @@ public class AsyncAlmacenes {
 
         @Override
         protected Void doInBackground(Integer... integers) {
-
-            cabeceraMov = bdConnectionSql.ObtenerCabeceraMovimiento(integers[0]);
-            if (cabeceraMov.getIdMovAlmacen() > 0) {
-                productList = bdConnectionSql.productListMovAlmacen(integers[0]);
+            try {
+                cabeceraMov = iAlmacenesRepository.ObtenerCabeceraMovimiento(integers[0], ciaCode, TIPO_CONSULTA).execute().body();
+                if (cabeceraMov != null && cabeceraMov.getIdMovAlmacen() > 0) {
+                    List<mProduct> tempProducts = iAlmacenesRepository.ObtenerProductosMovimiento(integers[0], ciaCode, TIPO_CONSULTA).execute().body();
+                    productList = tempProducts != null ? new ArrayList<>(tempProducts) : new ArrayList<>();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                cabeceraMov = new mMovAlmacen();
+                cabeceraMov.setIdMovAlmacen(98);
             }
-
             return null;
         }
 
@@ -479,7 +445,12 @@ public class AsyncAlmacenes {
 
         @Override
         protected List<mTransacciones_Almacen> doInBackground(Void... voids) {
-            return bdConnectionSql.ObtenerTransaccionesAlmacen();
+            try {
+                return iAlmacenesRepository.ObtenerTransaccionesAlmacen(ciaCode, TIPO_CONSULTA).execute().body();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
         }
 
         @Override
@@ -531,8 +502,12 @@ public class AsyncAlmacenes {
 
         @Override
         protected List<mMovAlmacen> doInBackground(Integer... integers) {
-
-            return bdConnectionSql.ObtenerTranferenciasAlmacen(integers[0]);
+            try {
+                return iAlmacenesRepository.ObtenerTransferenciasAlmacen(integers[0], ciaCode, TIPO_CONSULTA).execute().body();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
         }
 
         @Override
@@ -568,7 +543,12 @@ public class AsyncAlmacenes {
 
         @Override
         protected List<mProduct> doInBackground(Integer... integers) {
-            return bdConnectionSql.productListMovAlmacen(integers[0]);
+            try {
+                return iAlmacenesRepository.ObtenerProductosMovimiento(integers[0], ciaCode, TIPO_CONSULTA).execute().body();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
         }
 
         @Override
@@ -636,7 +616,20 @@ public class AsyncAlmacenes {
 
         @Override
         protected Byte doInBackground(Void... voids) {
-            return bdConnectionSql.CompletarTranferenciaAlmacen(idMovimiento, descripcion, fechaMov, fechaTranferencia);
+            try {
+                CompletarTransferenciaRequest data = new CompletarTransferenciaRequest(idMovimiento, descripcion, fechaMov, fechaTranferencia);
+                SolicitudEnvio<CompletarTransferenciaRequest> request = new SolicitudEnvio<>(
+                    ciaCode,
+                    TIPO_CONSULTA,
+                    data,
+                    Constantes.Terminal.idTerminal,
+                    Constantes.Usuario.idUsuario
+                );
+                return iAlmacenesRepository.CompletarTransferenciaAlmacen(request).execute().body();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return (byte) 98;
+            }
         }
 
         @Override
@@ -683,7 +676,12 @@ public class AsyncAlmacenes {
 
         @Override
         protected List<mTransaccionAlmacen> doInBackground(Void... voids) {
-            return bdConnectionSql.obtenerTipoTransacciones();
+            try {
+                return iAlmacenesRepository.ObtenerTipoTransaccionesAlmacen(ciaCode, TIPO_CONSULTA).execute().body();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
         }
 
         @Override
@@ -749,7 +747,19 @@ public class AsyncAlmacenes {
 
         @Override
         protected Byte doInBackground(mAlmacen... mAlmacens) {
-            return bdConnectionSql.EditarAlmacen(mAlmacens[0]);
+            try {
+                SolicitudEnvio<mAlmacen> request = new SolicitudEnvio<>(
+                    ciaCode,
+                    TIPO_CONSULTA,
+                    mAlmacens[0],
+                    Constantes.Terminal.idTerminal,
+                    Constantes.Usuario.idUsuario
+                );
+                return iAlmacenesRepository.EditarAlmacen(request).execute().body();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return (byte) 98;
+            }
         }
 
         @Override
@@ -777,7 +787,19 @@ public class AsyncAlmacenes {
 
         @Override
         protected Byte doInBackground(mAlmacen... mAlmacens) {
-            return bdConnectionSql.GuardarAlmacen(mAlmacens[0]);
+            try {
+                SolicitudEnvio<mAlmacen> request = new SolicitudEnvio<>(
+                    ciaCode,
+                    TIPO_CONSULTA,
+                    mAlmacens[0],
+                    Constantes.Terminal.idTerminal,
+                    Constantes.Usuario.idUsuario
+                );
+                return iAlmacenesRepository.GuardarAlmacen(request).execute().body();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return (byte) 98;
+            }
         }
 
         @Override
@@ -821,7 +843,14 @@ public class AsyncAlmacenes {
 
         @Override
         protected mAlmacen doInBackground(Integer... integers) {
-            return bdConnectionSql.obtenerAlmacen(integers[0]);
+            try {
+                return iAlmacenesRepository.ObtenerAlmacenId(integers[0], ciaCode, TIPO_CONSULTA).execute().body();
+            } catch (Exception e) {
+                e.printStackTrace();
+                mAlmacen err = new mAlmacen();
+                err.setIdAlmacen(-98);
+                return err;
+            }
         }
 
         @Override
@@ -869,7 +898,20 @@ public class AsyncAlmacenes {
 
         @Override
         protected Byte doInBackground(Integer... integers) {
-            return bdConnectionSql.eliminarAlmacen(integers[0], integers[1]);
+            try {
+                EliminarAlmacenRequest data = new EliminarAlmacenRequest(integers[0], integers[1]);
+                SolicitudEnvio<EliminarAlmacenRequest> request = new SolicitudEnvio<>(
+                    ciaCode,
+                    TIPO_CONSULTA,
+                    data,
+                    Constantes.Terminal.idTerminal,
+                    Constantes.Usuario.idUsuario
+                );
+                return iAlmacenesRepository.EliminarAlmacen(request).execute().body();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return (byte) 98;
+            }
         }
 
         @Override
@@ -908,7 +950,19 @@ public class AsyncAlmacenes {
     private class AtAnularMovAlmacen extends AsyncTask<Integer, Void, Byte> {
         @Override
         protected Byte doInBackground(Integer... integers) {
-            return bdConnectionSql.AnularMovimientoAlmacen(integers[0]);
+            try {
+                SolicitudEnvio<Integer> request = new SolicitudEnvio<>(
+                    ciaCode,
+                    TIPO_CONSULTA,
+                    integers[0],
+                    Constantes.Terminal.idTerminal,
+                    Constantes.Usuario.idUsuario
+                );
+                return iAlmacenesRepository.AnularMovimientoAlmacen(request).execute().body();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return (byte) 98;
+            }
         }
 
         @Override

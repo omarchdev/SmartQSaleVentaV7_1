@@ -97,7 +97,9 @@
         <activity
             android:name=".Activitys.PedidosEnReserva"
             android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity android:name=".Activitys.DetallePedido" />
+        <activity
+            android:name=".Activitys.DetallePedido"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activitys.TestActivityPrintHtml" />
         <activity android:name=".Activitys.HistorialVentas"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -128,7 +130,9 @@
             android:label="@string/title_activity_caja_flujo"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activitys.ChartActivity" />
-        <activity android:name=".Activitys.HistorialCierresCaja" />
+        <activity
+            android:name=".Activitys.HistorialCierresCaja"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Fragment.ScrollingActivity"
             android:label="@string/title_activity_scrolling"

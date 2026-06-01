@@ -27,6 +27,7 @@ public class mCierre {
     private String descripcionEstado;
     private int numTransacciones;
     private int idUsuario;
+    private String nombreUsuario;
 /*    @SerializedName("fechaApertura")
     private String fechaAperturaTemp;
     @SerializedName("fechaCierre")
@@ -69,6 +70,7 @@ public class mCierre {
         fechaCierre = new Timestamp(lnMilisegundos);
         numTransacciones=0;
         idUsuario = 0;
+        nombreUsuario = "";
     }
 
     public int getNumTransacciones() {
@@ -85,6 +87,14 @@ public class mCierre {
 
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
     }
 
     public int getIdCierre() {

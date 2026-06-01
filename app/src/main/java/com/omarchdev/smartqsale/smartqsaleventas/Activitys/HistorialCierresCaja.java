@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 import android.widget.Button;
@@ -57,6 +58,8 @@ public class HistorialCierresCaja extends ActivityParent implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historial_cierres_caja);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         pb=findViewById(R.id.pb);
 
         btnFechaInicio = (Button) findViewById(R.id.btnFechaInicio);
@@ -86,12 +89,13 @@ public class HistorialCierresCaja extends ActivityParent implements View.OnClick
 
         rvAdapterHistorialCierres.setObtenerCierre(this);
 
-        getSupportActionBar().setTitle("Listado artículos");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Historial de caja");
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back_home);
-        getSupportActionBar().setElevation(4);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle("Historial de caja");
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back_home);
+            getSupportActionBar().setElevation(4);
+        }
 
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setHasFixedSize(false);
