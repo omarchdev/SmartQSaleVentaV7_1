@@ -28,6 +28,7 @@ import static com.omarchdev.smartqsale.smartqsaleventas.Model.CiaTiendaKt.GetJso
 import com.omarchdev.smartqsale.smartqsaleventas.Model.SolicitudEnvio;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.MotivoAnulacionDto;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.ActualizarNotaDto;
+import com.omarchdev.smartqsale.smartqsaleventas.Model.mRespuestaVenta;
 import com.omarchdev.smartqsale.smartqsaleventas.Repository.IVentaRepository;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -320,19 +321,23 @@ public class DetalleVenta extends ActivityParent
 
         @Override
         protected mCabeceraVenta doInBackground(Integer... integers) {
-
-            Venta venta = bdConnectionSql.ObtenerVentaId(integers[0]);
-            cabeceraVenta = venta.getCabeceraVenta();
-            listaP = venta.getProductosVenta();
-            //cabeceraVenta=bdConnectionSql.getCabeceraVentaID(integers[0]);
-            // venta = bdConnectionSql.getCabeceraVenta(integers[0]);
-            if (cabeceraVenta != null) {
-                // listaP=bdConnectionSql.ObtenerDetalleVentaV2(cabeceraVenta.getIdVenta());
-                listPagosVenta = bdConnectionSql.getPagosVenta(cabeceraVenta.getIdVenta());
-
+            try {
+                mRespuestaVenta respuestaVenta = iVentaRepository.ObtenerVentaId(codeCia, TIPO_CONSULTA, integers[0]).execute().body();
+                if (respuestaVenta != null) {
+                    cabeceraVenta = respuestaVenta.getCabeceraVenta();
+                    listaP = respuestaVenta.getList();
+                    if (cabeceraVenta != null) {
+                        listPagosVenta = iVentaRepository.GetPagosVenta(codeCia, TIPO_CONSULTA, cabeceraVenta.getIdVenta()).execute().body();
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                cabeceraVenta = null;
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                cabeceraVenta = null;
             }
             return cabeceraVenta;
-
         }
 
 

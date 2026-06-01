@@ -66,4 +66,18 @@ interface IVentaRepository {
 
     @POST("api/venta/AnularDocumento")
     fun AnularDocumento(@Body solicitudEnvio: SolicitudEnvio<MotivoAnulacionDto>): Call<mDocVenta>
+
+    @GET("api/venta/ObtenerVentaId")
+    fun ObtenerVentaId(
+        @Query("ciaCode") codeCia: String,
+        @Query("tipo") tipo: String,
+        @Query("idCabeceraVenta") idCabeceraVenta: Int
+    ): Call<mRespuestaVenta>
+
+    @GET("api/venta/GetPagosVenta")
+    fun GetPagosVenta(
+        @Query("ciaCode") codeCia: String,
+        @Query("tipo") tipo: String,
+        @Query("idCabeceraVenta") idCabeceraVenta: Int
+    ): Call<List<mPagosEnVenta>>
 }
