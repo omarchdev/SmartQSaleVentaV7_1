@@ -319,7 +319,22 @@ public class AsyncVendedores {
 
         @Override
         protected Byte doInBackground(Integer... integers) {
-            return bdConnectionSql.EliminarVendedor(integers[0]);
+            try {
+                SolicitudEnvio<Integer> solicitud = new SolicitudEnvio<>(
+                        codeCia,
+                        TIPO_CONSULTA,
+                        integers[0],
+                        Constantes.Terminal.idTerminal,
+                        Constantes.Usuario.idUsuario
+                );
+                return iVendedorRepository.EliminarVendedor(solicitud).execute().body();
+            } catch (IOException e) {
+                e.printStackTrace();
+                return (byte) 99;
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                return (byte) 99;
+            }
         }
 
         @Override

@@ -26,4 +26,7 @@ interface IVendedorRepository {
     @POST("api/Vendedor/RegistroVendedor")
     fun RegistroVendedor(@Body solicitudEnvio: SolicitudEnvio<mVendedor>): Call<Byte>
 
+    @POST("api/Vendedor/EliminarVendedor")
+    fun EliminarVendedor(@Body solicitudEnvio: SolicitudEnvio<Int>): Call<Byte>
+
 }
