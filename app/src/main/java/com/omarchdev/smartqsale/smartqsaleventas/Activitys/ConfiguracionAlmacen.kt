@@ -6,14 +6,17 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.CheckBox
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
+import com.google.android.material.textfield.TextInputLayout
 import com.omarchdev.smartqsale.smartqsaleventas.AsyncTask.AsyncAlmacenes
 import com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes
 import com.omarchdev.smartqsale.smartqsaleventas.Controlador.ControladorProcesoCargar
 import com.omarchdev.smartqsale.smartqsaleventas.Fragment.SelectTienda
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mAlmacen
 import com.omarchdev.smartqsale.smartqsaleventas.R
-import kotlinx.android.synthetic.main.activity_configuracion_almacen.*
 
 class ConfiguracionAlmacen : ActivityParent(), SelectTienda.TiendaInterface {
     override fun TiendaPorDefecto() {
@@ -36,6 +39,10 @@ class ConfiguracionAlmacen : ActivityParent(), SelectTienda.TiendaInterface {
     val context=this
     private lateinit var menuSaveItem: MenuItem
     private lateinit var menuEliminar: MenuItem
+
+    lateinit var edtNombreAlmacen: TextInputLayout
+    lateinit var txtSeleccionTienda: TextView
+    lateinit var cbAlmacenP: CheckBox
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_configuracion_almacen,menu)
@@ -112,6 +119,14 @@ class ConfiguracionAlmacen : ActivityParent(), SelectTienda.TiendaInterface {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_configuracion_almacen)
+
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
+        edtNombreAlmacen = findViewById(R.id.edtNombreAlmacen)
+        txtSeleccionTienda = findViewById(R.id.txtSeleccionTienda)
+        cbAlmacenP = findViewById(R.id.cbAlmacenP)
+
         estadoConfig=intent.getIntExtra("estadoConfig",0)
         almacen.idAlmacen=intent.getIntExtra("idAlmacen",0)
         supportActionBar?.setDisplayShowHomeEnabled(true)

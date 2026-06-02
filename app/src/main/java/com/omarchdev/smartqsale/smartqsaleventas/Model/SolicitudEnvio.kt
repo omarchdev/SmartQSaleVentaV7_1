@@ -67,3 +67,17 @@ data class MovimientoAlmacenRegistroRequest(
     @SerializedName("estadoMov") val estadoMov: String,
     @SerializedName("movSalida") val movSalida: Boolean
 )
+
+data class CancelarPagoCtaCteRequest(
+    @SerializedName("idCtaCte") val idCtaCte: Int,
+    @SerializedName("idCliente") val idCliente: Int,
+    @SerializedName("idTienda") val idTienda: Int
+)
+
+data class ProcesarPagoCtaCteRequest(
+    @SerializedName("monto") val monto: BigDecimal,
+    @SerializedName("idMetodoPago") val idMetodoPago: Int,
+    @SerializedName("cObservacion") val cObservacion: String,
+    @SerializedName("idCliente") val idCliente: Int,
+    @SerializedName("idTienda") val idTienda: Int
+)

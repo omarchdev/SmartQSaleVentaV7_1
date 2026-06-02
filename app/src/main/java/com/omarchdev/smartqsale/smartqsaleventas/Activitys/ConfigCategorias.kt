@@ -12,6 +12,7 @@ import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.omarchdev.smartqsale.smartqsaleventas.AsyncTask.AsyncCategoria
 import com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mCategoriaProductos
@@ -44,6 +45,10 @@ class ConfigCategorias : AppCompatActivity(), AsyncCategoria.ListenerCategoria, 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_config_categorias)
+
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.title = "Configuracion de categorías"
         supportActionBar!!.setDisplayShowHomeEnabled(true)

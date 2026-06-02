@@ -70,7 +70,18 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/txtEstadoCierre"
                         android:layout_marginTop="4dp"
+                        android:textSize="16sp"
                         android:text="Periodo seleccionado"
+                        android:textColor="@color/gray_600" />
+
+                    <TextView
+                        android:id="@+id/txtUsuarioCaja"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtPeriodoCaja"
+                        android:layout_marginTop="4dp"
+                        android:textSize="16sp"
+                        android:text="Usuario : "
                         android:textColor="@color/gray_600" />
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>

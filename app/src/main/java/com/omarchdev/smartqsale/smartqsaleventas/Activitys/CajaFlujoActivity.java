@@ -562,7 +562,7 @@ public class CajaFlujoActivity extends ActivityParent implements View.OnClickLis
         protected void onPostExecute(mResumenTotalVentas mResumenTotalVentas) {
 
             super.onPostExecute(mResumenTotalVentas);
-            flujoCajaresumen.ProcesoCabeceraResumen(mResumenTotalVentas);
+            flujoCajaresumen.ProcesoCabeceraResumen(mResumenTotalVentas,cierre);
             floatingActionsMenu.setVisibility(View.VISIBLE);
             flujoCajaresumen.MostrarPantalla();
             if (getSupportActionBar() != null && cierre != null && cierre.getNombreUsuario() != null && !cierre.getNombreUsuario().isEmpty()) {

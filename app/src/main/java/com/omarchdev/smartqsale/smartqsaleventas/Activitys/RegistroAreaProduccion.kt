@@ -71,6 +71,10 @@ class RegistroAreaProduccion : ActivityParent(),AsyncAreasProduccion.ListenerObt
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro_area_produccion)
+
+        val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
         Estado=intent.getIntExtra("accion",Constantes.EstadoConfiguracion.Visualizar)
         asyncAreasProduccion.listenerObtenerAreaProduccion=this
         asyncAreasProduccion.listenerGuardarAreaProduccion=this

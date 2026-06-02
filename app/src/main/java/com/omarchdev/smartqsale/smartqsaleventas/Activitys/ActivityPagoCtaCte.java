@@ -26,7 +26,14 @@ import com.omarchdev.smartqsale.smartqsaleventas.DialogFragments.DialogDatePicke
 import com.omarchdev.smartqsale.smartqsaleventas.DialogFragments.DialogPagoCtaCte;
 import com.omarchdev.smartqsale.smartqsaleventas.MedioPagoSpinnerAdapter;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mMedioPago;
+import com.omarchdev.smartqsale.smartqsaleventas.Model.SolicitudEnvio;
+import com.omarchdev.smartqsale.smartqsaleventas.Model.ProcesarPagoCtaCteRequest;
+import com.omarchdev.smartqsale.smartqsaleventas.Repository.IClienteRepository;
 import com.omarchdev.smartqsale.smartqsaleventas.R;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import static com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes.BASECONN.BASE_URL_API;
+import static com.omarchdev.smartqsale.smartqsaleventas.Model.CiaTiendaKt.GetJsonCiaTiendaBase64x3;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
@@ -39,6 +46,9 @@ public class ActivityPagoCtaCte extends ActivityParent implements DialogPagoCtaC
     int idMetodoPago;
     int dia, mes, anio, fecha;
     BdConnectionSql bdConnectionSql;
+    Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API).client(Constantes.ConfiRetrofitTimeOut.okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create()).build();
+    IClienteRepository iClienteRepository = retro.create(IClienteRepository.class);
     Button btnIngresarMonto, btnConfirmarPago, btnElegirFecha;
     Spinner spinnerMedioPago;
     TextInputLayout edtObservacion;
@@ -68,6 +78,10 @@ public class ActivityPagoCtaCte extends ActivityParent implements DialogPagoCtaC
         txtMonto = (TextView) findViewById(R.id.txtMonto);
         pagoCtaCte = new DialogPagoCtaCte();
         pagoCtaCte.setListenerCalculadoraPago(this);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         edtObservacion.getEditText().setText("");
         btnIngresarMonto.setOnClickListener(this);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -263,7 +277,32 @@ public class ActivityPagoCtaCte extends ActivityParent implements DialogPagoCtaC
 
         @Override
         protected Byte doInBackground(Void... voids) {
-            return bdConnectionSql.ProcesarPagoCtaCte(monto, idMetodoPago, edtObservacion.getEditText().getText().toString(), idCliente);
+            String codeCia = GetJsonCiaTiendaBase64x3();
+            ProcesarPagoCtaCteRequest data = new ProcesarPagoCtaCteRequest(
+                monto,
+                idMetodoPago,
+                edtObservacion.getEditText().getText().toString(),
+                idCliente,
+                Constantes.Tienda.idTienda
+            );
+            SolicitudEnvio<ProcesarPagoCtaCteRequest> solicitud = new SolicitudEnvio<>(
+                codeCia,
+                "2",
+                data,
+                Constantes.Terminal.idTerminal,
+                Constantes.Usuario.idUsuario
+            );
+            try {
+                retrofit2.Response<Byte> response = iClienteRepository.ProcesarPagoCtaCte(solicitud).execute();
+                if (response.isSuccessful() && response.body() != null) {
+                    return response.body();
+                } else {
+                    return (byte) 100;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                return (byte) 0; // Return 0 if connection fails or error occurs
+            }
         }
 
         @Override

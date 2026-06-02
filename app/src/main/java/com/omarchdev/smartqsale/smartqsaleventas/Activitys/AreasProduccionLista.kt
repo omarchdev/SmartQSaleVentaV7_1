@@ -45,6 +45,10 @@ class AreasProduccionLista : ActivityParent(),AsyncAreasProduccion.ListenerAreas
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_areas_produccion_lista)
+
+        val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
         adapter= RvAdapterAreasProduccion(areasProduccion)
         asyncAreasProduccion.listenerAreasProduccion=this
         adapter?.clickListener=this

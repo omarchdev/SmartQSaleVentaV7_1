@@ -1,6 +1,7 @@
 package com.omarchdev.smartqsale.smartqsaleventas.Activitys;
 
 import android.content.Intent;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import android.os.Bundle;
@@ -29,6 +30,9 @@ public class ListadoMedioPago extends ActivityParent implements AsyncMedioPago.L
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listado_medio_pago);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         rvMedioPago=findViewById(R.id.rvMedioPago);
         rvMedioPago.setLayoutManager(new LinearLayoutManager(this));
         fbMedioPago=findViewById(R.id.fbMedioPago);
@@ -41,10 +45,12 @@ public class ListadoMedioPago extends ActivityParent implements AsyncMedioPago.L
         rvAdapterMedioPago.setListenerListadoMP(this);
 
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Medios de Pago");
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back_home);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle("Medios de Pago");
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back_home);
+        }
 
         fbMedioPago.setVisibility(View.GONE);
     }
@@ -68,9 +74,6 @@ public class ListadoMedioPago extends ActivityParent implements AsyncMedioPago.L
             this.medioPagoList.clear();
             this.medioPagoList.addAll(medioPagoList);
             rvAdapterMedioPago.AgregarDatos(this.medioPagoList);
-        }
-        else{
-
         }
     }
 

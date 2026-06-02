@@ -22,8 +22,15 @@ import com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.CtaCteCliente;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.DetalleCuentaCorriente;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mCustomer;
+import com.omarchdev.smartqsale.smartqsaleventas.Model.SolicitudEnvio;
+import com.omarchdev.smartqsale.smartqsaleventas.Model.CancelarPagoCtaCteRequest;
+import com.omarchdev.smartqsale.smartqsaleventas.Repository.IClienteRepository;
 import com.omarchdev.smartqsale.smartqsaleventas.R;
 import com.omarchdev.smartqsale.smartqsaleventas.RvAdapter.RvAdapterDetalleCtaCte;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import static com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes.BASECONN.BASE_URL_API;
+import static com.omarchdev.smartqsale.smartqsaleventas.Model.CiaTiendaKt.GetJsonCiaTiendaBase64x3;
 
 import java.util.List;
 
@@ -33,6 +40,9 @@ public class Activity_cta_x_cliente extends ActivityParent implements RvAdapterD
     RecyclerView rv;
     RvAdapterDetalleCtaCte adapterDetalleCtaCte;
     BdConnectionSql bdConnectionSql = BdConnectionSql.getSinglentonInstance();
+    Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API).client(Constantes.ConfiRetrofitTimeOut.okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create()).build();
+    IClienteRepository iClienteRepository = retro.create(IClienteRepository.class);
     int idCliente;
     int idCtaCte;
     Dialog dialog;
@@ -201,10 +211,18 @@ public class Activity_cta_x_cliente extends ActivityParent implements RvAdapterD
 
         @Override
         protected List<DetalleCuentaCorriente> doInBackground(Integer... integers) {
-       //     saldo = bdConnectionSql.getSaldoCliente(idCliente);
-            CtaCteCliente ctaCteCliente=bdConnectionSql.ObtenerCtaCteCorriente(idCliente);
-            saldo= Constantes.DivisaPorDefecto.SimboloDivisa +String.format("%.2f",ctaCteCliente.getSaldoCliente());
-            return ctaCteCliente.getListaCuentaCorrient();
+            String codeCia = GetJsonCiaTiendaBase64x3();
+            try {
+                retrofit2.Response<CtaCteCliente> response = iClienteRepository.ObtenerCtaCteCorriente("2", codeCia, idCliente).execute();
+                if (response.isSuccessful() && response.body() != null) {
+                    CtaCteCliente ctaCteCliente = response.body();
+                    saldo = Constantes.DivisaPorDefecto.SimboloDivisa + String.format("%.2f", ctaCteCliente.getSaldoCliente());
+                    return ctaCteCliente.getListaCuentaCorrient();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
         }
 
 
@@ -238,7 +256,26 @@ public class Activity_cta_x_cliente extends ActivityParent implements RvAdapterD
 
         @Override
         protected Byte doInBackground(Integer... integers) {
-            return bdConnectionSql.CancelarPagoCtaCte(integers[0], integers[1]);
+            String codeCia = GetJsonCiaTiendaBase64x3();
+            CancelarPagoCtaCteRequest data = new CancelarPagoCtaCteRequest(integers[0], integers[1], Constantes.Tienda.idTienda);
+            SolicitudEnvio<CancelarPagoCtaCteRequest> solicitud = new SolicitudEnvio<>(
+                codeCia,
+                "2",
+                data,
+                Constantes.Terminal.idTerminal,
+                Constantes.Usuario.idUsuario
+            );
+            try {
+                retrofit2.Response<Byte> response = iClienteRepository.CancelarPagoCtaCte(solicitud).execute();
+                if (response.isSuccessful() && response.body() != null) {
+                    return response.body();
+                } else {
+                    return (byte) 100;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                return (byte) 99;
+            }
         }
 
         @Override

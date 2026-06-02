@@ -3,14 +3,23 @@ package com.omarchdev.smartqsale.smartqsaleventas.Activitys
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.ProgressBar
+import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.omarchdev.smartqsale.smartqsaleventas.AsyncTask.AsyncAlmacenes
 import com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mAlmacen
 import com.omarchdev.smartqsale.smartqsaleventas.R
 import com.omarchdev.smartqsale.smartqsaleventas.RvAdapter.RvAdapterAlmacenes
-import kotlinx.android.synthetic.main.activity_listado__almacenes.*
 
 class Listado_Almacenes : ActivityParent(), RvAdapterAlmacenes.ListenerClickItem, View.OnClickListener {
+
+    lateinit var rvListadoAlm: RecyclerView
+    lateinit var fbAlmacen: FloatingActionButton
+    lateinit var pbAlmacen: ProgressBar
+    lateinit var txtMensaje: TextView
 
     override fun onClick(v: View?) {
         when(v?.id){
@@ -28,6 +37,15 @@ class Listado_Almacenes : ActivityParent(), RvAdapterAlmacenes.ListenerClickItem
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_listado__almacenes)
+
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
+        rvListadoAlm = findViewById(R.id.rvListadoAlm)
+        fbAlmacen = findViewById(R.id.fbAlmacen)
+        pbAlmacen = findViewById(R.id.pbAlmacen)
+        txtMensaje = findViewById(R.id.txtMensaje)
+
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.arrow_back_home)

@@ -73,7 +73,7 @@ public class resumenFlujoCaja extends Fragment implements View.OnClickListener, 
     ImageView imgBarchart;
     TextView titulo1;
     TextView titulo2,txtMensaje;
-    TextView txtEstadoCaja, txtPeriodoCaja, txtNumVentas, txtValorTotalDato, txtPromedioVentas;
+    TextView txtEstadoCaja, txtPeriodoCaja, txtNumVentas, txtValorTotalDato, txtPromedioVentas,txtUsuarioCaja;
     CardView cvSelectCierre;
     RvAdapterResumenMedioPago rvAdapterResumenMedioPago;
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm aa");
@@ -146,6 +146,7 @@ public class resumenFlujoCaja extends Fragment implements View.OnClickListener, 
         rvB = (RecyclerView) v.findViewById(R.id.rvResumenB);
         txtNumVentas = (TextView) v.findViewById(R.id.txtNumVentas);
         txtValorTotalDato = (TextView) v.findViewById(R.id.txtValorTotalDato);
+        txtUsuarioCaja= (TextView) v.findViewById(R.id.txtUsuarioCaja);
         txtPromedioVentas = (TextView) v.findViewById(R.id.txtPromedioVentas);
         rvResumenMedioPago = (RecyclerView) v.findViewById(R.id.rvResumenMedioPago);
         rvResumenMedioPago.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -189,7 +190,7 @@ public class resumenFlujoCaja extends Fragment implements View.OnClickListener, 
         return mChart.getChartBitmap();
     }
 
-    public void ProcesoCabeceraResumen(mResumenTotalVentas resumen) {
+    public void ProcesoCabeceraResumen(mResumenTotalVentas resumen,mCierre cierre1) {
 
         // new ObtenerResumenCierre().execute(0);
         if (resumen.getNum_Ventas() <= 0) {
@@ -209,6 +210,7 @@ public class resumenFlujoCaja extends Fragment implements View.OnClickListener, 
             txtPromedioVentas.setText(Constantes.DivisaPorDefecto.SimboloDivisa + "0.00");
         }
 
+        txtUsuarioCaja.setText("Usuario : "+cierre1.getNombreUsuario());
     }
 
     public void ObtenerDatosVentas(List<mVentasPorHora> list) {

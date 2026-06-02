@@ -6,7 +6,7 @@ import android.content.DialogInterface;
 
 import com.google.android.material.textfield.TextInputLayout;
 import androidx.appcompat.app.AlertDialog;
-
+import androidx.appcompat.widget.Toolbar;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -93,6 +93,10 @@ public class ActivityRegistroCategorias extends ActivityParent implements AsyncC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_categorias);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         registro=0;
         dialogCargaAsync=new DialogCargaAsync(this);
         Estado=getIntent().getExtras().getInt("Estado",0);

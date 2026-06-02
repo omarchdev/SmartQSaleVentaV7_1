@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.widget.Toolbar
 import com.omarchdev.smartqsale.smartqsaleventas.AsyncTask.AsyncRoles
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mRol
 import com.omarchdev.smartqsale.smartqsaleventas.R
@@ -53,6 +54,10 @@ class ListadoRoles : ActivityParent(), RvAdapterRoles.InterfaceListaRoles {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_listado_roles)
+
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
         rvRoles.adapter=adapterRoles
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

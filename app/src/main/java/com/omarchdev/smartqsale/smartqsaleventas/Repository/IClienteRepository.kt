@@ -3,6 +3,9 @@ package com.omarchdev.smartqsale.smartqsaleventas.Repository
 import com.omarchdev.smartqsale.smartqsaleventas.Model.SolicitudEnvio
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mCustomer
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mSaldoCliente
+import com.omarchdev.smartqsale.smartqsaleventas.Model.CancelarPagoCtaCteRequest
+import com.omarchdev.smartqsale.smartqsaleventas.Model.ProcesarPagoCtaCteRequest
+import com.omarchdev.smartqsale.smartqsaleventas.Model.CtaCteCliente
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -40,4 +43,17 @@ interface IClienteRepository {
 
     @POST("api/Cliente/EditaCliente")
     fun EditaCliente(@Body solicitud: SolicitudEnvio<mCustomer>):Call<Int>
+
+    @POST("api/Cliente/CancelarPagoCtaCte")
+    fun CancelarPagoCtaCte(@Body solicitud: SolicitudEnvio<CancelarPagoCtaCteRequest>): Call<Byte>
+
+    @POST("api/Cliente/ProcesarPagoCtaCte")
+    fun ProcesarPagoCtaCte(@Body solicitud: SolicitudEnvio<ProcesarPagoCtaCteRequest>): Call<Byte>
+
+    @GET("api/Cliente/ObtenerCtaCteCorriente")
+    fun ObtenerCtaCteCorriente(
+        @Query("tipoconsulta") tipoMov: String,
+        @Query("codecia") nombreCia: String,
+        @Query("idCliente") idCliente: Int
+    ): Call<CtaCteCliente>
 }

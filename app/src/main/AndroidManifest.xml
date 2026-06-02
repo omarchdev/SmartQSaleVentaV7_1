@@ -77,7 +77,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activitys.ConfigWeb"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activitys.ConfigCategorias" />
+        <activity android:name=".Activitys.ConfigCategorias"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activitys.AddEditProduct"
             android:theme="@style/AppTheme.NoActionBar"
@@ -118,7 +119,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activitys.ActivityRegistros" />
         <activity android:name=".Activitys.ActivityInventario" />
-        <activity android:name=".Activitys.ActivityPagoCtaCte" />
+        <activity android:name=".Activitys.ActivityPagoCtaCte"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activitys.FlujoCajaActivity" />
         <activity
             android:name=".Activitys.FlujoCajaMainActivity"
@@ -185,13 +187,17 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activitys.ActivityModificadorConfig"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".Activitys.CategoriasActivity" />
+        <activity android:name=".Activitys.CategoriasActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activitys.ActivityRegistroCategoria"
             android:label="@string/title_activity_registro_categoria"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activitys.ActivityRegistroCategorias" />
-        <activity android:name=".Activitys.ListadoMedioPago" />
+        <activity android:name=".Activitys.ActivityRegistroCategorias"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activitys.ListadoMedioPago"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activitys.RegistroMedioPago" />
         <activity
             android:name=".LoginActivityPrincipal"
@@ -222,10 +228,13 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activitys.ListadoUsuarios"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activitys.ConfiguracionAlmacen" />
-        <activity android:name=".Activitys.Listado_Almacenes" />
+        <activity android:name=".Activitys.ConfiguracionAlmacen"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activitys.Listado_Almacenes"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activitys.ActivityDemo" />
-        <activity android:name=".Activitys.ListadoRoles" />
+        <activity android:name=".Activitys.ListadoRoles"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activitys.ConfiguracionRol" />
         <activity android:name=".Activitys.ReporteVendedor" />
         <activity android:name=".Activitys.VentasPorVendedor" />
@@ -244,8 +253,12 @@
         <activity android:name=".Activitys.PrinterAct" />
         <activity android:name=".Activitys.ReporteAlmacen" />
         <activity android:name=".Activitys.PedidosDespacho" />
-        <activity android:name=".Activitys.AreasProduccionLista" />
-        <activity android:name=".Activitys.RegistroAreaProduccion" />
+        <activity
+            android:name=".Activitys.AreasProduccionLista"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activitys.RegistroAreaProduccion"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activitys.SoporteTecnico" />
         <activity
             android:name=".Activitys.PinProcesApp"
