@@ -29,6 +29,10 @@ import com.omarchdev.smartqsale.smartqsaleventas.R;
 import com.omarchdev.smartqsale.smartqsaleventas.RvAdapter.RvAdapterDetalleCtaCte;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import java.sql.Timestamp;
+import com.omarchdev.smartqsale.smartqsaleventas.API.TimestampDeserializer;
 import static com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes.BASECONN.BASE_URL_API;
 import static com.omarchdev.smartqsale.smartqsaleventas.Model.CiaTiendaKt.GetJsonCiaTiendaBase64x3;
 
@@ -39,9 +43,13 @@ public class Activity_cta_x_cliente extends ActivityParent implements RvAdapterD
     Toolbar toolbar;
     RecyclerView rv;
     RvAdapterDetalleCtaCte adapterDetalleCtaCte;
+
     BdConnectionSql bdConnectionSql = BdConnectionSql.getSinglentonInstance();
+    Gson gson = new GsonBuilder()
+            .registerTypeAdapter(Timestamp.class, new TimestampDeserializer())
+            .create();
     Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API).client(Constantes.ConfiRetrofitTimeOut.okHttpClient)
-            .addConverterFactory(GsonConverterFactory.create()).build();
+            .addConverterFactory(GsonConverterFactory.create(gson)).build();
     IClienteRepository iClienteRepository = retro.create(IClienteRepository.class);
     int idCliente;
     int idCtaCte;

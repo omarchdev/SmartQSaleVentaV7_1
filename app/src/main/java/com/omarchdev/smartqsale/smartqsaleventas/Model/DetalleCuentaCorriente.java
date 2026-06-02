@@ -1,5 +1,7 @@
 package com.omarchdev.smartqsale.smartqsaleventas.Model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -25,6 +27,7 @@ public class DetalleCuentaCorriente {
     Timestamp fechaEliminacion;
     String estadoEliminacion;
     String estadoCtaCte;
+    @SerializedName("monto")
     BigDecimal Monto;
 
 
