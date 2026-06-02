@@ -19,6 +19,17 @@ interface IVentaRepository {
         @Query("idCliente") idCliente: Int
     ): Call<List<mVenta>>
 
+    @GET("api/venta/GetCabeceraVentasHistorialV2")
+    fun GetCabeceraVentaV2(
+        @Query("ciaCode") codeCia: String,
+        @Query("tipo") tipo: String,
+        @Query("fechaInicio") fechaInicio: Int,
+        @Query("fechaFinal") FechaFinal: Int,
+        @Query("idCliente") idCliente: Int,
+        @Query("idUsuario") idUsuario: Int
+    ): Call<List<mVenta>>
+
+
     @GET("api/venta/GetEstadoVenta")
     fun GetEstadoVenta(
         @Query("ciaCode") codeCia: String,

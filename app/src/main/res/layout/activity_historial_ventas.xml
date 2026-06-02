@@ -95,15 +95,42 @@
         </com.google.android.material.card.MaterialCardView>
 
 
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/contentUsuario"
+            style="@style/AppTheme.Card.Modern"
+            android:layout_below="@+id/contentCliente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp">
+
+                <Button
+                    android:id="@+id/btnFiltrarUsuario"
+                    style="@style/AppTheme.Button.Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Todos los usuarios" />
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
         <androidx.recyclerview.widget.RecyclerView
             android:layout_above="@+id/contentTotal"
-            android:layout_below="@+id/contentCliente"
+            android:layout_below="@+id/contentUsuario"
             android:id="@+id/rvHistorialVentas"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             >
 
         </androidx.recyclerview.widget.RecyclerView>
+
 
         <androidx.cardview.widget.CardView
 

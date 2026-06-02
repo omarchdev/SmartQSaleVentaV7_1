@@ -25,6 +25,8 @@ import com.omarchdev.smartqsale.smartqsaleventas.Model.mVenta;
 import com.omarchdev.smartqsale.smartqsaleventas.R;
 import com.omarchdev.smartqsale.smartqsaleventas.Repository.IVentaRepository;
 import com.omarchdev.smartqsale.smartqsaleventas.RvAdapter.RvAdapterListVentas;
+import com.omarchdev.smartqsale.smartqsaleventas.Model.mUsuario;
+import com.omarchdev.smartqsale.smartqsaleventas.AsyncTask.AsyncUsers;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -43,6 +45,11 @@ public class HistorialVentas extends ActivityParent implements DialogDatePickerS
 
     byte origen;
     RvAdapterListVentas rvAdapter;
+    Button btnFiltrarUsuario;
+    AsyncUsers asyncUsers;
+    List<mUsuario> listaUsuarios = new ArrayList<>();
+    int idUsuarioSeleccionado = 0;
+
     RecyclerView rv;
     List<mVenta> list;
     int fechaInicio, fechaFinal;
@@ -117,6 +124,31 @@ public class HistorialVentas extends ActivityParent implements DialogDatePickerS
         btnSelectDate2.setOnClickListener(this);
         btnSelectCliente.setOnClickListener(this);
 
+        btnFiltrarUsuario = (Button) findViewById(R.id.btnFiltrarUsuario);
+        btnFiltrarUsuario.setOnClickListener(this);
+        btnFiltrarUsuario.setText("Todos");
+
+        asyncUsers = new AsyncUsers();
+        asyncUsers.setContext(this);
+        asyncUsers.setListenerObtenerUsuarios(new AsyncUsers.ListenerObtenerUsuarios() {
+            @Override
+            public void UsuariosObtenidos(List<mUsuario> usuarioList) {
+                listaUsuarios.clear();
+                listaUsuarios.addAll(usuarioList);
+            }
+
+            @Override
+            public void ErrorConnection() {
+                Toast.makeText(HistorialVentas.this, "Error de conexión al obtener usuarios", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void ErrorConsulta() {
+                Toast.makeText(HistorialVentas.this, "Error al consultar usuarios", Toast.LENGTH_SHORT).show();
+            }
+        });
+        asyncUsers.ObtenerUsuariosFiltro();
+
 
         final Calendar c = Calendar.getInstance();
         year = c.get(Calendar.YEAR);
@@ -136,6 +168,7 @@ public class HistorialVentas extends ActivityParent implements DialogDatePickerS
         txtTotalVentas.setText(Constantes.DivisaPorDefecto.SimboloDivisa + String.format("%.2f", valorTotalVenta));
     //    ActualizarListaVentas();
         context=this;
+
 
     }
 
@@ -194,7 +227,27 @@ public class HistorialVentas extends ActivityParent implements DialogDatePickerS
             case R.id.btnSelectCliente:
                 MostrarDialogSeleccionCliente();
                 break;
+            case R.id.btnFiltrarUsuario:
+                if (listaUsuarios != null && !listaUsuarios.isEmpty()) {
+                    String[] nombres = new String[listaUsuarios.size()];
+                    for (int i = 0; i < listaUsuarios.size(); i++) {
+                        nombres[i] = listaUsuarios.get(i).getNombreUsuario();
+                    }
+                    androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
+                    builder.setTitle("Seleccionar Usuario");
+                    builder.setItems(nombres, (dialog, which) -> {
+                        mUsuario seleccionado = listaUsuarios.get(which);
+                        idUsuarioSeleccionado = seleccionado.getIdUsuario();
+                        btnFiltrarUsuario.setText(seleccionado.getNombreUsuario());
+                        ActualizarListaVentas();
+                    });
+                    builder.show();
+                } else {
+                    Toast.makeText(this, "No se han cargado los usuarios", Toast.LENGTH_SHORT).show();
+                }
+                break;
         }
+
     }
 
     private void EliminarDatosCliente() {
@@ -259,7 +312,7 @@ public class HistorialVentas extends ActivityParent implements DialogDatePickerS
     }
 
     private void ActualizarListaVentas() {
-        new DownloadListVentas().execute(fechaInicio, fechaFinal, idCliente);
+        new DownloadListVentas().execute(fechaInicio, fechaFinal, idCliente, idUsuarioSeleccionado);
      }
 
     private void SumarVentas(int lenResult, List<mVenta> mVentas) {
@@ -327,7 +380,7 @@ public class HistorialVentas extends ActivityParent implements DialogDatePickerS
         @Override
         protected List<mVenta> doInBackground(Integer... integers) {
             try {
-                List<mVenta> list= iVentaRepository.GetCabeceraVenta(codeCia,"2",integers[0], integers[1], integers[2]).execute().body();
+                List<mVenta> list= iVentaRepository.GetCabeceraVentaV2(codeCia,"2",integers[0], integers[1], integers[2], integers[3]).execute().body();
                 return  list;
             } catch (IOException e) {
                 return new ArrayList<>();
