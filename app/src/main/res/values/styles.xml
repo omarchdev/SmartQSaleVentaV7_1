@@ -415,6 +415,7 @@
         <item name="cardCornerRadius">@dimen/radius_medium</item>
         <item name="cardElevation">@dimen/elevation_low</item>
         <item name="android:layout_margin">@dimen/spacing_small</item>
+        <item name="cardBackgroundColor">@color/white</item>
     </style>
 
     <style name="AppTheme.Card.Elevated" parent="AppTheme.Card.Modern">
@@ -466,9 +467,12 @@
     </style>
 
     <!-- Dialog Styles -->
-    <style name="DialogStyle" parent="Theme.MaterialComponents.DayNight.Dialog">
+    <style name="DialogStyle" parent="Theme.MaterialComponents.Light.Dialog">
         <item name="android:windowMinWidthMajor">97%</item>
         <item name="android:windowMinWidthMinor">97%</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="colorSurface">@color/white</item>
     </style>
 
     <style name="Widget.App.Button.OutlinedButton" parent="Widget.MaterialComponents.Button.OutlinedButton">

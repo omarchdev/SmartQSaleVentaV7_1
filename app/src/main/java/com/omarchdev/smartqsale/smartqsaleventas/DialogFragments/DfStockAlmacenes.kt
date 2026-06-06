@@ -15,7 +15,7 @@ class DfStockAlmacenes: DialogFragment(), AsyncStockProductos.ListenerStockAlmac
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setStyle(STYLE_NORMAL, R.style.DialogStyle)
+        setStyle(STYLE_NO_TITLE, R.style.DialogStyle)
     }
 
     private var lista:ArrayList<AlmacenProducto>?=null

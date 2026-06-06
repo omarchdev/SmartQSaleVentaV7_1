@@ -23,35 +23,33 @@ class cFormateadorImpresion {
 
     fun obtenerCabecerasTicket(ancho: Int): String {
         return if (ancho == 2) {
-            completarEspacios(16, "Descripcion") +
+            completarEspacios(24, "Descripcion") +
                     completarEspaciosI(12, "P.U") +
                     completarEspaciosI(12, "P.T")
         } else {
-            "Descripcion" + "\n   " +
-                    completarEspacios(8, "Cant") +
-                    completarEspacios(16, "P.U") +
-                    completarEspacios(5, "P.T")
+            completarEspacios(14, "Desc.") +
+                    completarEspaciosI(9, "P.U") +
+                    completarEspaciosI(9, "P.T")
         }
     }
 
     fun obtenerCabecerasTicketPedido(ancho: Int): String {
         return if (ancho == 2) {
-            completarEspacios(16, "Desc") +
+            completarEspacios(24, "Descripcion") +
                     completarEspaciosI(12, "P.U") +
                     completarEspaciosI(12, "P.T")
         } else {
-            completarEspacios(10, "Desc") +
-                    completarEspacios(5, "Cant") +
-                    completarEspacios(16, "P.U") +
-                    completarEspacios(5, "P.T")
+             completarEspacios(14, "Desc.") +
+                    completarEspaciosI(9, "P.U") +
+                    completarEspaciosI(9, "P.T")
         }
     }
 
     fun formatearLineaTotal(etiqueta: String, valor: String, ancho: Int): String {
         return if (ancho == 2) {
-            completarEspaciosI(28, etiqueta) + completarEspaciosI(12, valor)
+            completarEspaciosI(36, etiqueta) + completarEspaciosI(12, valor)
         } else {
-            completarEspaciosI(18, etiqueta) + completarEspaciosI(12, valor)
+            completarEspaciosI(20, etiqueta) + completarEspaciosI(12, valor)
         }
     }
 }

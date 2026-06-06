@@ -43,33 +43,27 @@ class ConstructorFactura(){
 
         var n=(p.productName+" "+p.descripcionVariante+" "+p.observacionProducto).trim()
         var linea=""
-        if(p.productName.length<=32){
-            n= completarEspacios(32,n)
-            linea=n+"\n"
-        }else if(p.productName.length<=64){
-            n= completarEspacios(64,n)
-            linea=n.substring(0,32)+"\n"+n.substring(32,64)+"\n"
-        }else if(p.productName.length<=98){
-            n= completarEspacios(98,n)
-            linea=n.substring(0,32)+"\n"+n.substring(32,64)+"\n"+n.substring(64,98)+"\n"
-        }else if(p.productName.length<=130){
-
-            n= completarEspacios(130,n)
-            linea=n.substring(0,32)+"\n"+n.substring(32,64)+"\n"+n.substring(64,98)+n.substring(98,130)+"\n"+
-                    "\n"
-        }else if(p.productName.length<=161){
-
-            n= completarEspacios(161,n)
-            linea=n.substring(0,32)+"\n"+n.substring(32,64)+"\n"+
-                    n.substring(64,98)+n.substring(98,130)+"\n"+
-                    n.substring(130,161)+"\n"+
-                    "\n"
-
+        val colNombre = 32
+        
+        val chunks = mutableListOf<String>()
+        var tempN = n
+        while (tempN.isNotEmpty()) {
+            if (tempN.length <= colNombre) {
+                chunks.add(completarEspacios(colNombre, tempN))
+                tempN = ""
+            } else {
+                chunks.add(tempN.substring(0, colNombre))
+                tempN = tempN.substring(colNombre)
+            }
         }
 
-        linea=linea+ completarEspaciosI(10,p.cantidad.fUnid)+
-                completarEspaciosI(10,p.precioOriginal.fortMoneda)+
-                completarEspaciosI(10,p.precioVentaFinal.fortMoneda)
+        for (chunk in chunks) {
+            linea += chunk + "\n"
+        }
+
+        linea=linea+ completarEspaciosI(14,p.cantidad.fUnid)+
+                completarEspaciosI(9,p.precioOriginal.fortMoneda)+
+                completarEspaciosI(9,p.precioVentaFinal.fortMoneda)
 
         return linea
 
@@ -88,33 +82,28 @@ class ConstructorFactura(){
         var n=(p.productName+" "+p.descripcionVariante).trim()
 
         var linea=""
-        if(p.productName.length<=32){
-            n= completarEspacios(32,n)
-            linea=n+"\n"
-        }else if(p.productName.length<=64){
-            n= completarEspacios(64,n)
-            linea=n.substring(0,32)+"\n"+n.substring(32,64)+"\n"
-        }else if(p.productName.length<=98){
-            n= completarEspacios(98,n)
-            linea=n.substring(0,32)+"\n"+n.substring(32,64)+"\n"+n.substring(64,98)+"\n"
-        }else if(p.productName.length<=130){
-
-            n= completarEspacios(130,n)
-            linea=n.substring(0,32)+"\n"+n.substring(32,64)+"\n"+n.substring(64,98)+n.substring(98,130)+"\n"+
-                    "\n"
-        }else if(p.productName.length<=161){
-
-            n= completarEspacios(161,n)
-            linea=n.substring(0,32)+"\n"+n.substring(32,64)+"\n"+
-                    n.substring(64,98)+n.substring(98,130)+"\n"+
-                    n.substring(130,161)+"\n"+
-                    "\n"
-
+        val colNombre = 32
+        
+        val chunks = mutableListOf<String>()
+        var tempN = n
+        while (tempN.isNotEmpty()) {
+            if (tempN.length <= colNombre) {
+                chunks.add(completarEspacios(colNombre, tempN))
+                tempN = ""
+            } else {
+                chunks.add(tempN.substring(0, colNombre))
+                tempN = tempN.substring(colNombre)
+            }
         }
+
+        for (chunk in chunks) {
+            linea += chunk + "\n"
+        }
+
         if(p.isControlTiempo){
             linea=linea+p.informacionAdicionalTiempo
         }
-        linea=linea+ completarEspaciosI(4,p.unidad_medida_impresion)+
+        linea=linea+ completarEspaciosI(5,p.unidad_medida_impresion)+
                 completarEspaciosI(9,p.cantidad.fUnid)+
                 completarEspaciosI(9,p.precioOriginal.fortMoneda)+
                 completarEspaciosI(9,p.precioVentaFinal.fortMoneda)
@@ -291,97 +280,46 @@ class ConstructorFactura(){
         return t
     }
 
-    private fun item(p:ProductoEnVenta):String{
-
-        var linea=""
-
-        var n="["+p.cantidad.fUnid+"]"+p.productName
-
+    private fun item(p: ProductoEnVenta): String {
+        var n = "[" + p.cantidad.fUnid + "]" + p.productName
         val textoDescuento = if (p.montoDescuento.compareTo(BigDecimal.ZERO) == 0) "" else "(${p.montoDescuento.fortMoneda3})"
 
-        if(n.length<=16){
-            linea=completarEspacios(16,n)+ completarEspaciosI(12, p.precioOriginal.fortMoneda3)+
-                    completarEspaciosI(12,p.precioVentaFinal.fortMoneda3)+"\n"+
-            completarEspaciosI(16,"")+ completarEspacios(12,
-                    textoDescuento)+ completarEspacios(12,"")
+        val colNombre = 24
+        val colPU = 12
+        val colPT = 12
 
-        }else if(n.length<=32){
-           n= completarEspacios(32,n)
-           linea=n.substring(0,16)+completarEspaciosI(12, p.precioOriginal.fortMoneda3)+
-                   completarEspaciosI(12,p.precioVentaFinal.fortMoneda3)+"\n"+
-                   completarEspacios(16,n.substring(16,n.length))+
-                   completarEspaciosI(12,textoDescuento)+
-                   completarEspacios(12,"")
+        var linea = ""
+        val chunks = mutableListOf<String>()
+        var tempN = n
+        while (tempN.isNotEmpty()) {
+            if (tempN.length <= colNombre) {
+                chunks.add(completarEspacios(colNombre, tempN))
+                tempN = ""
+            } else {
+                chunks.add(tempN.substring(0, colNombre))
+                tempN = tempN.substring(colNombre)
+            }
+        }
 
-        }else if(n.length<=48){
-            n=completarEspacios(48,n)
-            linea=n.substring(0,16)+completarEspaciosI(12, p.precioOriginal.fortMoneda3)+
-                    completarEspaciosI(12,p.precioVentaFinal.fortMoneda3)+"\n"+completarEspacios(16,n.substring(16,32))+
-                    completarEspaciosI(12,textoDescuento)+
-                    completarEspacios(12,"")+"\n"+
-                    completarEspacios(16,n.substring(32,n.length))+
-                    completarEspacios(12,"")+ completarEspacios(12,"")
-        }else if(n.length<=64){
-            n=completarEspacios(64,n)
-            linea=n.substring(0,16)+completarEspaciosI(12, p.precioOriginal.fortMoneda3)+
-                    completarEspaciosI(12,p.precioVentaFinal.fortMoneda3)+"\n"+
-                    completarEspacios(16,n.substring(16,32))+
-                    completarEspaciosI(12,textoDescuento)+
-                    completarEspacios(12,"")+"\n"+
-                    completarEspacios(16,n.substring(32,48))+
-                    completarEspacios(12,"")+
-                            completarEspacios(12,"")+"\n"+
-                            completarEspacios(16,n.substring(48,n.length))+
-                    completarEspacios(12,"")+ completarEspacios(12,"")
+        if (chunks.isEmpty()) chunks.add(completarEspacios(colNombre, ""))
 
+        for (i in chunks.indices) {
+            when (i) {
+                0 -> {
+                    linea += chunks[i] + completarEspaciosI(colPU, p.precioOriginal.fortMoneda3) +
+                            completarEspaciosI(colPT, p.precioVentaFinal.fortMoneda3) + "\n"
+                }
+                1 -> {
+                    linea += chunks[i] + completarEspaciosI(colPU, textoDescuento) + completarEspacios(colPT, "") + "\n"
+                }
+                else -> {
+                    linea += chunks[i] + "\n"
+                }
+            }
+        }
 
-        }else if(n.length<=80){
-            n=completarEspacios(80,n)
-            linea=n.substring(0,16)+completarEspacios(12, p.precioOriginal.fortMoneda3)+
-                    completarEspacios(12,p.precioVentaFinal.fortMoneda3)+"\n"+
-                    completarEspacios(16,n.substring(16,32))+
-                    completarEspacios(12,textoDescuento)+
-                    completarEspacios(12,"")+"\n"+
-                    completarEspacios(16,n.substring(32,48))+
-                    completarEspacios(12,"")+ completarEspacios(12,"")+"\n"+                                         completarEspacios(16,n.substring(48,64))+
-                    completarEspacios(12,"")+ completarEspacios(12,"")+"\n"+
-                    completarEspacios(16,n.substring(64,n.length))+
-                    completarEspacios(12,"")+ completarEspacios(12,"")
-
-
-        }else if(n.length<=96){
-            n=completarEspacios(96,n)
-            linea=n.substring(0,16)+completarEspaciosI(12, p.precioOriginal.fortMoneda3)+
-                    completarEspaciosI(12,p.precioVentaFinal.fortMoneda3) +"\n"+
-                    completarEspacios(16,n.substring(16,32))+
-                    completarEspaciosI(12,textoDescuento)+
-                    completarEspacios(12,"")+"\n"+
-            completarEspacios(16,n.substring(32,48))+
-                    completarEspacios(12,"")+ completarEspacios(12,"")+"\n"+                                         completarEspacios(16,n.substring(48,64))+
-                    completarEspacios(12,"")+ completarEspacios(12,"")+"\n"+
-                    completarEspacios(16,n.substring(64,80))+
-                    completarEspacios(12,"")+ completarEspacios(12,"")+"\n"+
-                    completarEspacios(16,n.substring(80,n.length))+
-                    completarEspacios(12,"")+ completarEspacios(12,"")
-
-
-        }else if(n.length<=112){
-            n=completarEspacios(112,n)
-            linea=n.substring(0,16)+completarEspaciosI(12, p.precioOriginal.fortMoneda3)+
-                    completarEspaciosI(12,p.precioVentaFinal.fortMoneda3) +"\n"+
-                    completarEspacios(16,n.substring(16,32))+
-                    completarEspaciosI(12,textoDescuento)+
-                    completarEspacios(12,"")+"\n"+
-                    completarEspacios(16,n.substring(32,48))+
-                    completarEspacios(12,"")+ completarEspacios(12,"")+"\n"+                                           completarEspacios(16,n.substring(48,64))+
-                    completarEspacios(12,"")+ completarEspacios(12,"")+"\n"+
-                    completarEspacios(16,n.substring(64,80))+
-                    completarEspacios(12,"")+ completarEspacios(12,"")+"\n"+
-                   completarEspacios(16,n.substring(80,96))+
-                    completarEspacios(12,"")+ completarEspacios(12,"")+"\n"+
-                    completarEspacios(16,n.substring(96,n.length))+
-                    completarEspacios(12,"")+ completarEspacios(12,"")
-
+        if (chunks.size == 1 && textoDescuento.isNotEmpty()) {
+            linea += completarEspacios(colNombre, "") + completarEspaciosI(colPU, textoDescuento) + completarEspacios(colPT, "") + "\n"
         }
 
         return linea
