@@ -8,6 +8,7 @@ import com.omarchdev.smartqsale.smartqsaleventas.Model.ProcesarPagoCtaCteRequest
 import com.omarchdev.smartqsale.smartqsaleventas.Model.CtaCteCliente
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
@@ -39,6 +40,12 @@ interface IClienteRepository {
                    @Query("codecia") nombreCia: String,
                    @Query("numtelefono") numtelefono: String): Call<mCustomer>
 
+    @DELETE("api/Cliente/EliminarCliente")
+    fun EliminarCliente(
+        @Query("codecia") codecia: String,
+        @Query("tipoconsulta") tipoMov: String,
+        @Query("idCliente") idCliente: Int
+    ): Call<Byte>
 
 
     @POST("api/Cliente/EditaCliente")

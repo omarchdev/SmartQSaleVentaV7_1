@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.omarchdev.smartqsale.smartqsaleventas.AsyncTask.AsyncCategoria;
 import com.omarchdev.smartqsale.smartqsaleventas.CategoriaAdapter;
 import com.omarchdev.smartqsale.smartqsaleventas.ConexionBd.BdConnectionSql;
 import com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes;
@@ -28,6 +29,7 @@ import com.omarchdev.smartqsale.smartqsaleventas.Controlador.ControladorProducto
 import com.omarchdev.smartqsale.smartqsaleventas.ImagenesController.ImagenesController;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mCategoriaProductos;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mProduct;
+import com.omarchdev.smartqsale.smartqsaleventas.Model.mUnidadMedida;
 import com.omarchdev.smartqsale.smartqsaleventas.R;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -40,7 +42,7 @@ import java.util.List;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class AddEditProduct extends ActivityParent implements View.OnClickListener {
+public class AddEditProduct extends ActivityParent implements View.OnClickListener, AsyncCategoria.ListenerCategoria {
 
     final int CAMERA_CAPTURE = 1;
     final int SELECT_PICTURE = 200;
@@ -74,6 +76,7 @@ public class AddEditProduct extends ActivityParent implements View.OnClickListen
     String option="";
     CategoriaAdapter categoriaAdapter;
     List<mCategoriaProductos> list;
+    AsyncCategoria asyncCategoria;
 
     int idProducto;
     private Spinner spinnerCategoria;
@@ -108,9 +111,11 @@ public class AddEditProduct extends ActivityParent implements View.OnClickListen
         bmp=null;
         controladorProductos=new ControladorProductos(this);
         spinnerCategoria = (Spinner) findViewById(R.id.spinner_categoria);
-        list = bdConnectionSql.getCategorias(0, "");
-        categoriaAdapter = new CategoriaAdapter(this, R.layout.support_simple_spinner_dropdown_item, list);
-        spinnerCategoria.setAdapter(categoriaAdapter);
+        
+        asyncCategoria = new AsyncCategoria();
+        asyncCategoria.setListenerCategoria(this);
+        asyncCategoria.getCategorias();
+        
         EstadoProducto=getIntent().getStringExtra(Constantes.EstadoProducto.EstadoProducto);
         llm=new LinearLayoutManager(this);
 
@@ -440,6 +445,20 @@ public class AddEditProduct extends ActivityParent implements View.OnClickListen
 
     }
 
+    @Override
+    public void CategoriasObtenidas(List<mCategoriaProductos> categoriaProductosList) {
+        if (categoriaProductosList != null) {
+            list = categoriaProductosList;
+            categoriaAdapter = new CategoriaAdapter(this, R.layout.support_simple_spinner_dropdown_item, list);
+            spinnerCategoria.setAdapter(categoriaAdapter);
+        } else {
+            Toast.makeText(this, "Error al obtener categorías", Toast.LENGTH_SHORT).show();
+        }
+    }
 
+    @Override
+    public void ObtenerUnidadesMedidad(List<mUnidadMedida> listaUnidades) {
+        // No-op
+    }
 }
 

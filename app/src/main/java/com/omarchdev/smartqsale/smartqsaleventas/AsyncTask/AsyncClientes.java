@@ -331,7 +331,16 @@ public class AsyncClientes {
 
         @Override
         protected Byte doInBackground(Integer... integers) {
-            return bdConnectionSql.EliminarCliente(integers[0]);
+            Byte result=0;
+            try {
+                result=iClienteRepository.EliminarCliente(codeCia,"2",integers[0]).execute().body();
+            } catch (IOException e) {
+                e.printStackTrace();
+                result=0;
+            }catch (Exception ex){
+                result=0;
+            }
+            return result;
         }
 
         @Override

@@ -9,27 +9,32 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
-import com.omarchdev.smartqsale.smartqsaleventas.ConexionBd.BdConnectionSql;
+import android.widget.Toast;
+
+import com.omarchdev.smartqsale.smartqsaleventas.AsyncTask.AsyncCategoria;
+import com.omarchdev.smartqsale.smartqsaleventas.Model.mCategoriaProductos;
+import com.omarchdev.smartqsale.smartqsaleventas.Model.mUnidadMedida;
 import com.omarchdev.smartqsale.smartqsaleventas.R;
 import com.omarchdev.smartqsale.smartqsaleventas.RvAdapter.RvAdapterCategoria;
+
+import java.util.List;
 
 /**
  * Created by OMAR CHH on 20/01/2018.
  */
 
-public class DialogSelectCategoria extends DialogFragment {
+public class DialogSelectCategoria extends DialogFragment implements AsyncCategoria.ListenerCategoria {
 
     Dialog dialog;
     RecyclerView rv;
     RvAdapterCategoria rvAdapterCategoria;
-    BdConnectionSql bdConnectionSql;
+    AsyncCategoria asyncCategoria;
 
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        bdConnectionSql = BdConnectionSql.getSinglentonInstance();
         View v = (getActivity().getLayoutInflater().inflate(R.layout.dialog_select_categoria, null));
         rv = (RecyclerView) v.findViewById(R.id.rvCategoriaProductos);
         rvAdapterCategoria = new RvAdapterCategoria();
@@ -39,12 +44,25 @@ public class DialogSelectCategoria extends DialogFragment {
 
         dialog = builder.setView(v).create();
 
-
-        rvAdapterCategoria.AddElements(bdConnectionSql.getCategorias(0, " "));
+        asyncCategoria = new AsyncCategoria();
+        asyncCategoria.setListenerCategoria(this);
+        asyncCategoria.getCategorias();
 
         return dialog;
+    }
 
+    @Override
+    public void CategoriasObtenidas(List<mCategoriaProductos> categoriaProductosList) {
+        if (categoriaProductosList != null) {
+            rvAdapterCategoria.AddElements(categoriaProductosList);
+        } else {
+            Toast.makeText(getActivity(), "Error al obtener categorías", Toast.LENGTH_SHORT).show();
+        }
+    }
 
+    @Override
+    public void ObtenerUnidadesMedidad(List<mUnidadMedida> listaUnidades) {
+        // No-op
     }
 }
 

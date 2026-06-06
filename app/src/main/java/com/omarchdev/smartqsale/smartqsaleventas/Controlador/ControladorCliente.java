@@ -58,9 +58,12 @@ public class ControladorCliente {
 
 
     public List<mCustomer> getAllCliente() {
-
-        return BdConnectionSql.getSinglentonInstance().getClientes(0, "", Constantes.ParametrosCliente.TodosLosClientes,"","");
+        List<mCustomer> listResult=new ArrayList<>();
+        try {
+            listResult=iClienteRepository.GetClientePedido("2",codeCia,"").execute().body();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return listResult;
     }
-
-
 }
