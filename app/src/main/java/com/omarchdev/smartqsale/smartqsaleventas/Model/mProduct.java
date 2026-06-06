@@ -19,6 +19,7 @@ public class mProduct {
     @SerializedName("descripcion")
     public String cProductName;
     private String cUnit;
+    @SerializedName("descripcion_variante")
     private String descripcionVariante;
     @SerializedName("cantidad_stock")
     private float dQuantity;
