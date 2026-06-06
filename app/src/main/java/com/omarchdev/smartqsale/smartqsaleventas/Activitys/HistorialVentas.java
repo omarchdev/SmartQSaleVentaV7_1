@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.core.view.GravityCompat;
 
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +27,7 @@ import com.omarchdev.smartqsale.smartqsaleventas.R;
 import com.omarchdev.smartqsale.smartqsaleventas.Repository.IVentaRepository;
 import com.omarchdev.smartqsale.smartqsaleventas.RvAdapter.RvAdapterListVentas;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mUsuario;
+
 import com.omarchdev.smartqsale.smartqsaleventas.AsyncTask.AsyncUsers;
 
 import java.io.IOException;
@@ -45,7 +47,8 @@ public class HistorialVentas extends ActivityParent implements DialogDatePickerS
 
     byte origen;
     RvAdapterListVentas rvAdapter;
-    Button btnFiltrarUsuario;
+    Button btnFiltrarUsuario, btnAplicarFiltros;
+    androidx.drawerlayout.widget.DrawerLayout drawerLayout;
     AsyncUsers asyncUsers;
     List<mUsuario> listaUsuarios = new ArrayList<>();
     int idUsuarioSeleccionado = 0;
@@ -125,8 +128,17 @@ public class HistorialVentas extends ActivityParent implements DialogDatePickerS
         btnSelectCliente.setOnClickListener(this);
 
         btnFiltrarUsuario = (Button) findViewById(R.id.btnFiltrarUsuario);
-        btnFiltrarUsuario.setOnClickListener(this);
-        btnFiltrarUsuario.setText("Todos");
+        if (btnFiltrarUsuario != null) {
+            btnFiltrarUsuario.setOnClickListener(this);
+            btnFiltrarUsuario.setText("Todos");
+        }
+
+        drawerLayout = (androidx.drawerlayout.widget.DrawerLayout) findViewById(R.id.drawer_layout);
+        btnAplicarFiltros = (Button) findViewById(R.id.btnAplicarFiltros);
+        if (btnAplicarFiltros != null) {
+            btnAplicarFiltros.setOnClickListener(this);
+        }
+
 
         asyncUsers = new AsyncUsers();
         asyncUsers.setContext(this);
@@ -180,7 +192,6 @@ public class HistorialVentas extends ActivityParent implements DialogDatePickerS
             this.day = day;
             fechaInicio = (year * 10000) + (month * 100) + day;
             btnSelectDate1.setText("Desde \n"+convertirFormatoFecha(fechaInicio));
-            ActualizarListaVentas();
 
         } else if (origen == 2) {
 
@@ -189,7 +200,6 @@ public class HistorialVentas extends ActivityParent implements DialogDatePickerS
             this.day = day;
             fechaFinal = (year * 10000) + (month * 100) + day;
             btnSelectDate2.setText("Hasta \n"+convertirFormatoFecha(fechaFinal));
-            ActualizarListaVentas();
         }
     }
 
@@ -239,11 +249,16 @@ public class HistorialVentas extends ActivityParent implements DialogDatePickerS
                         mUsuario seleccionado = listaUsuarios.get(which);
                         idUsuarioSeleccionado = seleccionado.getIdUsuario();
                         btnFiltrarUsuario.setText(seleccionado.getNombreUsuario());
-                        ActualizarListaVentas();
                     });
                     builder.show();
                 } else {
                     Toast.makeText(this, "No se han cargado los usuarios", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.btnAplicarFiltros:
+                ActualizarListaVentas();
+                if (drawerLayout != null) {
+                    drawerLayout.closeDrawer(GravityCompat.END);
                 }
                 break;
         }
@@ -253,7 +268,6 @@ public class HistorialVentas extends ActivityParent implements DialogDatePickerS
     private void EliminarDatosCliente() {
         idCliente = 0;
         btnSelectCliente.setText("Seleccione cliente para la busqueda");
-        ActualizarListaVentas();
     }
 
     private void MostrarDialogSeleccionCliente() {
@@ -269,7 +283,6 @@ public class HistorialVentas extends ActivityParent implements DialogDatePickerS
     public void obtenerDato(mCustomer customer) {
         idCliente = customer.getiId();
         btnSelectCliente.setText(customer.getcName() + " " + customer.getcApellidoMaterno());
-        ActualizarListaVentas();
     }
 
     private String convertirFormatoFecha(int fecha) {
@@ -310,6 +323,36 @@ public class HistorialVentas extends ActivityParent implements DialogDatePickerS
         ActualizarListaVentas();
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(android.view.Menu menu) {
+        android.view.MenuItem item = menu.add(0, 1001, 0, "Filtros");
+        item.setIcon(R.drawable.filter);
+        item.setShowAsAction(android.view.MenuItem.SHOW_AS_ACTION_ALWAYS | android.view.MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+        if (item.getIcon() != null) {
+            androidx.core.graphics.drawable.DrawableCompat.setTint(
+                androidx.core.graphics.drawable.DrawableCompat.wrap(item.getIcon()),
+                androidx.core.content.ContextCompat.getColor(this, R.color.colorIconoBtnBordeless)
+            );
+        }
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(android.view.MenuItem item) {
+        if (item.getItemId() == 1001) {
+            if (drawerLayout != null) {
+                if (drawerLayout.isDrawerOpen(GravityCompat.END)) {
+                    drawerLayout.closeDrawer(GravityCompat.END);
+                } else {
+                    drawerLayout.openDrawer(GravityCompat.END);
+                }
+            }
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
     private void ActualizarListaVentas() {
         new DownloadListVentas().execute(fechaInicio, fechaFinal, idCliente, idUsuarioSeleccionado);

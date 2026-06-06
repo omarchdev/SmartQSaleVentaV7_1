@@ -62,6 +62,7 @@
                                 app:queryHint="Buscar..." />
 
                             <ImageButton
+                                android:visibility="gone"
                                 android:id="@+id/imgBtnScan"
                                 style="@style/AppTheme.Button.Icon"
                                 android:layout_width="40dp"
@@ -237,7 +238,7 @@
             <LinearLayout android:id="@+id/layoutInfo" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
             <TextView android:id="@+id/txtNombreUltimoProductoEnCarrito" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
             <ImageButton android:id="@+id/imgArrowDisplay" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
-            <com.sothree.slidinguppanel.SlidingUpPanelLayout android:id="@+id/sliding_layout" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+            <com.sothree.slidinguppanel.SlidingUpPanelLayout android:id="@+id/sliding_layout" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" android:gravity="bottom" />
             <RelativeLayout android:id="@+id/linearContenedorVenta" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
             <TextView android:id="@+id/txtDescuentoPrecioVenta" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
             <Button android:id="@+id/btnZonaServicio" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />

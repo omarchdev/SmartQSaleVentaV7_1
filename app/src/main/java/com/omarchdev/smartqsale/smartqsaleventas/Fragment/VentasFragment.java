@@ -692,13 +692,8 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
             //bdConnectionSql = BdConnectionSql.getSinglentonInstance();
             imgCandado = rootView.findViewById(R.id.imgLock);
 
-            try {
-
                 edtSearchProduct = rootView.findViewById(R.id.edtSearchProduct);
 
-            } catch (Exception e) {
-                Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
-            }
 
             imgArrowDisplay = rootView.findViewById(R.id.imgArrowDisplay);
             cliente = new mCustomer();
@@ -758,7 +753,9 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
             content_venta1 = rootView.findViewById(R.id.content_venta1);
             content_venta2 = rootView.findViewById(R.id.content_venta2);
             linearLayoutbtnDetalle.setOnClickListener(this);
-            f.setOnClickListener(this);
+            if (f != null) {
+                f.setOnClickListener(this);
+            }
             cabeceraPedido = new mCabeceraPedido();
             cabeceraPedido.setZonaServicio(new mZonaServicio());
             btnOpenDialogSalvarPedido.setOnClickListener(this);
@@ -875,9 +872,13 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
             setItemClickListener();
             background_dimmer = rootView.findViewById(R.id.background_dimmer);
             avi = rootView.findViewById(R.id.avi);
-            background_dimmer.setOnClickListener(this);
-            background_dimmer.setVisibility(View.GONE);
-            avi.hide();
+            if (background_dimmer != null) {
+                background_dimmer.setOnClickListener(this);
+                background_dimmer.setVisibility(View.GONE);
+            }
+            if (avi != null) {
+                avi.hide();
+            }
             dialogAlertaStock = new DialogAlertaStock();
             asyncProducto.setContext(getContext());
             adapterDetalleVenta.setListenerCarSale(this);
@@ -930,7 +931,9 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
             new CargaInformacion().execute();
             productoTempTiempoVehiculo = new mProduct();
             productoEnVentaTempVehiculo = new ProductoEnVenta();
-            txtEstadoPermitir.setText("----------");
+            if (txtEstadoPermitir != null) {
+                txtEstadoPermitir.setText("----------");
+            }
             if (btnHabMod != null) {
                 btnHabMod.setOnClickListener(this);
             }
@@ -1173,8 +1176,12 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
 
     public void GuardarProductoNormalDetallePedido(ProductoEnVenta productoEnVenta) {
 
-        background_dimmer.setVisibility(View.GONE);
-        avi.hide();
+        if (background_dimmer != null) {
+            background_dimmer.setVisibility(View.GONE);
+        }
+        if (avi != null) {
+            avi.hide();
+        }
         BuscarProductoEnLista(productoEnVenta.getIdProducto(),
                 productoEnVenta.getCantidadReserva(), productoEnVenta.getStockActual());
         if (productoEnVenta.getCantidad() > 0) {
@@ -1200,7 +1207,9 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
 
             MostrarMensajeAlerta("El producto no tiene stock disponible");
         }
-        background_dimmer.setVisibility(View.GONE);
+        if (background_dimmer != null) {
+            background_dimmer.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -1213,8 +1222,12 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
     @Override
     public void NoExisteStock() {
         MostrarMensajeAlerta("No existe stock disponible para el producto");
-        background_dimmer.setVisibility(View.GONE);
-        avi.hide();
+        if (background_dimmer != null) {
+            background_dimmer.setVisibility(View.GONE);
+        }
+        if (avi != null) {
+            avi.hide();
+        }
     }
 
     @Override
@@ -1469,7 +1482,9 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
     @Override
     public void GetResultAforoDisponible(int aforo) {
 
-        txtAforoLibre.setText(Integer.toString(aforo));
+        if (txtAforoLibre != null) {
+            txtAforoLibre.setText(Integer.toString(aforo));
+        }
 
     }
 
@@ -1593,7 +1608,9 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                 public void RegistroExito(@NotNull ResZonaServicio respuesta) {
                     cargaAsyncTemp.dismiss();
                     if (productoTempTiempoVehiculo.getIdProduct() != 0) {
-                        txtEstadoPermitir.setText("Entra");
+                        if (txtEstadoPermitir != null) {
+                            txtEstadoPermitir.setText("Entra");
+                        }
                         cabeceraPedido.setZonaServicio(respuesta.getZonaServicio());
                         cabeceraPedido.setIdentificadorPedido(
                                 respuesta.getZonaServicio()
@@ -1607,7 +1624,9 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                                     @Override
                                     public void ExitoAgregar(ProductoEnVenta productoEnVenta) {
                                         cargaAsyncTemp.dismiss();
-                                        txtEstadoPermitir.setText("Entrada");
+                                        if (txtEstadoPermitir != null) {
+                                            txtEstadoPermitir.setText("Entrada");
+                                        }
                                         productoEnVenta.setMetodoGuardar("N");
                                         GuardarProductoNormalDetallePedido(productoEnVenta);
                                         ObtenerDatoPedido(new InfoGuardadoPedido(edtPlaca.getText().toString(), edtObservacion.getText().toString(),
@@ -1649,7 +1668,9 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                 @Override
                 public void ExisteEnPedido(@NotNull ResZonaServicio respuesta) {
                     cargaAsyncTemp.dismiss();
-                    txtEstadoPermitir.setText("Salida");
+                    if (txtEstadoPermitir != null) {
+                        txtEstadoPermitir.setText("Salida");
+                    }
                     DialogCargaAsync cargaAsyncTemp2 = new DialogCargaAsync(context);
                     cargaAsyncTemp2.getDialogCarga("Espere un momento").show();
                     asyncPedido.GetIdPedidoZonaServicio(
@@ -1660,7 +1681,9 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                                     asyncPedido.ConsultaAforoDisponible();
                                     cargaAsyncTemp2.dismiss();
                                     try {
-                                        txtEstadoPermitir.setText("Salida");
+                                        if (txtEstadoPermitir != null) {
+                                            txtEstadoPermitir.setText("Salida");
+                                        }
                                         new ObtenerPedido().execute(idPedido);
                                     } catch (Exception ex) {
                                         Toast.makeText(context, ex.toString(), Toast.LENGTH_SHORT).show();
@@ -2266,9 +2289,9 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
 
     @Override
     public void onMenuExpanded() {
-        f.setVisibility(View.VISIBLE);
-
-
+        if (f != null) {
+            f.setVisibility(View.VISIBLE);
+        }
     }
 
     public void DialogVendedor() {
@@ -2317,7 +2340,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
         DialogScannerCam dialogScannerCam = new DialogScannerCam();
         dialogScannerCam.setScannerResult(resultText -> {
 
-            try {
+
                 if (resultText.startsWith("*")) {
 
                     asyncPedido.GeneraPedidoPlaca(idCabeceraActual, resultText.replace("*", ""), () -> {
@@ -2328,9 +2351,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                 } else {
                     edtCodigoBarra.setText(resultText);
                 }
-            } catch (Exception e) {
-                Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
-            }
+
         });
         dialogScannerCam.show(getParentFragmentManager(), "cam");
     }
@@ -2520,25 +2541,37 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                         } else if (productList.get(position).getdQuantity() > 0) {
                             if (productList.get(position).getdQuantity() > productList.get(position).getCantidadReserva()) {
                                 BusquedaProductoId(productList.get(position).getIdProduct());
-                                background_dimmer.setVisibility(View.VISIBLE);
-                                avi.show();
+                                if (background_dimmer != null) {
+                                    background_dimmer.setVisibility(View.VISIBLE);
+                                }
+                                if (avi != null) {
+                                    avi.show();
+                                }
                             } else {
                                 MostrarMensajeAlerta("No existen productos disponibles en el stock");
                             }
                         }
                     } else {
                         DialogSelectPrice(productList.get(position).getIdProduct(), productList.get(position).getcProductName());
-                        background_dimmer.setVisibility(View.GONE);
+                        if (background_dimmer != null) {
+                            background_dimmer.setVisibility(View.GONE);
+                        }
                     }
                 } else {
-                    background_dimmer.setVisibility(View.VISIBLE);
-                    avi.show();
+                    if (background_dimmer != null) {
+                        background_dimmer.setVisibility(View.VISIBLE);
+                    }
+                    if (avi != null) {
+                        avi.show();
+                    }
                     if (!productList.get(position).isMultiplePVenta()) {
                         BusquedaProductoId(productList.get(position).getIdProduct());
 
                     } else {
                         DialogSelectPrice(productList.get(position).getIdProduct(), productList.get(position).getcProductName());
-                        background_dimmer.setVisibility(View.GONE);
+                        if (background_dimmer != null) {
+                            background_dimmer.setVisibility(View.GONE);
+                        }
                     }
                 }
             }
@@ -2574,7 +2607,9 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
 
         DialogSelectPrecioAdic adic = new DialogSelectPrecioAdic();
         adic.setObtenerInfoProduct((idProducto, cantidad, idPventa) -> {
-            background_dimmer.setVisibility(View.GONE);
+            if (background_dimmer != null) {
+                background_dimmer.setVisibility(View.GONE);
+            }
             ProductoEnVenta productoEnVenta = new ProductoEnVenta();
             productoEnVenta.setIdProducto(idProducto);
             productoEnVenta.setIdCabeceraPedido(idCabeceraActual);
@@ -2701,7 +2736,9 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
 
     @Override
     public void onMenuCollapsed() {
-        f.setVisibility(View.GONE);
+        if (f != null) {
+            f.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -3068,7 +3105,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
     }
 
     private void mostrarMetodosDePago() {
-        try {
+
             dialogCobroVenta CobroVenta = new dialogCobroVenta().newInstance(
                     cabeceraPedido.getIdCabecera()
                     , getContext(),
@@ -3078,10 +3115,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
             CobroVenta.setListenerVentaFinalizada(this);
             DialogFragment dialogFragmet = CobroVenta;
             dialogFragmet.show(getParentFragmentManager(), "Metodos de Pago");
-        } catch (Exception e) {
-            e.toString();
-            Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
-        }
+
     }
 
     private void MostrarCalculadoraDescuento() {
@@ -3226,10 +3260,18 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
 
     public void EstadoPedidoRecuperado() {
 
-        edtPlaca.setEnabled(false);
-        btnHabMod.setVisibility(View.VISIBLE);
-        btnHoraInit.setVisibility(View.GONE);
-        btnHoraFin.setVisibility(View.GONE);
+        if (edtPlaca != null) {
+            edtPlaca.setEnabled(false);
+        }
+        if (btnHabMod != null) {
+            btnHabMod.setVisibility(View.VISIBLE);
+        }
+        if (btnHoraInit != null) {
+            btnHoraInit.setVisibility(View.GONE);
+        }
+        if (btnHoraFin != null) {
+            btnHoraFin.setVisibility(View.GONE);
+        }
 
     }
 
@@ -3237,29 +3279,53 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
 
         estadoModProductoUnico = true;
 
-        btnTipoLista.setVisibility(View.VISIBLE);
-        btnTipoLista.setText("Guardar cambios");
-        btnHoraFin.setVisibility(View.VISIBLE);
-        btnHoraInit.setVisibility(View.VISIBLE);
-        edtPlaca.setEnabled(false);
+        if (btnTipoLista != null) {
+            btnTipoLista.setVisibility(View.VISIBLE);
+            btnTipoLista.setText("Guardar cambios");
+        }
+        if (btnHoraFin != null) {
+            btnHoraFin.setVisibility(View.VISIBLE);
+        }
+        if (btnHoraInit != null) {
+            btnHoraInit.setVisibility(View.VISIBLE);
+        }
+        if (edtPlaca != null) {
+            edtPlaca.setEnabled(false);
+        }
     }
 
     public void DeshabilitarModificacionSalida() {
         estadoModProductoUnico = false;
-        btnTipoLista.setVisibility(View.GONE);
-        btnTipoLista.setText("Procesar");
-        btnHoraFin.setVisibility(View.GONE);
-        btnHoraInit.setVisibility(View.GONE);
-        edtPlaca.setEnabled(false);
+        if (btnTipoLista != null) {
+            btnTipoLista.setVisibility(View.GONE);
+            btnTipoLista.setText("Procesar");
+        }
+        if (btnHoraFin != null) {
+            btnHoraFin.setVisibility(View.GONE);
+        }
+        if (btnHoraInit != null) {
+            btnHoraInit.setVisibility(View.GONE);
+        }
+        if (edtPlaca != null) {
+            edtPlaca.setEnabled(false);
+        }
     }
 
     public void DeshabilitarModificacion() {
         estadoModProductoUnico = false;
-        btnTipoLista.setVisibility(View.VISIBLE);
-        btnTipoLista.setText("Procesar");
-        btnHoraFin.setVisibility(View.GONE);
-        btnHoraInit.setVisibility(View.GONE);
-        edtPlaca.setEnabled(false);
+        if (btnTipoLista != null) {
+            btnTipoLista.setVisibility(View.VISIBLE);
+            btnTipoLista.setText("Procesar");
+        }
+        if (btnHoraFin != null) {
+            btnHoraFin.setVisibility(View.GONE);
+        }
+        if (btnHoraInit != null) {
+            btnHoraInit.setVisibility(View.GONE);
+        }
+        if (edtPlaca != null) {
+            edtPlaca.setEnabled(false);
+        }
     }
 
     public void ReinicioPantalla() {
@@ -3269,20 +3335,42 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
         productoTempTiempoVehiculo = new mProduct();
         timeDataInicio = new TimeData();
         timeDataSalida = new TimeData();
-        edtHoraSalida.setText("");
-        edtHoraIngreso.setText("");
-        edtPlaca.setText("");
-        edtObservacion.setText("");
-        edtTiempoTranscurrido.setText("");
-        edtEtapaCont.setText("");
-        btnHabMod.setVisibility(View.GONE);
-        btnTipoLista.setVisibility(View.VISIBLE);
-        btnTipoLista.setText("Procesar");
-        btnHoraInit.setVisibility(View.GONE);
-        btnHoraFin.setVisibility(View.GONE);
-        edtPlaca.setEnabled(true);
+        if (edtHoraSalida != null) {
+            edtHoraSalida.setText("");
+        }
+        if (edtHoraIngreso != null) {
+            edtHoraIngreso.setText("");
+        }
+        if (edtPlaca != null) {
+            edtPlaca.setText("");
+            edtPlaca.setEnabled(true);
+        }
+        if (edtObservacion != null) {
+            edtObservacion.setText("");
+        }
+        if (edtTiempoTranscurrido != null) {
+            edtTiempoTranscurrido.setText("");
+        }
+        if (edtEtapaCont != null) {
+            edtEtapaCont.setText("");
+        }
+        if (btnHabMod != null) {
+            btnHabMod.setVisibility(View.GONE);
+        }
+        if (btnTipoLista != null) {
+            btnTipoLista.setVisibility(View.VISIBLE);
+            btnTipoLista.setText("Procesar");
+        }
+        if (btnHoraInit != null) {
+            btnHoraInit.setVisibility(View.GONE);
+        }
+        if (btnHoraFin != null) {
+            btnHoraFin.setVisibility(View.GONE);
+        }
         permitirModificarDatosProductoUnico = false;
-        imgTipoLista.setImageDrawable(getContext().getResources().getDrawable(R.drawable.ic_folder_open_outline_grey600_48dp));
+        if (imgTipoLista != null) {
+            imgTipoLista.setImageDrawable(getContext().getResources().getDrawable(R.drawable.ic_folder_open_outline_grey600_48dp));
+        }
     }
 
     private void GenerarNuevoPedido() {
@@ -3319,22 +3407,34 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
 
         if (estadoEntregaPedido.trim().equals("02")) {
 
-            btnHabMod.setText("Habilitar cambios");
-            btnHabMod.setVisibility(View.VISIBLE);
-            btnHoraInit.setVisibility(View.VISIBLE);
-            btnHoraFin.setVisibility(View.VISIBLE);
+            if (btnHabMod != null) {
+                btnHabMod.setText("Habilitar cambios");
+                btnHabMod.setVisibility(View.VISIBLE);
+            }
+            if (btnHoraInit != null) {
+                btnHoraInit.setVisibility(View.VISIBLE);
+            }
+            if (btnHoraFin != null) {
+                btnHoraFin.setVisibility(View.VISIBLE);
+            }
         } else {
 
-            btnHabMod.setVisibility(View.GONE);
-            btnHoraInit.setVisibility(View.GONE);
-            btnHoraFin.setVisibility(View.GONE);
+            if (btnHabMod != null) {
+                btnHabMod.setVisibility(View.GONE);
+            }
+            if (btnHoraInit != null) {
+                btnHoraInit.setVisibility(View.GONE);
+            }
+            if (btnHoraFin != null) {
+                btnHoraFin.setVisibility(View.GONE);
+            }
         }
 
 
     }
 
     private void ActualizarInterfazDetallePedido(List<ProductoEnVenta> listproductot) {
-        try {
+
             for (int i = 0; i < listproductot.size(); i++) {
                 if (listproductot.get(i).isEsPack()) {
                     listproductot.get(i).inicializarLista();
@@ -3366,23 +3466,39 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                         productoEnVentaTempVehiculo = productoEnVenta;
                         ProductoEnVenta tempProducto = productoEnVenta;
                         productoTempTiempoVehiculo.setIdProduct(tempProducto.getIdProducto());
-                        edtHoraIngreso.setText(tempProducto.getHoraInicio());
-                        edtObservacion.setText(cabeceraPedido.getObservacion());
+                        if (edtHoraIngreso != null) {
+                            edtHoraIngreso.setText(tempProducto.getHoraInicio());
+                        }
+                        if (edtObservacion != null) {
+                            edtObservacion.setText(cabeceraPedido.getObservacion());
+                        }
 
-                        edtHoraSalida.setText(tempProducto.getHoraFinal());
-                        edtTiempoTranscurrido.setText("0");
-                        edtEtapaCont.setText("0");
-                        edtEspaciosLibres.setText("0");
+                        if (edtHoraSalida != null) {
+                            edtHoraSalida.setText(tempProducto.getHoraFinal());
+                        }
+                        if (edtTiempoTranscurrido != null) {
+                            edtTiempoTranscurrido.setText("0");
+                        }
+                        if (edtEtapaCont != null) {
+                            edtEtapaCont.setText("0");
+                        }
+                        if (edtEspaciosLibres != null) {
+                            edtEspaciosLibres.setText("0");
+                        }
                         timeDataInicio = tempProducto.getTiempoInicio();
                         timeDataSalida = tempProducto.getTiempoInicio();
 
                         switch (tempProducto.getITipoImagen()) {
                             case 1:
-                                imgTipoLista.setImageResource(getContext().getResources().getIdentifier("@drawable/" + tempProducto.getCCodigoImagen(), null, getContext().getPackageName()));
+                                if (imgTipoLista != null) {
+                                    imgTipoLista.setImageResource(getContext().getResources().getIdentifier("@drawable/" + tempProducto.getCCodigoImagen(), null, getContext().getPackageName()));
+                                }
 
                                 break;
                             case 2:
-                                imgTipoLista.setImageBitmap(BitmapFactory.decodeByteArray(tempProducto.getImage(), 0, tempProducto.getImage().length));
+                                if (imgTipoLista != null) {
+                                    imgTipoLista.setImageBitmap(BitmapFactory.decodeByteArray(tempProducto.getImage(), 0, tempProducto.getImage().length));
+                                }
 
                                 break;
                         }
@@ -3406,18 +3522,26 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
             modificarCantidadProductos();
 
             if (productoEnVentaTempVehiculo.getIdProducto() != 0) {
-                btnTipoLista.setVisibility(View.GONE);
+                if (btnTipoLista != null) {
+                    btnTipoLista.setVisibility(View.GONE);
+                }
                 String tiempo = String.format("%.0f", detalleVenta.getTiempoTranscurrido());
-                edtTiempoTranscurrido.setText(tiempo);
+                if (edtTiempoTranscurrido != null) {
+                    edtTiempoTranscurrido.setText(tiempo);
+                }
                 String etapas = String.valueOf(detalleVenta.getEtapasContabilizadas());
-                edtEtapaCont.setText(etapas);
-                txtEstadoPermitir.setText("Salida");
+                if (edtEtapaCont != null) {
+                    edtEtapaCont.setText(etapas);
+                }
+                if (txtEstadoPermitir != null) {
+                    txtEstadoPermitir.setText("Salida");
+                }
             } else {
-                btnTipoLista.setVisibility(View.VISIBLE);
+                if (btnTipoLista != null) {
+                    btnTipoLista.setVisibility(View.VISIBLE);
+                }
             }
-        } catch (Exception ex) {
-            Toast.makeText(context, ex.toString(), Toast.LENGTH_LONG).show();
-        }
+
     }
 
     @Override
@@ -3585,7 +3709,6 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
             super.onPostExecute(aVoid);
             asyncPedido.ConsultaAforoDisponible();
             dialogCargaAsync.dismiss();
-            try {
 
 
                 if (idCabeceraActual != 0) {
@@ -3616,10 +3739,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                     //   Toast.makeText(context, "Nuevo pedido", Toast.LENGTH_LONG).show();
 
                 }
-            } catch (Exception e) {
-                Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
 
-            }
         }
     }
 
@@ -3761,7 +3881,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            try {
+
                 productoEnVentaTempVehiculo = new ProductoEnVenta();
                 if (cabeceraPedido.getZonaServicio().getDescripcion().length() > 0) {
                     btnZonaServicio.setText(cabeceraPedido.getZonaServicio().getDescripcion());
@@ -3896,9 +4016,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
             }
             */
 
-            } catch (Exception ex) {
-                Toast.makeText(context, ex.toString(), Toast.LENGTH_SHORT).show();
-            }
+
         }
     }
 

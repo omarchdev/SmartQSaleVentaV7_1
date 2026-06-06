@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
@@ -50,6 +51,7 @@ class DialogSeleccionListaPrecioFragment : DialogFragment() {
     private var txtCantidadPedido: EditText?=null
     private var btnMinusCantidad:Button?=null
     private var asyncProducto: AsyncProductKt?=null
+    private var listaPrecioSeleccionada: ListaPrecioVenta? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -143,6 +145,7 @@ class DialogSeleccionListaPrecioFragment : DialogFragment() {
                 }
 
                 var lista=listasPrecios[0]
+                listaPrecioSeleccionada = lista
                 rb_venta?.text=lista.descripcionVenta +" - "+ Constantes.SimboloMoneda.moneda + lista.npreci_unitario
                 rb_compra?.text=lista.descripcionCompra +" - "+ Constantes.SimboloMoneda.moneda + lista.nprecio_unitario_compra
                 rb_consumo?.text=lista.descripcionConsumo+ " - "+ Constantes.SimboloMoneda.moneda + lista.nprecio_unitario_consumo
@@ -157,12 +160,28 @@ class DialogSeleccionListaPrecioFragment : DialogFragment() {
 
     fun capturarDatos(){
         var tipoUnidad=""
+        var precio = 0.toBigDecimal()
+
+        if (listaPrecioSeleccionada == null) return
+
         if(rb_venta!!.isChecked){
             tipoUnidad="V"
+            precio = listaPrecioSeleccionada!!.npreci_unitario
         }else if(rb_compra!!.isChecked){
             tipoUnidad="C"
+            precio = listaPrecioSeleccionada!!.nprecio_unitario_compra
         }else if(rb_consumo!!.isChecked){
             tipoUnidad="U"
+            precio = listaPrecioSeleccionada!!.nprecio_unitario_consumo
+        }
+
+        if (precio.compareTo(0.toBigDecimal()) == 0) {
+            AlertDialog.Builder(requireContext())
+                .setTitle("Atención")
+                .setMessage("No puede seleccionar un precio igual a cero")
+                .setPositiveButton("Aceptar", null)
+                .show()
+            return
         }
 
 

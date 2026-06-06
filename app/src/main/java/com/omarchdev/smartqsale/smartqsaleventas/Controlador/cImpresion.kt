@@ -35,7 +35,7 @@ class cImpresion(context: Context) {
         val docVenta = DocVenta()
         var r = ""
 
-        val medio = getMedioImpresion()
+        var medio = getMedioImpresion()
         var ancho = 1
         if (medio == "Impresora en Red" || medio == "USB") {
             ancho = dbHelper.ObtenerImpresoraRed().anchoImpresion
@@ -144,6 +144,9 @@ class cImpresion(context: Context) {
         docVenta.cabecerasTicket = formateador.obtenerCabecerasTicketPedido(ancho)
 
 
+        if(medio=="Red (Ethernet/WiFi)"){
+            medio="Impresora en Red";
+        }
         when (medio) {
             "PDF" -> {
             }
@@ -316,7 +319,7 @@ class cImpresion(context: Context) {
             docVenta.nombreVendedor = ""
         }
 
-        val medio = getMedioImpresion()
+        var medio = getMedioImpresion()
         var ancho = 1
         if (medio == "Impresora en Red" || medio == "USB") {
             ancho = dbHelper.ObtenerImpresoraRed().anchoImpresion
@@ -401,6 +404,12 @@ class cImpresion(context: Context) {
                 docVenta.importeLetra=cabeceraVenta.getcValorTotal()
             }
         }*/
+
+        if(medio=="Red (Ethernet/WiFi)"){
+            medio="Impresora en Red";
+        }
+
+
         when (medio) {
             "PDF" -> {
             }

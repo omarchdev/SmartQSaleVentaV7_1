@@ -131,16 +131,12 @@ public class AsyncCategoria {
 
     public void EditarCategoriaId(int idCategoria, String descripcion) {
 
-        try {
+
             editarCategoria = new EditarCategoria();
             editarCategoria.setIdCategoria(idCategoria);
             editarCategoria.setDescripcionCategoria(descripcion);
             editarCategoria.execute();
-        } catch (Exception e) {
-            Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
 
-
-        }
     }
 
     public interface ListenerProcesoCategoria {

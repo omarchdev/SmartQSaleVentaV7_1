@@ -118,21 +118,21 @@ public class DialogSelectPrinter extends DialogFragment implements View.OnClickL
                         if (c1.getCount() > 0) {
                             while (c1.moveToNext()) {
 
-                                Toast.makeText(getActivity(), String.valueOf(c1.getString(0)), Toast.LENGTH_SHORT).show();
-                                Toast.makeText(getActivity(), String.valueOf(c1.getInt(1)), Toast.LENGTH_SHORT).show();
+                             //   Toast.makeText(getActivity(), String.valueOf(c1.getString(0)), Toast.LENGTH_SHORT).show();
+                              //  Toast.makeText(getActivity(), String.valueOf(c1.getInt(1)), Toast.LENGTH_SHORT).show();
                             }
                         } else {
-                            Toast.makeText(getActivity(), "No existe ", Toast.LENGTH_LONG).show();
+                        //    Toast.makeText(getActivity(), "No existe ", Toast.LENGTH_LONG).show();
                         }
                         dialog.dismiss();
                     } catch (Exception e) {
-                        Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_SHORT).show();
+                      //  Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_SHORT).show();
                         Log.d("blue", e.toString());
                     }
 
                 });
             } catch (Exception ex) {
-                Toast.makeText(getActivity(), ex.toString(), Toast.LENGTH_LONG).show();
+             //   Toast.makeText(getActivity(), ex.toString(), Toast.LENGTH_LONG).show();
                 Log.d("blueD", ex.toString());
             }
 
@@ -155,7 +155,7 @@ public class DialogSelectPrinter extends DialogFragment implements View.OnClickL
                         rvUsbDevice.agregarItems(list);
                     } catch (Exception e) {
 
-                        Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
+                      //  Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
                         Log.d("blueA", e.toString());
                     }
                 });
@@ -171,7 +171,7 @@ public class DialogSelectPrinter extends DialogFragment implements View.OnClickL
                     } else if (rbBluetooth.isChecked()) {
 
                         //dbHelper.InsertOptionPrint(rbBluetooth.getText().toString());
-                        Toast.makeText(getActivity(), "No selecciono una impresora", Toast.LENGTH_SHORT).show();
+                      //  Toast.makeText(getActivity(), "No selecciono una impresora", Toast.LENGTH_SHORT).show();
                     } else if (rbPdfRed.isChecked()) {
                         try {
                             dbHelper.InsertOptionPrint(rbPdfRed.getText().toString());
@@ -181,7 +181,7 @@ public class DialogSelectPrinter extends DialogFragment implements View.OnClickL
                             dbHelper.InsertImpresoraRed(edtIP.getText().toString().trim(),
                                     Integer.parseInt(edtPuerto.getText().toString().trim()), ancho);
                         } catch (Exception e) {
-                            Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_LONG).show();
+                        //    Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_LONG).show();
                             Log.d("blueB", e.toString());
                         }
                     }
@@ -321,7 +321,7 @@ public class DialogSelectPrinter extends DialogFragment implements View.OnClickL
 
 
                 } catch (Exception e) {
-                    Toast.makeText(getActivity(), "select -> " + e.toString(), Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(getActivity(), "select -> " + e.toString(), Toast.LENGTH_SHORT).show();
                     Log.d("blueC",e.toString());
                 }
 
@@ -401,7 +401,7 @@ public class DialogSelectPrinter extends DialogFragment implements View.OnClickL
                 Toast.makeText(getActivity(), "No existe ", Toast.LENGTH_LONG).show();
             }
         }catch (Exception e){
-            Toast.makeText(getActivity(),e.toString(),Toast.LENGTH_LONG).show();
+           // Toast.makeText(getActivity(),e.toString(),Toast.LENGTH_LONG).show();
             Log.d("blueF",e.toString());
         }
     }
@@ -419,7 +419,7 @@ public class DialogSelectPrinter extends DialogFragment implements View.OnClickL
                 rvAdapterBluetoothDevice.Add(btConnection.verifiedDriverSync());
             }
         }catch (Exception ex){
-            Toast.makeText(getActivity(),ex.toString(),Toast.LENGTH_LONG).show();
+            //       Toast.makeText(getActivity(),ex.toString(),Toast.LENGTH_LONG).show();
             Log.d("blueG",ex.toString());
         }
 

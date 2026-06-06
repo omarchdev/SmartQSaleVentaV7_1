@@ -12,10 +12,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.card.MaterialCardView;
 import com.omarchdev.smartqsale.smartqsaleventas.R;
 
 import java.util.ArrayList;
@@ -70,7 +70,6 @@ public class RvAdapterBluetoothDevice extends RecyclerView.Adapter<RecyclerView.
                 //                                          int[] grantResults)
                 // to handle the case where the user grants the permission. See the documentation
                 // for ActivityCompat#requestPermissions for more details.
-                return;
             }
 
         }catch (Exception ex){
@@ -98,12 +97,12 @@ public class RvAdapterBluetoothDevice extends RecyclerView.Adapter<RecyclerView.
     public class DeviceSyncViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView txtDevice;
-        LinearLayout ll;
+        MaterialCardView ll;
 
         public DeviceSyncViewHolder(View itemView) {
             super(itemView);
-            txtDevice = (TextView) itemView.findViewById(R.id.txtDeviceBt);
-            ll = (LinearLayout) itemView.findViewById(R.id.llItemDevice);
+            txtDevice = itemView.findViewById(R.id.txtDeviceBt);
+            ll = itemView.findViewById(R.id.llItemDevice);
 
             ll.setOnClickListener(this);
         }
