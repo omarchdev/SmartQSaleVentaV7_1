@@ -7,8 +7,8 @@ Este documento sirve para realizar el seguimiento del estado de la migración de
 ## 📊 Resumen de Estado
 
 - **Total de Módulos (AsyncTask):** 36
-- **Migrados:** 5 (~13.9%)
-- **Pendientes:** 31 (~86.1%)
+- **Migrados:** 6 (~16.7%)
+- **Pendientes:** 30 (~83.3%)
 
 ---
 
@@ -22,6 +22,7 @@ Estos componentes ya no tienen dependencias directas con `BdConnectionSql` y rea
 - [x] **AsyncAlmacenes** (Gestión de almacenes, stock y transferencias)
 - [x] **AsyncCategoria** (Categorías de productos — *Migrado Hoy*)
 - [x] **AsyncClientes** (Gestión y registro de clientes — *Migrado Hoy*)
+- [x] **AsyncMedioPago** (Gestión de medios de pago — *Migrado Hoy*)
 - [x] **AsyncOperarios** (Listado y consulta de operarios de producción)
 - [x] **AsyncStockProductos** (Consulta de stock y detalle de productos en almacén)
 
@@ -36,7 +37,6 @@ Estos componentes aún realizan llamados SQL locales en SQLite o mediante conexi
 - [ ] **AsyncFacturacion** (Lógica de facturación electrónica y CPE)
 - [ ] **AsyncImpresora** (Configuración de impresoras locales por área)
 - [ ] **AsyncLogUser** (Inicio de sesión por PIN)
-- [ ] **AsyncMedioPago** (Listado de métodos de pago configurados)
 - [ ] **AsyncModificadores** (Configuración de modificadores/adicionales de productos)
 - [ ] **AsyncPedido** (Guardado y modificación de detalles de pedidos)
 - [ ] **AsyncPedidos** (Listado y filtros de pedidos en reserva/tienda)

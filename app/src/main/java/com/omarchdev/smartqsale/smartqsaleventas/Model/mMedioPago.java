@@ -1,5 +1,6 @@
 package com.omarchdev.smartqsale.smartqsaleventas.Model;
 
+import com.google.gson.annotations.SerializedName;
 import java.math.BigDecimal;
 
 /**
@@ -8,16 +9,27 @@ import java.math.BigDecimal;
 
 public class mMedioPago {
 
+    @SerializedName("iIdMedioPago")
     private int iIdMedioPago;
+    @SerializedName("cCodigoMedioPago")
     private String cCodigoMedioPago;
+    @SerializedName("iIdTipoPago")
     private int iIdTipoPago;
+    @SerializedName("cDescripcionMedioPago")
     private String cDescripcionMedioPago;
+    @SerializedName("bImprimeTicket")
     private boolean bImprimeTicket;
+    @SerializedName("porCobrar")
     private boolean porCobrar;
+    @SerializedName("estdoModificador")
     private boolean estadoModificador;
+    @SerializedName("idImagen")
     private String idImagen;
+    @SerializedName("dValorMinimo")
     private BigDecimal dValorMinimo;
+    @SerializedName("bEsEfectivo")
     private boolean bEsEfectivo;
+    @SerializedName("bActivaraCamara")
     private boolean bActivaraCamara;
     public mMedioPago() {
 

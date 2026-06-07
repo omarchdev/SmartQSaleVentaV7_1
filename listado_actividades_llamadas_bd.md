@@ -38,7 +38,7 @@ Estas clases no llaman a `BdConnectionSql` de forma directa, sino que invocan cl
 * **HistorialVentas**: Usa `AsyncUsers` (adicional a su llamada directa)
 * **IngresoCompraKt**: Usa `AsyncProducto`
 * **ListadoClientes**: Usa ~~`AsyncClientes`~~ *(Migrado)*
-* **ListadoMedioPago**: Usa `AsyncMedioPago`
+* **ListadoMedioPago**: Usa ~~AsyncMedioPago~~ *(Migrado)*
 * **ListadoProductos**: Usa `AsyncProducto`
 * **ListadoRoles**: Usa `AsyncRoles`
 * **ListadoUsuarios**: Usa `AsyncUsers`
@@ -56,7 +56,7 @@ Estas clases no llaman a `BdConnectionSql` de forma directa, sino que invocan cl
 * **RegistroAreaProduccion**: Usa `AsyncAreasProduccion`
 * **RegistroCliente**: Usa ~~`AsyncClientes`~~ *(Migrado)*
 * **RegistroImpresora**: Usa `AsyncAreasProduccion`, `AsyncImpresora`
-* **RegistroMedioPago**: Usa `AsyncMedioPago`
+* **RegistroMedioPago**: Usa ~~AsyncMedioPago~~ *(Migrado)*
 * **RegistroSubCategoria**: Usa `AsyncSubCategorias`
 * **RegistroTienda**: Usa `AsyncTiendas`
 * **RegistroUsuario**: Usa `AsyncLogUser`, `AsyncRegistroUsuario`, `AsyncTiendas`, `AsyncUsers`
