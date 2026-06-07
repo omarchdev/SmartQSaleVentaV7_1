@@ -14,18 +14,27 @@ import java.util.Date;
 
 public class mCierre {
 
+    @SerializedName("idCierre")
     private int idCierre;
     @SerializedName("fechaAperturaEX")
     private Timestamp fechaApertura;
     @SerializedName("fechaCierreEx")
     private Timestamp fechaCierre;
+    @SerializedName("estadoCierre")
     private String estadoCierre;
+    @SerializedName("cFechaApertura")
     private String cFechaApertura;
+    @SerializedName("cFechaCierre")
     private String cFechaCierre;
+    @SerializedName("cPeriodo")
     private String cPeriodo;
+    @SerializedName("totalVentas")
     private BigDecimal totalVentas;
+    @SerializedName("descripcionEstado")
     private String descripcionEstado;
+    @SerializedName("numTransacciones")
     private int numTransacciones;
+    @SerializedName("idUsuario")
     private int idUsuario;
     private String nombreUsuario;
 /*    @SerializedName("fechaApertura")

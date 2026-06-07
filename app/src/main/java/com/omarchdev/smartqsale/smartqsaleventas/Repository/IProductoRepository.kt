@@ -88,7 +88,20 @@ interface IProductoRepository {
         @Query("idProduct") idProduct: Int,
     ): Call<List<ListaPrecioVenta>>
 
+    @GET("api/producto/ObtenerProductosVentasMonto")
+    fun ObtenerProductosVentasMonto(
+        @Query("codeCia") codeCia: String,
+        @Query("tipoConsulta") tipoConsulta: String,
+        @Query("fechaInicio") fechaInicio: String,
+        @Query("fechaFinal") fechaFinal: String
+    ): Call<List<mProduct>>
 
-
+    @GET("api/producto/ObtenerProductosVentasCantidad")
+    fun ObtenerProductosVentasCantidad(
+        @Query("codeCia") codeCia: String,
+        @Query("tipoConsulta") tipoConsulta: String,
+        @Query("fechaInicio") fechaInicio: String,
+        @Query("fechaFinal") fechaFinal: String
+    ): Call<List<mProduct>>
 
 }

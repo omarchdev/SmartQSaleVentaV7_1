@@ -1,8 +1,19 @@
 package com.omarchdev.smartqsale.smartqsaleventas.Model
 
-class mSubCategoria(id:Int,descripcion:String):mCategoriaProductos(){
+import com.google.gson.annotations.SerializedName
 
-    var idSubCategoria=id
-    var descripcionSubCategoria=descripcion
+class mSubCategoria : mCategoriaProductos {
 
+    @SerializedName("idSubCategoria")
+    var idSubCategoria: Int = 0
+
+    @SerializedName("descripcionSubCategoria")
+    var descripcionSubCategoria: String = ""
+
+    constructor() : super()
+
+    constructor(id: Int, descripcion: String) : super() {
+        this.idSubCategoria = id
+        this.descripcionSubCategoria = descripcion
+    }
 }

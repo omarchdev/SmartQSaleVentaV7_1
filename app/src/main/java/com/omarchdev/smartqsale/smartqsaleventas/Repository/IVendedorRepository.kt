@@ -2,6 +2,7 @@ package com.omarchdev.smartqsale.smartqsaleventas.Repository
 
 import com.omarchdev.smartqsale.smartqsaleventas.Model.SolicitudEnvio
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mVendedor
+import com.omarchdev.smartqsale.smartqsaleventas.Model.mVendedorProducto
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -28,5 +29,41 @@ interface IVendedorRepository {
 
     @POST("api/Vendedor/EliminarVendedor")
     fun EliminarVendedor(@Body solicitudEnvio: SolicitudEnvio<Int>): Call<Byte>
+
+    @GET("api/Vendedor/GetReporteVendedorVentaAcumulado")
+    fun GetReporteVendedorVentaAcumulado(
+        @Query("idVendedor") idVendedor: Int,
+        @Query("desde") desde: String,
+        @Query("hasta") hasta: String,
+        @Query("idTienda") idTienda: Int,
+        @Query("codecia") codeCia: String,
+        @Query("tipoconsulta") tipoConsulta: String
+    ): Call<List<mVendedorProducto>>
+
+    @GET("api/Vendedor/GetReporteVendedorVentaTodasTiendasAcumulado")
+    fun GetReporteVendedorVentaTodasTiendasAcumulado(
+        @Query("desde") desde: String,
+        @Query("hasta") hasta: String,
+        @Query("codecia") codeCia: String,
+        @Query("tipoconsulta") tipoConsulta: String
+    ): Call<List<mVendedorProducto>>
+
+    @GET("api/Vendedor/GetReporteDetalleTodasTiendas")
+    fun GetReporteDetalleTodasTiendas(
+        @Query("desde") desde: String,
+        @Query("hasta") hasta: String,
+        @Query("codecia") codeCia: String,
+        @Query("tipoconsulta") tipoConsulta: String
+    ): Call<List<mVendedorProducto>>
+
+    @GET("api/Vendedor/GetReporteVendedorVenta")
+    fun GetReporteVendedorVenta(
+        @Query("idVendedor") idVendedor: Int,
+        @Query("desde") desde: String,
+        @Query("hasta") hasta: String,
+        @Query("idTienda") idTienda: Int,
+        @Query("codecia") codeCia: String,
+        @Query("tipoconsulta") tipoConsulta: String
+    ): Call<List<mVendedorProducto>>
 
 }

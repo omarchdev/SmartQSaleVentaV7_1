@@ -1,12 +1,21 @@
 package com.omarchdev.smartqsale.smartqsaleventas.Model
 
-class mVendedorProducto{
+import com.google.gson.annotations.SerializedName
 
-    val product=mProduct()
-    val vendedor=mVendedor()
-    var idCabeceraVenta=0
-    var fechaProceso=""
-    var idTienda=0;
+class mVendedorProducto {
 
+    @SerializedName("product")
+    var product = mProduct()
 
+    @SerializedName("vendedor")
+    var vendedor = mVendedor()
+
+    @SerializedName("idCabeceraVenta")
+    var idCabeceraVenta = 0
+
+    @SerializedName("fechaProceso")
+    var fechaProceso = ""
+
+    @SerializedName("idTienda")
+    var idTienda = 0
 }

@@ -2,15 +2,19 @@ package com.omarchdev.smartqsale.smartqsaleventas.AsyncTask
 
 
 import android.content.Context
-import com.omarchdev.smartqsale.smartqsaleventas.ConexionBd.BdConnectionSql
 import com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes
+import com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes.BASECONN
 import com.omarchdev.smartqsale.smartqsaleventas.Controlador.ControladorProcesoCargar
 import com.omarchdev.smartqsale.smartqsaleventas.Controlador.Html
 import com.omarchdev.smartqsale.smartqsaleventas.Controlador.PdfGenerator
+import com.omarchdev.smartqsale.smartqsaleventas.Model.GetJsonCiaTiendaBase64x3
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mDetalleMovCaja
+import com.omarchdev.smartqsale.smartqsaleventas.Repository.ICierreRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 /*import org.apache.poi.hssf.usermodel.HSSFWorkbook
 import org.apache.poi.hssf.usermodel.HSSFSheet
@@ -53,23 +57,30 @@ class AsyncReporteIngresoRetiro(context: Context){
     private val cabecera=ArrayList<String>()
     private var textoHtml=""
     private val controladorProcesoCargar=ControladorProcesoCargar(context)
+    val codeCia = GetJsonCiaTiendaBase64x3()
+    var retro = Retrofit.Builder().baseUrl(BASECONN.BASE_URL_API)
+        .addConverterFactory(GsonConverterFactory.create()).build()
+    var iCierreRepository = retro.create(ICierreRepository::class.java)
 
     fun ObtenerReporteIngresosRetirosPeriodoFecha(fechaI:String,fechaF:String){
 
         controladorProcesoCargar.IniciarDialogCarga("Generando Reporte")
 
 
-         GlobalScope.launch  {
-
-             var lista=BdConnectionSql.getSinglentonInstance().MovimientosCajaPorPeriodoFecha(fechaI,fechaF)
-            textoHtml=GenerarReporteIngresosGastos(lista)
-           launch(Dispatchers.Main){
-            //  CrearExcel(lista)
-
-                controladorProcesoCargar.FinalizarDialogCarga()
-                 generarPdfGenerator.GenerarPdf(textoHtml,"Reporte de Ingreso y Salidas")
-            }
-
+         GlobalScope.launch(Dispatchers.IO)  {
+             try {
+                 val lista = iCierreRepository.MovimientosCajaPorPeriodoFecha(fechaI, fechaF, BASECONN.TIPO_CONSULTA, codeCia).execute().body() ?: ArrayList()
+                 textoHtml = GenerarReporteIngresosGastos(lista)
+                 launch(Dispatchers.Main) {
+                     controladorProcesoCargar.FinalizarDialogCarga()
+                     generarPdfGenerator.GenerarPdf(textoHtml, "Reporte de Ingreso y Salidas")
+                 }
+             } catch (e: Exception) {
+                 e.printStackTrace()
+                 launch(Dispatchers.Main) {
+                     controladorProcesoCargar.FinalizarDialogCarga()
+                 }
+             }
         }
 
     }
@@ -82,8 +93,8 @@ class AsyncReporteIngresoRetiro(context: Context){
 
         listaRetiros.clear()
         listaIngresos.clear()
-        listaIngresos.addAll(IngresosRetiros.filter { it->it.tipoRegistro==1.toByte() })
-        listaRetiros.addAll(IngresosRetiros.filter { it->it.tipoRegistro==2.toByte() })
+        listaIngresos.addAll(IngresosRetiros.filter { it.tipoRegistro==1.toByte() })
+        listaRetiros.addAll(IngresosRetiros.filter { it.tipoRegistro==2.toByte() })
         cabecera.clear()
         tabla.clear()
 
@@ -103,7 +114,7 @@ class AsyncReporteIngresoRetiro(context: Context){
             fila.add("${it.cierre.getcFechaApertura()} - ${it.cierre.getcFechaCierre()} ")
             fila.add(it.descripcion)
             fila.add(it.descripcionMotivo)
-            fila.add("${String.format("%.2f",it.monto)}")
+            fila.add(String.format("%.2f", it.monto))
 
             tabla.add(fila)
         }
@@ -131,7 +142,7 @@ class AsyncReporteIngresoRetiro(context: Context){
              fila.add("${it.cierre.getcFechaApertura()} - ${it.cierre.getcFechaCierre()} ")
              fila.add(it.descripcion)
             fila.add(it.descripcionMotivo)
-            fila.add("${String.format("%.2f",it.monto)}")
+            fila.add(String.format("%.2f", it.monto))
 
             tabla.add(fila)
         }

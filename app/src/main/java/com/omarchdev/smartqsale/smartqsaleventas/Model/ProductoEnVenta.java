@@ -50,7 +50,9 @@ public class ProductoEnVenta {
     float stockActual;
     boolean disponibleStock;
     byte respuestaGuardar;
+    @SerializedName("descripcionCategoria")
     private String descripcionCategoria;
+    @SerializedName("descripcionSubCategoria")
     private String descripcionSubCategoria;
     private int codPrecioAlterno;
     @SerializedName("precioNeto")
@@ -68,6 +70,7 @@ public class ProductoEnVenta {
     private BigDecimal montoDescuento;
     private boolean aplicarDescuento;
     private boolean usaDescuento;
+    @SerializedName("descripcionCombo")
     private String descripcionCombo;
     private int idTienda;
     private String fecha;

@@ -69,6 +69,7 @@ public class mProduct {
     private String modificadores;
     @SerializedName("cantidad_pedido")
     public float cantidadReserva;
+    @SerializedName("unidad_medida")
     private String unidadMedida;
     private List<AdditionalPriceProduct> priceProductList;
     @SerializedName("es_precio_multiple")

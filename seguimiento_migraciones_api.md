@@ -7,8 +7,8 @@ Este documento sirve para realizar el seguimiento del estado de la migración de
 ## 📊 Resumen de Estado
 
 - **Total de Módulos (AsyncTask):** 36
-- **Migrados:** 6 (~16.7%)
-- **Pendientes:** 30 (~83.3%)
+- **Migrados:** 11 (~30.6%)
+- **Pendientes:** 25 (~69.4%)
 
 ---
 
@@ -24,7 +24,12 @@ Estos componentes ya no tienen dependencias directas con `BdConnectionSql` y rea
 - [x] **AsyncClientes** (Gestión y registro de clientes — *Migrado Hoy*)
 - [x] **AsyncMedioPago** (Gestión de medios de pago — *Migrado Hoy*)
 - [x] **AsyncOperarios** (Listado y consulta de operarios de producción)
+- [x] **AsyncReporteCierreCaja** (Reportes y balances financieros de cierres — *Migrado Hoy*)
+- [x] **AsyncReporteIngresoRetiro** (Flujos de ingreso/retiro de dinero en caja — *Migrado Hoy*)
+- [x] **AsyncReporteProductos** (Estadísticas y reportes de salida de productos — *Migrado Hoy*)
+- [x] **AsyncReporteVendedor** (Reportes de rendimiento de ventas por vendedor — *Migrado Hoy*)
 - [x] **AsyncStockProductos** (Consulta de stock y detalle de productos en almacén)
+- [x] **AsyncSubCategorias** (Subcategorías de productos — *Migrado Hoy*)
 
 ---
 
@@ -44,15 +49,10 @@ Estos componentes aún realizan llamados SQL locales en SQLite o mediante conexi
 - [ ] **AsyncProductKt / AsyncProducto** (Carga de productos para la venta y configuración)
 - [ ] **AsyncRegistroUsuario** (Registro y guardado de nuevos usuarios)
 - [ ] **AsyncReporte** (Lógica general de reportes locales de almacén y ventas)
-- [ ] **AsyncReporteCierreCaja** (Reportes y balances financieros de cierres)
-- [ ] **AsyncReporteIngresoRetiro** (Flujos de ingreso/retiro de dinero en caja)
 - [ ] **AsyncReportePeriodo** (Histórico y reportes de ventas por rangos de tiempo)
-- [ ] **AsyncReporteProductos** (Estadísticas y reportes de salida de productos)
-- [ ] **AsyncReporteVendedor** (Reportes de rendimiento de ventas por vendedor)
 - [ ] **AsyncRoles** (Roles y permisos de usuarios)
 - [ ] **AsyncSelectTienda / AsyncTiendas** (Listado y configuración de sucursales)
 - [ ] **AsyncSoporte** (Validación de tokens de soporte técnico y PINs)
-- [ ] **AsyncSubCategorias** (Subcategorías de productos)
 - [ ] **AsyncTiposDocumento** (Tipos de documento de identidad)
 - [ ] **AsyncUsers** (Autenticación, roles y registro de usuarios)
 - [ ] **AsyncVariantes** (Configuración de atributos, opciones y variantes de producto)

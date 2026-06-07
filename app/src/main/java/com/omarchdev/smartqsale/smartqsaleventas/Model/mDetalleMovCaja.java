@@ -1,6 +1,7 @@
 package com.omarchdev.smartqsale.smartqsaleventas.Model;
 
 import java.math.BigDecimal;
+import com.google.gson.annotations.SerializedName;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -11,15 +12,25 @@ import java.util.Date;
 
 public class mDetalleMovCaja {
 
+    @SerializedName("tipoRegistro")
     private byte tipoRegistro;
+    @SerializedName("nombreMedioPago")
     private String nombreMedioPago;
+    @SerializedName("descripcionMotivo")
     private String descripcionMotivo;
+    @SerializedName("descripcion")
     private String descripcion;
+    @SerializedName("monto")
     private BigDecimal monto;
+    @SerializedName("fechaTransaccion")
     private Timestamp fechaTransaccion;
+    @SerializedName("fechaTransaccionT")
     private String fechaTransaccionT;
+    @SerializedName("cantidadMov")
     private int cantidadMov;
+    @SerializedName("cFechaTransaccion")
     private String cFechaTransaccion;
+    @SerializedName("cierre")
     private mCierre cierre;
 
     public void ConvierteFechaJSON(){

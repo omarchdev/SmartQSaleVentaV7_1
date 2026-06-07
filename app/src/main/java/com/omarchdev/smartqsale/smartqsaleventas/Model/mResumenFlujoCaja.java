@@ -1,6 +1,7 @@
 package com.omarchdev.smartqsale.smartqsaleventas.Model;
 
 import java.math.BigDecimal;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by OMAR CHH on 26/01/2018.
@@ -9,13 +10,21 @@ import java.math.BigDecimal;
 public class mResumenFlujoCaja {
 
 
+    @SerializedName("codtitulo")
     private String codtitulo;
+    @SerializedName("titutloPago")
     private String titutloPago;
+    @SerializedName("descripcionTitulo")
     private String descripcionTitulo;
+    @SerializedName("codColor")
     private String codColor;
+    @SerializedName("descripcion")
     private String descripcion;
+    @SerializedName("subtituloCaja")
     private String subtituloCaja;
+    @SerializedName("monto")
     private BigDecimal monto;
+    @SerializedName("simbolo")
     private String simbolo;
 
     public mResumenFlujoCaja() {

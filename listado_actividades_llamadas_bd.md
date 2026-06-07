@@ -29,7 +29,7 @@ Estas clases no llaman a `BdConnectionSql` de forma directa, sino que invocan cl
 * **ActivityModificadorConfig**: Usa `AsyncModificadores`
 * **ActivityRegistroCategorias**: Usa `AsyncCategoria`
 * **AreasProduccionLista**: Usa `AsyncAreasProduccion`
-* **CajaFlujoActivity**: Usa `AsyncCaja`, `AsyncReporteCierreCaja`
+* **CajaFlujoActivity**: Usa `AsyncCaja`, ~~`AsyncReporteCierreCaja`~~ *(Migrado)*
 * **CategoriasActivity**: Usa `AsyncCategoria`
 * **ConfigModificadorProducto**: Usa `AsyncModificadores`
 * **DetallePedido**: Usa `AsyncPedidos`
@@ -57,19 +57,19 @@ Estas clases no llaman a `BdConnectionSql` de forma directa, sino que invocan cl
 * **RegistroCliente**: Usa ~~`AsyncClientes`~~ *(Migrado)*
 * **RegistroImpresora**: Usa `AsyncAreasProduccion`, `AsyncImpresora`
 * **RegistroMedioPago**: Usa ~~AsyncMedioPago~~ *(Migrado)*
-* **RegistroSubCategoria**: Usa `AsyncSubCategorias`
+* **RegistroSubCategoria**: Usa ~~`AsyncSubCategorias`~~ *(Migrado)*
 * **RegistroTienda**: Usa `AsyncTiendas`
 * **RegistroUsuario**: Usa `AsyncLogUser`, `AsyncRegistroUsuario`, `AsyncTiendas`, `AsyncUsers`
 * **RegistroVendedor**: Usa `AsyncVendedores`
 * **Registro_Producto**: Usa `AsyncAreasProduccion`, `AsyncCategoria`, `AsyncProducto`
 * **ReporteAlmacen**: Usa `AsyncReporte`
 * **ReporteCierreCaja**: Usa `AsyncCaja`, `AsyncReporte`
-* **ReporteIngresosRetirosPeriodo**: Usa `AsyncReporteIngresoRetiro`
+* **ReporteIngresosRetirosPeriodo**: ~~`AsyncReporteIngresoRetiro`~~ *(Migrado)*
 * **ReportePeriodoTienda**: Usa `AsyncReportePeriodo`
-* **ReporteVendedor**: Usa `AsyncReporte`, `AsyncReporteVendedor`, `AsyncVendedor`, `AsyncVendedores`
+* **ReporteVendedor**: Usa `AsyncReporte`, ~~`AsyncReporteVendedor`~~ *(Migrado)*, `AsyncVendedor`, `AsyncVendedores`
 * **ReporteVentasCaja**: Usa `AsyncCaja`, `AsyncReporte`, `AsyncVendedores`
 * **ReporteVentasCierre**: Usa `AsyncCaja`, `AsyncReporte`, `AsyncVendedores`
-* **ReporteVentasProductos**: Usa `AsyncReporteProductos`
+* **ReporteVentasProductos**: ~~`AsyncReporteProductos`~~ *(Migrado)*
 * **SelectTienda**: Usa `AsyncTiendas`
 * **SoporteTecnico**: Usa `AsyncVersion`
 * **ProductoDBasicos**: Usa `AsyncAreasProduccion`, `AsyncProductKt`, `AsyncSubCategorias`

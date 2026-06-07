@@ -1,6 +1,7 @@
 package com.omarchdev.smartqsale.smartqsaleventas.Repository
 
 import com.omarchdev.smartqsale.smartqsaleventas.Model.*
+import java.math.BigDecimal
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -61,4 +62,54 @@ interface ICierreRepository {
         @Query("codeCia") codeCia: String,
         @Query("idUsuario") idUsuario: Int
     ): Call<List<mCierre>>
+
+    @GET("api/Cierre/ObtenerMontoAperturaCierre")
+    fun ObtenerMontoAperturaCierre(
+        @Header("idCierre") idCierre: Int,
+        @Query("tipoConsulta") tipoConsulta: String,
+        @Query("codeCia") codeCia: String
+    ): Call<BigDecimal>
+
+    @GET("api/Cierre/ObtenerAcumuladoVentasPorCierreMonto")
+    fun ObtenerAcumuladoVentasPorCierreMonto(
+        @Header("idCierre") idCierre: Int,
+        @Query("tipoConsulta") tipoConsulta: String,
+        @Query("codeCia") codeCia: String
+    ): Call<List<ProductoEnVenta>>
+
+    @GET("api/Cierre/VentasPorDocumentoCierre")
+    fun VentasPorDocumentoCierre(
+        @Header("idCierre") idCierre: Int,
+        @Query("tipoConsulta") tipoConsulta: String,
+        @Query("codeCia") codeCia: String
+    ): Call<List<VentaDocumento>>
+
+    @GET("api/Cierre/RetirosCajaPorCierre")
+    fun RetirosCajaPorCierre(
+        @Header("idCierre") idCierre: Int,
+        @Query("tipoConsulta") tipoConsulta: String,
+        @Query("codeCia") codeCia: String
+    ): Call<List<mDetalleMovCaja>>
+
+    @GET("api/Cierre/TotalDescuentoCierre")
+    fun TotalDescuentoCierre(
+        @Header("idCierre") idCierre: Int,
+        @Query("tipoConsulta") tipoConsulta: String,
+        @Query("codeCia") codeCia: String
+    ): Call<BigDecimal>
+
+    @GET("api/Cierre/CabeceraCierre")
+    fun CabeceraCierre(
+        @Header("idCierre") idCierre: Int,
+        @Query("tipoConsulta") tipoConsulta: String,
+        @Query("codeCia") codeCia: String
+    ): Call<mCierre>
+
+    @GET("api/Cierre/MovimientosCajaPorPeriodoFecha")
+    fun MovimientosCajaPorPeriodoFecha(
+        @Query("fechaInicio") fechaInicio: String,
+        @Query("fechaFinal") fechaFinal: String,
+        @Query("tipoConsulta") tipoConsulta: String,
+        @Query("codeCia") codeCia: String
+    ): Call<List<mDetalleMovCaja>>
 }
