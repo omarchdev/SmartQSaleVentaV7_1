@@ -370,6 +370,7 @@ public abstract class Constantes {
 
 
         public static boolean bUsaListaPrecios;
+        public static boolean bMantenerVendedorEntreVentas;
 
 
     }

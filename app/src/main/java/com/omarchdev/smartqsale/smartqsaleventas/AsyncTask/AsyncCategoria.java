@@ -24,6 +24,7 @@ import com.omarchdev.smartqsale.smartqsaleventas.Repository.IProductoRepository;
 import com.omarchdev.smartqsale.smartqsaleventas.Repository.UnidadMedidaRepository;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -158,7 +159,7 @@ public class AsyncCategoria {
 
         public void CategoriasObtenidas(List<mCategoriaProductos> categoriaProductosList);
 
-        public void ObtenerUnidadesMedidad(List<mUnidadMedida> listaUnidades);
+        public void ObtenerListaUnidadesMedida(List<mUnidadMedida> listaUnidades);
 
 
     }
@@ -255,9 +256,14 @@ public class AsyncCategoria {
         protected List<mCategoriaProductos> doInBackground(Void... voids) {
             if (descargarUnidadesMedida) {
                 try {
-                    listaUnidad = iUnidadMedidaRepository.ObtenerUnidadesMedida(ciaCode, TIPO_CONSULTA).execute().body();
-                    listaAreas = iAreasProduccionRepository.GetAreasProduccion(TIPO_CONSULTA, ciaCode).execute().body();
-                    cantidadMaxima = iProductoRepository.CantidadMaximaPedidoWeb(ciaCode, TIPO_CONSULTA).execute().body().doubleValue();
+                    Response<List<mUnidadMedida>> resUnidad = iUnidadMedidaRepository.ObtenerUnidadesMedida(ciaCode, TIPO_CONSULTA).execute();
+                    listaUnidad = resUnidad.isSuccessful() && resUnidad.body() != null ? resUnidad.body() : new ArrayList<>();
+
+                    Response<List<mAreaProduccion>> resAreas = iAreasProduccionRepository.GetAreasProduccion(TIPO_CONSULTA, ciaCode).execute();
+                    listaAreas = resAreas.isSuccessful() && resAreas.body() != null ? resAreas.body() : new ArrayList<>();
+
+                    Response<BigDecimal> resCantMax = iProductoRepository.CantidadMaximaPedidoWeb(ciaCode, TIPO_CONSULTA).execute();
+                    cantidadMaxima = resCantMax.isSuccessful() && resCantMax.body() != null ? resCantMax.body().doubleValue() : 0;
                 } catch (Exception ex) {
                     listaUnidad = new ArrayList<>();
                     listaAreas = new ArrayList<>();
@@ -295,7 +301,7 @@ public class AsyncCategoria {
             }
             if (listenerCategoria != null) {
                 if (descargarUnidadesMedida) {
-                    listenerCategoria.ObtenerUnidadesMedidad(listaUnidad);
+                    listenerCategoria.ObtenerListaUnidadesMedida(listaUnidad);
                 }
                 if (listenerAreasProduccion != null) {
                     if (listaAreas != null) {

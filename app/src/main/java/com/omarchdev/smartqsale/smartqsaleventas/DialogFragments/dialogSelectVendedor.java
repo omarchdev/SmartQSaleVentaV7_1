@@ -6,10 +6,13 @@ import android.app.Dialog;
 import androidx.fragment.app.DialogFragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.SearchView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -29,16 +32,15 @@ import java.util.List;
  * Created by OMAR CHH on 01/12/2017.
  */
 
-public class dialogSelectVendedor extends DialogFragment implements View.OnClickListener, TextWatcher, RvAdapterVendedor.Vendedor {
+public class dialogSelectVendedor extends DialogFragment implements View.OnClickListener, SearchView.OnQueryTextListener, RvAdapterVendedor.Vendedor {
 
     Dialog dialog;
-    EditText edtBusquedaVendedor;
-    ListView listView;
+    SearchView svVendedor;
     RecyclerView rv;
     Button btnEliminarVendedor;
     RvAdapterVendedor rvAdapterVendedor;
     ControladorVendedor controladorVendedor;
-    static  InformacionVendedor informacionVendedor;
+    static InformacionVendedor informacionVendedor;
     ImageButton imgArrowBack;
     Button btnAñadirVendedor;
 
@@ -64,26 +66,26 @@ public class dialogSelectVendedor extends DialogFragment implements View.OnClick
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
-        View v=((Activity)getActivity()).getLayoutInflater().inflate(R.layout.busqueda_vendedores_venta,null);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        View v = getLayoutInflater().inflate(R.layout.busqueda_vendedores_venta, null);
         controladorVendedor = new ControladorVendedor();
-        imgArrowBack = (ImageButton) v.findViewById(R.id.imgArrowBack);
-        edtBusquedaVendedor = (EditText) v.findViewById(R.id.edtBusquedaVendedor);
-        listView=(ListView)v.findViewById(R.id.listViewVendedoresEnVenta);
-        rv = (RecyclerView) v.findViewById(R.id.rvVendedoresParaVenta);
-        btnAñadirVendedor = (Button) v.findViewById(R.id.btnAgregarVendedor);
-        if (getTag().equals("Mostrar Vendedores Registro")) {
+        imgArrowBack = v.findViewById(R.id.imgArrowBack);
+        svVendedor = v.findViewById(R.id.svVendedor);
+        rv = v.findViewById(R.id.rvVendedoresParaVenta);
+        btnAñadirVendedor = v.findViewById(R.id.btnAgregarVendedor);
+        if (getTag() != null && getTag().equals("Mostrar Vendedores Registro")) {
             btnAñadirVendedor.setVisibility(View.VISIBLE);
         }
-        btnEliminarVendedor=v.findViewById(R.id.btnEliminarVendedor);
+        btnEliminarVendedor = v.findViewById(R.id.btnEliminarVendedor);
         btnAñadirVendedor.setOnClickListener(this);
         rvAdapterVendedor = new RvAdapterVendedor();
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+        rv.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
         rv.setHasFixedSize(true);
         rv.setAdapter(rvAdapterVendedor);
         rvAdapterVendedor.setListener(this);
 
-        edtBusquedaVendedor.addTextChangedListener(this);
+        svVendedor.setOnQueryTextListener(this);
         btnEliminarVendedor.setOnClickListener(this);
 
         imgArrowBack.setOnClickListener(this);
@@ -107,25 +109,26 @@ public class dialogSelectVendedor extends DialogFragment implements View.OnClick
     }
 
     @Override
-    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+    public boolean onQueryTextSubmit(String query) {
+        new DownloadListVendedor().execute(query);
+        return true;
     }
 
     @Override
-    public void onTextChanged(CharSequence s, int start, int before, int count) {
-        new DownloadListVendedor().execute(s.toString());
-
-    }
-
-    @Override
-    public void afterTextChanged(Editable s) {
-
+    public boolean onQueryTextChange(String newText) {
+        new DownloadListVendedor().execute(newText);
+        return true;
     }
 
     @Override
     public void ObtenerVendedor(mVendedor vendedor) {
-        informacionVendedor.ObtenerInformacion(vendedor);
-        dialog.dismiss();
+        if (informacionVendedor != null) {
+            Log.d("dialogSelectVendedor", "Vendedor seleccionado: " + vendedor.getPrimerNombre());
+            informacionVendedor.ObtenerInformacion(vendedor);
+            dialog.dismiss();
+        } else {
+            Log.e("dialogSelectVendedor", "Error: informacionVendedor (listener) es NULL");
+        }
     }
 
 
@@ -142,10 +145,10 @@ public class dialogSelectVendedor extends DialogFragment implements View.OnClick
 
         @Override
         protected List<mVendedor> doInBackground(String... strings) {
-            List<mVendedor> list = new ArrayList<>();
+            List<mVendedor> list;
             if (strings[0].length() <= 1) {
                 list = controladorVendedor.getAllVendedor();
-            } else if (strings[0].length() > 1) {
+            } else {
                 list = controladorVendedor.getBusquedaNombreApellido(strings[0]);
             }
             return list;
@@ -154,8 +157,13 @@ public class dialogSelectVendedor extends DialogFragment implements View.OnClick
         @Override
         protected void onPostExecute(List<mVendedor> mVendedors) {
             super.onPostExecute(mVendedors);
-            rvAdapterVendedor.AddElement(mVendedors);
-
+            if (mVendedors != null) {
+                Log.d("dialogSelectVendedor", "Vendedores cargados: " + mVendedors.size());
+                rvAdapterVendedor.AddElement(mVendedors);
+            } else {
+                Log.e("dialogSelectVendedor", "La lista de vendedores es NULL");
+                rvAdapterVendedor.AddElement(new ArrayList<mVendedor>());
+            }
         }
     }
 }

@@ -7,4 +7,4 @@ class ResultProcesoVerificarNombre {
 
 }
 
-class RetornoApertura(var respuesta: Byte, var idCaja: Int)
+class RetornoApertura(var respuesta: Byte = 0.toByte(), var idCaja: Int = 0)

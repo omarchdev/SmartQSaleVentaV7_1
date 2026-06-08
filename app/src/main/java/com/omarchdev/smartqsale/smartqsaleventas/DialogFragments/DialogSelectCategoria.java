@@ -61,7 +61,7 @@ public class DialogSelectCategoria extends DialogFragment implements AsyncCatego
     }
 
     @Override
-    public void ObtenerUnidadesMedidad(List<mUnidadMedida> listaUnidades) {
+    public void ObtenerListaUnidadesMedida(List<mUnidadMedida> listaUnidades) {
         // No-op
     }
 }

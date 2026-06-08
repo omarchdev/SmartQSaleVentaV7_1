@@ -485,7 +485,17 @@ AsyncCategoria.ListenerCategoria, AsyncAreasProduccion.ListenerAreasProduccion, 
                     product.setbControlTiempo(configEstadoProductFragment.getControlTiempo());
                     product.setbControlPeso(configEstadoProductFragment.getControlPeso());
                     product.setpVentaLibre(configEstadoProductFragment.getpVentaLibre());
-                    product.setIdUnidadMedida(listaUnidades.get(fDatosBasicos.ObtenerUnidadSeleccionada()).getIdUnidad());
+
+                    int posUnidad = fDatosBasicos.ObtenerUnidadSeleccionada();
+                    if (posUnidad == -1 || listaUnidades == null || listaUnidades.isEmpty()) {
+                        new AlertDialog.Builder(this).setTitle("Advertencia")
+                                .setMessage("Debe seleccionar una unidad de medida").setPositiveButton("Aceptar", null).create().show();
+                        return;
+                    }
+                    mUnidadMedida unidadSeleccionada = listaUnidades.get(posUnidad);
+                    product.setIdUnidadMedida(unidadSeleccionada.getIdUnidad());
+                    product.setUnidadMedida(unidadSeleccionada.getcDescripcion());
+
                     product.setDCantidadMaximaPedido(fDatosBasicos.getCantidadMaxima());
                     if (getResources().getInteger(R.integer.NuevoProducto) == estado) {
                         asyncProducto.AgregarMensaje("Guardando producto");
@@ -495,14 +505,12 @@ AsyncCategoria.ListenerCategoria, AsyncAreasProduccion.ListenerAreasProduccion, 
                         product.setEstadoActivo(configEstadoProductFragment.getEstadoProducto());
                         product.setEstadoVisible(configEstadoProductFragment.getEstadoVisible());
                         product.setTipoPack(configEstadoProductFragment.isTipoPack());
-                        product.setUnidadMedida(listaUnidades.get(fDatosBasicos.ObtenerUnidadSeleccionada()).getcDescripcion());
-                        product.setIdUnidadMedida(listaUnidades.get(fDatosBasicos.ObtenerUnidadSeleccionada()).getIdUnidad());
                         product.setPriceProductList(fDatosBasicos.obtenerPreciosAdiccionales());
                         product.setMultiplePVenta(fDatosBasicos.TienePreciosVentaAdiccionales());
                         product.setIdSubCategoria(fDatosBasicos.ObteneriIdSubCategoria());
                         product.setpVentaLibre(configEstadoProductFragment.getpVentaLibre());
 
-                        product.setIdAreaProduccion(fDatosBasicos.getIdAreaProducction());
+                        product.setIdAreaProduccion(fDatosBasicos.getIdAreaProduction());
                         asyncProducto.GuardarProducto(product);
                     } else if (getResources().getInteger(R.integer.ProductoExistente) == estado) {
                         asyncProducto.AgregarMensaje("Actualizando producto");
@@ -511,12 +519,11 @@ AsyncCategoria.ListenerCategoria, AsyncAreasProduccion.ListenerAreasProduccion, 
                         product.setEstadoActivo(configEstadoProductFragment.getEstadoProducto());
                         product.setEstadoVisible(configEstadoProductFragment.getEstadoVisible());
                         product.setTipoPack(configEstadoProductFragment.isTipoPack());
-                        product.setUnidadMedida(listaUnidades.get(fDatosBasicos.ObtenerUnidadSeleccionada()).getcDescripcion());
                         product.setPriceProductList(fDatosBasicos.obtenerPreciosAdiccionales());
                         product.setMultiplePVenta(fDatosBasicos.TienePreciosVentaAdiccionales());
                         product.setIdSubCategoria(fDatosBasicos.ObteneriIdSubCategoria());
                         product.setpVentaLibre(configEstadoProductFragment.getpVentaLibre());
-                        product.setIdAreaProduccion(fDatosBasicos.getIdAreaProducction());
+                        product.setIdAreaProduccion(fDatosBasicos.getIdAreaProduction());
                         if (CodigoAnterior.equals(product.getcKey())) {
                             asyncProducto.ActualizarSinVerificacionCodigo(product, EstadoConfigVaria);
                         } else {
@@ -622,7 +629,7 @@ AsyncCategoria.ListenerCategoria, AsyncAreasProduccion.ListenerAreasProduccion, 
     }
 
     @Override
-    public void ObtenerUnidadesMedidad(List<mUnidadMedida> listaUnidades) {
+    public void ObtenerListaUnidadesMedida(List<mUnidadMedida> listaUnidades) {
         this.listaUnidades=listaUnidades;
         List<String> list=new ArrayList<>();
         fDatosBasicos.UnidadesMedida(this.listaUnidades);

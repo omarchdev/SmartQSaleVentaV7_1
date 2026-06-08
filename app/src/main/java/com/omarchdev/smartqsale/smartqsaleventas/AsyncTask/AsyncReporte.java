@@ -1,287 +1,238 @@
 package com.omarchdev.smartqsale.smartqsaleventas.AsyncTask;
 
-import android.os.AsyncTask;
+import static com.omarchdev.smartqsale.smartqsaleventas.Model.CiaTiendaKt.GetJsonCiaTiendaBase64x3;
 
-import com.omarchdev.smartqsale.smartqsaleventas.ConexionBd.BdConnectionSql;
+import com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mAlmacenProducto;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mCierre;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mVendedorProducto;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mVentasVendedor;
+import com.omarchdev.smartqsale.smartqsaleventas.Repository.IAlmacenesRepository;
+import com.omarchdev.smartqsale.smartqsaleventas.Repository.ICierreRepository;
+import com.omarchdev.smartqsale.smartqsaleventas.Repository.IVendedorRepository;
 
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class AsyncReporte {
 
+    private final String codeCia = GetJsonCiaTiendaBase64x3();
+    private final Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(Constantes.BASECONN.BASE_URL_API)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
 
-    BdConnectionSql bdConnectionSql=BdConnectionSql.getSinglentonInstance();
-    ObtenerRVentasVProductVendedor obtenerRVentasVProductVendedor;
-    ObtenerVentasVendedor obtenerVentasVendedor;
+    private final IVendedorRepository vendedorRepository = retrofit.create(IVendedorRepository.class);
+    private final IAlmacenesRepository almacenesRepository = retrofit.create(IAlmacenesRepository.class);
+    private final ICierreRepository cierreRepository = retrofit.create(ICierreRepository.class);
+
+    // ListenerReportePVendedor
     ListenerReportePVendedor listenerReportePVendedor;
-
     public void setListenerReportePVendedor(ListenerReportePVendedor listenerReportePVendedor){
         this.listenerReportePVendedor=listenerReportePVendedor;
     }
     public interface ListenerReportePVendedor{
-        public void ErrorResultado();
-        public void ResultadoReporte(List<mVendedorProducto> mVendedorProductoList);
+        void ErrorResultado();
+        void ResultadoReporte(List<mVendedorProducto> mVendedorProductoList);
+    }
+    public void ObtenerReporteVendedor(int idVendedor, String fechaIni, String fechaFin, int tipoReporte){
+        // Método deprecado/comentado originalmente, no realiza operaciones.
     }
 
-    public void ObtenerReporteVendedor(int idVendedor,String fechaIni,String fechaFin,int tipoReporte){
-        obtenerRVentasVProductVendedor=new ObtenerRVentasVProductVendedor();
-        obtenerRVentasVProductVendedor.setInit(fechaIni);
-        obtenerRVentasVProductVendedor.setEnd(fechaFin);
-        obtenerRVentasVProductVendedor.execute(idVendedor,tipoReporte);
-    }
-    private class ObtenerRVentasVProductVendedor extends AsyncTask<Integer,Void,List<mVendedorProducto>>{
-        String init;
-        String end;
-        List<mVendedorProducto>list;
-        public void setInit(String init) {
-            this.init = init;
-        }
-        public void setEnd(String end) {
-            this.end = end;
-        }
-
-        @Override
-        protected List<mVendedorProducto> doInBackground(Integer... integers) {
-            if(integers[1]==100) {
-              //  list = bdConnectionSql.obtenerReporteVendedorVenta(integers[0], init, end);
-            }else if(integers[1]==200){
-              //  list=bdConnectionSql.obtenerReporteVendedorVentaAcumulado(integers[0],init,end);
-            }
-           return list;
-
-        }
-
-        @Override
-        protected void onPostExecute(List<mVendedorProducto> mVendedorProductos) {
-            super.onPostExecute(mVendedorProductos);
-            if(listenerReportePVendedor!=null){
-
-                if(mVendedorProductos!=null){
-                    listenerReportePVendedor.ResultadoReporte(mVendedorProductos);
-                }else{
-                    listenerReportePVendedor.ErrorResultado();
-                }
-            }
-
-        }
-    }
-
-    public interface ResultadoVentasVendedor{
-
-        public void ErrorConsulta();
-        public void ResultadosConsulta(List<mVentasVendedor> ventasVendedors);
-
-    }
+    // ResultadoVentasVendedor
     ResultadoVentasVendedor resultadoVentasVendedor;
-
     public void setResultadoVentasVendedor(ResultadoVentasVendedor resultadoVentasVendedor){
         this.resultadoVentasVendedor=resultadoVentasVendedor;
     }
+    public interface ResultadoVentasVendedor{
+        void ErrorConsulta();
+        void ResultadosConsulta(List<mVentasVendedor> ventasVendedors);
+    }
+    public void ObtenerVentasVendedor(int idVendedor, String desde, String hasta){
+        vendedorRepository.ObtenerVentasPorVendedor(idVendedor, desde, hasta, Constantes.BASECONN.TIPO_CONSULTA, codeCia)
+                .enqueue(new Callback<List<mVentasVendedor>>() {
+                    @Override
+                    public void onResponse(Call<List<mVentasVendedor>> call, Response<List<mVentasVendedor>> response) {
+                        if (resultadoVentasVendedor != null) {
+                            if (response.isSuccessful() && response.body() != null) {
+                                resultadoVentasVendedor.ResultadosConsulta(response.body());
+                            } else {
+                                resultadoVentasVendedor.ErrorConsulta();
+                            }
+                        }
+                    }
 
-    public void ObtenerVentasVendedor(int idVendedor,String desde,String hasta){
-        obtenerVentasVendedor=new ObtenerVentasVendedor();
-        obtenerVentasVendedor.setDesde(desde);
-        obtenerVentasVendedor.setHasta(hasta);
-        obtenerVentasVendedor.execute(idVendedor);
+                    @Override
+                    public void onFailure(Call<List<mVentasVendedor>> call, Throwable t) {
+                        if (resultadoVentasVendedor != null) {
+                            resultadoVentasVendedor.ErrorConsulta();
+                        }
+                    }
+                });
     }
 
-    private class ObtenerVentasVendedor extends AsyncTask<Integer,Void,List<mVentasVendedor>>{
-
-        String desde;
-        String hasta;
-        public void setDesde(String desde) {
-            this.desde = desde;
-        }
-        public void setHasta(String hasta) {
-            this.hasta = hasta;
-        }
-        @Override
-        protected List<mVentasVendedor> doInBackground(Integer... integers) {
-            return bdConnectionSql.obtenerVentasPorVendedor(integers[0],desde,hasta);
-        }
-
-        @Override
-        protected void onPostExecute(List<mVentasVendedor> mVentasVendedors) {
-            super.onPostExecute(mVentasVendedors);
-            if(resultadoVentasVendedor!=null){
-                if(mVentasVendedors!=null){
-                    resultadoVentasVendedor.ResultadosConsulta(mVentasVendedors);
-                }else{
-                    resultadoVentasVendedor.ErrorConsulta();
-                }
-            }
-        }
-    }
-
+    // ListenerVentasPorCierre
     ListenerVentasPorCierre listenerVentasPorCierre;
-
     public void setListenerVentasPorCierre(ListenerVentasPorCierre listenerVentasPorCierre){
         this.listenerVentasPorCierre=listenerVentasPorCierre;
     }
     public interface ListenerVentasPorCierre{
-        public void ErrorConsulta();
-        public void ResultadoVentasPorCierre(List<mVentasVendedor> listaResultado,mCierre cierre);
+        void ErrorConsulta();
+        void ResultadoVentasPorCierre(List<mVentasVendedor> listaResultado, mCierre cierre);
     }
     public void ObtenerVentasPorCierre(int idCierre){
-        new ObtenerVentasCierre().execute(idCierre);
+        cierreRepository.getCabeceraCierreCaja(idCierre, Constantes.BASECONN.TIPO_CONSULTA, codeCia)
+                .enqueue(new Callback<mCierre>() {
+                    @Override
+                    public void onResponse(Call<mCierre> call, Response<mCierre> responseCabecera) {
+                        if (responseCabecera.isSuccessful() && responseCabecera.body() != null) {
+                            final mCierre cierre = responseCabecera.body();
+                            vendedorRepository.ObtenerVentasPorCierre(idCierre, Constantes.BASECONN.TIPO_CONSULTA, codeCia)
+                                    .enqueue(new Callback<List<mVentasVendedor>>() {
+                                        @Override
+                                        public void onResponse(Call<List<mVentasVendedor>> call, Response<List<mVentasVendedor>> responseVentas) {
+                                            if (listenerVentasPorCierre != null) {
+                                                if (responseVentas.isSuccessful() && responseVentas.body() != null) {
+                                                    listenerVentasPorCierre.ResultadoVentasPorCierre(responseVentas.body(), cierre);
+                                                } else {
+                                                    listenerVentasPorCierre.ErrorConsulta();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<List<mVentasVendedor>> call, Throwable t) {
+                                            if (listenerVentasPorCierre != null) {
+                                                listenerVentasPorCierre.ErrorConsulta();
+                                            }
+                                        }
+                                    });
+                        } else {
+                            if (listenerVentasPorCierre != null) {
+                                listenerVentasPorCierre.ErrorConsulta();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<mCierre> call, Throwable t) {
+                        if (listenerVentasPorCierre != null) {
+                            listenerVentasPorCierre.ErrorConsulta();
+                        }
+                    }
+                });
     }
     public void ObtenerCabeceraCierre(int idCierre){
-        new ObtenerCabeceraCierre().execute(idCierre);
-    }
-    private class   ObtenerCabeceraCierre extends AsyncTask<Integer,Void,mCierre>{
-        @Override
-        protected mCierre doInBackground(Integer... integers) {
-            return bdConnectionSql.getCabeceraCierreCaja(integers[0]);
-        }
-        @Override
-        protected void onPostExecute(mCierre mCierre) {
-            super.onPostExecute(mCierre);
-            if(listenerVentasPorCierre!=null){
-                if(mCierre!=null){
-                    listenerVentasPorCierre.ResultadoVentasPorCierre(null,mCierre);
-                }else{
-                    listenerVentasPorCierre.ErrorConsulta();
+        cierreRepository.getCabeceraCierreCaja(idCierre, Constantes.BASECONN.TIPO_CONSULTA, codeCia)
+                .enqueue(new Callback<mCierre>() {
+                    @Override
+                    public void onResponse(Call<mCierre> call, Response<mCierre> response) {
+                        if (listenerVentasPorCierre != null) {
+                            if (response.isSuccessful() && response.body() != null) {
+                                listenerVentasPorCierre.ResultadoVentasPorCierre(null, response.body());
+                            } else {
+                                listenerVentasPorCierre.ErrorConsulta();
+                            }
+                        }
+                    }
 
-                }
-            }
-        }
-    }
-    private class ObtenerVentasCierre extends AsyncTask<Integer,Void,List<mVentasVendedor>>{
-
-        mCierre cierre=null;
-        @Override
-        protected List<mVentasVendedor> doInBackground(Integer... integers) {
-            cierre=bdConnectionSql.getCabeceraCierreCaja(integers[0]);
-            return bdConnectionSql.obtenerVentasPorCierre(integers[0]);
-        }
-
-        @Override
-        protected void onPostExecute(List<mVentasVendedor> ventasVendedors) {
-            super.onPostExecute(ventasVendedors);
-            if(listenerVentasPorCierre!=null){
-                if(ventasVendedors!=null){
-                    listenerVentasPorCierre.ResultadoVentasPorCierre(ventasVendedors,cierre);
-                }else{
-                    listenerVentasPorCierre.ErrorConsulta();
-
-                }
-            }
-        }
+                    @Override
+                    public void onFailure(Call<mCierre> call, Throwable t) {
+                        if (listenerVentasPorCierre != null) {
+                            listenerVentasPorCierre.ErrorConsulta();
+                        }
+                    }
+                });
     }
 
-    public void ObtenerAcumuladoVentasCierre(int idCierre, int idVendedor){
-
-        new ObtenerVentasAcumuladoCierre().execute(idCierre,idVendedor);
-
-    }
-
+    // ListenerReporteDetalleVentaCierre
     ListenerReporteDetalleVentaCierre listenerReporteDetalleVentaCierre;
-
     public void setListenerReporteDetalleVentaCierre(ListenerReporteDetalleVentaCierre listenerReporteDetalleVentaCierre){
         this.listenerReporteDetalleVentaCierre=listenerReporteDetalleVentaCierre;
     }
-
     public interface ListenerReporteDetalleVentaCierre{
-
-        public void ResultadoReporteCierre(List<mVendedorProducto> listaReporte);
-        public void ErrorConsultaReporte();
+        void ResultadoReporteCierre(List<mVendedorProducto> listaReporte);
+        void ErrorConsultaReporte();
     }
-    private class ObtenerVentasAcumuladoCierre extends AsyncTask<Integer,Void,List<mVendedorProducto>>{
+    public void ObtenerAcumuladoVentasCierre(int idCierre, int idVendedor){
+        vendedorRepository.ObtenerAcumuladoVentasCierre(idCierre, idVendedor, Constantes.BASECONN.TIPO_CONSULTA, codeCia)
+                .enqueue(new Callback<List<mVendedorProducto>>() {
+                    @Override
+                    public void onResponse(Call<List<mVendedorProducto>> call, Response<List<mVendedorProducto>> response) {
+                        if (listenerReporteDetalleVentaCierre != null) {
+                            if (response.isSuccessful() && response.body() != null) {
+                                listenerReporteDetalleVentaCierre.ResultadoReporteCierre(response.body());
+                            } else {
+                                listenerReporteDetalleVentaCierre.ErrorConsultaReporte();
+                            }
+                        }
+                    }
 
-        @Override
-        protected List<mVendedorProducto> doInBackground(Integer... integers) {
-            return bdConnectionSql.obtenerAcumuladoVentasCierre(integers[0],integers[1]);
-        }
-        @Override
-        protected void onPostExecute(List<mVendedorProducto> mVendedorProductoList) {
-            super.onPostExecute(mVendedorProductoList);
-
-            if(listenerReporteDetalleVentaCierre!=null){
-
-                if(mVendedorProductoList!=null){
-
-                    listenerReporteDetalleVentaCierre.ResultadoReporteCierre(mVendedorProductoList);
-                }else{
-                    listenerReporteDetalleVentaCierre.ErrorConsultaReporte();
-                }
-
-            }
-
-        }
+                    @Override
+                    public void onFailure(Call<List<mVendedorProducto>> call, Throwable t) {
+                        if (listenerReporteDetalleVentaCierre != null) {
+                            listenerReporteDetalleVentaCierre.ErrorConsultaReporte();
+                        }
+                    }
+                });
     }
+    public void ObtenerDetalleVentasCierre(int idCierre, int idVendedor){
+        vendedorRepository.ObtenerDetalleVentasCierre(idCierre, idVendedor, Constantes.BASECONN.TIPO_CONSULTA, codeCia)
+                .enqueue(new Callback<List<mVendedorProducto>>() {
+                    @Override
+                    public void onResponse(Call<List<mVendedorProducto>> call, Response<List<mVendedorProducto>> response) {
+                        if (listenerReporteDetalleVentaCierre != null) {
+                            if (response.isSuccessful() && response.body() != null) {
+                                listenerReporteDetalleVentaCierre.ResultadoReporteCierre(response.body());
+                            } else {
+                                listenerReporteDetalleVentaCierre.ErrorConsultaReporte();
+                            }
+                        }
+                    }
 
-
-
-
-    public void ObtenerDetalleVentasCierre(int idCierre, int iVendedor){
-
-        new ObtenerDetalleVentasCierre().execute(idCierre,iVendedor);
-
-    }
-
-    private class ObtenerDetalleVentasCierre extends AsyncTask<Integer,Void,List<mVendedorProducto>>{
-
-        @Override
-        protected List<mVendedorProducto> doInBackground(Integer... integers) {
-            return bdConnectionSql.obtenerDetalleVentaCierre(integers[0],integers[1]);
-        }
-
-        @Override
-        protected void onPostExecute(List<mVendedorProducto> mVendedorProductoList) {
-            super.onPostExecute(mVendedorProductoList);
-
-            if(listenerReporteDetalleVentaCierre!=null){
-                if(mVendedorProductoList!=null){
-
-                    listenerReporteDetalleVentaCierre.ResultadoReporteCierre(mVendedorProductoList);
-
-                }else{
-                    listenerReporteDetalleVentaCierre.ErrorConsultaReporte();
-                }
-            }
-        }
+                    @Override
+                    public void onFailure(Call<List<mVendedorProducto>> call, Throwable t) {
+                        if (listenerReporteDetalleVentaCierre != null) {
+                            listenerReporteDetalleVentaCierre.ErrorConsultaReporte();
+                        }
+                    }
+                });
     }
 
-
+    // ReporteAlmacen
     ReporteAlmacen reporteAlmacen;
-
     public void setReporteAlmacen(ReporteAlmacen reporteAlmacen){
         this.reporteAlmacen=reporteAlmacen;
     }
     public interface ReporteAlmacen{
-
-        public void ObtenerReporteAlmacen(List<mAlmacenProducto> listaReporte);
-        public void ErrorObtenerAlmacen();
-
+        void ObtenerReporteAlmacen(List<mAlmacenProducto> listaReporte);
+        void ErrorObtenerAlmacen();
     }
-
     public void ObtenerReporteProductosAlmacen(int idAlmacen){
-        new ObtenerReporteProductosAlmacen().execute(idAlmacen);
+        almacenesRepository.ObtenerReporteProductosAlmacen(idAlmacen, Constantes.BASECONN.TIPO_CONSULTA, codeCia)
+                .enqueue(new Callback<List<mAlmacenProducto>>() {
+                    @Override
+                    public void onResponse(Call<List<mAlmacenProducto>> call, Response<List<mAlmacenProducto>> response) {
+                        if (reporteAlmacen != null) {
+                            if (response.isSuccessful() && response.body() != null) {
+                                reporteAlmacen.ObtenerReporteAlmacen(response.body());
+                            } else {
+                                reporteAlmacen.ErrorObtenerAlmacen();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<mAlmacenProducto>> call, Throwable t) {
+                        if (reporteAlmacen != null) {
+                            reporteAlmacen.ErrorObtenerAlmacen();
+                        }
+                    }
+                });
     }
-
-    private class ObtenerReporteProductosAlmacen extends AsyncTask<Integer,Void,List<mAlmacenProducto>>{
-
-        @Override
-        protected List<mAlmacenProducto> doInBackground(Integer... integers) {
-            return bdConnectionSql.ObtenerProductosAlmacen(integers[0]);
-        }
-
-        @Override
-        protected void onPostExecute(List<mAlmacenProducto> mAlmacenProductos) {
-            super.onPostExecute(mAlmacenProductos);
-            if(reporteAlmacen!=null){
-
-                if(mAlmacenProductos!=null){
-                    reporteAlmacen.ObtenerReporteAlmacen(mAlmacenProductos);
-                }else{
-                    reporteAlmacen.ErrorObtenerAlmacen();
-                }
-
-            }
-        }
-    }
-
 }

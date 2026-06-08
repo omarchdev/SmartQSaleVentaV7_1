@@ -275,8 +275,14 @@ class cImpresion(context: Context) {
                 docVenta.pieDoc = Constantes.PieImpresion.pieBoleta
                 docVenta.docReceptor = cabeceraVenta.cliente.numeroRuc
             }
-            Constantes.TipoDocumentoPago.NOTAVENTA -> docVenta.pieDoc =
-                Constantes.PieImpresion.pieNotaVenta
+            Constantes.TipoDocumentoPago.NOTAVENTA -> {
+                docVenta.pieDoc = Constantes.PieImpresion.pieNotaVenta
+                if( cabeceraVenta.cliente.numeroRuc!=null){
+
+                    docVenta.docReceptor = cabeceraVenta.cliente.numeroRuc
+                }
+            }
+
 
         }
         docVenta.importeLetra = cabeceraVenta.totalPagado.fortMoneda

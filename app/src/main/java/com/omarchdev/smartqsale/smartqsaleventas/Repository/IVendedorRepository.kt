@@ -3,6 +3,7 @@ package com.omarchdev.smartqsale.smartqsaleventas.Repository
 import com.omarchdev.smartqsale.smartqsaleventas.Model.SolicitudEnvio
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mVendedor
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mVendedorProducto
+import com.omarchdev.smartqsale.smartqsaleventas.Model.mVentasVendedor
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -66,4 +67,35 @@ interface IVendedorRepository {
         @Query("tipoconsulta") tipoConsulta: String
     ): Call<List<mVendedorProducto>>
 
+    @GET("api/Vendedor/ObtenerVentasPorVendedor")
+    fun ObtenerVentasPorVendedor(
+        @Query("idVendedor") idVendedor: Int,
+        @Query("desde") desde: String,
+        @Query("hasta") hasta: String,
+        @Query("tipoConsulta") tipoConsulta: String,
+        @Query("codeCia") codeCia: String
+    ): Call<List<mVentasVendedor>>
+
+    @GET("api/Vendedor/ObtenerVentasPorCierre")
+    fun ObtenerVentasPorCierre(
+        @Query("idCierre") idCierre: Int,
+        @Query("tipoConsulta") tipoConsulta: String,
+        @Query("codeCia") codeCia: String
+    ): Call<List<mVentasVendedor>>
+
+    @GET("api/Vendedor/ObtenerAcumuladoVentasCierre")
+    fun ObtenerAcumuladoVentasCierre(
+        @Query("idCierre") idCierre: Int,
+        @Query("idVendedor") idVendedor: Int,
+        @Query("tipoConsulta") tipoConsulta: String,
+        @Query("codeCia") codeCia: String
+    ): Call<List<mVendedorProducto>>
+
+    @GET("api/Vendedor/ObtenerDetalleVentasCierre")
+    fun ObtenerDetalleVentasCierre(
+        @Query("idCierre") idCierre: Int,
+        @Query("idVendedor") idVendedor: Int,
+        @Query("tipoConsulta") tipoConsulta: String,
+        @Query("codeCia") codeCia: String
+    ): Call<List<mVendedorProducto>>
 }

@@ -116,7 +116,7 @@ public class CategoriasActivity extends ActivityParent implements AsyncCategoria
     }
 
     @Override
-    public void ObtenerUnidadesMedidad(List<mUnidadMedida> listaUnidades) {
+    public void ObtenerListaUnidadesMedida(List<mUnidadMedida> listaUnidades) {
 
     }
 

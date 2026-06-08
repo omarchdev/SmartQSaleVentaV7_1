@@ -26,10 +26,15 @@ import static com.omarchdev.smartqsale.smartqsaleventas.Constantes.Constantes.BA
 import static com.omarchdev.smartqsale.smartqsaleventas.Model.CiaTiendaKt.GetJsonCiaTiendaBase64x3;
 
 import com.omarchdev.smartqsale.smartqsaleventas.Model.SolicitudEnvio;
+import com.omarchdev.smartqsale.smartqsaleventas.Model.MensajeError;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.MotivoAnulacionDto;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.ActualizarNotaDto;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mRespuestaVenta;
 import com.omarchdev.smartqsale.smartqsaleventas.Repository.IVentaRepository;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import java.io.IOException;
@@ -74,8 +79,9 @@ public class DetalleVenta extends ActivityParent
         implements View.OnClickListener, dfMotivoNota.IMotivoNota, SelectAnulacion.CodeAnulacion {
 
     BdConnectionSql bdConnectionSql = BdConnectionSql.getSinglentonInstance();
+    Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").create();
     Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL_API).client(Constantes.ConfiRetrofitTimeOut.okHttpClient)
-            .addConverterFactory(GsonConverterFactory.create()).build();
+            .addConverterFactory(GsonConverterFactory.create(gson)).build();
     IVentaRepository iVentaRepository = retro.create(IVentaRepository.class);
     final String codeCia = GetJsonCiaTiendaBase64x3();
     TextView txtFechaVenta, txtEstadoVenta, txtIdentificador, txtNumFactura, txtNombreCliente;
@@ -194,9 +200,11 @@ public class DetalleVenta extends ActivityParent
 
             case R.id.fabCancelarVenta:
                 if (helper.ObtenerPermiso(Constantes.ProcesosPantalla.HistorialVenta)) {
-                    ConfirmarCancelarVenta();
+                    EjecutarValidacionPrevioAnulacion();
                 } else {
-                    Toast.makeText(this, "No permitido", Toast.LENGTH_LONG).show();
+                    new AlertDialog.Builder(context).setTitle("Atención")
+                            .setPositiveButton("Salir", null)
+                            .setMessage("No permitido").show();
                 }
                 break;
             case R.id.fabImprimirVenta:
@@ -225,6 +233,41 @@ public class DetalleVenta extends ActivityParent
             dialog.show(getSupportFragmentManager(), "");
         });
 
+    }
+
+    private void EjecutarValidacionPrevioAnulacion() {
+        asyncProcesoVenta.setContext(context);
+        asyncProcesoVenta.ValidacionPrevioAnulacion(
+            idCabeceraVenta,
+            Constantes.Tienda.idTienda,
+            Constantes.Empresa.idEmpresa,
+            new AsyncProcesoVenta.IValidacionPrevioAnulacion() {
+                @Override
+                public void onResultadoValidacion(List<MensajeError> mensajes) {
+                    if (mensajes == null) {
+                        new AlertDialog.Builder(context)
+                            .setTitle("Atención")
+                            .setMessage("Error de conexión al realizar la validación previa.")
+                            .setPositiveButton("Aceptar", null)
+                            .show();
+                        return;
+                    }
+                    if (!mensajes.isEmpty()) {
+                        StringBuilder sb = new StringBuilder();
+                        for (MensajeError msg : mensajes) {
+                            sb.append(msg.getCMensaje()).append("\n");
+                        }
+                        new AlertDialog.Builder(context)
+                            .setTitle("Atención")
+                            .setMessage(sb.toString().trim())
+                            .setPositiveButton("Aceptar", null)
+                            .show();
+                    } else {
+                        ConfirmarCancelarVenta();
+                    }
+                }
+            }
+        );
     }
 
     private void ConfirmarCancelarVenta() {
@@ -505,11 +548,13 @@ public class DetalleVenta extends ActivityParent
         protected void onPostExecute(Byte aByte) {
             super.onPostExecute(aByte);
             if (aByte == 0) {
-                Toast.makeText(getBaseContext(), "Error al anular la venta", Toast.LENGTH_SHORT).show();
-
-                Toast.makeText(getBaseContext(), "Verifique su conexión", Toast.LENGTH_SHORT).show();
+                new AlertDialog.Builder(context).setTitle("Atención")
+                        .setPositiveButton("Salir", null)
+                        .setMessage("Error al anular la venta. Verifique su conexión").show();
             } else if (aByte == 1) {
-                Toast.makeText(getBaseContext(), "La venta ya se encuentra anulada", Toast.LENGTH_SHORT).show();
+                new AlertDialog.Builder(context).setTitle("Atención")
+                        .setPositiveButton("Salir", null)
+                        .setMessage("La venta ya se encuentra anulada").show();
                 if (resultadoComprobante != null) {
 
                 }
@@ -520,15 +565,18 @@ public class DetalleVenta extends ActivityParent
                         .setPositiveButton("Salir", null)
                         .setMessage("La venta no se puede anular.La caja donde se realizo la venta está cerrada").show();
             } else if (aByte == 101) {
-                Toast.makeText(getBaseContext(), "Venta anulada con éxito", Toast.LENGTH_SHORT).show();
+                new AlertDialog.Builder(context).setTitle("Éxito")
+                        .setPositiveButton("Salir", null)
+                        .setMessage("Venta anulada con éxito").show();
                 txtEstadoVenta.setText("ANULADA");
                 txtEstadoVenta.setTextColor(Color.parseColor("#FFF73838"));
                 floatingActionsMenu.collapse();
                 fcancelButton.setVisibility(View.GONE);
                 fabImprimirVenta.setVisibility(View.GONE);
             } else if (respuesta == 0) {
-                Toast.makeText(getBaseContext(), "Error al anular la venta", Toast.LENGTH_SHORT).show();
-                Toast.makeText(getBaseContext(), "Verifique su conexión", Toast.LENGTH_SHORT).show();
+                new AlertDialog.Builder(context).setTitle("Atención")
+                        .setPositiveButton("Salir", null)
+                        .setMessage("Error al anular la venta. Verifique su conexión").show();
             }
             dialog.dismiss();
         }
@@ -628,11 +676,13 @@ public class DetalleVenta extends ActivityParent
             super.onPostExecute(aByte);
             if (r.getPermitir()) {
                 if (aByte == 0) {
-                    Toast.makeText(getBaseContext(), "Error al anular la venta", Toast.LENGTH_SHORT).show();
-
-                    Toast.makeText(getBaseContext(), "Verifique su conexión", Toast.LENGTH_SHORT).show();
+                    new AlertDialog.Builder(context).setTitle("Atención")
+                            .setPositiveButton("Salir", null)
+                            .setMessage("Error al anular la venta. Verifique su conexión").show();
                 } else if (aByte == 1) {
-                    Toast.makeText(getBaseContext(), "La venta ya se encuentra anulada", Toast.LENGTH_SHORT).show();
+                    new AlertDialog.Builder(context).setTitle("Atención")
+                            .setPositiveButton("Salir", null)
+                            .setMessage("La venta ya se encuentra anulada").show();
                     if (resultadoComprobante != null) {
 
                     }
@@ -643,15 +693,18 @@ public class DetalleVenta extends ActivityParent
                             .setPositiveButton("Salir", null)
                             .setMessage("La venta no se puede anular.La caja donde se realizo la venta está cerrada").show();
                 } else if (aByte == 101) {
-                    Toast.makeText(getBaseContext(), "Venta anulada con éxito", Toast.LENGTH_SHORT).show();
+                    new AlertDialog.Builder(context).setTitle("Éxito")
+                            .setPositiveButton("Salir", null)
+                            .setMessage("Venta anulada con éxito").show();
                     txtEstadoVenta.setText("ANULADA");
                     txtEstadoVenta.setTextColor(Color.parseColor("#FFF73838"));
                     floatingActionsMenu.collapse();
                     fcancelButton.setVisibility(View.GONE);
                     fabImprimirVenta.setVisibility(View.GONE);
                 } else if (respuesta == 0) {
-                    Toast.makeText(getBaseContext(), "Error al anular la venta", Toast.LENGTH_SHORT).show();
-                    Toast.makeText(getBaseContext(), "Verifique su conexión", Toast.LENGTH_SHORT).show();
+                    new AlertDialog.Builder(context).setTitle("Atención")
+                            .setPositiveButton("Salir", null)
+                            .setMessage("Error al anular la venta. Verifique su conexión").show();
                 }
             } else {
 
@@ -724,11 +777,13 @@ public class DetalleVenta extends ActivityParent
         protected void onPostExecute(Byte aByte) {
             super.onPostExecute(aByte);
             if (aByte == 0) {
-                Toast.makeText(getBaseContext(), "Error al anular la venta", Toast.LENGTH_SHORT).show();
-
-                Toast.makeText(getBaseContext(), "Verifique su conexión", Toast.LENGTH_SHORT).show();
+                new AlertDialog.Builder(context).setTitle("Atención")
+                        .setPositiveButton("Salir", null)
+                        .setMessage("Error al anular la venta. Verifique su conexión").show();
             } else if (aByte == 1) {
-                Toast.makeText(getBaseContext(), "La venta ya se encuentra anulada", Toast.LENGTH_SHORT).show();
+                new AlertDialog.Builder(context).setTitle("Atención")
+                        .setPositiveButton("Salir", null)
+                        .setMessage("La venta ya se encuentra anulada").show();
                 if (resultadoComprobante != null) {
 
                 }
@@ -739,15 +794,18 @@ public class DetalleVenta extends ActivityParent
                         .setPositiveButton("Salir", null)
                         .setMessage("La venta no se puede anular.La caja donde se realizo la venta está cerrada").show();
             } else if (aByte == 101) {
-                Toast.makeText(getBaseContext(), "Venta anulada con éxito", Toast.LENGTH_SHORT).show();
+                new AlertDialog.Builder(context).setTitle("Éxito")
+                        .setPositiveButton("Salir", null)
+                        .setMessage("Venta anulada con éxito").show();
                 txtEstadoVenta.setText("ANULADA");
                 txtEstadoVenta.setTextColor(Color.parseColor("#FFF73838"));
                 floatingActionsMenu.collapse();
                 fcancelButton.setVisibility(View.GONE);
                 fabImprimirVenta.setVisibility(View.GONE);
             } else if (respuesta == 0) {
-                Toast.makeText(getBaseContext(), "Error al anular la venta", Toast.LENGTH_SHORT).show();
-                Toast.makeText(getBaseContext(), "Verifique su conexión", Toast.LENGTH_SHORT).show();
+                new AlertDialog.Builder(context).setTitle("Atención")
+                        .setPositiveButton("Salir", null)
+                        .setMessage("Error al anular la venta. Verifique su conexión").show();
             }
             dialog.dismiss();
         }

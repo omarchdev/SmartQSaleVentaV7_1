@@ -91,4 +91,13 @@ interface IVentaRepository {
         @Query("tipo") tipo: String,
         @Query("idCabeceraVenta") idCabeceraVenta: Int
     ): Call<List<mPagosEnVenta>>
+
+    @GET("api/venta/ValidarVentaPrevioAnulacion")
+    fun ValidarVentaPrevioAnulacion(
+        @Query("ciaCode") codeCia: String,
+        @Query("tipo") tipo: String,
+        @Query("idCabeceraVenta") idCabeceraVenta: Int,
+        @Query("idTienda") idTienda: Int,
+        @Query("idCompany") idCompany: Int
+    ): Call<List<MensajeError>>
 }

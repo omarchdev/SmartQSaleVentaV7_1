@@ -30,7 +30,11 @@ public class RvAdapterVendedor extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     public void AddElement(List<mVendedor> list) {
-        listVendedores = list;
+        if (list != null) {
+            listVendedores = list;
+        } else {
+            listVendedores = new ArrayList<>();
+        }
         notifyDataSetChanged();
     }
 
@@ -59,22 +63,26 @@ public class RvAdapterVendedor extends RecyclerView.Adapter<RecyclerView.ViewHol
     class VendedorEnVentaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView txtNombre;
+        View layoutVendedor;
 
         public VendedorEnVentaViewHolder(View itemView) {
             super(itemView);
             txtNombre = (TextView) itemView.findViewById(R.id.txtNombreVendedor);
-            txtNombre.setOnClickListener(this);
-
-
+            layoutVendedor = itemView.findViewById(R.id.linearLayoutVendedor);
+            
+            itemView.setOnClickListener(this);
+            if (layoutVendedor != null) {
+                layoutVendedor.setOnClickListener(this);
+            }
         }
 
 
         @Override
         public void onClick(View v) {
-            if(v.getId()==R.id.txtNombreVendedor) {
-                listenerVendedor.ObtenerVendedor(listVendedores.get(getAdapterPosition()));
+            int position = getAdapterPosition();
+            if (position != RecyclerView.NO_POSITION && listenerVendedor != null) {
+                listenerVendedor.ObtenerVendedor(listVendedores.get(position));
             }
-
         }
     }
 }

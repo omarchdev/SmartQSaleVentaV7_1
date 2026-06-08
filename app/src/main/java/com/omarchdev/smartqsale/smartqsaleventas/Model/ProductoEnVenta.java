@@ -730,10 +730,18 @@ public class ProductoEnVenta {
         return nombre;
     }
     public String getDetallePack() {
+        if(DetallePack==null){
+            return "";
+        }
         return DetallePack.trim();
     }
 
     public String getDetallePackFinal(){
+
+        if(DetallePack==null){
+            return "";
+        }
+
         return DetallePack.replace("||","\n");
     }
     public void setDetallePack(String detallePack) {

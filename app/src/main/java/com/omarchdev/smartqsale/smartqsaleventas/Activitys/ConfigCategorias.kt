@@ -101,7 +101,7 @@ class ConfigCategorias : AppCompatActivity(), AsyncCategoria.ListenerCategoria, 
         txtAvisoCat.visibility = View.VISIBLE
     }
 
-    override fun ObtenerUnidadesMedidad(listaUnidades: MutableList<mUnidadMedida>?) {
+    override fun ObtenerListaUnidadesMedida(listaUnidades: MutableList<mUnidadMedida>?) {
 
     }
 

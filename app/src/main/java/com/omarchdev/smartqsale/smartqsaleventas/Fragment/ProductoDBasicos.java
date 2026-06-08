@@ -140,10 +140,12 @@ public class ProductoDBasicos extends Fragment implements View.OnClickListener, 
         }
     }
 
-    public int getIdAreaProducction() {
-
-        return listaAreasProduccion.get(spnAreasProduccion.getSelectedItemPosition()).getIdArea();
-
+    public int getIdAreaProduction() {
+        int pos = spnAreasProduccion.getSelectedItemPosition();
+        if (pos != -1 && listaAreasProduccion != null && pos < listaAreasProduccion.size()) {
+            return listaAreasProduccion.get(pos).getIdArea();
+        }
+        return 0;
     }
 
     public void setListCategorias(List<mCategoriaProductos> listCategorias) {

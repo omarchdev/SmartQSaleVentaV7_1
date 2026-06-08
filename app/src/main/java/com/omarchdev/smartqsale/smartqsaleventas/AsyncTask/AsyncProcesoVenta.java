@@ -28,6 +28,7 @@ import com.omarchdev.smartqsale.smartqsaleventas.Model.ResultProcces;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.ResultProcessData;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.SolModificadorProductoDetallePedido;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.SolicitudEnvio;
+import com.omarchdev.smartqsale.smartqsaleventas.Model.MensajeError;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.VarianteBusqueda;
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mProduct;
 import com.omarchdev.smartqsale.smartqsaleventas.Repository.IPedidoRespository;
@@ -1212,7 +1213,49 @@ public class AsyncProcesoVenta {
         }
     }
 
+    public interface IValidacionPrevioAnulacion {
+        void onResultadoValidacion(List<MensajeError> mensajes);
+    }
 
+    private IValidacionPrevioAnulacion iValidacionPrevioAnulacion;
+
+    public void ValidacionPrevioAnulacion(int idCabeceraVenta, int idTienda, int idCompany, IValidacionPrevioAnulacion listener) {
+        this.iValidacionPrevioAnulacion = listener;
+        new ValidacionPrevioAnulacionTask().execute(idCabeceraVenta, idTienda, idCompany);
+    }
+
+    private class ValidacionPrevioAnulacionTask extends AsyncTask<Integer, Void, List<MensajeError>> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            if (controladorProcesoCargar != null) {
+                controladorProcesoCargar.IniciarDialogCarga("Validando venta...");
+            }
+        }
+
+        @Override
+        protected List<MensajeError> doInBackground(Integer... ints) {
+            int idCab = ints[0];
+            int idT = ints[1];
+            int idC = ints[2];
+            try {
+                return iVentaRepository.ValidarVentaPrevioAnulacion(codeCia, TIPO_CONSULTA, idCab, idT, idC).execute().body();
+            } catch (Exception ex) {
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(List<MensajeError> result) {
+            super.onPostExecute(result);
+            if (controladorProcesoCargar != null) {
+                controladorProcesoCargar.FinalizarDialogCarga();
+            }
+            if (iValidacionPrevioAnulacion != null) {
+                iValidacionPrevioAnulacion.onResultadoValidacion(result);
+            }
+        }
+    }
 }
 
 

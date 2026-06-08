@@ -8689,6 +8689,9 @@ public class BdConnectionSql {
                     Constantes.ConfigTienda.nMonto_minimo_uso_detraccion = rs.getFloat("nMonto_minimo_uso_detraccion");
                     Constantes.ConfigTienda.iTipoListaProductosPantallaPedido= rs.getByte("iTipoListaProductosPantallaPedido");
                     Constantes.ConfigTienda.bUsaListaPrecios=rs.getBoolean("bUsaListaPrecios");
+                    Constantes.ConfigTienda.bMantenerVendedorEntreVentas=rs.getBoolean("bMantenerVendedorEntreVentas");
+
+
                 }
                 for (int i = 0; i < list1.size(); i++) {
                     for (int j = 0; j < list2.size(); j++) {

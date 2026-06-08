@@ -457,7 +457,7 @@ public class AddEditProduct extends ActivityParent implements View.OnClickListen
     }
 
     @Override
-    public void ObtenerUnidadesMedidad(List<mUnidadMedida> listaUnidades) {
+    public void ObtenerListaUnidadesMedida(List<mUnidadMedida> listaUnidades) {
         // No-op
     }
 }

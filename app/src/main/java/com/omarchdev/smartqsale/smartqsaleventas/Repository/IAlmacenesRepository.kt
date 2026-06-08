@@ -109,4 +109,11 @@ interface IAlmacenesRepository {
     fun AnularMovimientoAlmacen(
         @Body request: SolicitudEnvio<Int>
     ): Call<Byte>
+
+    @GET("api/Almacen/ObtenerReporteProductosAlmacen")
+    fun ObtenerReporteProductosAlmacen(
+        @Query("idAlmacen") idAlmacen: Int,
+        @Query("tipoConsulta") tipoConsulta: String,
+        @Query("codeCia") codeCia: String
+    ): Call<List<mAlmacenProducto>>
 }

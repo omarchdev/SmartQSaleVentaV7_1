@@ -33,7 +33,8 @@ public class ControladorVendedor {
     public List<mVendedor> getBusquedaNombreApellido(String parametro) {
 
         try {
-            return iVendedorRepository.GetVendedores(codeCia,"2",parametro).execute().body();
+            List<mVendedor> list = iVendedorRepository.GetVendedores(codeCia, "2", parametro).execute().body();
+            return list != null ? list : new ArrayList<>();
         } catch (IOException e) {
             return new ArrayList<>();
 
@@ -43,13 +44,14 @@ public class ControladorVendedor {
 
     public List<mVendedor> getAllVendedor() {
         try {
-            return iVendedorRepository.GetVendedores(codeCia,"2","").execute().body();
+            List<mVendedor> list = iVendedorRepository.GetVendedores(codeCia, "2", "").execute().body();
+            return list != null ? list : new ArrayList<>();
         } catch (IOException e) {
             return new ArrayList<>();
-        }catch (Exception ex){
+        } catch (Exception ex) {
             return new ArrayList<>();
         }
-     //   return BdConnectionSql.getSinglentonInstance().getVendedor(0, "", Constantes.ParametrosVendedor.TodosVendedores);
+        //   return BdConnectionSql.getSinglentonInstance().getVendedor(0, "", Constantes.ParametrosVendedor.TodosVendedores);
     }
 
 

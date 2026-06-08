@@ -213,7 +213,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
     BigDecimal montoApertura, CantidadCambio, CantidadCobrar, CantidadDescuento, CobrarSinDescuento, cantidadADescontar;
     dialogSelectCustomer selectCustomer;
     dialogSelectVendedor selectVendedor;
-    boolean EstadoBloqueoVendedor = false;
+    boolean EstadoBloqueoVendedor = Constantes.ConfigTienda.bMantenerVendedorEntreVentas;
     DialogAperturaCaja dialogAperturaCaja;
     List<ProductoEnVenta> productoEnVentaList;
     List<ProductoEnVenta> listTemporal = new ArrayList<>();
@@ -568,7 +568,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
         }
 
         @Override
-        public void ObtenerUnidadesMedidad(List<mUnidadMedida> listaUnidades) {
+        public void ObtenerListaUnidadesMedida(List<mUnidadMedida> listaUnidades) {
 
         }
     };
@@ -1557,13 +1557,15 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
 
         SelectProductTime dialogProductTime = SelectProductTime.Companion.newInstance(
                 (SelectProductTime.ISelectProductTime) product -> {
-                    switch (product.getTipoRepresentacionImagen()) {
-                        case 1:
-                            imgTipoLista.setImageResource(getContext().getResources().getIdentifier("@drawable/" + product.getCodigoForma().trim(), null, getContext().getPackageName()));
-                            break;
-                        case 2:
-                            imgTipoLista.setImageBitmap(BitmapFactory.decodeByteArray(product.getbImage(), 0, product.getbImage().length));
-                            break;
+                    if (imgTipoLista != null && getContext() != null) {
+                        switch (product.getTipoRepresentacionImagen()) {
+                            case 1:
+                                imgTipoLista.setImageResource(getContext().getResources().getIdentifier("@drawable/" + product.getCodigoForma().trim(), null, getContext().getPackageName()));
+                                break;
+                            case 2:
+                                imgTipoLista.setImageBitmap(BitmapFactory.decodeByteArray(product.getbImage(), 0, product.getbImage().length));
+                                break;
+                        }
                     }
                     productoTempTiempoVehiculo = product;
                     if (cabeceraPedido.getcEstadoEntregaPedido().trim().equals("00")) {
@@ -1572,7 +1574,9 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                         asyncPedido.GetTiempoAsync(time -> {
                             cargaTiempo.dismiss();
                             tiempoTempVehiculo = time;
-                            edtHoraIngreso.setText(time);
+                            if (edtHoraIngreso != null) {
+                                edtHoraIngreso.setText(time);
+                            }
                         });
                        /* new DfProductoControlTiempoPedido().
                                 newInstance(productoTempTiempoVehiculo).f((p, horaInicio) -> {
@@ -1588,7 +1592,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
     public void GuardarPedidoVehiculo() {
         //api-work
         boolean guardar = true;
-        if (edtPlaca.getText().toString().trim().length() < 5) {
+        if (edtPlaca == null || edtPlaca.getText().toString().trim().length() < 5) {
             guardar = false;
         }
 
@@ -1596,7 +1600,9 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
 
             mZonaServicio zonaServicio = new mZonaServicio();
             zonaServicio.setIdZona(0);
-            zonaServicio.setDescripcion(edtPlaca.getText().toString().trim());
+            if (edtPlaca != null) {
+                zonaServicio.setDescripcion(edtPlaca.getText().toString().trim());
+            }
             mCabeceraPedido cabPedidoTemp1 = new mCabeceraPedido();
             cabPedidoTemp1.setIdCabecera(idCabeceraActual);
             cabPedidoTemp1.setZonaServicio(zonaServicio);
@@ -1629,7 +1635,9 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                                         }
                                         productoEnVenta.setMetodoGuardar("N");
                                         GuardarProductoNormalDetallePedido(productoEnVenta);
-                                        ObtenerDatoPedido(new InfoGuardadoPedido(edtPlaca.getText().toString(), edtObservacion.getText().toString(),
+                                        String placaText = edtPlaca != null ? edtPlaca.getText().toString() : "";
+                                        String observacionText = edtObservacion != null ? edtObservacion.getText().toString() : "";
+                                        ObtenerDatoPedido(new InfoGuardadoPedido(placaText, observacionText,
                                                 cliente.getRazonSocial(), "", false
                                         ));
 
@@ -1673,8 +1681,9 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                     }
                     DialogCargaAsync cargaAsyncTemp2 = new DialogCargaAsync(context);
                     cargaAsyncTemp2.getDialogCarga("Espere un momento").show();
+                    String placaText = edtPlaca != null ? edtPlaca.getText().toString().trim() : "";
                     asyncPedido.GetIdPedidoZonaServicio(
-                            edtPlaca.getText().toString().trim(),
+                            placaText,
                             new AsyncPedido.IResultZonaServicioPedido() {
                                 @Override
                                 public void PedidoEncontrado(int idPedido) {
@@ -1709,12 +1718,16 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
 
         pedidoTemp.setCabeceraPedido(cabeceraPedido);
 
-        pedidoTemp.getCabeceraPedido().getZonaServicio().setDescripcion(edtPlaca.getText().toString().trim());
+        if (edtPlaca != null) {
+            pedidoTemp.getCabeceraPedido().getZonaServicio().setDescripcion(edtPlaca.getText().toString().trim());
+        }
         ProductoEnVenta productoEnVentaTemp = productoEnVentaTempVehiculo;
         productoEnVentaTemp.setIdProducto(productoTempTiempoVehiculo.getIdProduct());
         productoEnVentaTemp.setHoraFinal(timeDataSalida);
         productoEnVentaTemp.setHoraInicio(timeDataInicio);
-        pedidoTemp.getCabeceraPedido().setObservacion(edtObservacion.getText().toString().trim());
+        if (edtObservacion != null) {
+            pedidoTemp.getCabeceraPedido().setObservacion(edtObservacion.getText().toString().trim());
+        }
         pedidoTemp.getListProducto().add(productoEnVentaTemp);
 
         DialogCargaAsync cargaAsyncPrUnico = new DialogCargaAsync(context);
@@ -1723,7 +1736,9 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
             @Override
             public void ResultUpdateOk(@NotNull String mensaje) {
                 cargaAsyncPrUnico.dismiss();
-                cabeceraPedido.setIdentificadorPedido(edtPlaca.getText().toString().trim());
+                if (edtPlaca != null) {
+                    cabeceraPedido.setIdentificadorPedido(edtPlaca.getText().toString().trim());
+                }
                 new AlertDialog.Builder(getContext()).setPositiveButton("Aceptar", null)
                         .setTitle("Confirmación").setMessage(mensaje).create().show();
                 DeshabilitarModificacionSalida();
@@ -1766,7 +1781,9 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
             DialogScannerCam camPlaca = new DialogScannerCam();
             camPlaca.setScannerResult(resultText -> {
                 if (!resultText.trim().equals(cabeceraPedido.getZonaServicio().getDescripcion())) {
-                    edtPlaca.setText(resultText);
+                    if (edtPlaca != null) {
+                        edtPlaca.setText(resultText);
+                    }
                     GuardarPedidoVehiculo();
                 }
 
@@ -1782,7 +1799,9 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                     , "Ingreso",
                     (DateTimePicker.ChangeDateTimePicker) timeData -> {
                         timeDataInicio = timeData;
-                        edtHoraIngreso.setText(timeData.getTimeStringFormatInterface());
+                        if (edtHoraIngreso != null) {
+                            edtHoraIngreso.setText(timeData.getTimeStringFormatInterface());
+                        }
 
                     }).show(getParentFragmentManager(), "time_init_dialog");
 
@@ -3128,6 +3147,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
     }
 
     private void VerificarListenerVendedor() {
+        imgCandado.setImageDrawable(getResources().getDrawable(R.drawable.ic_lock_open_variant_white_24dp));
 
         if (EstadoBloqueoVendedor == false) {
             if (vendedor.getIdVendedor() == 0) {
@@ -3137,8 +3157,16 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                 EstadoBloqueoVendedor = true;
             }
         } else if (EstadoBloqueoVendedor == true) {
-            imgCandado.setImageDrawable(getResources().getDrawable(R.drawable.ic_lock_open_variant_white_24dp));
-            EstadoBloqueoVendedor = false;
+
+
+            if (vendedor.getIdVendedor() == 0) {
+                imgCandado.setImageDrawable(getResources().getDrawable(R.drawable.ic_lock_open_variant_white_24dp));
+                EstadoBloqueoVendedor = false;
+            } else if (vendedor.getIdVendedor() != 0) {
+                imgCandado.setImageDrawable(getResources().getDrawable(R.drawable.ic_lock_white_24dp));
+                EstadoBloqueoVendedor = true;
+            }
+
         }
     }
 
@@ -3368,7 +3396,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
             btnHoraFin.setVisibility(View.GONE);
         }
         permitirModificarDatosProductoUnico = false;
-        if (imgTipoLista != null) {
+        if (imgTipoLista != null && getContext() != null) {
             imgTipoLista.setImageDrawable(getContext().getResources().getDrawable(R.drawable.ic_folder_open_outline_grey600_48dp));
         }
     }
@@ -3693,6 +3721,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                 vendedor = cabeceraPedido.getVendedor();
 
                 cliente = cabeceraPedido.getCliente();
+
             } else if (idCabeceraActual == 0) {
                 idCabeceraActual = controladorVentas.GenerarNuevoPedido();
                 cabeceraPedido.setIdCabecera(idCabeceraActual);
@@ -3715,7 +3744,9 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                     CambiarPantallaEstadoProductoUnico(cabeceraPedido.getcEstadoEntregaPedido());
                     ActualizarInterfazDetallePedido(listproducto);
 
-                    edtPlaca.setText(cabeceraPedido.getZonaServicio().getDescripcion());
+                    if (edtPlaca != null) {
+                        edtPlaca.setText(cabeceraPedido.getZonaServicio().getDescripcion());
+                    }
                     ObtenerInformacionVendedor(vendedor);
                     ObtenerInformacionCliente(cliente);
                     modificarCantidadProductos();
@@ -3739,7 +3770,7 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                     //   Toast.makeText(context, "Nuevo pedido", Toast.LENGTH_LONG).show();
 
                 }
-
+            VerificarListenerVendedor();
         }
     }
 
@@ -3752,15 +3783,26 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
         @Override
         protected void onPostExecute(Pedido pedido) {
             super.onPostExecute(pedido);
+            if (pedido == null || pedido.getCabeceraPedido() == null) {
+                return;
+            }
             idCabeceraActual = pedido.getCabeceraPedido().getIdCabecera();
             if (edtSearchProduct != null) {
                 edtSearchProduct.clearFocus();
             }
             cabeceraPedido = pedido.getCabeceraPedido();
-            imgTipoLista.setImageDrawable(getContext().getResources().getDrawable(R.drawable.ic_folder_open_outline_grey600_48dp));
-            edtPlaca.setText("");
-            edtObservacion.setText("");
-            edtHoraIngreso.setText("");
+            if (imgTipoLista != null && getContext() != null) {
+                imgTipoLista.setImageDrawable(getContext().getResources().getDrawable(R.drawable.ic_folder_open_outline_grey600_48dp));
+            }
+            if (edtPlaca != null) {
+                edtPlaca.setText("");
+            }
+            if (edtObservacion != null) {
+                edtObservacion.setText("");
+            }
+            if (edtHoraIngreso != null) {
+                edtHoraIngreso.setText("");
+            }
             productoTempTiempoVehiculo = new mProduct();
             productoEnVentaTempVehiculo = new ProductoEnVenta();
             ReinicioPantalla();
@@ -3890,7 +3932,9 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                 observacion = cabeceraPedido.getObservacion();
                 ActualizarInterfazDetallePedido(listproducto);
                 if (productoEnVentaTempVehiculo.getIdProducto() != 0) {
-                    edtPlaca.setText(cabeceraPedido.getZonaServicio().getDescripcion());
+                    if (edtPlaca != null) {
+                        edtPlaca.setText(cabeceraPedido.getZonaServicio().getDescripcion());
+                    }
                 }
   /*
                 for (int i = 0; i < listproducto.size(); i++) {
@@ -3922,25 +3966,33 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
 
                             ProductoEnVenta tempProducto = productoEnVenta;
                             productoTempTiempoVehiculo.setIdProduct(tempProducto.getIdProducto());
-                            edtHoraIngreso.setText(tempProducto.getHoraInicio());
-                            edtObservacion.setText(cabeceraPedido.getObservacion());
+                            if (edtHoraIngreso != null) {
+                                edtHoraIngreso.setText(tempProducto.getHoraInicio());
+                            }
+                            if (edtObservacion != null) {
+                                edtObservacion.setText(cabeceraPedido.getObservacion());
+                            }
 
-                            edtHoraSalida.setText(tempProducto.getHoraFinal());
+                            if (edtHoraSalida != null) {
+                                edtHoraSalida.setText(tempProducto.getHoraFinal());
+                            }
                             edtTiempoTranscurrido.setText("0");
                             edtEtapaCont.setText("0");
                             edtEspaciosLibres.setText("0");
                             timeDataInicio = tempProducto.getTiempoInicio();
                             timeDataSalida = tempProducto.getTiempoInicio();
 
-                            switch (tempProducto.getITipoImagen()) {
-                                case 1:
-                                    imgTipoLista.setImageResource(getContext().getResources().getIdentifier("@drawable/" + tempProducto.getCCodigoImagen(), null, getContext().getPackageName()));
+                            if (imgTipoLista != null && getContext() != null) {
+                                switch (tempProducto.getITipoImagen()) {
+                                    case 1:
+                                        imgTipoLista.setImageResource(getContext().getResources().getIdentifier("@drawable/" + tempProducto.getCCodigoImagen(), null, getContext().getPackageName()));
 
-                                    break;
-                                case 2:
-                                    imgTipoLista.setImageBitmap(BitmapFactory.decodeByteArray(tempProducto.getImage(), 0, tempProducto.getImage().length));
+                                        break;
+                                    case 2:
+                                        imgTipoLista.setImageBitmap(BitmapFactory.decodeByteArray(tempProducto.getImage(), 0, tempProducto.getImage().length));
 
-                                    break;
+                                        break;
+                                }
                             }
 
                             productoEnVentaTempVehiculo = productoEnVenta;
@@ -4000,16 +4052,17 @@ public class VentasFragment extends Fragment implements DialogGuardarPedido.Capt
                 timeDataInicio=tempProducto.getTiempoInicio();
                 timeDataSalida=tempProducto.getTiempoInicio();
 
-                switch(tempProducto.getITipoImagen())
-                {
-                    case 1:
-                        imgTipoLista.setImageResource(getContext().getResources().getIdentifier("@drawable/" +tempProducto.getCCodigoImagen(),null,getContext().getPackageName()));
+                if (imgTipoLista != null && getContext() != null) {
+                    switch (tempProducto.getITipoImagen()) {
+                        case 1:
+                            imgTipoLista.setImageResource(getContext().getResources().getIdentifier("@drawable/" + tempProducto.getCCodigoImagen(), null, getContext().getPackageName()));
 
-                         break;
-                    case 2:
-                        imgTipoLista.setImageBitmap(BitmapFactory.decodeByteArray(tempProducto.getImage(),0,tempProducto.getImage().length));
+                            break;
+                        case 2:
+                            imgTipoLista.setImageBitmap(BitmapFactory.decodeByteArray(tempProducto.getImage(), 0, tempProducto.getImage().length));
 
-                        break;
+                            break;
+                    }
                 }
 
                 productoEnVentaTempVehiculo=tempProducto;

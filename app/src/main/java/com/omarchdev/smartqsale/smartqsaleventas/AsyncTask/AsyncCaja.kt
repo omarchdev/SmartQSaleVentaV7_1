@@ -14,6 +14,7 @@ import com.omarchdev.smartqsale.smartqsaleventas.Model.RetornoApertura
 import com.omarchdev.smartqsale.smartqsaleventas.Model.SolicitudEnvio
 import com.omarchdev.smartqsale.smartqsaleventas.Model.mCierre
 import com.omarchdev.smartqsale.smartqsaleventas.Repository.ICierreRepository
+import com.omarchdev.smartqsale.smartqsaleventas.Repository.ICajaRepository
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
@@ -29,6 +30,7 @@ class AsyncCaja(private val context: Context?) {
     var retro = Retrofit.Builder().baseUrl(BASECONN.BASE_URL_API)
         .addConverterFactory(GsonConverterFactory.create()).build()
     var iCierreRepository = retro.create(ICierreRepository::class.java)
+    var iCajaRepository = retro.create(ICajaRepository::class.java)
     private var Monto: BigDecimal
     private val dialogCargaAsync: DialogCargaAsync
     private var controladorProcesoCargar: ControladorProcesoCargar? = null
@@ -142,7 +144,18 @@ class AsyncCaja(private val context: Context?) {
         }
 
         override fun doInBackground(vararg bigDecimals: BigDecimal?): RetornoApertura {
-            return bdConnectionSql.aperturarCaja(bigDecimals[0])
+            return try {
+                val solicitud = SolicitudEnvio(
+                    codeCia = codeCia,
+                    tipoMov = BASECONN.TIPO_CONSULTA,
+                    data = bigDecimals[0]!!,
+                    idTerminal = Constantes.Terminal.idTerminal,
+                    idUsuario = Constantes.Usuario.idUsuario
+                )
+                iCajaRepository.AperturarCajaV2(solicitud).execute().body() ?: RetornoApertura().apply { respuesta = 0.toByte() }
+            } catch (e: Exception) {
+                RetornoApertura().apply { respuesta = 0.toByte() }
+            }
         }
     }
 
